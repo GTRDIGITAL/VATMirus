@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/ff795680-f458-44da-9443-a1a9f44e3f20/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/vatapp1",
+    "appService.deploySubpath": "."
+}
