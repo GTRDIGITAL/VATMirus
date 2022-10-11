@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<declaratie394 luna="12" an="2021" tip_D394="L" sistemTVA="0" op_efectuate="1" prsAfiliat="0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="38520019" den="FLINT GROUP PRINTING PRODUCTS ROMANIA SRL" adresa="BUCURESTI SECTOR 1 CALEA FLOREASCA NR 169 CORP X  FLOREASCA CUBE - BUSINESS HUB O  CAMERA 32  PARTER" telefon="0748107541" mail="filip.sysiak@flintgrp.com" caen="4675" totalPlata_A="891916" denR="GAWRYSZCZAK RAFAL ERNEST" functie_reprez="ADMINISTRATOR" adresaR="POLONIA  KONSTANTYNOW LODZKI  STR. KOLEJOWA  NR. 22  95-050" tip_intocmit="0" den_intocmit="GRANT THORNTON TAX SRL " cif_intocmit="27831036" calitate_intocmit="IMPUTERNICIT" optiune="0">
+<informatii nrCui1="13" nrCui2="0" nrCui3="0" nrCui4="0" nr_BF_i1="0" incasari_i1="0" incasari_i2="0" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="38" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="1630" tvaDedAI9="0" tvaDedAI5="0" solicit="0"/>
+	<rezumat1 tip_partener="1" cota="19" facturiL="38" bazaL="882933" tvaL="167758" facturiA="3" bazaA="1403" tvaA="266" facturiAI="2" bazaAI="7567" tvaAI="1438" facturiC="0" bazaC="0" tvaC="0"/>
+<rezumat2 cota="24"  bazaFSLcod="0" TVAFSLcod="0" bazaFSL="0" TVAFSL="0" bazaFSA="0" TVAFSA="0" bazaFSAI="0" TVAFSAI="0" bazaBFAI="0" TVABFAI="0" nrFacturiL="0" bazaL="0" tvaL="0" nrFacturiA="0" bazaA="0" tvaA="0" nrFacturiAI="0" bazaAI="0" tvaAI="0" bazaL_PF="0" tvaL_PF="0"/>
+<rezumat2 cota="20"  bazaFSLcod="0" TVAFSLcod="0" bazaFSL="0" TVAFSL="0" bazaFSA="0" TVAFSA="0" bazaFSAI="0" TVAFSAI="0" bazaBFAI="0" TVABFAI="0" nrFacturiL="0" bazaL="0" tvaL="0" nrFacturiA="0" bazaA="0" tvaA="0" nrFacturiAI="0" bazaAI="0" tvaAI="0" baza_incasari_i1="0" tva_incasari_i1="0" baza_incasari_i2="0" tva_incasari_i2="0" bazaL_PF="0" tvaL_PF="0"/>
+<rezumat2 cota="19"  bazaFSLcod="0" TVAFSLcod="0" bazaFSL="0" TVAFSL="0" bazaFSA="0" TVAFSA="0" bazaFSAI="0" TVAFSAI="0" bazaBFAI="0" TVABFAI="0" nrFacturiL="38" bazaL="882933" tvaL="167758" nrFacturiA="3" bazaA="1403" tvaA="266" nrFacturiAI="2" bazaAI="7567" tvaAI="1438" baza_incasari_i1="0" tva_incasari_i1="0" baza_incasari_i2="0" tva_incasari_i2="0" bazaL_PF="0" tvaL_PF="0"/>
+<rezumat2 cota="9"  bazaFSLcod="0" TVAFSLcod="0" bazaFSL="0" TVAFSL="0" bazaFSA="0" TVAFSA="0" bazaFSAI="0" TVAFSAI="0" bazaBFAI="0" TVABFAI="0" nrFacturiL="0" bazaL="0" tvaL="0" nrFacturiA="0" bazaA="0" tvaA="0" nrFacturiAI="0" bazaAI="0" tvaAI="0" baza_incasari_i1="0" tva_incasari_i1="0" baza_incasari_i2="0" tva_incasari_i2="0" bazaL_PF="0" tvaL_PF="0"/>
+<rezumat2 cota="5"  bazaFSLcod="0" TVAFSLcod="0" bazaFSL="0" TVAFSL="0" bazaFSA="0" TVAFSA="0" bazaFSAI="0" TVAFSAI="0" bazaBFAI="0" TVABFAI="0" nrFacturiL="0" bazaL="0" tvaL="0" nrFacturiA="0" bazaA="0" tvaA="0" nrFacturiAI="0" bazaAI="0" tvaAI="0" baza_incasari_i1="0" tva_incasari_i1="0" baza_incasari_i2="0" tva_incasari_i2="0" bazaL_PF="0" tvaL_PF="0"/>
+<serieFacturi tip="1"  nrI="82000117" nrF="82999999"/>
+<serieFacturi tip="1"  nrI="2104100000" nrF="2104199999"/>
+<serieFacturi tip="1"  nrI="2104200000" nrF="2104299999"/>
+<serieFacturi tip="1"  nrI="2104300000" nrF="2104399999"/>
+<serieFacturi tip="1"  nrI="2104400000" nrF="2104499999"/>
+<serieFacturi tip="2"  nrI="2104100384" nrF="2104100392 "/>
+<serieFacturi tip="2"  nrI="2104100395 " nrF="2104100396 "/>
+<serieFacturi tip="2"  nrI="2104100398 " nrF="2104100406 "/>
+<serieFacturi tip="2"  nrI="2104200141 " nrF="2104200158 "/>
+<facturi  tip_factura="1" nr="2104200141 "/>
+<facturi  tip_factura="1" nr="2104200142 "/>
+<facturi  tip_factura="1" nr="2104200143 "/>
+<facturi  tip_factura="1" nr="2104200144"/>
+<facturi  tip_factura="1" nr="2104200145 "/>
+<facturi  tip_factura="1" nr="2104200146 "/>
+<facturi  tip_factura="1" nr="2104200147 "/>
+<facturi  tip_factura="1" nr="2104200148 "/>
+<facturi  tip_factura="1" nr="2104200149 "/>
+<facturi  tip_factura="1" nr="2104200150 "/>
+<facturi  tip_factura="1" nr="2104200151 "/>
+<facturi  tip_factura="1" nr="2104200152 "/>
+<facturi  tip_factura="1" nr="2104200153 "/>
+<facturi  tip_factura="1" nr="2104200154 "/>
+<facturi  tip_factura="1" nr="2104200155 "/>
+<facturi  tip_factura="1" nr="2104200156 "/>
+<facturi  tip_factura="1" nr="2104200157 "/>
+<facturi  tip_factura="1" nr="2104200158 "/>
+	<op1  tip="A" tip_partener="1" cota="19" cuiP="16611892" denP="Chandler International SRL" nrFact="1" baza="881" tva="167" />
+	<op1  tip="A" tip_partener="1" cota="19" cuiP="21295044" denP="Lease Plan Romania S.R.L" nrFact="1" baza="438" tva="83" />
+	<op1  tip="AI" tip_partener="1" cota="19" cuiP="27831036" denP="S.C. Grant Thornton Tax SRL" nrFact="1" baza="6557" tva="1246" />
+	<op1  tip="AI" tip_partener="1" cota="19" cuiP="27512924" denP="S.C. Grant Thornton SRL" nrFact="1" baza="1010" tva="192" />
+	<op1  tip="A" tip_partener="1" cota="19" cuiP="9010105" denP="Orange Romania S.A." nrFact="1" baza="84" tva="16" />
+	<op1  tip="L" tip_partener="1" cota="19" cuiP="10208549" denP="SC RONDOCARTON SRL" nrFact="12" baza="296429" tva="56322" />
+	<op1  tip="L" tip_partener="1" cota="19" cuiP="1132506" denP="DS Smith Packaging Ghimbav SRL" nrFact="2" baza="36758" tva="6984" />
+	<op1  tip="L" tip_partener="1" cota="19" cuiP="14787842" denP="DS SMITH PACKAGING ROMANIA SRL" nrFact="2" baza="72446" tva="13765" />
+	<op1  tip="L" tip_partener="1" cota="19" cuiP="18188587" denP="THIMM PACKAGING SRL" nrFact="6" baza="213904" tva="40642" />
+	<op1  tip="L" tip_partener="1" cota="19" cuiP="20571656" denP="VPK ROMANIA S.R.L." nrFact="5" baza="93281" tva="17723" />
+	<op1  tip="L" tip_partener="1" cota="19" cuiP="5212462" denP="SALASTAR SRL" nrFact="8" baza="97613" tva="18546" />
+	<op1  tip="L" tip_partener="1" cota="19" cuiP="6318446" denP="ARTEMA PLAST  SRL" nrFact="1" baza="30052" tva="5710" />
+	<op1  tip="L" tip_partener="1" cota="19" cuiP="6660251" denP="LIPLAS PROD SRL" nrFact="2" baza="42450" tva="8066" />
+</declaratie394>
