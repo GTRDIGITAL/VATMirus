@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, send_from_directory , url_for
 from jinja2 import pass_eval_context
-from numpy import append
+# from numpy import append
 import shutil
 import re
 import PyPDF2
