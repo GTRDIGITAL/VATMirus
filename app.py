@@ -4771,4 +4771,6 @@ def CUI_process():
 		wb.save(file_pathFS)
 	return send_from_directory(folderpath, "Informatii CUI"+".xlsx", as_attachment=True)
 
-app.run(debug="True",host="0.0.0.0", port=1000)
+# app.run(debug="True",host="0.0.0.0", port=1000)
+if __name__ == '__main__':
+   app.run()
