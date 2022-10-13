@@ -3222,12 +3222,14 @@ def D300xml():
 		
 		# for i in range(0 ,len(tip)):
 	# folderpath="D:/D300 to XML/docs"
-	folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage spreeadsheet"
+	# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage spreeadsheet"
+	folderpath="root@25a0b014d76a:/home/mirus_app/storage_spreadsheet"
 	# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 	file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
 	temp.save(file_pathFS)
 	# return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
-	return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage spreeadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
+	# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage spreeadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
+	return send_from_directory("root@25a0b014d76a:/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
 	return render_template('D3APPS2')
 @app.route('/D3APPS2')
 def my_form2():
