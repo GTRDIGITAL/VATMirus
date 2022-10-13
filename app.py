@@ -3229,7 +3229,7 @@ def D300xml():
 	temp.save(file_pathFS)
 	# return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
 	# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage spreeadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
-	return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets" +str(clientname)+".xlsx",as_attachment=True)
+	return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets test3.xlsx",as_attachment=True)
 	# return render_template('D3APPS2')
 @app.route('/D3APPS2')
 def my_form2():
