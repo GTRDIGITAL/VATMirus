@@ -90,13 +90,13 @@ import io
 import webbrowser
 
 def make_archive(source, destination):
-        base = os.path.basename(destination)
-        name = base.split('.')[0]
-        format = base.split('.')[1]
-        archive_from = os.path.dirname(source)
-        archive_to = os.path.basename(source.strip(os.sep))
-        shutil.make_archive(name, format, archive_from, archive_to)
-        shutil.move('%s.%s'%(name,format), destination)
+	base = os.path.basename(destination)
+	name = base.split('.')[0]
+	format = base.split('.')[1]
+	archive_from = os.path.dirname(source)
+	archive_to = os.path.basename(source.strip(os.sep))
+	shutil.make_archive(name, format, archive_from, archive_to)
+	shutil.move('%s.%s'%(name,format), destination)
 
 thin = Side(border_style='thin', color='000000')
 border = Border(left=thin, right=thin, top=thin, bottom=thin)
@@ -4685,9 +4685,9 @@ def D300():
 		# f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
 		# make_archive("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage","C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/arhiva VAT apps.zip")
 		# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True)
-		f=open("/home/mirus_app/storage_spreadsheet/D394.xml", "w",encoding='utf-8').write(text)
-	make_archive("/home/mirus_app/storage","/home/mirus_app/storage_spreadsheet/arhiva VAT apps.zip")
-	return send_from_directory("/home/mirus_app/storage_spreadsheet","arhiva VAT apps.zip",as_attachment=True)
+		f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
+	make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva_VAT_apps.zip")
+	return send_from_directory("/home/mirus_app/storage","arhiva_VAT_apps.zip",as_attachment=True)
 @app.route('/CUI_Extractor')
 def CUI():
 	return render_template('cuiRetrieval.html')
