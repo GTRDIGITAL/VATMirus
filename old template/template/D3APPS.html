@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>XML Generator</title>
+    <title>VAT Apps</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -16,6 +16,13 @@
     <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
     <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> -->
     <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <script>
+        function showDiv(divId1, divId2, element)
+        {
+        document.getElementById(divId1).style.display = element.checked == "1" ? 'block' : 'none';
+        document.getElementById(divId2).style.display = document.getElementById(divId1).style.display ;
+        }
+    </script>
     <style>
         .fileUpload {
     position: relative;
@@ -184,9 +191,16 @@ body {
 #logo{ 
     position:fixed; 
     top:0; 
+    left:80px;
     /* left:10px;  */
     /*left:12;*/
 } 
+.container {
+    padding-right: 15px;
+    padding-left: 5px;
+    margin-right: auto;
+    margin-left: auto;
+}
 .container{
 left:10px;
 }
@@ -194,99 +208,138 @@ img {
     top:0;
     left:10px;
 }
+.options{
+ 
+  font-weight: bold;
+
+}
+.checkbox label, .radio label {
+    min-height: 20px;
+    padding-left: 0px;
+    margin-bottom: 0;
+    margin-top:-10px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
 .col-lg-3{
     padding-left: 10px;
     padding-right: 2px;
 }
     </style>
  <div id="logo">
-    <img src="/static/logo.png" Style="position:left">
+    <img src="/static/logo.png" Style="position:left"><a href="/"></a>
 </div>
  </head>
 <body>
     
- <!--    <nav class="sidebar">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="#"> Link name </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"> About page </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"> Category name </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"> Another page </a>
-            </li>
-        </ul>
-    </nav> -->
-   <!--  <div class="container-fluid">
-        <div class="row">    
-            <div id="admin-sidebar" class="col-md-2 p-x-0 p-y-3">
-                <ul class="sidenav admin-sidenav list-unstyled">
-                    <li><a href="#">NavLink 1</a></li>
-                    <li><a href="#">NavLink 2</a></li>
-                    <li><a href="#">NavLink 3</a></li>
-                    <li><a href="#">NavLink 4</a></li>
-                    <li><a href="#">NavLink 5</a></li>
-                    <li><a href="#">NavLink 6</a></li>                  
-                </ul>
- -->          <!--   </div> --> <!-- /#admin-sidebar -->
-            <!-- <div id="admin-main-control" class="col-md-10 p-x-3 p-y-1">
-                <div class="content-title m-x-auto">
-                    <i class="fa fa-dashboard"></i> GT Dashboard
-                </div>
-                 </div>  --><!-- /#admin-main-control -->
-       <!--  </div> --> <!-- /.row -->
-    <!-- </div> --> <!-- /.container-fluid -->
-    <!-- <div class="container"> -->
-    <div class="col-lg-3">
-        <div style="font-size:14px;font-family: serif; color: rgba(72,25,122,0.8578781854538691); width:400px; position: left">
-            <p>Please choose below what application you would like to use</p>
-            </div>
-                       
-            <ul class="location">
-                <li class="curve">
-                    <a href="/OneVATApp">VAT App</a>
-                 </li>
-                <li class="curve">
-                <a href="/VAT_Tax">VAT Tax</a>
-                </li>
-                <li class="curve">
-                    <a href="/CUI_Extractor">Registre ANAF</a>
-                 </li>
-              </ul>
-               </div>
-                       
-
     <form method="POST" enctype = "multipart/form-data" style="padding-left:60px;">
         <div class="container" style="float:center">
-    
             <div class="row">
                 <div class="col">
-                    <div style="font-size:20px;font-family: serif; color: rgba(189, 12, 12, 0.858); width:600px; position: left">
-                        <p><b>Please open and review the generated xlsx file from previous step.</p></b>
-                        </div>
+                    <button type="button" onclick="location.href = '/FAR/Instructions';" class="btn btn-primary btn-lg" value="all" Style="width: 330px; margin-bottom:10px; background-color: #742D9B;"> Instructions</button>
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="col">
                     <!-- <button type="button" class="btn btn-primary btn-lg" value="1" Style="width: 300px;margin-bottom:10px; background-color: #742D9B;" input type="file"> Import monthly trial balances</button> -->
-                     <div class="fileUpload btn btn-primary btn-lg"  Style="width: 300px; margin-bottom:10px; background-color: #742D9B;">
-                        <span>Import Generated file</span>
-                        <input id="uploadBtn" name="d300file2" type="file" class="upload" multiple/>
+                     <div class="fileUpload btn btn-primary btn-lg"  Style="width: 330px; margin-bottom:10px; background-color: #742D9B;">
+                        <span>Import Sales and Purchases Journals</span>
+                        <input id="uploadBtn" name="far" type="file" class="upload" multiple/>
                      </div>
                     
                                    
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col">
+                    <!-- <button type="button" class="btn btn-primary btn-lg" value="1" Style="width: 300px;margin-bottom:10px; background-color: #742D9B;" input type="file"> Import monthly trial balances</button> -->
+                     <div class="fileUpload btn btn-primary btn-lg"  Style="width: 330px; margin-bottom:10px; background-color: #742D9B;">
+                        <span>Import identification data file</span>
+                        <input id="uploadBtn" name="TB" type="file" class="upload" multiple/>
+                     </div>
+                    
+                                   
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Please select the statement(s) you would like to prepare:
+                    </label>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary btn-lg" value="4" Style="width: 300px;margin-bottom:10px; background-color: #820892;">Generate XML file</button>
+                    <input  type="checkbox" name="D300" value="" id="D300" class="chckbox" onchange="showDiv('largeAm','largeAm1', this)">
+                    <label for="D300" >
+                        D300
+                    </label>
                 </div>
+            </div>
+            
+            <div class="container">
+                <div class="number">
+                    <input type="number" text="largeAm" name="largeAm" value=""  id="largeAm" style="display: none;" >
+                    <label for="largeAM" text="largeAm" value=""  id="largeAm1" style="display: none; position: left;">
+                    <b>Sold luna precedenta (randul 42, coloana TVA)</b>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <input  type="checkbox" name="D390" value="" id="D390">
+                    <label for="D390" >
+                        D390
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="checkbox" name="D394" value="" id="D394" onchange="showDiv('xyz','xyz1', this)">
+                    <label for="D394" >
+                        D394
+                    </label>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="checkbox">
+                    <input type="checkbox" text="xyz" name="xyz" value="1"  id="xyz" style="display: none;" >
+                    <label for="xyz" text="xyz" value="1"  id="xyz1" style="display: none; position: left;">
+                    <b>Solicit soldul sumei negative </b>
+                    </label>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col">
+                    <input type="text" name="client" placeholder="Client name" aria-label="Client name" Style="margin-bottom:10px; width:330px;" >
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary btn-lg" value="4" Style="width: 330px;margin-bottom:10px; background-color: #820892;">Generate Spreadsheets for review</button>
+                            <!-- <a href="/D3APPS2">Press to continue to the second step</a> -->
+                    
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="location.href = '/D3APPS2';" value="4" Style="width: 330px;margin-bottom:10px; background-color: #30d454;">Generate xml files</button>
+                                <!-- <a href="/D3APPS2">Press to continue to the second step</a> -->
+                        
+                    </div>
                     
                     
                 
             </div>
+
+            
         </div>
     </form>
 

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>XML Generator</title>
+    <title>VAT Tax</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -248,44 +248,76 @@ img {
                        
             <ul class="location">
                 <li class="curve">
-                    <a href="/OneVATApp">VAT App</a>
-                 </li>
-                <li class="curve">
-                <a href="/VAT_Tax">VAT Tax</a>
+                   <a href="/D3APPS">VAT Apps</a>
+                </li>
+                <!-- <li class="curve">
+                  <a href="/VAT_Tax">VAT Tax</a>
                 </li>
                 <li class="curve">
-                    <a href="/CUI_Extractor">Registre ANAF</a>
-                 </li>
-              </ul>
-               </div>
+                  <a href="/CUI_Extractor">Registre ANAF</a>
+                </li> -->
+     </ul>
+                       </div>
+                    <!-- </div> -->
                        
 
     <form method="POST" enctype = "multipart/form-data" style="padding-left:60px;">
-        <div class="container" style="float:center">
+        <!-- <div class="container" style="float:center">
+            <div class="row">
+                <div class="col">
+                    <button type="button"  class="btn btn-primary btn-lg" value="all" Style="width: 300px; margin-bottom:10px; background-color: #742D9B;"> Instructions</button>
+                    <!-- <label class="form-label" for="customFile">Default file input example</label> -->
+                    <!-- <input type="file" class="btn btn-primary btn-lg" id="customFile" Style="width: 300px; margin-bottom:10px; background-color: #742D9B;"> Instructions </input> -->
+                    <!-- <input id="uploadFile" placeholder="File Name here" disabled="disabled" /> -->
+                    <!-- ----------------------------------Upload buttton i---------------------------------
+                    <div class="fileUpload btn btn-primary btn-lg" Style="width: 300px; margin-bottom:10px; background-color: #742D9B;">
+                        <span>Instructions</span>
+                        <input id="uploadBtn" type="file" class="upload" />
+                     </div>-->
+                   
+                <!-- </div>
+            </div> -->
+                
+    
+               
+    
+            
     
             <div class="row">
                 <div class="col">
-                    <div style="font-size:20px;font-family: serif; color: rgba(189, 12, 12, 0.858); width:600px; position: left">
-                        <p><b>Please open and review the generated xlsx file from previous step.</p></b>
-                        </div>
                     <!-- <button type="button" class="btn btn-primary btn-lg" value="1" Style="width: 300px;margin-bottom:10px; background-color: #742D9B;" input type="file"> Import monthly trial balances</button> -->
                      <div class="fileUpload btn btn-primary btn-lg"  Style="width: 300px; margin-bottom:10px; background-color: #742D9B;">
-                        <span>Import Generated file</span>
-                        <input id="uploadBtn" name="d300file2" type="file" class="upload" multiple/>
+                        <span>Import CUI</span>
+                        <input id="uploadBtn" name="cuiFile" type="file" class="upload" multiple/>
                      </div>
                     
                                    
                 </div>
             </div>
-
-
+            <!-- <div class="row">
+                <div class="col"> -->
+                    <!-- <button type="file" class="btn btn-primary btn-lg" value="3" Style="width: 300px;margin-bottom:10px; background-color: #742D9B;"> Import TB</button> -->
+                    <!-- <div class="fileUpload btn btn-primary btn-lg" Style="width: 300px; margin-bottom:10px; background-color: #742D9B;">
+                        <span>Import Trial Balance</span>
+                        <input id="uploadBtn" type="file" class="upload" name="TB"  />
+                    </div> -->
+                    
+                <!-- </div>
+            </div> -->
+            
+            
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary btn-lg" value="4" Style="width: 300px;margin-bottom:10px; background-color: #820892;">Generate XML file</button>
+                    <input class="textbox-n"  name="srcDate" placeholder="Searching Date" onfocus="(this.type='date')" aria-label="Searching Date" Style="margin-bottom:10px; width:300px;">
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary btn-lg" value="4" Style="width: 300px;margin-bottom:10px; background-color: #820892;"> Run and save</button>
                 </div>
                     
-                    
-                
+                        
             </div>
         </div>
     </form>
