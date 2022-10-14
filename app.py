@@ -660,24 +660,24 @@ def D300xml():
 		
 		info.cell(row=18, column=3).value=nrEvidenta
 		info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
-		# try:
-		# 	info.cell(row=50, column=3).value=lenbfi
-		# 	info.cell(row=51, column=3).value=sumabfi
-		# 	info.cell(row=52, column=3).value=sumatbfi
-		# except:
-		# 	pass
-		# try:
-		# 	info.cell(row=53, column=3).value=sumabif
-		# 	info.cell(row=54, column=3).value=sumatbif
-		# 	info.cell(row=55, column=3).value=lentbif
-		# except:
-		# 	pass
-		# try: 
-		# 	# info.cell(row=56, column=3).value=lenbfr
-		# 	info.cell(row=57, column=3).value=sumabfr
-		# 	info.cell(row=58, column=3).value=sumatbfr
-		# except:
-		# 	pass
+		try:
+			info.cell(row=50, column=3).value=lenbfi
+			info.cell(row=51, column=3).value=sumabfi
+			info.cell(row=52, column=3).value=sumatbfi
+		except:
+			pass
+		try:
+			info.cell(row=53, column=3).value=sumabif
+			info.cell(row=54, column=3).value=sumatbif
+			info.cell(row=55, column=3).value=lentbif
+		except:
+			pass
+		try: 
+			# info.cell(row=56, column=3).value=lenbfr
+			info.cell(row=57, column=3).value=sumabfr
+			info.cell(row=58, column=3).value=sumatbfr
+		except:
+			pass
 
 	if(val2==1):
 		sheetinutil2=temp.create_sheet('D390--->>>')
@@ -1521,10 +1521,10 @@ def D300xml():
 		#FORMATARE------------------------------------------------------------------
 		red_color = 'ffc7ce'
 		green_color='99ff99'
-		# red_fill = styles.PatternFill(start_color=red_color, end_color=red_color, fill_type='solid')
-		# green_fill = styles.PatternFill(start_color=green_color, end_color=green_color, fill_type='solid')
+		red_fill = styles.PatternFill(start_color=red_color, end_color=red_color, fill_type='solid')
+		green_fill = styles.PatternFill(start_color=green_color, end_color=green_color, fill_type='solid')
 		row=salesExcel.max_row	
-		# salesExcel.conditional_formatting.add('K10:K'+str(row-1), formatting.rule.CellIsRule(operator='notEqual', formula=['"OK"'], fill=red_fill))
+		salesExcel.conditional_formatting.add('K10:K'+str(row-1), formatting.rule.CellIsRule(operator='notEqual', formula=['"OK"'], fill=red_fill))
 		for row in salesExcel['A9:L9']:
 			for cell in row:
 				cell.fill = cap_tabel_color_black
@@ -4693,93 +4693,93 @@ def D300():
 	# return send_from_directory("/home/mirus_app/storage","D394.xml",as_attachment=True)
 	
 
-@app.route('/CUI_Extractor')
-def CUI():
-	return render_template('cuiRetrieval.html')
+# @app.route('/CUI_Extractor')
+# def CUI():
+# 	return render_template('cuiRetrieval.html')
 
-@app.route('/CUI_Extractor', methods=['POST', 'GET'])
-def CUI_process():
-	dataCautare = datetime.strptime(
-        request.form['srcDate'],
-        '%Y-%m-%d')
+# @app.route('/CUI_Extractor', methods=['POST', 'GET'])
+# def CUI_process():
+# 	dataCautare = datetime.strptime(
+#         request.form['srcDate'],
+#         '%Y-%m-%d')
 
-	dataCautare=dataCautare.date()
-	if request.method == 'POST':
-		file_Details = request.files["cuiFile"]
+# 	dataCautare=dataCautare.date()
+# 	if request.method == 'POST':
+# 		file_Details = request.files["cuiFile"]
 
-		details=openpyxl.load_workbook(file_Details, data_only='True')
-		details1 = details.active
+# 		details=openpyxl.load_workbook(file_Details, data_only='True')
+# 		details1 = details.active
 
-		wb = openpyxl.Workbook()
-		ws = wb.active
-		summary = wb.create_sheet("Summary")
+# 		wb = openpyxl.Workbook()
+# 		ws = wb.active
+# 		summary = wb.create_sheet("Summary")
 
-        # #print("introduceri data")
-        # dataa=input()
-		for row in details1.iter_rows():
-			for cell in row:
-				if cell.value == "Cod de inregistrare fiscala":
-					row_tb = cell.row
-					column_cui = cell.column
-					lun = len(details1[cell.column])
-		try:
-			cui = [b.value for b in details1[column_cui][row_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Cod de inregistrare fiscala'")
-			return render_template("index.html")
-		ccc=[]
-		# try:
-		for i in cui:
-			# try:
-			if "RO" or "RO " in i:
-				b=str(i).replace("RO", "").replace(" ","")
-				ccc.append(b)
-			else:
-				ccc.append(i)
-			# except:
-			# 	pass
-			# #print(ccc)
+#         # #print("introduceri data")
+#         # dataa=input()
+# 		for row in details1.iter_rows():
+# 			for cell in row:
+# 				if cell.value == "Cod de inregistrare fiscala":
+# 					row_tb = cell.row
+# 					column_cui = cell.column
+# 					lun = len(details1[cell.column])
+# 		try:
+# 			cui = [b.value for b in details1[column_cui][row_tb:lun]]
+# 		except:
+# 			flash("Please insert the correct header for 'Cod de inregistrare fiscala'")
+# 			return render_template("index.html")
+# 		ccc=[]
+# 		# try:
+# 		for i in cui:
+# 			# try:
+# 			if "RO" or "RO " in i:
+# 				b=str(i).replace("RO", "").replace(" ","")
+# 				ccc.append(b)
+# 			else:
+# 				ccc.append(i)
+# 			# except:
+# 			# 	pass
+# 			# #print(ccc)
 
-		listaUnicaCui=list(set(ccc))
-		#print(listaUnicaCui, "lista unica")
-		#print(len(listaUnicaCui))
-		# #print(dataCautare)
+# 		listaUnicaCui=list(set(ccc))
+# 		#print(listaUnicaCui, "lista unica")
+# 		#print(len(listaUnicaCui))
+# 		# #print(dataCautare)
 
-		x=["CUI", "Data Verificare", "Denumire", "Adresa", "Stare inregistrare", "Scop TVA", "Data Inceput Scop TVA", 
-		"Mesaj Scop TVA", "Status TVA Incasare", "Status Inactivi", "Status Split TVA", "Status RO e-Factura"]
-		for a in range(0, len(x)):
-			summary.cell(row=1, column=1+a).value=x[a]
+# 		x=["CUI", "Data Verificare", "Denumire", "Adresa", "Stare inregistrare", "Scop TVA", "Data Inceput Scop TVA", 
+# 		"Mesaj Scop TVA", "Status TVA Incasare", "Status Inactivi", "Status Split TVA", "Status RO e-Factura"]
+# 		for a in range(0, len(x)):
+# 			summary.cell(row=1, column=1+a).value=x[a]
 
-		for i in range(0, len(listaUnicaCui)):
-			response = requests.post('https://webservicesp.anaf.ro/PlatitorTvaRest/api/v6/ws/tva', json=[{'cui': int(listaUnicaCui[i]), 'data': str(dataCautare)}])
-			# time.sleep(1)
+# 		for i in range(0, len(listaUnicaCui)):
+# 			response = requests.post('https://webservicesp.anaf.ro/PlatitorTvaRest/api/v6/ws/tva', json=[{'cui': int(listaUnicaCui[i]), 'data': str(dataCautare)}])
+# 			# time.sleep(1)
 
-			data=response.json()
-			tip=["cui", "data", "denumire", "adresa", "stare_inregistrare", "scpTVA", "data_inceput_ScpTVA", 
-		"mesaj_ScpTVA", "statusTvaIncasare", "statusInactivi", "statusSplitTVA", "statusRO_e_Factura"]
+# 			data=response.json()
+# 			tip=["cui", "data", "denumire", "adresa", "stare_inregistrare", "scpTVA", "data_inceput_ScpTVA", 
+# 		"mesaj_ScpTVA", "statusTvaIncasare", "statusInactivi", "statusSplitTVA", "statusRO_e_Factura"]
 
-			summary.cell(row=2+i, column=1).value=str(data['found'][0]['cui'])
-			summary.cell(row=2+i, column=2).value=str(data['found'][0]['data'])
-			summary.cell(row=2+i, column=3).value=str(data['found'][0]['denumire'])
-			summary.cell(row=2+i, column=4).value=str(data['found'][0]['adresa'])
-			summary.cell(row=2+i, column=5).value=str(data['found'][0]['stare_inregistrare'])
-			summary.cell(row=2+i, column=6).value=str(data['found'][0]['scpTVA'])
-			summary.cell(row=2+i, column=7).value=str(data['found'][0]['data_inceput_ScpTVA'])
-			summary.cell(row=2+i, column=8).value=str(data['found'][0]['mesaj_ScpTVA'])
-			summary.cell(row=2+i, column=9).value=str(data['found'][0]['statusTvaIncasare'])
-			summary.cell(row=2+i, column=10).value=str(data['found'][0]['statusInactivi'])
-			summary.cell(row=2+i, column=11).value=str(data['found'][0]['statusSplitTVA'])
-			summary.cell(row=2+i, column=12).value=str(data['found'][0]['statusRO_e_Factura'])
+# 			summary.cell(row=2+i, column=1).value=str(data['found'][0]['cui'])
+# 			summary.cell(row=2+i, column=2).value=str(data['found'][0]['data'])
+# 			summary.cell(row=2+i, column=3).value=str(data['found'][0]['denumire'])
+# 			summary.cell(row=2+i, column=4).value=str(data['found'][0]['adresa'])
+# 			summary.cell(row=2+i, column=5).value=str(data['found'][0]['stare_inregistrare'])
+# 			summary.cell(row=2+i, column=6).value=str(data['found'][0]['scpTVA'])
+# 			summary.cell(row=2+i, column=7).value=str(data['found'][0]['data_inceput_ScpTVA'])
+# 			summary.cell(row=2+i, column=8).value=str(data['found'][0]['mesaj_ScpTVA'])
+# 			summary.cell(row=2+i, column=9).value=str(data['found'][0]['statusTvaIncasare'])
+# 			summary.cell(row=2+i, column=10).value=str(data['found'][0]['statusInactivi'])
+# 			summary.cell(row=2+i, column=11).value=str(data['found'][0]['statusSplitTVA'])
+# 			summary.cell(row=2+i, column=12).value=str(data['found'][0]['statusRO_e_Factura'])
 
 
-		wr = wb["Sheet"]
-		wb.remove(wr)
+# 		wr = wb["Sheet"]
+# 		wb.remove(wr)
 
-		# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage registre"
-		folderpath="/home/mirus_app/storage_registre"
-		file_pathFS = os.path.join(folderpath, "Informatii CUI"+".xlsx")
-		wb.save(file_pathFS)
-	return send_from_directory(folderpath, "Informatii CUI"+".xlsx", as_attachment=True)
+# 		# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage registre"
+# 		folderpath="/home/mirus_app/storage_registre"
+# 		file_pathFS = os.path.join(folderpath, "Informatii CUI"+".xlsx")
+# 		wb.save(file_pathFS)
+# 	return send_from_directory(folderpath, "Informatii CUI"+".xlsx", as_attachment=True)
 
 # app.run(debug="True",host="0.0.0.0", port=1000)
 if __name__ == '__main__':
