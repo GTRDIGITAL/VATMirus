@@ -4688,8 +4688,11 @@ def D300():
 		# f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
 		with open("/home/mirus_app/storage/D394.xml", "w", encoding="utf-8") as g:
 			g.write(text)
-	make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva_VAT_apps.zip")
-	return send_from_directory("/home/mirus_app/storage","arhiva_VAT_apps.zip",as_attachment=True)
+	# make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva_VAT_apps.zip")
+	# return send_from_directory("/home/mirus_app/storage","arhiva_VAT_apps.zip",as_attachment=True)
+	return send_from_directory("/home/mirus_app/storage","D394.xml",as_attachment=True)
+	
+
 @app.route('/CUI_Extractor')
 def CUI():
 	return render_template('cuiRetrieval.html')
