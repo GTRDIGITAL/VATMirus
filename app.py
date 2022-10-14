@@ -661,24 +661,24 @@ def D300xml():
 		
 		info.cell(row=18, column=3).value=nrEvidenta
 		info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
-		try:
-			info.cell(row=50, column=3).value=lenbfi
-			info.cell(row=51, column=3).value=sumabfi
-			info.cell(row=52, column=3).value=sumatbfi
-		except:
-			pass
-		try:
-			info.cell(row=53, column=3).value=sumabif
-			info.cell(row=54, column=3).value=sumatbif
-			info.cell(row=55, column=3).value=lentbif
-		except:
-			pass
-		try: 
-			# info.cell(row=56, column=3).value=lenbfr
-			info.cell(row=57, column=3).value=sumabfr
-			info.cell(row=58, column=3).value=sumatbfr
-		except:
-			pass
+		# try:
+		# 	info.cell(row=50, column=3).value=lenbfi
+		# 	info.cell(row=51, column=3).value=sumabfi
+		# 	info.cell(row=52, column=3).value=sumatbfi
+		# except:
+		# 	pass
+		# try:
+		# 	info.cell(row=53, column=3).value=sumabif
+		# 	info.cell(row=54, column=3).value=sumatbif
+		# 	info.cell(row=55, column=3).value=lentbif
+		# except:
+		# 	pass
+		# try: 
+		# 	# info.cell(row=56, column=3).value=lenbfr
+		# 	info.cell(row=57, column=3).value=sumabfr
+		# 	info.cell(row=58, column=3).value=sumatbfr
+		# except:
+		# 	pass
 
 	if(val2==1):
 		sheetinutil2=temp.create_sheet('D390--->>>')
@@ -1522,10 +1522,10 @@ def D300xml():
 		#FORMATARE------------------------------------------------------------------
 		red_color = 'ffc7ce'
 		green_color='99ff99'
-		red_fill = styles.PatternFill(start_color=red_color, end_color=red_color, fill_type='solid')
-		green_fill = styles.PatternFill(start_color=green_color, end_color=green_color, fill_type='solid')
+		# red_fill = styles.PatternFill(start_color=red_color, end_color=red_color, fill_type='solid')
+		# green_fill = styles.PatternFill(start_color=green_color, end_color=green_color, fill_type='solid')
 		row=salesExcel.max_row	
-		salesExcel.conditional_formatting.add('K10:K'+str(row-1), formatting.rule.CellIsRule(operator='notEqual', formula=['"OK"'], fill=red_fill))
+		# salesExcel.conditional_formatting.add('K10:K'+str(row-1), formatting.rule.CellIsRule(operator='notEqual', formula=['"OK"'], fill=red_fill))
 		for row in salesExcel['A9:L9']:
 			for cell in row:
 				cell.fill = cap_tabel_color_black
@@ -4688,9 +4688,9 @@ def D300():
 		# f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
 		with open("/home/mirus_app/storage/D394.xml", "w", encoding="utf-8") as g:
 			g.write(text)
-	# make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva_VAT_apps.zip")
-	# return send_from_directory("/home/mirus_app/storage","arhiva_VAT_apps.zip",as_attachment=True)
-	return send_from_directory("/home/mirus_app/storage","D394.xml",as_attachment=True)
+	make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva_VAT_apps.zip")
+	return send_from_directory("/home/mirus_app/storage","arhiva_VAT_apps.zip",as_attachment=True)
+	# return send_from_directory("/home/mirus_app/storage","D394.xml",as_attachment=True)
 	
 
 @app.route('/CUI_Extractor')
