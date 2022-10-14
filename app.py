@@ -651,7 +651,7 @@ def D300xml():
 		ZZLLAA1=sum(int(digit) for digit in str(ZZLLAA))
 		fix01=sum(int(digit) for digit in str(Fix0000))
 
-		control=poz1+LTSA+fix1+LLAA1+ZZLLAA1+fix01 
+		control=poz1+LTSA+fix1+LLAA1+ZZLLAA1+fix01
 		
 
 		nrEvidenta=Poz+elementMapare+Fix01+LLAA+ZZLLAA+Fix0000+str(control)
