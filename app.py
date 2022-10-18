@@ -423,7 +423,7 @@ def D300xml():
 			if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
 				valIban=listaiban[j]
 		Sheet1.cell(row=60, column=3).value='Perioada de plata: '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
-		Sheet1.cell(row=61, column=3).value="Suma de plata: RON "
+		Sheet1.cell(row=61, column=3).value='="Suma de plata: " &D55&" RON "'
 		Sheet1.cell(row=62, column=3).value="Moneda: RON"
 		Sheet1.cell(row=63, column=3).value='Detalii plata: Decont TVA - '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
 		if(okdecembrie==1):
@@ -941,7 +941,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
 				valIban=listaiban[j]
 		Sheet1.cell(row=60, column=3).value='Payment period: '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
-		Sheet1.cell(row=61, column=3).value="Payable amount: RON "
+		Sheet1.cell(row=61, column=3).value='="Suma de plata: " &D55&" RON "'
 		Sheet1.cell(row=62, column=3).value="Currency: RON"
 		Sheet1.cell(row=63, column=3).value='Payment details: VAT return - '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
 		if(okdecembrie==1):
