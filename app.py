@@ -91,7 +91,7 @@ import webbrowser
 
 
 
-today=datetime.datetime.now().date()
+today=datetime.now().date()
 yesterday=today-datetime.timedelta(days=1)
 print(yesterday.year)
 print(yesterday.month)
