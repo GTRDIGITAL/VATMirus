@@ -89,14 +89,82 @@ import io
 
 import webbrowser
 
+
+
+today=datetime.datetime.now().date()
+yesterday=today-datetime.timedelta(days=1)
+print(yesterday.year)
+print(yesterday.month)
+print(yesterday.day)
+curs="EUR"
+curs2="USD"
+
+listaluni=["1","2","3","4","5","6","7","8","9","10","11","12"]
+listadenluni=['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie']
+listadenluni2=['January','February','March','April','May','June','July','August','September','October','November','December']
+listatrez=['Trezoreria operativă Agnita','Trezorerie operativa Alesd','Trezoreria operativă Avrig','Trezoreria operativă Babadag','Trezorerie operativa Babeni','Trezoreria operativă Baia','Trezoreria operativă Baia de Aramă','Trezorerie operativa Balcesti','Trezorerie operativa Beclean','Trezorerie operativa Beius','Trezoreria operativă Boldeşti - Scăeni','Trezorerie operativa Bozovici','Trezorerie operativa Budesti','Trezoreria operativă Buftea','Trezorerie operativa Buhusi','Trezoreria operativă Buşteni','Trezorerie operativa Buzias','Trezorerie operativa Campeni','Trezoreria operativă Cehu Silvaniei','Trezorerie operativa Chisinau Cris','Trezorerie operativa Codlea','Trezorerie operativa Comunala Podu Turcului','Trezorerie operativa Costesti','Trezorerie operativa Cugir','Trezorerie operativa Darabani','Trezorerie operativa Deta','Trezorerie operativa Eforie','Trezorerie operativa Faget','Trezorerie operativa Faurei','Trezoreria operativă Feteşti','Trezorerie operativa Gaiesti','Trezorerie operativa Gura Lotrului','Trezorerie operativa Harlau','Trezorerie operativa Harsova','Trezorerie operativa Hateg','Trezorerie operativa Horezu','Trezorerie operativa Huedin','Trezorerie operativa Ianca','Trezoreria operativă Ilfov','Trezorerie operativa Ineu','Trezorerie operativa Insuratei','Trezoreria operativă Jibou','Trezorerie operativa Jimbolia','Trezorerie operativa Lehliu Gara','Trezorerie operativa Lipova','Trezoreria operativă Luduş','Trezoreria operativă Măcin','Trezorerie operativa Marghita','Trezorerie operativa Mioveni','Trezoreria operativă Mizil','Trezorerie operativa Moinesti','Trezorerie operativa Moldova Noua','Trezorerie operativa Moreni','Trezorerie operativa Motru','Trezoreria operativă Municipiu Slatina','Trezorerie operativa Municipiul  Alba Iulia','Trezorerie operativa Municipiul Adjud','Trezorerie operativa Municipiul Aiud','Trezoreria operativă Municipiul Alexandria','Trezorerie operativa Municipiul Arad','Trezorerie operativa Municipiul Bacau','Trezoreria operativă Municipiul Baia Mare','Trezoreria operativă Municipiul Bârlad','Trezorerie operativa Municipiul Bistrita','Trezorerie operativa Municipiul Blaj','Trezorerie operativa Municipiul Botosani','Trezorerie operativa Municipiul Brad','Trezorerie operativa Municipiul Braila','Trezorerie operativa Municipiul Brasov','Trezorerie operativa Municipiul Bucuresti','Trezorerie operativa Municipiul Buzau','Trezorerie operativa Municipiul Calarasi','Trezoreria operativă Municipiul Câmpina','Trezorerie operativa Municipiul Campulung','Trezorerie operativa Municipiul Campulung Moldovenesc','Trezoreria operativă Municipiul Caracal','Trezorerie operativa Municipiul Caransebes','Trezorerie operativa Municipiul Carei','Trezorerie operativa Municipiul Cluj Napoca','Trezorerie operativa Municipiul Constanta','Trezorerie operativa Municipiul Curtea de Arges','Trezorerie operativa Municipiul Dej','Trezorerie operativa Municipiul Deva','Trezorerie operativa Municipiul Dorohoi','Trezorerie operativa Municipiul Dragasani','Trezoreria operativă Municipiul Drobeta-Turnu Severin','Trezorerie operativa Municipiul Fagaras','Trezorerie operativa Municipiul Falticeni','Trezorerie operativa Municipiul Focsani','Trezorerie operativa Municipiul Galati','Trezorerie operativa Municipiul Gherla','Trezorerie operativa Municipiul Gura Humorului','Trezorerie operativa Municipiul Hunedoara','Trezoreria operativă Municipiul Huşi','Trezorerie operativa Municipiul Iasi','Trezorerie operativa Municipiul Lugoj','Trezorerie operativa Municipiul Mangalia','Trezorerie operativa Municipiul Medgidia','Trezoreria operativă Municipiul Mediaş','Trezorerie operativa Municipiul Oltenita','Trezorerie operativa Municipiul Onesti','Trezorerie operativa Municipiul Oradea','Trezorerie operativa Municipiul Orastie','Trezorerie operativa Municipiul Pascani','Trezorerie operativa Municipiul Petrosani','Trezoreria operativă Municipiul Piatra Neamţ ','Trezorerie operativa Municipiul Pitesti','Trezorerie operativa Municipiul Ploiesti','Trezorerie operativa Municipiul Radauti','Trezorerie operativa Municipiul Ramnicu Sarat','Trezorerie operativa Municipiul Ramnicu Valcea','Trezoreria operativă Municipiul Reghin','Trezorerie operativa Municipiul Resita','Trezoreria operativă Municipiul Roman','Trezoreria operativă Municipiul Roşiori de Vede','Trezorerie operativa Municipiul Satu Mare','Trezoreria operativă Municipiul Sibiu','Trezoreria operativă Municipiul Sighetul Marmaţiei','Trezoreria operativă Municipiul Sighişoara','Trezorerie operativa Municipiul Siret','Trezoreria operativă Municipiul Slobozia','Trezorerie operativa Municipiul Suceava','Trezorerie operativa Municipiul Targoviste','Trezoreria operativă Municipiul Târgu Mureş','Trezoreria operativă Municipiul Târnăveni','Trezorerie operativa Municipiul Tecuci','Trezorerie operativa Municipiul Tg.Jiu','Trezorerie operativa Municipiul Timisoara','Trezoreria operativă Municipiul Tulcea','Trezorerie operativa Municipiul Turda','Trezoreria operativă Municipiul Turnu Măgurele','Trezoreria operativă Municipiul Urziceni','Trezoreria operativă Municipiul Vaslui','Trezoreria operativă Municipiul Zalău','Trezorerie operativa Nasaud','Trezoreria operativă Negreşti','Trezorerie operativa Negresti Oas','Trezorerie operativa Novaci','Trezoreria operativă Oraş Bicaz','Trezoreria operativă Oraş Târgu Neamţ','Trezoreria operativă Oraşul Balş','Trezoreria operativă Oraşul Corabia','Trezorerie operativa Oravita','Trezoreria operativă Orşova','Trezorerie operativa Otelul Rosu','Trezorerie operativa Panciu','Trezorerie operativa Patarlagele','Trezorerie operativa Pogoanele','Trezorerie operativa Pucioasa','Trezorerie operativa Raducaneni','Trezorerie operativa Rasnov','Trezorerie operativa Rovinari','Trezorerie operativa Rupea','Trezorerie operativa Sacele','Trezoreria operativă Sălişte','Trezorerie operativa Salonta','Trezorerie operativa Sangeorz Bai','Trezorerie operativa Sannicolau Mare','Trezorerie operativa Savarsin','Trezorerie operativa Saveni','Trezorerie operativa Sebes','Trezorerie operativa Sebis','Trezorerie operativa Sector 1','Trezorerie operativa Sector 2','Trezorerie operativa Sector 3','Trezorerie operativa Sector 4','Trezorerie operativa Sector 5','Trezorerie operativa Sector 6','Trezoreria operativă Şimleul Silvaniei','Trezoreria operativă Slănic','Trezoreria operativă Sovata','Trezoreria operativă Strehaia','Trezoreria operativă Sulina','Trezoreria operativă Târgu Lăpuş','Trezorerie operativa Tasnad','Trezorerie operativa Tg.Bujor','Trezorerie operativa Tg.Carbunesti','Trezorerie operativa Tg.Frumos','Trezorerie operativa Titu','Trezorerie operativa Topoloveni','Trezoreria operativă Vălenii de Munte','Trezoreria operativă Vânju Mare','Trezorerie operativa Vatra Dornei','Trezoreria operativă Videle','Trezoreria operativă Vişeul de Sus','Trezoreria operativă Zimnicea']
+listaiban=['RO42TREZ57820A100101XTVA','RO69TREZ08120A100101XTVA','RO11TREZ58120A100101XTVA','RO61TREZ64520A100101XTVA','RO02TREZ68220A100101XTVA','RO83TREZ64620A100101XTVA','RO12TREZ46220A100101XTVA','RO33TREZ67920A100101XTVA','RO46TREZ10220A100101XTVA','RO03TREZ07820A100101XTVA','RO57TREZ53920A100101XTVA','RO42TREZ19020A100101XTVA','RO59TREZ20420A100101XTVA','RO05TREZ42220A100101XTVA','RO30TREZ06620A100101XTVA','RO31TREZ52920A100101XTVA','RO31TREZ62620A100101XTVA','RO68TREZ00620A100101XTVA','RO78TREZ56220A100101XTVA','RO32TREZ02220A100101XTVA','RO40TREZ13720A100101XTVA','RO43TREZ07120A100101XTVA','RO66TREZ05020A100101XTVA','RO37TREZ00920A100101XTVA','RO10TREZ11820A100101XTVA','RO84TREZ62420A100101XTVA','RO84TREZ23620A100101XTVA','RO75TREZ62820A100101XTVA','RO04TREZ15320A100101XTVA','RO24TREZ39220A100101XTVA','RO25TREZ27320A100101XTVA','RO64TREZ67620A100101XTVA','RO10TREZ40920A100101XTVA','RO31TREZ23820A100101XTVA','RO47TREZ37120A100101XTVA','RO20TREZ67420A100101XTVA','RO45TREZ22120A100101XTVA','RO26TREZ15420A100101XTVA','RO80TREZ42120A100101XTVA','RO76TREZ02420A100101XTVA','RO79TREZ15220A100101XTVA','RO25TREZ56420A100101XTVA','RO09TREZ62520A100101XTVA','RO37TREZ20320A100101XTVA','RO98TREZ02520A100101XTVA','RO20TREZ48020A100101XTVA','RO92TREZ64220A100101XTVA','RO91TREZ08220A100101XTVA','RO44TREZ04920A100101XTVA','RO18TREZ52420A100101XTVA','RO61TREZ06320A100101XTVA','RO29TREZ18520A100101XTVA','RO47TREZ27420A100101XTVA','RO97TREZ33820A100101XTVA','RO10TREZ50620A100101XTVA','RO77TREZ00220A100101XTVA','RO28TREZ69220A100101XTVA','RO24TREZ00420A100101XTVA','RO76TREZ60620A100101XTVA','RO10TREZ02120A100101XTVA','RO17TREZ06120A100101XTVA','RO22TREZ43620A100101XTVA','RO34TREZ65720A100101XTVA','RO24TREZ10120A100101XTVA','RO02TREZ00320A100101XTVA','RO63TREZ11620A100101XTVA','RO03TREZ36920A100101XTVA','RO57TREZ15120A100101XTVA','RO05TREZ13120A100101XTVA','RO10TREZ70020A100101XTVA','RO96TREZ16620A100101XTVA','RO90TREZ20120A100101XTVA','RO71TREZ52220A100101XTVA','RO97TREZ04720A100101XTVA','RO59TREZ59220A100101XTVA','RO32TREZ50720A100101XTVA','RO60TREZ18220A100101XTVA','RO39TREZ54720A100101XTVA','RO32TREZ21620A100101XTVA','RO71TREZ23120A100101XTVA','RO22TREZ04820A100101XTVA','RO54TREZ21720A100101XTVA','RO34TREZ36620A100101XTVA','RO85TREZ11720A100101XTVA','RO73TREZ67220A100101XTVA','RO87TREZ46120A100101XTVA','RO27TREZ13220A100101XTVA','RO81TREZ59320A100101XTVA','RO06TREZ69120A100101XTVA','RO72TREZ30620A100101XTVA','RO76TREZ21820A100101XTVA','RO06TREZ59420A100101XTVA','RO56TREZ36720A100101XTVA','RO56TREZ65820A100101XTVA','RO41TREZ40620A100101XTVA','RO62TREZ62320A100101XTVA','RO18TREZ23320A100101XTVA','RO93TREZ23220A100101XTVA','RO20TREZ57720A100101XTVA','RO15TREZ20220A100101XTVA','RO39TREZ06220A100101XTVA','RO56TREZ07620A100101XTVA','RO25TREZ37020A100101XTVA','RO63TREZ40720A100101XTVA','RO78TREZ36820A100101XTVA','RO68TREZ49120A100101XTVA','RO75TREZ04620A100101XTVA','RO49TREZ52120A100101XTVA','RO28TREZ59520A100101XTVA','RO21TREZ16720A100101XTVA','RO51TREZ67120A100101XTVA','RO51TREZ47720A100101XTVA','RO38TREZ18120A100101XTVA','RO90TREZ49220A100101XTVA','RO23TREZ60820A100101XTVA','RO17TREZ54620A100101XTVA','RO95TREZ57620A100101XTVA','RO44TREZ43720A100101XTVA','RO73TREZ47820A100101XTVA','RO50TREZ59620A100101XTVA','RO02TREZ39120A100101XTVA','RO37TREZ59120A100101XTVA','RO78TREZ27120A100101XTVA','RO29TREZ47620A100101XTVA','RO95TREZ47920A100101XTVA','RO94TREZ30720A100101XTVA','RO53TREZ33620A100101XTVA','RO18TREZ62120A100101XTVA','RO70TREZ64120A100101XTVA','RO98TREZ21920A100101XTVA','RO98TREZ60720A100101XTVA','RO46TREZ39320A100101XTVA','RO12TREZ65620A100101XTVA','RO56TREZ56120A100101XTVA','RO68TREZ10320A100101XTVA','RO78TREZ65920A100101XTVA','RO61TREZ54820A100101XTVA','RO22TREZ33920A100101XTVA','RO37TREZ49420A100101XTVA','RO15TREZ49320A100101XTVA','RO54TREZ50820A100101XTVA','RO76TREZ50920A100101XTVA','RO73TREZ18720A100101XTVA','RO34TREZ46320A100101XTVA','RO95TREZ18820A100101XTVA','RO72TREZ69420A100101XTVA','RO65TREZ16920A100101XTVA','RO87TREZ17020A100101XTVA','RO69TREZ27520A100101XTVA','RO32TREZ41020A100101XTVA','RO62TREZ13820A100101XTVA','RO44TREZ34020A100101XTVA','RO49TREZ13320A100101XTVA','RO18TREZ13620A100101XTVA','RO02TREZ58520A100101XTVA','RO16TREZ08320A100101XTVA','RO90TREZ10420A100101XTVA','RO53TREZ62720A100101XTVA','RO58TREZ03220A100101XTVA','RO32TREZ11920A100101XTVA','RO46TREZ00520A100101XTVA','RO67TREZ02820A100101XTVA','RO32TREZ70120A100101XTVA','RO54TREZ70220A100101XTVA','RO76TREZ70320A100101XTVA','RO98TREZ70420A100101XTVA','RO23TREZ70520A100101XTVA','RO45TREZ70620A100101XTVA','RO03TREZ56320A100101XTVA','RO62TREZ52620A100101XTVA','RO64TREZ48220A100101XTVA','RO56TREZ46420A100101XTVA','RO39TREZ64420A100101XTVA','RO13TREZ44020A100101XTVA','RO83TREZ54920A100101XTVA','RO19TREZ30820A100101XTVA','RO75TREZ33720A100101XTVA','RO85TREZ40820A100101XTVA','RO91TREZ27620A100101XTVA','RO88TREZ05120A100101XTVA','RO09TREZ52820A100101XTVA','RO78TREZ46520A100101XTVA','RO72TREZ59720A100101XTVA','RO45TREZ60920A100101XTVA','RO35TREZ44120A100101XTVA','RO67TREZ61020A100101XTVA']
+
+listadend300eng=['LIC','Adjustments LIC','LIS','Intra-community services rendered','Adjustments of Intra-community services rendered','AIC','AIC (supplier registered for VAT purposes in the source state)','Adjustments AIC','AIS','Acquisitions of intra-Community services','Ajustments AIS','Supplies of goods and services (19%) ','Supplies of goods and services (9%) ','Supplies of goods and services (5%) ','Acquisition of goods and services subject to simplified measures (local reverse charge)','Acquisition of goods and services (19%) ','Acquisition of goods and services (9%) ','Acquisition of goods and services (5%) ','Supplies of goods and services subject to simplified measures (local reverse charge)','Supplies of goods and services exempted w/deduction right','Supplies of goods and services exempted w/o dduction right','Adjustments supplies of goods and services ','Intra-community supplies of services according to art 278 par(8) of the Fiscal code taxable in Romania','Adjustents of intra-community supplies of services according to art 278 par(8) of the Fiscal code taxable in Romania','Collected VAT','AIC','AIC (supplier registered for VAT purposes in the source state)','Adjustments AIC','AIS','Acquisitions of intra-Community services','Adjustment AIS','Acquisitions of goods and services (19%)','Acquisitions of goods and services (9%)','Acquisitions of goods and services (5%)','Acquisition of goods and services subject to simplified measures (local reverse charge)','Acquisition of goods and services (19%) ','Acquisition of goods and services (9%) ','Acquisition of goods and services (5%) ','Compensation in the flat fee for purchases of agricultural products and services from suppliers applying the special regime','Adjusments of compensation in the flat fee for purchases of agricultural products and services from suppliers applying the special regime','Acquisitions of goods and services VAT exempt or non-taxable, out of which:','Acquisitions of VAT exempt intra-community services (do not fill in fro the simplified method)','Deductible VAT','','Sub-total deductible VAT','VAT effectively refunded to foreign buyers, including the commission of the authorised bodies','Adjustments acquisitions','Adjustments according to pro rata / adjustments for capital goods','Total VAT deducted','Negative VAT amount during the reporting period','VAT payable during the reporting period','VAT payable from previous period not paid until the current submission deadline','VAT differences determined by the tax authorities by decision and unpaid until the submission of the current VAT return','Cumulated VAT payable','Negative VAT amount from previous periods ','Negative VAT differences determined by the tax authorities by decision until the submission of the current VAT return','Cumulated negative VAT amount','Balance of payable VAT at the end of the reporting period','Negative VAT to be reported for future periods','','A','A1','B','B1']
+
+def get_fxrate(year):
+
+
+    # if ccy != "RON":  #pentru valute diferite de ron
+    r=requests.get('http://www.bnr.ro/files/xml/years/nbrfxrates'+str(year)+'.xml') #accesare xml bnr
+    str_xml = r.text    #stocare text xml
+    #     with open("D:/text.txt", "w", encoding="utf-8") as f:
+
+
+
+    #         f.write(str_xml)
+    #     print(str_xml)
+    indexcurs=str_xml.rfind("EUR")
+    index_maimare = str_xml.find(">",indexcurs)
+    index_maimic=str_xml.find("<",index_maimare)
+    valoarecurs=""
+    # for chr in range(index_maimare+1,index_maimic):
+    #     print(str_xml[chr]) 
+    #     valoarecurs = valoarecurs + str_xml[chr]
+    
+
+    # while str_xml.find(str(year)+"-"+str(month)+"-"+str(day)) <= 0: #cautare cea mai apropiata data dispobibila
+    #     date = datetime.datetime.strptime(str(day)+"/"+str(month)+"/"+str(year),'%d/%m/%Y') #transformam in date
+    #     date = date - datetime.timedelta(days=1) #scadem o zi
+    #     day = str(date.day) #stocam zi, luna, an
+    #     month = str(date.month)
+    #     year = str(date.year)
+    #     # print(str(year) + "-" + str(month) + "-" + str(day))
+    #     index_start = str_xml.find("Cube date="+'"'+str(year) + "-" + str(month) + "-" + str(day))
+    #     print(index_start)      #cautarea cursului din aproape in aproape prin manipulare de sir de caractere
+    #     index_end = str_xml.find("</Cube>",index_start)
+    #     print(index_end)
+    #     # for g in range(index_start,index_end):
+    #     text=str_xml[index_start:index_end]
+    #     print(text)
+    #     index_curs = str_xml.find('EUR',index_start,index_end)
+    #     print(index_curs)
+    #     index_maimare = str_xml.find(">",index_curs,index_end)
+    #     index_maimic = str_xml.find("<",index_maimare,index_end)
+    #     print(index_maimic,index_maimare)
+    #     substr=""
+    #     print("sunt aici")
+    valoarecurs=""
+    for chr in range(index_maimare+1,index_maimic):
+        print(str_xml[chr])
+        valoarecurs = valoarecurs + str_xml[chr]
+    else:
+        substr = 1
+    return valoarecurs
+
 def make_archive(source, destination):
-	base = os.path.basename(destination)
-	name = base.split('.')[0]
-	format = base.split('.')[1]
-	archive_from = os.path.dirname(source)
-	archive_to = os.path.basename(source.strip(os.sep))
-	shutil.make_archive(name, format, archive_from, archive_to)
-	shutil.move('%s.%s'%(name,format), destination)
+        base = os.path.basename(destination)
+        name = base.split('.')[0]
+        format = base.split('.')[1]
+        archive_from = os.path.dirname(source)
+        archive_to = os.path.basename(source.strip(os.sep))
+        shutil.make_archive(name, format, archive_from, archive_to)
+        shutil.move('%s.%s'%(name,format), destination)
 
 thin = Side(border_style='thin', color='000000')
 border = Border(left=thin, right=thin, top=thin, bottom=thin)
@@ -155,7 +223,12 @@ def D300xml():
 		val2 = request.form.get('D390')
 		val3 = request.form.get('D394')
 		val4 = request.form.get('xyz')
+		option = request.form['options']
+		dropdown = request.form.get('trezorerie')
+		dropdownlimba = request.form.get('limba')
 		soldLunaTrecuta = request.form.get('largeAm')
+
+	
 		# #print(soldLunaTrecuta)
 	if val1=="":
 		# #print("Da")  # daca e bifat
@@ -176,6 +249,13 @@ def D300xml():
 	else:
 		#print(val3)            
 		val3 = 0
+		
+	if str(dropdownlimba)=="Romana(RO)":
+		option=1
+	else:
+		option=0	
+
+
 	#print(val4)
 	#print(val4,"--------------------------------------------")		
 	cap_tabel_color_verde = PatternFill(start_color = '00B050', end_color ='00B050', fill_type = 'solid')
@@ -189,9 +269,955 @@ def D300xml():
 	cap_tabel_color_GT_movinchis = PatternFill(start_color='CCC0DA', end_color='CCC0DA', fill_type='solid')
 
 	temp = openpyxl.load_workbook(D300,data_only=True)
+	ws = temp.active
+	
+	if(option==1):
+		Sheet1=temp.create_sheet('Cover sheet')
+		fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
+		fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
+		font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
+		font1 = Font(name = 'Georgia', size = 10, color = "FFFFFF", bold = True,italic=True)
+		font3 = Font(name = 'Georgia', size = 10, color = "000000",italic=True)
+		culoare = PatternFill(start_color = '182A54', end_color ='182A54', fill_type = 'solid') 
+		culoare2 = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
+		culoare3 = PatternFill(start_color = 'D9E1F2', end_color ='D9E1F2', fill_type = 'solid')
+		culoare4 = PatternFill(start_color = 'E2EFDA', end_color ='E2EFDA', fill_type = 'solid')
+		culoare5 = PatternFill(start_color = 'FFF2CC', end_color ='FFF2CC', fill_type = 'solid')
+		culoare6 = PatternFill(start_color = '808080', end_color ='808080', fill_type = 'solid')
+		font4 = Font(name = 'Georgia', size = 10, color = "000000",underline='single',bold=True)
+		font5 = Font(name = 'Georgia', size = 10, color = "ffffff",underline='single',bold=True)
+		border = Border(bottom=Side(style='dotted'))
+		border2 = Border(top=Side(style='dotted'))
+		border3 = Border(left=Side(style='dotted'))
+		border4 = Border(right=Side(style='dotted'))
+		border5 = Border(left=Side(style='dotted'),top=Side(style='dotted'))
+		border6 = Border(left=Side(style='dotted'),bottom=Side(style='dotted'))
+		border7 = Border(right=Side(style='dotted'),bottom=Side(style='dotted'))
+		border8 = Border(right=Side(style='dotted'),top=Side(style='dotted'))
+		# border9 = Border(right=Side(style='double'),bottom=Side(style='double'),top=Side(style='double'),left=Side(style='double'))
+
+
+		Sheet1.cell(row=31, column=2).border=border2
+		Sheet1.cell(row=31, column=3).border=border2
+		Sheet1.cell(row=31, column=4).border=border2
+		Sheet1.cell(row=31, column=5).border=border2
+		Sheet1.cell(row=31, column=6).border=border2
+		Sheet1.cell(row=31, column=7).border=border2
+		Sheet1.cell(row=31, column=2).border=border5
+		Sheet1.cell(row=31, column=7).border=border8
+
+
+		Sheet1.cell(row=75, column=2).border=border
+		Sheet1.cell(row=75, column=3).border=border
+		Sheet1.cell(row=75, column=4).border=border
+		Sheet1.cell(row=75, column=5).border=border
+		Sheet1.cell(row=75, column=6).border=border
+		Sheet1.cell(row=75, column=7).border=border
+		Sheet1.cell(row=75, column=7).border=border7
+
+		Sheet1.cell(row=32, column=2).border=border3
+		Sheet1.cell(row=33, column=2).border=border3
+		Sheet1.cell(row=34, column=2).border=border3
+		Sheet1.cell(row=35, column=2).border=border3
+		Sheet1.cell(row=36, column=2).border=border3
+		Sheet1.cell(row=37, column=2).border=border3
+		Sheet1.cell(row=38, column=2).border=border3
+		Sheet1.cell(row=39, column=2).border=border3
+		Sheet1.cell(row=40, column=2).border=border3
+		Sheet1.cell(row=41, column=2).border=border3
+		Sheet1.cell(row=42, column=2).border=border3
+		Sheet1.cell(row=43, column=2).border=border3
+		Sheet1.cell(row=44, column=2).border=border3
+		Sheet1.cell(row=45, column=2).border=border3
+		Sheet1.cell(row=46, column=2).border=border3
+		Sheet1.cell(row=47, column=2).border=border3
+		Sheet1.cell(row=48, column=2).border=border3
+		Sheet1.cell(row=49, column=2).border=border3
+		Sheet1.cell(row=50, column=2).border=border3
+		Sheet1.cell(row=51, column=2).border=border3
+		Sheet1.cell(row=52, column=2).border=border3
+		Sheet1.cell(row=53, column=2).border=border3
+		Sheet1.cell(row=54, column=2).border=border3
+		Sheet1.cell(row=55, column=2).border=border3
+		Sheet1.cell(row=75, column=2).border=border6
+		Sheet1.cell(row=56, column=2).border=border3
+		Sheet1.cell(row=57, column=2).border=border3
+		Sheet1.cell(row=58, column=2).border=border3
+		Sheet1.cell(row=59, column=2).border=border3
+		Sheet1.cell(row=60, column=2).border=border3
+		Sheet1.cell(row=61, column=2).border=border3
+		Sheet1.cell(row=62, column=2).border=border3
+		Sheet1.cell(row=63, column=2).border=border3
+		Sheet1.cell(row=64, column=2).border=border3
+		Sheet1.cell(row=65, column=2).border=border3
+		Sheet1.cell(row=66, column=2).border=border3
+		Sheet1.cell(row=67, column=2).border=border3
+		Sheet1.cell(row=68, column=2).border=border3
+		Sheet1.cell(row=69, column=2).border=border3
+		Sheet1.cell(row=70, column=2).border=border3
+		Sheet1.cell(row=71, column=2).border=border3
+		Sheet1.cell(row=72, column=2).border=border3
+		Sheet1.cell(row=73, column=2).border=border3
+		Sheet1.cell(row=74, column=2).border=border3
+
+		Sheet1.cell(row=32, column=7).border=border4
+		Sheet1.cell(row=33, column=7).border=border4
+		Sheet1.cell(row=34, column=7).border=border4
+		Sheet1.cell(row=35, column=7).border=border4
+		Sheet1.cell(row=36, column=7).border=border4
+		Sheet1.cell(row=37, column=7).border=border4
+		Sheet1.cell(row=38, column=7).border=border4
+		Sheet1.cell(row=39, column=7).border=border4
+		Sheet1.cell(row=40, column=7).border=border4
+		Sheet1.cell(row=41, column=7).border=border4
+		Sheet1.cell(row=42, column=7).border=border4
+		Sheet1.cell(row=43, column=7).border=border4
+		Sheet1.cell(row=44, column=7).border=border4
+		Sheet1.cell(row=45, column=7).border=border4
+		Sheet1.cell(row=46, column=7).border=border4
+		Sheet1.cell(row=47, column=7).border=border4
+		Sheet1.cell(row=48, column=7).border=border4
+		Sheet1.cell(row=49, column=7).border=border4
+		Sheet1.cell(row=50, column=7).border=border4
+		Sheet1.cell(row=51, column=7).border=border4
+		Sheet1.cell(row=52, column=7).border=border4
+		Sheet1.cell(row=53, column=7).border=border4
+		Sheet1.cell(row=54, column=7).border=border4
+		Sheet1.cell(row=55, column=7).border=border4
+		Sheet1.cell(row=56, column=7).border=border4
+		Sheet1.cell(row=57, column=7).border=border4
+		Sheet1.cell(row=58, column=7).border=border4
+		Sheet1.cell(row=59, column=7).border=border4
+		Sheet1.cell(row=60, column=7).border=border4
+		Sheet1.cell(row=61, column=7).border=border4
+		Sheet1.cell(row=62, column=7).border=border4
+		Sheet1.cell(row=63, column=7).border=border4
+		Sheet1.cell(row=64, column=7).border=border4
+		Sheet1.cell(row=65, column=7).border=border4
+		Sheet1.cell(row=66, column=7).border=border4
+		Sheet1.cell(row=67, column=7).border=border4
+		Sheet1.cell(row=68, column=7).border=border4
+		Sheet1.cell(row=69, column=7).border=border4
+		Sheet1.cell(row=70, column=7).border=border4
+		Sheet1.cell(row=71, column=7).border=border4
+		Sheet1.cell(row=72, column=7).border=border4
+		Sheet1.cell(row=73, column=7).border=border4
+		Sheet1.cell(row=74, column=7).border=border4
+		info=temp['Other info']
+		valluna=""
+		vallunaurmatoare=""
+		valIban=""
+		okdecembrie=0
+		for i in range(0,len(listaluni)):
+			if(str(info.cell(row=3,column=3).value)=="12"):
+				okdecembrie=1
+				vallunaurmatoare=listadenluni[0]
+				valluna=listadenluni[11]
+			else:
+				if(listaluni[i]==str(info.cell(row=3,column=3).value)):
+					valluna=listadenluni[i]
+					vallunaurmatoare=listadenluni[i+1]
+		var=Sheet1.cell(row=12,column=4).value
+		print(var)
+		Sheet1.cell(row = 10, column = 4).value = str(dropdown)
+		for j in range(0,len(listatrez)):
+			if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
+				valIban=listaiban[j]
+		Sheet1.cell(row=60, column=3).value='Perioada de plata: '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
+		Sheet1.cell(row=61, column=3).value="Suma de plata: RON "
+		Sheet1.cell(row=62, column=3).value="Moneda: RON"
+		Sheet1.cell(row=63, column=3).value='Detalii plata: Decont TVA - '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
+		if(okdecembrie==1):
+			Sheet1.cell(row=64, column=3).value='Data scadenta: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value+1)
+		else:
+			Sheet1.cell(row=64, column=3).value='Data scadenta: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value)
+		Sheet1.cell(row=66, column=3).value='="Cod TVA: " & D8'
+		Sheet1.cell(row=67, column=3).value='="Adresa: " &D7'
+		Sheet1.cell(row=69, column=3).value="Beneficiar: BUGETUL DE STAT"
+		Sheet1.cell(row=70, column=3).value='Cont IBAN: '+ str(valIban)
+		Sheet1.cell(row=71, column=3).value="SWIFT / BIC: TREZROBU"
+		Sheet1.cell(row=72, column=3).value="Deschis la:"+str(dropdown)
+		Sheet1.cell(row=74, column=3).value="Nota: Orice taxe bancare legate de plata trebuie sa fie acoperite de catre platitor"
+		Sheet1.cell(row=74, column=3).font=font2
+		
+
+		Sheet1.cell(row=14, column=3).value="Sumar"
+		Sheet1.cell(row=14, column=3).font=font4
+		Sheet1.cell(row=58, column=3).value="ORDIN DE PLATA"
+		Sheet1.cell(row=58, column=3).font=font5
+
+		for row in Sheet1['A1:N100']:
+					for cell in row:
+						cell.fill = fonta
+
+		for row in Sheet1['N1:Z100']:
+					for cell in row:
+						cell.fill = fontg
+		print(get_fxrate(today.year))
+
+		Sheet1.cell(row = 6, column = 3).value = "Denumire"
+		Sheet1.cell(row = 6, column = 4).value = "='Other info'!C4"
+		Sheet1.cell(row = 7, column = 3).value = "Adresa"
+		Sheet1.cell(row = 7, column = 4).value = "='Other info'!C6"
+		Sheet1.cell(row = 8, column = 3).value = "CUI"
+		Sheet1.cell(row = 8, column = 4).value = "='Other info'!C5"
+		Sheet1['D8'].alignment = Alignment(wrapText=True, horizontal='left')
+		Sheet1.cell(row = 9, column = 3).value = "Nr. Reg. Com."
+		Sheet1.cell(row = 9, column = 4).value = "J08/1139/2017"
+		Sheet1.cell(row = 10, column = 3).value = "Administratia de care apartine"
+		Sheet1.cell(row = 10, column = 4).value = str(dropdown)
+		Sheet1.cell(row = 11, column = 3).value = "Frecventa depunere declaratie/plata"
+		Sheet1.cell(row = 11, column = 4).value = "Monthly"
+		Sheet1.cell(row = 12, column = 3).value = "Perioada de raportare"
+		Sheet1.cell(row = 12, column = 4).value = "=date('Other info'!C2,'Other info'!C3,1)"
+		Sheet1.cell(row = 12, column = 4).number_format = 'mmmm yyyy'
+
+		Sheet1.cell(row = 43, column = 4).value="Yes"
+		Sheet1.cell(row = 46, column = 4).value="N/a"
+		Sheet1.cell(row = 47, column = 4).value="N/a"
+		Sheet1.cell(row = 50, column = 4).value="N/a"
+		Sheet1.cell(row = 51, column = 4).value="N/a"
+		Sheet1.cell(row = 43, column = 4).font=font5
+		Sheet1.cell(row = 46, column = 4).font=font5
+		Sheet1.cell(row = 47, column = 4).font=font5
+		Sheet1.cell(row = 50, column = 4).font=font5
+		Sheet1.cell(row = 51, column = 4).font=font5
+
+
+		Sheet1.cell(row = 6, column = 3).font=font1
+		Sheet1.cell(row = 6, column = 4).font=font2
+		Sheet1.cell(row = 7, column = 3).font=font1
+		Sheet1.cell(row = 7, column = 4).font=font2
+		Sheet1.cell(row = 8, column = 3).font=font1
+		Sheet1.cell(row = 8, column = 4).font=font2
+		Sheet1.cell(row = 9, column = 3).font=font1
+		Sheet1.cell(row = 9, column = 4).font=font2
+		Sheet1.cell(row = 10, column = 3).font=font1
+		Sheet1.cell(row = 10, column = 4).font=font3
+		Sheet1.cell(row = 11, column = 3).font=font1
+		Sheet1.cell(row = 11, column = 4).font=font3
+		Sheet1.cell(row = 12, column = 3).font=font1
+		Sheet1.cell(row = 12, column = 4).font=font3
+
+		Sheet1.cell(row = 6, column = 3).fill=culoare
+		Sheet1.cell(row = 7, column = 3).fill=culoare
+		Sheet1.cell(row = 8, column = 3).fill=culoare
+		Sheet1.cell(row = 9, column = 3).fill=culoare
+		Sheet1.cell(row = 10, column = 3).fill=culoare
+		Sheet1.cell(row = 11, column = 3).fill=culoare
+		Sheet1.cell(row = 12, column = 3).fill=culoare
+		Sheet1.cell(row = 6, column = 4).fill=culoare2
+		Sheet1.cell(row = 7, column = 4).fill=culoare2
+		Sheet1.cell(row = 8, column = 4).fill=culoare2
+		Sheet1.cell(row = 9, column = 4).fill=culoare2
+		Sheet1.cell(row = 10, column = 4).fill=culoare2
+		Sheet1.cell(row = 11, column = 4).fill=culoare2
+		Sheet1.cell(row = 12, column = 4).fill=culoare2
+
+		Sheet1.cell(row = 16, column = 3).fill=culoare
+		Sheet1.cell(row=16, column=3).font=font1
+		Sheet1.cell(row=16, column=3).value="  D300"
+		Sheet1.cell(row=16, column=3).hyperlink="#'D300 draft figures'!A1"
+		# Sheet1.cell(row=16, column=3).border=border9
+		Sheet1.row_dimensions[18].height=8
+
+		Sheet1.cell(row = 19, column = 3).fill=culoare
+		Sheet1.cell(row=19, column=3).font=font1
+		Sheet1.cell(row=19, column=3).value="  D390"
+		Sheet1.cell(row=19, column=3).hyperlink="#'D390 workings'!A1"
+		# Sheet1.cell(row=19, column=3).border=border9
+		Sheet1.row_dimensions[21].height=8
+
+		Sheet1.cell(row = 22, column = 3).fill=culoare
+		Sheet1.cell(row=22, column=3).font=font1
+		Sheet1.cell(row=22, column=3).value="  D394"
+		Sheet1.cell(row=22, column=3).hyperlink="#'D394--->>>'!A1"
+		# Sheet1.cell(row=22, column=3).border=border9
+		Sheet1.row_dimensions[24].height=8
+
+		Sheet1.cell(row = 25, column = 3).fill=culoare
+		Sheet1.cell(row=25, column=3).font=font1
+		Sheet1.cell(row=25, column=3).value="  Jurnal vanzari"
+		Sheet1.cell(row=25, column=3).hyperlink="#'Sales'!A1"
+		# Sheet1.cell(row=25, column=3).border=border9
+		Sheet1.row_dimensions[27].height=8
+
+		Sheet1.cell(row = 28, column = 3).fill=culoare
+		Sheet1.cell(row=28, column=3).font=font1
+		Sheet1.cell(row=28, column=3).value="  Jurnal cumparari"
+		Sheet1.cell(row=28, column=3).hyperlink="#'Purchases'!A1"
+		# Sheet1.cell(row=28, column=3).border=border9
+		Sheet1.row_dimensions[30].height=8
+
+
+		Sheet1.cell(row = 58, column = 3).fill=culoare6
+		Sheet1.cell(row = 32, column = 3).fill=culoare3
+		Sheet1.cell(row = 33, column = 3).fill=culoare3
+		Sheet1.cell(row = 34, column = 3).fill=culoare3
+		Sheet1.cell(row = 35, column = 3).fill=culoare3
+		Sheet1.cell(row = 36, column = 3).fill=culoare3
+		Sheet1.cell(row = 37, column = 3).fill=culoare3
+		Sheet1.cell(row = 38, column = 3).fill=culoare3
+		Sheet1.cell(row = 39, column = 3).fill=culoare3
+		Sheet1.cell(row = 32, column = 4).fill=culoare3
+		Sheet1.cell(row = 33, column = 4).fill=culoare3
+		Sheet1.cell(row = 34, column = 4).fill=culoare3
+		Sheet1.cell(row = 35, column = 4).fill=culoare3
+		Sheet1.cell(row = 36, column = 4).fill=culoare3
+		Sheet1.cell(row = 37, column = 4).fill=culoare3
+		Sheet1.cell(row = 38, column = 4).fill=culoare3
+		Sheet1.cell(row = 39, column = 4).fill=culoare3
+		Sheet1.cell(row = 32, column = 6).fill=culoare3
+		Sheet1.cell(row = 33, column = 6).fill=culoare3
+		Sheet1.cell(row = 34, column = 6).fill=culoare3
+		Sheet1.cell(row = 35, column = 6).fill=culoare3
+		Sheet1.cell(row = 36, column = 6).fill=culoare3
+		Sheet1.cell(row = 37, column = 6).fill=culoare3
+		Sheet1.cell(row = 38, column = 6).fill=culoare3
+		Sheet1.cell(row = 39, column = 6).fill=culoare3
+
+		Sheet1.cell(row = 41, column = 6).fill=culoare4
+		Sheet1.cell(row = 42, column = 6).fill=culoare4
+		Sheet1.cell(row = 43, column = 6).fill=culoare4
+		Sheet1.cell(row = 44, column = 6).fill=culoare4
+		Sheet1.cell(row = 45, column = 6).fill=culoare4
+		Sheet1.cell(row = 46, column = 6).fill=culoare4
+		Sheet1.cell(row = 47, column = 6).fill=culoare4
+		Sheet1.cell(row = 48, column = 6).fill=culoare4
+		Sheet1.cell(row = 49, column = 6).fill=culoare4
+		Sheet1.cell(row = 50, column = 6).fill=culoare4
+		Sheet1.cell(row = 51, column = 6).fill=culoare4
+		Sheet1.cell(row = 41, column = 3).fill=culoare4
+		Sheet1.cell(row = 42, column = 3).fill=culoare4
+		Sheet1.cell(row = 43, column = 3).fill=culoare4
+		Sheet1.cell(row = 44, column = 3).fill=culoare4
+		Sheet1.cell(row = 45, column = 3).fill=culoare4
+		Sheet1.cell(row = 46, column = 3).fill=culoare4
+		Sheet1.cell(row = 47, column = 3).fill=culoare4
+		Sheet1.cell(row = 48, column = 3).fill=culoare4
+		Sheet1.cell(row = 49, column = 3).fill=culoare4
+		Sheet1.cell(row = 50, column = 3).fill=culoare4
+		Sheet1.cell(row = 51, column = 3).fill=culoare4
+		Sheet1.cell(row = 41, column = 4).fill=culoare4
+		Sheet1.cell(row = 42, column = 4).fill=culoare4
+		Sheet1.cell(row = 43, column = 4).fill=culoare6
+		Sheet1.cell(row = 44, column = 4).fill=culoare4
+		Sheet1.cell(row = 45, column = 4).fill=culoare4
+		Sheet1.cell(row = 46, column = 4).fill=culoare6
+		Sheet1.cell(row = 47, column = 4).fill=culoare6
+		Sheet1.cell(row = 48, column = 4).fill=culoare4
+		Sheet1.cell(row = 49, column = 4).fill=culoare4
+		Sheet1.cell(row = 50, column = 4).fill=culoare6
+		Sheet1.cell(row = 51, column = 4).fill=culoare6
+
+		Sheet1.cell(row = 53, column = 4).fill=culoare5
+		Sheet1.cell(row = 54, column = 4).fill=culoare5
+		Sheet1.cell(row = 55, column = 4).fill=culoare5
+		Sheet1.cell(row = 53, column = 3).fill=culoare5
+		Sheet1.cell(row = 54, column = 3).fill=culoare5
+		Sheet1.cell(row = 55, column = 3).fill=culoare5
+		Sheet1.cell(row = 53, column = 6).fill=culoare5
+		Sheet1.cell(row = 54, column = 6).fill=culoare5
+		Sheet1.cell(row = 55, column = 6).fill=culoare5
+
+
+		Sheet1.cell(row = 32, column = 3).value="Pozitia curenta din punct de vedere TVA"
+		Sheet1.cell(row = 32, column = 3).font=font4
+		Sheet1.cell(row = 34, column = 3).value="Input TVA perioada curenta"
+		Sheet1.cell(row = 35, column = 3).value="Output TVA perioada curenta"
+		Sheet1.cell(row = 36, column = 3).value="TVA de plata perioada curenta"
+		Sheet1.cell(row = 37, column = 3).value="TVA de recuperat perioada curenta"
+		Sheet1.cell(row = 38, column = 3).value="TVA in curs de decontare pentru achizitii"
+		Sheet1.cell(row = 39, column = 3).value="TVA in curs de decontare pentru livrari"
+		Sheet1.cell(row = 32, column = 4).value="RON"
+
+		Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+		Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
+		Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
+		Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
+		Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
+
+		Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=38, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=39, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=39, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=55, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'				
+
+		Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
+		Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
+		Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row = 39, column = 4).value=0
+		Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
+IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
+IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
+IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
+		Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+
+		Sheet1.cell(row = 41, column = 3).value="Pozitia reportata"
+		Sheet1.cell(row = 41, column = 3).font=font4
+		Sheet1.row_dimensions[42].height = 0.2
+		Sheet1.cell(row = 43, column = 3).value="Solicitat la rambursare"
+		Sheet1.cell(row = 44, column = 3).value
+		Sheet1.cell(row = 45, column = 3).value="TVA de rambursat nesolicitat"
+		Sheet1.cell(row = 46, column = 3).value="Perioada"
+		Sheet1.cell(row = 47, column = 3).value="Suma"
+		Sheet1.cell(row = 48, column = 3).value
+		Sheet1.cell(row = 49, column = 3).value="TVA de rambursat solicitat si in curs de auditare"
+		Sheet1.cell(row = 50, column = 3).value="Perioada"
+		Sheet1.cell(row = 51, column = 3).value="Suma"
+
+
+		Sheet1.cell(row = 53, column = 3).value="Pozitia balantei de TVA"
+		Sheet1.cell(row = 53, column = 3).font=font4
+		Sheet1.cell(row = 55, column = 3).value="Pozitia TVA in exercitiul curent"
+
+
+		Sheet1['C16'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['C19'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['C22'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['C25'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['C28'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['D10'].alignment = Alignment(wrapText=True, horizontal='right')
+		Sheet1['D11'].alignment = Alignment(wrapText=True, horizontal='right')
+		Sheet1['D12'].alignment = Alignment(wrapText=True, horizontal='right')
+		Sheet1['C58'].alignment = Alignment(wrapText=True, horizontal='center')
+
+		Sheet1.column_dimensions['C'].width = 65
+		Sheet1.column_dimensions['D'].width = 20
+		Sheet1.column_dimensions['A'].width = 2
+		Sheet1.column_dimensions['B'].width = 3
+		Sheet1.column_dimensions['E'].width = 1
+		Sheet1.column_dimensions['F'].width = 20
+		Sheet1.column_dimensions['G'].width = 2
+
+		# img= openpyxl.drawing.image.Image('test.png')
+		# Sheet1.add_image(img,'C16')
+
+		# img= openpyxl.drawing.image.Image('test2.png')
+		# Sheet1.add_image(img,'C19')
+
+		# img= openpyxl.drawing.image.Image('test10.png')
+		# Sheet1.add_image(img,'C22')
+
+		# img= openpyxl.drawing.image.Image('test6.png')
+		# Sheet1.add_image(img,'C25')
+
+		# img= openpyxl.drawing.image.Image('test7.png')
+		# Sheet1.add_image(img,'C28')
+
+		# img= openpyxl.drawing.image.Image('test6.png')
+		# Sheet1.add_image(img,'D16')
+
+		# img= openpyxl.drawing.image.Image('test7.png')
+		# Sheet1.add_image(img,'D19')
+
+		# img= openpyxl.drawing.image.Image('test8.png')
+		# Sheet1.add_image(img,'D22')
+
+		# img= openpyxl.drawing.image.Image('test9.png')
+		# Sheet1.add_image(img,'D25')
+
+		# img= openpyxl.drawing.image.Image('test5.png')
+		# Sheet1.add_image(img,'D28')
+
+		Sheet1.merge_cells(start_row=28, start_column=3, end_row=29, end_column=3)
+		Sheet1.merge_cells(start_row=25, start_column=3, end_row=26, end_column=3)
+		Sheet1.merge_cells(start_row=22, start_column=3, end_row=23, end_column=3)
+		Sheet1.merge_cells(start_row=19, start_column=3, end_row=20, end_column=3)
+		Sheet1.merge_cells(start_row=16, start_column=3, end_row=17, end_column=3)
+		Sheet1.merge_cells(start_row=6, start_column=4, end_row=6, end_column=12)
+		Sheet1.merge_cells(start_row=7, start_column=4, end_row=7, end_column=12)
+		Sheet1.merge_cells(start_row=8, start_column=4, end_row=8, end_column=12)
+		Sheet1.merge_cells(start_row=9, start_column=4, end_row=9, end_column=12)
+		Sheet1.merge_cells(start_row=10, start_column=4, end_row=10, end_column=12)
+		Sheet1.merge_cells(start_row=11, start_column=4, end_row=11, end_column=12)
+		Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
+		Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
+
+	if(option==0):
+		Sheet1=temp.create_sheet('Cover sheet')
+		fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
+		fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
+		font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
+		font1 = Font(name = 'Georgia', size = 10, color = "FFFFFF", bold = True,italic=True)
+		font3 = Font(name = 'Georgia', size = 10, color = "000000",italic=True)
+		culoare = PatternFill(start_color = '182A54', end_color ='182A54', fill_type = 'solid') 
+		culoare2 = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
+		culoare3 = PatternFill(start_color = 'D9E1F2', end_color ='D9E1F2', fill_type = 'solid')
+		culoare4 = PatternFill(start_color = 'E2EFDA', end_color ='E2EFDA', fill_type = 'solid')
+		culoare5 = PatternFill(start_color = 'FFF2CC', end_color ='FFF2CC', fill_type = 'solid')
+		culoare6 = PatternFill(start_color = '808080', end_color ='808080', fill_type = 'solid')
+		font4 = Font(name = 'Georgia', size = 10, color = "000000",underline='single',bold=True)
+		font5 = Font(name = 'Georgia', size = 10, color = "ffffff",underline='single',bold=True)
+		border = Border(bottom=Side(style='dotted'))
+		border2 = Border(top=Side(style='dotted'))
+		border3 = Border(left=Side(style='dotted'))
+		border4 = Border(right=Side(style='dotted'))
+		border5 = Border(left=Side(style='dotted'),top=Side(style='dotted'))
+		border6 = Border(left=Side(style='dotted'),bottom=Side(style='dotted'))
+		border7 = Border(right=Side(style='dotted'),bottom=Side(style='dotted'))
+		border8 = Border(right=Side(style='dotted'),top=Side(style='dotted'))
+		# border9 = Border(right=Side(style='double'),bottom=Side(style='double'),top=Side(style='double'),left=Side(style='double'))
+
+		Sheet1.cell(row=31, column=2).border=border2
+		Sheet1.cell(row=31, column=3).border=border2
+		Sheet1.cell(row=31, column=4).border=border2
+		Sheet1.cell(row=31, column=5).border=border2
+		Sheet1.cell(row=31, column=6).border=border2
+		Sheet1.cell(row=31, column=7).border=border2
+		Sheet1.cell(row=31, column=2).border=border5
+		Sheet1.cell(row=31, column=7).border=border8
+
+
+		Sheet1.cell(row=75, column=2).border=border
+		Sheet1.cell(row=75, column=3).border=border
+		Sheet1.cell(row=75, column=4).border=border
+		Sheet1.cell(row=75, column=5).border=border
+		Sheet1.cell(row=75, column=6).border=border
+		Sheet1.cell(row=75, column=7).border=border
+		Sheet1.cell(row=75, column=7).border=border7
+
+		Sheet1.cell(row=32, column=2).border=border3
+		Sheet1.cell(row=33, column=2).border=border3
+		Sheet1.cell(row=34, column=2).border=border3
+		Sheet1.cell(row=35, column=2).border=border3
+		Sheet1.cell(row=36, column=2).border=border3
+		Sheet1.cell(row=37, column=2).border=border3
+		Sheet1.cell(row=38, column=2).border=border3
+		Sheet1.cell(row=39, column=2).border=border3
+		Sheet1.cell(row=40, column=2).border=border3
+		Sheet1.cell(row=41, column=2).border=border3
+		Sheet1.cell(row=42, column=2).border=border3
+		Sheet1.cell(row=43, column=2).border=border3
+		Sheet1.cell(row=44, column=2).border=border3
+		Sheet1.cell(row=45, column=2).border=border3
+		Sheet1.cell(row=46, column=2).border=border3
+		Sheet1.cell(row=47, column=2).border=border3
+		Sheet1.cell(row=48, column=2).border=border3
+		Sheet1.cell(row=49, column=2).border=border3
+		Sheet1.cell(row=50, column=2).border=border3
+		Sheet1.cell(row=51, column=2).border=border3
+		Sheet1.cell(row=52, column=2).border=border3
+		Sheet1.cell(row=53, column=2).border=border3
+		Sheet1.cell(row=54, column=2).border=border3
+		Sheet1.cell(row=55, column=2).border=border3
+		Sheet1.cell(row=75, column=2).border=border6
+		Sheet1.cell(row=56, column=2).border=border3
+		Sheet1.cell(row=57, column=2).border=border3
+		Sheet1.cell(row=58, column=2).border=border3
+		Sheet1.cell(row=59, column=2).border=border3
+		Sheet1.cell(row=60, column=2).border=border3
+		Sheet1.cell(row=61, column=2).border=border3
+		Sheet1.cell(row=62, column=2).border=border3
+		Sheet1.cell(row=63, column=2).border=border3
+		Sheet1.cell(row=64, column=2).border=border3
+		Sheet1.cell(row=65, column=2).border=border3
+		Sheet1.cell(row=66, column=2).border=border3
+		Sheet1.cell(row=67, column=2).border=border3
+		Sheet1.cell(row=68, column=2).border=border3
+		Sheet1.cell(row=69, column=2).border=border3
+		Sheet1.cell(row=70, column=2).border=border3
+		Sheet1.cell(row=71, column=2).border=border3
+		Sheet1.cell(row=72, column=2).border=border3
+		Sheet1.cell(row=73, column=2).border=border3
+		Sheet1.cell(row=74, column=2).border=border3
+
+		Sheet1.cell(row=32, column=7).border=border4
+		Sheet1.cell(row=33, column=7).border=border4
+		Sheet1.cell(row=34, column=7).border=border4
+		Sheet1.cell(row=35, column=7).border=border4
+		Sheet1.cell(row=36, column=7).border=border4
+		Sheet1.cell(row=37, column=7).border=border4
+		Sheet1.cell(row=38, column=7).border=border4
+		Sheet1.cell(row=39, column=7).border=border4
+		Sheet1.cell(row=40, column=7).border=border4
+		Sheet1.cell(row=41, column=7).border=border4
+		Sheet1.cell(row=42, column=7).border=border4
+		Sheet1.cell(row=43, column=7).border=border4
+		Sheet1.cell(row=44, column=7).border=border4
+		Sheet1.cell(row=45, column=7).border=border4
+		Sheet1.cell(row=46, column=7).border=border4
+		Sheet1.cell(row=47, column=7).border=border4
+		Sheet1.cell(row=48, column=7).border=border4
+		Sheet1.cell(row=49, column=7).border=border4
+		Sheet1.cell(row=50, column=7).border=border4
+		Sheet1.cell(row=51, column=7).border=border4
+		Sheet1.cell(row=52, column=7).border=border4
+		Sheet1.cell(row=53, column=7).border=border4
+		Sheet1.cell(row=54, column=7).border=border4
+		Sheet1.cell(row=55, column=7).border=border4
+		Sheet1.cell(row=56, column=7).border=border4
+		Sheet1.cell(row=57, column=7).border=border4
+		Sheet1.cell(row=58, column=7).border=border4
+		Sheet1.cell(row=59, column=7).border=border4
+		Sheet1.cell(row=60, column=7).border=border4
+		Sheet1.cell(row=61, column=7).border=border4
+		Sheet1.cell(row=62, column=7).border=border4
+		Sheet1.cell(row=63, column=7).border=border4
+		Sheet1.cell(row=64, column=7).border=border4
+		Sheet1.cell(row=65, column=7).border=border4
+		Sheet1.cell(row=66, column=7).border=border4
+		Sheet1.cell(row=67, column=7).border=border4
+		Sheet1.cell(row=68, column=7).border=border4
+		Sheet1.cell(row=69, column=7).border=border4
+		Sheet1.cell(row=70, column=7).border=border4
+		Sheet1.cell(row=71, column=7).border=border4
+		Sheet1.cell(row=72, column=7).border=border4
+		Sheet1.cell(row=73, column=7).border=border4
+		Sheet1.cell(row=74, column=7).border=border4
+		
+
+		Sheet1.cell(row=14, column=3).value="Summary"
+		Sheet1.cell(row=14, column=3).font=font4
+		Sheet1.cell(row=58, column=3).value="PAYMENT ORDER"
+		Sheet1.cell(row=58, column=3).font=font5
+
+		for row in Sheet1['A1:N100']:
+					for cell in row:
+						cell.fill = fonta
+
+		for row in Sheet1['N1:Z100']:
+					for cell in row:
+						cell.fill = fontg
+
+
+		Sheet1.cell(row = 6, column = 3).value = "Company"
+		Sheet1.cell(row = 6, column = 4).value = "='Other info'!C4"
+		Sheet1.cell(row = 7, column = 3).value = "Address"
+		Sheet1.cell(row = 7, column = 4).value = "='Other info'!C6"
+		Sheet1.cell(row = 8, column = 3).value = "VAT tax code"
+		Sheet1.cell(row = 8, column = 4).value = "='Other info'!C5"
+		Sheet1['D8'].alignment = Alignment(wrapText=True, horizontal='left')
+		Sheet1.cell(row = 9, column = 3).value = "Registration no."
+		Sheet1.cell(row = 9, column = 4).value = "J08/1139/2017"
+		Sheet1.cell(row = 10, column = 3).value = "The administration it belongs to"
+		Sheet1.cell(row = 10, column = 4).value = str(dropdown)
+		Sheet1.cell(row = 11, column = 3).value = "Frequency of declaration / payment"
+		Sheet1.cell(row = 11, column = 4).value = "Monthly"
+		Sheet1.cell(row = 12, column = 3).value = "Reporting period"
+		Sheet1.cell(row = 12, column = 4).value = "=date('Other info'!C2,'Other info'!C3,1)"
+		Sheet1.cell(row = 12, column = 4).number_format = 'mmmm yyyy'
+
+		Sheet1.cell(row = 43, column = 4).value="Yes"
+		Sheet1.cell(row = 46, column = 4).value="N/a"
+		Sheet1.cell(row = 47, column = 4).value="N/a"
+		Sheet1.cell(row = 50, column = 4).value="N/a"
+		Sheet1.cell(row = 51, column = 4).value="N/a"
+		Sheet1.cell(row = 43, column = 4).font=font5
+		Sheet1.cell(row = 46, column = 4).font=font5
+		Sheet1.cell(row = 47, column = 4).font=font5
+		Sheet1.cell(row = 50, column = 4).font=font5
+		Sheet1.cell(row = 51, column = 4).font=font5
+		info=temp['Other info']
+		valluna=""
+		vallunaurmatoare=""
+		valIban=""
+		okdecembrie=0
+		for i in range(0,len(listaluni)):
+			if(str(info.cell(row=3,column=3).value)=="12"):
+				okdecembrie=1
+				vallunaurmatoare=listadenluni2[0]
+				valluna=listadenluni2[11]
+			else:
+				if(listaluni[i]==str(info.cell(row=3,column=3).value)):
+					valluna=listadenluni2[i]
+					vallunaurmatoare=listadenluni2[i+1]
+		var=Sheet1.cell(row=12,column=4).value
+		print(var)
+		Sheet1.cell(row = 10, column = 4).value = str(dropdown)
+		for j in range(0,len(listatrez)):
+			if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
+				valIban=listaiban[j]
+		Sheet1.cell(row=60, column=3).value='Payment period: '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
+		Sheet1.cell(row=61, column=3).value="Payable amount: RON "
+		Sheet1.cell(row=62, column=3).value="Currency: RON"
+		Sheet1.cell(row=63, column=3).value='Payment details: VAT return - '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
+		if(okdecembrie==1):
+			Sheet1.cell(row=64, column=3).value='Deadline: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value+1)
+		else:
+			Sheet1.cell(row=64, column=3).value='Deadline: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value)
+		Sheet1.cell(row=66, column=3).value='="Payer TIN: " & D8'
+		Sheet1.cell(row=67, column=3).value='="Payer address: " &D7'
+		Sheet1.cell(row=69, column=3).value="Beneficiary: BUGETUL DE STAT"
+		Sheet1.cell(row=70, column=3).value='IBAN: '+ str(valIban)
+		Sheet1.cell(row=71, column=3).value="SWIFT / BIC: TREZROBU"
+		Sheet1.cell(row=72, column=3).value="Bank / Treasury:"+str(dropdown)
+		Sheet1.cell(row=74, column=3).value="Note: Any banking fees connected with the payment must be covered by the tax payer."
+		Sheet1.cell(row=74, column=3).font=font2
+
+		Sheet1.cell(row = 6, column = 3).font=font1
+		Sheet1.cell(row = 6, column = 4).font=font2
+		Sheet1.cell(row = 7, column = 3).font=font1
+		Sheet1.cell(row = 7, column = 4).font=font2
+		Sheet1.cell(row = 8, column = 3).font=font1
+		Sheet1.cell(row = 8, column = 4).font=font2
+		Sheet1.cell(row = 9, column = 3).font=font1
+		Sheet1.cell(row = 9, column = 4).font=font2
+		Sheet1.cell(row = 10, column = 3).font=font1
+		Sheet1.cell(row = 10, column = 4).font=font3
+		Sheet1.cell(row = 11, column = 3).font=font1
+		Sheet1.cell(row = 11, column = 4).font=font3
+		Sheet1.cell(row = 12, column = 3).font=font1
+		Sheet1.cell(row = 12, column = 4).font=font3
+
+		Sheet1.cell(row = 6, column = 3).fill=culoare
+		Sheet1.cell(row = 7, column = 3).fill=culoare
+		Sheet1.cell(row = 8, column = 3).fill=culoare
+		Sheet1.cell(row = 9, column = 3).fill=culoare
+		Sheet1.cell(row = 10, column = 3).fill=culoare
+		Sheet1.cell(row = 11, column = 3).fill=culoare
+		Sheet1.cell(row = 12, column = 3).fill=culoare
+		Sheet1.cell(row = 6, column = 4).fill=culoare2
+		Sheet1.cell(row = 7, column = 4).fill=culoare2
+		Sheet1.cell(row = 8, column = 4).fill=culoare2
+		Sheet1.cell(row = 9, column = 4).fill=culoare2
+		Sheet1.cell(row = 10, column = 4).fill=culoare2
+		Sheet1.cell(row = 11, column = 4).fill=culoare2
+		Sheet1.cell(row = 12, column = 4).fill=culoare2
+
+		Sheet1.cell(row = 58, column = 3).fill=culoare6
+		Sheet1.cell(row = 32, column = 3).fill=culoare3
+		Sheet1.cell(row = 33, column = 3).fill=culoare3
+		Sheet1.cell(row = 34, column = 3).fill=culoare3
+		Sheet1.cell(row = 35, column = 3).fill=culoare3
+		Sheet1.cell(row = 36, column = 3).fill=culoare3
+		Sheet1.cell(row = 37, column = 3).fill=culoare3
+		Sheet1.cell(row = 38, column = 3).fill=culoare3
+		Sheet1.cell(row = 39, column = 3).fill=culoare3
+		Sheet1.cell(row = 32, column = 4).fill=culoare3
+		Sheet1.cell(row = 33, column = 4).fill=culoare3
+		Sheet1.cell(row = 34, column = 4).fill=culoare3
+		Sheet1.cell(row = 35, column = 4).fill=culoare3
+		Sheet1.cell(row = 36, column = 4).fill=culoare3
+		Sheet1.cell(row = 37, column = 4).fill=culoare3
+		Sheet1.cell(row = 38, column = 4).fill=culoare3
+		Sheet1.cell(row = 39, column = 4).fill=culoare3
+		Sheet1.cell(row = 32, column = 6).fill=culoare3
+		Sheet1.cell(row = 33, column = 6).fill=culoare3
+		Sheet1.cell(row = 34, column = 6).fill=culoare3
+		Sheet1.cell(row = 35, column = 6).fill=culoare3
+		Sheet1.cell(row = 36, column = 6).fill=culoare3
+		Sheet1.cell(row = 37, column = 6).fill=culoare3
+		Sheet1.cell(row = 38, column = 6).fill=culoare3
+		Sheet1.cell(row = 39, column = 6).fill=culoare3
+
+		Sheet1.cell(row = 41, column = 6).fill=culoare4
+		Sheet1.cell(row = 42, column = 6).fill=culoare4
+		Sheet1.cell(row = 43, column = 6).fill=culoare4
+		Sheet1.cell(row = 44, column = 6).fill=culoare4
+		Sheet1.cell(row = 45, column = 6).fill=culoare4
+		Sheet1.cell(row = 46, column = 6).fill=culoare4
+		Sheet1.cell(row = 47, column = 6).fill=culoare4
+		Sheet1.cell(row = 48, column = 6).fill=culoare4
+		Sheet1.cell(row = 49, column = 6).fill=culoare4
+		Sheet1.cell(row = 50, column = 6).fill=culoare4
+		Sheet1.cell(row = 51, column = 6).fill=culoare4
+		Sheet1.cell(row = 41, column = 3).fill=culoare4
+		Sheet1.cell(row = 42, column = 3).fill=culoare4
+		Sheet1.cell(row = 43, column = 3).fill=culoare4
+		Sheet1.cell(row = 44, column = 3).fill=culoare4
+		Sheet1.cell(row = 45, column = 3).fill=culoare4
+		Sheet1.cell(row = 46, column = 3).fill=culoare4
+		Sheet1.cell(row = 47, column = 3).fill=culoare4
+		Sheet1.cell(row = 48, column = 3).fill=culoare4
+		Sheet1.cell(row = 49, column = 3).fill=culoare4
+		Sheet1.cell(row = 50, column = 3).fill=culoare4
+		Sheet1.cell(row = 51, column = 3).fill=culoare4
+		Sheet1.cell(row = 41, column = 4).fill=culoare4
+		Sheet1.cell(row = 42, column = 4).fill=culoare4
+		Sheet1.cell(row = 43, column = 4).fill=culoare6
+		Sheet1.cell(row = 44, column = 4).fill=culoare4
+		Sheet1.cell(row = 45, column = 4).fill=culoare4
+		Sheet1.cell(row = 46, column = 4).fill=culoare6
+		Sheet1.cell(row = 47, column = 4).fill=culoare6
+		Sheet1.cell(row = 48, column = 4).fill=culoare4
+		Sheet1.cell(row = 49, column = 4).fill=culoare4
+		Sheet1.cell(row = 50, column = 4).fill=culoare6
+		Sheet1.cell(row = 51, column = 4).fill=culoare6
+
+		Sheet1.cell(row = 53, column = 4).fill=culoare5
+		Sheet1.cell(row = 54, column = 4).fill=culoare5
+		Sheet1.cell(row = 55, column = 4).fill=culoare5
+		Sheet1.cell(row = 53, column = 3).fill=culoare5
+		Sheet1.cell(row = 54, column = 3).fill=culoare5
+		Sheet1.cell(row = 55, column = 3).fill=culoare5
+		Sheet1.cell(row = 53, column = 6).fill=culoare5
+		Sheet1.cell(row = 54, column = 6).fill=culoare5
+		Sheet1.cell(row = 55, column = 6).fill=culoare5
+
+
+		Sheet1.cell(row = 32, column = 3).value="Current VAT position"
+		Sheet1.cell(row = 32, column = 3).font=font4
+		Sheet1.cell(row = 34, column = 3).value="Input VAT for the period"
+		Sheet1.cell(row = 35, column = 3).value="Output VAT for the period"
+		Sheet1.cell(row = 36, column = 3).value="VAT Payable for the period"
+		Sheet1.cell(row = 37, column = 3).value="VAT Recoverable for the period"
+		Sheet1.cell(row = 38, column = 3).value="VAT under settlement for purchases"
+		Sheet1.cell(row = 39, column = 3).value="VAT under settlement for deliveries"
+		Sheet1.cell(row = 32, column = 4).value="RON"
+
+		Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+		Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
+		Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
+		Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
+		Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
+		Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
+		Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row = 39, column = 4).value=0
+		Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
+IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
+IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
+IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
+		Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+		Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=38, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=39, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=39, column=6).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=55, column=4).number_format = '#,##0_);(#,##0)'
+		Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'
+
+
+		Sheet1.cell(row = 41, column = 3).value="Carry Over position"
+		Sheet1.cell(row = 41, column = 3).font=font4
+		Sheet1.row_dimensions[42].height = 0.2
+		Sheet1.cell(row = 43, column = 3).value="Requested for reimbursement"
+		Sheet1.cell(row = 44, column = 3).value
+		Sheet1.cell(row = 45, column = 3).value="VAT refundable not yet requested"
+		Sheet1.cell(row = 46, column = 3).value="Period"
+		Sheet1.cell(row = 47, column = 3).value="Amount"
+		Sheet1.cell(row = 48, column = 3).value
+		Sheet1.cell(row = 49, column = 3).value="VAT refundable requested and under audit"
+		Sheet1.cell(row = 50, column = 3).value="Period"
+		Sheet1.cell(row = 51, column = 3).value="Amount"
+
+
+		Sheet1.cell(row = 53, column = 3).value="VAT balance position"
+		Sheet1.cell(row = 53, column = 3).font=font4
+		Sheet1.cell(row = 55, column = 3).value="VAT position in the current return"
+
+
+		Sheet1['C16'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['C19'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['C22'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['C25'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['C28'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+		Sheet1['D10'].alignment = Alignment(wrapText=True, horizontal='right')
+		Sheet1['D11'].alignment = Alignment(wrapText=True, horizontal='right')
+		Sheet1['D12'].alignment = Alignment(wrapText=True, horizontal='right')
+		Sheet1['C58'].alignment = Alignment(wrapText=True, horizontal='center')
+		Sheet1['D37'].alignment = Alignment(wrapText=True, horizontal='right')
+
+		Sheet1.column_dimensions['C'].width = 65
+		Sheet1.column_dimensions['D'].width = 20
+		Sheet1.column_dimensions['A'].width = 2
+		Sheet1.column_dimensions['B'].width = 3
+		Sheet1.column_dimensions['E'].width = 1
+		Sheet1.column_dimensions['F'].width = 20
+		Sheet1.column_dimensions['G'].width = 2
+
+		# img= openpyxl.drawing.image.Image('test.png')
+		# Sheet1.add_image(img,'C16')
+
+		# img= openpyxl.drawing.image.Image('test2.png')
+		# Sheet1.add_image(img,'C19')
+
+		# img= openpyxl.drawing.image.Image('test3.png')
+		# Sheet1.add_image(img,'C22')
+
+		# img= openpyxl.drawing.image.Image('test4.png')
+		# Sheet1.add_image(img,'C25')
+
+		# img= openpyxl.drawing.image.Image('test5.png')
+		# Sheet1.add_image(img,'C28')
+
+		# img= openpyxl.drawing.image.Image('test6.png')
+		# Sheet1.add_image(img,'D16')
+
+		# img= openpyxl.drawing.image.Image('test7.png')
+		# Sheet1.add_image(img,'D19')
+
+		# img= openpyxl.drawing.image.Image('test8.png')
+		# Sheet1.add_image(img,'D22')
+
+		# img= openpyxl.drawing.image.Image('test9.png')
+		# Sheet1.add_image(img,'D25')
+		Sheet1.cell(row = 16, column = 3).fill=culoare
+		Sheet1.cell(row=16, column=3).font=font1
+		Sheet1.cell(row=16, column=3).value="  D300"
+		Sheet1.cell(row=16, column=3).hyperlink="#'D300 draft figures'!A1"
+		# Sheet1.cell(row=16, column=3).border=border9
+		Sheet1.row_dimensions[18].height=8
+
+		Sheet1.cell(row = 19, column = 3).fill=culoare
+		Sheet1.cell(row=19, column=3).font=font1
+		Sheet1.cell(row=19, column=3).value="  D390"
+		Sheet1.cell(row=19, column=3).hyperlink="#'D390 workings'!A1"
+		# Sheet1.cell(row=19, column=3).border=border9
+		Sheet1.row_dimensions[21].height=8
+
+		Sheet1.cell(row = 22, column = 3).fill=culoare
+		Sheet1.cell(row=22, column=3).font=font1
+		Sheet1.cell(row=22, column=3).value="  D394"
+		Sheet1.cell(row=22, column=3).hyperlink="#'D394--->>>'!A1"
+		# Sheet1.cell(row=22, column=3).border=border9
+		Sheet1.row_dimensions[24].height=8
+
+		Sheet1.cell(row = 25, column = 3).fill=culoare
+		Sheet1.cell(row=25, column=3).font=font1
+		Sheet1.cell(row=25, column=3).value="  Sales Ledger"
+		Sheet1.cell(row=25, column=3).hyperlink="#'Sales'!A1"
+		# Sheet1.cell(row=25, column=3).border=border9
+		Sheet1.row_dimensions[27].height=8
+
+		Sheet1.cell(row = 28, column = 3).fill=culoare
+		Sheet1.cell(row=28, column=3).font=font1
+		Sheet1.cell(row=28, column=3).value="  Purchase Ledger"
+		Sheet1.cell(row=28, column=3).hyperlink="#'Purchases'!A1"
+		# Sheet1.cell(row=28, column=3).border=border9
+		Sheet1.row_dimensions[30].height=8
+
+		Sheet1.merge_cells(start_row=28, start_column=3, end_row=29, end_column=3)
+		Sheet1.merge_cells(start_row=25, start_column=3, end_row=26, end_column=3)
+		Sheet1.merge_cells(start_row=22, start_column=3, end_row=23, end_column=3)
+		Sheet1.merge_cells(start_row=19, start_column=3, end_row=20, end_column=3)
+		Sheet1.merge_cells(start_row=16, start_column=3, end_row=17, end_column=3)
+		Sheet1.merge_cells(start_row=6, start_column=4, end_row=6, end_column=12)
+		Sheet1.merge_cells(start_row=7, start_column=4, end_row=7, end_column=12)
+		Sheet1.merge_cells(start_row=8, start_column=4, end_row=8, end_column=12)
+		Sheet1.merge_cells(start_row=9, start_column=4, end_row=9, end_column=12)
+		Sheet1.merge_cells(start_row=10, start_column=4, end_row=10, end_column=12)
+		Sheet1.merge_cells(start_row=11, start_column=4, end_row=11, end_column=12)
+		Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
+		Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
+	
 	sales=temp['Sales']
 	purchases=temp['Purchases']
-	info=temp['Other info']
 	if(val1==1):
 		sheetinutil1=temp.create_sheet('D300--->>>')
 		sheetinutil1.sheet_view.showGridLines=False
