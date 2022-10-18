@@ -5749,7 +5749,7 @@ def D300():
 
 		# f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
 		# make_archive("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage","C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/arhiva VAT apps.zip")
-		# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True)
+		# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True) 
 		f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
 	make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva VAT apps.zip")
 	return send_from_directory("/home/mirus_app/storage","arhiva VAT apps.zip",as_attachment=True)
