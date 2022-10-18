@@ -1704,6 +1704,499 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		except:
 			pass
 
+if(val1==1):
+		sheetinutil1=temp.create_sheet('D300--->>>')
+		sheetinutil1.sheet_view.showGridLines=False
+		sheetinutil1.cell(row=2,column=1).value="Switch to next sheet for D300 Workings draft"
+		sheetinutil1.cell(row=2,column=1).font=scrisincredibildemare
+		amount=temp.create_sheet('D300 draft figures')
+		amount.freeze_panes = 'A8'
+		amount.auto_filter.ref = "A7:G71"
+		amount.sheet_view.showGridLines = False
+		for row in sales.iter_rows():
+			for cell in row:
+				if cell.value == "Tax code":
+					rand_tb = cell.row
+					taxcodec = cell.column
+					lun = len(sales[cell.column])
+		try:
+			listBazaL = [b.value for b in sales[taxcodec][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Tax code sales'")
+			return render_template("index.html")
+		for row in sales.iter_rows():
+			for cell in row:
+				if cell.value == "  Total docinclVAT":
+					rand_tb = cell.row
+					tdocc = cell.column
+					lun = len(sales[cell.column])
+		try:
+			listBazaL = [b.value for b in sales[tdocc][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Total sales'")
+			return render_template("index.html")
+
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "Tax code":
+					rand_tb = cell.row
+					taxcodea = cell.column
+					lun = len(sales[cell.column])
+		try:
+			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Tax code purchases'")
+			return render_template("index.html")
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "TotaldocinclVAT":
+					rand_tb = cell.row
+					tdoca = cell.column
+					lun = len(sales[cell.column])
+		try:
+			listBazaL = [b.value for b in purchases[tdoca][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Total purchases'")
+			return render_template("index.html")
+
+		amount.cell(row=6, column=2).value="1"
+		amount.cell(row=6, column=3).value="2"
+		amount.cell(row=7, column=1).value="Row"
+		amount.cell(row=7, column=2).value="Taxable basis"
+		amount.cell(row=7, column=3).value="VAT amount"
+		amount.cell(row=7, column=4).value="Comments"
+		amount.cell(row=7, column=5).value="Journal Source"
+		amount.cell(row=7, column=6).value="Flag Suma Control"
+		amount.cell(row=7, column=7).value="Suma Control"
+		amount.cell(row=8, column=1).value="1"
+		amount.cell(row=9, column=1).value="2"
+		amount.cell(row=10, column=1).value="3"
+		amount.cell(row=11, column=1).value="3.1"
+		amount.cell(row=12, column=1).value="4"
+		amount.cell(row=13, column=1).value="5"
+		amount.cell(row=14, column=1).value="5.1"
+		amount.cell(row=15, column=1).value="6"
+		amount.cell(row=16, column=1).value="7"
+		amount.cell(row=17, column=1).value="7.1"
+		amount.cell(row=18, column=1).value="8"
+		amount.cell(row=19, column=1).value="9"
+		amount.cell(row=20, column=1).value="10"
+		amount.cell(row=21, column=1).value="11"
+		amount.cell(row=22, column=1).value="12"
+		amount.cell(row=23, column=1).value="12.1"
+		amount.cell(row=24, column=1).value="12.2"
+		amount.cell(row=25, column=1).value="12.3"
+		amount.cell(row=26, column=1).value="13"
+		amount.cell(row=27, column=1).value="14"
+		amount.cell(row=28, column=1).value="15"
+		amount.cell(row=29, column=1).value="16"
+		amount.cell(row=30, column=1).value="17"
+		amount.cell(row=31, column=1).value="18"
+		amount.cell(row=32, column=1).value="19"
+		amount.cell(row=33, column=1).value="20"
+		amount.cell(row=34, column=1).value="20.1"
+		amount.cell(row=35, column=1).value="21"
+		amount.cell(row=36, column=1).value="22"
+		amount.cell(row=37, column=1).value="22.1"
+		amount.cell(row=38, column=1).value="23"
+		amount.cell(row=39, column=1).value="24"
+		amount.cell(row=40, column=1).value="25"
+		amount.cell(row=41, column=1).value="26"
+		amount.cell(row=42, column=1).value="27"
+		amount.cell(row=43, column=1).value="27.1"
+		amount.cell(row=44, column=1).value="27.2"
+		amount.cell(row=45, column=1).value="27.3"
+		amount.cell(row=46, column=1).value="28"
+		amount.cell(row=47, column=1).value="29"
+		amount.cell(row=48, column=1).value="30"
+		amount.cell(row=49, column=1).value="30.1"
+		amount.cell(row=50, column=1).value="31"
+		amount.cell(row=51, column=1).value="31.1"
+		amount.cell(row=52, column=1).value="32"
+		amount.cell(row=53, column=1).value="33"
+		amount.cell(row=54, column=1).value="34"
+		amount.cell(row=55, column=1).value="35"
+		amount.cell(row=56, column=1).value="36"
+		amount.cell(row=57, column=1).value="37"
+		amount.cell(row=58, column=1).value="38"
+		amount.cell(row=59, column=1).value="39"
+		amount.cell(row=60, column=1).value="40"
+		amount.cell(row=61, column=1).value="41"
+		amount.cell(row=62, column=1).value="42"
+		amount.cell(row=63, column=1).value="43"
+		amount.cell(row=64, column=1).value="44"
+		amount.cell(row=65, column=1).value="45"
+		amount.cell(row=66, column=1).value="46"
+
+		amount.cell(row=68, column=1).value="A"
+		amount.cell(row=69, column=1).value="A1"
+		amount.cell(row=70, column=1).value="B"
+		amount.cell(row=71, column=1).value="B.1"
+
+		for jjj in range(0,len(listadend300eng)):
+			amount.cell(row=8+jjj,column=8).value=listadend300eng[jjj]
+
+
+		amount.cell(row=8, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y3",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+		amount.cell(row=9, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"C2",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+		amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'		
+		amount.cell(row=11, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+		amount.cell(row=12, column=2).value=0
+		amount.cell(row=13, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
+		
+		amount.cell(row=14, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
+		amount.cell(row=15, column=2).value=0
+		amount.cell(row=16, column=2).value='=round((ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1M",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
+		amount.cell(row=17, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'	
+		amount.cell(row=18, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"C3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'
+		amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
+		amount.cell(row=20, column=2).value=0
+		amount.cell(row=21, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"5G",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(105/100),0)'
+		amount.cell(row=22, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZR",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
+		amount.cell(row=23, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZR",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
+		amount.cell(row=24, column=2).value=0
+		amount.cell(row=25, column=2).value=0
+		amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1V",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'	
+		amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+		amount.cell(row=28, column=2).value=0
+		amount.cell(row=30, column=2).value=0
+		amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ZJ",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+		amount.cell(row=39, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1L",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"3S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'						
+		amount.cell(row=40, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"9S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(109/100),0)'								
+		amount.cell(row=41, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"6I",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(105/100),0)'								
+
+		
+		amount.cell(row=22, column=2).value='=SUM(B23:B25)'
+
+
+		amount.cell(row=31, column=2).value=0
+		amount.cell(row=32, column=2).value='=SUM(B8:B31)-B11-B14-B17-B24-B25'
+		amount.cell(row=33, column=2).value='=B13'
+		amount.cell(row=34, column=2).value='=B14'
+		amount.cell(row=35, column=2).value='=B15'
+		amount.cell(row=36, column=2).value='=B16'
+		amount.cell(row=37, column=2).value='=B17'
+		amount.cell(row=38, column=2).value='=B18'
+
+		
+		amount.cell(row=42, column=2).value='=SUM(B43:B45)'
+		amount.cell(row=43, column=2).value='=B23'
+		amount.cell(row=44, column=2).value='=B24'
+		amount.cell(row=45, column=2).value='=B25'
+		amount.cell(row=46, column=2).value=0
+		amount.cell(row=47, column=2).value=0
+		amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"AS",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"AS",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
+		amount.cell(row=49, column=2).value=0
+		amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
+		amount.cell(row=51, column=2).value=0
+		amount.cell(row=52, column=2).value='=B50-B51'
+		amount.cell(row=53, column=2).value=0
+		amount.cell(row=54, column=2).value=0
+		amount.cell(row=55, column=2).value=0
+		amount.cell(row=56, column=2).value='=SUM(B52:B55)'
+		amount.cell(row=57, column=2).value=0
+		amount.cell(row=58, column=2).value=0
+		amount.cell(row=59, column=2).value=0
+		amount.cell(row=60, column=2).value=0
+		amount.cell(row=61, column=2).value='=SUM(B58:B60)'
+		amount.cell(row=62, column=2).value=0
+		amount.cell(row=63, column=2).value=0
+		amount.cell(row=64, column=2).value='=B57+B62+B63'
+		amount.cell(row=65, column=2).value='=IF((B61-B664)<0,0,B61-B64)'
+		amount.cell(row=66, column=2).value='=IF((B64-B61)<0,0,B64)'
+
+		amount.cell(row=68, column=2).value=0
+		amount.cell(row=69, column=2).value=0
+		amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZI",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZD",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I7",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5D",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
+		amount.cell(row=71, column=2).value='=B70'
+		
+		#coloana TVA----------------------------------------------------
+
+		for g in range(8, 13):
+			amount.cell(row=g, column=3).value=0
+		
+
+		# for h in range(13, 19):
+		amount.cell(row=13, column=3).value='=round(B13/100*19,0)'
+		amount.cell(row=14, column=3).value='=round(B14/100*19,0)'
+		amount.cell(row=15, column=3).value='=round(B15/100*19,0)'
+		amount.cell(row=16, column=3).value='=round(B16/100*19,0)'
+		amount.cell(row=17, column=3).value='=round(B17/100*19,0)'
+		amount.cell(row=18, column=3).value='=round(B18/100*19,0)'
+			
+		# amount.cell(row=16,column=3).value='=ROUND(SUMIF(Purchases!$7:$7,$A16&"."&C$6,Purchases!$5:$5)-SUMIF(Purchases!$7:$7,$A18&"."&C$6,Purchases!$5:$5),0)'
+
+
+		amount.cell(row=19, column=3).value='=round(B19/100*19,0)'
+		amount.cell(row=20, column=3).value='=round(B20/100*9,0)'
+		amount.cell(row=21, column=3).value='=round(B21/100*5,0)'
+		amount.cell(row=22, column=3).value='=SUM(C23:C25)'
+
+		amount.cell(row=23, column=3).value='=round(B23/100*19,0)'
+		amount.cell(row=24, column=3).value='=round(B24/100*9,0)'
+		amount.cell(row=25, column=3).value='=round(B25/100*5,0)'
+
+
+		
+		for k in range(26, 31):
+			amount.cell(row=k, column=3).value=0
+		amount.cell(row=31, column=3).value=0
+		amount.cell(row=32, column=3).value='=SUM(C8:C31)-C11-C14-C17-C24-C25'
+		amount.cell(row=33, column=3).value='=C13'
+		amount.cell(row=34, column=3).value='=C14'
+		amount.cell(row=35, column=3).value='=C15'
+		amount.cell(row=36, column=3).value='=C16'
+		amount.cell(row=37, column=3).value='=C17'
+		amount.cell(row=38, column=3).value='=C18'
+
+
+		amount.cell(row=39, column=3).value='=round(B39/100*19,0)'
+		amount.cell(row=40, column=3).value='=round(B40/100*9,0)'
+		amount.cell(row=41, column=3).value='=round(B41/100*5,0)'			
+		amount.cell(row=42, column=3).value='=SUM(C43:C45)'
+		amount.cell(row=43, column=3).value='=C23'
+		amount.cell(row=44, column=3).value='=C24'
+		amount.cell(row=45, column=3).value='=C25'
+		amount.cell(row=46, column=3).value=0
+		amount.cell(row=47, column=3).value=0
+		amount.cell(row=48, column=3).value=0
+		amount.cell(row=49, column=3).value=0
+		amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
+		amount.cell(row=51, column=3).value=0
+		amount.cell(row=52, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
+		amount.cell(row=53, column=3).value=0
+		amount.cell(row=54, column=3).value=0
+		amount.cell(row=55, column=3).value=0
+		amount.cell(row=56, column=3).value='=SUM(C52:C55)'
+		amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
+		amount.cell(row=58, column=3).value='=IF((C32-C56)<0,0,C32-C56)'
+		amount.cell(row=59, column=3).value=0
+		amount.cell(row=60, column=3).value=0
+		amount.cell(row=61, column=3).value='=SUM(C58:C60)'
+		
+		if soldLunaTrecuta == None or soldLunaTrecuta == "" or soldLunaTrecuta == " ":
+			amount.cell(row=62, column=3).value=0
+		else:
+			amount.cell(row=62, column=3).value=int(soldLunaTrecuta)
+		#print(soldLunaTrecuta, "sold luna trecuta")
+		amount.cell(row=63, column=3).value=0
+		amount.cell(row=64, column=3).value='=C57+C62+C63'
+		amount.cell(row=65, column=3).value='=IF((C61-C64)<0,0,C61-C64)'
+		amount.cell(row=66, column=3).value='=IF((C64-C61)<0,0,C64-C61)'
+		amount.cell(row=68, column=3).value=0
+		amount.cell(row=69, column=3).value=0
+
+		amount.cell(row=70, column=3).value='=round(B70/100*19,0)'
+		amount.cell(row=71, column=3).value='=C70'
+
+		amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
+		amount.cell(row=73, column=2).value='Total an precedent'
+		amount.cell(row=73, column=3).value='An curent (inclusiv perioada de raportare)'
+
+		amount.cell(row=74, column=2).value=0
+		amount.cell(row=74, column=3).value=0
+
+		amount.cell(row=22, column=5).value='Total'
+
+		for m in it.chain(range(8, 13), range(19, 22), range(26, 32)):
+			amount.cell(row=m, column=5).value='SALES'
+
+		for n in it.chain(range(13, 19), range(23, 26), range(39, 42), range(46, 50), range(53, 56)):
+			amount.cell(row=n, column=5).value='Purchases'
+		
+		for o in range(32, 39):
+			amount.cell(row=o, column=5).value='Total'
+
+		for p in range(42, 46):
+			amount.cell(row=p, column=5).value='Total'
+		
+		amount.cell(row=50, column=5).value='Total'
+		amount.cell(row=51, column=5).value='Purchases'
+		amount.cell(row=52, column=5).value='Total'
+		amount.cell(row=66, column=5).value='Purchases'
+
+		for q in range(68, 71):
+			amount.cell(row=q, column=5).value='Total'
+
+		for r in range(56, 67):
+			amount.cell(row=r, column=5).value='Total'
+
+		amount.cell(row=71, column=5).value='Purchases'
+
+		for s in it.chain(range(8, 13), range(26, 29), range(48, 50)):
+			amount.cell(row=s, column=6).value='no VAT'
+
+		for t in it.chain(range(13, 26), range(29, 46)):
+			amount.cell(row=t, column=6).value='Add all'
+
+		for u in it.chain(range(46, 48), range(52, 54), range(55, 67)):
+			amount.cell(row=u, column=6).value='No basis'
+		
+		amount.cell(row=50, column=6).value='Add all'
+		amount.cell(row=51, column=6).value='Se pune 0'
+		amount.cell(row=54, column=6).value='Add all'
+
+		for a1 in range(8, 13):
+			amount.cell(row=a1, column=7).value='=B{0}'.format(a1)
+
+		for b1 in range(13, 26):
+			amount.cell(row=b1, column=7).value='=SUM(B{0}:C{0})'.format(b1)
+
+		for c1 in range(26, 29):
+			amount.cell(row=c1, column=7).value='=B{0}'.format(c1)
+		
+		for d1 in range(29, 46):
+			amount.cell(row=d1, column=7).value='=SUM(B{0}:C{0})'.format(d1)
+
+		amount.cell(row=46, column=7).value='=C46'
+		amount.cell(row=47, column=7).value='=C47'
+		amount.cell(row=48, column=7).value='=B48'
+		amount.cell(row=49, column=7).value='=B49'
+		amount.cell(row=50, column=7).value='=SUM(B50:C50)'
+		amount.cell(row=51, column=7).value='=C51'
+		amount.cell(row=52, column=7).value='=C52'
+		amount.cell(row=53, column=7).value='=SUM(B53:C53)'
+		amount.cell(row=54, column=7).value='=SUM(B54:C54)'
+		amount.cell(row=2,column=1).value="D300 draft figures"
+		amount.cell(row=2,column=1).font=cap_tabeltitlu
+		amount.row_dimensions[5].hidden = True
+		for e1 in range(55, 67):
+			amount.cell(row=e1, column=7).value='=C{0}'.format(e1)
+		
+		for row in amount['B8:B74']:
+			for cell in row:
+				cell.number_format='#,##0_);(#,##0)'
+		
+		for row in amount['C8:C74']:
+			for cell in row:
+				cell.number_format='#,##0_);(#,##0)'
+
+		#------foratare D300
+
+		for row in amount['A7:C7']:
+			for cell in row:
+				cell.fill=cap_tabel_color_black
+				cell.alignment=Alignment(horizontal='center',vertical='center')
+		for row in amount['D7:G7']:
+			for cell in row:
+				cell.fill=cap_tabel_color_black
+		
+		for row in amount['A7:G7']:
+			for cell in row:
+				cell.font=cap_tabel
+
+		listanoua=['A','B','C','D','E','F','G']
+
+		for column in listanoua:
+			for i in listanoua:
+				if (column==i):
+					amount.column_dimensions[column].width = 17
+		
+		amount.column_dimensions['D'].hidden = True
+		amount.column_dimensions['E'].hidden = True
+		amount.column_dimensions['F'].hidden = True
+		amount.column_dimensions['G'].hidden = True
+		info=temp['Other info']
+	
+		listaMapare=["L", "T", "S", "A"]
+		Poz="10"
+		Fix01="01"
+		Fix0000="0000"
+		dictMapare={'L':'301', 'T':'302', 'S':'303', 'A':'304'}
+
+		elementMapare=""
+		if info.cell(row=53, column=3).value=="L":
+			elementMapare="301"
+		else:
+			if info.cell(row=53, column=3).value == "T":
+				elementMapare="302"
+			else:
+				if info.cell(row=53, column=3).value == "S":
+					elementMapare="303"
+				else:
+					if info.cell(row=53, column=3).value == "A":
+						elementMapare="304"
+			
+		# #print(elementMapare, 'MAPARE')
+
+		LL=""
+		AA=""
+
+		if len(str(info.cell(row=3, column=3).value))==2:
+			LL=str(info.cell(row=3, column=3).value)
+			LL_g=LL
+		else:
+			LL="0"+str(info.cell(row=3, column=3).value)
+
+		AA=str(info.cell(row=2, column=3).value)[2:]
+		strYear=str(info.cell(row=2, column=3).value)[2:]
+		intYear=int(strYear)+1
+		year=str(intYear)
+		
+		# #print(year, 'an')
+
+		LLAA=LL+AA
+		LL2=""
+		AA2=""
+
+		if int(info.cell(row=3, column=3).value)==12:
+			LL2="1"
+		if len(str(info.cell(row=3, column=3).value))==1:
+			LL2="0"+str(int(info.cell(row=3, column=3).value)+1)
+		# #print(LL2, 'LL2')
+		
+		if int(info.cell(row=3, column=3).value)==12:
+			AA2=year 
+		else:
+			AA2=strYear
+
+		ZZLLAA="25"+str(LL2)+str(AA2)
+		# #print(ZZLLAA, 'ZZLLAA')
+
+		poz1=""
+		LTSA=""
+		fix1=""
+		LLAA1=""
+		ZZLLAA1=""
+		fix01=""
+		control=""
+
+		poz1 = sum(int(digit) for digit in str(Poz))
+		LTSA = sum(int(digit) for digit in str(elementMapare))
+		fix1=sum(int(digit) for digit in str(Fix01))
+		LLAA1=sum(int(digit) for digit in str(LLAA))
+		ZZLLAA1=sum(int(digit) for digit in str(ZZLLAA))
+		fix01=sum(int(digit) for digit in str(Fix0000))
+
+		control=poz1+LTSA+fix1+LLAA1+ZZLLAA1+fix01
+		#print(control,'control')
+		
+
+		nrEvidenta=Poz+elementMapare+Fix01+LLAA+ZZLLAA+Fix0000+str(control)
+		#print(nrEvidenta, 'nrEvidenta')
+			
+		
+		info.cell(row=18, column=3).value=nrEvidenta
+		info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
+		try:
+			info.cell(row=50, column=3).value=lenbfi
+			info.cell(row=51, column=3).value=sumabfi
+			info.cell(row=52, column=3).value=sumatbfi
+		except:
+			pass
+		try:
+			info.cell(row=53, column=3).value=sumabif
+			info.cell(row=54, column=3).value=sumatbif
+			info.cell(row=55, column=3).value=lentbif
+		except:
+			pass
+		try: 
+			# info.cell(row=56, column=3).value=lenbfr
+			info.cell(row=57, column=3).value=sumabfr
+			info.cell(row=58, column=3).value=sumatbfr
+		except:
+			pass
+
 	if(val2==1):
 		sheetinutil2=temp.create_sheet('D390--->>>')
 		sheetinutil2.sheet_view.showGridLines=False
@@ -3098,10 +3591,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		#Cote TVA
 		coteTVApurchases=[]
 		for i in range(0, len(docNoPurch1)):
-			if (taxcodep[i]=="ZI" or taxcodep[i]=="C3" or taxcodep[i]=="E1" or taxcodep[i]=='V1' or taxcodep[i]=="X1" or taxcodep[i]=="1L" or taxcodep[i]=="1M" or taxcodep[i]=="3S" or taxcodep[i]=="5B" or taxcodep[i]=="5H"):
+			if (taxcodep[i]=="ZI" or taxcodep[i]=="C3" or taxcodep[i]=="ZD" or taxcodep[i]=="E1" or taxcodep[i]=='V1' or taxcodep[i]=="5H" or taxcodep[i]=="X1" or taxcodep[i]=="1L" or taxcodep[i]=="1M" or taxcodep[i]=="3S" or taxcodep[i]=="5B" or taxcodep[i]=="5H"):
 				coteTVApurchases.append('19')
 			else:
-				if (taxcodep[i]=="I9" or taxcodep[i]=="J2" or taxcodep[i]=="V3" or taxcodep[i]=="9S"):
+				if (taxcodep[i]=="I9" or taxcodep[i]=="W8" or taxcodep[i]=="W6" or taxcodep[i]=="J2" or taxcodep[i]=="V3" or taxcodep[i]=="9S"):
 					coteTVApurchases.append('9')
 				else:
 					if (taxcodep[i]=="I7" or taxcodep[i]=="5D" or taxcodep[i]=="W8" or taxcodep[i]=="6I" or taxcodep[i]=="5S"):
@@ -3124,10 +3617,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			else:
 				# #print(docNoPurch1[i])
 				if int(tipTranzactiePurchases[i]) == 1:
-					if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3"):
+					if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3" or taxcodep[i]=="5H" or taxcodep[i]=="5B"):
 						tipTranzPurch.append('A')
 					else:
-						if taxcodep[i]=="ZI" or taxcodep[i]=="5D" or taxcodep[i]=="I7" or taxcodep[i]=="I9":
+						if taxcodep[i]=="ZI" or taxcodep[i]=="5D" or taxcodep[i]=="ZD" or taxcodep[i]=="I7" or taxcodep[i]=="W8" or taxcodep[i]=="I9" or taxcodep[i]=="W6" or taxcodep[i]=="6I":
 							tipTranzPurch.append("AI")
 							#print(docNoPurch1[i],";;;;;es 3")
 						else:
@@ -4246,15 +4739,13 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		
 		# for i in range(0 ,len(tip)):
 	# folderpath="D:/D300 to XML/docs"
-	# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage spreeadsheet"
 	folderpath="/home/mirus_app/storage_spreadsheet"
 	# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
-	file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets" +str(clientname)+".xlsx")
+	file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
 	temp.save(file_pathFS)
 	# return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
-	# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage spreeadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
-	return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets"+str(clientname)+".xlsx", as_attachment=True)
-	# return render_template('D3APPS2')
+	return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
+	return render_template('D3APPS2')
 @app.route('/D3APPS2')
 def my_form2():
     return render_template('D3APPS second step.html')
@@ -4269,7 +4760,7 @@ def D300():
 		info=temp['Other info']
 		an=info.cell(row=20,column=3).value
 		#print(an)
-		luna=info.cell(row=21,column=3).value
+		luna=info.cell(row=3,column=3).value
 		# temei=info.cell(row=8,column=2).value
 		cif=info.cell(row=27,column=3).value
 		den=info.cell(row=26,column=3).value
@@ -4484,13 +4975,11 @@ def D300():
 
 		# for i in range(0 ,len(tip)):
 		# folderpath="D:/apps/TEST D3APPS/Test 21.03.2022/output"
-		# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		folderpath="/home/mirus_app/storage"
 		# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		# temp.save(folderpath+".xlsx")
 		text='<?xml version="1.0"?> <declaratie300  luna="'+str(luna)+'" an="'+str(an)+'" depusReprezentant="'+str(ramburs2)+'" bifa_interne="0" temei="0" prenume_declar="'+str(pren)+'" nume_declar="'+str(nume)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(den)+'" adresa="'+str(strada)+'" telefon="'+str(telefon)+'" mail="'+str(email)+'" banca="'+str(banca)+'" cont="'+str(contban)+'" caen="'+str(Caen)+'" tip_decont="'+str(tip)+'" pro_rata="'+str(prorata)+'" bifa_cereale="'+str(cereale)+'" bifa_mob="'+str(telmob)+'" bifa_disp="'+str(disp)+'" bifa_cons="'+str(cons)+'" solicit_ramb="'+str(ramburs)+'" nr_evid="'+str(nr_evid)+'" totalPlata_A="'+str(totalp)+'" R1_1="'+str(R1_1)+'" R2_1="'+str(R2_1)+'" R3_1="'+str(R3_1)+'" R3_1_1="'+str(R3_1_1)+'" R4_1="'+str(R4_1)+'" R5_1="'+str(R5_1)+'" R5_2="'+str(R5_2)+'" R5_1_1="'+str(R5_1_1)+'" R5_1_2="'+str(R5_1_2)+'" R6_1="'+str(R6_1)+'" R6_2="'+str(R6_2)+'" R7_1="'+str(R7_1)+'" R7_2="'+str(R7_2)+'" R7_1_1="'+str(R7_1_1)+'" R7_1_2="'+str(R7_1_2)+'" R8_1="'+str(R8_1)+'" R8_2="'+str(R8_2)+'" R9_1="'+str(R9_1)+'" R9_2="'+str(R9_2)+'" R10_1="'+str(R10_1)+'" R10_2="'+str(R10_2)+'" R11_1="'+str(R11_1)+'" R11_2="'+str(R11_2)+'" R12_1="'+str(R12_1)+'" R12_2="'+str(R12_2)+'" R12_1_1="'+str(R12_1_1)+'" R12_1_2="'+str(R12_1_2)+'" R12_2_1="'+str(R12_2_1)+'" R12_2_2="'+str(R12_2_2)+'" R12_3_1="'+str(R12_3_1)+'" R12_3_2="'+str(R12_3_2)+'" R13_1="'+str(R13_1)+'" R14_1="'+str(R14_1)+'" R15_1="'+str(R15_1)+'" R16_1="'+str(R16_1)+'" R16_2="'+str(R16_2)+'" R64_1="'+str(R64_1)+'" R64_2="'+str(R64_2)+'" R65_1="'+str(R65_1)+'" R65_2="'+str(R65_2)+'" R17_1="'+str(R17_1)+'" R17_2="'+str(R17_2)+'" R18_1="'+str(R18_1)+'" R18_2="'+str(R18_2)+'" R18_1_1="'+str(R18_1_1)+'" R18_1_2="'+str(R18_1_2)+'" R19_1="'+str(R19_1)+'" R19_2="'+str(R19_2)+'" R20_1="'+str(R20_1)+'" R20_2="'+str(R20_2)+'" R20_1_1="'+str(R20_1_1)+'" R20_1_2="'+str(R20_1_2)+'" R21_1="'+str(R21_1)+'" R21_2="'+str(R21_2)+'" R22_1="'+str(R22_1)+'" R22_2="'+str(R22_2)+'" R23_1="'+str(R23_1)+'" R23_2="'+str(R23_2)+'" R24_1="'+str(R24_1)+'" R24_2="'+str(R24_2)+'" R25_1="'+str(R25_1)+'" R25_2="'+str(R25_2)+'" R25_1_1="'+str(R25_1_1)+'" R25_1_2="'+str(R25_1_2)+'" R25_2_1="'+str(R25_2_1)+'" R25_2_2="'+str(R25_2_2)+'" R25_3_1="'+str(R25_3_1)+'" R25_3_2="'+str(R25_3_2)+'" R43_2="'+str(R43_2)+'" R44_2="'+str(R44_2)+'" R26_1="'+str(R26_1)+'" R26_1_1="'+str(R26_1_1)+'" R27_1="'+str(R27_1)+'" R27_2="'+str(R27_2)+'" R28_2="'+str(R28_2)+'" R29_2="'+str(R29_2)+'" R30_1="'+str(R30_1)+'" R30_2="'+str(R30_2)+'" R31_2="'+str(R31_2)+'" R32_2="'+str(R32_2)+'" R33_2="'+str(R33_2)+'" R34_2="'+str(R34_2)+'" R35_2="'+str(R35_2)+'" R36_2="'+str(R36_2)+'" R37_2="'+str(R37_2)+'" R38_2="'+str(R38_2)+'" R39_2="'+str(R39_2)+'" R40_2="'+str(R40_2)+'" R41_2="'+str(R41_2)+'" R42_2="'+str(R42_2)+'" nr_facturi="'+str(nrfact)+'" baza="'+str(baza)+'" tva="'+str(tva)+'" nr_facturi_primite="'+str(factprimite)+'" baza_primite="'+str(bazaprimite)+'" tva_primite="'+str(tvaprimite)+'" nr_fact_emise="'+str(nrfactemise)+'" total_baza="'+str(total_baza)+'" total_precedent ="'+str(total_precedent)+'" total_curent ="'+str(total_curent)+'" total_tva="'+str(total_tva)+'" valoare_a="'+str(valoare_a)+'" tva_a="'+str(tva_a)+'" valoare_a1="'+str(valoare_a1)+'" tva_a1="'+str(tva_a1)+'" valoare_b="'+str(valoare_b)+'" tva_b="'+str(tva_b)+'" valoare_b1="'+str(valoare_b1)+'" tva_b1="'+str(tva_b1)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d300:declaratie:v7 d300.xsd" xmlns="mfp:anaf:dgti:d300:declaratie:v7"></declaratie300>'
 		#print(text)
-		# text=""
 		with open("/home/mirus_app/storage/D300.xml", "w", encoding="utf-8") as f:
 			f.write(text)
 		# f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text).encode('utf-8')
@@ -4623,7 +5112,6 @@ def D300():
 		#print(texttxt)
 		textxml='<?xml version="1.0"?> <declaratie390  luna="'+str(luna)+'" an="'+str(an)+'" d_rec="0" nume_declar="'+str(nume)+'" prenume_declar="'+str(pren)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(denu)+'" adresa="'+str(adresa)+'" telefon="'+str(telefon)+'" mail="'+str(email)+'" totalPlata_A="'+str(totalplata)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d390:declaratie:v3 D390.xsd" xmlns="mfp:anaf:dgti:d390:declaratie:v3">'+'<rezumat nr_pag="'+str(nrpag)+'" nrOPI="'+str(nropi)+'" bazaL="'+str(bazal)+'" bazaT="'+str(bazat)+'" bazaA="'+str(bazaa)+'" bazaP="'+str(bazaP)+'" bazaS="'+str(bazas)+'" bazaR="'+str(bazar)+'" total_baza="'+str(totalb)+'" /> '+string+'</declaratie390>'
 		# folderpath="D:/apps/TEST D3APPS/Test 21.03.2022/output"
-		# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		folderpath="/home/mirus_app/storage"
 		# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		# f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D390.txt", "w",encoding="utf-8").write(texttxt)
@@ -4947,150 +5435,176 @@ def D300():
 		nrC24=0
 		numar1=0
 
+		nrV0=0
+		nrLS0=0
+		nrAS0=0
+		valV0=0
+		valLS0=0
+		valAS0=0
+
+
 		numarcui1=0
 		# #print(tip_partener)
 		# #print(cotatva)
 		count=0
 		#print(bazatv)
+		tippartener1=[]
 		for i in range(0,len(tip_partener)):
+			if(str(tip_partener[i])=="1" and tiptranza[i]!="Not applicable for D394" and str(bazatv[i])!="0"):
+				tippartener1.append(cuip[i])
 			if(str(tip_partener[i])=="1" and neex[i]!="Yes"):
+
 				if(bazatv[i]>0):
+					if(str(cotatva[i])=="0"):
+						if(str(tiptranza[i])=="V"):
+							nrV0=nrV0+1
+							valV0=valV0+bazatv[i]
+						if(str(tiptranza[i])=="AS"):
+							nrLS0=nrLS0+1
+							valLS0=valLS0+bazatv[i]						
+						if(str(tiptranza[i])=="LS"):
+							nrAS0=nrAS0+1
+							valAS0=valAS0+bazatv[i]							
 					if(str(cotatva[i])=="5"):
 						if(str(tiptranza[i])=="L"):
-							numar1=numar1+1
+
 							nrL5=nrL5+int(nrfacturi[i])
 							sumaL5=sumaL5+int(bazatv[i])
 							tvaL5=tvaL5+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
-							numar1=numar1+1						
+						
 							nrAI5=nrAI5+int(nrfacturi[i])
 							sumaAI5=sumaAI5+int(bazatv[i])
 							tvaAI5=tvaAI5+int(stva[i])
 						if(str(tiptranza[i])=="A"):
-							numar1=numar1+1						
+						
 							nrA5=nrA5+int(nrfacturi[i])
 							sumaA5=sumaA5+int(bazatv[i])
 							tvaA5=tvaA5+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-							numar1=numar1+1						
+						
 							nrLS5=nrLS5+int(nrfacturi[i])
 							sumaLS5=sumaLS5+int(bazatv[i])
 							tvaLS5=tvaLS5+int(stva[i])
 						if(str(tiptranza[i])=="C"):
-							numar1=numar1+1						
+						
 							nrC5=nrC5+int(nrfacturi[i])
 							sumaC5=sumaC5+int(bazatv[i])
 							tvaC5=tvaC5+int(stva[i])
 					if(str(cotatva[i])=="9"):
 						if(str(tiptranza[i])=="L"):
-							numar1=numar1+1						
+						
 							nrL9=nrL9+int(nrfacturi[i])
 							sumaL9=sumaL9+int(bazatv[i])
 							tvaL9=tvaL9+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-							numar1=numar1+1						
+						
 							nrLS9=nrLS9+int(nrfacturi[i])
 							sumaLS9=sumaLS9+int(bazatv[i])
 							tvaLS9=tvaLS9+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
-							numar1=numar1+1						
+						
 							nrAI9=nrAI9+int(nrfacturi[i])
 							sumaAI9=sumaAI9+int(bazatv[i])
 							tvaAI9=tvaAI9+int(stva[i])
 						if(str(tiptranza[i])=="A"):
-							numar1=numar1+1						
+						
 							nrA9=nrA9+int(nrfacturi[i])
 							sumaA9=sumaA9+int(bazatv[i])
 							tvaA9=tvaA9+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
-							numar1=numar1+1						
+						
 							nrC9=nrC9+int(nrfacturi[i])
 							sumaC9=sumaC9+int(bazatv[i])
 							tvaC9=tvaC9+int(stva[i])
 					if(str(cotatva[i])=="19"):
 						# #print("YES")
 						if(str(tiptranza[i])=="L"):
-							numar1=numar1+1						
+						
 							nrL19=nrL19+int(int(nrfacturi[i]))
 							sumaL19=sumaL19+int(bazatv[i])
 							tvaL19=tvaL19+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-							numar1=numar1+1						
+						
 							nrLS19=nrLS19+int(nrfacturi[i])
 							sumaLS19=sumaLS19+int(bazatv[i])
 							tvaLS19=tvaLS19+int(stva[i])
 
 						if(str(tiptranza[i])=="AI"):
-							numar1=numar1+1						
+						
 							nrAI19=nrAI19+int(nrfacturi[i])
 							sumaAI19=sumaAI19+int(bazatv[i])
 							tvaAI19=tvaAI19+int(stva[i])
 							#print(nrAI19)
 						if(str(tiptranza[i])=="A"):
-							numar1=numar1+1						
+						
 							#print(tiptranza[i],bazatv[i],stva[i])
 							nrA19=nrA19+int(nrfacturi[i])
 							sumaA19=sumaA19+int(bazatv[i])
 							tvaA19=tvaA19+int(stva[i])
 						if(str(tiptranza[i])=="C"):
-							numar1=numar1+1						
+						
 							nrC19=nrC19+int(nrfacturi[i])
 							sumaC19=sumaC19+int(bazatv[i])
 							tvaC19=tvaC19+int(stva[i])
 					if(str(cotatva[i])=="20"):
 						if(str(tiptranza[i])=="L"):
-							numar1=numar1+1						
+						
 							nrL20=nrL20+int(nrfacturi[i])
 							sumaL20=sumaL20+int(bazatv[i])
 							tvaL20=tvaL20+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-							numar1=numar1+1						
+						
 							nrLS20=nrLS20+int(nrfacturi[i])
 							sumaLS20=sumaLS20+int(bazatv[i])
 							tvaLS20=tvaLS20+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
-							numar1=numar1+1						
+						
 							nrAI20=nrAI20+int(nrfacturi[i])
 							sumaAI20=sumaAI20+int(bazatv[i])
 							tvaAI20=tvaAI20+int(stva[i])
 						if(str(tiptranza[i])=="A"):
-							numar1=numar1+1						
+						
 							nrA20=nrA20+int(nrfacturi[i])
 							sumaA20=sumaA20+int(bazatv[i])
 							tvaA20=tvaA20+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
-							numar1=numar1+1						
+						
 							nrC20=nrC20+int(nrfacturi[i])
 							sumaC20=sumaC20+int(bazatv[i])
 							tvaC20=tvaC20+int(stva[i])
 					if(str(cotatva[i])=="24"):
 						if(str(tiptranza[i])=="L"):
-							numar1=numar1+1						
+						
 							nrL24=nrL24+int(nrfacturi[i])
 							sumaL24=sumaL24+int(bazatv[i])
 							tvaL24=tvaL24+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-							numar1=numar1+1						
+						
 							nrLS24=nrLS24+int(nrfacturi[i])
 							sumaLS24=sumaLS24+int(bazatv[i])
 							tvaLS24=tvaLS24+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
-							numar1=numar1+1						
+						
 							nrC24=nrC24+int(nrfacturi[i])
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
-							numar1=numar1+1						
+						
 							nrAI24=nrAI24+int(nrfacturi[i])
 							sumaAI24=sumaAI24+int(bazatv[i])
 							tvaAI24=tvaAI24+int(stva[i])
 						if(str(tiptranza[i])=="A"):
-							numar1=numar1+1						
+						
 							nrA24=nrA24+int(nrfacturi[i])
 							sumaA24=sumaA24+int(bazatv[i])
 							tvaA24=tvaA24+int(stva[i])
+		numart=(list(set(tippartener1)))
+		print(numart)
+		numartotal=len(numart)
 		#print(nrAI19)
-		numarcui1=numar1
+		numarcui1=numartotal
+		print(nrV0)
 		if(nrL5>0 or nrA5>0 or nrAI5>0 or nrC5>0):
 			text15='''<rezumat1 tip_partener="1" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''" facturiA="'''+str(nrA5)+'''" bazaA="'''+str(sumaA5)+'''" tvaA="'''+str(tvaA5)+'''" facturiAI="'''+str(nrAI5)+'''" bazaAI="'''+str(sumaAI5)+'''" tvaAI="'''+str(tvaAI5)+'''" facturiC="'''+str(nrC5)+'''" bazaC="'''+str(sumaC5)+'''" tvaC="'''+str(tvaC5)+'''"/>'''
 		else:
@@ -5111,6 +5625,10 @@ def D300():
 			text124='''<rezumat1 tip_partener="1" cota="24" facturiL="'''+str(nrL24)+'''" bazaL="'''+str(sumaL24)+'''" tvaL="'''+str(tvaL24)+'''" facturiA="'''+str(nrA24)+'''" bazaA="'''+str(sumaA24)+'''" tvaA="'''+str(tvaA24)+'''" facturiAI="'''+str(nrAI24)+'''" bazaAI="'''+str(sumaAI24)+'''" tvaAI="'''+str(tvaAI24)+'''" facturiC="'''+str(nrC24)+'''" bazaC="'''+str(sumaC24)+'''" tvaC="'''+str(tvaC24)+'''"/>'''
 		else:
 			text124=""
+		if(nrV0>0 or nrAS0>0 or nrLS0>0):
+			text10='''<rezumat1 tip_partener="1" cota="0" facturiLS="'''+str(nrLS0)+'''" bazaLS="'''+str(valLS0)+'''" facturiAS="'''+str(nrAS0)+'''" bazaAS="'''+str(valAS0)+'''" facturiV="'''+str(nrV0)+'''" bazaV="'''+str(valV0)+'''">
+	<detaliu  bun="22" nrLivV="'''+str(nrV0)+'''" bazaLivV="'''+str(valV0)+'''"/>
+	</rezumat1>'''
 		sumaLS0=0
 		sumaL5=0
 		sumaL9=0
@@ -5667,7 +6185,7 @@ def D300():
 		#print(totalplata394)
 		textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Grant Thornton " cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
 		<informatii nrCui1="'''+str(numarcui1)+'''" nrCui2="'''+str(numarcui2)+'''" nrCui3="'''+str(numarcui3)+'''" nrCui4="'''+str(numarcui4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="175" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
-		text=text+textinfo+text15+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
+		text=text+textinfo+text15+text10+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
 
 
 		#print(tipfacturi)
@@ -5689,123 +6207,36 @@ def D300():
 		for k in range(4,sheet2.max_row):
 			if(sheet2.cell(row=k,column=1).value=="Stornata"):
 				text=text+'<facturi  tip_factura="1" nr="'''+str(sheet2.cell(row=k,column=3).value)+'''"/>'''+"\n"
+		numep=[]
+		for j in range(0,len(nume)):
 
+			numep.append(nume[j].replace("&",""))
+			# nume[j].replace("<","")
+			# nume[j].replace(">","")
 		for i in range(0,len(tiptranza)):
-			if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
-				text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(nume[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
-			else:
-				if("-" in str(cuip[i])):
-					text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(nume[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+			if(tiptranza[i]!="Not applicable for D394"):
+				if(tiptranza[i]=="V"):
+					text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
 				else:
-					if(bazatv[i]>0):
-						if(int(cotatva[i])>0 or int(tip_partener[i])<3):
-							if(tiptranza=="V"):
-								text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(nume[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
-							else:
-								text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(nume[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
+
+					if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
+						text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+					else:
+						if("-" in str(cuip[i])):
+							text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+						else:
+							if(bazatv[i]>0):
+								text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
 
 		text=text+"</declaratie394>"
 		# text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="'+str(op_efectuate)+'" prsAfiliat="'+str(prsAfiliat)+'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
 
 		# f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
 		# make_archive("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage","C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/arhiva VAT apps.zip")
-		# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True)
-		# f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
-		with open("/home/mirus_app/storage/D394.xml", "w", encoding="utf-8") as g:
-			g.write(text)
-	make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva_VAT_apps.zip")
-	return send_from_directory("/home/mirus_app/storage","arhiva_VAT_apps.zip",as_attachment=True)
-	# return send_from_directory("/home/mirus_app/storage","D394.xml",as_attachment=True)
+		# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True) 
+		f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
+	make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva VAT apps.zip")
+	return send_from_directory("/home/mirus_app/storage","arhiva VAT apps.zip",as_attachment=True)
 	
-
-# @app.route('/CUI_Extractor')
-# def CUI():
-# 	return render_template('cuiRetrieval.html')
-
-# @app.route('/CUI_Extractor', methods=['POST', 'GET'])
-# def CUI_process():
-# 	dataCautare = datetime.strptime(
-#         request.form['srcDate'],
-#         '%Y-%m-%d')
-
-# 	dataCautare=dataCautare.date()
-# 	if request.method == 'POST':
-# 		file_Details = request.files["cuiFile"]
-
-# 		details=openpyxl.load_workbook(file_Details, data_only='True')
-# 		details1 = details.active
-
-# 		wb = openpyxl.Workbook()
-# 		ws = wb.active
-# 		summary = wb.create_sheet("Summary")
-
-#         # #print("introduceri data")
-#         # dataa=input()
-# 		for row in details1.iter_rows():
-# 			for cell in row:
-# 				if cell.value == "Cod de inregistrare fiscala":
-# 					row_tb = cell.row
-# 					column_cui = cell.column
-# 					lun = len(details1[cell.column])
-# 		try:
-# 			cui = [b.value for b in details1[column_cui][row_tb:lun]]
-# 		except:
-# 			flash("Please insert the correct header for 'Cod de inregistrare fiscala'")
-# 			return render_template("index.html")
-# 		ccc=[]
-# 		# try:
-# 		for i in cui:
-# 			# try:
-# 			if "RO" or "RO " in i:
-# 				b=str(i).replace("RO", "").replace(" ","")
-# 				ccc.append(b)
-# 			else:
-# 				ccc.append(i)
-# 			# except:
-# 			# 	pass
-# 			# #print(ccc)
-
-# 		listaUnicaCui=list(set(ccc))
-# 		#print(listaUnicaCui, "lista unica")
-# 		#print(len(listaUnicaCui))
-# 		# #print(dataCautare)
-
-# 		x=["CUI", "Data Verificare", "Denumire", "Adresa", "Stare inregistrare", "Scop TVA", "Data Inceput Scop TVA", 
-# 		"Mesaj Scop TVA", "Status TVA Incasare", "Status Inactivi", "Status Split TVA", "Status RO e-Factura"]
-# 		for a in range(0, len(x)):
-# 			summary.cell(row=1, column=1+a).value=x[a]
-
-# 		for i in range(0, len(listaUnicaCui)):
-# 			response = requests.post('https://webservicesp.anaf.ro/PlatitorTvaRest/api/v6/ws/tva', json=[{'cui': int(listaUnicaCui[i]), 'data': str(dataCautare)}])
-# 			# time.sleep(1)
-
-# 			data=response.json()
-# 			tip=["cui", "data", "denumire", "adresa", "stare_inregistrare", "scpTVA", "data_inceput_ScpTVA", 
-# 		"mesaj_ScpTVA", "statusTvaIncasare", "statusInactivi", "statusSplitTVA", "statusRO_e_Factura"]
-
-# 			summary.cell(row=2+i, column=1).value=str(data['found'][0]['cui'])
-# 			summary.cell(row=2+i, column=2).value=str(data['found'][0]['data'])
-# 			summary.cell(row=2+i, column=3).value=str(data['found'][0]['denumire'])
-# 			summary.cell(row=2+i, column=4).value=str(data['found'][0]['adresa'])
-# 			summary.cell(row=2+i, column=5).value=str(data['found'][0]['stare_inregistrare'])
-# 			summary.cell(row=2+i, column=6).value=str(data['found'][0]['scpTVA'])
-# 			summary.cell(row=2+i, column=7).value=str(data['found'][0]['data_inceput_ScpTVA'])
-# 			summary.cell(row=2+i, column=8).value=str(data['found'][0]['mesaj_ScpTVA'])
-# 			summary.cell(row=2+i, column=9).value=str(data['found'][0]['statusTvaIncasare'])
-# 			summary.cell(row=2+i, column=10).value=str(data['found'][0]['statusInactivi'])
-# 			summary.cell(row=2+i, column=11).value=str(data['found'][0]['statusSplitTVA'])
-# 			summary.cell(row=2+i, column=12).value=str(data['found'][0]['statusRO_e_Factura'])
-
-
-# 		wr = wb["Sheet"]
-# 		wb.remove(wr)
-
-# 		# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage registre"
-# 		folderpath="/home/mirus_app/storage_registre"
-# 		file_pathFS = os.path.join(folderpath, "Informatii CUI"+".xlsx")
-# 		wb.save(file_pathFS)
-# 	return send_from_directory(folderpath, "Informatii CUI"+".xlsx", as_attachment=True)
-
-# app.run(debug="True",host="0.0.0.0", port=1000)
 if __name__ == '__main__':
    app.run()
