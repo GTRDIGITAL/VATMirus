@@ -223,7 +223,6 @@ def D300xml():
 		val2 = request.form.get('D390')
 		val3 = request.form.get('D394')
 		val4 = request.form.get('xyz')
-		option = request.form['options']
 		dropdown = request.form.get('trezorerie')
 		dropdownlimba = request.form.get('limba')
 		soldLunaTrecuta = request.form.get('largeAm')
