@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, send_from_directory , url_for
 from jinja2 import pass_eval_context
-from numpy import append
+# from numpy import append
 import shutil
-
 import re
 import PyPDF2
 from werkzeug.utils import secure_filename
+# from tkinter import *
 from flask import flash
 from openpyxl.worksheet.datavalidation import DataValidation 
 from openpyxl.styles.borders import Border, Side
@@ -14,6 +14,8 @@ from openpyxl import Workbook
 import itertools as it
 import datetime
 from datetime import datetime
+# import tkinter as tk
+# from tkinter.filedialog import askopenfilename
 from openpyxl.styles import Color, PatternFill, Font, Border
 from openpyxl.styles import colors
 from openpyxl.styles import Alignment
@@ -28,6 +30,8 @@ from openpyxl.styles import  Color
 from openpyxl.styles import Alignment
 import requests
 import time
+
+# from tkinter import filedialog
 
 from openpyxl.chart import (
     LineChart,
@@ -48,7 +52,11 @@ from flask import Flask, render_template, request, send_from_directory
 from datetime import datetime
 from werkzeug.utils import secure_filename
 import PyPDF2 as pf
+# import tkinter
 # import PIL
+# from tkinter import *
+# import tkinter as tk
+# from tkinter import messagebox
 import openpyxl
 from openpyxl import *
 from openpyxl.styles import Border, Side
@@ -62,6 +70,7 @@ from openpyxl.descriptors import (
 from openpyxl.chart import LineChart, Reference
 import string
 # from PIL import ImageTk, Image
+# from tkinter.filedialog import askopenfilename
 from openpyxl.styles import Color, PatternFill, Font, borders
 from openpyxl.worksheet.dimensions import ColumnDimension
 
@@ -75,86 +84,19 @@ import os
 import xml.etree.ElementTree as ET
 
 import base64
+# from tkinter import filedialog
 import io
 
 import webbrowser
-import datetime
-import requests
-
-
-today=datetime.datetime.now().date()
-yesterday=today-datetime.timedelta(days=1)
-print(yesterday.year)
-print(yesterday.month)
-print(yesterday.day)
-curs="EUR"
-
-listaluni=["1","2","3","4","5","6","7","8","9","10","11","12"]
-listadenluni=['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie']
-listadenluni2=['January','February','March','April','May','June','July','August','September','October','November','December']
-listatrez=['Trezoreria operativă Agnita','Trezorerie operativa Alesd','Trezoreria operativă Avrig','Trezoreria operativă Babadag','Trezorerie operativa Babeni','Trezoreria operativă Baia','Trezoreria operativă Baia de Aramă','Trezorerie operativa Balcesti','Trezorerie operativa Beclean','Trezorerie operativa Beius','Trezoreria operativă Boldeşti - Scăeni','Trezorerie operativa Bozovici','Trezorerie operativa Budesti','Trezoreria operativă Buftea','Trezorerie operativa Buhusi','Trezoreria operativă Buşteni','Trezorerie operativa Buzias','Trezorerie operativa Campeni','Trezoreria operativă Cehu Silvaniei','Trezorerie operativa Chisinau Cris','Trezorerie operativa Codlea','Trezorerie operativa Comunala Podu Turcului','Trezorerie operativa Costesti','Trezorerie operativa Cugir','Trezorerie operativa Darabani','Trezorerie operativa Deta','Trezorerie operativa Eforie','Trezorerie operativa Faget','Trezorerie operativa Faurei','Trezoreria operativă Feteşti','Trezorerie operativa Gaiesti','Trezorerie operativa Gura Lotrului','Trezorerie operativa Harlau','Trezorerie operativa Harsova','Trezorerie operativa Hateg','Trezorerie operativa Horezu','Trezorerie operativa Huedin','Trezorerie operativa Ianca','Trezoreria operativă Ilfov','Trezorerie operativa Ineu','Trezorerie operativa Insuratei','Trezoreria operativă Jibou','Trezorerie operativa Jimbolia','Trezorerie operativa Lehliu Gara','Trezorerie operativa Lipova','Trezoreria operativă Luduş','Trezoreria operativă Măcin','Trezorerie operativa Marghita','Trezorerie operativa Mioveni','Trezoreria operativă Mizil','Trezorerie operativa Moinesti','Trezorerie operativa Moldova Noua','Trezorerie operativa Moreni','Trezorerie operativa Motru','Trezoreria operativă Municipiu Slatina','Trezorerie operativa Municipiul  Alba Iulia','Trezorerie operativa Municipiul Adjud','Trezorerie operativa Municipiul Aiud','Trezoreria operativă Municipiul Alexandria','Trezorerie operativa Municipiul Arad','Trezorerie operativa Municipiul Bacau','Trezoreria operativă Municipiul Baia Mare','Trezoreria operativă Municipiul Bârlad','Trezorerie operativa Municipiul Bistrita','Trezorerie operativa Municipiul Blaj','Trezorerie operativa Municipiul Botosani','Trezorerie operativa Municipiul Brad','Trezorerie operativa Municipiul Braila','Trezorerie operativa Municipiul Brasov','Trezorerie operativa Municipiul Bucuresti','Trezorerie operativa Municipiul Buzau','Trezorerie operativa Municipiul Calarasi','Trezoreria operativă Municipiul Câmpina','Trezorerie operativa Municipiul Campulung','Trezorerie operativa Municipiul Campulung Moldovenesc','Trezoreria operativă Municipiul Caracal','Trezorerie operativa Municipiul Caransebes','Trezorerie operativa Municipiul Carei','Trezorerie operativa Municipiul Cluj Napoca','Trezorerie operativa Municipiul Constanta','Trezorerie operativa Municipiul Curtea de Arges','Trezorerie operativa Municipiul Dej','Trezorerie operativa Municipiul Deva','Trezorerie operativa Municipiul Dorohoi','Trezorerie operativa Municipiul Dragasani','Trezoreria operativă Municipiul Drobeta-Turnu Severin','Trezorerie operativa Municipiul Fagaras','Trezorerie operativa Municipiul Falticeni','Trezorerie operativa Municipiul Focsani','Trezorerie operativa Municipiul Galati','Trezorerie operativa Municipiul Gherla','Trezorerie operativa Municipiul Gura Humorului','Trezorerie operativa Municipiul Hunedoara','Trezoreria operativă Municipiul Huşi','Trezorerie operativa Municipiul Iasi','Trezorerie operativa Municipiul Lugoj','Trezorerie operativa Municipiul Mangalia','Trezorerie operativa Municipiul Medgidia','Trezoreria operativă Municipiul Mediaş','Trezorerie operativa Municipiul Oltenita','Trezorerie operativa Municipiul Onesti','Trezorerie operativa Municipiul Oradea','Trezorerie operativa Municipiul Orastie','Trezorerie operativa Municipiul Pascani','Trezorerie operativa Municipiul Petrosani','Trezoreria operativă Municipiul Piatra Neamţ ','Trezorerie operativa Municipiul Pitesti','Trezorerie operativa Municipiul Ploiesti','Trezorerie operativa Municipiul Radauti','Trezorerie operativa Municipiul Ramnicu Sarat','Trezorerie operativa Municipiul Ramnicu Valcea','Trezoreria operativă Municipiul Reghin','Trezorerie operativa Municipiul Resita','Trezoreria operativă Municipiul Roman','Trezoreria operativă Municipiul Roşiori de Vede','Trezorerie operativa Municipiul Satu Mare','Trezoreria operativă Municipiul Sibiu','Trezoreria operativă Municipiul Sighetul Marmaţiei','Trezoreria operativă Municipiul Sighişoara','Trezorerie operativa Municipiul Siret','Trezoreria operativă Municipiul Slobozia','Trezorerie operativa Municipiul Suceava','Trezorerie operativa Municipiul Targoviste','Trezoreria operativă Municipiul Târgu Mureş','Trezoreria operativă Municipiul Târnăveni','Trezorerie operativa Municipiul Tecuci','Trezorerie operativa Municipiul Tg.Jiu','Trezorerie operativa Municipiul Timisoara','Trezoreria operativă Municipiul Tulcea','Trezorerie operativa Municipiul Turda','Trezoreria operativă Municipiul Turnu Măgurele','Trezoreria operativă Municipiul Urziceni','Trezoreria operativă Municipiul Vaslui','Trezoreria operativă Municipiul Zalău','Trezorerie operativa Nasaud','Trezoreria operativă Negreşti','Trezorerie operativa Negresti Oas','Trezorerie operativa Novaci','Trezoreria operativă Oraş Bicaz','Trezoreria operativă Oraş Târgu Neamţ','Trezoreria operativă Oraşul Balş','Trezoreria operativă Oraşul Corabia','Trezorerie operativa Oravita','Trezoreria operativă Orşova','Trezorerie operativa Otelul Rosu','Trezorerie operativa Panciu','Trezorerie operativa Patarlagele','Trezorerie operativa Pogoanele','Trezorerie operativa Pucioasa','Trezorerie operativa Raducaneni','Trezorerie operativa Rasnov','Trezorerie operativa Rovinari','Trezorerie operativa Rupea','Trezorerie operativa Sacele','Trezoreria operativă Sălişte','Trezorerie operativa Salonta','Trezorerie operativa Sangeorz Bai','Trezorerie operativa Sannicolau Mare','Trezorerie operativa Savarsin','Trezorerie operativa Saveni','Trezorerie operativa Sebes','Trezorerie operativa Sebis','Trezorerie operativa Sector 1','Trezorerie operativa Sector 2','Trezorerie operativa Sector 3','Trezorerie operativa Sector 4','Trezorerie operativa Sector 5','Trezorerie operativa Sector 6','Trezoreria operativă Şimleul Silvaniei','Trezoreria operativă Slănic','Trezoreria operativă Sovata','Trezoreria operativă Strehaia','Trezoreria operativă Sulina','Trezoreria operativă Târgu Lăpuş','Trezorerie operativa Tasnad','Trezorerie operativa Tg.Bujor','Trezorerie operativa Tg.Carbunesti','Trezorerie operativa Tg.Frumos','Trezorerie operativa Titu','Trezorerie operativa Topoloveni','Trezoreria operativă Vălenii de Munte','Trezoreria operativă Vânju Mare','Trezorerie operativa Vatra Dornei','Trezoreria operativă Videle','Trezoreria operativă Vişeul de Sus','Trezoreria operativă Zimnicea']
-listaiban=['RO42TREZ57820A100101XTVA','RO69TREZ08120A100101XTVA','RO11TREZ58120A100101XTVA','RO61TREZ64520A100101XTVA','RO02TREZ68220A100101XTVA','RO83TREZ64620A100101XTVA','RO12TREZ46220A100101XTVA','RO33TREZ67920A100101XTVA','RO46TREZ10220A100101XTVA','RO03TREZ07820A100101XTVA','RO57TREZ53920A100101XTVA','RO42TREZ19020A100101XTVA','RO59TREZ20420A100101XTVA','RO05TREZ42220A100101XTVA','RO30TREZ06620A100101XTVA','RO31TREZ52920A100101XTVA','RO31TREZ62620A100101XTVA','RO68TREZ00620A100101XTVA','RO78TREZ56220A100101XTVA','RO32TREZ02220A100101XTVA','RO40TREZ13720A100101XTVA','RO43TREZ07120A100101XTVA','RO66TREZ05020A100101XTVA','RO37TREZ00920A100101XTVA','RO10TREZ11820A100101XTVA','RO84TREZ62420A100101XTVA','RO84TREZ23620A100101XTVA','RO75TREZ62820A100101XTVA','RO04TREZ15320A100101XTVA','RO24TREZ39220A100101XTVA','RO25TREZ27320A100101XTVA','RO64TREZ67620A100101XTVA','RO10TREZ40920A100101XTVA','RO31TREZ23820A100101XTVA','RO47TREZ37120A100101XTVA','RO20TREZ67420A100101XTVA','RO45TREZ22120A100101XTVA','RO26TREZ15420A100101XTVA','RO80TREZ42120A100101XTVA','RO76TREZ02420A100101XTVA','RO79TREZ15220A100101XTVA','RO25TREZ56420A100101XTVA','RO09TREZ62520A100101XTVA','RO37TREZ20320A100101XTVA','RO98TREZ02520A100101XTVA','RO20TREZ48020A100101XTVA','RO92TREZ64220A100101XTVA','RO91TREZ08220A100101XTVA','RO44TREZ04920A100101XTVA','RO18TREZ52420A100101XTVA','RO61TREZ06320A100101XTVA','RO29TREZ18520A100101XTVA','RO47TREZ27420A100101XTVA','RO97TREZ33820A100101XTVA','RO10TREZ50620A100101XTVA','RO77TREZ00220A100101XTVA','RO28TREZ69220A100101XTVA','RO24TREZ00420A100101XTVA','RO76TREZ60620A100101XTVA','RO10TREZ02120A100101XTVA','RO17TREZ06120A100101XTVA','RO22TREZ43620A100101XTVA','RO34TREZ65720A100101XTVA','RO24TREZ10120A100101XTVA','RO02TREZ00320A100101XTVA','RO63TREZ11620A100101XTVA','RO03TREZ36920A100101XTVA','RO57TREZ15120A100101XTVA','RO05TREZ13120A100101XTVA','RO10TREZ70020A100101XTVA','RO96TREZ16620A100101XTVA','RO90TREZ20120A100101XTVA','RO71TREZ52220A100101XTVA','RO97TREZ04720A100101XTVA','RO59TREZ59220A100101XTVA','RO32TREZ50720A100101XTVA','RO60TREZ18220A100101XTVA','RO39TREZ54720A100101XTVA','RO32TREZ21620A100101XTVA','RO71TREZ23120A100101XTVA','RO22TREZ04820A100101XTVA','RO54TREZ21720A100101XTVA','RO34TREZ36620A100101XTVA','RO85TREZ11720A100101XTVA','RO73TREZ67220A100101XTVA','RO87TREZ46120A100101XTVA','RO27TREZ13220A100101XTVA','RO81TREZ59320A100101XTVA','RO06TREZ69120A100101XTVA','RO72TREZ30620A100101XTVA','RO76TREZ21820A100101XTVA','RO06TREZ59420A100101XTVA','RO56TREZ36720A100101XTVA','RO56TREZ65820A100101XTVA','RO41TREZ40620A100101XTVA','RO62TREZ62320A100101XTVA','RO18TREZ23320A100101XTVA','RO93TREZ23220A100101XTVA','RO20TREZ57720A100101XTVA','RO15TREZ20220A100101XTVA','RO39TREZ06220A100101XTVA','RO56TREZ07620A100101XTVA','RO25TREZ37020A100101XTVA','RO63TREZ40720A100101XTVA','RO78TREZ36820A100101XTVA','RO68TREZ49120A100101XTVA','RO75TREZ04620A100101XTVA','RO49TREZ52120A100101XTVA','RO28TREZ59520A100101XTVA','RO21TREZ16720A100101XTVA','RO51TREZ67120A100101XTVA','RO51TREZ47720A100101XTVA','RO38TREZ18120A100101XTVA','RO90TREZ49220A100101XTVA','RO23TREZ60820A100101XTVA','RO17TREZ54620A100101XTVA','RO95TREZ57620A100101XTVA','RO44TREZ43720A100101XTVA','RO73TREZ47820A100101XTVA','RO50TREZ59620A100101XTVA','RO02TREZ39120A100101XTVA','RO37TREZ59120A100101XTVA','RO78TREZ27120A100101XTVA','RO29TREZ47620A100101XTVA','RO95TREZ47920A100101XTVA','RO94TREZ30720A100101XTVA','RO53TREZ33620A100101XTVA','RO18TREZ62120A100101XTVA','RO70TREZ64120A100101XTVA','RO98TREZ21920A100101XTVA','RO98TREZ60720A100101XTVA','RO46TREZ39320A100101XTVA','RO12TREZ65620A100101XTVA','RO56TREZ56120A100101XTVA','RO68TREZ10320A100101XTVA','RO78TREZ65920A100101XTVA','RO61TREZ54820A100101XTVA','RO22TREZ33920A100101XTVA','RO37TREZ49420A100101XTVA','RO15TREZ49320A100101XTVA','RO54TREZ50820A100101XTVA','RO76TREZ50920A100101XTVA','RO73TREZ18720A100101XTVA','RO34TREZ46320A100101XTVA','RO95TREZ18820A100101XTVA','RO72TREZ69420A100101XTVA','RO65TREZ16920A100101XTVA','RO87TREZ17020A100101XTVA','RO69TREZ27520A100101XTVA','RO32TREZ41020A100101XTVA','RO62TREZ13820A100101XTVA','RO44TREZ34020A100101XTVA','RO49TREZ13320A100101XTVA','RO18TREZ13620A100101XTVA','RO02TREZ58520A100101XTVA','RO16TREZ08320A100101XTVA','RO90TREZ10420A100101XTVA','RO53TREZ62720A100101XTVA','RO58TREZ03220A100101XTVA','RO32TREZ11920A100101XTVA','RO46TREZ00520A100101XTVA','RO67TREZ02820A100101XTVA','RO32TREZ70120A100101XTVA','RO54TREZ70220A100101XTVA','RO76TREZ70320A100101XTVA','RO98TREZ70420A100101XTVA','RO23TREZ70520A100101XTVA','RO45TREZ70620A100101XTVA','RO03TREZ56320A100101XTVA','RO62TREZ52620A100101XTVA','RO64TREZ48220A100101XTVA','RO56TREZ46420A100101XTVA','RO39TREZ64420A100101XTVA','RO13TREZ44020A100101XTVA','RO83TREZ54920A100101XTVA','RO19TREZ30820A100101XTVA','RO75TREZ33720A100101XTVA','RO85TREZ40820A100101XTVA','RO91TREZ27620A100101XTVA','RO88TREZ05120A100101XTVA','RO09TREZ52820A100101XTVA','RO78TREZ46520A100101XTVA','RO72TREZ59720A100101XTVA','RO45TREZ60920A100101XTVA','RO35TREZ44120A100101XTVA','RO67TREZ61020A100101XTVA']
-
-listadend300eng=['LIC','Adjustments LIC','LIS','Intra-community services rendered','Adjustments of Intra-community services rendered','AIC','AIC (supplier registered for VAT purposes in the source state)','Adjustments AIC','AIS','Acquisitions of intra-Community services','Ajustments AIS','Supplies of goods and services (19%) ','Supplies of goods and services (9%) ','Supplies of goods and services (5%) ','Acquisition of goods and services subject to simplified measures (local reverse charge)','Acquisition of goods and services (19%) ','Acquisition of goods and services (9%) ','Acquisition of goods and services (5%) ','Supplies of goods and services subject to simplified measures (local reverse charge)','Supplies of goods and services exempted w/deduction right','Supplies of goods and services exempted w/o dduction right','Adjustments supplies of goods and services ','Intra-community supplies of services according to art 278 par(8) of the Fiscal code taxable in Romania','Adjustents of intra-community supplies of services according to art 278 par(8) of the Fiscal code taxable in Romania','Collected VAT','AIC','AIC (supplier registered for VAT purposes in the source state)','Adjustments AIC','AIS','Acquisitions of intra-Community services','Adjustment AIS','Acquisitions of goods and services (19%)','Acquisitions of goods and services (9%)','Acquisitions of goods and services (5%)','Acquisition of goods and services subject to simplified measures (local reverse charge)','Acquisition of goods and services (19%) ','Acquisition of goods and services (9%) ','Acquisition of goods and services (5%) ','Compensation in the flat fee for purchases of agricultural products and services from suppliers applying the special regime','Adjusments of compensation in the flat fee for purchases of agricultural products and services from suppliers applying the special regime','Acquisitions of goods and services VAT exempt or non-taxable, out of which:','Acquisitions of VAT exempt intra-community services (do not fill in fro the simplified method)','Deductible VAT','','Sub-total deductible VAT','VAT effectively refunded to foreign buyers, including the commission of the authorised bodies','Adjustments acquisitions','Adjustments according to pro rata / adjustments for capital goods','Total VAT deducted','Negative VAT amount during the reporting period','VAT payable during the reporting period','VAT payable from previous period not paid until the current submission deadline','VAT differences determined by the tax authorities by decision and unpaid until the submission of the current VAT return','Cumulated VAT payable','Negative VAT amount from previous periods ','Negative VAT differences determined by the tax authorities by decision until the submission of the current VAT return','Cumulated negative VAT amount','Balance of payable VAT at the end of the reporting period','Negative VAT to be reported for future periods','','A','A1','B','B1']
-
-def get_fxrate(year):
-
-
-    # if ccy != "RON":  #pentru valute diferite de ron
-    r=requests.get('http://www.bnr.ro/files/xml/years/nbrfxrates'+str(year)+'.xml') #accesare xml bnr
-    str_xml = r.text    #stocare text xml
-    #     with open("D:/text.txt", "w", encoding="utf-8") as f:
-
-
-
-    #         f.write(str_xml)
-    #     print(str_xml)
-    indexcurs=str_xml.rfind("EUR")
-    index_maimare = str_xml.find(">",indexcurs)
-    index_maimic=str_xml.find("<",index_maimare)
-    valoarecurs=""
-    # for chr in range(index_maimare+1,index_maimic):
-    #     print(str_xml[chr]) 
-    #     valoarecurs = valoarecurs + str_xml[chr]
-    
-
-    # while str_xml.find(str(year)+"-"+str(month)+"-"+str(day)) <= 0: #cautare cea mai apropiata data dispobibila
-    #     date = datetime.datetime.strptime(str(day)+"/"+str(month)+"/"+str(year),'%d/%m/%Y') #transformam in date
-    #     date = date - datetime.timedelta(days=1) #scadem o zi
-    #     day = str(date.day) #stocam zi, luna, an
-    #     month = str(date.month)
-    #     year = str(date.year)
-    #     # print(str(year) + "-" + str(month) + "-" + str(day))
-    #     index_start = str_xml.find("Cube date="+'"'+str(year) + "-" + str(month) + "-" + str(day))
-    #     print(index_start)      #cautarea cursului din aproape in aproape prin manipulare de sir de caractere
-    #     index_end = str_xml.find("</Cube>",index_start)
-    #     print(index_end)
-    #     # for g in range(index_start,index_end):
-    #     text=str_xml[index_start:index_end]
-    #     print(text)
-    #     index_curs = str_xml.find('EUR',index_start,index_end)
-    #     print(index_curs)
-    #     index_maimare = str_xml.find(">",index_curs,index_end)
-    #     index_maimic = str_xml.find("<",index_maimare,index_end)
-    #     print(index_maimic,index_maimare)
-    #     substr=""
-    #     print("sunt aici")
-    valoarecurs=""
-    for chr in range(index_maimare+1,index_maimic):
-        print(str_xml[chr])
-        valoarecurs = valoarecurs + str_xml[chr]
-    else:
-        substr = 1
-    return valoarecurs
 
 def make_archive(source, destination):
-        base = os.path.basename(destination)
-        name = base.split('.')[0]
-        format = base.split('.')[1]
-        archive_from = os.path.dirname(source)
-        archive_to = os.path.basename(source.strip(os.sep))
-        shutil.make_archive(name, format, archive_from, archive_to)
-        shutil.move('%s.%s'%(name,format), destination)
+	base = os.path.basename(destination)
+	name = base.split('.')[0]
+	format = base.split('.')[1]
+	archive_from = os.path.dirname(source)
+	archive_to = os.path.basename(source.strip(os.sep))
+	shutil.make_archive(name, format, archive_from, archive_to)
+	shutil.move('%s.%s'%(name,format), destination)
 
 thin = Side(border_style='thin', color='000000')
 border = Border(left=thin, right=thin, top=thin, bottom=thin)
@@ -213,11 +155,7 @@ def D300xml():
 		val2 = request.form.get('D390')
 		val3 = request.form.get('D394')
 		val4 = request.form.get('xyz')
-		option = request.form['options']
-		dropdown = request.form.get('trezorerie')
 		soldLunaTrecuta = request.form.get('largeAm')
-
-	
 		# #print(soldLunaTrecuta)
 	if val1=="":
 		# #print("Da")  # daca e bifat
@@ -225,7 +163,7 @@ def D300xml():
 	else:
 		#print(val1)            
 		val1 = 0
-		#print("Nu")
+		# #print("Nu")
 
 	if val2=="":  # daca e bifat
 		val2 = 1
@@ -238,13 +176,6 @@ def D300xml():
 	else:
 		#print(val3)            
 		val3 = 0
-		
-	if option=="option1":
-		option=1
-	else:
-		option=0	
-
-
 	#print(val4)
 	#print(val4,"--------------------------------------------")		
 	cap_tabel_color_verde = PatternFill(start_color = '00B050', end_color ='00B050', fill_type = 'solid')
@@ -258,956 +189,9 @@ def D300xml():
 	cap_tabel_color_GT_movinchis = PatternFill(start_color='CCC0DA', end_color='CCC0DA', fill_type='solid')
 
 	temp = openpyxl.load_workbook(D300,data_only=True)
-	ws = temp.active
-	
-	if(option==1):
-		Sheet1=temp.create_sheet('Cover sheet')
-		fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
-		fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
-		font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
-		font1 = Font(name = 'Georgia', size = 10, color = "FFFFFF", bold = True,italic=True)
-		font3 = Font(name = 'Georgia', size = 10, color = "000000",italic=True)
-		culoare = PatternFill(start_color = '182A54', end_color ='182A54', fill_type = 'solid') 
-		culoare2 = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
-		culoare3 = PatternFill(start_color = 'D9E1F2', end_color ='D9E1F2', fill_type = 'solid')
-		culoare4 = PatternFill(start_color = 'E2EFDA', end_color ='E2EFDA', fill_type = 'solid')
-		culoare5 = PatternFill(start_color = 'FFF2CC', end_color ='FFF2CC', fill_type = 'solid')
-		culoare6 = PatternFill(start_color = '808080', end_color ='808080', fill_type = 'solid')
-		font4 = Font(name = 'Georgia', size = 10, color = "000000",underline='single',bold=True)
-		font5 = Font(name = 'Georgia', size = 10, color = "ffffff",underline='single',bold=True)
-		border = Border(bottom=Side(style='dotted'))
-		border2 = Border(top=Side(style='dotted'))
-		border3 = Border(left=Side(style='dotted'))
-		border4 = Border(right=Side(style='dotted'))
-		border5 = Border(left=Side(style='dotted'),top=Side(style='dotted'))
-		border6 = Border(left=Side(style='dotted'),bottom=Side(style='dotted'))
-		border7 = Border(right=Side(style='dotted'),bottom=Side(style='dotted'))
-		border8 = Border(right=Side(style='dotted'),top=Side(style='dotted'))
-		# border9 = Border(right=Side(style='double'),bottom=Side(style='double'),top=Side(style='double'),left=Side(style='double'))
-
-
-		Sheet1.cell(row=31, column=2).border=border2
-		Sheet1.cell(row=31, column=3).border=border2
-		Sheet1.cell(row=31, column=4).border=border2
-		Sheet1.cell(row=31, column=5).border=border2
-		Sheet1.cell(row=31, column=6).border=border2
-		Sheet1.cell(row=31, column=7).border=border2
-		Sheet1.cell(row=31, column=2).border=border5
-		Sheet1.cell(row=31, column=7).border=border8
-
-
-		Sheet1.cell(row=75, column=2).border=border
-		Sheet1.cell(row=75, column=3).border=border
-		Sheet1.cell(row=75, column=4).border=border
-		Sheet1.cell(row=75, column=5).border=border
-		Sheet1.cell(row=75, column=6).border=border
-		Sheet1.cell(row=75, column=7).border=border
-		Sheet1.cell(row=75, column=7).border=border7
-
-		Sheet1.cell(row=32, column=2).border=border3
-		Sheet1.cell(row=33, column=2).border=border3
-		Sheet1.cell(row=34, column=2).border=border3
-		Sheet1.cell(row=35, column=2).border=border3
-		Sheet1.cell(row=36, column=2).border=border3
-		Sheet1.cell(row=37, column=2).border=border3
-		Sheet1.cell(row=38, column=2).border=border3
-		Sheet1.cell(row=39, column=2).border=border3
-		Sheet1.cell(row=40, column=2).border=border3
-		Sheet1.cell(row=41, column=2).border=border3
-		Sheet1.cell(row=42, column=2).border=border3
-		Sheet1.cell(row=43, column=2).border=border3
-		Sheet1.cell(row=44, column=2).border=border3
-		Sheet1.cell(row=45, column=2).border=border3
-		Sheet1.cell(row=46, column=2).border=border3
-		Sheet1.cell(row=47, column=2).border=border3
-		Sheet1.cell(row=48, column=2).border=border3
-		Sheet1.cell(row=49, column=2).border=border3
-		Sheet1.cell(row=50, column=2).border=border3
-		Sheet1.cell(row=51, column=2).border=border3
-		Sheet1.cell(row=52, column=2).border=border3
-		Sheet1.cell(row=53, column=2).border=border3
-		Sheet1.cell(row=54, column=2).border=border3
-		Sheet1.cell(row=55, column=2).border=border3
-		Sheet1.cell(row=75, column=2).border=border6
-		Sheet1.cell(row=56, column=2).border=border3
-		Sheet1.cell(row=57, column=2).border=border3
-		Sheet1.cell(row=58, column=2).border=border3
-		Sheet1.cell(row=59, column=2).border=border3
-		Sheet1.cell(row=60, column=2).border=border3
-		Sheet1.cell(row=61, column=2).border=border3
-		Sheet1.cell(row=62, column=2).border=border3
-		Sheet1.cell(row=63, column=2).border=border3
-		Sheet1.cell(row=64, column=2).border=border3
-		Sheet1.cell(row=65, column=2).border=border3
-		Sheet1.cell(row=66, column=2).border=border3
-		Sheet1.cell(row=67, column=2).border=border3
-		Sheet1.cell(row=68, column=2).border=border3
-		Sheet1.cell(row=69, column=2).border=border3
-		Sheet1.cell(row=70, column=2).border=border3
-		Sheet1.cell(row=71, column=2).border=border3
-		Sheet1.cell(row=72, column=2).border=border3
-		Sheet1.cell(row=73, column=2).border=border3
-		Sheet1.cell(row=74, column=2).border=border3
-
-		Sheet1.cell(row=32, column=7).border=border4
-		Sheet1.cell(row=33, column=7).border=border4
-		Sheet1.cell(row=34, column=7).border=border4
-		Sheet1.cell(row=35, column=7).border=border4
-		Sheet1.cell(row=36, column=7).border=border4
-		Sheet1.cell(row=37, column=7).border=border4
-		Sheet1.cell(row=38, column=7).border=border4
-		Sheet1.cell(row=39, column=7).border=border4
-		Sheet1.cell(row=40, column=7).border=border4
-		Sheet1.cell(row=41, column=7).border=border4
-		Sheet1.cell(row=42, column=7).border=border4
-		Sheet1.cell(row=43, column=7).border=border4
-		Sheet1.cell(row=44, column=7).border=border4
-		Sheet1.cell(row=45, column=7).border=border4
-		Sheet1.cell(row=46, column=7).border=border4
-		Sheet1.cell(row=47, column=7).border=border4
-		Sheet1.cell(row=48, column=7).border=border4
-		Sheet1.cell(row=49, column=7).border=border4
-		Sheet1.cell(row=50, column=7).border=border4
-		Sheet1.cell(row=51, column=7).border=border4
-		Sheet1.cell(row=52, column=7).border=border4
-		Sheet1.cell(row=53, column=7).border=border4
-		Sheet1.cell(row=54, column=7).border=border4
-		Sheet1.cell(row=55, column=7).border=border4
-		Sheet1.cell(row=56, column=7).border=border4
-		Sheet1.cell(row=57, column=7).border=border4
-		Sheet1.cell(row=58, column=7).border=border4
-		Sheet1.cell(row=59, column=7).border=border4
-		Sheet1.cell(row=60, column=7).border=border4
-		Sheet1.cell(row=61, column=7).border=border4
-		Sheet1.cell(row=62, column=7).border=border4
-		Sheet1.cell(row=63, column=7).border=border4
-		Sheet1.cell(row=64, column=7).border=border4
-		Sheet1.cell(row=65, column=7).border=border4
-		Sheet1.cell(row=66, column=7).border=border4
-		Sheet1.cell(row=67, column=7).border=border4
-		Sheet1.cell(row=68, column=7).border=border4
-		Sheet1.cell(row=69, column=7).border=border4
-		Sheet1.cell(row=70, column=7).border=border4
-		Sheet1.cell(row=71, column=7).border=border4
-		Sheet1.cell(row=72, column=7).border=border4
-		Sheet1.cell(row=73, column=7).border=border4
-		Sheet1.cell(row=74, column=7).border=border4
-		info=temp['Other info']
-		valluna=""
-		vallunaurmatoare=""
-		valIban=""
-		okdecembrie=0
-		for i in range(0,len(listaluni)):
-			if(str(info.cell(row=3,column=3).value)=="12"):
-				okdecembrie=1
-				vallunaurmatoare=listadenluni[0]
-				valluna=listadenluni[11]
-			else:
-				if(listaluni[i]==str(info.cell(row=3,column=3).value)):
-					valluna=listadenluni[i]
-					vallunaurmatoare=listadenluni[i+1]
-		var=Sheet1.cell(row=12,column=4).value
-		print(var)
-		Sheet1.cell(row = 10, column = 4).value = str(dropdown)
-		for j in range(0,len(listatrez)):
-			if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
-				valIban=listaiban[j]
-		Sheet1.cell(row=60, column=3).value='Perioada de plata: '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
-		Sheet1.cell(row=61, column=3).value="Suma de plata: RON "
-		Sheet1.cell(row=62, column=3).value="Moneda: RON"
-		Sheet1.cell(row=63, column=3).value='Detalii plata: Decont TVA - '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
-		if(okdecembrie==1):
-			Sheet1.cell(row=64, column=3).value='Data scadenta: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value+1)
-		else:
-			Sheet1.cell(row=64, column=3).value='Data scadenta: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value)
-		Sheet1.cell(row=66, column=3).value='="Cod TVA: " & D8'
-		Sheet1.cell(row=67, column=3).value='="Adresa: " &D7'
-		Sheet1.cell(row=69, column=3).value="Beneficiar: BUGETUL DE STAT"
-		Sheet1.cell(row=70, column=3).value='Cont IBAN: '+ str(valIban)
-		Sheet1.cell(row=71, column=3).value="SWIFT / BIC: TREZROBU"
-		Sheet1.cell(row=72, column=3).value="Deschis la:"+str(dropdown)
-		Sheet1.cell(row=74, column=3).value="Nota: Orice taxe bancare legate de plata trebuie sa fie acoperite de catre platitor"
-		Sheet1.cell(row=74, column=3).font=font2
-		
-
-		Sheet1.cell(row=14, column=3).value="Sumar"
-		Sheet1.cell(row=14, column=3).font=font4
-		Sheet1.cell(row=58, column=3).value="ORDIN DE PLATA"
-		Sheet1.cell(row=58, column=3).font=font5
-
-		for row in Sheet1['A1:N100']:
-					for cell in row:
-						cell.fill = fonta
-
-		for row in Sheet1['N1:Z100']:
-					for cell in row:
-						cell.fill = fontg
-		print(get_fxrate(today.year))
-
-		Sheet1.cell(row = 6, column = 3).value = "Denumire"
-		Sheet1.cell(row = 6, column = 4).value = "='Other info'!C4"
-		Sheet1.cell(row = 7, column = 3).value = "Adresa"
-		Sheet1.cell(row = 7, column = 4).value = "='Other info'!C6"
-		Sheet1.cell(row = 8, column = 3).value = "CUI"
-		Sheet1.cell(row = 8, column = 4).value = "='Other info'!C5"
-		Sheet1['D8'].alignment = Alignment(wrapText=True, horizontal='left')
-		Sheet1.cell(row = 9, column = 3).value = "Nr. Reg. Com."
-		Sheet1.cell(row = 9, column = 4).value = "J08/1139/2017"
-		Sheet1.cell(row = 10, column = 3).value = "Administratia de care apartine"
-		Sheet1.cell(row = 10, column = 4).value = str(dropdown)
-		Sheet1.cell(row = 11, column = 3).value = "Frecventa depunere declaratie/plata"
-		Sheet1.cell(row = 11, column = 4).value = "Monthly"
-		Sheet1.cell(row = 12, column = 3).value = "Perioada de raportare"
-		Sheet1.cell(row = 12, column = 4).value = "=date('Other info'!C2,'Other info'!C3,1)"
-		Sheet1.cell(row = 12, column = 4).number_format = 'mmmm yyyy'
-
-		Sheet1.cell(row = 43, column = 4).value="Yes"
-		Sheet1.cell(row = 46, column = 4).value="N/a"
-		Sheet1.cell(row = 47, column = 4).value="N/a"
-		Sheet1.cell(row = 50, column = 4).value="N/a"
-		Sheet1.cell(row = 51, column = 4).value="N/a"
-		Sheet1.cell(row = 43, column = 4).font=font5
-		Sheet1.cell(row = 46, column = 4).font=font5
-		Sheet1.cell(row = 47, column = 4).font=font5
-		Sheet1.cell(row = 50, column = 4).font=font5
-		Sheet1.cell(row = 51, column = 4).font=font5
-
-
-		Sheet1.cell(row = 6, column = 3).font=font1
-		Sheet1.cell(row = 6, column = 4).font=font2
-		Sheet1.cell(row = 7, column = 3).font=font1
-		Sheet1.cell(row = 7, column = 4).font=font2
-		Sheet1.cell(row = 8, column = 3).font=font1
-		Sheet1.cell(row = 8, column = 4).font=font2
-		Sheet1.cell(row = 9, column = 3).font=font1
-		Sheet1.cell(row = 9, column = 4).font=font2
-		Sheet1.cell(row = 10, column = 3).font=font1
-		Sheet1.cell(row = 10, column = 4).font=font3
-		Sheet1.cell(row = 11, column = 3).font=font1
-		Sheet1.cell(row = 11, column = 4).font=font3
-		Sheet1.cell(row = 12, column = 3).font=font1
-		Sheet1.cell(row = 12, column = 4).font=font3
-
-		Sheet1.cell(row = 6, column = 3).fill=culoare
-		Sheet1.cell(row = 7, column = 3).fill=culoare
-		Sheet1.cell(row = 8, column = 3).fill=culoare
-		Sheet1.cell(row = 9, column = 3).fill=culoare
-		Sheet1.cell(row = 10, column = 3).fill=culoare
-		Sheet1.cell(row = 11, column = 3).fill=culoare
-		Sheet1.cell(row = 12, column = 3).fill=culoare
-		Sheet1.cell(row = 6, column = 4).fill=culoare2
-		Sheet1.cell(row = 7, column = 4).fill=culoare2
-		Sheet1.cell(row = 8, column = 4).fill=culoare2
-		Sheet1.cell(row = 9, column = 4).fill=culoare2
-		Sheet1.cell(row = 10, column = 4).fill=culoare2
-		Sheet1.cell(row = 11, column = 4).fill=culoare2
-		Sheet1.cell(row = 12, column = 4).fill=culoare2
-
-		Sheet1.cell(row = 16, column = 3).fill=culoare
-		Sheet1.cell(row=16, column=3).font=font1
-		Sheet1.cell(row=16, column=3).value="  D300"
-		Sheet1.cell(row=16, column=3).hyperlink="#'D300 draft figures'!A1"
-		# Sheet1.cell(row=16, column=3).border=border9
-		Sheet1.row_dimensions[18].height=8
-
-		Sheet1.cell(row = 19, column = 3).fill=culoare
-		Sheet1.cell(row=19, column=3).font=font1
-		Sheet1.cell(row=19, column=3).value="  D390"
-		Sheet1.cell(row=19, column=3).hyperlink="#'D390 workings'!A1"
-		# Sheet1.cell(row=19, column=3).border=border9
-		Sheet1.row_dimensions[21].height=8
-
-		Sheet1.cell(row = 22, column = 3).fill=culoare
-		Sheet1.cell(row=22, column=3).font=font1
-		Sheet1.cell(row=22, column=3).value="  D394"
-		Sheet1.cell(row=22, column=3).hyperlink="#'D394--->>>'!A1"
-		# Sheet1.cell(row=22, column=3).border=border9
-		Sheet1.row_dimensions[24].height=8
-
-		Sheet1.cell(row = 25, column = 3).fill=culoare
-		Sheet1.cell(row=25, column=3).font=font1
-		Sheet1.cell(row=25, column=3).value="  Jurnal vanzari"
-		Sheet1.cell(row=25, column=3).hyperlink="#'Sales'!A1"
-		# Sheet1.cell(row=25, column=3).border=border9
-		Sheet1.row_dimensions[27].height=8
-
-		Sheet1.cell(row = 28, column = 3).fill=culoare
-		Sheet1.cell(row=28, column=3).font=font1
-		Sheet1.cell(row=28, column=3).value="  Jurnal cumparari"
-		Sheet1.cell(row=28, column=3).hyperlink="#'Purchases'!A1"
-		# Sheet1.cell(row=28, column=3).border=border9
-		Sheet1.row_dimensions[30].height=8
-
-
-		Sheet1.cell(row = 58, column = 3).fill=culoare6
-		Sheet1.cell(row = 32, column = 3).fill=culoare3
-		Sheet1.cell(row = 33, column = 3).fill=culoare3
-		Sheet1.cell(row = 34, column = 3).fill=culoare3
-		Sheet1.cell(row = 35, column = 3).fill=culoare3
-		Sheet1.cell(row = 36, column = 3).fill=culoare3
-		Sheet1.cell(row = 37, column = 3).fill=culoare3
-		Sheet1.cell(row = 38, column = 3).fill=culoare3
-		Sheet1.cell(row = 39, column = 3).fill=culoare3
-		Sheet1.cell(row = 32, column = 4).fill=culoare3
-		Sheet1.cell(row = 33, column = 4).fill=culoare3
-		Sheet1.cell(row = 34, column = 4).fill=culoare3
-		Sheet1.cell(row = 35, column = 4).fill=culoare3
-		Sheet1.cell(row = 36, column = 4).fill=culoare3
-		Sheet1.cell(row = 37, column = 4).fill=culoare3
-		Sheet1.cell(row = 38, column = 4).fill=culoare3
-		Sheet1.cell(row = 39, column = 4).fill=culoare3
-		Sheet1.cell(row = 32, column = 6).fill=culoare3
-		Sheet1.cell(row = 33, column = 6).fill=culoare3
-		Sheet1.cell(row = 34, column = 6).fill=culoare3
-		Sheet1.cell(row = 35, column = 6).fill=culoare3
-		Sheet1.cell(row = 36, column = 6).fill=culoare3
-		Sheet1.cell(row = 37, column = 6).fill=culoare3
-		Sheet1.cell(row = 38, column = 6).fill=culoare3
-		Sheet1.cell(row = 39, column = 6).fill=culoare3
-
-		Sheet1.cell(row = 41, column = 6).fill=culoare4
-		Sheet1.cell(row = 42, column = 6).fill=culoare4
-		Sheet1.cell(row = 43, column = 6).fill=culoare4
-		Sheet1.cell(row = 44, column = 6).fill=culoare4
-		Sheet1.cell(row = 45, column = 6).fill=culoare4
-		Sheet1.cell(row = 46, column = 6).fill=culoare4
-		Sheet1.cell(row = 47, column = 6).fill=culoare4
-		Sheet1.cell(row = 48, column = 6).fill=culoare4
-		Sheet1.cell(row = 49, column = 6).fill=culoare4
-		Sheet1.cell(row = 50, column = 6).fill=culoare4
-		Sheet1.cell(row = 51, column = 6).fill=culoare4
-		Sheet1.cell(row = 41, column = 3).fill=culoare4
-		Sheet1.cell(row = 42, column = 3).fill=culoare4
-		Sheet1.cell(row = 43, column = 3).fill=culoare4
-		Sheet1.cell(row = 44, column = 3).fill=culoare4
-		Sheet1.cell(row = 45, column = 3).fill=culoare4
-		Sheet1.cell(row = 46, column = 3).fill=culoare4
-		Sheet1.cell(row = 47, column = 3).fill=culoare4
-		Sheet1.cell(row = 48, column = 3).fill=culoare4
-		Sheet1.cell(row = 49, column = 3).fill=culoare4
-		Sheet1.cell(row = 50, column = 3).fill=culoare4
-		Sheet1.cell(row = 51, column = 3).fill=culoare4
-		Sheet1.cell(row = 41, column = 4).fill=culoare4
-		Sheet1.cell(row = 42, column = 4).fill=culoare4
-		Sheet1.cell(row = 43, column = 4).fill=culoare6
-		Sheet1.cell(row = 44, column = 4).fill=culoare4
-		Sheet1.cell(row = 45, column = 4).fill=culoare4
-		Sheet1.cell(row = 46, column = 4).fill=culoare6
-		Sheet1.cell(row = 47, column = 4).fill=culoare6
-		Sheet1.cell(row = 48, column = 4).fill=culoare4
-		Sheet1.cell(row = 49, column = 4).fill=culoare4
-		Sheet1.cell(row = 50, column = 4).fill=culoare6
-		Sheet1.cell(row = 51, column = 4).fill=culoare6
-
-		Sheet1.cell(row = 53, column = 4).fill=culoare5
-		Sheet1.cell(row = 54, column = 4).fill=culoare5
-		Sheet1.cell(row = 55, column = 4).fill=culoare5
-		Sheet1.cell(row = 53, column = 3).fill=culoare5
-		Sheet1.cell(row = 54, column = 3).fill=culoare5
-		Sheet1.cell(row = 55, column = 3).fill=culoare5
-		Sheet1.cell(row = 53, column = 6).fill=culoare5
-		Sheet1.cell(row = 54, column = 6).fill=culoare5
-		Sheet1.cell(row = 55, column = 6).fill=culoare5
-
-
-		Sheet1.cell(row = 32, column = 3).value="Pozitia curenta din punct de vedere TVA"
-		Sheet1.cell(row = 32, column = 3).font=font4
-		Sheet1.cell(row = 34, column = 3).value="Input TVA perioada curenta"
-		Sheet1.cell(row = 35, column = 3).value="Output TVA perioada curenta"
-		Sheet1.cell(row = 36, column = 3).value="TVA de plata perioada curenta"
-		Sheet1.cell(row = 37, column = 3).value="TVA de recuperat perioada curenta"
-		Sheet1.cell(row = 38, column = 3).value="TVA in curs de decontare pentru achizitii"
-		Sheet1.cell(row = 39, column = 3).value="TVA in curs de decontare pentru livrari"
-		Sheet1.cell(row = 32, column = 4).value="RON"
-
-		Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
-		Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-		Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-		Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-		Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
-
-		Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=38, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=39, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=39, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=55, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'				
-
-		Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-		Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-		Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row = 39, column = 4).value=0
-		Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
-IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
-IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
-IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-		Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
-
-		Sheet1.cell(row = 41, column = 3).value="Pozitia reportata"
-		Sheet1.cell(row = 41, column = 3).font=font4
-		Sheet1.row_dimensions[42].height = 0.2
-		Sheet1.cell(row = 43, column = 3).value="Solicitat la rambursare"
-		Sheet1.cell(row = 44, column = 3).value
-		Sheet1.cell(row = 45, column = 3).value="TVA de rambursat nesolicitat"
-		Sheet1.cell(row = 46, column = 3).value="Perioada"
-		Sheet1.cell(row = 47, column = 3).value="Suma"
-		Sheet1.cell(row = 48, column = 3).value
-		Sheet1.cell(row = 49, column = 3).value="TVA de rambursat solicitat si in curs de auditare"
-		Sheet1.cell(row = 50, column = 3).value="Perioada"
-		Sheet1.cell(row = 51, column = 3).value="Suma"
-
-
-		Sheet1.cell(row = 53, column = 3).value="Pozitia balantei de TVA"
-		Sheet1.cell(row = 53, column = 3).font=font4
-		Sheet1.cell(row = 55, column = 3).value="Pozitia TVA in exercitiul curent"
-
-
-		Sheet1['C16'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['C19'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['C22'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['C25'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['C28'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['D10'].alignment = Alignment(wrapText=True, horizontal='right')
-		Sheet1['D11'].alignment = Alignment(wrapText=True, horizontal='right')
-		Sheet1['D12'].alignment = Alignment(wrapText=True, horizontal='right')
-		Sheet1['C58'].alignment = Alignment(wrapText=True, horizontal='center')
-
-		Sheet1.column_dimensions['C'].width = 65
-		Sheet1.column_dimensions['D'].width = 20
-		Sheet1.column_dimensions['A'].width = 2
-		Sheet1.column_dimensions['B'].width = 3
-		Sheet1.column_dimensions['E'].width = 1
-		Sheet1.column_dimensions['F'].width = 20
-		Sheet1.column_dimensions['G'].width = 2
-
-		# img= openpyxl.drawing.image.Image('test.png')
-		# Sheet1.add_image(img,'C16')
-
-		# img= openpyxl.drawing.image.Image('test2.png')
-		# Sheet1.add_image(img,'C19')
-
-		# img= openpyxl.drawing.image.Image('test10.png')
-		# Sheet1.add_image(img,'C22')
-
-		# img= openpyxl.drawing.image.Image('test6.png')
-		# Sheet1.add_image(img,'C25')
-
-		# img= openpyxl.drawing.image.Image('test7.png')
-		# Sheet1.add_image(img,'C28')
-
-		# img= openpyxl.drawing.image.Image('test6.png')
-		# Sheet1.add_image(img,'D16')
-
-		# img= openpyxl.drawing.image.Image('test7.png')
-		# Sheet1.add_image(img,'D19')
-
-		# img= openpyxl.drawing.image.Image('test8.png')
-		# Sheet1.add_image(img,'D22')
-
-		# img= openpyxl.drawing.image.Image('test9.png')
-		# Sheet1.add_image(img,'D25')
-
-		# img= openpyxl.drawing.image.Image('test5.png')
-		# Sheet1.add_image(img,'D28')
-
-		Sheet1.merge_cells(start_row=28, start_column=3, end_row=29, end_column=3)
-		Sheet1.merge_cells(start_row=25, start_column=3, end_row=26, end_column=3)
-		Sheet1.merge_cells(start_row=22, start_column=3, end_row=23, end_column=3)
-		Sheet1.merge_cells(start_row=19, start_column=3, end_row=20, end_column=3)
-		Sheet1.merge_cells(start_row=16, start_column=3, end_row=17, end_column=3)
-		Sheet1.merge_cells(start_row=6, start_column=4, end_row=6, end_column=12)
-		Sheet1.merge_cells(start_row=7, start_column=4, end_row=7, end_column=12)
-		Sheet1.merge_cells(start_row=8, start_column=4, end_row=8, end_column=12)
-		Sheet1.merge_cells(start_row=9, start_column=4, end_row=9, end_column=12)
-		Sheet1.merge_cells(start_row=10, start_column=4, end_row=10, end_column=12)
-		Sheet1.merge_cells(start_row=11, start_column=4, end_row=11, end_column=12)
-		Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
-		Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
-
-	if(option==0):
-		Sheet1=temp.create_sheet('Cover sheet')
-		fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
-		fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
-		font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
-		font1 = Font(name = 'Georgia', size = 10, color = "FFFFFF", bold = True,italic=True)
-		font3 = Font(name = 'Georgia', size = 10, color = "000000",italic=True)
-		culoare = PatternFill(start_color = '182A54', end_color ='182A54', fill_type = 'solid') 
-		culoare2 = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
-		culoare3 = PatternFill(start_color = 'D9E1F2', end_color ='D9E1F2', fill_type = 'solid')
-		culoare4 = PatternFill(start_color = 'E2EFDA', end_color ='E2EFDA', fill_type = 'solid')
-		culoare5 = PatternFill(start_color = 'FFF2CC', end_color ='FFF2CC', fill_type = 'solid')
-		culoare6 = PatternFill(start_color = '808080', end_color ='808080', fill_type = 'solid')
-		font4 = Font(name = 'Georgia', size = 10, color = "000000",underline='single',bold=True)
-		font5 = Font(name = 'Georgia', size = 10, color = "ffffff",underline='single',bold=True)
-		border = Border(bottom=Side(style='dotted'))
-		border2 = Border(top=Side(style='dotted'))
-		border3 = Border(left=Side(style='dotted'))
-		border4 = Border(right=Side(style='dotted'))
-		border5 = Border(left=Side(style='dotted'),top=Side(style='dotted'))
-		border6 = Border(left=Side(style='dotted'),bottom=Side(style='dotted'))
-		border7 = Border(right=Side(style='dotted'),bottom=Side(style='dotted'))
-		border8 = Border(right=Side(style='dotted'),top=Side(style='dotted'))
-		# border9 = Border(right=Side(style='double'),bottom=Side(style='double'),top=Side(style='double'),left=Side(style='double'))
-
-		Sheet1.cell(row=31, column=2).border=border2
-		Sheet1.cell(row=31, column=3).border=border2
-		Sheet1.cell(row=31, column=4).border=border2
-		Sheet1.cell(row=31, column=5).border=border2
-		Sheet1.cell(row=31, column=6).border=border2
-		Sheet1.cell(row=31, column=7).border=border2
-		Sheet1.cell(row=31, column=2).border=border5
-		Sheet1.cell(row=31, column=7).border=border8
-
-
-		Sheet1.cell(row=75, column=2).border=border
-		Sheet1.cell(row=75, column=3).border=border
-		Sheet1.cell(row=75, column=4).border=border
-		Sheet1.cell(row=75, column=5).border=border
-		Sheet1.cell(row=75, column=6).border=border
-		Sheet1.cell(row=75, column=7).border=border
-		Sheet1.cell(row=75, column=7).border=border7
-
-		Sheet1.cell(row=32, column=2).border=border3
-		Sheet1.cell(row=33, column=2).border=border3
-		Sheet1.cell(row=34, column=2).border=border3
-		Sheet1.cell(row=35, column=2).border=border3
-		Sheet1.cell(row=36, column=2).border=border3
-		Sheet1.cell(row=37, column=2).border=border3
-		Sheet1.cell(row=38, column=2).border=border3
-		Sheet1.cell(row=39, column=2).border=border3
-		Sheet1.cell(row=40, column=2).border=border3
-		Sheet1.cell(row=41, column=2).border=border3
-		Sheet1.cell(row=42, column=2).border=border3
-		Sheet1.cell(row=43, column=2).border=border3
-		Sheet1.cell(row=44, column=2).border=border3
-		Sheet1.cell(row=45, column=2).border=border3
-		Sheet1.cell(row=46, column=2).border=border3
-		Sheet1.cell(row=47, column=2).border=border3
-		Sheet1.cell(row=48, column=2).border=border3
-		Sheet1.cell(row=49, column=2).border=border3
-		Sheet1.cell(row=50, column=2).border=border3
-		Sheet1.cell(row=51, column=2).border=border3
-		Sheet1.cell(row=52, column=2).border=border3
-		Sheet1.cell(row=53, column=2).border=border3
-		Sheet1.cell(row=54, column=2).border=border3
-		Sheet1.cell(row=55, column=2).border=border3
-		Sheet1.cell(row=75, column=2).border=border6
-		Sheet1.cell(row=56, column=2).border=border3
-		Sheet1.cell(row=57, column=2).border=border3
-		Sheet1.cell(row=58, column=2).border=border3
-		Sheet1.cell(row=59, column=2).border=border3
-		Sheet1.cell(row=60, column=2).border=border3
-		Sheet1.cell(row=61, column=2).border=border3
-		Sheet1.cell(row=62, column=2).border=border3
-		Sheet1.cell(row=63, column=2).border=border3
-		Sheet1.cell(row=64, column=2).border=border3
-		Sheet1.cell(row=65, column=2).border=border3
-		Sheet1.cell(row=66, column=2).border=border3
-		Sheet1.cell(row=67, column=2).border=border3
-		Sheet1.cell(row=68, column=2).border=border3
-		Sheet1.cell(row=69, column=2).border=border3
-		Sheet1.cell(row=70, column=2).border=border3
-		Sheet1.cell(row=71, column=2).border=border3
-		Sheet1.cell(row=72, column=2).border=border3
-		Sheet1.cell(row=73, column=2).border=border3
-		Sheet1.cell(row=74, column=2).border=border3
-
-		Sheet1.cell(row=32, column=7).border=border4
-		Sheet1.cell(row=33, column=7).border=border4
-		Sheet1.cell(row=34, column=7).border=border4
-		Sheet1.cell(row=35, column=7).border=border4
-		Sheet1.cell(row=36, column=7).border=border4
-		Sheet1.cell(row=37, column=7).border=border4
-		Sheet1.cell(row=38, column=7).border=border4
-		Sheet1.cell(row=39, column=7).border=border4
-		Sheet1.cell(row=40, column=7).border=border4
-		Sheet1.cell(row=41, column=7).border=border4
-		Sheet1.cell(row=42, column=7).border=border4
-		Sheet1.cell(row=43, column=7).border=border4
-		Sheet1.cell(row=44, column=7).border=border4
-		Sheet1.cell(row=45, column=7).border=border4
-		Sheet1.cell(row=46, column=7).border=border4
-		Sheet1.cell(row=47, column=7).border=border4
-		Sheet1.cell(row=48, column=7).border=border4
-		Sheet1.cell(row=49, column=7).border=border4
-		Sheet1.cell(row=50, column=7).border=border4
-		Sheet1.cell(row=51, column=7).border=border4
-		Sheet1.cell(row=52, column=7).border=border4
-		Sheet1.cell(row=53, column=7).border=border4
-		Sheet1.cell(row=54, column=7).border=border4
-		Sheet1.cell(row=55, column=7).border=border4
-		Sheet1.cell(row=56, column=7).border=border4
-		Sheet1.cell(row=57, column=7).border=border4
-		Sheet1.cell(row=58, column=7).border=border4
-		Sheet1.cell(row=59, column=7).border=border4
-		Sheet1.cell(row=60, column=7).border=border4
-		Sheet1.cell(row=61, column=7).border=border4
-		Sheet1.cell(row=62, column=7).border=border4
-		Sheet1.cell(row=63, column=7).border=border4
-		Sheet1.cell(row=64, column=7).border=border4
-		Sheet1.cell(row=65, column=7).border=border4
-		Sheet1.cell(row=66, column=7).border=border4
-		Sheet1.cell(row=67, column=7).border=border4
-		Sheet1.cell(row=68, column=7).border=border4
-		Sheet1.cell(row=69, column=7).border=border4
-		Sheet1.cell(row=70, column=7).border=border4
-		Sheet1.cell(row=71, column=7).border=border4
-		Sheet1.cell(row=72, column=7).border=border4
-		Sheet1.cell(row=73, column=7).border=border4
-		Sheet1.cell(row=74, column=7).border=border4
-		
-
-		Sheet1.cell(row=14, column=3).value="Summary"
-		Sheet1.cell(row=14, column=3).font=font4
-		Sheet1.cell(row=58, column=3).value="PAYMENT ORDER"
-		Sheet1.cell(row=58, column=3).font=font5
-
-		for row in Sheet1['A1:N100']:
-					for cell in row:
-						cell.fill = fonta
-
-		for row in Sheet1['N1:Z100']:
-					for cell in row:
-						cell.fill = fontg
-
-
-		Sheet1.cell(row = 6, column = 3).value = "Company"
-		Sheet1.cell(row = 6, column = 4).value = "='Other info'!C4"
-		Sheet1.cell(row = 7, column = 3).value = "Address"
-		Sheet1.cell(row = 7, column = 4).value = "='Other info'!C6"
-		Sheet1.cell(row = 8, column = 3).value = "VAT tax code"
-		Sheet1.cell(row = 8, column = 4).value = "='Other info'!C5"
-		Sheet1['D8'].alignment = Alignment(wrapText=True, horizontal='left')
-		Sheet1.cell(row = 9, column = 3).value = "Registration no."
-		Sheet1.cell(row = 9, column = 4).value = "J08/1139/2017"
-		Sheet1.cell(row = 10, column = 3).value = "The administration it belongs to"
-		Sheet1.cell(row = 10, column = 4).value = str(dropdown)
-		Sheet1.cell(row = 11, column = 3).value = "Frequency of declaration / payment"
-		Sheet1.cell(row = 11, column = 4).value = "Monthly"
-		Sheet1.cell(row = 12, column = 3).value = "Reporting period"
-		Sheet1.cell(row = 12, column = 4).value = "=date('Other info'!C2,'Other info'!C3,1)"
-		Sheet1.cell(row = 12, column = 4).number_format = 'mmmm yyyy'
-
-		Sheet1.cell(row = 43, column = 4).value="Yes"
-		Sheet1.cell(row = 46, column = 4).value="N/a"
-		Sheet1.cell(row = 47, column = 4).value="N/a"
-		Sheet1.cell(row = 50, column = 4).value="N/a"
-		Sheet1.cell(row = 51, column = 4).value="N/a"
-		Sheet1.cell(row = 43, column = 4).font=font5
-		Sheet1.cell(row = 46, column = 4).font=font5
-		Sheet1.cell(row = 47, column = 4).font=font5
-		Sheet1.cell(row = 50, column = 4).font=font5
-		Sheet1.cell(row = 51, column = 4).font=font5
-		info=temp['Other info']
-		valluna=""
-		vallunaurmatoare=""
-		valIban=""
-		okdecembrie=0
-		for i in range(0,len(listaluni)):
-			if(str(info.cell(row=3,column=3).value)=="12"):
-				okdecembrie=1
-				vallunaurmatoare=listadenluni2[0]
-				valluna=listadenluni2[11]
-			else:
-				if(listaluni[i]==str(info.cell(row=3,column=3).value)):
-					valluna=listadenluni2[i]
-					vallunaurmatoare=listadenluni2[i+1]
-		var=Sheet1.cell(row=12,column=4).value
-		print(var)
-		Sheet1.cell(row = 10, column = 4).value = str(dropdown)
-		for j in range(0,len(listatrez)):
-			if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
-				valIban=listaiban[j]
-		Sheet1.cell(row=60, column=3).value='Payment period: '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
-		Sheet1.cell(row=61, column=3).value="Payable amount: RON "
-		Sheet1.cell(row=62, column=3).value="Currency: RON"
-		Sheet1.cell(row=63, column=3).value='Payment details: VAT return - '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
-		if(okdecembrie==1):
-			Sheet1.cell(row=64, column=3).value='Deadline: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value+1)
-		else:
-			Sheet1.cell(row=64, column=3).value='Deadline: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value)
-		Sheet1.cell(row=66, column=3).value='="Payer TIN: " & D8'
-		Sheet1.cell(row=67, column=3).value='="Payer address: " &D7'
-		Sheet1.cell(row=69, column=3).value="Beneficiary: BUGETUL DE STAT"
-		Sheet1.cell(row=70, column=3).value='IBAN: '+ str(valIban)
-		Sheet1.cell(row=71, column=3).value="SWIFT / BIC: TREZROBU"
-		Sheet1.cell(row=72, column=3).value="Bank / Treasury:"+str(dropdown)
-		Sheet1.cell(row=74, column=3).value="Note: Any banking fees connected with the payment must be covered by the tax payer."
-		Sheet1.cell(row=74, column=3).font=font2
-
-		Sheet1.cell(row = 6, column = 3).font=font1
-		Sheet1.cell(row = 6, column = 4).font=font2
-		Sheet1.cell(row = 7, column = 3).font=font1
-		Sheet1.cell(row = 7, column = 4).font=font2
-		Sheet1.cell(row = 8, column = 3).font=font1
-		Sheet1.cell(row = 8, column = 4).font=font2
-		Sheet1.cell(row = 9, column = 3).font=font1
-		Sheet1.cell(row = 9, column = 4).font=font2
-		Sheet1.cell(row = 10, column = 3).font=font1
-		Sheet1.cell(row = 10, column = 4).font=font3
-		Sheet1.cell(row = 11, column = 3).font=font1
-		Sheet1.cell(row = 11, column = 4).font=font3
-		Sheet1.cell(row = 12, column = 3).font=font1
-		Sheet1.cell(row = 12, column = 4).font=font3
-
-		Sheet1.cell(row = 6, column = 3).fill=culoare
-		Sheet1.cell(row = 7, column = 3).fill=culoare
-		Sheet1.cell(row = 8, column = 3).fill=culoare
-		Sheet1.cell(row = 9, column = 3).fill=culoare
-		Sheet1.cell(row = 10, column = 3).fill=culoare
-		Sheet1.cell(row = 11, column = 3).fill=culoare
-		Sheet1.cell(row = 12, column = 3).fill=culoare
-		Sheet1.cell(row = 6, column = 4).fill=culoare2
-		Sheet1.cell(row = 7, column = 4).fill=culoare2
-		Sheet1.cell(row = 8, column = 4).fill=culoare2
-		Sheet1.cell(row = 9, column = 4).fill=culoare2
-		Sheet1.cell(row = 10, column = 4).fill=culoare2
-		Sheet1.cell(row = 11, column = 4).fill=culoare2
-		Sheet1.cell(row = 12, column = 4).fill=culoare2
-
-		Sheet1.cell(row = 58, column = 3).fill=culoare6
-		Sheet1.cell(row = 32, column = 3).fill=culoare3
-		Sheet1.cell(row = 33, column = 3).fill=culoare3
-		Sheet1.cell(row = 34, column = 3).fill=culoare3
-		Sheet1.cell(row = 35, column = 3).fill=culoare3
-		Sheet1.cell(row = 36, column = 3).fill=culoare3
-		Sheet1.cell(row = 37, column = 3).fill=culoare3
-		Sheet1.cell(row = 38, column = 3).fill=culoare3
-		Sheet1.cell(row = 39, column = 3).fill=culoare3
-		Sheet1.cell(row = 32, column = 4).fill=culoare3
-		Sheet1.cell(row = 33, column = 4).fill=culoare3
-		Sheet1.cell(row = 34, column = 4).fill=culoare3
-		Sheet1.cell(row = 35, column = 4).fill=culoare3
-		Sheet1.cell(row = 36, column = 4).fill=culoare3
-		Sheet1.cell(row = 37, column = 4).fill=culoare3
-		Sheet1.cell(row = 38, column = 4).fill=culoare3
-		Sheet1.cell(row = 39, column = 4).fill=culoare3
-		Sheet1.cell(row = 32, column = 6).fill=culoare3
-		Sheet1.cell(row = 33, column = 6).fill=culoare3
-		Sheet1.cell(row = 34, column = 6).fill=culoare3
-		Sheet1.cell(row = 35, column = 6).fill=culoare3
-		Sheet1.cell(row = 36, column = 6).fill=culoare3
-		Sheet1.cell(row = 37, column = 6).fill=culoare3
-		Sheet1.cell(row = 38, column = 6).fill=culoare3
-		Sheet1.cell(row = 39, column = 6).fill=culoare3
-
-		Sheet1.cell(row = 41, column = 6).fill=culoare4
-		Sheet1.cell(row = 42, column = 6).fill=culoare4
-		Sheet1.cell(row = 43, column = 6).fill=culoare4
-		Sheet1.cell(row = 44, column = 6).fill=culoare4
-		Sheet1.cell(row = 45, column = 6).fill=culoare4
-		Sheet1.cell(row = 46, column = 6).fill=culoare4
-		Sheet1.cell(row = 47, column = 6).fill=culoare4
-		Sheet1.cell(row = 48, column = 6).fill=culoare4
-		Sheet1.cell(row = 49, column = 6).fill=culoare4
-		Sheet1.cell(row = 50, column = 6).fill=culoare4
-		Sheet1.cell(row = 51, column = 6).fill=culoare4
-		Sheet1.cell(row = 41, column = 3).fill=culoare4
-		Sheet1.cell(row = 42, column = 3).fill=culoare4
-		Sheet1.cell(row = 43, column = 3).fill=culoare4
-		Sheet1.cell(row = 44, column = 3).fill=culoare4
-		Sheet1.cell(row = 45, column = 3).fill=culoare4
-		Sheet1.cell(row = 46, column = 3).fill=culoare4
-		Sheet1.cell(row = 47, column = 3).fill=culoare4
-		Sheet1.cell(row = 48, column = 3).fill=culoare4
-		Sheet1.cell(row = 49, column = 3).fill=culoare4
-		Sheet1.cell(row = 50, column = 3).fill=culoare4
-		Sheet1.cell(row = 51, column = 3).fill=culoare4
-		Sheet1.cell(row = 41, column = 4).fill=culoare4
-		Sheet1.cell(row = 42, column = 4).fill=culoare4
-		Sheet1.cell(row = 43, column = 4).fill=culoare6
-		Sheet1.cell(row = 44, column = 4).fill=culoare4
-		Sheet1.cell(row = 45, column = 4).fill=culoare4
-		Sheet1.cell(row = 46, column = 4).fill=culoare6
-		Sheet1.cell(row = 47, column = 4).fill=culoare6
-		Sheet1.cell(row = 48, column = 4).fill=culoare4
-		Sheet1.cell(row = 49, column = 4).fill=culoare4
-		Sheet1.cell(row = 50, column = 4).fill=culoare6
-		Sheet1.cell(row = 51, column = 4).fill=culoare6
-
-		Sheet1.cell(row = 53, column = 4).fill=culoare5
-		Sheet1.cell(row = 54, column = 4).fill=culoare5
-		Sheet1.cell(row = 55, column = 4).fill=culoare5
-		Sheet1.cell(row = 53, column = 3).fill=culoare5
-		Sheet1.cell(row = 54, column = 3).fill=culoare5
-		Sheet1.cell(row = 55, column = 3).fill=culoare5
-		Sheet1.cell(row = 53, column = 6).fill=culoare5
-		Sheet1.cell(row = 54, column = 6).fill=culoare5
-		Sheet1.cell(row = 55, column = 6).fill=culoare5
-
-
-		Sheet1.cell(row = 32, column = 3).value="Current VAT position"
-		Sheet1.cell(row = 32, column = 3).font=font4
-		Sheet1.cell(row = 34, column = 3).value="Input VAT for the period"
-		Sheet1.cell(row = 35, column = 3).value="Output VAT for the period"
-		Sheet1.cell(row = 36, column = 3).value="VAT Payable for the period"
-		Sheet1.cell(row = 37, column = 3).value="VAT Recoverable for the period"
-		Sheet1.cell(row = 38, column = 3).value="VAT under settlement for purchases"
-		Sheet1.cell(row = 39, column = 3).value="VAT under settlement for deliveries"
-		Sheet1.cell(row = 32, column = 4).value="RON"
-
-		Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
-		Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-		Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-		Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-		Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-		Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-		Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row = 39, column = 4).value=0
-		Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
-IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
-IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
-IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-		Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
-		Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=38, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=39, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=39, column=6).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=55, column=4).number_format = '#,##0_);(#,##0)'
-		Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'
-
-
-		Sheet1.cell(row = 41, column = 3).value="Carry Over position"
-		Sheet1.cell(row = 41, column = 3).font=font4
-		Sheet1.row_dimensions[42].height = 0.2
-		Sheet1.cell(row = 43, column = 3).value="Requested for reimbursement"
-		Sheet1.cell(row = 44, column = 3).value
-		Sheet1.cell(row = 45, column = 3).value="VAT refundable not yet requested"
-		Sheet1.cell(row = 46, column = 3).value="Period"
-		Sheet1.cell(row = 47, column = 3).value="Amount"
-		Sheet1.cell(row = 48, column = 3).value
-		Sheet1.cell(row = 49, column = 3).value="VAT refundable requested and under audit"
-		Sheet1.cell(row = 50, column = 3).value="Period"
-		Sheet1.cell(row = 51, column = 3).value="Amount"
-
-
-		Sheet1.cell(row = 53, column = 3).value="VAT balance position"
-		Sheet1.cell(row = 53, column = 3).font=font4
-		Sheet1.cell(row = 55, column = 3).value="VAT position in the current return"
-
-
-		Sheet1['C16'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['C19'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['C22'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['C25'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['C28'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
-		Sheet1['D10'].alignment = Alignment(wrapText=True, horizontal='right')
-		Sheet1['D11'].alignment = Alignment(wrapText=True, horizontal='right')
-		Sheet1['D12'].alignment = Alignment(wrapText=True, horizontal='right')
-		Sheet1['C58'].alignment = Alignment(wrapText=True, horizontal='center')
-		Sheet1['D37'].alignment = Alignment(wrapText=True, horizontal='right')
-
-		Sheet1.column_dimensions['C'].width = 65
-		Sheet1.column_dimensions['D'].width = 20
-		Sheet1.column_dimensions['A'].width = 2
-		Sheet1.column_dimensions['B'].width = 3
-		Sheet1.column_dimensions['E'].width = 1
-		Sheet1.column_dimensions['F'].width = 20
-		Sheet1.column_dimensions['G'].width = 2
-
-		# img= openpyxl.drawing.image.Image('test.png')
-		# Sheet1.add_image(img,'C16')
-
-		# img= openpyxl.drawing.image.Image('test2.png')
-		# Sheet1.add_image(img,'C19')
-
-		# img= openpyxl.drawing.image.Image('test3.png')
-		# Sheet1.add_image(img,'C22')
-
-		# img= openpyxl.drawing.image.Image('test4.png')
-		# Sheet1.add_image(img,'C25')
-
-		# img= openpyxl.drawing.image.Image('test5.png')
-		# Sheet1.add_image(img,'C28')
-
-		# img= openpyxl.drawing.image.Image('test6.png')
-		# Sheet1.add_image(img,'D16')
-
-		# img= openpyxl.drawing.image.Image('test7.png')
-		# Sheet1.add_image(img,'D19')
-
-		# img= openpyxl.drawing.image.Image('test8.png')
-		# Sheet1.add_image(img,'D22')
-
-		# img= openpyxl.drawing.image.Image('test9.png')
-		# Sheet1.add_image(img,'D25')
-		Sheet1.cell(row = 16, column = 3).fill=culoare
-		Sheet1.cell(row=16, column=3).font=font1
-		Sheet1.cell(row=16, column=3).value="  D300"
-		Sheet1.cell(row=16, column=3).hyperlink="#'D300 draft figures'!A1"
-		# Sheet1.cell(row=16, column=3).border=border9
-		Sheet1.row_dimensions[18].height=8
-
-		Sheet1.cell(row = 19, column = 3).fill=culoare
-		Sheet1.cell(row=19, column=3).font=font1
-		Sheet1.cell(row=19, column=3).value="  D390"
-		Sheet1.cell(row=19, column=3).hyperlink="#'D390 workings'!A1"
-		# Sheet1.cell(row=19, column=3).border=border9
-		Sheet1.row_dimensions[21].height=8
-
-		Sheet1.cell(row = 22, column = 3).fill=culoare
-		Sheet1.cell(row=22, column=3).font=font1
-		Sheet1.cell(row=22, column=3).value="  D394"
-		Sheet1.cell(row=22, column=3).hyperlink="#'D394--->>>'!A1"
-		# Sheet1.cell(row=22, column=3).border=border9
-		Sheet1.row_dimensions[24].height=8
-
-		Sheet1.cell(row = 25, column = 3).fill=culoare
-		Sheet1.cell(row=25, column=3).font=font1
-		Sheet1.cell(row=25, column=3).value="  Sales Ledger"
-		Sheet1.cell(row=25, column=3).hyperlink="#'Sales'!A1"
-		# Sheet1.cell(row=25, column=3).border=border9
-		Sheet1.row_dimensions[27].height=8
-
-		Sheet1.cell(row = 28, column = 3).fill=culoare
-		Sheet1.cell(row=28, column=3).font=font1
-		Sheet1.cell(row=28, column=3).value="  Purchase Ledger"
-		Sheet1.cell(row=28, column=3).hyperlink="#'Purchases'!A1"
-		# Sheet1.cell(row=28, column=3).border=border9
-		Sheet1.row_dimensions[30].height=8
-
-		Sheet1.merge_cells(start_row=28, start_column=3, end_row=29, end_column=3)
-		Sheet1.merge_cells(start_row=25, start_column=3, end_row=26, end_column=3)
-		Sheet1.merge_cells(start_row=22, start_column=3, end_row=23, end_column=3)
-		Sheet1.merge_cells(start_row=19, start_column=3, end_row=20, end_column=3)
-		Sheet1.merge_cells(start_row=16, start_column=3, end_row=17, end_column=3)
-		Sheet1.merge_cells(start_row=6, start_column=4, end_row=6, end_column=12)
-		Sheet1.merge_cells(start_row=7, start_column=4, end_row=7, end_column=12)
-		Sheet1.merge_cells(start_row=8, start_column=4, end_row=8, end_column=12)
-		Sheet1.merge_cells(start_row=9, start_column=4, end_row=9, end_column=12)
-		Sheet1.merge_cells(start_row=10, start_column=4, end_row=10, end_column=12)
-		Sheet1.merge_cells(start_row=11, start_column=4, end_row=11, end_column=12)
-		Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
-		Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
-	
 	sales=temp['Sales']
 	purchases=temp['Purchases']
-	
+	info=temp['Other info']
 	if(val1==1):
 		sheetinutil1=temp.create_sheet('D300--->>>')
 		sheetinutil1.sheet_view.showGridLines=False
@@ -1337,25 +321,20 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=70, column=1).value="B"
 		amount.cell(row=71, column=1).value="B.1"
 
-		for jjj in range(0,len(listadend300eng)):
-			amount.cell(row=8+jjj,column=8).value=listadend300eng[jjj]
-
 
 		amount.cell(row=8, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y3",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
 		amount.cell(row=9, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"C2",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
 		amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'		
 		amount.cell(row=11, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
 		amount.cell(row=12, column=2).value=0
-		amount.cell(row=13, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
-		
-		amount.cell(row=14, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
-		amount.cell(row=15, column=2).value=0
-		amount.cell(row=16, column=2).value='=round((ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1M",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
-		amount.cell(row=17, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'	
-		amount.cell(row=18, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"C3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'
-		amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
+		amount.cell(row=13, column=2).value='=(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100)'
+		amount.cell(row=14, column=2).value='=(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100)'
+		amount.cell(row=16, column=2).value='=(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1M",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100)'
+		amount.cell(row=17, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100)'	
+		amount.cell(row=18, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"C3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100)'
+		amount.cell(row=19, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100)'
 		amount.cell(row=20, column=2).value=0
-		amount.cell(row=21, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"5G",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(105/100),0)'
+		amount.cell(row=21, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"5G",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(105/100)'
 		amount.cell(row=22, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZR",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
 		amount.cell(row=23, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZR",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
 		amount.cell(row=24, column=2).value=0
@@ -1365,16 +344,16 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=28, column=2).value=0
 		amount.cell(row=30, column=2).value=0
 		amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ZJ",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-		amount.cell(row=39, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1L",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"3S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'						
-		amount.cell(row=40, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"9S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(109/100),0)'								
-		amount.cell(row=41, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"6I",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(105/100),0)'								
+		amount.cell(row=39, column=2).value='=(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1L",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"3S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100)'						
+		amount.cell(row=40, column=2).value='=(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"9S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(109/100)'								
+		amount.cell(row=41, column=2).value='=(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"6I",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(105/100)'								
 
 		
 		amount.cell(row=22, column=2).value='=SUM(B23:B25)'
 
 
 		amount.cell(row=31, column=2).value=0
-		amount.cell(row=32, column=2).value='=SUM(B8:B31)-B11-B14-B17-B24-B25'
+		amount.cell(row=32, column=2).value='=SUM(B8:B31)-B11-B14-B17-B23-B24-B25'
 		amount.cell(row=33, column=2).value='=B13'
 		amount.cell(row=34, column=2).value='=B14'
 		amount.cell(row=35, column=2).value='=B15'
@@ -1411,7 +390,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 		amount.cell(row=68, column=2).value=0
 		amount.cell(row=69, column=2).value=0
-		amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZI",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZD",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I7",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5D",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
+		amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZI",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I7",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5D",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
 		amount.cell(row=71, column=2).value='=B70'
 		
 		#coloana TVA----------------------------------------------------
@@ -1421,31 +400,31 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		
 
 		# for h in range(13, 19):
-		amount.cell(row=13, column=3).value='=round(B13/100*19,0)'
-		amount.cell(row=14, column=3).value='=round(B14/100*19,0)'
-		amount.cell(row=15, column=3).value='=round(B15/100*19,0)'
-		amount.cell(row=16, column=3).value='=round(B16/100*19,0)'
-		amount.cell(row=17, column=3).value='=round(B17/100*19,0)'
-		amount.cell(row=18, column=3).value='=round(B18/100*19,0)'
+		amount.cell(row=13, column=3).value='=B13/100*19'
+		amount.cell(row=14, column=3).value='=B14/100*19'
+		amount.cell(row=15, column=3).value='=B15/100*19'
+		amount.cell(row=16, column=3).value='=B16/100*19'
+		amount.cell(row=17, column=3).value='=B17/100*19'
+		amount.cell(row=18, column=3).value='=B18/100*19'
 			
 		# amount.cell(row=16,column=3).value='=ROUND(SUMIF(Purchases!$7:$7,$A16&"."&C$6,Purchases!$5:$5)-SUMIF(Purchases!$7:$7,$A18&"."&C$6,Purchases!$5:$5),0)'
 
 
-		amount.cell(row=19, column=3).value='=round(B19/100*19,0)'
-		amount.cell(row=20, column=3).value='=round(B20/100*9,0)'
-		amount.cell(row=21, column=3).value='=round(B21/100*5,0)'
+		amount.cell(row=19, column=3).value='=B19/100*19'
+		amount.cell(row=20, column=3).value='=B20/100*9'
+		amount.cell(row=21, column=3).value='=B21/100*5'
 		amount.cell(row=22, column=3).value='=SUM(C23:C25)'
 
-		amount.cell(row=23, column=3).value='=round(B23/100*19,0)'
-		amount.cell(row=24, column=3).value='=round(B24/100*9,0)'
-		amount.cell(row=25, column=3).value='=round(B25/100*5,0)'
+		amount.cell(row=23, column=3).value='=B23/100*19'
+		amount.cell(row=24, column=3).value='=B24/100*9'
+		amount.cell(row=25, column=3).value='=B25/100*5'
 
 
 		
 		for k in range(26, 31):
 			amount.cell(row=k, column=3).value=0
 		amount.cell(row=31, column=3).value=0
-		amount.cell(row=32, column=3).value='=SUM(C8:C31)-C11-C14-C17-C24-C25'
+		amount.cell(row=32, column=3).value='=SUM(C8:C31)-C11-C14-C17-C23-C24-C25'
 		amount.cell(row=33, column=3).value='=C13'
 		amount.cell(row=34, column=3).value='=C14'
 		amount.cell(row=35, column=3).value='=C15'
@@ -1454,9 +433,9 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=38, column=3).value='=C18'
 
 
-		amount.cell(row=39, column=3).value='=round(B39/100*19,0)'
-		amount.cell(row=40, column=3).value='=round(B40/100*9,0)'
-		amount.cell(row=41, column=3).value='=round(B41/100*5,0)'			
+		amount.cell(row=39, column=3).value='=B39/100*19'
+		amount.cell(row=40, column=3).value='=B40/100*9'
+		amount.cell(row=41, column=3).value='=B41/100*5'			
 		amount.cell(row=42, column=3).value='=SUM(C43:C45)'
 		amount.cell(row=43, column=3).value='=C23'
 		amount.cell(row=44, column=3).value='=C24'
@@ -1490,7 +469,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=68, column=3).value=0
 		amount.cell(row=69, column=3).value=0
 
-		amount.cell(row=70, column=3).value='=round(B70/100*19,0)'
+		amount.cell(row=70, column=3).value='=B70/100*19'
 		amount.cell(row=71, column=3).value='=C70'
 
 		amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
@@ -1673,7 +652,6 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		fix01=sum(int(digit) for digit in str(Fix0000))
 
 		control=poz1+LTSA+fix1+LLAA1+ZZLLAA1+fix01
-		#print(control,'control')
 		
 
 		nrEvidenta=Poz+elementMapare+Fix01+LLAA+ZZLLAA+Fix0000+str(control)
@@ -3095,10 +2073,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		#Cote TVA
 		coteTVApurchases=[]
 		for i in range(0, len(docNoPurch1)):
-			if (taxcodep[i]=="ZI" or taxcodep[i]=="C3" or taxcodep[i]=="ZD" or taxcodep[i]=="E1" or taxcodep[i]=='V1' or taxcodep[i]=="5H" or taxcodep[i]=="X1" or taxcodep[i]=="1L" or taxcodep[i]=="1M" or taxcodep[i]=="3S" or taxcodep[i]=="5B" or taxcodep[i]=="5H"):
+			if (taxcodep[i]=="ZI" or taxcodep[i]=="C3" or taxcodep[i]=="E1" or taxcodep[i]=='V1' or taxcodep[i]=="X1" or taxcodep[i]=="1L" or taxcodep[i]=="1M" or taxcodep[i]=="3S" or taxcodep[i]=="5B" or taxcodep[i]=="5H"):
 				coteTVApurchases.append('19')
 			else:
-				if (taxcodep[i]=="I9" or taxcodep[i]=="W8" or taxcodep[i]=="W6" or taxcodep[i]=="J2" or taxcodep[i]=="V3" or taxcodep[i]=="9S"):
+				if (taxcodep[i]=="I9" or taxcodep[i]=="J2" or taxcodep[i]=="V3" or taxcodep[i]=="9S"):
 					coteTVApurchases.append('9')
 				else:
 					if (taxcodep[i]=="I7" or taxcodep[i]=="5D" or taxcodep[i]=="W8" or taxcodep[i]=="6I" or taxcodep[i]=="5S"):
@@ -3121,10 +2099,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			else:
 				# #print(docNoPurch1[i])
 				if int(tipTranzactiePurchases[i]) == 1:
-					if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3" or taxcodep[i]=="5H" or taxcodep[i]=="5B"):
+					if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3"):
 						tipTranzPurch.append('A')
 					else:
-						if taxcodep[i]=="ZI" or taxcodep[i]=="5D" or taxcodep[i]=="ZD" or taxcodep[i]=="I7" or taxcodep[i]=="W8" or taxcodep[i]=="I9" or taxcodep[i]=="W6" or taxcodep[i]=="6I":
+						if taxcodep[i]=="ZI" or taxcodep[i]=="5D" or taxcodep[i]=="I7" or taxcodep[i]=="I9":
 							tipTranzPurch.append("AI")
 							#print(docNoPurch1[i],";;;;;es 3")
 						else:
@@ -4243,13 +3221,15 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		
 		# for i in range(0 ,len(tip)):
 	# folderpath="D:/D300 to XML/docs"
+	# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage spreeadsheet"
 	folderpath="/home/mirus_app/storage_spreadsheet"
 	# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
-	file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
+	file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets" +str(clientname)+".xlsx")
 	temp.save(file_pathFS)
 	# return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
-	return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
-	return render_template('D3APPS2')
+	# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage spreeadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
+	return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets"+str(clientname)+".xlsx", as_attachment=True)
+	# return render_template('D3APPS2')
 @app.route('/D3APPS2')
 def my_form2():
     return render_template('D3APPS second step.html')
@@ -4264,7 +3244,7 @@ def D300():
 		info=temp['Other info']
 		an=info.cell(row=20,column=3).value
 		#print(an)
-		luna=info.cell(row=3,column=3).value
+		luna=info.cell(row=21,column=3).value
 		# temei=info.cell(row=8,column=2).value
 		cif=info.cell(row=27,column=3).value
 		den=info.cell(row=26,column=3).value
@@ -4479,11 +3459,13 @@ def D300():
 
 		# for i in range(0 ,len(tip)):
 		# folderpath="D:/apps/TEST D3APPS/Test 21.03.2022/output"
+		# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		folderpath="/home/mirus_app/storage"
 		# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		# temp.save(folderpath+".xlsx")
 		text='<?xml version="1.0"?> <declaratie300  luna="'+str(luna)+'" an="'+str(an)+'" depusReprezentant="'+str(ramburs2)+'" bifa_interne="0" temei="0" prenume_declar="'+str(pren)+'" nume_declar="'+str(nume)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(den)+'" adresa="'+str(strada)+'" telefon="'+str(telefon)+'" mail="'+str(email)+'" banca="'+str(banca)+'" cont="'+str(contban)+'" caen="'+str(Caen)+'" tip_decont="'+str(tip)+'" pro_rata="'+str(prorata)+'" bifa_cereale="'+str(cereale)+'" bifa_mob="'+str(telmob)+'" bifa_disp="'+str(disp)+'" bifa_cons="'+str(cons)+'" solicit_ramb="'+str(ramburs)+'" nr_evid="'+str(nr_evid)+'" totalPlata_A="'+str(totalp)+'" R1_1="'+str(R1_1)+'" R2_1="'+str(R2_1)+'" R3_1="'+str(R3_1)+'" R3_1_1="'+str(R3_1_1)+'" R4_1="'+str(R4_1)+'" R5_1="'+str(R5_1)+'" R5_2="'+str(R5_2)+'" R5_1_1="'+str(R5_1_1)+'" R5_1_2="'+str(R5_1_2)+'" R6_1="'+str(R6_1)+'" R6_2="'+str(R6_2)+'" R7_1="'+str(R7_1)+'" R7_2="'+str(R7_2)+'" R7_1_1="'+str(R7_1_1)+'" R7_1_2="'+str(R7_1_2)+'" R8_1="'+str(R8_1)+'" R8_2="'+str(R8_2)+'" R9_1="'+str(R9_1)+'" R9_2="'+str(R9_2)+'" R10_1="'+str(R10_1)+'" R10_2="'+str(R10_2)+'" R11_1="'+str(R11_1)+'" R11_2="'+str(R11_2)+'" R12_1="'+str(R12_1)+'" R12_2="'+str(R12_2)+'" R12_1_1="'+str(R12_1_1)+'" R12_1_2="'+str(R12_1_2)+'" R12_2_1="'+str(R12_2_1)+'" R12_2_2="'+str(R12_2_2)+'" R12_3_1="'+str(R12_3_1)+'" R12_3_2="'+str(R12_3_2)+'" R13_1="'+str(R13_1)+'" R14_1="'+str(R14_1)+'" R15_1="'+str(R15_1)+'" R16_1="'+str(R16_1)+'" R16_2="'+str(R16_2)+'" R64_1="'+str(R64_1)+'" R64_2="'+str(R64_2)+'" R65_1="'+str(R65_1)+'" R65_2="'+str(R65_2)+'" R17_1="'+str(R17_1)+'" R17_2="'+str(R17_2)+'" R18_1="'+str(R18_1)+'" R18_2="'+str(R18_2)+'" R18_1_1="'+str(R18_1_1)+'" R18_1_2="'+str(R18_1_2)+'" R19_1="'+str(R19_1)+'" R19_2="'+str(R19_2)+'" R20_1="'+str(R20_1)+'" R20_2="'+str(R20_2)+'" R20_1_1="'+str(R20_1_1)+'" R20_1_2="'+str(R20_1_2)+'" R21_1="'+str(R21_1)+'" R21_2="'+str(R21_2)+'" R22_1="'+str(R22_1)+'" R22_2="'+str(R22_2)+'" R23_1="'+str(R23_1)+'" R23_2="'+str(R23_2)+'" R24_1="'+str(R24_1)+'" R24_2="'+str(R24_2)+'" R25_1="'+str(R25_1)+'" R25_2="'+str(R25_2)+'" R25_1_1="'+str(R25_1_1)+'" R25_1_2="'+str(R25_1_2)+'" R25_2_1="'+str(R25_2_1)+'" R25_2_2="'+str(R25_2_2)+'" R25_3_1="'+str(R25_3_1)+'" R25_3_2="'+str(R25_3_2)+'" R43_2="'+str(R43_2)+'" R44_2="'+str(R44_2)+'" R26_1="'+str(R26_1)+'" R26_1_1="'+str(R26_1_1)+'" R27_1="'+str(R27_1)+'" R27_2="'+str(R27_2)+'" R28_2="'+str(R28_2)+'" R29_2="'+str(R29_2)+'" R30_1="'+str(R30_1)+'" R30_2="'+str(R30_2)+'" R31_2="'+str(R31_2)+'" R32_2="'+str(R32_2)+'" R33_2="'+str(R33_2)+'" R34_2="'+str(R34_2)+'" R35_2="'+str(R35_2)+'" R36_2="'+str(R36_2)+'" R37_2="'+str(R37_2)+'" R38_2="'+str(R38_2)+'" R39_2="'+str(R39_2)+'" R40_2="'+str(R40_2)+'" R41_2="'+str(R41_2)+'" R42_2="'+str(R42_2)+'" nr_facturi="'+str(nrfact)+'" baza="'+str(baza)+'" tva="'+str(tva)+'" nr_facturi_primite="'+str(factprimite)+'" baza_primite="'+str(bazaprimite)+'" tva_primite="'+str(tvaprimite)+'" nr_fact_emise="'+str(nrfactemise)+'" total_baza="'+str(total_baza)+'" total_precedent ="'+str(total_precedent)+'" total_curent ="'+str(total_curent)+'" total_tva="'+str(total_tva)+'" valoare_a="'+str(valoare_a)+'" tva_a="'+str(tva_a)+'" valoare_a1="'+str(valoare_a1)+'" tva_a1="'+str(tva_a1)+'" valoare_b="'+str(valoare_b)+'" tva_b="'+str(tva_b)+'" valoare_b1="'+str(valoare_b1)+'" tva_b1="'+str(tva_b1)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d300:declaratie:v7 d300.xsd" xmlns="mfp:anaf:dgti:d300:declaratie:v7"></declaratie300>'
 		#print(text)
+		# text=""
 		with open("/home/mirus_app/storage/D300.xml", "w", encoding="utf-8") as f:
 			f.write(text)
 		# f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text).encode('utf-8')
@@ -4616,6 +3598,7 @@ def D300():
 		#print(texttxt)
 		textxml='<?xml version="1.0"?> <declaratie390  luna="'+str(luna)+'" an="'+str(an)+'" d_rec="0" nume_declar="'+str(nume)+'" prenume_declar="'+str(pren)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(denu)+'" adresa="'+str(adresa)+'" telefon="'+str(telefon)+'" mail="'+str(email)+'" totalPlata_A="'+str(totalplata)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d390:declaratie:v3 D390.xsd" xmlns="mfp:anaf:dgti:d390:declaratie:v3">'+'<rezumat nr_pag="'+str(nrpag)+'" nrOPI="'+str(nropi)+'" bazaL="'+str(bazal)+'" bazaT="'+str(bazat)+'" bazaA="'+str(bazaa)+'" bazaP="'+str(bazaP)+'" bazaS="'+str(bazas)+'" bazaR="'+str(bazar)+'" total_baza="'+str(totalb)+'" /> '+string+'</declaratie390>'
 		# folderpath="D:/apps/TEST D3APPS/Test 21.03.2022/output"
+		# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		folderpath="/home/mirus_app/storage"
 		# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		# f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D390.txt", "w",encoding="utf-8").write(texttxt)
@@ -4939,176 +3922,150 @@ def D300():
 		nrC24=0
 		numar1=0
 
-		nrV0=0
-		nrLS0=0
-		nrAS0=0
-		valV0=0
-		valLS0=0
-		valAS0=0
-
-
 		numarcui1=0
 		# #print(tip_partener)
 		# #print(cotatva)
 		count=0
 		#print(bazatv)
-		tippartener1=[]
 		for i in range(0,len(tip_partener)):
-			if(str(tip_partener[i])=="1" and tiptranza[i]!="Not applicable for D394" and str(bazatv[i])!="0"):
-				tippartener1.append(cuip[i])
 			if(str(tip_partener[i])=="1" and neex[i]!="Yes"):
-
 				if(bazatv[i]>0):
-					if(str(cotatva[i])=="0"):
-						if(str(tiptranza[i])=="V"):
-							nrV0=nrV0+1
-							valV0=valV0+bazatv[i]
-						if(str(tiptranza[i])=="AS"):
-							nrLS0=nrLS0+1
-							valLS0=valLS0+bazatv[i]						
-						if(str(tiptranza[i])=="LS"):
-							nrAS0=nrAS0+1
-							valAS0=valAS0+bazatv[i]							
 					if(str(cotatva[i])=="5"):
 						if(str(tiptranza[i])=="L"):
-
+							numar1=numar1+1
 							nrL5=nrL5+int(nrfacturi[i])
 							sumaL5=sumaL5+int(bazatv[i])
 							tvaL5=tvaL5+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
-						
+							numar1=numar1+1						
 							nrAI5=nrAI5+int(nrfacturi[i])
 							sumaAI5=sumaAI5+int(bazatv[i])
 							tvaAI5=tvaAI5+int(stva[i])
 						if(str(tiptranza[i])=="A"):
-						
+							numar1=numar1+1						
 							nrA5=nrA5+int(nrfacturi[i])
 							sumaA5=sumaA5+int(bazatv[i])
 							tvaA5=tvaA5+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-						
+							numar1=numar1+1						
 							nrLS5=nrLS5+int(nrfacturi[i])
 							sumaLS5=sumaLS5+int(bazatv[i])
 							tvaLS5=tvaLS5+int(stva[i])
 						if(str(tiptranza[i])=="C"):
-						
+							numar1=numar1+1						
 							nrC5=nrC5+int(nrfacturi[i])
 							sumaC5=sumaC5+int(bazatv[i])
 							tvaC5=tvaC5+int(stva[i])
 					if(str(cotatva[i])=="9"):
 						if(str(tiptranza[i])=="L"):
-						
+							numar1=numar1+1						
 							nrL9=nrL9+int(nrfacturi[i])
 							sumaL9=sumaL9+int(bazatv[i])
 							tvaL9=tvaL9+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-						
+							numar1=numar1+1						
 							nrLS9=nrLS9+int(nrfacturi[i])
 							sumaLS9=sumaLS9+int(bazatv[i])
 							tvaLS9=tvaLS9+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
-						
+							numar1=numar1+1						
 							nrAI9=nrAI9+int(nrfacturi[i])
 							sumaAI9=sumaAI9+int(bazatv[i])
 							tvaAI9=tvaAI9+int(stva[i])
 						if(str(tiptranza[i])=="A"):
-						
+							numar1=numar1+1						
 							nrA9=nrA9+int(nrfacturi[i])
 							sumaA9=sumaA9+int(bazatv[i])
 							tvaA9=tvaA9+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
-						
+							numar1=numar1+1						
 							nrC9=nrC9+int(nrfacturi[i])
 							sumaC9=sumaC9+int(bazatv[i])
 							tvaC9=tvaC9+int(stva[i])
 					if(str(cotatva[i])=="19"):
 						# #print("YES")
 						if(str(tiptranza[i])=="L"):
-						
+							numar1=numar1+1						
 							nrL19=nrL19+int(int(nrfacturi[i]))
 							sumaL19=sumaL19+int(bazatv[i])
 							tvaL19=tvaL19+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-						
+							numar1=numar1+1						
 							nrLS19=nrLS19+int(nrfacturi[i])
 							sumaLS19=sumaLS19+int(bazatv[i])
 							tvaLS19=tvaLS19+int(stva[i])
 
 						if(str(tiptranza[i])=="AI"):
-						
+							numar1=numar1+1						
 							nrAI19=nrAI19+int(nrfacturi[i])
 							sumaAI19=sumaAI19+int(bazatv[i])
 							tvaAI19=tvaAI19+int(stva[i])
 							#print(nrAI19)
 						if(str(tiptranza[i])=="A"):
-						
+							numar1=numar1+1						
 							#print(tiptranza[i],bazatv[i],stva[i])
 							nrA19=nrA19+int(nrfacturi[i])
 							sumaA19=sumaA19+int(bazatv[i])
 							tvaA19=tvaA19+int(stva[i])
 						if(str(tiptranza[i])=="C"):
-						
+							numar1=numar1+1						
 							nrC19=nrC19+int(nrfacturi[i])
 							sumaC19=sumaC19+int(bazatv[i])
 							tvaC19=tvaC19+int(stva[i])
 					if(str(cotatva[i])=="20"):
 						if(str(tiptranza[i])=="L"):
-						
+							numar1=numar1+1						
 							nrL20=nrL20+int(nrfacturi[i])
 							sumaL20=sumaL20+int(bazatv[i])
 							tvaL20=tvaL20+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-						
+							numar1=numar1+1						
 							nrLS20=nrLS20+int(nrfacturi[i])
 							sumaLS20=sumaLS20+int(bazatv[i])
 							tvaLS20=tvaLS20+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
-						
+							numar1=numar1+1						
 							nrAI20=nrAI20+int(nrfacturi[i])
 							sumaAI20=sumaAI20+int(bazatv[i])
 							tvaAI20=tvaAI20+int(stva[i])
 						if(str(tiptranza[i])=="A"):
-						
+							numar1=numar1+1						
 							nrA20=nrA20+int(nrfacturi[i])
 							sumaA20=sumaA20+int(bazatv[i])
 							tvaA20=tvaA20+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
-						
+							numar1=numar1+1						
 							nrC20=nrC20+int(nrfacturi[i])
 							sumaC20=sumaC20+int(bazatv[i])
 							tvaC20=tvaC20+int(stva[i])
 					if(str(cotatva[i])=="24"):
 						if(str(tiptranza[i])=="L"):
-						
+							numar1=numar1+1						
 							nrL24=nrL24+int(nrfacturi[i])
 							sumaL24=sumaL24+int(bazatv[i])
 							tvaL24=tvaL24+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
-						
+							numar1=numar1+1						
 							nrLS24=nrLS24+int(nrfacturi[i])
 							sumaLS24=sumaLS24+int(bazatv[i])
 							tvaLS24=tvaLS24+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
-						
+							numar1=numar1+1						
 							nrC24=nrC24+int(nrfacturi[i])
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
-						
+							numar1=numar1+1						
 							nrAI24=nrAI24+int(nrfacturi[i])
 							sumaAI24=sumaAI24+int(bazatv[i])
 							tvaAI24=tvaAI24+int(stva[i])
 						if(str(tiptranza[i])=="A"):
-						
+							numar1=numar1+1						
 							nrA24=nrA24+int(nrfacturi[i])
 							sumaA24=sumaA24+int(bazatv[i])
 							tvaA24=tvaA24+int(stva[i])
-		numart=(list(set(tippartener1)))
-		print(numart)
-		numartotal=len(numart)
 		#print(nrAI19)
-		numarcui1=numartotal
-		print(nrV0)
+		numarcui1=numar1
 		if(nrL5>0 or nrA5>0 or nrAI5>0 or nrC5>0):
 			text15='''<rezumat1 tip_partener="1" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''" facturiA="'''+str(nrA5)+'''" bazaA="'''+str(sumaA5)+'''" tvaA="'''+str(tvaA5)+'''" facturiAI="'''+str(nrAI5)+'''" bazaAI="'''+str(sumaAI5)+'''" tvaAI="'''+str(tvaAI5)+'''" facturiC="'''+str(nrC5)+'''" bazaC="'''+str(sumaC5)+'''" tvaC="'''+str(tvaC5)+'''"/>'''
 		else:
@@ -5129,10 +4086,6 @@ def D300():
 			text124='''<rezumat1 tip_partener="1" cota="24" facturiL="'''+str(nrL24)+'''" bazaL="'''+str(sumaL24)+'''" tvaL="'''+str(tvaL24)+'''" facturiA="'''+str(nrA24)+'''" bazaA="'''+str(sumaA24)+'''" tvaA="'''+str(tvaA24)+'''" facturiAI="'''+str(nrAI24)+'''" bazaAI="'''+str(sumaAI24)+'''" tvaAI="'''+str(tvaAI24)+'''" facturiC="'''+str(nrC24)+'''" bazaC="'''+str(sumaC24)+'''" tvaC="'''+str(tvaC24)+'''"/>'''
 		else:
 			text124=""
-		if(nrV0>0 or nrAS0>0 or nrLS0>0):
-			text10='''<rezumat1 tip_partener="1" cota="0" facturiLS="'''+str(nrLS0)+'''" bazaLS="'''+str(valLS0)+'''" facturiAS="'''+str(nrAS0)+'''" bazaAS="'''+str(valAS0)+'''" facturiV="'''+str(nrV0)+'''" bazaV="'''+str(valV0)+'''">
-	<detaliu  bun="22" nrLivV="'''+str(nrV0)+'''" bazaLivV="'''+str(valV0)+'''"/>
-	</rezumat1>'''
 		sumaLS0=0
 		sumaL5=0
 		sumaL9=0
@@ -5689,7 +4642,7 @@ def D300():
 		#print(totalplata394)
 		textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Grant Thornton " cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
 		<informatii nrCui1="'''+str(numarcui1)+'''" nrCui2="'''+str(numarcui2)+'''" nrCui3="'''+str(numarcui3)+'''" nrCui4="'''+str(numarcui4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="175" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
-		text=text+textinfo+text15+text10+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
+		text=text+textinfo+text15+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
 
 
 		#print(tipfacturi)
@@ -5711,36 +4664,35 @@ def D300():
 		for k in range(4,sheet2.max_row):
 			if(sheet2.cell(row=k,column=1).value=="Stornata"):
 				text=text+'<facturi  tip_factura="1" nr="'''+str(sheet2.cell(row=k,column=3).value)+'''"/>'''+"\n"
-		numep=[]
-		for j in range(0,len(nume)):
 
-			numep.append(nume[j].replace("&",""))
-			# nume[j].replace("<","")
-			# nume[j].replace(">","")
 		for i in range(0,len(tiptranza)):
-			if(tiptranza[i]!="Not applicable for D394"):
-				if(tiptranza[i]=="V"):
-					text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
+			if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
+				text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(nume[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+			else:
+				if("-" in str(cuip[i])):
+					text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(nume[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
 				else:
-
-					if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
-						text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
-					else:
-						if("-" in str(cuip[i])):
-							text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
-						else:
-							if(bazatv[i]>0):
-								text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
+					if(bazatv[i]>0):
+						if(int(cotatva[i])>0 or int(tip_partener[i])<3):
+							if(tiptranza=="V"):
+								text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(nume[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
+							else:
+								text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(nume[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
 
 		text=text+"</declaratie394>"
 		# text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="'+str(op_efectuate)+'" prsAfiliat="'+str(prsAfiliat)+'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
 
 		# f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
 		# make_archive("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage","C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/arhiva VAT apps.zip")
-		# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True) 
-		f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
-	make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva VAT apps.zip")
-	return send_from_directory("/home/mirus_app/storage","arhiva VAT apps.zip",as_attachment=True)
+		# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True)
+		# f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
+		with open("/home/mirus_app/storage/D394.xml", "w", encoding="utf-8") as g:
+			g.write(text)
+	make_archive("/home/mirus_app/storage","/home/mirus_app/storage/arhiva_VAT_apps.zip")
+	return send_from_directory("/home/mirus_app/storage","arhiva_VAT_apps.zip",as_attachment=True)
+	# return send_from_directory("/home/mirus_app/storage","D394.xml",as_attachment=True)
+	
+
 # @app.route('/CUI_Extractor')
 # def CUI():
 # 	return render_template('cuiRetrieval.html')
@@ -5823,9 +4775,12 @@ def D300():
 # 		wr = wb["Sheet"]
 # 		wb.remove(wr)
 
-# 		folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage registre"
+# 		# folderpath="C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage registre"
+# 		folderpath="/home/mirus_app/storage_registre"
 # 		file_pathFS = os.path.join(folderpath, "Informatii CUI"+".xlsx")
 # 		wb.save(file_pathFS)
 # 	return send_from_directory(folderpath, "Informatii CUI"+".xlsx", as_attachment=True)
 
-app.run(debug="True",host="0.0.0.0", port=2400)
+# app.run(debug="True",host="0.0.0.0", port=1000)
+if __name__ == '__main__':
+   app.run()
