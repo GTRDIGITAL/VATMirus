@@ -88,7 +88,6 @@ print(yesterday.year)
 print(yesterday.month)
 print(yesterday.day)
 curs="EUR"
-curs2="USD"
 
 listaluni=["1","2","3","4","5","6","7","8","9","10","11","12"]
 listadenluni=['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie']
@@ -226,7 +225,7 @@ def D300xml():
 	else:
 		#print(val1)            
 		val1 = 0
-		# #print("Nu")
+		#print("Nu")
 
 	if val2=="":  # daca e bifat
 		val2 = 1
