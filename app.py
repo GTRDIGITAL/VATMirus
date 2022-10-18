@@ -1375,11 +1375,11 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=41, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"6I",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(105/100),0)'								
 
 		
-		amount.cell(row=22, column=2).value='=SUM(B23:B25)'
+		amount.cell(row=22, column=2).value='=round(SUM(B23:B25),0)'
 
 
 		amount.cell(row=31, column=2).value=0
-		amount.cell(row=32, column=2).value='=SUM(B8:B31)-B11-B14-B17-B23-B24-B25'
+		amount.cell(row=32, column=2).value='=round(SUM(B8:B31)-B11-B14-B17-B23-B24-B25,0)'
 		amount.cell(row=33, column=2).value='=B13'
 		amount.cell(row=34, column=2).value='=B14'
 		amount.cell(row=35, column=2).value='=B15'
@@ -1426,24 +1426,24 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		
 
 		# for h in range(13, 19):
-		amount.cell(row=13, column=3).value='=B13/100*19'
-		amount.cell(row=14, column=3).value='=B14/100*19'
-		amount.cell(row=15, column=3).value='=B15/100*19'
-		amount.cell(row=16, column=3).value='=B16/100*19'
-		amount.cell(row=17, column=3).value='=B17/100*19'
-		amount.cell(row=18, column=3).value='=B18/100*19'
+		amount.cell(row=13, column=3).value='=round(B13/100*19,0)'
+		amount.cell(row=14, column=3).value='=round(B14/100*19,0)'
+		amount.cell(row=15, column=3).value='=round(B15/100*19,0)'
+		amount.cell(row=16, column=3).value='=round(B16/100*19,0)'
+		amount.cell(row=17, column=3).value='=round(B17/100*19,0)'
+		amount.cell(row=18, column=3).value='=round(B18/100*19,0)'
 			
 		# amount.cell(row=16,column=3).value='=ROUND(SUMIF(Purchases!$7:$7,$A16&"."&C$6,Purchases!$5:$5)-SUMIF(Purchases!$7:$7,$A18&"."&C$6,Purchases!$5:$5),0)'
 
 
-		amount.cell(row=19, column=3).value='=B19/100*19'
-		amount.cell(row=20, column=3).value='=B20/100*9'
-		amount.cell(row=21, column=3).value='=B21/100*5'
+		amount.cell(row=19, column=3).value='=round(B19/100*19,0)'
+		amount.cell(row=20, column=3).value='=round(B20/100*9,0)'
+		amount.cell(row=21, column=3).value='=round(B21/100*5,0)'
 		amount.cell(row=22, column=3).value='=SUM(C23:C25)'
 
-		amount.cell(row=23, column=3).value='=B23/100*19'
-		amount.cell(row=24, column=3).value='=B24/100*9'
-		amount.cell(row=25, column=3).value='=B25/100*5'
+		amount.cell(row=23, column=3).value='=round(B23/100*19,0)'
+		amount.cell(row=24, column=3).value='=round(B24/100*9,0)'
+		amount.cell(row=25, column=3).value='=round(B25/100*5,0)'
 
 
 		
@@ -1459,10 +1459,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=38, column=3).value='=C18'
 
 
-		amount.cell(row=39, column=3).value='=B39/100*19'
-		amount.cell(row=40, column=3).value='=B40/100*9'
-		amount.cell(row=41, column=3).value='=B41/100*5'			
-		amount.cell(row=42, column=3).value='=SUM(C43:C45)'
+		amount.cell(row=39, column=3).value='=round(B39/100*19,0)'
+		amount.cell(row=40, column=3).value='=round(B40/100*9,0)'
+		amount.cell(row=41, column=3).value='=round(B41/100*5,0)'			
+		amount.cell(row=42, column=3).value='=round(SUM(C43:C45),0)'
 		amount.cell(row=43, column=3).value='=C23'
 		amount.cell(row=44, column=3).value='=C24'
 		amount.cell(row=45, column=3).value='=C25'
@@ -1495,7 +1495,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=68, column=3).value=0
 		amount.cell(row=69, column=3).value=0
 
-		amount.cell(row=70, column=3).value='=B70/100*19'
+		amount.cell(row=70, column=3).value='=round(B70/100*19,0)'
 		amount.cell(row=71, column=3).value='=C70'
 
 		amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
