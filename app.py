@@ -6,7 +6,6 @@ import shutil
 import re
 import PyPDF2
 from werkzeug.utils import secure_filename
-from tkinter import *
 from flask import flash
 from openpyxl.worksheet.datavalidation import DataValidation 
 from openpyxl.styles.borders import Border, Side
@@ -15,8 +14,6 @@ from openpyxl import Workbook
 import itertools as it
 import datetime
 from datetime import datetime
-import tkinter as tk
-from tkinter.filedialog import askopenfilename
 from openpyxl.styles import Color, PatternFill, Font, Border
 from openpyxl.styles import colors
 from openpyxl.styles import Alignment
@@ -31,8 +28,6 @@ from openpyxl.styles import  Color
 from openpyxl.styles import Alignment
 import requests
 import time
-
-from tkinter import filedialog
 
 from openpyxl.chart import (
     LineChart,
@@ -53,11 +48,7 @@ from flask import Flask, render_template, request, send_from_directory
 from datetime import datetime
 from werkzeug.utils import secure_filename
 import PyPDF2 as pf
-import tkinter
 # import PIL
-from tkinter import *
-import tkinter as tk
-from tkinter import messagebox
 import openpyxl
 from openpyxl import *
 from openpyxl.styles import Border, Side
@@ -71,7 +62,6 @@ from openpyxl.descriptors import (
 from openpyxl.chart import LineChart, Reference
 import string
 # from PIL import ImageTk, Image
-from tkinter.filedialog import askopenfilename
 from openpyxl.styles import Color, PatternFill, Font, borders
 from openpyxl.worksheet.dimensions import ColumnDimension
 
@@ -85,12 +75,10 @@ import os
 import xml.etree.ElementTree as ET
 
 import base64
-from tkinter import filedialog
 import io
 
 import webbrowser
 import datetime
-from tkinter.tix import COLUMN
 import requests
 
 
