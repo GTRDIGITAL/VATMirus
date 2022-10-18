@@ -1354,6 +1354,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=12, column=2).value=0
 		amount.cell(row=13, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
 		amount.cell(row=14, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
+		amount.cell(row=15, column=2).value=0
 		amount.cell(row=16, column=2).value='=round((ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1M",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
 		amount.cell(row=17, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'	
 		amount.cell(row=18, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"C3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'
