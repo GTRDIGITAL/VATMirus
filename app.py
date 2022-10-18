@@ -49,7 +49,7 @@ from openpyxl.descriptors.serialisable import Serialisable
 import sys, string, os
 import os
 from flask import Flask, render_template, request, send_from_directory
-from datetime import datetime
+import datetime
 from werkzeug.utils import secure_filename
 import PyPDF2 as pf
 # import tkinter
@@ -91,7 +91,7 @@ import webbrowser
 
 
 
-today=datetime.now().date()
+today=datetime.datetime.now().date()
 yesterday=today-datetime.timedelta(days=1)
 print(yesterday.year)
 print(yesterday.month)
