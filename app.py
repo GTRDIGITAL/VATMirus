@@ -1704,7 +1704,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		except:
 			pass
 
-if(val1==1):
+	if(val1==1):
 		sheetinutil1=temp.create_sheet('D300--->>>')
 		sheetinutil1.sheet_view.showGridLines=False
 		sheetinutil1.cell(row=2,column=1).value="Switch to next sheet for D300 Workings draft"
@@ -2196,2556 +2196,2555 @@ if(val1==1):
 			info.cell(row=58, column=3).value=sumatbfr
 		except:
 			pass
-
-	if(val2==1):
-		sheetinutil2=temp.create_sheet('D390--->>>')
-		sheetinutil2.sheet_view.showGridLines=False
-		sheetinutil2.cell(row=2,column=1).value="Switch to next sheet for D390 Workings draft"
-		sheetinutil2.cell(row=2,column=1).font=scrisincredibildemare		
-
-		workings=temp.create_sheet('D390 workings')
-		workings.cell(row=1,column=1).value="D390 workings"
-		workings.cell(row=1,column=1).font=cap_tabelbold
-		workings.freeze_panes = 'A4'
-		workings.auto_filter.ref = "A3:I10000"
-		workings.sheet_view.showGridLines = False
-		workings.column_dimensions['I'].hidden = True
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "Tax code":
-					rand_tb = cell.row
-					taxcodec = cell.column
-					lun = len(sales[cell.column])
-		try:
-			taxcodes = [b.value for b in sales[taxcodec][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Tax code sales'")
-			return render_template("index.html")
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "  Total docinclVAT":
-					rand_tb = cell.row
-					tdocc = cell.column
-					lun = len(sales[cell.column])
-		try:
-			totals = [b.value for b in sales[tdocc][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Total sales'")
-			return render_template("index.html")
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "Business PartnerName":
-					rand_tb = cell.row
-					tdocc = cell.column
-					lun = len(sales[cell.column])
-		try:
-			denumires = [b.value for b in sales[tdocc][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Total sales'")
-			return render_template("index.html")
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "VAT Registration No.":
-					rand_tb = cell.row
-					tdocc = cell.column
-					lun = len(sales[cell.column])
-		try:
-			vats = [b.value for b in sales[tdocc][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Total sales'")
-			return render_template("index.html")			
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Tax code":
-					rand_tb = cell.row
-					taxcodea = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			taxcodeach = [b.value for b in purchases[taxcodea][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Tax code purchases'")
-			return render_template("index.html")
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Business PartnerName":
-					rand_tb = cell.row
-					tdocc = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			denumirea = [b.value for b in purchases[tdocc][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Total sales'")
-			return render_template("index.html")
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "VAT Registration No.":
-					rand_tb = cell.row
-					tdocc = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			vata = [b.value for b in purchases[tdocc][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Total sales'")
-			return render_template("index.html")				
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "TotaldocinclVAT":
-					rand_tb = cell.row
-					tdoca = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			totala = [b.value for b in purchases[tdoca][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Total purchases'")
-			return render_template("index.html")
-
-		workings.cell(row=3, column=1).value='TIP'
-		workings.cell(row=3, column=2).value='ŢARA'
-		workings.cell(row=3, column=3).value='COD OPERATOR INTRACOMUNITAR'
-		workings.cell(row=3, column=4).value='DENUMIRE'
-		workings.cell(row=3, column=5).value='BAZA IMPOZABILĂ'
-		workings.cell(row=3, column=6).value='CIF'
-		workings.cell(row=3, column=7).value='Country Code'
-		workings.cell(row=3, column=8).value='BAZA IMPOZABILĂ'
-		workings.cell(row=3, column=9).value='Cheie extragere - filtreaza 1'
-
-		# bazaA_Furnizor=get_column_letter(7)
-		# bazaA_index=get_column_letter(bazaA)
-		# bazaA_literaA=get_column_letter(bazaA)
-		# #print(bazaA_Furnizor, "litera pentru furnizor/ client")
-		# #print(bazaA_index, "ASTA E NUMARUL LUI A")
-		# #print(bazaA_literaA, "LITERA PENTRU TIP")
-		print(taxcodeach)
-		a=3
-		for x in range(0, len(taxcodeach)):
-			if str(taxcodeach[x])=="C3" or str(taxcodeach[x])=="E1" :
-				a=a+1
-				workings.cell(row=a, column=1).value="A"
-				workings.cell(row=a, column=4).value=denumirea[x]
-				workings.cell(row=a, column=6).value=vata[x]
-				workings.cell(row=a, column=3).value=vata[x][2:]
-				workings.cell(row=a, column=7).value=vata[x][0:2]
-				# workings.cell(row=a, column=8).value=listaBazaA[x]
-				# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
-				workings.cell(row=a, column=8).value=totala[x]
-				workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
-				workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
-
-
-		for x in range(0, len(taxcodeach)):
-			if str(taxcodeach[x])=="X1":
-				a=a+1
-				workings.cell(row=a, column=1).value="S"
-				workings.cell(row=a, column=4).value=denumirea[x]
-				workings.cell(row=a, column=6).value=vata[x]
-				workings.cell(row=a, column=3).value=vata[x][2:]
-				workings.cell(row=a, column=7).value=vata[x][0:2]
-				# workings.cell(row=a, column=8).value=listaBazaA[x]
-				# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
-				workings.cell(row=a, column=8).value=totala[x]
-				workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
-				workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
-
-		for x in range(0, len(taxcodes)):
-			if str(taxcodes[x])=="Y3" or str(taxcodes[x])=="Y1":
-				a=a+1
-				workings.cell(row=a, column=1).value="L"
-				workings.cell(row=a, column=4).value=denumires[x]
-				workings.cell(row=a, column=6).value=vats[x]
-				workings.cell(row=a, column=3).value=vats[x][2:]
-				workings.cell(row=a, column=7).value=vats[x][0:2]
-				# workings.cell(row=a, column=8).value=listaBazaA[x]
-				# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
-				workings.cell(row=a, column=8).value=totals[x]
-				workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
-				workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
-		for x in range(0, len(taxcodes)):
-			if str(taxcodes[x])=="Y4":
-				a=a+1
-				workings.cell(row=a, column=1).value="P"
-				workings.cell(row=a, column=4).value=denumires[x]
-				workings.cell(row=a, column=6).value=vats[x]
-				workings.cell(row=a, column=3).value=vats[x][2:]
-				workings.cell(row=a, column=7).value=vats[x][0:2]
-				# workings.cell(row=a, column=8).value=listaBazaA[x]
-				# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
-				workings.cell(row=a, column=8).value=totals[x]
-				workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
-				workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
-		
-		for row in workings.iter_rows():
-			for cell in row:
-				if cell.value == "TIP":
-					rand_tb = cell.row
-					tip = cell.column
-					lun = len(workings[cell.column])
-		try:
-			listaTip = [b.value for b in workings[tip][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TIP' in Workings sheet")
-			return render_template("index.html")
-
-		for row in workings.iter_rows():
-			for cell in row:
-				if cell.value == "CIF":
-					rand_tb = cell.row
-					cod = cell.column
-					lun = len(workings[cell.column])
-		try:
-			codPartener = [b.value for b in workings[cod][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'CIF' in Workings sheet")
-			return render_template("index.html")
-
-
-		for row in workings.iter_rows():
-			for cell in row:
-				if cell.value == "Country Code":
-					rand_tb = cell.row
-					country = cell.column
-					lun = len(workings[cell.column])
-		try:
-			countryCode = [b.value for b in workings[country][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Country Code' in Workings sheet")
-			return render_template("index.html")
-
-		for row in workings.iter_rows():
-			for cell in row:
-				if cell.value == "DENUMIRE":
-					rand_tb = cell.row
-					numep = cell.column
-					lun = len(workings[cell.column])
-		try:
-			partnerName = [b.value for b in workings[numep][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'DENUMIRE' in Workings sheet")
-			return render_template("index.html")
-
-		for row in workings.iter_rows():
-			for cell in row:
-				if cell.value == "BAZA IMPOZABILĂ":
-					rand_tb = cell.row
-					suma = cell.column
-					lun = len(workings[cell.column])
-		try:
-			sumaTot = [b.value for b in workings[suma][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'BAZA IMPOZABILĂ' in Workings sheet")
-			return render_template("index.html")
-
-		for row in workings.iter_rows():
-			for cell in row:
-				if cell.value == "Cheie extragere - filtreaza 1":
-					rand_tb = cell.row
-					cheie_sort = cell.column
-					lun = len(workings[cell.column])
-		try:
-			cheie = [b.value for b in workings[cheie_sort][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Cheie extragere - filtreaza 1' in Workings sheet")
-			return render_template("index.html")
-
-		for row in workings.iter_rows():
-			for cell in row:
-				if cell.value == "COD OPERATOR INTRACOMUNITAR":
-					rand_tb = cell.row
-					coi = cell.column
-					lun = len(workings[cell.column])
-		try:
-			listaCOI = [b.value for b in workings[coi][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'BAZA IMPOZABILĂ' in Workings sheet")
-			return render_template("index.html")
-
-
-		nomenclatorTari={'AT':'Austria', 'BE':'Belgia', 'BG':'Bulgaria','CY':'Cipru','DK':'Danemarca','EE':'Estonia', 'FI':'Finlanda','FR':'Franta', 'DE':'Germania','HR':'Croatia',
-						'GR':'Grecia','IE':'Irlanda','IT':'Italia','LV':'Letonia','LT':'Lituania','LU':'Luxemburg','MT':'Malta','XI':'Irlanda de Nord - Regatul Unit','NL':'Olanda',
-						'PL':'Polonia','PT':'Portugalia','CZ':'Republica Ceha','RO':'Romania','SK':'Slovacia','SI':'Slovavia','ES':'Spania','SE':'Suedia','HU':'Ungaria'}
-		b=3
-		for i in countryCode:
-			if i in nomenclatorTari:
-				b=b+1
-				workings.cell(row=b, column=2).value=nomenclatorTari[i]
-
-		for row in workings['A3:I3']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')
-		for row in workings['E4:E10000']:
-			for cell in row:
-				cell.number_format='#,##0_);(#,##0)'
-		
-		for row in workings['H4:H10000']:
-			for cell in row:
-				cell.number_format='#,##0_);(#,##0)'
-
-		workings.column_dimensions['B'].width=20
-		workings.column_dimensions['D'].width=35				
-
-		forxml = temp.create_sheet('D390 for XML')
-		forxml.cell(row=1,column=1).value="D390 for XML"
-		forxml.cell(row=1,column=1).font=cap_tabelbold
-		forxml.freeze_panes = 'A4'
-		forxml.auto_filter.ref = "A3:F10000"
-		forxml.sheet_view.showGridLines = False
-
-		forxml.cell(row=3, column=1).value="III.B"
-		forxml.cell(row=3, column=2).value="TIP"
-		forxml.cell(row=3, column=3).value="ŢARA"
-		forxml.cell(row=3, column=4).value="COD OPERATOR INTRACOMUNITAR"
-		forxml.cell(row=3, column=5).value="Denumire"
-		forxml.cell(row=3, column=6).value="BAZA IMPOZABILĂ"
-
-		codeAndType=[]
-		codeAndName=[]
-		typeAndName=[]
-		# typeCodeName=[]
-
-		# for k in range(0,len(listaTip)):
-		# 	codeAndType.append(str(listaTip[k])+" "+str(codPartener[k]))
-		# 	codeAndName.append(str(listaTip[k])+" "+str(partnerName[k]))
-
-		# #print(codeAndType,'codeandtyp')
-		# codeAndTypeUnique=list(set(codeAndType))
-		# codeAndNameUnique=list(set(codeAndName))
-
-		for i in range(0, len(listaTip)):
-			typeAndName.append(str(listaTip[i])+";;;"+str(partnerName[i])+";;;"+str(countryCode[i])+";;;"+str(listaCOI[i]))
-		#print(typeAndName, 'TYPEAndNAME')
-
-		typeAndNameUni=list(set(typeAndName))
-
-		typeAndNameUni=list(set(typeAndName))
-
-		for i in it.chain(range(0, len(typeAndNameUni))):
-			x=typeAndNameUni[i].split(";;;")
-			forxml.cell(row=4+i, column=2).value=str(x[0])
-			forxml.cell(row=4+i, column=3).value=str(x[2])
-			forxml.cell(row=4+i, column=4).value=str(x[3])
-			forxml.cell(row=4+i, column=5).value=str(x[1])
-			forxml.cell(row=4+i, column=6).value="=SUMIFS('D390 workings'!H:H,'D390 workings'!A:A,B{0},'D390 workings'!C:C,D{0},'D390 workings'!G:G,C{0})".format(4+i)
-
-
-		for row in forxml['A3:F3']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		for row in forxml['F4:F10000']:
-			for cell in row:
-				cell.number_format='#,##0_);(#,##0)'
-
-		forxml.column_dimensions['D'].width=27
-		forxml.column_dimensions['E'].width=35
-		forxml.column_dimensions['F'].width=15
-
-
-#---------------------------NR DE EVIDENTA
-	if(val3==1):
-		sheetinutil3=temp.create_sheet('D394--->>>')
-		sheetinutil3.sheet_view.showGridLines=False
-		sheetinutil3.cell(row=2,column=1).value="Switch to next sheet for D394 Workings draft"
-		sheetinutil3.cell(row=2,column=1).font=scrisincredibildemare		
-		nomenclatorTari={'AT':'Austrie', 'BE':'Belgia', 'BG':'Bulgaria','CY':'Cipru','DK':'Danemarca','EE':'Estonia', 'FI':'Finlanda','FR':'Franta', 'DE':'Germania','HR':'Croatia',
-						'GR':'Grecia','IE':'Irlanda','IT':'Italia','LV':'Letonia','LT':'Lituania','LU':'Luxemburg','MT':'Malta','XI':'Irlanda de Nord - Regatul Unit','NL':'Olanda',
-						'PL':'Polonia','PT':'Portugalia','CZ':'Republica Ceha','RO':'Romania','SK':'Slovacia','SI':'Slovavia','ES':'Spania','SE':'Suedia','HU':'Ungaria'}
-
-
-		salesExcel=temp.create_sheet("Mapping tranzactii")
-		salesExcel.sheet_view.showGridLines = False
-		salesExcel.cell(row=2,column=1).value="Mapping tranzactii"
-		salesExcel.cell(row=2,column=1).font=cap_tabeltitlu	
-		salesExcel.freeze_panes = 'A10'
-		
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value=="Declarat anterior":
-					rand_tb = cell.row
-					declarateanteriorp = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			listadeclantp = [b.value for b in purchases[declarateanteriorp][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Declarat anterior' in Purchases sheet")
-			return render_template("index.html")		
-		# except:
-		# 	listadeclant=[]
-		listadeclantp_1=[]
-		# #print(listadeclantp,"---------")
-		for c in range(0, len(listadeclantp)):
-			if listadeclantp[c] == None:
-				listadeclantp_1.append("No")
-			else:
-				listadeclantp_1.append(listadeclantp[c])
-		# #print("-----",listadeclantp_1,"------")
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value=="Declarat anterior":
-					rand_tb = cell.row
-					declarateanterior = cell.column
-					lun = len(sales[cell.column])
-		try:
-			listadeclant = [b.value for b in sales[declarateanterior][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Declarat anterior' in Sales sheet")
-			return render_template("index.html")
-		# except:
-		# 	listadeclant=[]
-		listadeclant_1=[]
-		# #print(len(listadeclant))
-		for c in range(0, len(listadeclant)):
-			if listadeclant[c] == None:
-				listadeclant_1.append("No")
-			else:
-				listadeclant_1.append(listadeclant[c])
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value=="Tax code":
-					rand_tb = cell.row
-					declarateanteriorp = cell.column
-					lun = len(sales[cell.column])
-		try:
-			ltaxcode = [b.value for b in sales[declarateanteriorp][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Declarat anterior' in Purchases sheet")
-			return render_template("index.html")			
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "Business PartnerName":
-					rand_tb = cell.row
-					clientCell = cell.column
-					lun = len(sales[cell.column])
-		try:
-			listaClient = [b.value for b in sales[clientCell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Denumirea clientului Client name' in Sales sheet")
-			return render_template("index.html")
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "VAT Registration No.":
-					rand_tb = cell.row
-					coloanaClientID = cell.column
-					lun = len(sales[cell.column])
-		try:
-			listaCUISales = [b.value for b in sales[coloanaClientID][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Codul de inregistrare in scopuri de TVA al clientului Client VAT ID' in Sales sheet")
-			return render_template("index.html")
-
-		listaCUISales1=[]
-		# listadeclant_1=[]
-		for val in listaCUISales:
-			if val != None:
-				# listadeclant_1.append("")
-				listaCUISales1.append(val)
-			else:
-				listaCUISales1.append("US111")
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "Document No.":
-					rand_tb = cell.row
-					docNumber = cell.column
-					lun = len(sales[cell.column])
-		try:
-			docNoSales = [b.value for b in sales[docNumber][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Nr/ document Document no' in Sales sheet")
-			return render_template("index.html")
-
-
-
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == " 19% tax base amount":
-					rand_tb = cell.row
-					taxBaseL19 = cell.column
-					lun = len(sales[cell.column])
-		try:
-			taxBaseL19 = [b.value for b in sales[taxBaseL19][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (RON)- Livrari locale-Taxable base (RON)-Local supplies (19%)' in Sales sheet")
-			return render_template("index.html")
-		#print(taxBaseL19)
-
-		taxBaseL19_1=[]
-		for c in range(0, len(taxBaseL19)):
-			if taxBaseL19[c] == None:
-				taxBaseL19_1.append(0)
-			else:
-				taxBaseL19_1.append(taxBaseL19[c])
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "      19% tax amount":
-					rand_tb = cell.row
-					vatBaseL19 = cell.column
-					lun = len(sales[cell.column])
-		try:
-			vatL19 = [b.value for b in sales[vatBaseL19][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (19%)' in Sales sheet")
-			return render_template("index.html")
-
-		vatL19_1=[]
-		for c in range(0, len(vatL19)):
-			if vatL19[c] == None:
-				vatL19_1.append(0)
-			else:
-				vatL19_1.append(vatL19[c])
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "  9% tax base amount":
-					rand_tb = cell.row
-					taxBaseL9 = cell.column
-					lun = len(sales[cell.column])
-		try:
-			taxBaseL9 = [b.value for b in sales[taxBaseL9][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (RON)-Livrari locale-Taxable base (RON)-Local supplies (9%)' in Sales sheet")
-			return render_template("index.html")
-
-
-		taxBaseL9_1=[]
-		for c in range(0, len(taxBaseL9)):
-			if taxBaseL9[c] == None:
-				taxBaseL9_1.append(0)
-			else:
-				taxBaseL9_1.append(taxBaseL9[c])
-
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "       9% tax amount":
-					rand_tb = cell.row
-					vatBaseL9 = cell.column
-					lun = len(sales[cell.column])
-		try:
-			vatL9 = [b.value for b in sales[vatBaseL9][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (9%)' in Sales sheet")
-			return render_template("index.html")
-
-		vatL9_1=[]
-		for c in range(0, len(vatL9)):
-			if vatL9[c] == None:
-				vatL9_1.append(0)
-			else:
-				vatL9_1.append(vatL9[c])
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "         5% tax base":
-					rand_tb = cell.row
-					taxBaseL5 = cell.column
-					lun = len(sales[cell.column])
-		try:
-			taxBaseL5 = [b.value for b in sales[taxBaseL5][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (EUR/USD)-Livrari locale-Taxable base (EUR/USD)-Local supplies (5%) ' in Sales sheet")
-			return render_template("index.html")
-
-
-		taxBaseL5_1=[]
-		for c in range(0, len(taxBaseL5)):
-			if taxBaseL5[c] == None:
-				taxBaseL5_1.append(0)
-			else:
-				taxBaseL5_1.append(taxBaseL5[c])
-
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "       5% tax amount":
-					rand_tb = cell.row
-					vatBaseL5 = cell.column
-					lun = len(sales[cell.column])
-		try:
-			vatL5 = [b.value for b in sales[vatBaseL5][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (5%)' in Sales sheet")
-			return render_template("index.html")
-
-		vatL5_1=[]
-		for c in range(0, len(vatL5)):
-			if vatL5[c] == None:
-				vatL5_1.append(0)
-			else:
-				vatL5_1.append(vatL5[c])
-		# #print(vatL5_1)
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "   Inversal tax base":
-					rand_tb = cell.row
-					taxBV = cell.column
-					lun = len(sales[cell.column])
-		try:
-			taxBaseV = [b.value for b in sales[taxBV][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Bază de impozitare (RON)-Livrari locale taxare inversa-Taxable base (RON)-Local supplies reverse charge' in Sales sheet")
-			return render_template("index.html")
-
-
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "  Total docinclVAT":
-					rand_tb = cell.row
-					totdoc = cell.column
-					lun = len(sales[cell.column])
-		totdocuments = [b.value for b in sales[totdoc][rand_tb:lun+1]]
-		taxBaseV_1=[]
-		for c in range(0, len(taxBaseV)):
-			if taxBaseV[c] == None:
-				taxBaseV_1.append(0)
-			else:
-				taxBaseV_1.append(taxBaseV[c])
-		# #print(taxBaseV_1)
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "Outside RO deductabl":
-					rand_tb = cell.row
-					taxBi = cell.column
-					lun = len(sales[cell.column])
-		try:
-			taxBaseIntracom = [b.value for b in sales[taxBi][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (RON)-Prestari servicii UE- Taxable base (RON)-EU services' in Sales sheet")
-			return render_template("index.html")
-
-		taxBaseIntracom_1=[]
-		for c in range(0, len(taxBaseIntracom)):
-			if taxBaseIntracom[c] == None:
-				taxBaseIntracom_1.append(0)
-			else:
-				taxBaseIntracom_1.append(taxBaseIntracom[c])
-
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "Outside RO nonDeduct":
-					rand_tb = cell.row
-					taxBiSc = cell.column
-					lun = len(sales[cell.column])
-		try:
-			taxBaseIntracomScutit = [b.value for b in sales[taxBiSc][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (RON)-Prestari servicii UE- Taxable base (RON)-EU services' in Sales sheet")
-			return render_template("index.html")
-
-
-		taxBaseIntracomScutit_1=[]
-		for c in range(0, len(taxBaseIntracomScutit)):
-			if taxBaseIntracomScutit[c] == None:
-				taxBaseIntracomScutit_1.append(0)
-			else:
-				taxBaseIntracomScutit_1.append(taxBaseIntracomScutit[c])
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "   Exempt nonDeduct.":
-					rand_tb = cell.row
-					taxBiSc = cell.column
-					lun = len(sales[cell.column])
-		try:
-			taxBaseIntracomScutit = [b.value for b in sales[taxBiSc][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (RON)-Prestari servicii UE- Taxable base (RON)-EU services' in Sales sheet")
-			return render_template("index.html")
-
-		serieCuiSales=[]
-		codTaraCuiSales=[]
-		for i in listaCUISales1:
-			if(str(i)[:1].isalpha()):
-				r = re.compile("([a-zA-Z]+)([0-9]+)")
-				m = r.match(str(i))
-				try:
-					serieCuiSales.append(m.group(2))
-					codTaraCuiSales.append(m.group(1))
-
-				except:
+		if(val2==1):
+			sheetinutil2=temp.create_sheet('D390--->>>')
+			sheetinutil2.sheet_view.showGridLines=False
+			sheetinutil2.cell(row=2,column=1).value="Switch to next sheet for D390 Workings draft"
+			sheetinutil2.cell(row=2,column=1).font=scrisincredibildemare		
+
+			workings=temp.create_sheet('D390 workings')
+			workings.cell(row=1,column=1).value="D390 workings"
+			workings.cell(row=1,column=1).font=cap_tabelbold
+			workings.freeze_panes = 'A4'
+			workings.auto_filter.ref = "A3:I10000"
+			workings.sheet_view.showGridLines = False
+			workings.column_dimensions['I'].hidden = True
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "Tax code":
+						rand_tb = cell.row
+						taxcodec = cell.column
+						lun = len(sales[cell.column])
+			try:
+				taxcodes = [b.value for b in sales[taxcodec][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Tax code sales'")
+				return render_template("index.html")
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "  Total docinclVAT":
+						rand_tb = cell.row
+						tdocc = cell.column
+						lun = len(sales[cell.column])
+			try:
+				totals = [b.value for b in sales[tdocc][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Total sales'")
+				return render_template("index.html")
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "Business PartnerName":
+						rand_tb = cell.row
+						tdocc = cell.column
+						lun = len(sales[cell.column])
+			try:
+				denumires = [b.value for b in sales[tdocc][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Total sales'")
+				return render_template("index.html")
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "VAT Registration No.":
+						rand_tb = cell.row
+						tdocc = cell.column
+						lun = len(sales[cell.column])
+			try:
+				vats = [b.value for b in sales[tdocc][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Total sales'")
+				return render_template("index.html")			
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Tax code":
+						rand_tb = cell.row
+						taxcodea = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				taxcodeach = [b.value for b in purchases[taxcodea][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Tax code purchases'")
+				return render_template("index.html")
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Business PartnerName":
+						rand_tb = cell.row
+						tdocc = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				denumirea = [b.value for b in purchases[tdocc][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Total sales'")
+				return render_template("index.html")
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "VAT Registration No.":
+						rand_tb = cell.row
+						tdocc = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				vata = [b.value for b in purchases[tdocc][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Total sales'")
+				return render_template("index.html")				
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "TotaldocinclVAT":
+						rand_tb = cell.row
+						tdoca = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				totala = [b.value for b in purchases[tdoca][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Total purchases'")
+				return render_template("index.html")
+
+			workings.cell(row=3, column=1).value='TIP'
+			workings.cell(row=3, column=2).value='ŢARA'
+			workings.cell(row=3, column=3).value='COD OPERATOR INTRACOMUNITAR'
+			workings.cell(row=3, column=4).value='DENUMIRE'
+			workings.cell(row=3, column=5).value='BAZA IMPOZABILĂ'
+			workings.cell(row=3, column=6).value='CIF'
+			workings.cell(row=3, column=7).value='Country Code'
+			workings.cell(row=3, column=8).value='BAZA IMPOZABILĂ'
+			workings.cell(row=3, column=9).value='Cheie extragere - filtreaza 1'
+
+			# bazaA_Furnizor=get_column_letter(7)
+			# bazaA_index=get_column_letter(bazaA)
+			# bazaA_literaA=get_column_letter(bazaA)
+			# #print(bazaA_Furnizor, "litera pentru furnizor/ client")
+			# #print(bazaA_index, "ASTA E NUMARUL LUI A")
+			# #print(bazaA_literaA, "LITERA PENTRU TIP")
+			print(taxcodeach)
+			a=3
+			for x in range(0, len(taxcodeach)):
+				if str(taxcodeach[x])=="C3" or str(taxcodeach[x])=="E1" :
+					a=a+1
+					workings.cell(row=a, column=1).value="A"
+					workings.cell(row=a, column=4).value=denumirea[x]
+					workings.cell(row=a, column=6).value=vata[x]
+					workings.cell(row=a, column=3).value=vata[x][2:]
+					workings.cell(row=a, column=7).value=vata[x][0:2]
+					# workings.cell(row=a, column=8).value=listaBazaA[x]
+					# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+					workings.cell(row=a, column=8).value=totala[x]
+					workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+					workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+
+
+			for x in range(0, len(taxcodeach)):
+				if str(taxcodeach[x])=="X1":
+					a=a+1
+					workings.cell(row=a, column=1).value="S"
+					workings.cell(row=a, column=4).value=denumirea[x]
+					workings.cell(row=a, column=6).value=vata[x]
+					workings.cell(row=a, column=3).value=vata[x][2:]
+					workings.cell(row=a, column=7).value=vata[x][0:2]
+					# workings.cell(row=a, column=8).value=listaBazaA[x]
+					# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+					workings.cell(row=a, column=8).value=totala[x]
+					workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+					workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+
+			for x in range(0, len(taxcodes)):
+				if str(taxcodes[x])=="Y3" or str(taxcodes[x])=="Y1":
+					a=a+1
+					workings.cell(row=a, column=1).value="L"
+					workings.cell(row=a, column=4).value=denumires[x]
+					workings.cell(row=a, column=6).value=vats[x]
+					workings.cell(row=a, column=3).value=vats[x][2:]
+					workings.cell(row=a, column=7).value=vats[x][0:2]
+					# workings.cell(row=a, column=8).value=listaBazaA[x]
+					# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+					workings.cell(row=a, column=8).value=totals[x]
+					workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+					workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+			for x in range(0, len(taxcodes)):
+				if str(taxcodes[x])=="Y4":
+					a=a+1
+					workings.cell(row=a, column=1).value="P"
+					workings.cell(row=a, column=4).value=denumires[x]
+					workings.cell(row=a, column=6).value=vats[x]
+					workings.cell(row=a, column=3).value=vats[x][2:]
+					workings.cell(row=a, column=7).value=vats[x][0:2]
+					# workings.cell(row=a, column=8).value=listaBazaA[x]
+					# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+					workings.cell(row=a, column=8).value=totals[x]
+					workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+					workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+			
+			for row in workings.iter_rows():
+				for cell in row:
+					if cell.value == "TIP":
+						rand_tb = cell.row
+						tip = cell.column
+						lun = len(workings[cell.column])
+			try:
+				listaTip = [b.value for b in workings[tip][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TIP' in Workings sheet")
+				return render_template("index.html")
+
+			for row in workings.iter_rows():
+				for cell in row:
+					if cell.value == "CIF":
+						rand_tb = cell.row
+						cod = cell.column
+						lun = len(workings[cell.column])
+			try:
+				codPartener = [b.value for b in workings[cod][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'CIF' in Workings sheet")
+				return render_template("index.html")
+
+
+			for row in workings.iter_rows():
+				for cell in row:
+					if cell.value == "Country Code":
+						rand_tb = cell.row
+						country = cell.column
+						lun = len(workings[cell.column])
+			try:
+				countryCode = [b.value for b in workings[country][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Country Code' in Workings sheet")
+				return render_template("index.html")
+
+			for row in workings.iter_rows():
+				for cell in row:
+					if cell.value == "DENUMIRE":
+						rand_tb = cell.row
+						numep = cell.column
+						lun = len(workings[cell.column])
+			try:
+				partnerName = [b.value for b in workings[numep][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'DENUMIRE' in Workings sheet")
+				return render_template("index.html")
+
+			for row in workings.iter_rows():
+				for cell in row:
+					if cell.value == "BAZA IMPOZABILĂ":
+						rand_tb = cell.row
+						suma = cell.column
+						lun = len(workings[cell.column])
+			try:
+				sumaTot = [b.value for b in workings[suma][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'BAZA IMPOZABILĂ' in Workings sheet")
+				return render_template("index.html")
+
+			for row in workings.iter_rows():
+				for cell in row:
+					if cell.value == "Cheie extragere - filtreaza 1":
+						rand_tb = cell.row
+						cheie_sort = cell.column
+						lun = len(workings[cell.column])
+			try:
+				cheie = [b.value for b in workings[cheie_sort][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Cheie extragere - filtreaza 1' in Workings sheet")
+				return render_template("index.html")
+
+			for row in workings.iter_rows():
+				for cell in row:
+					if cell.value == "COD OPERATOR INTRACOMUNITAR":
+						rand_tb = cell.row
+						coi = cell.column
+						lun = len(workings[cell.column])
+			try:
+				listaCOI = [b.value for b in workings[coi][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'BAZA IMPOZABILĂ' in Workings sheet")
+				return render_template("index.html")
+
+
+			nomenclatorTari={'AT':'Austria', 'BE':'Belgia', 'BG':'Bulgaria','CY':'Cipru','DK':'Danemarca','EE':'Estonia', 'FI':'Finlanda','FR':'Franta', 'DE':'Germania','HR':'Croatia',
+							'GR':'Grecia','IE':'Irlanda','IT':'Italia','LV':'Letonia','LT':'Lituania','LU':'Luxemburg','MT':'Malta','XI':'Irlanda de Nord - Regatul Unit','NL':'Olanda',
+							'PL':'Polonia','PT':'Portugalia','CZ':'Republica Ceha','RO':'Romania','SK':'Slovacia','SI':'Slovavia','ES':'Spania','SE':'Suedia','HU':'Ungaria'}
+			b=3
+			for i in countryCode:
+				if i in nomenclatorTari:
+					b=b+1
+					workings.cell(row=b, column=2).value=nomenclatorTari[i]
+
+			for row in workings['A3:I3']:
+				for cell in row:
+					cell.fill=cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')
+			for row in workings['E4:E10000']:
+				for cell in row:
+					cell.number_format='#,##0_);(#,##0)'
+			
+			for row in workings['H4:H10000']:
+				for cell in row:
+					cell.number_format='#,##0_);(#,##0)'
+
+			workings.column_dimensions['B'].width=20
+			workings.column_dimensions['D'].width=35				
+
+			forxml = temp.create_sheet('D390 for XML')
+			forxml.cell(row=1,column=1).value="D390 for XML"
+			forxml.cell(row=1,column=1).font=cap_tabelbold
+			forxml.freeze_panes = 'A4'
+			forxml.auto_filter.ref = "A3:F10000"
+			forxml.sheet_view.showGridLines = False
+
+			forxml.cell(row=3, column=1).value="III.B"
+			forxml.cell(row=3, column=2).value="TIP"
+			forxml.cell(row=3, column=3).value="ŢARA"
+			forxml.cell(row=3, column=4).value="COD OPERATOR INTRACOMUNITAR"
+			forxml.cell(row=3, column=5).value="Denumire"
+			forxml.cell(row=3, column=6).value="BAZA IMPOZABILĂ"
+
+			codeAndType=[]
+			codeAndName=[]
+			typeAndName=[]
+			# typeCodeName=[]
+
+			# for k in range(0,len(listaTip)):
+			# 	codeAndType.append(str(listaTip[k])+" "+str(codPartener[k]))
+			# 	codeAndName.append(str(listaTip[k])+" "+str(partnerName[k]))
+
+			# #print(codeAndType,'codeandtyp')
+			# codeAndTypeUnique=list(set(codeAndType))
+			# codeAndNameUnique=list(set(codeAndName))
+
+			for i in range(0, len(listaTip)):
+				typeAndName.append(str(listaTip[i])+";;;"+str(partnerName[i])+";;;"+str(countryCode[i])+";;;"+str(listaCOI[i]))
+			#print(typeAndName, 'TYPEAndNAME')
+
+			typeAndNameUni=list(set(typeAndName))
+
+			typeAndNameUni=list(set(typeAndName))
+
+			for i in it.chain(range(0, len(typeAndNameUni))):
+				x=typeAndNameUni[i].split(";;;")
+				forxml.cell(row=4+i, column=2).value=str(x[0])
+				forxml.cell(row=4+i, column=3).value=str(x[2])
+				forxml.cell(row=4+i, column=4).value=str(x[3])
+				forxml.cell(row=4+i, column=5).value=str(x[1])
+				forxml.cell(row=4+i, column=6).value="=SUMIFS('D390 workings'!H:H,'D390 workings'!A:A,B{0},'D390 workings'!C:C,D{0},'D390 workings'!G:G,C{0})".format(4+i)
+
+
+			for row in forxml['A3:F3']:
+				for cell in row:
+					cell.fill=cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			for row in forxml['F4:F10000']:
+				for cell in row:
+					cell.number_format='#,##0_);(#,##0)'
+
+			forxml.column_dimensions['D'].width=27
+			forxml.column_dimensions['E'].width=35
+			forxml.column_dimensions['F'].width=15
+
+
+	#---------------------------NR DE EVIDENTA
+		if(val3==1):
+			sheetinutil3=temp.create_sheet('D394--->>>')
+			sheetinutil3.sheet_view.showGridLines=False
+			sheetinutil3.cell(row=2,column=1).value="Switch to next sheet for D394 Workings draft"
+			sheetinutil3.cell(row=2,column=1).font=scrisincredibildemare		
+			nomenclatorTari={'AT':'Austrie', 'BE':'Belgia', 'BG':'Bulgaria','CY':'Cipru','DK':'Danemarca','EE':'Estonia', 'FI':'Finlanda','FR':'Franta', 'DE':'Germania','HR':'Croatia',
+							'GR':'Grecia','IE':'Irlanda','IT':'Italia','LV':'Letonia','LT':'Lituania','LU':'Luxemburg','MT':'Malta','XI':'Irlanda de Nord - Regatul Unit','NL':'Olanda',
+							'PL':'Polonia','PT':'Portugalia','CZ':'Republica Ceha','RO':'Romania','SK':'Slovacia','SI':'Slovavia','ES':'Spania','SE':'Suedia','HU':'Ungaria'}
+
+
+			salesExcel=temp.create_sheet("Mapping tranzactii")
+			salesExcel.sheet_view.showGridLines = False
+			salesExcel.cell(row=2,column=1).value="Mapping tranzactii"
+			salesExcel.cell(row=2,column=1).font=cap_tabeltitlu	
+			salesExcel.freeze_panes = 'A10'
+			
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value=="Declarat anterior":
+						rand_tb = cell.row
+						declarateanteriorp = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				listadeclantp = [b.value for b in purchases[declarateanteriorp][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Declarat anterior' in Purchases sheet")
+				return render_template("index.html")		
+			# except:
+			# 	listadeclant=[]
+			listadeclantp_1=[]
+			# #print(listadeclantp,"---------")
+			for c in range(0, len(listadeclantp)):
+				if listadeclantp[c] == None:
+					listadeclantp_1.append("No")
+				else:
+					listadeclantp_1.append(listadeclantp[c])
+			# #print("-----",listadeclantp_1,"------")
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value=="Declarat anterior":
+						rand_tb = cell.row
+						declarateanterior = cell.column
+						lun = len(sales[cell.column])
+			try:
+				listadeclant = [b.value for b in sales[declarateanterior][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Declarat anterior' in Sales sheet")
+				return render_template("index.html")
+			# except:
+			# 	listadeclant=[]
+			listadeclant_1=[]
+			# #print(len(listadeclant))
+			for c in range(0, len(listadeclant)):
+				if listadeclant[c] == None:
+					listadeclant_1.append("No")
+				else:
+					listadeclant_1.append(listadeclant[c])
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value=="Tax code":
+						rand_tb = cell.row
+						declarateanteriorp = cell.column
+						lun = len(sales[cell.column])
+			try:
+				ltaxcode = [b.value for b in sales[declarateanteriorp][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Declarat anterior' in Purchases sheet")
+				return render_template("index.html")			
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "Business PartnerName":
+						rand_tb = cell.row
+						clientCell = cell.column
+						lun = len(sales[cell.column])
+			try:
+				listaClient = [b.value for b in sales[clientCell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Denumirea clientului Client name' in Sales sheet")
+				return render_template("index.html")
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "VAT Registration No.":
+						rand_tb = cell.row
+						coloanaClientID = cell.column
+						lun = len(sales[cell.column])
+			try:
+				listaCUISales = [b.value for b in sales[coloanaClientID][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Codul de inregistrare in scopuri de TVA al clientului Client VAT ID' in Sales sheet")
+				return render_template("index.html")
+
+			listaCUISales1=[]
+			# listadeclant_1=[]
+			for val in listaCUISales:
+				if val != None:
+					# listadeclant_1.append("")
+					listaCUISales1.append(val)
+				else:
+					listaCUISales1.append("US111")
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "Document No.":
+						rand_tb = cell.row
+						docNumber = cell.column
+						lun = len(sales[cell.column])
+			try:
+				docNoSales = [b.value for b in sales[docNumber][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Nr/ document Document no' in Sales sheet")
+				return render_template("index.html")
+
+
+
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == " 19% tax base amount":
+						rand_tb = cell.row
+						taxBaseL19 = cell.column
+						lun = len(sales[cell.column])
+			try:
+				taxBaseL19 = [b.value for b in sales[taxBaseL19][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (RON)- Livrari locale-Taxable base (RON)-Local supplies (19%)' in Sales sheet")
+				return render_template("index.html")
+			#print(taxBaseL19)
+
+			taxBaseL19_1=[]
+			for c in range(0, len(taxBaseL19)):
+				if taxBaseL19[c] == None:
+					taxBaseL19_1.append(0)
+				else:
+					taxBaseL19_1.append(taxBaseL19[c])
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "      19% tax amount":
+						rand_tb = cell.row
+						vatBaseL19 = cell.column
+						lun = len(sales[cell.column])
+			try:
+				vatL19 = [b.value for b in sales[vatBaseL19][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (19%)' in Sales sheet")
+				return render_template("index.html")
+
+			vatL19_1=[]
+			for c in range(0, len(vatL19)):
+				if vatL19[c] == None:
+					vatL19_1.append(0)
+				else:
+					vatL19_1.append(vatL19[c])
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "  9% tax base amount":
+						rand_tb = cell.row
+						taxBaseL9 = cell.column
+						lun = len(sales[cell.column])
+			try:
+				taxBaseL9 = [b.value for b in sales[taxBaseL9][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (RON)-Livrari locale-Taxable base (RON)-Local supplies (9%)' in Sales sheet")
+				return render_template("index.html")
+
+
+			taxBaseL9_1=[]
+			for c in range(0, len(taxBaseL9)):
+				if taxBaseL9[c] == None:
+					taxBaseL9_1.append(0)
+				else:
+					taxBaseL9_1.append(taxBaseL9[c])
+
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "       9% tax amount":
+						rand_tb = cell.row
+						vatBaseL9 = cell.column
+						lun = len(sales[cell.column])
+			try:
+				vatL9 = [b.value for b in sales[vatBaseL9][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (9%)' in Sales sheet")
+				return render_template("index.html")
+
+			vatL9_1=[]
+			for c in range(0, len(vatL9)):
+				if vatL9[c] == None:
+					vatL9_1.append(0)
+				else:
+					vatL9_1.append(vatL9[c])
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "         5% tax base":
+						rand_tb = cell.row
+						taxBaseL5 = cell.column
+						lun = len(sales[cell.column])
+			try:
+				taxBaseL5 = [b.value for b in sales[taxBaseL5][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (EUR/USD)-Livrari locale-Taxable base (EUR/USD)-Local supplies (5%) ' in Sales sheet")
+				return render_template("index.html")
+
+
+			taxBaseL5_1=[]
+			for c in range(0, len(taxBaseL5)):
+				if taxBaseL5[c] == None:
+					taxBaseL5_1.append(0)
+				else:
+					taxBaseL5_1.append(taxBaseL5[c])
+
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "       5% tax amount":
+						rand_tb = cell.row
+						vatBaseL5 = cell.column
+						lun = len(sales[cell.column])
+			try:
+				vatL5 = [b.value for b in sales[vatBaseL5][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (5%)' in Sales sheet")
+				return render_template("index.html")
+
+			vatL5_1=[]
+			for c in range(0, len(vatL5)):
+				if vatL5[c] == None:
+					vatL5_1.append(0)
+				else:
+					vatL5_1.append(vatL5[c])
+			# #print(vatL5_1)
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "   Inversal tax base":
+						rand_tb = cell.row
+						taxBV = cell.column
+						lun = len(sales[cell.column])
+			try:
+				taxBaseV = [b.value for b in sales[taxBV][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Bază de impozitare (RON)-Livrari locale taxare inversa-Taxable base (RON)-Local supplies reverse charge' in Sales sheet")
+				return render_template("index.html")
+
+
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "  Total docinclVAT":
+						rand_tb = cell.row
+						totdoc = cell.column
+						lun = len(sales[cell.column])
+			totdocuments = [b.value for b in sales[totdoc][rand_tb:lun+1]]
+			taxBaseV_1=[]
+			for c in range(0, len(taxBaseV)):
+				if taxBaseV[c] == None:
+					taxBaseV_1.append(0)
+				else:
+					taxBaseV_1.append(taxBaseV[c])
+			# #print(taxBaseV_1)
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "Outside RO deductabl":
+						rand_tb = cell.row
+						taxBi = cell.column
+						lun = len(sales[cell.column])
+			try:
+				taxBaseIntracom = [b.value for b in sales[taxBi][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (RON)-Prestari servicii UE- Taxable base (RON)-EU services' in Sales sheet")
+				return render_template("index.html")
+
+			taxBaseIntracom_1=[]
+			for c in range(0, len(taxBaseIntracom)):
+				if taxBaseIntracom[c] == None:
+					taxBaseIntracom_1.append(0)
+				else:
+					taxBaseIntracom_1.append(taxBaseIntracom[c])
+
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "Outside RO nonDeduct":
+						rand_tb = cell.row
+						taxBiSc = cell.column
+						lun = len(sales[cell.column])
+			try:
+				taxBaseIntracomScutit = [b.value for b in sales[taxBiSc][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (RON)-Prestari servicii UE- Taxable base (RON)-EU services' in Sales sheet")
+				return render_template("index.html")
+
+
+			taxBaseIntracomScutit_1=[]
+			for c in range(0, len(taxBaseIntracomScutit)):
+				if taxBaseIntracomScutit[c] == None:
+					taxBaseIntracomScutit_1.append(0)
+				else:
+					taxBaseIntracomScutit_1.append(taxBaseIntracomScutit[c])
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "   Exempt nonDeduct.":
+						rand_tb = cell.row
+						taxBiSc = cell.column
+						lun = len(sales[cell.column])
+			try:
+				taxBaseIntracomScutit = [b.value for b in sales[taxBiSc][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (RON)-Prestari servicii UE- Taxable base (RON)-EU services' in Sales sheet")
+				return render_template("index.html")
+
+			serieCuiSales=[]
+			codTaraCuiSales=[]
+			for i in listaCUISales1:
+				if(str(i)[:1].isalpha()):
+					r = re.compile("([a-zA-Z]+)([0-9]+)")
+					m = r.match(str(i))
+					try:
+						serieCuiSales.append(m.group(2))
+						codTaraCuiSales.append(m.group(1))
+
+					except:
+						codTaraCuiSales.append(None)
+						serieCuiSales.append(str(i))	
+
+				else:
 					codTaraCuiSales.append(None)
-					serieCuiSales.append(str(i))	
-
-			else:
-				codTaraCuiSales.append(None)
-				serieCuiSales.append(str(i))
-			# tara,oras=i.split(',',1)
-			# serieCuiSales.append(oras)
-			# codTaraCuiSales.append(tara)
-		# #print(codTaraCuiSales)
-		# TIP Furnizor!!!!!
-		# #print(len(codTaraCuiSales))
-		print(serieCuiSales,codTaraCuiSales)
-		coteTVAsales=[]
-		for i in range(0, len(docNoSales)):
-			if (ltaxcode[i]=="A1"):
-				coteTVAsales.append(19)
-			else:
-				if (ltaxcode[i]=="A8"):
-					coteTVAsales.append(9)
+					serieCuiSales.append(str(i))
+				# tara,oras=i.split(',',1)
+				# serieCuiSales.append(oras)
+				# codTaraCuiSales.append(tara)
+			# #print(codTaraCuiSales)
+			# TIP Furnizor!!!!!
+			# #print(len(codTaraCuiSales))
+			print(serieCuiSales,codTaraCuiSales)
+			coteTVAsales=[]
+			for i in range(0, len(docNoSales)):
+				if (ltaxcode[i]=="A1"):
+					coteTVAsales.append(19)
 				else:
-					coteTVAsales.append(0)
-
-		codTranzactieSales=[]
-		for i in range(0, len(codTaraCuiSales)):
-			if str(serieCuiSales[i])[1:2].isalpha():
-				codTranzactieSales.append(2)
-			else:
-				if codTaraCuiSales[i] == "RO":
-					# #print("RO")
-					codTranzactieSales.append(1)
-				else:	
-					if codTaraCuiSales[i] in nomenclatorTari:
-						# #print("UE")
-						codTranzactieSales.append(3)
+					if (ltaxcode[i]=="A8"):
+						coteTVAsales.append(9)
 					else:
-						# #print("nonUE")
-						codTranzactieSales.append(4)
-		#Cote TVAA
+						coteTVAsales.append(0)
 
-
-
-
-		#TIP TRANZACTIE
-		storno=[]
-		tipTranzSale = []
-		# #print(docNoSales)
-		# #print(len(docNoSales),len(codTranzactieSales))
-		# print(len(docNoSales),len(codTranzactieSales))
-		# print(codTranzactieSales)
-		for i in range(0, len(docNoSales)):
-			print(ltaxcode[i])
-			# print(docNoSales[i],print(codTranzactieSales[i]))
-			if(listadeclant_1[i]=="Yes"):
-				tipTranzSale.append("Declarat anterior")
-			else:
-				if int(codTranzactieSales[i]) == 1:
-					# #print(docNoSales[i]," ",listaCUISales1[i], "", taxBaseL19_1[i], " ", taxBaseL9_1[i], " ", taxBaseL5_1[i])
-					# if (int(taxBaseL19_1[i])>0 and int(vatL19_1[i])>0) or (int(taxBaseL9_1[i])>0 and int(vatL9_1[i])> 0) or (int(taxBaseL5_1[i])>0 and int(vatL5_1[i])>0):
-					if (ltaxcode[i]=='A1'):
-						print("Yes")
-						tipTranzSale.append('L')
-						storno.append("")
-					else:
-						# None
-						if (ltaxcode[i]=='A8'):
-							print("Yes")
-							tipTranzSale.append('L')
+			codTranzactieSales=[]
+			for i in range(0, len(codTaraCuiSales)):
+				if str(serieCuiSales[i])[1:2].isalpha():
+					codTranzactieSales.append(2)
+				else:
+					if codTaraCuiSales[i] == "RO":
+						# #print("RO")
+						codTranzactieSales.append(1)
+					else:	
+						if codTaraCuiSales[i] in nomenclatorTari:
+							# #print("UE")
+							codTranzactieSales.append(3)
 						else:
-							if ltaxcode[i]=='A5' or ltaxcode[i]=='A2' :
-								print("Yes")
-								tipTranzSale.append("V")
-								storno.append("")
+							# #print("nonUE")
+							codTranzactieSales.append(4)
+			#Cote TVAA
+
+
+
+
+			#TIP TRANZACTIE
+			storno=[]
+			tipTranzSale = []
+			# #print(docNoSales)
+			# #print(len(docNoSales),len(codTranzactieSales))
+			# print(len(docNoSales),len(codTranzactieSales))
+			# print(codTranzactieSales)
+			for i in range(0, len(docNoSales)):
+				print(ltaxcode[i])
+				# print(docNoSales[i],print(codTranzactieSales[i]))
+				if(listadeclant_1[i]=="Yes"):
+					tipTranzSale.append("Declarat anterior")
 				else:
-					if int(codTranzactieSales[i]) == 2:
+					if int(codTranzactieSales[i]) == 1:
+						# #print(docNoSales[i]," ",listaCUISales1[i], "", taxBaseL19_1[i], " ", taxBaseL9_1[i], " ", taxBaseL5_1[i])
+						# if (int(taxBaseL19_1[i])>0 and int(vatL19_1[i])>0) or (int(taxBaseL9_1[i])>0 and int(vatL9_1[i])> 0) or (int(taxBaseL5_1[i])>0 and int(vatL5_1[i])>0):
 						if (ltaxcode[i]=='A1'):
+							print("Yes")
 							tipTranzSale.append('L')
 							storno.append("")
 						else:
-							tipTranzSale.append("Not applicable for D394")
+							# None
+							if (ltaxcode[i]=='A8'):
+								print("Yes")
+								tipTranzSale.append('L')
+							else:
+								if ltaxcode[i]=='A5' or ltaxcode[i]=='A2' :
+									print("Yes")
+									tipTranzSale.append("V")
+									storno.append("")
 					else:
-						if int(codTranzactieSales[i]) == 3:
-							if (ltaxcode[i]=='E1' or ltaxcode[i]=='X1' or ltaxcode[i]=='Y3'):
-								tipTranzSale.append('Not applicable for D394')
+						if int(codTranzactieSales[i]) == 2:
+							if (ltaxcode[i]=='A1'):
+								tipTranzSale.append('L')
 								storno.append("")
 							else:
-								if (ltaxcode[i]=='A1' or ltaxcode[i]=='A8'):
-									tipTranzSale.append('L')
-									storno.append("")
-								else:
-									tipTranzSale.append('Not applicable for D394')
+								tipTranzSale.append("Not applicable for D394")
 						else:
-							if int(codTranzactieSales[i]) == 4:
-								if (ltaxcode[i]=='A1' or ltaxcode[i]=='A8'):
-									tipTranzSale.append('L')
+							if int(codTranzactieSales[i]) == 3:
+								if (ltaxcode[i]=='E1' or ltaxcode[i]=='X1' or ltaxcode[i]=='Y3'):
+									tipTranzSale.append('Not applicable for D394')
 									storno.append("")
 								else:
-									if (ltaxcode[i]=='E1' or ltaxcode[i]=='X1' or ltaxcode[i]=='Y3'):
-										tipTranzSale.append('Not applicable for d394')
-									else:
+									if (ltaxcode[i]=='A1' or ltaxcode[i]=='A8'):
 										tipTranzSale.append('L')
 										storno.append("")
-
-
-		# #print(docNoSales)
-		#Scriere in excel
-
-		salesExcel.cell(row=9, column=1).value = "Cod tara"
-		salesExcel.cell(row=9, column=2).value = "Serie cui"
-		salesExcel.cell(row=9, column=3).value = "Numar document"
-		salesExcel.cell(row=9, column=4).value = "CUI"
-		salesExcel.cell(row=9, column=5).value = "Clasa tranzactie"
-		salesExcel.cell(row=9, column=6).value = "Tip tranzactie"
-		salesExcel.cell(row=9, column=7).value = "Cota TVA"
-		salesExcel.cell(row=9, column=8).value = "Total document"
-		salesExcel.cell(row=9, column=9).value = "Tip jurnal"
-		salesExcel.cell(row=9, column=10).value = "Nume partener"
-		salesExcel.cell(row=9, column=11).value = "Check"
-		salesExcel.cell(row=9, column=12).value = "Cod si denumire NC produs(TIP V)"
-
-		# dv = DataValidation(
-			# type='list', formula1='"Yes,No"', allow_blank=True)
-
-
-		listahelp=["1002--Secara","1003--Orz","1005--Porumb","1201--Boabe de soia"," 1205--Seminte de rapita sau de rapita salbatica","120600--Seminte de floarea soarelui","121291--Sfecla de zahar","1001-Grau si meslin","1004--Ovaz","10086000--Triticale","22-deseuri feroase si neferoase","23-masa lemnoasa","32-terenuri","33-constructii","34-alte bunuri","35-servicii","24-certificate de emisii de gaze cu efect de sera","25-energie electrica","26-certificate verzi","27-constructii/terenuri","28-aur de investitii","29-telefoane mobile","30-microprocesoare","31-console de jocuri tablete PC si laptopuri"]
-		sheethelp=temp.create_sheet("Validation")
-		sheethelp.sheet_state = 'hidden'
-
-		# dv = DataValidation(
-		# 	type="list", formula1="", allow_blank=True)
-		# salesExcel.add_data_validation(dv)
-
-		# dv.add(salesExcel["L2"])
-
-
-
-		print(len(tipTranzSale),len(codTranzactieSales))
-		for i in range(0, len(codTaraCuiSales)):
-			print(serieCuiSales[i],docNoSales[i],listaCUISales1[i],codTranzactieSales[i],tipTranzSale[i])
-			salesExcel.cell(row=10 + i, column=1).value = codTaraCuiSales[i]
-			salesExcel.cell(row=10 + i, column=2).value = serieCuiSales[i]
-			salesExcel.cell(row=10 + i, column=3).value = docNoSales[i]
-			salesExcel.cell(row=10 + i, column=4).value = listaCUISales1[i]
-			salesExcel.cell(row=10 + i, column=5).value = codTranzactieSales[i]
-			# if(listadeclant_1[i]!=""):
-			salesExcel.cell(row=10 + i, column=6).value = tipTranzSale[i]
-			# else:
-				# salesExcel.cell(row=10 + i, column=6).value = listadeclant_1[i]
-
-			if(tipTranzSale[i]=='V'):
-				salesExcel.cell(row=10+i,column=12).value="V"
-			else:
-				salesExcel.cell(row=10+i,column=12).value="N/A, valid only for V trans."
-
-			salesExcel.cell(row=10 + i, column=8).value = totdocuments[i]
-			salesExcel.cell(row=10 + i, column=9).value = "Jurnal vanzari"
-			salesExcel.cell(row=10 + i, column=10).value = listaClient[i]
-
-		for i in range(0, len(coteTVAsales)):
-			salesExcel.cell(row=10 + i, column=7).value = coteTVAsales[i]
-			salesExcel.cell(row=10+i,column=18).value="=B{0}&E{0}&F{0}&G{0}".format(i+10)
-
-		#FORMATARE------------------------------------------------------------------
-		red_color = 'ffc7ce'
-		green_color='99ff99'
-		red_fill = styles.PatternFill(start_color=red_color, end_color=red_color, fill_type='solid')
-		green_fill = styles.PatternFill(start_color=green_color, end_color=green_color, fill_type='solid')
-		row=salesExcel.max_row	
-		salesExcel.conditional_formatting.add('K10:K'+str(row-1), formatting.rule.CellIsRule(operator='notEqual', formula=['"OK"'], fill=red_fill))
-		for row in salesExcel['A9:L9']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-
-		for row in salesExcel['A9:L9']:
-			for cell in row:
-				cell.font = cap_tabel
-
-		# for row in salesExcel['A9:K9']:
-		# 	for cell in row:
-		# 		cell.border = border_thin
-
-		
-		salesExcel.freeze_panes = 'A10'
-
-		salesExcel.column_dimensions['B'].width = 20
-		salesExcel.column_dimensions['C'].width = 20
-		salesExcel.column_dimensions['D'].width = 20
-		salesExcel.column_dimensions['E'].width = 16
-		salesExcel.column_dimensions['F'].width = 16
-		salesExcel.column_dimensions['F'].width = 20		
-		salesExcel.column_dimensions['H'].width = 14
-		salesExcel.column_dimensions['J'].width = 35
-		salesExcel.column_dimensions['L'].width = 35		
-		purchases = temp['Purchases']
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Business PartnerName":
-					rand_tb = cell.row
-					supplierCell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			supplierName = [b.value for b in purchases[supplierCell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Furnizor Supplier' in Purchases sheet")
-			return render_template("index.html")
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == " Doc. Date":
-					rand_tb = cell.row
-					supplierCell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			datadocument = [b.value for b in purchases[supplierCell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for ' Doc. Date' in Purchases sheet")
-			return render_template("index.html")
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Aplica TVA la incasare VAT cash-in system":
-					rand_tb = cell.row
-					vatCashinSys = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			vatApplies = [b.value for b in purchases[vatCashinSys][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Aplica TVA la incasare VAT cash-in system' in Purchases sheet")
-			return render_template("index.html")
-
-		vatApplies_1=[]
-
-
-		for val in vatApplies:
-			if val != None:
-				vatApplies_1.append(val)
-
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "VAT Registration No.":
-					rand_tb = cell.row
-					suppID = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			suppIDPurch = [b.value for b in purchases[suppID][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Codul de înregistrare în scopuri de TVA VAT number' in Purchases sheet")
-			return render_template("index.html")
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Tax code":
-					rand_tb = cell.row
-					suppID = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			taxcodep = [b.value for b in purchases[suppID][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Codul de înregistrare în scopuri de TVA VAT number' in Purchases sheet")
-			return render_template("index.html")		
-		
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Nr. document Document no":
-					rand_tb = cell.row
-					docNumberPurch = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			docNoPurch = [b.value for b in purchases[docNumberPurch][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Nr. document Document no' in Purchases sheet")
-			return render_template("index.html")
-		
-		docNoPurch1 = []
-		for val in docNoPurch:
-
-			docNoPurch1.append(val)
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "19%taxbase":
-					rand_tb = cell.row
-					taxBaseAch19cell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			taxBaseAch19 = [b.value for b in purchases[taxBaseAch19cell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (RON) -achizitii locale-Taxable base (RON) - local acquisition (19%)' in Purchases sheet")
-			return render_template("index.html")
-
-		taxBaseAch19_1=[]
-		for i in range(0, len(taxBaseAch19)):
-			if taxBaseAch19[i] == None:
-				taxBaseAch19_1.append(0)
-			else:
-				taxBaseAch19_1.append(taxBaseAch19[i])
-
-		# #print(taxBaseAch19,taxBaseAch19_1)
-		# #print(taxBaseAch19_1)
-		# #print(taxBaseAch19)
-		# for item in taxBaseAch19:
-		#    #print(type(item))
-		# #print(type(taxBaseAch19))
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "19%taxamount":
-					rand_tb = cell.row
-					vatAch19cell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			vatAch19 = [b.value for b in purchases[vatAch19cell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TVA (RON)-achizitii locale-VAT (RON)-local acquisition (19%)' in Purchases sheet")
-			return render_template("index.html")
-
-		vatAch19_1=[]
-		for i in range(0, len(vatAch19)):
-			if vatAch19[i] == None or vatAch19[i]=="":
-				vatAch19_1.append(0)
-			else:
-				vatAch19_1.append(vatAch19[i])
-		# #print(vatAch19_1)
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "9%taxbase":
-					rand_tb = cell.row
-					taxBaseAch9cell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			taxBaseAch9 = [b.value for b in purchases[taxBaseAch9cell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (RON)-achizitii locale- Taxable base (RON)-local acquisition (9%)' in Purchases sheet")
-			return render_template("index.html")
-
-		taxBaseAch9_1=[]
-		for i in range(0, len(taxBaseAch9)):
-			if taxBaseAch9[i] == None:
-				taxBaseAch9_1.append(0)
-			else:
-				taxBaseAch9_1.append(taxBaseAch9[i])
-		# #print(taxBaseAch9_1)
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "9%taxamount":
-					rand_tb = cell.row
-					vatAch9cell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			vatAch9 = [b.value for b in purchases[vatAch9cell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TVA (RON)-achizitii locale-VAT (RON)-local acquisition (9%)' in Purchases sheet")
-			return render_template("index.html")
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "TotaldocinclVAT":
-					rand_tb = cell.row
-					totdocp = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			totdocumentp = [b.value for b in purchases[totdocp][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Total document (inclusiv TVA)-RON' in Purchases sheet")
-			return render_template("index.html")
-
-		vatAch9_1=[]
-		for i in range(0, len(vatAch9)):
-			if vatAch9[i] == None:
-				vatAch9_1.append(0)
-			else:
-				vatAch9_1.append(vatAch9[i])
-		# #print(vatAch9_1)
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "5%taxbase":
-					rand_tb = cell.row
-					taxBaseAch5cell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			taxBaseAch5 = [b.value for b in purchases[taxBaseAch5cell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (RON)-achizitii locale Taxable base (RON) local acquisition (5%)' in Purchases sheet")
-			return render_template("index.html")
-
-		taxBaseAch5_1=[]
-		for i in range(0, len(taxBaseAch5)):
-			if taxBaseAch5[i] == None:
-				taxBaseAch5_1.append(0)
-			else:
-				taxBaseAch5_1.append(taxBaseAch5[i])
-		# #print(taxBaseAch5_1)
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "5%taxamount":
-					rand_tb = cell.row
-					vatAch5cell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			vatAch5 = [b.value for b in purchases[vatAch5cell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TVA (RON)-achizitii locale-VAT (RON)-local acquisition (5%)' in Purchases sheet")
-			return render_template("index.html")
-
-		vatAch5_1=[]
-		for i in range(0, len(vatAch5)):
-			if vatAch5[i] == None:
-				vatAch5_1.append(0)
-			else:
-				vatAch5_1.append(vatAch5[i])
-
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Exemptint+impbase":
-					rand_tb = cell.row
-					vatExemptLocAcq = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			vatExempt = [b.value for b in purchases[vatExemptLocAcq][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Achiziţii de bunuri şi servicii scutite de taxă sau neimpozabile / VAT exempt local acquisitions or non-taxable (RON)' in Purchases sheet")
-			return render_template("index.html")
-
-		vatExempt_1=[]
-		for i in range(0, len(vatExempt)):
-			if vatExempt[i] == None:
-				vatExempt_1.append(0)
-			else:
-				vatExempt_1.append(vatExempt[i])
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Intra-commtaxbase":
-					rand_tb = cell.row
-					nonChartb = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			nonCharTaxBase = [b.value for b in purchases[nonChartb][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Achiziţii de bunuri şi servicii scutite de taxă sau neimpozabile / VAT exempt local acquisitions or non-taxable (RON)' in Purchases sheet")
-			return render_template("index.html")
-
-		nonCharTaxBase_1=[]
-		for i in range(0, len(nonCharTaxBase)):
-			if nonCharTaxBase[i] == None:
-				nonCharTaxBase_1.append(0)
-			else:
-				nonCharTaxBase_1.append(nonCharTaxBase[i])
-		# #print(nonCharTaxBase_1)
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Intra-comtaxamount":
-					rand_tb = cell.row
-					nonChartVATtb = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			nonChartVATBase = [b.value for b in purchases[nonChartVATtb][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TVA nedeductibila/ Non-deductible VAT (RON)' in Purchases sheet")
-			return render_template("index.html")
-
-		nonChartVATBase_1=[]
-		for i in range(0, len(nonChartVATBase)):
-			if nonChartVATBase[i] == None:
-				nonChartVATBase_1.append(0)
-			else:
-				nonChartVATBase_1.append(nonChartVATBase[i])
-		# #print(nonChartVATBase_1)
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Revtaxbase-art150":
-					rand_tb = cell.row
-					revTaxBaseAch19cell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			revTaxBaseAch19 = [b.value for b in purchases[revTaxBaseAch19cell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge (19%)' in Purchases sheet")
-			return render_template("index.html")
-
-		revTaxBaseAch19_1=[]
-		for i in range(0, len(revTaxBaseAch19)):
-			if revTaxBaseAch19[i] == None:
-				revTaxBaseAch19_1.append(0)
-			else:
-				revTaxBaseAch19_1.append(revTaxBaseAch19[i])
-		# #print(revTaxBaseAch19_1)
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Revtaxamnt-art150":
-					rand_tb = cell.row
-					revVatAch19cell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			revVatAch19 = [b.value for b in purchases[revVatAch19cell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TVA (RON)-Achizitii locale taxare inversa-VAT (RON)-Local acquisition reverse charge (19%)' in Purchases sheet")
-			return render_template("index.html")
-
-		revVatAch19_1=[]
-		for i in range(0, len(revVatAch19)):
-			if revVatAch19[i] == None:
-				revVatAch19_1.append(0)
-			else:
-				revVatAch19_1.append(revVatAch19[i])
-		# #print(revVatAch19_1)
-
-		# for row in purchases.iter_rows():
-		# 	for cell in row:
-		# 		if cell.value == "Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge (9%)":
-		# 			rand_tb = cell.row
-		# 			revTaxBaseAch9cell = cell.column
-		# 			lun = len(purchases[cell.column])
-		# try:
-		# 	revTaxBaseAch9 = [b.value for b in purchases[revTaxBaseAch9cell][rand_tb:lun]]
-		# except:
-		# 	flash("Please insert the correct header for 'Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge (9%)' in Purchases sheet")
-		# 	return render_template("index.html")
-
-		# revTaxBaseAch9_1=[]
-		# for i in range(0, len(revTaxBaseAch9)):
-		# 	if revTaxBaseAch9[i] == None:
-		# 		revTaxBaseAch9_1.append(0)
-		# 	else:
-		# 		revTaxBaseAch9_1.append(revTaxBaseAch9[i])
-		# # #print(revTaxBaseAch9_1)
-
-		# for row in purchases.iter_rows():
-		# 	for cell in row:
-		# 		if cell.value == "TVA (RON)-Achizitii locale taxare inversa-VAT (RON)-Local acquisition reverse charge (9%)":
-		# 			rand_tb = cell.row
-		# 			revVatAch9cell = cell.column
-		# 			lun = len(purchases[cell.column])
-		# try:
-		# 	revVatAch9 = [b.value for b in purchases[revVatAch9cell][rand_tb:lun]]
-		# except:
-		# 	flash("Please insert the correct header for 'TVA (RON)-Achizitii locale taxare inversa-VAT (RON)-Local acquisition reverse charge (9%)' in Purchases sheet")
-		# 	return render_template("index.html")
-
-		# revVatAch9_1=[]
-		# for i in range(0, len(revVatAch9)):
-		# 	if revVatAch9[i] == None:
-		# 		revVatAch9_1.append(0)
-		# 	else:
-		# 		revVatAch9_1.append(revVatAch9[i])
-		# # #print(revVatAch9_1)
-
-		# for row in purchases.iter_rows():
-		# 	for cell in row:
-		# 		if cell.value == "Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge(5%)":
-		# 			rand_tb = cell.row
-		# 			revTaxBaseAch5cell = cell.column
-		# 			lun = len(purchases[cell.column])
-		# try:
-		# 	revTaxBaseAch5 = [b.value for b in purchases[revTaxBaseAch5cell][rand_tb:lun]]
-		# except:
-		# 	flash("Please insert the correct header for 'Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge(5%)' in Purchases sheet")
-		# 	return render_template("index.html")
-
-		# revTaxBaseAch5_1=[]
-		# for i in range(0, len(revTaxBaseAch5)):
-		# 	if revTaxBaseAch5[i] == None:
-		# 		revTaxBaseAch5_1.append(0)
-		# 	else:
-		# 		revTaxBaseAch5_1.append(revTaxBaseAch5[i])
-		# # #print(revTaxBaseAch5_1)
-
-		# for row in purchases.iter_rows():
-		# 	for cell in row:
-		# 		if cell.value == "TVA (RON)-Achizitii locale taxare inversa VAT (RON)-Local acquisition reverse charge (5%)":
-		# 			rand_tb = cell.row
-		# 			revVatAch5cell = cell.column
-		# 			lun = len(purchases[cell.column])
-		# try:
-		# 	revVatAch5 = [b.value for b in purchases[revVatAch5cell][rand_tb:lun]]
-		# except:
-		# 	flash("Please insert the correct header for 'TVA (RON)-Achizitii locale taxare inversa VAT (RON)-Local acquisition reverse charge (5%)' in Purchases sheet")
-		# 	return render_template("index.html")
-
-		# revVatAch5_1=[]
-		# for i in range(0, len(revVatAch5)):
-		# 	if revVatAch5[i] == None:
-		# 		revVatAch5_1.append(0)
-		# 	else:
-		# 		revVatAch5_1.append(revVatAch5[i])
-		# # #print(revVatAch5_1)
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Intra-communexempt":
-					rand_tb = cell.row
-					nonUEGoodscell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			taxNonUEgoods = [b.value for b in purchases[nonUEGoodscell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Bază de impozitare (RON)-bunuri nonUE-Taxable base (RON)-nonUE goods' in Purchases sheet")
-			return render_template("index.html")
-		taxNonUEgoods_1=[]
-		for i in range(0, len(taxNonUEgoods)):
-			if taxNonUEgoods[i] == None:
-				taxNonUEgoods_1.append(0)
-			else:
-				taxNonUEgoods_1.append(taxNonUEgoods[i])
-
-		# #print(datadocument)
-		# for row in purchases.iter_rows():
-		# 	for cell in row:
-		# 		if cell.value == "TVA (RON)-bunuri nonUE-VAT (RON)-nonUE goods":
-		# 			rand_tb = cell.row
-		# 			vatNonUEGoodscell = cell.column
-		# 			lun = len(purchases[cell.column])
-		# try:
-		# 	vatNonUEGoods = [b.value for b in purchases[vatNonUEGoodscell][rand_tb:lun]]
-		# except:
-		# 	flash("Please insert the correct header for 'TVA (RON)-bunuri nonUE-VAT (RON)-nonUE goods' in Purchases sheet")
-		# 	return render_template("index.html")
-
-		# vatNonUEGoods_1=[]
-		# for i in range(0, len(vatNonUEGoods)):
-		# 	if vatNonUEGoods[i] == None:
-		# 		vatNonUEGoods_1.append(0)
-		# 	else:
-		# 		vatNonUEGoods_1.append(vatNonUEGoods[i])
-
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Intra-communexempt":
-					rand_tb = cell.row
-					nonUEServcell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			taxNonUEservices = [b.value for b in purchases[nonUEServcell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Bază de impozitare (RON)-servicii nonUE-Taxable base (RON)-nonUE services' in Purchases sheet")
-			return render_template("index.html")
-
-		# taxNonUEservices_1=[]
-		taxNonUEservices_1=[]
-		for i in range(0, len(taxNonUEservices)):
-			if taxNonUEservices[i] == None:
-				taxNonUEservices_1.append(0)
-			else:
-				taxNonUEservices_1.append(taxNonUEservices[i])
-
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Intra-commnon-tax":
-					rand_tb = cell.row
-					vatNonUEservcell = cell.column
-					lun = len(purchases[cell.column])
-		try:
-			vatNonUEservices = [b.value for b in purchases[vatNonUEservcell][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'TVA (RON)-servicii nonUE-VAT (RON)-nonUE services' in Purchases sheet")
-			return render_template("index.html")
-
-		vatNonUEservices_1=[]
-		for i in range(0, len(vatNonUEservices)):
-			if vatNonUEservices[i] == None:
-				vatNonUEservices_1.append(0)
-			else:
-				vatNonUEservices_1.append(vatNonUEservices[i])
-
-		serieCuiPurch = []
-		codTaraCuiPurch = []
-		# #print(suppIDPurch)
-		for i in suppIDPurch:
-			# #print(i)
-			if(str(i)[:1].isalpha()):	
-				r = re.compile("([a-zA-Z]+)([0-9]+)")
-				m = r.match(str(i))
-				try:
-					serieCuiPurch.append(m.group(2))
-				except:
-					serieCuiPurch.append(" ")
-				try:
-					codTaraCuiPurch.append(m.group(1))
-				except:
-					codTaraCuiPurch.append(" ")
-			else:
-				codTaraCuiPurch.append(None)
-				serieCuiPurch.append(i)
-		# #print(codTaraCuiPurch,serieCuiPurch)
-		tipTranzactiePurchases=[]
-		#print("Aici vat -------",vatAch19_1,"-----Achizitii")
-		#Tip furnizor
-		for i in range(0, len(codTaraCuiPurch)):
-			if codTaraCuiPurch[i] == "RO":
-				# #print("RO")
-				tipTranzactiePurchases.append(1)
-			else:
-				if serieCuiPurch[i] in suppIDPurch and int(nonCharTaxBase_1[i])>0:
-					tipTranzactiePurchases.append(2)
+									else:
+										tipTranzSale.append('Not applicable for D394')
+							else:
+								if int(codTranzactieSales[i]) == 4:
+									if (ltaxcode[i]=='A1' or ltaxcode[i]=='A8'):
+										tipTranzSale.append('L')
+										storno.append("")
+									else:
+										if (ltaxcode[i]=='E1' or ltaxcode[i]=='X1' or ltaxcode[i]=='Y3'):
+											tipTranzSale.append('Not applicable for d394')
+										else:
+											tipTranzSale.append('L')
+											storno.append("")
+
+
+			# #print(docNoSales)
+			#Scriere in excel
+
+			salesExcel.cell(row=9, column=1).value = "Cod tara"
+			salesExcel.cell(row=9, column=2).value = "Serie cui"
+			salesExcel.cell(row=9, column=3).value = "Numar document"
+			salesExcel.cell(row=9, column=4).value = "CUI"
+			salesExcel.cell(row=9, column=5).value = "Clasa tranzactie"
+			salesExcel.cell(row=9, column=6).value = "Tip tranzactie"
+			salesExcel.cell(row=9, column=7).value = "Cota TVA"
+			salesExcel.cell(row=9, column=8).value = "Total document"
+			salesExcel.cell(row=9, column=9).value = "Tip jurnal"
+			salesExcel.cell(row=9, column=10).value = "Nume partener"
+			salesExcel.cell(row=9, column=11).value = "Check"
+			salesExcel.cell(row=9, column=12).value = "Cod si denumire NC produs(TIP V)"
+
+			# dv = DataValidation(
+				# type='list', formula1='"Yes,No"', allow_blank=True)
+
+
+			listahelp=["1002--Secara","1003--Orz","1005--Porumb","1201--Boabe de soia"," 1205--Seminte de rapita sau de rapita salbatica","120600--Seminte de floarea soarelui","121291--Sfecla de zahar","1001-Grau si meslin","1004--Ovaz","10086000--Triticale","22-deseuri feroase si neferoase","23-masa lemnoasa","32-terenuri","33-constructii","34-alte bunuri","35-servicii","24-certificate de emisii de gaze cu efect de sera","25-energie electrica","26-certificate verzi","27-constructii/terenuri","28-aur de investitii","29-telefoane mobile","30-microprocesoare","31-console de jocuri tablete PC si laptopuri"]
+			sheethelp=temp.create_sheet("Validation")
+			sheethelp.sheet_state = 'hidden'
+
+			# dv = DataValidation(
+			# 	type="list", formula1="", allow_blank=True)
+			# salesExcel.add_data_validation(dv)
+
+			# dv.add(salesExcel["L2"])
+
+
+
+			print(len(tipTranzSale),len(codTranzactieSales))
+			for i in range(0, len(codTaraCuiSales)):
+				print(serieCuiSales[i],docNoSales[i],listaCUISales1[i],codTranzactieSales[i],tipTranzSale[i])
+				salesExcel.cell(row=10 + i, column=1).value = codTaraCuiSales[i]
+				salesExcel.cell(row=10 + i, column=2).value = serieCuiSales[i]
+				salesExcel.cell(row=10 + i, column=3).value = docNoSales[i]
+				salesExcel.cell(row=10 + i, column=4).value = listaCUISales1[i]
+				salesExcel.cell(row=10 + i, column=5).value = codTranzactieSales[i]
+				# if(listadeclant_1[i]!=""):
+				salesExcel.cell(row=10 + i, column=6).value = tipTranzSale[i]
+				# else:
+					# salesExcel.cell(row=10 + i, column=6).value = listadeclant_1[i]
+
+				if(tipTranzSale[i]=='V'):
+					salesExcel.cell(row=10+i,column=12).value="V"
 				else:
-					if codTaraCuiPurch[i] in nomenclatorTari:
-						# #print("UE")
-						tipTranzactiePurchases.append(3)
-					else:
-						# #print("nonUE")
-						tipTranzactiePurchases.append(4)
+					salesExcel.cell(row=10+i,column=12).value="N/A, valid only for V trans."
 
-		#Cote TVA
-		coteTVApurchases=[]
-		for i in range(0, len(docNoPurch1)):
-			if (taxcodep[i]=="ZI" or taxcodep[i]=="C3" or taxcodep[i]=="ZD" or taxcodep[i]=="E1" or taxcodep[i]=='V1' or taxcodep[i]=="5H" or taxcodep[i]=="X1" or taxcodep[i]=="1L" or taxcodep[i]=="1M" or taxcodep[i]=="3S" or taxcodep[i]=="5B" or taxcodep[i]=="5H"):
-				coteTVApurchases.append('19')
-			else:
-				if (taxcodep[i]=="I9" or taxcodep[i]=="W8" or taxcodep[i]=="W6" or taxcodep[i]=="J2" or taxcodep[i]=="V3" or taxcodep[i]=="9S"):
-					coteTVApurchases.append('9')
+				salesExcel.cell(row=10 + i, column=8).value = totdocuments[i]
+				salesExcel.cell(row=10 + i, column=9).value = "Jurnal vanzari"
+				salesExcel.cell(row=10 + i, column=10).value = listaClient[i]
+
+			for i in range(0, len(coteTVAsales)):
+				salesExcel.cell(row=10 + i, column=7).value = coteTVAsales[i]
+				salesExcel.cell(row=10+i,column=18).value="=B{0}&E{0}&F{0}&G{0}".format(i+10)
+
+			#FORMATARE------------------------------------------------------------------
+			red_color = 'ffc7ce'
+			green_color='99ff99'
+			red_fill = styles.PatternFill(start_color=red_color, end_color=red_color, fill_type='solid')
+			green_fill = styles.PatternFill(start_color=green_color, end_color=green_color, fill_type='solid')
+			row=salesExcel.max_row	
+			salesExcel.conditional_formatting.add('K10:K'+str(row-1), formatting.rule.CellIsRule(operator='notEqual', formula=['"OK"'], fill=red_fill))
+			for row in salesExcel['A9:L9']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+
+			for row in salesExcel['A9:L9']:
+				for cell in row:
+					cell.font = cap_tabel
+
+			# for row in salesExcel['A9:K9']:
+			# 	for cell in row:
+			# 		cell.border = border_thin
+
+			
+			salesExcel.freeze_panes = 'A10'
+
+			salesExcel.column_dimensions['B'].width = 20
+			salesExcel.column_dimensions['C'].width = 20
+			salesExcel.column_dimensions['D'].width = 20
+			salesExcel.column_dimensions['E'].width = 16
+			salesExcel.column_dimensions['F'].width = 16
+			salesExcel.column_dimensions['F'].width = 20		
+			salesExcel.column_dimensions['H'].width = 14
+			salesExcel.column_dimensions['J'].width = 35
+			salesExcel.column_dimensions['L'].width = 35		
+			purchases = temp['Purchases']
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Business PartnerName":
+						rand_tb = cell.row
+						supplierCell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				supplierName = [b.value for b in purchases[supplierCell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Furnizor Supplier' in Purchases sheet")
+				return render_template("index.html")
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == " Doc. Date":
+						rand_tb = cell.row
+						supplierCell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				datadocument = [b.value for b in purchases[supplierCell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for ' Doc. Date' in Purchases sheet")
+				return render_template("index.html")
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Aplica TVA la incasare VAT cash-in system":
+						rand_tb = cell.row
+						vatCashinSys = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				vatApplies = [b.value for b in purchases[vatCashinSys][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Aplica TVA la incasare VAT cash-in system' in Purchases sheet")
+				return render_template("index.html")
+
+			vatApplies_1=[]
+
+
+			for val in vatApplies:
+				if val != None:
+					vatApplies_1.append(val)
+
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "VAT Registration No.":
+						rand_tb = cell.row
+						suppID = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				suppIDPurch = [b.value for b in purchases[suppID][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Codul de înregistrare în scopuri de TVA VAT number' in Purchases sheet")
+				return render_template("index.html")
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Tax code":
+						rand_tb = cell.row
+						suppID = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				taxcodep = [b.value for b in purchases[suppID][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Codul de înregistrare în scopuri de TVA VAT number' in Purchases sheet")
+				return render_template("index.html")		
+			
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Nr. document Document no":
+						rand_tb = cell.row
+						docNumberPurch = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				docNoPurch = [b.value for b in purchases[docNumberPurch][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Nr. document Document no' in Purchases sheet")
+				return render_template("index.html")
+			
+			docNoPurch1 = []
+			for val in docNoPurch:
+
+				docNoPurch1.append(val)
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "19%taxbase":
+						rand_tb = cell.row
+						taxBaseAch19cell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				taxBaseAch19 = [b.value for b in purchases[taxBaseAch19cell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (RON) -achizitii locale-Taxable base (RON) - local acquisition (19%)' in Purchases sheet")
+				return render_template("index.html")
+
+			taxBaseAch19_1=[]
+			for i in range(0, len(taxBaseAch19)):
+				if taxBaseAch19[i] == None:
+					taxBaseAch19_1.append(0)
 				else:
-					if (taxcodep[i]=="I7" or taxcodep[i]=="5D" or taxcodep[i]=="W8" or taxcodep[i]=="6I" or taxcodep[i]=="5S"):
-						coteTVApurchases.append('5')
-					else:
-						coteTVApurchases.append('0')
+					taxBaseAch19_1.append(taxBaseAch19[i])
 
-		#mapare tip tranzactie
-		# #print(len(docNoPurch1),len(tipTranzactiePurchases),len(vatApplies))
-		# #print(vatApplies)
-		tipTranzPurch=[]
+			# #print(taxBaseAch19,taxBaseAch19_1)
+			# #print(taxBaseAch19_1)
+			# #print(taxBaseAch19)
+			# for item in taxBaseAch19:
+			#    #print(type(item))
+			# #print(type(taxBaseAch19))
 
-		# for i in range(0,len(suppIDPurch)):
-			# #print(suppIDPurch[i],tipTranzactiePurchases[i])
-		# #print(len(docNoPurch),len(tipTranzactiePurchases))
-		#print(len(docNoPurch1),len(listadeclantp_1),"--------------len de lista")
-		for i in range(0, len(docNoPurch1)):
-			if(listadeclantp_1[i]=="Yes"):
-				tipTranzPurch.append("Declarat anterior")
-			else:
-				# #print(docNoPurch1[i])
-				if int(tipTranzactiePurchases[i]) == 1:
-					if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3" or taxcodep[i]=="5H" or taxcodep[i]=="5B"):
-						tipTranzPurch.append('A')
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "19%taxamount":
+						rand_tb = cell.row
+						vatAch19cell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				vatAch19 = [b.value for b in purchases[vatAch19cell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TVA (RON)-achizitii locale-VAT (RON)-local acquisition (19%)' in Purchases sheet")
+				return render_template("index.html")
+
+			vatAch19_1=[]
+			for i in range(0, len(vatAch19)):
+				if vatAch19[i] == None or vatAch19[i]=="":
+					vatAch19_1.append(0)
+				else:
+					vatAch19_1.append(vatAch19[i])
+			# #print(vatAch19_1)
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "9%taxbase":
+						rand_tb = cell.row
+						taxBaseAch9cell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				taxBaseAch9 = [b.value for b in purchases[taxBaseAch9cell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (RON)-achizitii locale- Taxable base (RON)-local acquisition (9%)' in Purchases sheet")
+				return render_template("index.html")
+
+			taxBaseAch9_1=[]
+			for i in range(0, len(taxBaseAch9)):
+				if taxBaseAch9[i] == None:
+					taxBaseAch9_1.append(0)
+				else:
+					taxBaseAch9_1.append(taxBaseAch9[i])
+			# #print(taxBaseAch9_1)
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "9%taxamount":
+						rand_tb = cell.row
+						vatAch9cell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				vatAch9 = [b.value for b in purchases[vatAch9cell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TVA (RON)-achizitii locale-VAT (RON)-local acquisition (9%)' in Purchases sheet")
+				return render_template("index.html")
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "TotaldocinclVAT":
+						rand_tb = cell.row
+						totdocp = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				totdocumentp = [b.value for b in purchases[totdocp][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Total document (inclusiv TVA)-RON' in Purchases sheet")
+				return render_template("index.html")
+
+			vatAch9_1=[]
+			for i in range(0, len(vatAch9)):
+				if vatAch9[i] == None:
+					vatAch9_1.append(0)
+				else:
+					vatAch9_1.append(vatAch9[i])
+			# #print(vatAch9_1)
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "5%taxbase":
+						rand_tb = cell.row
+						taxBaseAch5cell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				taxBaseAch5 = [b.value for b in purchases[taxBaseAch5cell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (RON)-achizitii locale Taxable base (RON) local acquisition (5%)' in Purchases sheet")
+				return render_template("index.html")
+
+			taxBaseAch5_1=[]
+			for i in range(0, len(taxBaseAch5)):
+				if taxBaseAch5[i] == None:
+					taxBaseAch5_1.append(0)
+				else:
+					taxBaseAch5_1.append(taxBaseAch5[i])
+			# #print(taxBaseAch5_1)
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "5%taxamount":
+						rand_tb = cell.row
+						vatAch5cell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				vatAch5 = [b.value for b in purchases[vatAch5cell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TVA (RON)-achizitii locale-VAT (RON)-local acquisition (5%)' in Purchases sheet")
+				return render_template("index.html")
+
+			vatAch5_1=[]
+			for i in range(0, len(vatAch5)):
+				if vatAch5[i] == None:
+					vatAch5_1.append(0)
+				else:
+					vatAch5_1.append(vatAch5[i])
+
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Exemptint+impbase":
+						rand_tb = cell.row
+						vatExemptLocAcq = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				vatExempt = [b.value for b in purchases[vatExemptLocAcq][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Achiziţii de bunuri şi servicii scutite de taxă sau neimpozabile / VAT exempt local acquisitions or non-taxable (RON)' in Purchases sheet")
+				return render_template("index.html")
+
+			vatExempt_1=[]
+			for i in range(0, len(vatExempt)):
+				if vatExempt[i] == None:
+					vatExempt_1.append(0)
+				else:
+					vatExempt_1.append(vatExempt[i])
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Intra-commtaxbase":
+						rand_tb = cell.row
+						nonChartb = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				nonCharTaxBase = [b.value for b in purchases[nonChartb][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Achiziţii de bunuri şi servicii scutite de taxă sau neimpozabile / VAT exempt local acquisitions or non-taxable (RON)' in Purchases sheet")
+				return render_template("index.html")
+
+			nonCharTaxBase_1=[]
+			for i in range(0, len(nonCharTaxBase)):
+				if nonCharTaxBase[i] == None:
+					nonCharTaxBase_1.append(0)
+				else:
+					nonCharTaxBase_1.append(nonCharTaxBase[i])
+			# #print(nonCharTaxBase_1)
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Intra-comtaxamount":
+						rand_tb = cell.row
+						nonChartVATtb = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				nonChartVATBase = [b.value for b in purchases[nonChartVATtb][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TVA nedeductibila/ Non-deductible VAT (RON)' in Purchases sheet")
+				return render_template("index.html")
+
+			nonChartVATBase_1=[]
+			for i in range(0, len(nonChartVATBase)):
+				if nonChartVATBase[i] == None:
+					nonChartVATBase_1.append(0)
+				else:
+					nonChartVATBase_1.append(nonChartVATBase[i])
+			# #print(nonChartVATBase_1)
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Revtaxbase-art150":
+						rand_tb = cell.row
+						revTaxBaseAch19cell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				revTaxBaseAch19 = [b.value for b in purchases[revTaxBaseAch19cell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge (19%)' in Purchases sheet")
+				return render_template("index.html")
+
+			revTaxBaseAch19_1=[]
+			for i in range(0, len(revTaxBaseAch19)):
+				if revTaxBaseAch19[i] == None:
+					revTaxBaseAch19_1.append(0)
+				else:
+					revTaxBaseAch19_1.append(revTaxBaseAch19[i])
+			# #print(revTaxBaseAch19_1)
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Revtaxamnt-art150":
+						rand_tb = cell.row
+						revVatAch19cell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				revVatAch19 = [b.value for b in purchases[revVatAch19cell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TVA (RON)-Achizitii locale taxare inversa-VAT (RON)-Local acquisition reverse charge (19%)' in Purchases sheet")
+				return render_template("index.html")
+
+			revVatAch19_1=[]
+			for i in range(0, len(revVatAch19)):
+				if revVatAch19[i] == None:
+					revVatAch19_1.append(0)
+				else:
+					revVatAch19_1.append(revVatAch19[i])
+			# #print(revVatAch19_1)
+
+			# for row in purchases.iter_rows():
+			# 	for cell in row:
+			# 		if cell.value == "Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge (9%)":
+			# 			rand_tb = cell.row
+			# 			revTaxBaseAch9cell = cell.column
+			# 			lun = len(purchases[cell.column])
+			# try:
+			# 	revTaxBaseAch9 = [b.value for b in purchases[revTaxBaseAch9cell][rand_tb:lun]]
+			# except:
+			# 	flash("Please insert the correct header for 'Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge (9%)' in Purchases sheet")
+			# 	return render_template("index.html")
+
+			# revTaxBaseAch9_1=[]
+			# for i in range(0, len(revTaxBaseAch9)):
+			# 	if revTaxBaseAch9[i] == None:
+			# 		revTaxBaseAch9_1.append(0)
+			# 	else:
+			# 		revTaxBaseAch9_1.append(revTaxBaseAch9[i])
+			# # #print(revTaxBaseAch9_1)
+
+			# for row in purchases.iter_rows():
+			# 	for cell in row:
+			# 		if cell.value == "TVA (RON)-Achizitii locale taxare inversa-VAT (RON)-Local acquisition reverse charge (9%)":
+			# 			rand_tb = cell.row
+			# 			revVatAch9cell = cell.column
+			# 			lun = len(purchases[cell.column])
+			# try:
+			# 	revVatAch9 = [b.value for b in purchases[revVatAch9cell][rand_tb:lun]]
+			# except:
+			# 	flash("Please insert the correct header for 'TVA (RON)-Achizitii locale taxare inversa-VAT (RON)-Local acquisition reverse charge (9%)' in Purchases sheet")
+			# 	return render_template("index.html")
+
+			# revVatAch9_1=[]
+			# for i in range(0, len(revVatAch9)):
+			# 	if revVatAch9[i] == None:
+			# 		revVatAch9_1.append(0)
+			# 	else:
+			# 		revVatAch9_1.append(revVatAch9[i])
+			# # #print(revVatAch9_1)
+
+			# for row in purchases.iter_rows():
+			# 	for cell in row:
+			# 		if cell.value == "Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge(5%)":
+			# 			rand_tb = cell.row
+			# 			revTaxBaseAch5cell = cell.column
+			# 			lun = len(purchases[cell.column])
+			# try:
+			# 	revTaxBaseAch5 = [b.value for b in purchases[revTaxBaseAch5cell][rand_tb:lun]]
+			# except:
+			# 	flash("Please insert the correct header for 'Baza de impozitare (RON)-Achizitii locale taxare inversa-Taxable base (RON)-Local acquisition reverse charge(5%)' in Purchases sheet")
+			# 	return render_template("index.html")
+
+			# revTaxBaseAch5_1=[]
+			# for i in range(0, len(revTaxBaseAch5)):
+			# 	if revTaxBaseAch5[i] == None:
+			# 		revTaxBaseAch5_1.append(0)
+			# 	else:
+			# 		revTaxBaseAch5_1.append(revTaxBaseAch5[i])
+			# # #print(revTaxBaseAch5_1)
+
+			# for row in purchases.iter_rows():
+			# 	for cell in row:
+			# 		if cell.value == "TVA (RON)-Achizitii locale taxare inversa VAT (RON)-Local acquisition reverse charge (5%)":
+			# 			rand_tb = cell.row
+			# 			revVatAch5cell = cell.column
+			# 			lun = len(purchases[cell.column])
+			# try:
+			# 	revVatAch5 = [b.value for b in purchases[revVatAch5cell][rand_tb:lun]]
+			# except:
+			# 	flash("Please insert the correct header for 'TVA (RON)-Achizitii locale taxare inversa VAT (RON)-Local acquisition reverse charge (5%)' in Purchases sheet")
+			# 	return render_template("index.html")
+
+			# revVatAch5_1=[]
+			# for i in range(0, len(revVatAch5)):
+			# 	if revVatAch5[i] == None:
+			# 		revVatAch5_1.append(0)
+			# 	else:
+			# 		revVatAch5_1.append(revVatAch5[i])
+			# # #print(revVatAch5_1)
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Intra-communexempt":
+						rand_tb = cell.row
+						nonUEGoodscell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				taxNonUEgoods = [b.value for b in purchases[nonUEGoodscell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Bază de impozitare (RON)-bunuri nonUE-Taxable base (RON)-nonUE goods' in Purchases sheet")
+				return render_template("index.html")
+			taxNonUEgoods_1=[]
+			for i in range(0, len(taxNonUEgoods)):
+				if taxNonUEgoods[i] == None:
+					taxNonUEgoods_1.append(0)
+				else:
+					taxNonUEgoods_1.append(taxNonUEgoods[i])
+
+			# #print(datadocument)
+			# for row in purchases.iter_rows():
+			# 	for cell in row:
+			# 		if cell.value == "TVA (RON)-bunuri nonUE-VAT (RON)-nonUE goods":
+			# 			rand_tb = cell.row
+			# 			vatNonUEGoodscell = cell.column
+			# 			lun = len(purchases[cell.column])
+			# try:
+			# 	vatNonUEGoods = [b.value for b in purchases[vatNonUEGoodscell][rand_tb:lun]]
+			# except:
+			# 	flash("Please insert the correct header for 'TVA (RON)-bunuri nonUE-VAT (RON)-nonUE goods' in Purchases sheet")
+			# 	return render_template("index.html")
+
+			# vatNonUEGoods_1=[]
+			# for i in range(0, len(vatNonUEGoods)):
+			# 	if vatNonUEGoods[i] == None:
+			# 		vatNonUEGoods_1.append(0)
+			# 	else:
+			# 		vatNonUEGoods_1.append(vatNonUEGoods[i])
+
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Intra-communexempt":
+						rand_tb = cell.row
+						nonUEServcell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				taxNonUEservices = [b.value for b in purchases[nonUEServcell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Bază de impozitare (RON)-servicii nonUE-Taxable base (RON)-nonUE services' in Purchases sheet")
+				return render_template("index.html")
+
+			# taxNonUEservices_1=[]
+			taxNonUEservices_1=[]
+			for i in range(0, len(taxNonUEservices)):
+				if taxNonUEservices[i] == None:
+					taxNonUEservices_1.append(0)
+				else:
+					taxNonUEservices_1.append(taxNonUEservices[i])
+
+
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Intra-commnon-tax":
+						rand_tb = cell.row
+						vatNonUEservcell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				vatNonUEservices = [b.value for b in purchases[vatNonUEservcell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'TVA (RON)-servicii nonUE-VAT (RON)-nonUE services' in Purchases sheet")
+				return render_template("index.html")
+
+			vatNonUEservices_1=[]
+			for i in range(0, len(vatNonUEservices)):
+				if vatNonUEservices[i] == None:
+					vatNonUEservices_1.append(0)
+				else:
+					vatNonUEservices_1.append(vatNonUEservices[i])
+
+			serieCuiPurch = []
+			codTaraCuiPurch = []
+			# #print(suppIDPurch)
+			for i in suppIDPurch:
+				# #print(i)
+				if(str(i)[:1].isalpha()):	
+					r = re.compile("([a-zA-Z]+)([0-9]+)")
+					m = r.match(str(i))
+					try:
+						serieCuiPurch.append(m.group(2))
+					except:
+						serieCuiPurch.append(" ")
+					try:
+						codTaraCuiPurch.append(m.group(1))
+					except:
+						codTaraCuiPurch.append(" ")
+				else:
+					codTaraCuiPurch.append(None)
+					serieCuiPurch.append(i)
+			# #print(codTaraCuiPurch,serieCuiPurch)
+			tipTranzactiePurchases=[]
+			#print("Aici vat -------",vatAch19_1,"-----Achizitii")
+			#Tip furnizor
+			for i in range(0, len(codTaraCuiPurch)):
+				if codTaraCuiPurch[i] == "RO":
+					# #print("RO")
+					tipTranzactiePurchases.append(1)
+				else:
+					if serieCuiPurch[i] in suppIDPurch and int(nonCharTaxBase_1[i])>0:
+						tipTranzactiePurchases.append(2)
 					else:
-						if taxcodep[i]=="ZI" or taxcodep[i]=="5D" or taxcodep[i]=="ZD" or taxcodep[i]=="I7" or taxcodep[i]=="W8" or taxcodep[i]=="I9" or taxcodep[i]=="W6" or taxcodep[i]=="6I":
-							tipTranzPurch.append("AI")
-							#print(docNoPurch1[i],";;;;;es 3")
+						if codTaraCuiPurch[i] in nomenclatorTari:
+							# #print("UE")
+							tipTranzactiePurchases.append(3)
 						else:
-							if (taxcodep[i]=="ZR"):
-								tipTranzPurch.append("C")
-								#print("Yes 5")
-							else:
-								if (taxcodep[i]=="AS"):
-									tipTranzPurch.append("AS")
-									#print("Yes 7")
-								else:
-									tipTranzPurch.append("Not applicable for D394")
+							# #print("nonUE")
+							tipTranzactiePurchases.append(4)
+
+			#Cote TVA
+			coteTVApurchases=[]
+			for i in range(0, len(docNoPurch1)):
+				if (taxcodep[i]=="ZI" or taxcodep[i]=="C3" or taxcodep[i]=="ZD" or taxcodep[i]=="E1" or taxcodep[i]=='V1' or taxcodep[i]=="5H" or taxcodep[i]=="X1" or taxcodep[i]=="1L" or taxcodep[i]=="1M" or taxcodep[i]=="3S" or taxcodep[i]=="5B" or taxcodep[i]=="5H"):
+					coteTVApurchases.append('19')
 				else:
-					if int(tipTranzactiePurchases[i]) == 2:
-						if taxcodep[i]=="7N" or taxcodep[i]=="8N" or taxcodep[i]=="A3" :
-							tipTranzPurch.append("N")
-							#print(docNoPurch1[i],";;;;es 9")
+					if (taxcodep[i]=="I9" or taxcodep[i]=="W8" or taxcodep[i]=="W6" or taxcodep[i]=="J2" or taxcodep[i]=="V3" or taxcodep[i]=="9S"):
+						coteTVApurchases.append('9')
 					else:
-						if int(tipTranzactiePurchases[i]) == 3:
-							if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3"):
-										tipTranzPurch.append('A')
-										#print(docNoPurch1[i],";;;;;es 12")
+						if (taxcodep[i]=="I7" or taxcodep[i]=="5D" or taxcodep[i]=="W8" or taxcodep[i]=="6I" or taxcodep[i]=="5S"):
+							coteTVApurchases.append('5')
+						else:
+							coteTVApurchases.append('0')
+
+			#mapare tip tranzactie
+			# #print(len(docNoPurch1),len(tipTranzactiePurchases),len(vatApplies))
+			# #print(vatApplies)
+			tipTranzPurch=[]
+
+			# for i in range(0,len(suppIDPurch)):
+				# #print(suppIDPurch[i],tipTranzactiePurchases[i])
+			# #print(len(docNoPurch),len(tipTranzactiePurchases))
+			#print(len(docNoPurch1),len(listadeclantp_1),"--------------len de lista")
+			for i in range(0, len(docNoPurch1)):
+				if(listadeclantp_1[i]=="Yes"):
+					tipTranzPurch.append("Declarat anterior")
+				else:
+					# #print(docNoPurch1[i])
+					if int(tipTranzactiePurchases[i]) == 1:
+						if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3" or taxcodep[i]=="5H" or taxcodep[i]=="5B"):
+							tipTranzPurch.append('A')
+						else:
+							if taxcodep[i]=="ZI" or taxcodep[i]=="5D" or taxcodep[i]=="ZD" or taxcodep[i]=="I7" or taxcodep[i]=="W8" or taxcodep[i]=="I9" or taxcodep[i]=="W6" or taxcodep[i]=="6I":
+								tipTranzPurch.append("AI")
+								#print(docNoPurch1[i],";;;;;es 3")
 							else:
-									#print(docNoPurch1[i],";;;;;es 13")
 								if (taxcodep[i]=="ZR"):
 									tipTranzPurch.append("C")
-									#print("Yes 14")
+									#print("Yes 5")
 								else:
-									tipTranzPurch.append("Not applicable for D394")
-						else:
-								if int(tipTranzactiePurchases[i]) == 4:
-									if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3"):
-										tipTranzPurch.append('A')
-										#print(docNoPurch1[i],";;;;;es 12")
+									if (taxcodep[i]=="AS"):
+										tipTranzPurch.append("AS")
+										#print("Yes 7")
 									else:
-										if (taxcodep[i]=="ZR"):
-											tipTranzPurch.append("C")
+										tipTranzPurch.append("Not applicable for D394")
+					else:
+						if int(tipTranzactiePurchases[i]) == 2:
+							if taxcodep[i]=="7N" or taxcodep[i]=="8N" or taxcodep[i]=="A3" :
+								tipTranzPurch.append("N")
+								#print(docNoPurch1[i],";;;;es 9")
+						else:
+							if int(tipTranzactiePurchases[i]) == 3:
+								if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3"):
+											tipTranzPurch.append('A')
+											#print(docNoPurch1[i],";;;;;es 12")
+								else:
+										#print(docNoPurch1[i],";;;;;es 13")
+									if (taxcodep[i]=="ZR"):
+										tipTranzPurch.append("C")
+										#print("Yes 14")
+									else:
+										tipTranzPurch.append("Not applicable for D394")
+							else:
+									if int(tipTranzactiePurchases[i]) == 4:
+										if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3"):
+											tipTranzPurch.append('A')
+											#print(docNoPurch1[i],";;;;;es 12")
 										else:
-											tipTranzPurch.append("Not applicable for D394")
-									#print("Yes 16")
-			# #print(docNoPurch1[i],tipTranzPurch[i],docNoPurch[i+1])
-		ma=salesExcel.max_row+1
-		for i in range(0, len(codTaraCuiPurch)):
-			salesExcel.cell(row=ma + i, column=1).value = codTaraCuiPurch[i]
+											if (taxcodep[i]=="ZR"):
+												tipTranzPurch.append("C")
+											else:
+												tipTranzPurch.append("Not applicable for D394")
+										#print("Yes 16")
+				# #print(docNoPurch1[i],tipTranzPurch[i],docNoPurch[i+1])
+			ma=salesExcel.max_row+1
+			for i in range(0, len(codTaraCuiPurch)):
+				salesExcel.cell(row=ma + i, column=1).value = codTaraCuiPurch[i]
 
-		for i in range(0, len(serieCuiPurch)):
-			salesExcel.cell(row=ma + i, column=2).value = serieCuiPurch[i]
+			for i in range(0, len(serieCuiPurch)):
+				salesExcel.cell(row=ma + i, column=2).value = serieCuiPurch[i]
 
-		for i in range(0, len(docNoPurch1)):
-			salesExcel.cell(row=ma+ i, column=3).value = docNoPurch1[i]
+			for i in range(0, len(docNoPurch1)):
+				salesExcel.cell(row=ma+ i, column=3).value = docNoPurch1[i]
 
-		for i in range(0, len(suppIDPurch)):
-			salesExcel.cell(row=ma + i, column=4).value = suppIDPurch[i]
+			for i in range(0, len(suppIDPurch)):
+				salesExcel.cell(row=ma + i, column=4).value = suppIDPurch[i]
 
-		for i in range(0, len(tipTranzactiePurchases)):
-			salesExcel.cell(row=ma+ i, column=5).value = tipTranzactiePurchases[i]
+			for i in range(0, len(tipTranzactiePurchases)):
+				salesExcel.cell(row=ma+ i, column=5).value = tipTranzactiePurchases[i]
 
-		for i in range(0, len(tipTranzPurch)):
-			# if(listadeclantp_1!=""):
-			salesExcel.cell(row=ma+ i, column=6).value = tipTranzPurch[i]
-			# else:
-				# salesExcel.cell(row=ma+ i, column=6).value = "Declarate anterior"
-			if(tipTranzPurch[i]=="V"):
-				salesExcel.cell(row=ma+i,column=12).value="Add type of tranzactie"
-			else:
-				salesExcel.cell(row=ma+i,column=12).value="N/A"
+			for i in range(0, len(tipTranzPurch)):
+				# if(listadeclantp_1!=""):
+				salesExcel.cell(row=ma+ i, column=6).value = tipTranzPurch[i]
+				# else:
+					# salesExcel.cell(row=ma+ i, column=6).value = "Declarate anterior"
+				if(tipTranzPurch[i]=="V"):
+					salesExcel.cell(row=ma+i,column=12).value="Add type of tranzactie"
+				else:
+					salesExcel.cell(row=ma+i,column=12).value="N/A"
 
-		for i in range(0, len(coteTVApurchases)):
-			#print(coteTVApurchases[i])
-			salesExcel.cell(row=ma+ i, column=7).value = coteTVApurchases[i]
-			salesExcel.cell(row=ma+ i, column=8).value = totdocumentp[i]
-			salesExcel.cell(row=ma+ i, column=9).value = "Jurnal cumparari"
-			salesExcel.cell(row=ma+ i, column=10).value = supplierName[i]
+			for i in range(0, len(coteTVApurchases)):
+				#print(coteTVApurchases[i])
+				salesExcel.cell(row=ma+ i, column=7).value = coteTVApurchases[i]
+				salesExcel.cell(row=ma+ i, column=8).value = totdocumentp[i]
+				salesExcel.cell(row=ma+ i, column=9).value = "Jurnal cumparari"
+				salesExcel.cell(row=ma+ i, column=10).value = supplierName[i]
 
-		codTaraCUItotal=codTaraCuiPurch+codTaraCuiSales
-		for i in range(0, len(codTaraCUItotal)):
-			salesExcel.cell(row=10 + i, column=11).value = '=IFERROR(IF(VLOOKUP(B{0}&E{0}&F{0}&G{0},Tranzactii!K:K,1,0)=B{0}&E{0}&F{0}&G{0},"OK","Mapped missing in Tranzactii sheet"),"Mapped missing inTranzactiisheet")'.format(10+i)
-		salesExcel.auto_filter.ref = "A9:L9"
-		for row in salesExcel['H10:F1000']:
-			for cell in row:
-				cell.number_format='#,##0_);(#,##0)'		
-		tranzactii=temp.create_sheet("Tranzactii")
-		tranzactii.freeze_panes = 'A6'
-		tranzactii.sheet_view.showGridLines = False
+			codTaraCUItotal=codTaraCuiPurch+codTaraCuiSales
+			for i in range(0, len(codTaraCUItotal)):
+				salesExcel.cell(row=10 + i, column=11).value = '=IFERROR(IF(VLOOKUP(B{0}&E{0}&F{0}&G{0},Tranzactii!K:K,1,0)=B{0}&E{0}&F{0}&G{0},"OK","Mapped missing in Tranzactii sheet"),"Mapped missing inTranzactiisheet")'.format(10+i)
+			salesExcel.auto_filter.ref = "A9:L9"
+			for row in salesExcel['H10:F1000']:
+				for cell in row:
+					cell.number_format='#,##0_);(#,##0)'		
+			tranzactii=temp.create_sheet("Tranzactii")
+			tranzactii.freeze_panes = 'A6'
+			tranzactii.sheet_view.showGridLines = False
 
-												
-		setSalesCUI=set(listaCUISales1)
-		idSalesUnique=list(setSalesCUI)
+													
+			setSalesCUI=set(listaCUISales1)
+			idSalesUnique=list(setSalesCUI)
 
-		setPurchCUI=set(suppIDPurch)
-		idPurchUnique=list(setPurchCUI)
+			setPurchCUI=set(suppIDPurch)
+			idPurchUnique=list(setPurchCUI)
 
-		listaCUIUnique=idSalesUnique+idPurchUnique
+			listaCUIUnique=idSalesUnique+idPurchUnique
 
-		setlistaClient=set(listaClient)
-		listaClientUnique=list(setlistaClient)
+			setlistaClient=set(listaClient)
+			listaClientUnique=list(setlistaClient)
 
-		setSupplierName=set(supplierName)
-		supplierNameUnique=list(setSupplierName)
+			setSupplierName=set(supplierName)
+			supplierNameUnique=list(setSupplierName)
 
-		# for k in range(0,len(setlistaClient)):
-		#    count
-		#    for j in range(0,len(listaClient)):
-
-
-		# print(len(supplierName),len(tipTranzPurch))
-		listanouaappendpurch=[]
-		# for i in range(0,len(supplierName)):
-		for p in range(0,len(serieCuiPurch)):
-			print(serieCuiPurch[p],tipTranzPurch[p],coteTVApurchases[p],tipTranzactiePurchases[p])
-		# print()
-		print(len(serieCuiPurch),len(tipTranzPurch),len(coteTVApurchases),len(tipTranzactiePurchases))
-		for k in range(0,len(serieCuiPurch)):
-			try:
-				print(serieCuiPurch[k],tipTranzPurch[k])
-			except:
-				print(serieCuiPurch[k])
-			listanouaappendpurch.append(str(serieCuiPurch[k])+";"+str(tipTranzPurch[k])+";"+str(coteTVApurchases[k])+";"+str(tipTranzactiePurchases[k])+";"+str(listadeclantp_1[k]))
-
-		listanouasetpurch=list(set(listanouaappendpurch))
+			# for k in range(0,len(setlistaClient)):
+			#    count
+			#    for j in range(0,len(listaClient)):
 
 
-		listanouaappendsales=[]
-
-		for k in range(0,len(serieCuiSales)):
-			listanouaappendsales.append(str(serieCuiSales[k])+";"+str(tipTranzSale[k])+";"+str(coteTVAsales[k])+";"+str(codTranzactieSales[k])+";"+listadeclant_1[k])
-
-		listanouasetsales=list(set(listanouaappendsales))
-
-		countsales=[]
-		for p in range(0,len(listanouasetsales)):
-			count=0
-			for k in range(0,len(listanouaappendsales)):
-				if(listanouaappendsales[k]==listanouasetsales[p]):
-					count=count+1
-			countsales.append(count)
-		countpurch=[]
-		for p in range(0,len(listanouasetpurch)):
-			count=0
-			for k in range(0,len(listanouaappendpurch)):
-				if(listanouaappendpurch[k]==listanouasetpurch[p]):
-					count=count+1
-			countpurch.append(count)
-
-
-		#print(listanouasetsales)
-
-		tranzactii.cell(row=5,column=1).value="Cui partener"
-		tranzactii.cell(row=5,column=2).value="Nume partener"
-		tranzactii.cell(row=5,column=3).value="Tip partener"
-		tranzactii.cell(row=5,column=4).value="Tip tranzactie"
-		tranzactii.cell(row=5,column=5).value="Cota TVA"
-		tranzactii.cell(row=5,column=6).value="Baza TVA"
-		tranzactii.cell(row=5,column=7).value="TVA"
-		tranzactii.cell(row=5,column=8).value="Nr Facturi"
-		tranzactii.cell(row=5,column=9).value="Neexigibile - nu se vor raporta"
-		tranzactii.cell(row=5,column=10).value="Cod si denumire NC produs(TIP V)"
-		tranzactii.cell(row=2,column=1).value="Tranzactii"
-		tranzactii.cell(row=2,column=1).font=cap_tabeltitlu
-		counts=0
-		for i in range(0, len(listanouasetsales)):
-			x=listanouasetsales[i].split(";")
-			#print(x[3],x[4])
-			if(int(x[3])<3 or int(x[2])>0):
-				counts=counts+1
-				y=tranzactii.max_row
-				tranzactii.cell(row=y+1,column=1).value=x[0]
-				tranzactii.cell(row=y+1,column=2).value="=VLOOKUP(A"+str(y+1)+",'Mapping tranzactii'!B:J,9,0)"
-				tranzactii.cell(row=y+1,column=3).value=x[3]
-				tranzactii.cell(row=y+1,column=4).value=x[1]
-				tranzactii.cell(row=y+1,column=5).value=x[2]
-				tranzactii.cell(row=y+1,column=9).value=x[4]
-				# tranzactii.cell(row=y+1,column=10).value="=xlookup(K"+str(y+1)+",'Mapping tranzactii'!R:R,'Mapping tranzactii'!L:L)"
-		countp=0
-		for i in range(0, len(listanouasetpurch)):
-			x=listanouasetpurch[i].split(";")
-			if(int(x[3])<3 or int(x[2])>0):
-				countp=countp+1
-				y=tranzactii.max_row
-				tranzactii.cell(row=y+1,column=1).value=x[0]
-				tranzactii.cell(row=y+1,column=2).value="=VLOOKUP(A"+str(y+1)+",'Mapping tranzactii'!B:J,9,0)"   
+			# print(len(supplierName),len(tipTranzPurch))
+			listanouaappendpurch=[]
+			# for i in range(0,len(supplierName)):
+			for p in range(0,len(serieCuiPurch)):
+				print(serieCuiPurch[p],tipTranzPurch[p],coteTVApurchases[p],tipTranzactiePurchases[p])
+			# print()
+			print(len(serieCuiPurch),len(tipTranzPurch),len(coteTVApurchases),len(tipTranzactiePurchases))
+			for k in range(0,len(serieCuiPurch)):
 				try:
-					tranzactii.cell(row=y+1,column=3).value=x[3]
+					print(serieCuiPurch[k],tipTranzPurch[k])
 				except:
-					tranzactii.cell(row=y+1,column=3).value=""
-				tranzactii.cell(row=y+1,column=4).value=x[1]
-				tranzactii.cell(row=y+1,column=5).value=x[2]
-				tranzactii.cell(row=y+1,column=9).value=x[4]
-				# tranzactii.cell(row=y+1,column=10).value="=xlookup(K"+str(y+1)+",'Mapping tranzactii'!R:R,'Mapping tranzactii'!L:L)"
+					print(serieCuiPurch[k])
+				listanouaappendpurch.append(str(serieCuiPurch[k])+";"+str(tipTranzPurch[k])+";"+str(coteTVApurchases[k])+";"+str(tipTranzactiePurchases[k])+";"+str(listadeclantp_1[k]))
 
-		countmare=countp+counts
-		for i in range(0, countmare):
-			tranzactii.cell(row=i+6,column=6).value="=SUMIFS('Mapping tranzactii'!H:H,'Mapping tranzactii'!B:B,A{0},'Mapping tranzactii'!E:E,C{0},'Mapping tranzactii'!F:F,D{0},'Mapping tranzactii'!G:G,E{0})/((100+E{0})/100)".format(6+i)
-			tranzactii.cell(row=i+6,column=7).value="=F{0}/100*E{0}".format(6+i)
-			tranzactii.cell(row=i+6,column=8).value="=COUNTIFS('Mapping tranzactii'!B:B,A{0},'Mapping tranzactii'!E:E,C{0},'Mapping tranzactii'!F:F,D{0},'Mapping tranzactii'!G:G,E{0})".format(6+i)
-			tranzactii.cell(row=i+6,column=11).value="=A{0}&C{0}&D{0}&E{0}".format(6+i)
+			listanouasetpurch=list(set(listanouaappendpurch))
 
 
-		#---------FORMAT-----------------
-		for row in tranzactii['A5:J5']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
+			listanouaappendsales=[]
 
-		for row in tranzactii['A5:J5']:
-			for cell in row:
-				cell.font = cap_tabel
-	
-		tranzactii.column_dimensions['K'].hidden = True
-		tranzactii.column_dimensions['A'].width = 20
-		tranzactii.column_dimensions['I'].width = 27		
-		tranzactii.column_dimensions['B'].width = 35
-		tranzactii.column_dimensions['C'].width = 13
-		tranzactii.column_dimensions['D'].width = 13
-		tranzactii.column_dimensions['H'].width = 13
-		tranzactii.auto_filter.ref = "A5:H5"
-		for row in tranzactii['F6:F'+str(tranzactii.max_row)]:
-			for cell in row:
-				cell.number_format='#,##0_);(#,##0)'
-		for row in tranzactii['G6:G'+str(tranzactii.max_row)]:
-			for cell in row:
-				cell.number_format='#,##0_);(#,##0)'
+			for k in range(0,len(serieCuiSales)):
+				listanouaappendsales.append(str(serieCuiSales[k])+";"+str(tipTranzSale[k])+";"+str(coteTVAsales[k])+";"+str(codTranzactieSales[k])+";"+listadeclant_1[k])
 
-		saf=temp.create_sheet("Facturi storno si anulate")
-		saf.sheet_view.showGridLines = False
-		saf.freeze_panes = 'A4'		
-		saf.cell(row=1,column=1).value="Facturi storno/anulate"
-		saf.cell(row=1,column=1).font=cap_tabelbold
-		saf.cell(row=3,column=1).value="Tip"
-		saf.cell(row=3,column=2).value="Serie"
-		saf.cell(row=3,column=3).value="Numar"
-		for row in saf['A3:C3']:
-			for cell in row:
-				cell.font = cap_tabel
-				cell.fill = cap_tabel_color_black
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		ind=saf.max_row
-		for k in range(0,len(storno)):
-			if(storno[k]=="Yes"):
-				saf.cell(row=ind+1,column=1).value="Stornata"
-				saf.cell(row=ind+1,column=2).value=""
-				saf.cell(row=ind+1,column=3).value=docNoSales[k]
-				ind=ind+1
-		xx=saf.max_row		
-		saf.cell(row=xx+1,column=1).value="Anulata"
-		saf.cell(row=xx+1,column=2).value="Please input the cancelled invoice number"	
-		bonuri=temp.create_sheet("Bonuri fiscale")
-		bonuri.cell(row=4,column=1).value="Luna"
-		bonuri.cell(row=4,column=2).value="Nr. bon fiscal"
-		bonuri.cell(row=4,column=3).value="Baza 5%"
-		bonuri.cell(row=4,column=4).value="TVA 5%"
-		bonuri.cell(row=4,column=5).value="Baza 9%"
-		bonuri.cell(row=4,column=6).value="TVA 9%"
-		bonuri.cell(row=4,column=7).value="Baza 19%"
-		bonuri.cell(row=4,column=8).value="TVA 19%"
-		bonuri.cell(row=4,column=9).value="Baza 20%"
-		bonuri.cell(row=4,column=10).value="TVA 20%"
+			listanouasetsales=list(set(listanouaappendsales))
 
-		for row in bonuri['A4:K4']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
+			countsales=[]
+			for p in range(0,len(listanouasetsales)):
+				count=0
+				for k in range(0,len(listanouaappendsales)):
+					if(listanouaappendsales[k]==listanouasetsales[p]):
+						count=count+1
+				countsales.append(count)
+			countpurch=[]
+			for p in range(0,len(listanouasetpurch)):
+				count=0
+				for k in range(0,len(listanouaappendpurch)):
+					if(listanouaappendpurch[k]==listanouasetpurch[p]):
+						count=count+1
+				countpurch.append(count)
 
-		for row in bonuri['A4:K4']:
-			for cell in row:
-				cell.font = cap_tabel
-		bonuri.sheet_view.showGridLines = False
 
-		facturi=temp.create_sheet("Sectiunea 2.1&2.2")
-		facturi.sheet_view.showGridLines = False
-		facturi.column_dimensions['A'].width = 12
-		facturi.column_dimensions['B'].width = 18
-		facturi.column_dimensions['C'].width = 15
+			#print(listanouasetsales)
 
-		facturi.cell(row=1,column=1).value="Serie Emise"
-		facturi.cell(row=1,column=2).value="Inceput Emise"
-		facturi.cell(row=1,column=3).value="Final Emise"
-		facturi.cell(row=1,column=4).value="Tip Emise"		
+			tranzactii.cell(row=5,column=1).value="Cui partener"
+			tranzactii.cell(row=5,column=2).value="Nume partener"
+			tranzactii.cell(row=5,column=3).value="Tip partener"
+			tranzactii.cell(row=5,column=4).value="Tip tranzactie"
+			tranzactii.cell(row=5,column=5).value="Cota TVA"
+			tranzactii.cell(row=5,column=6).value="Baza TVA"
+			tranzactii.cell(row=5,column=7).value="TVA"
+			tranzactii.cell(row=5,column=8).value="Nr Facturi"
+			tranzactii.cell(row=5,column=9).value="Neexigibile - nu se vor raporta"
+			tranzactii.cell(row=5,column=10).value="Cod si denumire NC produs(TIP V)"
+			tranzactii.cell(row=2,column=1).value="Tranzactii"
+			tranzactii.cell(row=2,column=1).font=cap_tabeltitlu
+			counts=0
+			for i in range(0, len(listanouasetsales)):
+				x=listanouasetsales[i].split(";")
+				#print(x[3],x[4])
+				if(int(x[3])<3 or int(x[2])>0):
+					counts=counts+1
+					y=tranzactii.max_row
+					tranzactii.cell(row=y+1,column=1).value=x[0]
+					tranzactii.cell(row=y+1,column=2).value="=VLOOKUP(A"+str(y+1)+",'Mapping tranzactii'!B:J,9,0)"
+					tranzactii.cell(row=y+1,column=3).value=x[3]
+					tranzactii.cell(row=y+1,column=4).value=x[1]
+					tranzactii.cell(row=y+1,column=5).value=x[2]
+					tranzactii.cell(row=y+1,column=9).value=x[4]
+					# tranzactii.cell(row=y+1,column=10).value="=xlookup(K"+str(y+1)+",'Mapping tranzactii'!R:R,'Mapping tranzactii'!L:L)"
+			countp=0
+			for i in range(0, len(listanouasetpurch)):
+				x=listanouasetpurch[i].split(";")
+				if(int(x[3])<3 or int(x[2])>0):
+					countp=countp+1
+					y=tranzactii.max_row
+					tranzactii.cell(row=y+1,column=1).value=x[0]
+					tranzactii.cell(row=y+1,column=2).value="=VLOOKUP(A"+str(y+1)+",'Mapping tranzactii'!B:J,9,0)"   
+					try:
+						tranzactii.cell(row=y+1,column=3).value=x[3]
+					except:
+						tranzactii.cell(row=y+1,column=3).value=""
+					tranzactii.cell(row=y+1,column=4).value=x[1]
+					tranzactii.cell(row=y+1,column=5).value=x[2]
+					tranzactii.cell(row=y+1,column=9).value=x[4]
+					# tranzactii.cell(row=y+1,column=10).value="=xlookup(K"+str(y+1)+",'Mapping tranzactii'!R:R,'Mapping tranzactii'!L:L)"
 
-		docNoSales2=[]
-		seriefacturi=[]
-		for i in range(0,len(docNoSales)):
-			# docNoSales[i].replaceAll("[^a-zA-Z0-9]", ")
-			if(int(codTranzactieSales[i])<3):
-				# try:
-				numere=re.sub("[^0-9]", "",str(docNoSales[i]))
-				# except:
-					# print(docNoSales[i])
-				result = ''.join([i for i in str(docNoSales[i]) if not i.isdigit()])
-				docNoSales2.append(numere)
-				seriefacturi.append(result)
-		#print(seriefacturi)
-		# print(docNoSales2)
-		initial=0
-		final=0
-		docNoSales2.sort()
-		docNo=[]
-		for k in range(0,len(docNoSales2)):
-			docNo.append(str(docNoSales2[k]))
-		docNo.sort()
-		listaunica=list(set(docNoSales2))
-		listaunica.sort()
-# print(listaunica)
+			countmare=countp+counts
+			for i in range(0, countmare):
+				tranzactii.cell(row=i+6,column=6).value="=SUMIFS('Mapping tranzactii'!H:H,'Mapping tranzactii'!B:B,A{0},'Mapping tranzactii'!E:E,C{0},'Mapping tranzactii'!F:F,D{0},'Mapping tranzactii'!G:G,E{0})/((100+E{0})/100)".format(6+i)
+				tranzactii.cell(row=i+6,column=7).value="=F{0}/100*E{0}".format(6+i)
+				tranzactii.cell(row=i+6,column=8).value="=COUNTIFS('Mapping tranzactii'!B:B,A{0},'Mapping tranzactii'!E:E,C{0},'Mapping tranzactii'!F:F,D{0},'Mapping tranzactii'!G:G,E{0})".format(6+i)
+				tranzactii.cell(row=i+6,column=11).value="=A{0}&C{0}&D{0}&E{0}".format(6+i)
 
-		for i in range(0,len(listaunica)):
-			listafacturi=[]
-			print(listaunica[i])
-			for j in range(0,len(docNoSales2)):
-				if(listaunica[i]==docNoSales2[j]):
 
-					listafacturi.append(int(docNoSales2[j]))
-		listafacturi=list(set(listafacturi))
-		print(listafacturi)
-		listafacturi.sort()
-		start=[]
-		start.append(listaunica[0])
-		stop=[]
-		if(int(listaunica[1])-int(listaunica[0])>1):
-			stop.append(listaunica[0])
-		for k in range(1,len(listaunica)):
+			#---------FORMAT-----------------
+			for row in tranzactii['A5:J5']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
 
-			if(int(listaunica[k])-int(listaunica[k-1])==1):
+			for row in tranzactii['A5:J5']:
+				for cell in row:
+					cell.font = cap_tabel
+		
+			tranzactii.column_dimensions['K'].hidden = True
+			tranzactii.column_dimensions['A'].width = 20
+			tranzactii.column_dimensions['I'].width = 27		
+			tranzactii.column_dimensions['B'].width = 35
+			tranzactii.column_dimensions['C'].width = 13
+			tranzactii.column_dimensions['D'].width = 13
+			tranzactii.column_dimensions['H'].width = 13
+			tranzactii.auto_filter.ref = "A5:H5"
+			for row in tranzactii['F6:F'+str(tranzactii.max_row)]:
+				for cell in row:
+					cell.number_format='#,##0_);(#,##0)'
+			for row in tranzactii['G6:G'+str(tranzactii.max_row)]:
+				for cell in row:
+					cell.number_format='#,##0_);(#,##0)'
+
+			saf=temp.create_sheet("Facturi storno si anulate")
+			saf.sheet_view.showGridLines = False
+			saf.freeze_panes = 'A4'		
+			saf.cell(row=1,column=1).value="Facturi storno/anulate"
+			saf.cell(row=1,column=1).font=cap_tabelbold
+			saf.cell(row=3,column=1).value="Tip"
+			saf.cell(row=3,column=2).value="Serie"
+			saf.cell(row=3,column=3).value="Numar"
+			for row in saf['A3:C3']:
+				for cell in row:
+					cell.font = cap_tabel
+					cell.fill = cap_tabel_color_black
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			ind=saf.max_row
+			for k in range(0,len(storno)):
+				if(storno[k]=="Yes"):
+					saf.cell(row=ind+1,column=1).value="Stornata"
+					saf.cell(row=ind+1,column=2).value=""
+					saf.cell(row=ind+1,column=3).value=docNoSales[k]
+					ind=ind+1
+			xx=saf.max_row		
+			saf.cell(row=xx+1,column=1).value="Anulata"
+			saf.cell(row=xx+1,column=2).value="Please input the cancelled invoice number"	
+			bonuri=temp.create_sheet("Bonuri fiscale")
+			bonuri.cell(row=4,column=1).value="Luna"
+			bonuri.cell(row=4,column=2).value="Nr. bon fiscal"
+			bonuri.cell(row=4,column=3).value="Baza 5%"
+			bonuri.cell(row=4,column=4).value="TVA 5%"
+			bonuri.cell(row=4,column=5).value="Baza 9%"
+			bonuri.cell(row=4,column=6).value="TVA 9%"
+			bonuri.cell(row=4,column=7).value="Baza 19%"
+			bonuri.cell(row=4,column=8).value="TVA 19%"
+			bonuri.cell(row=4,column=9).value="Baza 20%"
+			bonuri.cell(row=4,column=10).value="TVA 20%"
+
+			for row in bonuri['A4:K4']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+
+			for row in bonuri['A4:K4']:
+				for cell in row:
+					cell.font = cap_tabel
+			bonuri.sheet_view.showGridLines = False
+
+			facturi=temp.create_sheet("Sectiunea 2.1&2.2")
+			facturi.sheet_view.showGridLines = False
+			facturi.column_dimensions['A'].width = 12
+			facturi.column_dimensions['B'].width = 18
+			facturi.column_dimensions['C'].width = 15
+
+			facturi.cell(row=1,column=1).value="Serie Emise"
+			facturi.cell(row=1,column=2).value="Inceput Emise"
+			facturi.cell(row=1,column=3).value="Final Emise"
+			facturi.cell(row=1,column=4).value="Tip Emise"		
+
+			docNoSales2=[]
+			seriefacturi=[]
+			for i in range(0,len(docNoSales)):
+				# docNoSales[i].replaceAll("[^a-zA-Z0-9]", ")
+				if(int(codTranzactieSales[i])<3):
+					# try:
+					numere=re.sub("[^0-9]", "",str(docNoSales[i]))
+					# except:
+						# print(docNoSales[i])
+					result = ''.join([i for i in str(docNoSales[i]) if not i.isdigit()])
+					docNoSales2.append(numere)
+					seriefacturi.append(result)
+			#print(seriefacturi)
+			# print(docNoSales2)
+			initial=0
+			final=0
+			docNoSales2.sort()
+			docNo=[]
+			for k in range(0,len(docNoSales2)):
+				docNo.append(str(docNoSales2[k]))
+			docNo.sort()
+			listaunica=list(set(docNoSales2))
+			listaunica.sort()
+	# print(listaunica)
+
+			for i in range(0,len(listaunica)):
+				listafacturi=[]
+				print(listaunica[i])
+				for j in range(0,len(docNoSales2)):
+					if(listaunica[i]==docNoSales2[j]):
+
+						listafacturi.append(int(docNoSales2[j]))
+			listafacturi=list(set(listafacturi))
+			print(listafacturi)
+			listafacturi.sort()
+			start=[]
+			start.append(listaunica[0])
+			stop=[]
+			if(int(listaunica[1])-int(listaunica[0])>1):
+				stop.append(listaunica[0])
+			for k in range(1,len(listaunica)):
+
+				if(int(listaunica[k])-int(listaunica[k-1])==1):
+					print("ok")
+				else:
+					stop.append(listaunica[k-1])
+					start.append(listaunica[k])
+			if(len(stop)==len(start)):
 				print("ok")
 			else:
-				stop.append(listaunica[k-1])
-				start.append(listaunica[k])
-		if(len(stop)==len(start)):
-			print("ok")
-		else:
-			stop.append(listaunica[len(listaunica)-1])
-		print(start,stop)
+				stop.append(listaunica[len(listaunica)-1])
+			print(start,stop)
 
-		# #print(docNoSales)
-		for k in range(0,len(start)):
-			facturi.cell(row=2+k,column=2).value=start[k]
-			facturi.cell(row=2+k,column=3).value=stop[k]
-			facturi.cell(row=2+k,column=4).value=2
+			# #print(docNoSales)
+			for k in range(0,len(start)):
+				facturi.cell(row=2+k,column=2).value=start[k]
+				facturi.cell(row=2+k,column=3).value=stop[k]
+				facturi.cell(row=2+k,column=4).value=2
 
-		# for p in range(0,len(docNoSales2)-1):
-		# 	#print(docNo[p])
-		# 	if(p==0):
-		# 		initial=initial+1
-		# 		# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
-		# 		facturi.cell(row=1+initial,column=2).value=docNo[p]
-		# 		if(int(docNo[p])-int(docNo[p+1])< -1):
-		# 			final=final+1
-		# 			facturi.cell(row=1+final,column=3).value=docNo[p]
-		# 	else:
-		# 		try:
-		# 			if(int(docNo[p])-int(docNo[p-1])==1 and int(docNo[p])-int(docNo[p+1])==-1):
-		# 				print("bailando")
-					
-		# 		except:
-		# 			try:
-		# 				if(int(docNo[p][3:])-int(docNo[p-1][3:])==1 and int(docNo[p][3:])-int(docNo[p+1][3:])==-1):
-		# 					print("bailando")
-		# 					None
-		# 			except:
-		# 				print(None)
-		# 		try:
-		# 			if(int(docNo[p])-int(docNo[p-1])>1 and int(docNo[p])-int(docNo[p+1])==-1):
-		# 				initial=initial+1
-		# 				# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
-		# 				facturi.cell(row=1+initial,column=2).value=docNo[p]
-		# 		except:
-		# 			try:
-		# 				if(int(docNo[p][3:])-int(docNo[p-1][3:])>1 and int(docNo[p][3:])-int(docNo[p+1][3:])==-1):
-		# 					initial=initial+1
-		# 					# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
-		# 					facturi.cell(row=1+initial,column=2).value=docNo[p]
-		# 			except:
-		# 				print(docNo[p])
-		# 		try:
-		# 			if(int(docNo[p])-int(docNo[p-1])==1 and int(docNo[p])-int(docNo[p+1])<-1):
-		# 				final=final+1
-		# 				facturi.cell(row=1+final,column=3).value=docNo[p]
-		# 		except:
-		# 			try:
-		# 				if(int(docNo[p][3:])-int(docNo[p-1][3:])==1 and int(docNo[p][3:])-int(docNo[p+1][3:])<-1):
-		# 					final=final+1
-		# 					facturi.cell(row=1+final,column=3).value=docNo[p]
-		# 			except:
-		# 				print("none")
-		# 		try:
-		# 			if(int(docNo[p])-int(docNo[p-1])>1 and int(docNo[p])-int(docNo[p+1])<-1):
-		# 				initial=initial+1
-		# 				# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
-		# 				facturi.cell(row=1+initial,column=2).value=docNo[p]
-		# 				final=final+1
-		# 				facturi.cell(row=1+final,column=3).value=docNo[p]
-		# 		except:
-		# 			try:
-		# 				if(int(docNo[p][3:])-int(docNo[p-1][3:])>1 and int(docNo[p][3:])-int(docNo[p+1][3:])<-1):
-		# 					initial=initial+1
-		# 					# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
-		# 					facturi.cell(row=1+initial,column=2).value=docNo[p]
-		# 					final=final+1
-		# 					facturi.cell(row=1+final,column=3).value=docNo[p]
-		# 			except:
-		# 				print("none")
-
-		x=facturi.max_row
-		facturi.auto_filter.ref = "A1:C1"
-		# if(int(docNoSales2[len(docNoSales2)-1])-int(docNoSales2[len(docNoSales2)-2])>1):
-		# 	facturi.cell(row=x+1,column=1).value=seriefacturi[0]
-		# 	facturi.cell(row=x+1,column=2).value=docNoSales2[len(docNoSales2)-1]
-		# 	facturi.cell(row=x+1,column=3).value=docNoSales2[len(docNoSales2)-1]
-		# else:
-		# 	facturi.cell(row=x+1,column=1).value=seriefacturi[0]
-		# 	facturi.cell(row=x, column=3).value = docNoSales2[len(docNoSales2) - 1]
-
-
-		yy=facturi.max_row+2
-		facturi.cell(row=yy,column=1).value="Serie Alocate"
-		facturi.cell(row=yy,column=2).value="Inceput Alocate"
-		facturi.cell(row=yy,column=3).value="Final Alocate"
-		facturi.cell(row=yy,column=4).value="Tip Alocate"		
-		for kk in range(1,5):
-			facturi.cell(row=yy,column=kk).font=cap_tabel
-			facturi.cell(row=yy,column=kk).fill=cap_tabel_color_black	
-		for pp in range(2,yy):
-			facturi.cell(row=yy+pp-1,column=2).value=facturi.cell(row=pp,column=2).value
-			facturi.cell(row=yy+pp-1,column=3).value=facturi.cell(row=pp,column=3).value
-			facturi.cell(row=yy+pp-1,column=4).value=1						
-		a23=temp.create_sheet("Sectiunea 2.3,2.4")
-		dv = DataValidation(
-			type='list', formula1='"Yes,No"', allow_blank=True,showDropDown=False)		
-		dv.add(a23["A24"])			
-		a23.sheet_view.showGridLines = False
-		a23.column_dimensions['A'].width=18
-		a23.column_dimensions['B'].width=13		
-		a23.cell(row=1,column=1).value="Sectiunea 2.3"
-		a23.cell(row=3,column=1).value="Denumire beneficiar"
-		a23.cell(row=3,column=2).value="CUI beneficiar"
-		a23.cell(row=3,column=1).fill=cap_tabel_color_black
-		a23.cell(row=3,column=1).font=cap_tabel		
-		a23.cell(row=36,column=1).border=border_bottom
-		a23.cell(row=36,column=2).border=border_lowerleft
-		a23.cell(row=35,column=2).border=border_right
-		a23.cell(row=34,column=2).border=border_right
-		a23.cell(row=33,column=2).border=border_right
-		a23.cell(row=32,column=2).border=border_right						
-		a23.cell(row=3,column=2).fill=cap_tabel_color_black
-		a23.cell(row=3,column=2).font=cap_tabel
-
-
-		a23.cell(row=6,column=1).value="Seria"
-		a23.cell(row=6,column=2).value="De la"
-		a23.cell(row=6,column=3).value="La"
-
-
-
-		for row in a23['A6:C6']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		for row in a23['A14:C14']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-
-		a23.cell(row=9,column=1).value="Sectiunea 2.4"
-		a23.cell(row=9,column=1).font=cap_tabelbold
-		a23.cell(row=1,column=1).font=cap_tabelbold		
-		a23.cell(row=28,column=1).font=cap_tabelbold		
-		a23.cell(row=4,column=1).border=border_lowerright
-		a23.cell(row=4,column=2).border=border_lowerright		
-		a23.cell(row=12,column=1).border=border_lowerright
-		a23.cell(row=12,column=2).border=border_lowerright		
-		a23.cell(row=11,column=1).fill=cap_tabel_color_black
-		a23.cell(row=11,column=1).font=cap_tabel		
-		a23.cell(row=7,column=1).border=border_lowerright
-		a23.cell(row=7,column=2).border=border_lowerright
-		a23.cell(row=7,column=3).border=border_lowerright
-		a23.cell(row=15,column=1).border=border_lowerright
-		a23.cell(row=15,column=2).border=border_lowerright
-		a23.cell(row=15,column=3).border=border_lowerright				
-		a23.cell(row=11,column=2).fill=cap_tabel_color_black
-		a23.cell(row=11,column=2).font=cap_tabel
-		a23.cell(row=11,column=1).value="Denumire tert"
-
-		a23.cell(row=11,column=2).value="CUI tert"
-
-		a23.cell(row=14,column=1).value="Seria"
-		a23.cell(row=14,column=2).value="De la"
-		a23.cell(row=14,column=3).value="La"
-		for row in a23['A31:B31']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.font=cap_tabel
-		try:
-			if int(val4)== 1:
-				a3=temp.create_sheet("Sectiunea 3")
-				a3.cell(row=1,column=1).value="Sectiunea 3"
-				a3.cell(row=1,column=1).font=cap_tabeltitlu
-				a3.cell(row=3,column=1).value="In cazul in care soldul sumei negative inregistrate in decontul de TVA aferent perioadei de raportare este solicitat la rambursare , se vor selecta datele cu privire la natura operatiunilor din care provine acesta"
-				a3.cell(row=7,column=1).value="Achizitii de bunuri si servicii legate direct de bunurile imobile din urmatoarele categorii"
-				a3.cell(row=8,column=1).value="a) parcuri eoliene"
-				a3.cell(row=9,column=1).value="b) constructii rezidentiale"
-
-
-
-				a3.cell(row=10,column=1).value="c) cladiri de birouri"
-				a3.cell(row=11,column=1).value="d) constructii industriale"
-				a3.cell(row=12,column=1).value="e) altele"
-				a3.cell(row=14,column=1).value="Achizitii de bunuri, cu exceptia celor legate direct de bunuri imobile:"
-				a3.cell(row=15,column=1).value="a) cu cota de TVA de 24%"
-				a3.cell(row=16,column=1).value="b) cu cota standard de TVA de 20%"
-				a3.cell(row=17,column=1).value="c) cu cota de TVA de 19%"
-				a3.cell(row=18,column=1).value="d) cu cota de TVA de 9%"
-				a3.cell(row=19,column=1).value="e) cu cota de TVA de 5%"
-				a3.cell(row=21,column=1).value="Achizitii de servicii, cu exceptia celor legate direct de bunurile imobile:"
-				a3.cell(row=22,column=1).value="a) cu cota de TVA de 24%"
-				a3.cell(row=23,column=1).value="b) cu cota standard de TVA de 20%"
-				a3.cell(row=24,column=1).value="c) cu cota de TVA de 19%"
-				a3.cell(row=25,column=1).value="d) cu cota de TVA de 9%"
-				a3.cell(row=26,column=1).value="e) cu cota de TVA de 5%"
-				a3.cell(row=28,column=1).value="Importuri de bunuri"
-				a3.cell(row=30,column=1).value="Achizitii imobilizari necorporale"
-				a3.cell(row=32,column=1).value="Livrari de bunuri imobile"
-				a3.cell(row=34,column=1).value="Livrari de bunuri, cu exceptia bunurilor imobile:"
-				a3.cell(row=35,column=1).value="a) cu cota de TVA de 24%"
-				a3.cell(row=36,column=1).value="b) cu cota standard de TVA de 20%"
-				a3.cell(row=37,column=1).value="c) cu cota de TVA de 19%"
-				a3.cell(row=38,column=1).value="d) cu cota de TVA de 9%"
-				a3.cell(row=39,column=1).value="e) cu cota de TVA de 5%"
-				a3.cell(row=41,column=1).value="Livrari de bunuri scutite de TVA"
-				a3.cell(row=43,column=1).value="Livrari de bunuri/prestari de servicii pt care se aplica taxarea inversa"
-				a3.cell(row=45,column=1).value="Prestari de servicii:"
-				a3.cell(row=46,column=1).value="a) cu cota de TVA de 24%"
-				a3.cell(row=47,column=1).value="b) cu cota standard de TVA de 20%"
-				a3.cell(row=48,column=1).value="c) cu cota de TVA de 19%"
-				a3.cell(row=49,column=1).value="d) cu cota de TVA de 9%"
-				a3.cell(row=50,column=1).value="e) cu cota de TVA de 5%"
-				a3.cell(row=52,column=1).value="Prestari de servicii scutite de TVA"
-				a3.cell(row=54,column=1).value="Livrari intracomunitare de bunuri"
-				a3.cell(row=56,column=1).value="Prestari intracomunitare de servicii"
-				a3.cell(row=58,column=1).value="Exporturi de bunuri"
-				a3.cell(row=60,column=1).value="Livrari imobilizari necorporale"
-				a3.cell(row=62,column=1).value="Persoana impozabila nu a efectuat livrari de bunuri/prestari de servicii in perioada de raportare"																					
-		except:
-			pass
-
-
-																																																																					
-		a5=temp.create_sheet("Sectiunea 5")
-		a5.sheet_view.showGridLines = False
-		a5.cell(row=2,column=1).value="Sectiunea 5"
-		a5.cell(row=2,column=1).font=cap_tabeltitlu
-		a5.cell(row=4,column=1).font=cap_tabelbold
-		a5.cell(row=6,column=1).font=cap_tabelbold
-		a5.column_dimensions['B'].width=13
-		a5.merge_cells('A6:J7')
-		a5.merge_cells('A18:J19')		
-		
-		for pop in range(1,11):
-			a5.cell(row=5,column=pop).border=border_bottom
-			a5.cell(row=7,column=pop).border=border_bottom
-			a5.cell(row=17,column=pop).border=border_bottom
-			a5.cell(row=19,column=pop).border=border_bottom
-		a5.cell(row=6,column=10).border=border_upperright
-		a5.cell(row=7,column=10).border=border_lowerright
-		a5.cell(row=18,column=10).border=border_upperright
-		a5.cell(row=19,column=10).border=border_lowerright									
-		a5['A6'].alignment=Alignment(wrap_text=True)
-		a5['A18'].alignment=Alignment(wrap_text=True)
-		a5['A30'].alignment=Alignment(wrap_text=True)						
-		a5.cell(row=4,column=1).value="Sectiune 5.2"
-		a5.cell(row=16,column=1).font=cap_tabelbold		
-		a5.cell(row=16,column=1).value="Sectiune 5.3"
-		a5.cell(row=28,column=1).font=cap_tabelbold		
-		a5.cell(row=10,column=1).value="cota 24%"
-		a5.cell(row=11,column=1).value="cota 20%"
-		a5.cell(row=12,column=1).value="cota 19%"
-		a5.cell(row=13,column=1).value="cota 9%"
-		a5.cell(row=14,column=1).value="cota 5%"
-		a5.cell(row=10,column=2).value=0
-		a5.cell(row=11,column=2).value=0
-		a5.cell(row=12,column=2).value=0
-		a5.cell(row=13,column=2).value=0
-		a5.cell(row=14,column=2).value=0
-
-		a5.cell(row=9,column=2).value="Valoare TVA"
-		a5.cell(row=9,column=1).value="Cota"		
-
-		a5.cell(row=6,column=1).value="5.2 TVA deductibila aferenta facturilor achitate in perioada de raportare indiferent de data in care acestea au fost primite de la persoane impozabile care aplica sistemul normal de TVA, defalcata pe fiecare cota de TVA"
-		a5.cell(row=18,column=1).font=cap_tabelbold		
-
-		a5.cell(row=22,column=1).value="cota 24%"
-		a5.cell(row=23,column=1).value="cota 20%"
-		a5.cell(row=24,column=1).value="cota 19%"
-		a5.cell(row=25,column=1).value="cota 9%"
-		a5.cell(row=26,column=1).value="cota 5%"
-
-		a5.cell(row=22,column=2).value=0
-		a5.cell(row=23,column=2).value=0
-		a5.cell(row=24,column=2).value=0
-		a5.cell(row=25,column=2).value=0
-		a5.cell(row=26,column=2).value=0
-
-		a5.cell(row=21,column=1).value="Cota"		
-		a5.cell(row=21,column=2).value="Valoare TVA"
-		for row in a5['A9:B9']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		for row in a5['A21:B21']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-							
-		a5.cell(row=18,column=1).value="5.3 TVA deductibila aferenta facturilor achitate in perioada de raportare indiferent de data in care acestea au fost primite de la persoane impozabile care aplica sistemul de TVA la incasare, defalcata pe fiecare cota de TVA"
-
-		for kk in range(22,27):
-			a5.cell(row=kk,column=1).border=border_lowerright
-			a5.cell(row=kk,column=2).border=border_lowerright						
-		for kk in range(10,15):
-			a5.cell(row=kk,column=1).border=border_lowerright
-			a5.cell(row=kk,column=2).border=border_lowerright		
-		a6=temp.create_sheet("Sectiunea 6")
-		a6.sheet_view.showGridLines = False
-		a6.cell(row=2,column=1).value="Sectiunea 6"
-		a6.cell(row=2,column=1).font=cap_tabeltitlu
-		a6.cell(row=4,column=1).font=cap_tabelbold
-		a6.cell(row=6,column=1).font=cap_tabelbold
-		a6.cell(row=15,column=1).font=cap_tabelbold
-		a6.cell(row=13,column=1).font=cap_tabelbold
-		a6.column_dimensions['A'].width=17			
-		a6.column_dimensions['B'].width=28
-		a6.column_dimensions['C'].width=17
-															
-		a6.cell(row=4,column=1).value="Sectiunea 6.1"		
-		a6.cell(row=6,column=1).value="6.1 Persoanele impozabile care aplica regimul special pt agentiile de turism, vor completa:"
-		a6.merge_cells('A6:F7')
-		for l in range(1,7):
-			a6.cell(row=5,column=l).border=border_bottom
-			a6.cell(row=7,column=l).border=border_bottom
-		a6.cell(row=6,column=6).border=border_upperright
-		a6.cell(row=7,column=6).border=border_lowerright						
-
-		a6.merge_cells('A15:G16')
-
-		for l in range(1,8):
-			a6.cell(row=14,column=l).border=border_bottom
-			a6.cell(row=16,column=l).border=border_bottom
-		a6.cell(row=15,column=7).border=border_upperright
-		a6.cell(row=16,column=7).border=border_lowerright
-
-
-
-
-		a6.cell(row=9,column=1).value="Incasarile agentiei"
-		a6.cell(row=9,column=2).value="Costurile agentiei de turism"
-		a6.cell(row=9,column=3).value="Marja de profit"
-		a6.cell(row=9,column=4).value="TVA"
-
-		a6.cell(row=13,column=1).value="Sectiunea 6.2"
-
-		a6.cell(row=15,column=1).value="6.2 Persoanele impozabile care aplica regimul special pt bunurile second-hand, opere de arta, obiecte de colectie si antichitati , vor completa:"
-
-		for row in a6['A18:D18']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		for row in a6['A9:D9']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')										
-
-
-		a6.cell(row=18,column=1).value="Pret de vanzare"
-		a6.cell(row=18,column=2).value="Pret de cumparare"
-		a6.cell(row=18,column=3).value="Marja de profit"	
-		a6.cell(row=18,column=4).value="TVA"
-		for oo in range(1,5):
-			a6.cell(row=10,column=oo).border=border_lowerright
-			a6.cell(row=19,column=oo).border=border_lowerright		
-
-		a6['A6'].alignment=Alignment(wrap_text=True)
-
-		a6['A15'].alignment=Alignment(wrap_text=True)
-		a7=temp.create_sheet(" Sectiunea 7 ")
-
-		a7.cell(row=2,column=1).value="Sectiunea 7"
-		a7.sheet_view.showGridLines = False
-		a7.cell(row=2,column=1).font=cap_tabeltitlu
-		a7.cell(row=5,column=1).value="7. In situatia in care ati desfasurat, in perioada de raportare, activitati dintre cele inscrise in lista veti selecta activitatea corespunzatoare si veti inscrie valoarea livrarilor/prestarilor, precum si TVA aferenta"
-		a7['A5'].alignment=Alignment(wrap_text=True)
-		a7.merge_cells('A5:I6')
-		a7.cell(row=5,column=1).font=cap_tabelbold
-		for ii in range(1,10):
-			a7.cell(row=4,column=ii).border=border_bottom
-			a7.cell(row=6,column=ii).border=border_bottom
-		a7.cell(row=5,column=9).border=border_upperright
-		a7.cell(row=6,column=9).border=border_lowerright		
-		a7.cell(row=5,column=8).border=border_right
-		a7.cell(row=6,column=8).border=border_right
-
-		for jj in range(1,4):
-			a7.cell(row=9,column=jj).border=border_bottom
-			a7.cell(row=9,column=jj).border=border_right
-		
-		for pp in range(12,17):
-			a7.cell(row=pp,column=2).border=border_lowerright
-			a7.cell(row=pp,column=1).border=border_lowerright
-		a7.cell(row=8,column=1).value="Activitate"
-		a7.cell(row=8,column=2).value="Tip operatiune"
-		a7.cell(row=8,column=3).value="Valoarea livrarilor/prestarilor"
-
-		a7.cell(row=11,column=1).value="Cota"
-		a7.cell(row=12,column=1).value="cota 24%"
-		a7.cell(row=13,column=1).value="cota 20%"
-		a7.cell(row=14,column=1).value="cota 19%"
-		a7.cell(row=15,column=1).value="cota 9%"
-		a7.cell(row=16,column=1).value="cota 5%"
-		for row in a7['A8:C8']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.font = cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')										
-		for row in a7['A11:B11']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.font = cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		a7.cell(row=11,column=2).value="Valoare TVA"
-
-		for row in facturi['A1:D1']:
-			for cell in row:
-				cell.fill = cap_tabel_color_black
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-
-		for row in facturi['A1:D1']:
-			for cell in row:
-				cell.font = cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-
-		facturi.column_dimensions['C'].width = 14
-		facturi.column_dimensions['D'].width = 14
-		a23.column_dimensions['A'].width = 18
-		a23.column_dimensions['B'].width = 13
-		a23.column_dimensions['C'].width = 10
-		a6.column_dimensions['A'].width = 17
-		a6.column_dimensions['B'].width = 25
-		a6.column_dimensions['C'].width = 15				
-		sumaryG=temp.create_sheet("Sectiunea G. Manual input")
-		sumaryG.sheet_view.showGridLines = False
-		sumaryG.cell(row=2,column=1).value="Sectiunea G"
-		sumaryG.cell(row=2,column=1).font=cap_tabeltitlu		
-		sumaryG.column_dimensions['A'].width =45
-		sumaryG.cell(row=5,column=1).value="Total Nr. Bonuri Fiscale"
-		sumaryG.cell(row=5,column=1).font=cap_tabelbold
-		sumaryG.cell(row=6,column=1).font=cap_tabelbold
-		sumaryG.cell(row=7,column=1).font=cap_tabelbold						
-		sumaryG.cell(row=6,column=1).value="Total incasari in perioada de raportare prin intermediul AMEF ( aparate de marcatelectronice fiscale ) inclusiv incasarile prin intermediul bonurilor fiscale care indeplinesc conditiile unei facturi simplificate indiferent daca au/nu au inscris codul de inregistrare in scopuri de TVA al beneficiarului (i1)"
-		sumaryG['A6'].alignment=Alignment(wrap_text=True)
-		sumaryG['A7'].alignment=Alignment(wrap_text=True)				
-		sumaryG.cell(row=7,column=1).value="Total incasari in perioada de raportare efectuate din activitati exceptate de la obligatia utilizarii AMEF***) (i2) conform prevederilor legale in vigoare )"
-		sumaryG.merge_cells('A9:H11')
-		sumaryG.cell(row=9,column=1).font=cap_tabelbold
-		for ii in range(1,9):
-			sumaryG.cell(row=8,column=ii).border=border_bottom
-			sumaryG.cell(row=11,column=ii).border=border_bottom
-		sumaryG.cell(row=9,column=8).border=border_upperright
-		sumaryG.cell(row=10,column=8).border=border_right		
-		sumaryG.cell(row=11,column=8).border=border_lowerright		
-		for ii in range(1,9):	
-			sumaryG.cell(row=19,column=ii).border=border_bottom
-			sumaryG.cell(row=20,column=ii).border=border_bottom			
-		sumaryG.cell(row=5,column=2).border=border_right
-		sumaryG.cell(row=6,column=2).border=border_right
-		sumaryG.cell(row=7,column=2).border=border_right
-		sumaryG.cell(row=5,column=1).border=border_right
-		sumaryG.cell(row=6,column=1).border=border_right
-		sumaryG.cell(row=7,column=1).border=border_right
-		sumaryG.cell(row=4,column=1).border=border_bottom
-		sumaryG.cell(row=5,column=1).border=border_bottom
-		sumaryG.cell(row=6,column=1).border=border_bottom
-		sumaryG.cell(row=7,column=1).border=border_bottom
-		sumaryG.cell(row=5,column=2).value=0
-		sumaryG.cell(row=6,column=2).value=0
-		sumaryG.cell(row=7,column=2).value=0
-		sumaryG.cell(row=13,column=1).value="Cota"		
-		sumaryG.cell(row=13,column=2).value="Total baza impozabila"
-		sumaryG.cell(row=13,column=3).value="TVA"
-		sumaryG.cell(row=23,column=1).value="Cota"		
-		sumaryG.cell(row=23,column=2).value="Total baza impozabila"
-		sumaryG.cell(row=23,column=3).value="TVA"		
-		for ii in range(1,4):
-			sumaryG.cell(row=17,column=ii).border=border_lowerright
-			sumaryG.cell(row=16,column=ii).border=border_lowerright
-			sumaryG.cell(row=15,column=ii).border=border_lowerright
-			sumaryG.cell(row=14,column=ii).border=border_lowerright
-			sumaryG.cell(row=24,column=ii).border=border_lowerright
-			sumaryG.cell(row=25,column=ii).border=border_lowerright
-			sumaryG.cell(row=26,column=ii).border=border_lowerright
-			sumaryG.cell(row=27,column=ii).border=border_lowerright																					
+			# for p in range(0,len(docNoSales2)-1):
+			# 	#print(docNo[p])
+			# 	if(p==0):
+			# 		initial=initial+1
+			# 		# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
+			# 		facturi.cell(row=1+initial,column=2).value=docNo[p]
+			# 		if(int(docNo[p])-int(docNo[p+1])< -1):
+			# 			final=final+1
+			# 			facturi.cell(row=1+final,column=3).value=docNo[p]
+			# 	else:
+			# 		try:
+			# 			if(int(docNo[p])-int(docNo[p-1])==1 and int(docNo[p])-int(docNo[p+1])==-1):
+			# 				print("bailando")
 						
-		for row in sumaryG['A13:C13']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		for row in sumaryG['A23:C23']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')										
-		sumaryG.cell(row=9,column=1).value="Incasari in perioada de raportare prin intermediul AMEF ( aparate de marcat electronice fiscale ) inclusiv incasarile prin intermediul bonurilor fiscale care indeplinesc conditiile unei facturi simplificate indiferent daca au/nu au inscris codul de inregistrare in scopuri de TVA al beneficiarului (i1)"
-		sumaryG.cell(row=20,column=1).value="Incasari in perioada de raportare efectuate din activitati exceptate de la obligatia utilizarii AMEF***) (i2) conform prevederilor legale in vigoare )"
-		sumaryG['A9'].alignment=Alignment(wrap_text=True)		
-		sumaryG.cell(row=14,column=1).value="Cota 20%"
-		sumaryG.cell(row=15,column=1).value="Cota 19%"
-		sumaryG.cell(row=16,column=1).value="Cota 9%"
-		sumaryG.cell(row=17,column=1).value="Cota 5%"
+			# 		except:
+			# 			try:
+			# 				if(int(docNo[p][3:])-int(docNo[p-1][3:])==1 and int(docNo[p][3:])-int(docNo[p+1][3:])==-1):
+			# 					print("bailando")
+			# 					None
+			# 			except:
+			# 				print(None)
+			# 		try:
+			# 			if(int(docNo[p])-int(docNo[p-1])>1 and int(docNo[p])-int(docNo[p+1])==-1):
+			# 				initial=initial+1
+			# 				# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
+			# 				facturi.cell(row=1+initial,column=2).value=docNo[p]
+			# 		except:
+			# 			try:
+			# 				if(int(docNo[p][3:])-int(docNo[p-1][3:])>1 and int(docNo[p][3:])-int(docNo[p+1][3:])==-1):
+			# 					initial=initial+1
+			# 					# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
+			# 					facturi.cell(row=1+initial,column=2).value=docNo[p]
+			# 			except:
+			# 				print(docNo[p])
+			# 		try:
+			# 			if(int(docNo[p])-int(docNo[p-1])==1 and int(docNo[p])-int(docNo[p+1])<-1):
+			# 				final=final+1
+			# 				facturi.cell(row=1+final,column=3).value=docNo[p]
+			# 		except:
+			# 			try:
+			# 				if(int(docNo[p][3:])-int(docNo[p-1][3:])==1 and int(docNo[p][3:])-int(docNo[p+1][3:])<-1):
+			# 					final=final+1
+			# 					facturi.cell(row=1+final,column=3).value=docNo[p]
+			# 			except:
+			# 				print("none")
+			# 		try:
+			# 			if(int(docNo[p])-int(docNo[p-1])>1 and int(docNo[p])-int(docNo[p+1])<-1):
+			# 				initial=initial+1
+			# 				# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
+			# 				facturi.cell(row=1+initial,column=2).value=docNo[p]
+			# 				final=final+1
+			# 				facturi.cell(row=1+final,column=3).value=docNo[p]
+			# 		except:
+			# 			try:
+			# 				if(int(docNo[p][3:])-int(docNo[p-1][3:])>1 and int(docNo[p][3:])-int(docNo[p+1][3:])<-1):
+			# 					initial=initial+1
+			# 					# facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
+			# 					facturi.cell(row=1+initial,column=2).value=docNo[p]
+			# 					final=final+1
+			# 					facturi.cell(row=1+final,column=3).value=docNo[p]
+			# 			except:
+			# 				print("none")
 
-		sumaryG.cell(row=24,column=1).value="Cota 20%"
-		sumaryG.cell(row=25,column=1).value="Cota 19%"
-		sumaryG.cell(row=26,column=1).value="Cota 9%"
-		sumaryG.cell(row=27,column=1).value="Cota 5%"
-
-		sumaryG.cell(row=14,column=2).value=0
-		sumaryG.cell(row=15,column=2).value=0
-		sumaryG.cell(row=16,column=2).value=0
-		sumaryG.cell(row=17,column=2).value=0
-
-
-		sumaryG.cell(row=14,column=3).value=0
-		sumaryG.cell(row=15,column=3).value=0
-		sumaryG.cell(row=16,column=3).value=0
-		sumaryG.cell(row=17,column=3).value=0
+			x=facturi.max_row
+			facturi.auto_filter.ref = "A1:C1"
+			# if(int(docNoSales2[len(docNoSales2)-1])-int(docNoSales2[len(docNoSales2)-2])>1):
+			# 	facturi.cell(row=x+1,column=1).value=seriefacturi[0]
+			# 	facturi.cell(row=x+1,column=2).value=docNoSales2[len(docNoSales2)-1]
+			# 	facturi.cell(row=x+1,column=3).value=docNoSales2[len(docNoSales2)-1]
+			# else:
+			# 	facturi.cell(row=x+1,column=1).value=seriefacturi[0]
+			# 	facturi.cell(row=x, column=3).value = docNoSales2[len(docNoSales2) - 1]
 
 
-		sumaryG.cell(row=24,column=2).value=0
-		sumaryG.cell(row=25,column=2).value=0
-		sumaryG.cell(row=26,column=2).value=0
-		sumaryG.cell(row=27,column=2).value=0
+			yy=facturi.max_row+2
+			facturi.cell(row=yy,column=1).value="Serie Alocate"
+			facturi.cell(row=yy,column=2).value="Inceput Alocate"
+			facturi.cell(row=yy,column=3).value="Final Alocate"
+			facturi.cell(row=yy,column=4).value="Tip Alocate"		
+			for kk in range(1,5):
+				facturi.cell(row=yy,column=kk).font=cap_tabel
+				facturi.cell(row=yy,column=kk).fill=cap_tabel_color_black	
+			for pp in range(2,yy):
+				facturi.cell(row=yy+pp-1,column=2).value=facturi.cell(row=pp,column=2).value
+				facturi.cell(row=yy+pp-1,column=3).value=facturi.cell(row=pp,column=3).value
+				facturi.cell(row=yy+pp-1,column=4).value=1						
+			a23=temp.create_sheet("Sectiunea 2.3,2.4")
+			dv = DataValidation(
+				type='list', formula1='"Yes,No"', allow_blank=True,showDropDown=False)		
+			dv.add(a23["A24"])			
+			a23.sheet_view.showGridLines = False
+			a23.column_dimensions['A'].width=18
+			a23.column_dimensions['B'].width=13		
+			a23.cell(row=1,column=1).value="Sectiunea 2.3"
+			a23.cell(row=3,column=1).value="Denumire beneficiar"
+			a23.cell(row=3,column=2).value="CUI beneficiar"
+			a23.cell(row=3,column=1).fill=cap_tabel_color_black
+			a23.cell(row=3,column=1).font=cap_tabel		
+			a23.cell(row=36,column=1).border=border_bottom
+			a23.cell(row=36,column=2).border=border_lowerleft
+			a23.cell(row=35,column=2).border=border_right
+			a23.cell(row=34,column=2).border=border_right
+			a23.cell(row=33,column=2).border=border_right
+			a23.cell(row=32,column=2).border=border_right						
+			a23.cell(row=3,column=2).fill=cap_tabel_color_black
+			a23.cell(row=3,column=2).font=cap_tabel
 
-		sumaryG.cell(row=24,column=3).value=0
-		sumaryG.cell(row=25,column=3).value=0
-		sumaryG.cell(row=26,column=3).value=0
-		sumaryG.cell(row=27,column=3).value=0
+
+			a23.cell(row=6,column=1).value="Seria"
+			a23.cell(row=6,column=2).value="De la"
+			a23.cell(row=6,column=3).value="La"
 
 
-		sumaryI=temp.create_sheet("Sectiunea I 1. Manual input")
 
-		for row in sumaryI['A7:C7']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		for row in sumaryI['A17:C17']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		for row in sumaryI['A27:C27']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		for row in sumaryI['A37:C37']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')				
-		for row in sumaryI['A47:C47']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.font=cap_tabel
-				cell.alignment=Alignment(horizontal='center',vertical='center')																
-		sumaryI.cell(row=2,column=1).value="Sectiunea I"
-		sumaryI.cell(row=2,column=1).font=cap_tabeltitlu
-		sumaryI.sheet_view.showGridLines = False
-		sumaryI.cell(row=7,column=1).value="Cota"
-		sumaryI.cell(row=7,column=2).value="Baza impozabila"
-		sumaryI.cell(row=7,column=3).value="TVA"
+			for row in a23['A6:C6']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			for row in a23['A14:C14']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
 
-		sumaryI.cell(row=7,column=1).value="Cota"
-		sumaryI.cell(row=7,column=2).value="Baza impozabila"
-		sumaryI.cell(row=7,column=3).value="TVA"
-		sumaryI.cell(row=17,column=1).value="Cota"
-		sumaryI.cell(row=17,column=2).value="Baza impozabila"
-		sumaryI.cell(row=17,column=3).value="TVA"
-		sumaryI.cell(row=27,column=1).value="Cota"
-		sumaryI.cell(row=27,column=2).value="Baza impozabila"
-		sumaryI.cell(row=27,column=3).value="TVA"
-		sumaryI.cell(row=37,column=1).value="Cota"
-		sumaryI.cell(row=37,column=2).value="Baza impozabila"
-		sumaryI.cell(row=37,column=3).value="TVA"								
-		sumaryI.cell(row=47,column=1).value="Cota"
-		sumaryI.cell(row=47,column=2).value="Baza impozabila"
-		sumaryI.cell(row=47,column=3).value="TVA"
-		sumaryI.cell(row=4,column=1).value="1.1 Livrari de bunuri/prestari de servicii pentru care s-au emis facturi simplificate care au inscris codul de inregistrare in scopuri de TVA al beneficiarului %"
-		sumaryI.cell(row=4,column=1).font=cap_tabelbold
-		sumaryI.cell(row=14,column=1).font=cap_tabelbold
-		sumaryI.cell(row=24,column=1).font=cap_tabelbold
-		sumaryI.cell(row=34,column=1).font=cap_tabelbold
-		sumaryI.cell(row=44,column=1).font=cap_tabelbold								
-		sumaryI.cell(row=14,column=1).value="1.2 Livrari de bunuri/prestari de servicii pentru care s-au emis facturi simplificate fara a avea inscris codul de inregistrare in scopuri de TVA al beneficiarului %"
-		sumaryI['A4'].alignment=Alignment(wrap_text=True)
-		sumaryI['A14'].alignment=Alignment(wrap_text=True)
-		sumaryI['A24'].alignment=Alignment(wrap_text=True)
-		sumaryI['A34'].alignment=Alignment(wrap_text=True)
-		sumaryI['A44'].alignment=Alignment(wrap_text=True)								
-		sumaryI.cell(row=24,column=1).value="1.3 Achizitii de bunuri si servicii pentru care s-au primit facturi simplificate de la persoane impozabile care aplica sistemul normal de TVA si care au inscris codul de inregistrare in scopuri de TVA al beneficiarului"
+			a23.cell(row=9,column=1).value="Sectiunea 2.4"
+			a23.cell(row=9,column=1).font=cap_tabelbold
+			a23.cell(row=1,column=1).font=cap_tabelbold		
+			a23.cell(row=28,column=1).font=cap_tabelbold		
+			a23.cell(row=4,column=1).border=border_lowerright
+			a23.cell(row=4,column=2).border=border_lowerright		
+			a23.cell(row=12,column=1).border=border_lowerright
+			a23.cell(row=12,column=2).border=border_lowerright		
+			a23.cell(row=11,column=1).fill=cap_tabel_color_black
+			a23.cell(row=11,column=1).font=cap_tabel		
+			a23.cell(row=7,column=1).border=border_lowerright
+			a23.cell(row=7,column=2).border=border_lowerright
+			a23.cell(row=7,column=3).border=border_lowerright
+			a23.cell(row=15,column=1).border=border_lowerright
+			a23.cell(row=15,column=2).border=border_lowerright
+			a23.cell(row=15,column=3).border=border_lowerright				
+			a23.cell(row=11,column=2).fill=cap_tabel_color_black
+			a23.cell(row=11,column=2).font=cap_tabel
+			a23.cell(row=11,column=1).value="Denumire tert"
 
-		sumaryI.cell(row=34,column=1).value="1.4 Achizitii de bunuri si servicii pentru care s-au primit facturi simplificate de la persoane impozabile care aplica sistemul de TVA la incasare si care au inscris codul de inregistrare in scopuri de TVA al beneficiarului"
+			a23.cell(row=11,column=2).value="CUI tert"
 
-		sumaryI.cell(row=44,column=1).value="1.5 Achizitii de bunuri si servicii pentru care s-au primit bonuri fiscale care indeplinesc conditiile unei facturi simplificate si care au inscris codul de inregistrare in scopuri de TVA al beneficiarului"
+			a23.cell(row=14,column=1).value="Seria"
+			a23.cell(row=14,column=2).value="De la"
+			a23.cell(row=14,column=3).value="La"
+			for row in a23['A31:B31']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.font=cap_tabel
+			try:
+				if int(val4)== 1:
+					a3=temp.create_sheet("Sectiunea 3")
+					a3.cell(row=1,column=1).value="Sectiunea 3"
+					a3.cell(row=1,column=1).font=cap_tabeltitlu
+					a3.cell(row=3,column=1).value="In cazul in care soldul sumei negative inregistrate in decontul de TVA aferent perioadei de raportare este solicitat la rambursare , se vor selecta datele cu privire la natura operatiunilor din care provine acesta"
+					a3.cell(row=7,column=1).value="Achizitii de bunuri si servicii legate direct de bunurile imobile din urmatoarele categorii"
+					a3.cell(row=8,column=1).value="a) parcuri eoliene"
+					a3.cell(row=9,column=1).value="b) constructii rezidentiale"
 
-		for ip in range(1,11):
-			sumaryI.cell(row=3,column=ip).border=border_bottom
-			sumaryI.cell(row=6,column=ip).border=border_top
-			sumaryI.cell(row=13,column=ip).border=border_bottom
-			sumaryI.cell(row=16,column=ip).border=border_top
-			sumaryI.cell(row=23,column=ip).border=border_bottom
-			sumaryI.cell(row=26,column=ip).border=border_top
-			sumaryI.cell(row=33,column=ip).border=border_bottom
-			sumaryI.cell(row=36,column=ip).border=border_top
-			sumaryI.cell(row=43,column=ip).border=border_bottom
-			sumaryI.cell(row=46,column=ip).border=border_top
-		sumaryI.cell(row=4,column=10).border=border_upperright
-		sumaryI.cell(row=5,column=10).border=border_lowerright
-		sumaryI.cell(row=14,column=10).border=border_upperright
-		sumaryI.cell(row=15,column=10).border=border_lowerright
-		sumaryI.cell(row=24,column=10).border=border_upperright
-		sumaryI.cell(row=25,column=10).border=border_lowerright
-		sumaryI.cell(row=34,column=10).border=border_upperright
-		sumaryI.cell(row=35,column=10).border=border_lowerright
-		sumaryI.cell(row=44,column=10).border=border_upperright
-		sumaryI.cell(row=45,column=10).border=border_lowerright						
 
-		sumaryI.cell(row=4,column=10).border=border_upperright
-		sumaryI.cell(row=5,column=10).border=border_lowerright
-		sumaryI.cell(row=14,column=10).border=border_upperright
-		sumaryI.cell(row=15,column=10).border=border_lowerright
-		sumaryI.cell(row=24,column=10).border=border_upperright
-		sumaryI.cell(row=25,column=10).border=border_lowerright
-		sumaryI.cell(row=34,column=10).border=border_upperright
-		sumaryI.cell(row=35,column=10).border=border_lowerright
-		sumaryI.cell(row=44,column=10).border=border_upperright
-		sumaryI.cell(row=45,column=10).border=border_lowerright										
-		sumaryI.cell(row=4,column=10).border=border_right
-		sumaryI.cell(row=5,column=10).border=border_right
-		sumaryI.cell(row=14,column=10).border=border_right
-		sumaryI.cell(row=15,column=10).border=border_right
-		sumaryI.cell(row=24,column=10).border=border_right
-		sumaryI.cell(row=25,column=10).border=border_right
-		sumaryI.cell(row=34,column=10).border=border_right
-		sumaryI.cell(row=35,column=10).border=border_right
-		sumaryI.cell(row=44,column=10).border=border_right
-		sumaryI.cell(row=45,column=10).border=border_right																																																	
-		for io in range(8,13):
-			sumaryI.cell(row=io,column=1).border=border_lowerright
-			sumaryI.cell(row=io,column=2).border=border_lowerright
-			sumaryI.cell(row=io,column=3).border=border_lowerright			
-		for io in range(18,23):
-			sumaryI.cell(row=io,column=1).border=border_lowerright
-			sumaryI.cell(row=io,column=2).border=border_lowerright
-			sumaryI.cell(row=io,column=3).border=border_lowerright			
-		for io in range(28,33):
-			sumaryI.cell(row=io,column=1).border=border_lowerright
-			sumaryI.cell(row=io,column=2).border=border_lowerright
-			sumaryI.cell(row=io,column=3).border=border_lowerright			
-		for io in range(38,43):
-			sumaryI.cell(row=io,column=1).border=border_lowerright
-			sumaryI.cell(row=io,column=2).border=border_lowerright
-			sumaryI.cell(row=io,column=3).border=border_lowerright			
-		for io in range(48,53):
-			sumaryI.cell(row=io,column=1).border=border_lowerright
-			sumaryI.cell(row=io,column=2).border=border_lowerright
-			sumaryI.cell(row=io,column=3).border=border_lowerright																		
-		sumaryI.merge_cells('A4:J5')
-		sumaryI.merge_cells('A14:J15')
-		sumaryI.merge_cells('A24:J25')
-		sumaryI.merge_cells('A34:J35')
-		sumaryI.merge_cells('A44:J45')
+
+					a3.cell(row=10,column=1).value="c) cladiri de birouri"
+					a3.cell(row=11,column=1).value="d) constructii industriale"
+					a3.cell(row=12,column=1).value="e) altele"
+					a3.cell(row=14,column=1).value="Achizitii de bunuri, cu exceptia celor legate direct de bunuri imobile:"
+					a3.cell(row=15,column=1).value="a) cu cota de TVA de 24%"
+					a3.cell(row=16,column=1).value="b) cu cota standard de TVA de 20%"
+					a3.cell(row=17,column=1).value="c) cu cota de TVA de 19%"
+					a3.cell(row=18,column=1).value="d) cu cota de TVA de 9%"
+					a3.cell(row=19,column=1).value="e) cu cota de TVA de 5%"
+					a3.cell(row=21,column=1).value="Achizitii de servicii, cu exceptia celor legate direct de bunurile imobile:"
+					a3.cell(row=22,column=1).value="a) cu cota de TVA de 24%"
+					a3.cell(row=23,column=1).value="b) cu cota standard de TVA de 20%"
+					a3.cell(row=24,column=1).value="c) cu cota de TVA de 19%"
+					a3.cell(row=25,column=1).value="d) cu cota de TVA de 9%"
+					a3.cell(row=26,column=1).value="e) cu cota de TVA de 5%"
+					a3.cell(row=28,column=1).value="Importuri de bunuri"
+					a3.cell(row=30,column=1).value="Achizitii imobilizari necorporale"
+					a3.cell(row=32,column=1).value="Livrari de bunuri imobile"
+					a3.cell(row=34,column=1).value="Livrari de bunuri, cu exceptia bunurilor imobile:"
+					a3.cell(row=35,column=1).value="a) cu cota de TVA de 24%"
+					a3.cell(row=36,column=1).value="b) cu cota standard de TVA de 20%"
+					a3.cell(row=37,column=1).value="c) cu cota de TVA de 19%"
+					a3.cell(row=38,column=1).value="d) cu cota de TVA de 9%"
+					a3.cell(row=39,column=1).value="e) cu cota de TVA de 5%"
+					a3.cell(row=41,column=1).value="Livrari de bunuri scutite de TVA"
+					a3.cell(row=43,column=1).value="Livrari de bunuri/prestari de servicii pt care se aplica taxarea inversa"
+					a3.cell(row=45,column=1).value="Prestari de servicii:"
+					a3.cell(row=46,column=1).value="a) cu cota de TVA de 24%"
+					a3.cell(row=47,column=1).value="b) cu cota standard de TVA de 20%"
+					a3.cell(row=48,column=1).value="c) cu cota de TVA de 19%"
+					a3.cell(row=49,column=1).value="d) cu cota de TVA de 9%"
+					a3.cell(row=50,column=1).value="e) cu cota de TVA de 5%"
+					a3.cell(row=52,column=1).value="Prestari de servicii scutite de TVA"
+					a3.cell(row=54,column=1).value="Livrari intracomunitare de bunuri"
+					a3.cell(row=56,column=1).value="Prestari intracomunitare de servicii"
+					a3.cell(row=58,column=1).value="Exporturi de bunuri"
+					a3.cell(row=60,column=1).value="Livrari imobilizari necorporale"
+					a3.cell(row=62,column=1).value="Persoana impozabila nu a efectuat livrari de bunuri/prestari de servicii in perioada de raportare"																					
+			except:
+				pass
+
+
+																																																																						
+			a5=temp.create_sheet("Sectiunea 5")
+			a5.sheet_view.showGridLines = False
+			a5.cell(row=2,column=1).value="Sectiunea 5"
+			a5.cell(row=2,column=1).font=cap_tabeltitlu
+			a5.cell(row=4,column=1).font=cap_tabelbold
+			a5.cell(row=6,column=1).font=cap_tabelbold
+			a5.column_dimensions['B'].width=13
+			a5.merge_cells('A6:J7')
+			a5.merge_cells('A18:J19')		
+			
+			for pop in range(1,11):
+				a5.cell(row=5,column=pop).border=border_bottom
+				a5.cell(row=7,column=pop).border=border_bottom
+				a5.cell(row=17,column=pop).border=border_bottom
+				a5.cell(row=19,column=pop).border=border_bottom
+			a5.cell(row=6,column=10).border=border_upperright
+			a5.cell(row=7,column=10).border=border_lowerright
+			a5.cell(row=18,column=10).border=border_upperright
+			a5.cell(row=19,column=10).border=border_lowerright									
+			a5['A6'].alignment=Alignment(wrap_text=True)
+			a5['A18'].alignment=Alignment(wrap_text=True)
+			a5['A30'].alignment=Alignment(wrap_text=True)						
+			a5.cell(row=4,column=1).value="Sectiune 5.2"
+			a5.cell(row=16,column=1).font=cap_tabelbold		
+			a5.cell(row=16,column=1).value="Sectiune 5.3"
+			a5.cell(row=28,column=1).font=cap_tabelbold		
+			a5.cell(row=10,column=1).value="cota 24%"
+			a5.cell(row=11,column=1).value="cota 20%"
+			a5.cell(row=12,column=1).value="cota 19%"
+			a5.cell(row=13,column=1).value="cota 9%"
+			a5.cell(row=14,column=1).value="cota 5%"
+			a5.cell(row=10,column=2).value=0
+			a5.cell(row=11,column=2).value=0
+			a5.cell(row=12,column=2).value=0
+			a5.cell(row=13,column=2).value=0
+			a5.cell(row=14,column=2).value=0
+
+			a5.cell(row=9,column=2).value="Valoare TVA"
+			a5.cell(row=9,column=1).value="Cota"		
+
+			a5.cell(row=6,column=1).value="5.2 TVA deductibila aferenta facturilor achitate in perioada de raportare indiferent de data in care acestea au fost primite de la persoane impozabile care aplica sistemul normal de TVA, defalcata pe fiecare cota de TVA"
+			a5.cell(row=18,column=1).font=cap_tabelbold		
+
+			a5.cell(row=22,column=1).value="cota 24%"
+			a5.cell(row=23,column=1).value="cota 20%"
+			a5.cell(row=24,column=1).value="cota 19%"
+			a5.cell(row=25,column=1).value="cota 9%"
+			a5.cell(row=26,column=1).value="cota 5%"
+
+			a5.cell(row=22,column=2).value=0
+			a5.cell(row=23,column=2).value=0
+			a5.cell(row=24,column=2).value=0
+			a5.cell(row=25,column=2).value=0
+			a5.cell(row=26,column=2).value=0
+
+			a5.cell(row=21,column=1).value="Cota"		
+			a5.cell(row=21,column=2).value="Valoare TVA"
+			for row in a5['A9:B9']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			for row in a5['A21:B21']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
 								
-		sumaryI.cell(row=8,column=1).value="Cota 24%"
-		sumaryI.cell(row=9,column=1).value="Cota 20%"
-		sumaryI.cell(row=10,column=1).value="Cota 19%"
-		sumaryI.cell(row=11,column=1).value="Cota 9%"
-		sumaryI.cell(row=12,column=1).value="Cota 5%"
+			a5.cell(row=18,column=1).value="5.3 TVA deductibila aferenta facturilor achitate in perioada de raportare indiferent de data in care acestea au fost primite de la persoane impozabile care aplica sistemul de TVA la incasare, defalcata pe fiecare cota de TVA"
 
-		sumaryI.cell(row=8,column=2).value=0
-		sumaryI.cell(row=9,column=2).value=0
-		sumaryI.cell(row=10,column=2).value=0
-		sumaryI.cell(row=11,column=2).value=0
-		sumaryI.cell(row=12,column=2).value=0
+			for kk in range(22,27):
+				a5.cell(row=kk,column=1).border=border_lowerright
+				a5.cell(row=kk,column=2).border=border_lowerright						
+			for kk in range(10,15):
+				a5.cell(row=kk,column=1).border=border_lowerright
+				a5.cell(row=kk,column=2).border=border_lowerright		
+			a6=temp.create_sheet("Sectiunea 6")
+			a6.sheet_view.showGridLines = False
+			a6.cell(row=2,column=1).value="Sectiunea 6"
+			a6.cell(row=2,column=1).font=cap_tabeltitlu
+			a6.cell(row=4,column=1).font=cap_tabelbold
+			a6.cell(row=6,column=1).font=cap_tabelbold
+			a6.cell(row=15,column=1).font=cap_tabelbold
+			a6.cell(row=13,column=1).font=cap_tabelbold
+			a6.column_dimensions['A'].width=17			
+			a6.column_dimensions['B'].width=28
+			a6.column_dimensions['C'].width=17
+																
+			a6.cell(row=4,column=1).value="Sectiunea 6.1"		
+			a6.cell(row=6,column=1).value="6.1 Persoanele impozabile care aplica regimul special pt agentiile de turism, vor completa:"
+			a6.merge_cells('A6:F7')
+			for l in range(1,7):
+				a6.cell(row=5,column=l).border=border_bottom
+				a6.cell(row=7,column=l).border=border_bottom
+			a6.cell(row=6,column=6).border=border_upperright
+			a6.cell(row=7,column=6).border=border_lowerright						
 
-		sumaryI.cell(row=18,column=2).value=0
-		sumaryI.cell(row=19,column=2).value=0
-		sumaryI.cell(row=20,column=2).value=0
-		sumaryI.cell(row=21,column=2).value=0
-		sumaryI.cell(row=22,column=2).value=0
+			a6.merge_cells('A15:G16')
 
-		sumaryI.cell(row=28,column=2).value=0
-		sumaryI.cell(row=29,column=2).value=0
-		sumaryI.cell(row=30,column=2).value=0
-		sumaryI.cell(row=31,column=2).value=0
-		sumaryI.cell(row=32,column=2).value=0
-
-		sumaryI.cell(row=38,column=2).value=0
-		sumaryI.cell(row=39,column=2).value=0
-		sumaryI.cell(row=40,column=2).value=0
-		sumaryI.cell(row=41,column=2).value=0
-		sumaryI.cell(row=42,column=2).value=0
-
-		sumaryI.cell(row=48,column=2).value=0
-		sumaryI.cell(row=49,column=2).value=0
-		sumaryI.cell(row=50,column=2).value=0
-		sumaryI.cell(row=51,column=2).value=0
-		sumaryI.cell(row=52,column=2).value=0
-
-		sumaryI.cell(row=8,column=3).value=0
-		sumaryI.cell(row=9,column=3).value=0
-		sumaryI.cell(row=10,column=3).value=0
-		sumaryI.cell(row=11,column=3).value=0
-		sumaryI.cell(row=12,column=3).value=0
-
-		sumaryI.cell(row=18,column=3).value=0
-		sumaryI.cell(row=19,column=3).value=0
-		sumaryI.cell(row=20,column=3).value=0
-		sumaryI.cell(row=21,column=3).value=0
-		sumaryI.cell(row=22,column=3).value=0
-
-		sumaryI.cell(row=28,column=3).value=0
-		sumaryI.cell(row=29,column=3).value=0
-		sumaryI.cell(row=30,column=3).value=0
-		sumaryI.cell(row=31,column=3).value=0
-		sumaryI.cell(row=32,column=3).value=0
-
-		sumaryI.cell(row=38,column=3).value=0
-		sumaryI.cell(row=39,column=3).value=0
-		sumaryI.cell(row=40,column=3).value=0
-		sumaryI.cell(row=41,column=3).value=0
-		sumaryI.cell(row=42,column=3).value=0
-
-		sumaryI.cell(row=48,column=3).value=0
-		sumaryI.cell(row=49,column=3).value=0
-		sumaryI.cell(row=50,column=3).value=0
-		sumaryI.cell(row=51,column=3).value=0
-		sumaryI.cell(row=52,column=3).value=0		
-
-		sumaryI.cell(row=8,column=1).value="Cota 24%"
-		sumaryI.cell(row=9,column=1).value="Cota 20%"
-		sumaryI.cell(row=10,column=1).value="Cota 19%"
-		sumaryI.cell(row=11,column=1).value="Cota 9%"
-		sumaryI.cell(row=12,column=1).value="Cota 5%"
-
-		sumaryI.cell(row=18,column=1).value="Cota 24%"
-		sumaryI.cell(row=19,column=1).value="Cota 20%"
-		sumaryI.cell(row=20,column=1).value="Cota 19%"
-		sumaryI.cell(row=21,column=1).value="Cota 9%"
-		sumaryI.cell(row=22,column=1).value="Cota 5%"
-
-		sumaryI.cell(row=28,column=1).value="Cota 24%"
-		sumaryI.cell(row=29,column=1).value="Cota 20%"
-		sumaryI.cell(row=30,column=1).value="Cota 19%"
-		sumaryI.cell(row=31,column=1).value="Cota 9%"
-		sumaryI.cell(row=32,column=1).value="Cota 5%"
-
-		sumaryI.cell(row=38,column=1).value="Cota 24%"
-		sumaryI.cell(row=39,column=1).value="Cota 20%"
-		sumaryI.cell(row=40,column=1).value="Cota 19%"
-		sumaryI.cell(row=41,column=1).value="Cota 9%"
-		sumaryI.cell(row=42,column=1).value="Cota 5%"
-
-		sumaryI.cell(row=48,column=1).value="Cota 24%"
-		sumaryI.cell(row=49,column=1).value="Cota 20%"
-		sumaryI.cell(row=50,column=1).value="Cota 19%"
-		sumaryI.cell(row=51,column=1).value="Cota 9%"
-		sumaryI.cell(row=52,column=1).value="Cota 5%"
-
-		sumaryI.column_dimensions['B'].width = 15	
-		sumaryG.column_dimensions['B'].width = 20	
-		a7.column_dimensions['B'].width = 12						
-		a7.column_dimensions['C'].width = 22
-		a6.column_dimensions['B'].width = 22						
-		a6.column_dimensions['C'].width = 12
+			for l in range(1,8):
+				a6.cell(row=14,column=l).border=border_bottom
+				a6.cell(row=16,column=l).border=border_bottom
+			a6.cell(row=15,column=7).border=border_upperright
+			a6.cell(row=16,column=7).border=border_lowerright
 
 
-		# for row in sumary['A5:D34']:
-		# 	for cell in row:
-		# 		cell.border = border_thin
 
-		# for row in sumary['F5:I34']:
-		# 	for cell in row:
-		# 		cell.border = border_thin
 
-		# for row in sumary['K5:N34']:
-		# 	for cell in row:
-		# 		cell.border = border_thin
+			a6.cell(row=9,column=1).value="Incasarile agentiei"
+			a6.cell(row=9,column=2).value="Costurile agentiei de turism"
+			a6.cell(row=9,column=3).value="Marja de profit"
+			a6.cell(row=9,column=4).value="TVA"
 
-		# for row in sumary['P5:S34']:
-		# 	for cell in row:
-		# 		cell.border = border_thin
+			a6.cell(row=13,column=1).value="Sectiunea 6.2"
 
-		# for row in sumary['U5:X34']:
-		# 	for cell in row:
-		# 		cell.border = border_thin
+			a6.cell(row=15,column=1).value="6.2 Persoanele impozabile care aplica regimul special pt bunurile second-hand, opere de arta, obiecte de colectie si antichitati , vor completa:"
 
-		# listanoua=['A','B','C','D','F','G','H','I','K','L','M','N','P','Q','R','S','U','V','W','W','X']
-		# for column in listanoua:
-		# 	for i in listanoua:
-		# 		if (column==i):
-# 			sumary.column_dimensions[column].width = 15
+			for row in a6['A18:D18']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			for row in a6['A9:D9']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')										
 
-		
-		# for i in range(0 ,len(tip)):
-	# folderpath="D:/D300 to XML/docs"
-	folderpath="/home/mirus_app/storage_spreadsheet"
-	# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
-	file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
-	temp.save(file_pathFS)
-	# return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
-	return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
-	return render_template('D3APPS2')
+
+			a6.cell(row=18,column=1).value="Pret de vanzare"
+			a6.cell(row=18,column=2).value="Pret de cumparare"
+			a6.cell(row=18,column=3).value="Marja de profit"	
+			a6.cell(row=18,column=4).value="TVA"
+			for oo in range(1,5):
+				a6.cell(row=10,column=oo).border=border_lowerright
+				a6.cell(row=19,column=oo).border=border_lowerright		
+
+			a6['A6'].alignment=Alignment(wrap_text=True)
+
+			a6['A15'].alignment=Alignment(wrap_text=True)
+			a7=temp.create_sheet(" Sectiunea 7 ")
+
+			a7.cell(row=2,column=1).value="Sectiunea 7"
+			a7.sheet_view.showGridLines = False
+			a7.cell(row=2,column=1).font=cap_tabeltitlu
+			a7.cell(row=5,column=1).value="7. In situatia in care ati desfasurat, in perioada de raportare, activitati dintre cele inscrise in lista veti selecta activitatea corespunzatoare si veti inscrie valoarea livrarilor/prestarilor, precum si TVA aferenta"
+			a7['A5'].alignment=Alignment(wrap_text=True)
+			a7.merge_cells('A5:I6')
+			a7.cell(row=5,column=1).font=cap_tabelbold
+			for ii in range(1,10):
+				a7.cell(row=4,column=ii).border=border_bottom
+				a7.cell(row=6,column=ii).border=border_bottom
+			a7.cell(row=5,column=9).border=border_upperright
+			a7.cell(row=6,column=9).border=border_lowerright		
+			a7.cell(row=5,column=8).border=border_right
+			a7.cell(row=6,column=8).border=border_right
+
+			for jj in range(1,4):
+				a7.cell(row=9,column=jj).border=border_bottom
+				a7.cell(row=9,column=jj).border=border_right
+			
+			for pp in range(12,17):
+				a7.cell(row=pp,column=2).border=border_lowerright
+				a7.cell(row=pp,column=1).border=border_lowerright
+			a7.cell(row=8,column=1).value="Activitate"
+			a7.cell(row=8,column=2).value="Tip operatiune"
+			a7.cell(row=8,column=3).value="Valoarea livrarilor/prestarilor"
+
+			a7.cell(row=11,column=1).value="Cota"
+			a7.cell(row=12,column=1).value="cota 24%"
+			a7.cell(row=13,column=1).value="cota 20%"
+			a7.cell(row=14,column=1).value="cota 19%"
+			a7.cell(row=15,column=1).value="cota 9%"
+			a7.cell(row=16,column=1).value="cota 5%"
+			for row in a7['A8:C8']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.font = cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')										
+			for row in a7['A11:B11']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.font = cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			a7.cell(row=11,column=2).value="Valoare TVA"
+
+			for row in facturi['A1:D1']:
+				for cell in row:
+					cell.fill = cap_tabel_color_black
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+
+			for row in facturi['A1:D1']:
+				for cell in row:
+					cell.font = cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+
+			facturi.column_dimensions['C'].width = 14
+			facturi.column_dimensions['D'].width = 14
+			a23.column_dimensions['A'].width = 18
+			a23.column_dimensions['B'].width = 13
+			a23.column_dimensions['C'].width = 10
+			a6.column_dimensions['A'].width = 17
+			a6.column_dimensions['B'].width = 25
+			a6.column_dimensions['C'].width = 15				
+			sumaryG=temp.create_sheet("Sectiunea G. Manual input")
+			sumaryG.sheet_view.showGridLines = False
+			sumaryG.cell(row=2,column=1).value="Sectiunea G"
+			sumaryG.cell(row=2,column=1).font=cap_tabeltitlu		
+			sumaryG.column_dimensions['A'].width =45
+			sumaryG.cell(row=5,column=1).value="Total Nr. Bonuri Fiscale"
+			sumaryG.cell(row=5,column=1).font=cap_tabelbold
+			sumaryG.cell(row=6,column=1).font=cap_tabelbold
+			sumaryG.cell(row=7,column=1).font=cap_tabelbold						
+			sumaryG.cell(row=6,column=1).value="Total incasari in perioada de raportare prin intermediul AMEF ( aparate de marcatelectronice fiscale ) inclusiv incasarile prin intermediul bonurilor fiscale care indeplinesc conditiile unei facturi simplificate indiferent daca au/nu au inscris codul de inregistrare in scopuri de TVA al beneficiarului (i1)"
+			sumaryG['A6'].alignment=Alignment(wrap_text=True)
+			sumaryG['A7'].alignment=Alignment(wrap_text=True)				
+			sumaryG.cell(row=7,column=1).value="Total incasari in perioada de raportare efectuate din activitati exceptate de la obligatia utilizarii AMEF***) (i2) conform prevederilor legale in vigoare )"
+			sumaryG.merge_cells('A9:H11')
+			sumaryG.cell(row=9,column=1).font=cap_tabelbold
+			for ii in range(1,9):
+				sumaryG.cell(row=8,column=ii).border=border_bottom
+				sumaryG.cell(row=11,column=ii).border=border_bottom
+			sumaryG.cell(row=9,column=8).border=border_upperright
+			sumaryG.cell(row=10,column=8).border=border_right		
+			sumaryG.cell(row=11,column=8).border=border_lowerright		
+			for ii in range(1,9):	
+				sumaryG.cell(row=19,column=ii).border=border_bottom
+				sumaryG.cell(row=20,column=ii).border=border_bottom			
+			sumaryG.cell(row=5,column=2).border=border_right
+			sumaryG.cell(row=6,column=2).border=border_right
+			sumaryG.cell(row=7,column=2).border=border_right
+			sumaryG.cell(row=5,column=1).border=border_right
+			sumaryG.cell(row=6,column=1).border=border_right
+			sumaryG.cell(row=7,column=1).border=border_right
+			sumaryG.cell(row=4,column=1).border=border_bottom
+			sumaryG.cell(row=5,column=1).border=border_bottom
+			sumaryG.cell(row=6,column=1).border=border_bottom
+			sumaryG.cell(row=7,column=1).border=border_bottom
+			sumaryG.cell(row=5,column=2).value=0
+			sumaryG.cell(row=6,column=2).value=0
+			sumaryG.cell(row=7,column=2).value=0
+			sumaryG.cell(row=13,column=1).value="Cota"		
+			sumaryG.cell(row=13,column=2).value="Total baza impozabila"
+			sumaryG.cell(row=13,column=3).value="TVA"
+			sumaryG.cell(row=23,column=1).value="Cota"		
+			sumaryG.cell(row=23,column=2).value="Total baza impozabila"
+			sumaryG.cell(row=23,column=3).value="TVA"		
+			for ii in range(1,4):
+				sumaryG.cell(row=17,column=ii).border=border_lowerright
+				sumaryG.cell(row=16,column=ii).border=border_lowerright
+				sumaryG.cell(row=15,column=ii).border=border_lowerright
+				sumaryG.cell(row=14,column=ii).border=border_lowerright
+				sumaryG.cell(row=24,column=ii).border=border_lowerright
+				sumaryG.cell(row=25,column=ii).border=border_lowerright
+				sumaryG.cell(row=26,column=ii).border=border_lowerright
+				sumaryG.cell(row=27,column=ii).border=border_lowerright																					
+							
+			for row in sumaryG['A13:C13']:
+				for cell in row:
+					cell.fill=cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			for row in sumaryG['A23:C23']:
+				for cell in row:
+					cell.fill=cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')										
+			sumaryG.cell(row=9,column=1).value="Incasari in perioada de raportare prin intermediul AMEF ( aparate de marcat electronice fiscale ) inclusiv incasarile prin intermediul bonurilor fiscale care indeplinesc conditiile unei facturi simplificate indiferent daca au/nu au inscris codul de inregistrare in scopuri de TVA al beneficiarului (i1)"
+			sumaryG.cell(row=20,column=1).value="Incasari in perioada de raportare efectuate din activitati exceptate de la obligatia utilizarii AMEF***) (i2) conform prevederilor legale in vigoare )"
+			sumaryG['A9'].alignment=Alignment(wrap_text=True)		
+			sumaryG.cell(row=14,column=1).value="Cota 20%"
+			sumaryG.cell(row=15,column=1).value="Cota 19%"
+			sumaryG.cell(row=16,column=1).value="Cota 9%"
+			sumaryG.cell(row=17,column=1).value="Cota 5%"
+
+			sumaryG.cell(row=24,column=1).value="Cota 20%"
+			sumaryG.cell(row=25,column=1).value="Cota 19%"
+			sumaryG.cell(row=26,column=1).value="Cota 9%"
+			sumaryG.cell(row=27,column=1).value="Cota 5%"
+
+			sumaryG.cell(row=14,column=2).value=0
+			sumaryG.cell(row=15,column=2).value=0
+			sumaryG.cell(row=16,column=2).value=0
+			sumaryG.cell(row=17,column=2).value=0
+
+
+			sumaryG.cell(row=14,column=3).value=0
+			sumaryG.cell(row=15,column=3).value=0
+			sumaryG.cell(row=16,column=3).value=0
+			sumaryG.cell(row=17,column=3).value=0
+
+
+			sumaryG.cell(row=24,column=2).value=0
+			sumaryG.cell(row=25,column=2).value=0
+			sumaryG.cell(row=26,column=2).value=0
+			sumaryG.cell(row=27,column=2).value=0
+
+			sumaryG.cell(row=24,column=3).value=0
+			sumaryG.cell(row=25,column=3).value=0
+			sumaryG.cell(row=26,column=3).value=0
+			sumaryG.cell(row=27,column=3).value=0
+
+
+			sumaryI=temp.create_sheet("Sectiunea I 1. Manual input")
+
+			for row in sumaryI['A7:C7']:
+				for cell in row:
+					cell.fill=cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			for row in sumaryI['A17:C17']:
+				for cell in row:
+					cell.fill=cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			for row in sumaryI['A27:C27']:
+				for cell in row:
+					cell.fill=cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			for row in sumaryI['A37:C37']:
+				for cell in row:
+					cell.fill=cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')				
+			for row in sumaryI['A47:C47']:
+				for cell in row:
+					cell.fill=cap_tabel_color_black
+					cell.font=cap_tabel
+					cell.alignment=Alignment(horizontal='center',vertical='center')																
+			sumaryI.cell(row=2,column=1).value="Sectiunea I"
+			sumaryI.cell(row=2,column=1).font=cap_tabeltitlu
+			sumaryI.sheet_view.showGridLines = False
+			sumaryI.cell(row=7,column=1).value="Cota"
+			sumaryI.cell(row=7,column=2).value="Baza impozabila"
+			sumaryI.cell(row=7,column=3).value="TVA"
+
+			sumaryI.cell(row=7,column=1).value="Cota"
+			sumaryI.cell(row=7,column=2).value="Baza impozabila"
+			sumaryI.cell(row=7,column=3).value="TVA"
+			sumaryI.cell(row=17,column=1).value="Cota"
+			sumaryI.cell(row=17,column=2).value="Baza impozabila"
+			sumaryI.cell(row=17,column=3).value="TVA"
+			sumaryI.cell(row=27,column=1).value="Cota"
+			sumaryI.cell(row=27,column=2).value="Baza impozabila"
+			sumaryI.cell(row=27,column=3).value="TVA"
+			sumaryI.cell(row=37,column=1).value="Cota"
+			sumaryI.cell(row=37,column=2).value="Baza impozabila"
+			sumaryI.cell(row=37,column=3).value="TVA"								
+			sumaryI.cell(row=47,column=1).value="Cota"
+			sumaryI.cell(row=47,column=2).value="Baza impozabila"
+			sumaryI.cell(row=47,column=3).value="TVA"
+			sumaryI.cell(row=4,column=1).value="1.1 Livrari de bunuri/prestari de servicii pentru care s-au emis facturi simplificate care au inscris codul de inregistrare in scopuri de TVA al beneficiarului %"
+			sumaryI.cell(row=4,column=1).font=cap_tabelbold
+			sumaryI.cell(row=14,column=1).font=cap_tabelbold
+			sumaryI.cell(row=24,column=1).font=cap_tabelbold
+			sumaryI.cell(row=34,column=1).font=cap_tabelbold
+			sumaryI.cell(row=44,column=1).font=cap_tabelbold								
+			sumaryI.cell(row=14,column=1).value="1.2 Livrari de bunuri/prestari de servicii pentru care s-au emis facturi simplificate fara a avea inscris codul de inregistrare in scopuri de TVA al beneficiarului %"
+			sumaryI['A4'].alignment=Alignment(wrap_text=True)
+			sumaryI['A14'].alignment=Alignment(wrap_text=True)
+			sumaryI['A24'].alignment=Alignment(wrap_text=True)
+			sumaryI['A34'].alignment=Alignment(wrap_text=True)
+			sumaryI['A44'].alignment=Alignment(wrap_text=True)								
+			sumaryI.cell(row=24,column=1).value="1.3 Achizitii de bunuri si servicii pentru care s-au primit facturi simplificate de la persoane impozabile care aplica sistemul normal de TVA si care au inscris codul de inregistrare in scopuri de TVA al beneficiarului"
+
+			sumaryI.cell(row=34,column=1).value="1.4 Achizitii de bunuri si servicii pentru care s-au primit facturi simplificate de la persoane impozabile care aplica sistemul de TVA la incasare si care au inscris codul de inregistrare in scopuri de TVA al beneficiarului"
+
+			sumaryI.cell(row=44,column=1).value="1.5 Achizitii de bunuri si servicii pentru care s-au primit bonuri fiscale care indeplinesc conditiile unei facturi simplificate si care au inscris codul de inregistrare in scopuri de TVA al beneficiarului"
+
+			for ip in range(1,11):
+				sumaryI.cell(row=3,column=ip).border=border_bottom
+				sumaryI.cell(row=6,column=ip).border=border_top
+				sumaryI.cell(row=13,column=ip).border=border_bottom
+				sumaryI.cell(row=16,column=ip).border=border_top
+				sumaryI.cell(row=23,column=ip).border=border_bottom
+				sumaryI.cell(row=26,column=ip).border=border_top
+				sumaryI.cell(row=33,column=ip).border=border_bottom
+				sumaryI.cell(row=36,column=ip).border=border_top
+				sumaryI.cell(row=43,column=ip).border=border_bottom
+				sumaryI.cell(row=46,column=ip).border=border_top
+			sumaryI.cell(row=4,column=10).border=border_upperright
+			sumaryI.cell(row=5,column=10).border=border_lowerright
+			sumaryI.cell(row=14,column=10).border=border_upperright
+			sumaryI.cell(row=15,column=10).border=border_lowerright
+			sumaryI.cell(row=24,column=10).border=border_upperright
+			sumaryI.cell(row=25,column=10).border=border_lowerright
+			sumaryI.cell(row=34,column=10).border=border_upperright
+			sumaryI.cell(row=35,column=10).border=border_lowerright
+			sumaryI.cell(row=44,column=10).border=border_upperright
+			sumaryI.cell(row=45,column=10).border=border_lowerright						
+
+			sumaryI.cell(row=4,column=10).border=border_upperright
+			sumaryI.cell(row=5,column=10).border=border_lowerright
+			sumaryI.cell(row=14,column=10).border=border_upperright
+			sumaryI.cell(row=15,column=10).border=border_lowerright
+			sumaryI.cell(row=24,column=10).border=border_upperright
+			sumaryI.cell(row=25,column=10).border=border_lowerright
+			sumaryI.cell(row=34,column=10).border=border_upperright
+			sumaryI.cell(row=35,column=10).border=border_lowerright
+			sumaryI.cell(row=44,column=10).border=border_upperright
+			sumaryI.cell(row=45,column=10).border=border_lowerright										
+			sumaryI.cell(row=4,column=10).border=border_right
+			sumaryI.cell(row=5,column=10).border=border_right
+			sumaryI.cell(row=14,column=10).border=border_right
+			sumaryI.cell(row=15,column=10).border=border_right
+			sumaryI.cell(row=24,column=10).border=border_right
+			sumaryI.cell(row=25,column=10).border=border_right
+			sumaryI.cell(row=34,column=10).border=border_right
+			sumaryI.cell(row=35,column=10).border=border_right
+			sumaryI.cell(row=44,column=10).border=border_right
+			sumaryI.cell(row=45,column=10).border=border_right																																																	
+			for io in range(8,13):
+				sumaryI.cell(row=io,column=1).border=border_lowerright
+				sumaryI.cell(row=io,column=2).border=border_lowerright
+				sumaryI.cell(row=io,column=3).border=border_lowerright			
+			for io in range(18,23):
+				sumaryI.cell(row=io,column=1).border=border_lowerright
+				sumaryI.cell(row=io,column=2).border=border_lowerright
+				sumaryI.cell(row=io,column=3).border=border_lowerright			
+			for io in range(28,33):
+				sumaryI.cell(row=io,column=1).border=border_lowerright
+				sumaryI.cell(row=io,column=2).border=border_lowerright
+				sumaryI.cell(row=io,column=3).border=border_lowerright			
+			for io in range(38,43):
+				sumaryI.cell(row=io,column=1).border=border_lowerright
+				sumaryI.cell(row=io,column=2).border=border_lowerright
+				sumaryI.cell(row=io,column=3).border=border_lowerright			
+			for io in range(48,53):
+				sumaryI.cell(row=io,column=1).border=border_lowerright
+				sumaryI.cell(row=io,column=2).border=border_lowerright
+				sumaryI.cell(row=io,column=3).border=border_lowerright																		
+			sumaryI.merge_cells('A4:J5')
+			sumaryI.merge_cells('A14:J15')
+			sumaryI.merge_cells('A24:J25')
+			sumaryI.merge_cells('A34:J35')
+			sumaryI.merge_cells('A44:J45')
+									
+			sumaryI.cell(row=8,column=1).value="Cota 24%"
+			sumaryI.cell(row=9,column=1).value="Cota 20%"
+			sumaryI.cell(row=10,column=1).value="Cota 19%"
+			sumaryI.cell(row=11,column=1).value="Cota 9%"
+			sumaryI.cell(row=12,column=1).value="Cota 5%"
+
+			sumaryI.cell(row=8,column=2).value=0
+			sumaryI.cell(row=9,column=2).value=0
+			sumaryI.cell(row=10,column=2).value=0
+			sumaryI.cell(row=11,column=2).value=0
+			sumaryI.cell(row=12,column=2).value=0
+
+			sumaryI.cell(row=18,column=2).value=0
+			sumaryI.cell(row=19,column=2).value=0
+			sumaryI.cell(row=20,column=2).value=0
+			sumaryI.cell(row=21,column=2).value=0
+			sumaryI.cell(row=22,column=2).value=0
+
+			sumaryI.cell(row=28,column=2).value=0
+			sumaryI.cell(row=29,column=2).value=0
+			sumaryI.cell(row=30,column=2).value=0
+			sumaryI.cell(row=31,column=2).value=0
+			sumaryI.cell(row=32,column=2).value=0
+
+			sumaryI.cell(row=38,column=2).value=0
+			sumaryI.cell(row=39,column=2).value=0
+			sumaryI.cell(row=40,column=2).value=0
+			sumaryI.cell(row=41,column=2).value=0
+			sumaryI.cell(row=42,column=2).value=0
+
+			sumaryI.cell(row=48,column=2).value=0
+			sumaryI.cell(row=49,column=2).value=0
+			sumaryI.cell(row=50,column=2).value=0
+			sumaryI.cell(row=51,column=2).value=0
+			sumaryI.cell(row=52,column=2).value=0
+
+			sumaryI.cell(row=8,column=3).value=0
+			sumaryI.cell(row=9,column=3).value=0
+			sumaryI.cell(row=10,column=3).value=0
+			sumaryI.cell(row=11,column=3).value=0
+			sumaryI.cell(row=12,column=3).value=0
+
+			sumaryI.cell(row=18,column=3).value=0
+			sumaryI.cell(row=19,column=3).value=0
+			sumaryI.cell(row=20,column=3).value=0
+			sumaryI.cell(row=21,column=3).value=0
+			sumaryI.cell(row=22,column=3).value=0
+
+			sumaryI.cell(row=28,column=3).value=0
+			sumaryI.cell(row=29,column=3).value=0
+			sumaryI.cell(row=30,column=3).value=0
+			sumaryI.cell(row=31,column=3).value=0
+			sumaryI.cell(row=32,column=3).value=0
+
+			sumaryI.cell(row=38,column=3).value=0
+			sumaryI.cell(row=39,column=3).value=0
+			sumaryI.cell(row=40,column=3).value=0
+			sumaryI.cell(row=41,column=3).value=0
+			sumaryI.cell(row=42,column=3).value=0
+
+			sumaryI.cell(row=48,column=3).value=0
+			sumaryI.cell(row=49,column=3).value=0
+			sumaryI.cell(row=50,column=3).value=0
+			sumaryI.cell(row=51,column=3).value=0
+			sumaryI.cell(row=52,column=3).value=0		
+
+			sumaryI.cell(row=8,column=1).value="Cota 24%"
+			sumaryI.cell(row=9,column=1).value="Cota 20%"
+			sumaryI.cell(row=10,column=1).value="Cota 19%"
+			sumaryI.cell(row=11,column=1).value="Cota 9%"
+			sumaryI.cell(row=12,column=1).value="Cota 5%"
+
+			sumaryI.cell(row=18,column=1).value="Cota 24%"
+			sumaryI.cell(row=19,column=1).value="Cota 20%"
+			sumaryI.cell(row=20,column=1).value="Cota 19%"
+			sumaryI.cell(row=21,column=1).value="Cota 9%"
+			sumaryI.cell(row=22,column=1).value="Cota 5%"
+
+			sumaryI.cell(row=28,column=1).value="Cota 24%"
+			sumaryI.cell(row=29,column=1).value="Cota 20%"
+			sumaryI.cell(row=30,column=1).value="Cota 19%"
+			sumaryI.cell(row=31,column=1).value="Cota 9%"
+			sumaryI.cell(row=32,column=1).value="Cota 5%"
+
+			sumaryI.cell(row=38,column=1).value="Cota 24%"
+			sumaryI.cell(row=39,column=1).value="Cota 20%"
+			sumaryI.cell(row=40,column=1).value="Cota 19%"
+			sumaryI.cell(row=41,column=1).value="Cota 9%"
+			sumaryI.cell(row=42,column=1).value="Cota 5%"
+
+			sumaryI.cell(row=48,column=1).value="Cota 24%"
+			sumaryI.cell(row=49,column=1).value="Cota 20%"
+			sumaryI.cell(row=50,column=1).value="Cota 19%"
+			sumaryI.cell(row=51,column=1).value="Cota 9%"
+			sumaryI.cell(row=52,column=1).value="Cota 5%"
+
+			sumaryI.column_dimensions['B'].width = 15	
+			sumaryG.column_dimensions['B'].width = 20	
+			a7.column_dimensions['B'].width = 12						
+			a7.column_dimensions['C'].width = 22
+			a6.column_dimensions['B'].width = 22						
+			a6.column_dimensions['C'].width = 12
+
+
+			# for row in sumary['A5:D34']:
+			# 	for cell in row:
+			# 		cell.border = border_thin
+
+			# for row in sumary['F5:I34']:
+			# 	for cell in row:
+			# 		cell.border = border_thin
+
+			# for row in sumary['K5:N34']:
+			# 	for cell in row:
+			# 		cell.border = border_thin
+
+			# for row in sumary['P5:S34']:
+			# 	for cell in row:
+			# 		cell.border = border_thin
+
+			# for row in sumary['U5:X34']:
+			# 	for cell in row:
+			# 		cell.border = border_thin
+
+			# listanoua=['A','B','C','D','F','G','H','I','K','L','M','N','P','Q','R','S','U','V','W','W','X']
+			# for column in listanoua:
+			# 	for i in listanoua:
+			# 		if (column==i):
+	# 			sumary.column_dimensions[column].width = 15
+
+			
+			# for i in range(0 ,len(tip)):
+		# folderpath="D:/D300 to XML/docs"
+		folderpath="/home/mirus_app/storage_spreadsheet"
+		# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
+		file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
+		temp.save(file_pathFS)
+		# return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
+		return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
+		return render_template('D3APPS2')
 @app.route('/D3APPS2')
 def my_form2():
     return render_template('D3APPS second step.html')
