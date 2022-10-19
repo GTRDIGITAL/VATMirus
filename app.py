@@ -2943,7 +2943,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 								print("Yes")
 								tipTranzSale.append('L')
 							else:
-								if ltaxcode[i]=='A5' or ltaxcode[i]=='A2' :
+								if ltaxcode[i]=='A5' or ltaxcode[i]=='A2' or ltaxcode[i]=='A4':
 									print("Yes")
 									tipTranzSale.append("V")
 									storno.append("")
@@ -3938,15 +3938,18 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			start=[]
 			start.append(listaunica[0])
 			stop=[]
-			if(int(listaunica[1])-int(listaunica[0])>1):
-				stop.append(listaunica[0])
-			for k in range(1,len(listaunica)):
+			try:
+				if(int(listaunica[1])-int(listaunica[0])>1):
+					stop.append(listaunica[0])
+				for k in range(1,len(listaunica)):
 
-				if(int(listaunica[k])-int(listaunica[k-1])==1):
-					print("ok")
-				else:
-					stop.append(listaunica[k-1])
-					start.append(listaunica[k])
+					if(int(listaunica[k])-int(listaunica[k-1])==1):
+						print("ok")
+					else:
+						stop.append(listaunica[k-1])
+						start.append(listaunica[k])
+			except:
+				stop.append(listaunica[0])
 			if(len(stop)==len(start)):
 				print("ok")
 			else:
