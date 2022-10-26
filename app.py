@@ -1249,6 +1249,68 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			flash("Please insert the correct header for 'Total sales'")
 			return render_template("index.html")
 
+		for row in sales.iter_rows():
+			for cell in row:
+				if cell.value == " Doc. Date":
+					rand_tb = cell.row
+					tdat = cell.column
+					lun = len(sales[cell.column])
+		try:
+			listdocdate = [b.value for b in sales[tdat][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Total sales'")
+			return render_template("index.html")
+		listacurentas=[]						
+		for k in range(0,len(listdocdate)):
+			# print(datadocument[k][3:4])
+			# print(datadocument[k][3:5])
+			if(str(listdocdate[k][4:5])=="0"):
+				if(str(listdocdate[k][5:6])==str(info.cell(row=3,column=3).value)):
+					listacurentas.append("Yes")
+				else:
+					listacurentas.append("No")
+
+			else:
+				if(listdocdate[k][4:6]==info.cell(row=3,column=3).value):
+					listacurentas.append("Yes")
+				else:
+					listacurentas.append("No")
+		for kk in range(0,len(listacurentas)):
+			sales.cell(row=2+kk,column=70).value=listacurentas[kk]
+
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == " Doc. Date":
+					rand_tb = cell.row
+					supplierCell = cell.column
+					lun = len(purchases[cell.column])
+		try:
+			datadocument = [b.value for b in purchases[supplierCell][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for ' Doc. Date' in Purchases sheet")
+			return render_template("index.html")
+		lunacurenta=[]
+		for k in range(0,len(datadocument)):
+			try:
+				print(datadocument[k][3:4])
+				print(datadocument[k][3:5])
+				if(str(datadocument[k][3:4])=="0"):
+					if(str(datadocument[k][4:5])==str(info.cell(row=3,column=3).value)):
+						lunacurenta.append("Yes")
+					else:
+						lunacurenta.append("No")
+
+				else:
+					if(datadocument[k][3:5]==info.cell(row=3,column=3).value):
+						lunacurenta.append("Yes")
+					else:
+						lunacurenta.append("No")
+			except:
+				lunacurenta.append("Not applicable")
+			# if(datadocument[k])
+		for kk in range(0,len(lunacurenta)):
+			purchases.cell(row=2+kk,column=70).value=lunacurenta[kk]			
+
 		for row in purchases.iter_rows():
 			for cell in row:
 				if cell.value == "Tax code":
@@ -1271,7 +1333,40 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		except:
 			flash("Please insert the correct header for 'Total purchases'")
 			return render_template("index.html")
-
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "Nedeductibil":
+					rand_tb = cell.row
+					tdocneded = cell.column
+					lun = len(sales[cell.column])
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "Neexigibil BAZA 19%":
+					rand_tb = cell.row
+					tdocnexb = cell.column
+					lun = len(sales[cell.column])
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "Neexigibil TVA 19%":
+					rand_tb = cell.row
+					tdocnextva = cell.column
+					lun = len(sales[cell.column])										
+		try:
+			listBazaL = [b.value for b in purchases[tdoca][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Total purchases'")
+			return render_template("index.html")			
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "Revtaxbase-art150":
+					rand_tb = cell.row
+					tdocsapte = cell.column
+					lun = len(sales[cell.column])
+		try:
+			listBazaL = [b.value for b in purchases[tdoca][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Total purchases'")
+			return render_template("index.html")
 		amount.cell(row=6, column=2).value="1"
 		amount.cell(row=6, column=3).value="2"
 		amount.cell(row=7, column=1).value="Row"
@@ -1349,15 +1444,15 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 		amount.cell(row=8, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y3",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
 		amount.cell(row=9, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"C2",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-		amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'		
+		amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'		
 		amount.cell(row=11, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
 		amount.cell(row=12, column=2).value=0
-		amount.cell(row=13, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
-		amount.cell(row=14, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
-		amount.cell(row=15, column=2).value=0
-		amount.cell(row=16, column=2).value='=round((ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1M",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
-		amount.cell(row=17, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'	
-		amount.cell(row=18, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"C3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'
+		amount.cell(row=13, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes")/(119/100),0))'
+		amount.cell(row=14, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes")/(119/100),0))'
+		amount.cell(row=15, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"No")/(119/100),0))'
+		amount.cell(row=16, column=2).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+')/(119/100),0))'
+		amount.cell(row=17, column=2).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+')/(119/100),0))'	
+		amount.cell(row=18, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!BR:BR,"No")/(119/100),0))'
 		amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
 		amount.cell(row=20, column=2).value=0
 		amount.cell(row=21, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"5G",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(105/100),0)'
@@ -1366,11 +1461,11 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=24, column=2).value=0
 		amount.cell(row=25, column=2).value=0
 		amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1V",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'	
-		amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+		amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
 		amount.cell(row=28, column=2).value=0
 		amount.cell(row=30, column=2).value=0
 		amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ZJ",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-		amount.cell(row=39, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1L",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"3S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'						
+		amount.cell(row=39, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1L",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"3S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZI",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'						
 		amount.cell(row=40, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"9S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(109/100),0)'								
 		amount.cell(row=41, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"6I",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(105/100),0)'								
 
@@ -1397,7 +1492,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"AS",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"AS",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
 		amount.cell(row=49, column=2).value=0
 		amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
-		amount.cell(row=51, column=2).value=0
+		amount.cell(row=51, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5Z",Purchases!'+str(tdocneded)+":"+str(tdocneded)+'),0)'
 		amount.cell(row=52, column=2).value='=B50-B51'
 		amount.cell(row=53, column=2).value=0
 		amount.cell(row=54, column=2).value=0
@@ -1416,7 +1511,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 		amount.cell(row=68, column=2).value=0
 		amount.cell(row=69, column=2).value=0
-		amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZI",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I7",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5D",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
+		amount.cell(row=70, column=2).value='=ROUND(SUM(Purchases!'+str(tdocnexb)+":"+str(tdocnexb)+',),0)'
 		amount.cell(row=71, column=2).value='=B70'
 		
 		#coloana TVA----------------------------------------------------
@@ -1481,8 +1576,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=58, column=3).value='=IF((C32-C56)<0,0,C32-C56)'
 		amount.cell(row=59, column=3).value=0
 		amount.cell(row=60, column=3).value=0
-		amount.cell(row=61, column=3).value='=SUM(C58:C60)'
-		
+		amount.cell(row=61, column=3).value='=SUM(C58:C60)'		
 		if soldLunaTrecuta == None or soldLunaTrecuta == "" or soldLunaTrecuta == " ":
 			amount.cell(row=62, column=3).value=0
 		else:
@@ -1495,7 +1589,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=68, column=3).value=0
 		amount.cell(row=69, column=3).value=0
 
-		amount.cell(row=70, column=3).value='=round(B70/100*19,0)'
+		amount.cell(row=70, column=3).value='=ROUND(SUM(Purchases!'+str(tdocnextva)+":"+str(tdocnextva)+',),0)'
 		amount.cell(row=71, column=3).value='=C70'
 
 		amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
@@ -1504,6 +1598,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 		amount.cell(row=74, column=2).value=0
 		amount.cell(row=74, column=3).value=0
+
 
 		amount.cell(row=22, column=5).value='Total'
 
@@ -1705,498 +1800,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		except:
 			pass
 
-	if(val1==1):
-		sheetinutil1=temp.create_sheet('D300--->>>')
-		sheetinutil1.sheet_view.showGridLines=False
-		sheetinutil1.cell(row=2,column=1).value="Switch to next sheet for D300 Workings draft"
-		sheetinutil1.cell(row=2,column=1).font=scrisincredibildemare
-		amount=temp.create_sheet('D300 draft figures')
-		amount.freeze_panes = 'A8'
-		amount.auto_filter.ref = "A7:G71"
-		amount.sheet_view.showGridLines = False
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "Tax code":
-					rand_tb = cell.row
-					taxcodec = cell.column
-					lun = len(sales[cell.column])
-		try:
-			listBazaL = [b.value for b in sales[taxcodec][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Tax code sales'")
-			return render_template("index.html")
-		for row in sales.iter_rows():
-			for cell in row:
-				if cell.value == "  Total docinclVAT":
-					rand_tb = cell.row
-					tdocc = cell.column
-					lun = len(sales[cell.column])
-		try:
-			listBazaL = [b.value for b in sales[tdocc][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Total sales'")
-			return render_template("index.html")
 
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Tax code":
-					rand_tb = cell.row
-					taxcodea = cell.column
-					lun = len(sales[cell.column])
-		try:
-			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Tax code purchases'")
-			return render_template("index.html")
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "TotaldocinclVAT":
-					rand_tb = cell.row
-					tdoca = cell.column
-					lun = len(sales[cell.column])
-		try:
-			listBazaL = [b.value for b in purchases[tdoca][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Total purchases'")
-			return render_template("index.html")
-
-		amount.cell(row=6, column=2).value="1"
-		amount.cell(row=6, column=3).value="2"
-		amount.cell(row=7, column=1).value="Row"
-		amount.cell(row=7, column=2).value="Taxable basis"
-		amount.cell(row=7, column=3).value="VAT amount"
-		amount.cell(row=7, column=4).value="Comments"
-		amount.cell(row=7, column=5).value="Journal Source"
-		amount.cell(row=7, column=6).value="Flag Suma Control"
-		amount.cell(row=7, column=7).value="Suma Control"
-		amount.cell(row=8, column=1).value="1"
-		amount.cell(row=9, column=1).value="2"
-		amount.cell(row=10, column=1).value="3"
-		amount.cell(row=11, column=1).value="3.1"
-		amount.cell(row=12, column=1).value="4"
-		amount.cell(row=13, column=1).value="5"
-		amount.cell(row=14, column=1).value="5.1"
-		amount.cell(row=15, column=1).value="6"
-		amount.cell(row=16, column=1).value="7"
-		amount.cell(row=17, column=1).value="7.1"
-		amount.cell(row=18, column=1).value="8"
-		amount.cell(row=19, column=1).value="9"
-		amount.cell(row=20, column=1).value="10"
-		amount.cell(row=21, column=1).value="11"
-		amount.cell(row=22, column=1).value="12"
-		amount.cell(row=23, column=1).value="12.1"
-		amount.cell(row=24, column=1).value="12.2"
-		amount.cell(row=25, column=1).value="12.3"
-		amount.cell(row=26, column=1).value="13"
-		amount.cell(row=27, column=1).value="14"
-		amount.cell(row=28, column=1).value="15"
-		amount.cell(row=29, column=1).value="16"
-		amount.cell(row=30, column=1).value="17"
-		amount.cell(row=31, column=1).value="18"
-		amount.cell(row=32, column=1).value="19"
-		amount.cell(row=33, column=1).value="20"
-		amount.cell(row=34, column=1).value="20.1"
-		amount.cell(row=35, column=1).value="21"
-		amount.cell(row=36, column=1).value="22"
-		amount.cell(row=37, column=1).value="22.1"
-		amount.cell(row=38, column=1).value="23"
-		amount.cell(row=39, column=1).value="24"
-		amount.cell(row=40, column=1).value="25"
-		amount.cell(row=41, column=1).value="26"
-		amount.cell(row=42, column=1).value="27"
-		amount.cell(row=43, column=1).value="27.1"
-		amount.cell(row=44, column=1).value="27.2"
-		amount.cell(row=45, column=1).value="27.3"
-		amount.cell(row=46, column=1).value="28"
-		amount.cell(row=47, column=1).value="29"
-		amount.cell(row=48, column=1).value="30"
-		amount.cell(row=49, column=1).value="30.1"
-		amount.cell(row=50, column=1).value="31"
-		amount.cell(row=51, column=1).value="31.1"
-		amount.cell(row=52, column=1).value="32"
-		amount.cell(row=53, column=1).value="33"
-		amount.cell(row=54, column=1).value="34"
-		amount.cell(row=55, column=1).value="35"
-		amount.cell(row=56, column=1).value="36"
-		amount.cell(row=57, column=1).value="37"
-		amount.cell(row=58, column=1).value="38"
-		amount.cell(row=59, column=1).value="39"
-		amount.cell(row=60, column=1).value="40"
-		amount.cell(row=61, column=1).value="41"
-		amount.cell(row=62, column=1).value="42"
-		amount.cell(row=63, column=1).value="43"
-		amount.cell(row=64, column=1).value="44"
-		amount.cell(row=65, column=1).value="45"
-		amount.cell(row=66, column=1).value="46"
-
-		amount.cell(row=68, column=1).value="A"
-		amount.cell(row=69, column=1).value="A1"
-		amount.cell(row=70, column=1).value="B"
-		amount.cell(row=71, column=1).value="B.1"
-
-		for jjj in range(0,len(listadend300eng)):
-			amount.cell(row=8+jjj,column=8).value=listadend300eng[jjj]
-
-
-		amount.cell(row=8, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y3",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-		amount.cell(row=9, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"C2",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-		amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'		
-		amount.cell(row=11, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-		amount.cell(row=12, column=2).value=0
-		amount.cell(row=13, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
-		
-		amount.cell(row=14, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
-		amount.cell(row=15, column=2).value=0
-		amount.cell(row=16, column=2).value='=round((ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1M",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'
-		amount.cell(row=17, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'	
-		amount.cell(row=18, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"C3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(119/100),0)'
-		amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
-		amount.cell(row=20, column=2).value=0
-		amount.cell(row=21, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"5G",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(105/100),0)'
-		amount.cell(row=22, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZR",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
-		amount.cell(row=23, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZR",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
-		amount.cell(row=24, column=2).value=0
-		amount.cell(row=25, column=2).value=0
-		amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1V",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'	
-		amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-		amount.cell(row=28, column=2).value=0
-		amount.cell(row=30, column=2).value=0
-		amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ZJ",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-		amount.cell(row=39, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1L",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"3S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'						
-		amount.cell(row=40, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"9S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(109/100),0)'								
-		amount.cell(row=41, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"6I",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(105/100),0)'								
-
-		
-		amount.cell(row=22, column=2).value='=SUM(B23:B25)'
-
-
-		amount.cell(row=31, column=2).value=0
-		amount.cell(row=32, column=2).value='=SUM(B8:B31)-B11-B14-B17-B24-B25'
-		amount.cell(row=33, column=2).value='=B13'
-		amount.cell(row=34, column=2).value='=B14'
-		amount.cell(row=35, column=2).value='=B15'
-		amount.cell(row=36, column=2).value='=B16'
-		amount.cell(row=37, column=2).value='=B17'
-		amount.cell(row=38, column=2).value='=B18'
-
-		
-		amount.cell(row=42, column=2).value='=SUM(B43:B45)'
-		amount.cell(row=43, column=2).value='=B23'
-		amount.cell(row=44, column=2).value='=B24'
-		amount.cell(row=45, column=2).value='=B25'
-		amount.cell(row=46, column=2).value=0
-		amount.cell(row=47, column=2).value=0
-		amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"AS",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"AS",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
-		amount.cell(row=49, column=2).value=0
-		amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
-		amount.cell(row=51, column=2).value=0
-		amount.cell(row=52, column=2).value='=B50-B51'
-		amount.cell(row=53, column=2).value=0
-		amount.cell(row=54, column=2).value=0
-		amount.cell(row=55, column=2).value=0
-		amount.cell(row=56, column=2).value='=SUM(B52:B55)'
-		amount.cell(row=57, column=2).value=0
-		amount.cell(row=58, column=2).value=0
-		amount.cell(row=59, column=2).value=0
-		amount.cell(row=60, column=2).value=0
-		amount.cell(row=61, column=2).value='=SUM(B58:B60)'
-		amount.cell(row=62, column=2).value=0
-		amount.cell(row=63, column=2).value=0
-		amount.cell(row=64, column=2).value='=B57+B62+B63'
-		amount.cell(row=65, column=2).value='=IF((B61-B664)<0,0,B61-B64)'
-		amount.cell(row=66, column=2).value='=IF((B64-B61)<0,0,B64)'
-
-		amount.cell(row=68, column=2).value=0
-		amount.cell(row=69, column=2).value=0
-		amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZI",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZD",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I7",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"I9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5D",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
-		amount.cell(row=71, column=2).value='=B70'
-		
-		#coloana TVA----------------------------------------------------
-
-		for g in range(8, 13):
-			amount.cell(row=g, column=3).value=0
-		
-
-		# for h in range(13, 19):
-		amount.cell(row=13, column=3).value='=round(B13/100*19,0)'
-		amount.cell(row=14, column=3).value='=round(B14/100*19,0)'
-		amount.cell(row=15, column=3).value='=round(B15/100*19,0)'
-		amount.cell(row=16, column=3).value='=round(B16/100*19,0)'
-		amount.cell(row=17, column=3).value='=round(B17/100*19,0)'
-		amount.cell(row=18, column=3).value='=round(B18/100*19,0)'
-			
-		# amount.cell(row=16,column=3).value='=ROUND(SUMIF(Purchases!$7:$7,$A16&"."&C$6,Purchases!$5:$5)-SUMIF(Purchases!$7:$7,$A18&"."&C$6,Purchases!$5:$5),0)'
-
-
-		amount.cell(row=19, column=3).value='=round(B19/100*19,0)'
-		amount.cell(row=20, column=3).value='=round(B20/100*9,0)'
-		amount.cell(row=21, column=3).value='=round(B21/100*5,0)'
-		amount.cell(row=22, column=3).value='=SUM(C23:C25)'
-
-		amount.cell(row=23, column=3).value='=round(B23/100*19,0)'
-		amount.cell(row=24, column=3).value='=round(B24/100*9,0)'
-		amount.cell(row=25, column=3).value='=round(B25/100*5,0)'
-
-
-		
-		for k in range(26, 31):
-			amount.cell(row=k, column=3).value=0
-		amount.cell(row=31, column=3).value=0
-		amount.cell(row=32, column=3).value='=SUM(C8:C31)-C11-C14-C17-C24-C25'
-		amount.cell(row=33, column=3).value='=C13'
-		amount.cell(row=34, column=3).value='=C14'
-		amount.cell(row=35, column=3).value='=C15'
-		amount.cell(row=36, column=3).value='=C16'
-		amount.cell(row=37, column=3).value='=C17'
-		amount.cell(row=38, column=3).value='=C18'
-
-
-		amount.cell(row=39, column=3).value='=round(B39/100*19,0)'
-		amount.cell(row=40, column=3).value='=round(B40/100*9,0)'
-		amount.cell(row=41, column=3).value='=round(B41/100*5,0)'			
-		amount.cell(row=42, column=3).value='=SUM(C43:C45)'
-		amount.cell(row=43, column=3).value='=C23'
-		amount.cell(row=44, column=3).value='=C24'
-		amount.cell(row=45, column=3).value='=C25'
-		amount.cell(row=46, column=3).value=0
-		amount.cell(row=47, column=3).value=0
-		amount.cell(row=48, column=3).value=0
-		amount.cell(row=49, column=3).value=0
-		amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
-		amount.cell(row=51, column=3).value=0
-		amount.cell(row=52, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
-		amount.cell(row=53, column=3).value=0
-		amount.cell(row=54, column=3).value=0
-		amount.cell(row=55, column=3).value=0
-		amount.cell(row=56, column=3).value='=SUM(C52:C55)'
-		amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
-		amount.cell(row=58, column=3).value='=IF((C32-C56)<0,0,C32-C56)'
-		amount.cell(row=59, column=3).value=0
-		amount.cell(row=60, column=3).value=0
-		amount.cell(row=61, column=3).value='=SUM(C58:C60)'
-		
-		if soldLunaTrecuta == None or soldLunaTrecuta == "" or soldLunaTrecuta == " ":
-			amount.cell(row=62, column=3).value=0
-		else:
-			amount.cell(row=62, column=3).value=int(soldLunaTrecuta)
-		#print(soldLunaTrecuta, "sold luna trecuta")
-		amount.cell(row=63, column=3).value=0
-		amount.cell(row=64, column=3).value='=C57+C62+C63'
-		amount.cell(row=65, column=3).value='=IF((C61-C64)<0,0,C61-C64)'
-		amount.cell(row=66, column=3).value='=IF((C64-C61)<0,0,C64-C61)'
-		amount.cell(row=68, column=3).value=0
-		amount.cell(row=69, column=3).value=0
-
-		amount.cell(row=70, column=3).value='=round(B70/100*19,0)'
-		amount.cell(row=71, column=3).value='=C70'
-
-		amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
-		amount.cell(row=73, column=2).value='Total an precedent'
-		amount.cell(row=73, column=3).value='An curent (inclusiv perioada de raportare)'
-
-		amount.cell(row=74, column=2).value=0
-		amount.cell(row=74, column=3).value=0
-
-		amount.cell(row=22, column=5).value='Total'
-
-		for m in it.chain(range(8, 13), range(19, 22), range(26, 32)):
-			amount.cell(row=m, column=5).value='SALES'
-
-		for n in it.chain(range(13, 19), range(23, 26), range(39, 42), range(46, 50), range(53, 56)):
-			amount.cell(row=n, column=5).value='Purchases'
-		
-		for o in range(32, 39):
-			amount.cell(row=o, column=5).value='Total'
-
-		for p in range(42, 46):
-			amount.cell(row=p, column=5).value='Total'
-		
-		amount.cell(row=50, column=5).value='Total'
-		amount.cell(row=51, column=5).value='Purchases'
-		amount.cell(row=52, column=5).value='Total'
-		amount.cell(row=66, column=5).value='Purchases'
-
-		for q in range(68, 71):
-			amount.cell(row=q, column=5).value='Total'
-
-		for r in range(56, 67):
-			amount.cell(row=r, column=5).value='Total'
-
-		amount.cell(row=71, column=5).value='Purchases'
-
-		for s in it.chain(range(8, 13), range(26, 29), range(48, 50)):
-			amount.cell(row=s, column=6).value='no VAT'
-
-		for t in it.chain(range(13, 26), range(29, 46)):
-			amount.cell(row=t, column=6).value='Add all'
-
-		for u in it.chain(range(46, 48), range(52, 54), range(55, 67)):
-			amount.cell(row=u, column=6).value='No basis'
-		
-		amount.cell(row=50, column=6).value='Add all'
-		amount.cell(row=51, column=6).value='Se pune 0'
-		amount.cell(row=54, column=6).value='Add all'
-
-		for a1 in range(8, 13):
-			amount.cell(row=a1, column=7).value='=B{0}'.format(a1)
-
-		for b1 in range(13, 26):
-			amount.cell(row=b1, column=7).value='=SUM(B{0}:C{0})'.format(b1)
-
-		for c1 in range(26, 29):
-			amount.cell(row=c1, column=7).value='=B{0}'.format(c1)
-		
-		for d1 in range(29, 46):
-			amount.cell(row=d1, column=7).value='=SUM(B{0}:C{0})'.format(d1)
-
-		amount.cell(row=46, column=7).value='=C46'
-		amount.cell(row=47, column=7).value='=C47'
-		amount.cell(row=48, column=7).value='=B48'
-		amount.cell(row=49, column=7).value='=B49'
-		amount.cell(row=50, column=7).value='=SUM(B50:C50)'
-		amount.cell(row=51, column=7).value='=C51'
-		amount.cell(row=52, column=7).value='=C52'
-		amount.cell(row=53, column=7).value='=SUM(B53:C53)'
-		amount.cell(row=54, column=7).value='=SUM(B54:C54)'
-		amount.cell(row=2,column=1).value="D300 draft figures"
-		amount.cell(row=2,column=1).font=cap_tabeltitlu
-		amount.row_dimensions[5].hidden = True
-		for e1 in range(55, 67):
-			amount.cell(row=e1, column=7).value='=C{0}'.format(e1)
-		
-		for row in amount['B8:B74']:
-			for cell in row:
-				cell.number_format='#,##0_);(#,##0)'
-		
-		for row in amount['C8:C74']:
-			for cell in row:
-				cell.number_format='#,##0_);(#,##0)'
-
-		#------foratare D300
-
-		for row in amount['A7:C7']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-				cell.alignment=Alignment(horizontal='center',vertical='center')
-		for row in amount['D7:G7']:
-			for cell in row:
-				cell.fill=cap_tabel_color_black
-		
-		for row in amount['A7:G7']:
-			for cell in row:
-				cell.font=cap_tabel
-
-		listanoua=['A','B','C','D','E','F','G']
-
-		for column in listanoua:
-			for i in listanoua:
-				if (column==i):
-					amount.column_dimensions[column].width = 17
-		
-		amount.column_dimensions['D'].hidden = True
-		amount.column_dimensions['E'].hidden = True
-		amount.column_dimensions['F'].hidden = True
-		amount.column_dimensions['G'].hidden = True
-		info=temp['Other info']
-	
-		listaMapare=["L", "T", "S", "A"]
-		Poz="10"
-		Fix01="01"
-		Fix0000="0000"
-		dictMapare={'L':'301', 'T':'302', 'S':'303', 'A':'304'}
-
-		elementMapare=""
-		if info.cell(row=53, column=3).value=="L":
-			elementMapare="301"
-		else:
-			if info.cell(row=53, column=3).value == "T":
-				elementMapare="302"
-			else:
-				if info.cell(row=53, column=3).value == "S":
-					elementMapare="303"
-				else:
-					if info.cell(row=53, column=3).value == "A":
-						elementMapare="304"
-			
-		# #print(elementMapare, 'MAPARE')
-
-		LL=""
-		AA=""
-
-		if len(str(info.cell(row=3, column=3).value))==2:
-			LL=str(info.cell(row=3, column=3).value)
-			LL_g=LL
-		else:
-			LL="0"+str(info.cell(row=3, column=3).value)
-
-		AA=str(info.cell(row=2, column=3).value)[2:]
-		strYear=str(info.cell(row=2, column=3).value)[2:]
-		intYear=int(strYear)+1
-		year=str(intYear)
-		
-		# #print(year, 'an')
-
-		LLAA=LL+AA
-		LL2=""
-		AA2=""
-
-		if int(info.cell(row=3, column=3).value)==12:
-			LL2="1"
-		if len(str(info.cell(row=3, column=3).value))==1:
-			LL2="0"+str(int(info.cell(row=3, column=3).value)+1)
-		# #print(LL2, 'LL2')
-		
-		if int(info.cell(row=3, column=3).value)==12:
-			AA2=year 
-		else:
-			AA2=strYear
-
-		ZZLLAA="25"+str(LL2)+str(AA2)
-		# #print(ZZLLAA, 'ZZLLAA')
-
-		poz1=""
-		LTSA=""
-		fix1=""
-		LLAA1=""
-		ZZLLAA1=""
-		fix01=""
-		control=""
-
-		poz1 = sum(int(digit) for digit in str(Poz))
-		LTSA = sum(int(digit) for digit in str(elementMapare))
-		fix1=sum(int(digit) for digit in str(Fix01))
-		LLAA1=sum(int(digit) for digit in str(LLAA))
-		ZZLLAA1=sum(int(digit) for digit in str(ZZLLAA))
-		fix01=sum(int(digit) for digit in str(Fix0000))
-
-		control=poz1+LTSA+fix1+LLAA1+ZZLLAA1+fix01
-		#print(control,'control')
-		
-
-		nrEvidenta=Poz+elementMapare+Fix01+LLAA+ZZLLAA+Fix0000+str(control)
-		#print(nrEvidenta, 'nrEvidenta')
-			
-		
-		info.cell(row=18, column=3).value=nrEvidenta
-		info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
-		try:
-			info.cell(row=50, column=3).value=lenbfi
-			info.cell(row=51, column=3).value=sumabfi
-			info.cell(row=52, column=3).value=sumatbfi
-		except:
-			pass
-		try:
-			info.cell(row=53, column=3).value=sumabif
-			info.cell(row=54, column=3).value=sumatbif
-			info.cell(row=55, column=3).value=lentbif
-		except:
-			pass
-		try: 
-			# info.cell(row=56, column=3).value=lenbfr
-			info.cell(row=57, column=3).value=sumabfr
-			info.cell(row=58, column=3).value=sumatbfr
-		except:
-			pass
 		if(val2==1):
 			sheetinutil2=temp.create_sheet('D390--->>>')
 			sheetinutil2.sheet_view.showGridLines=False
@@ -2321,60 +1925,64 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			print(taxcodeach)
 			a=3
 			for x in range(0, len(taxcodeach)):
-				if str(taxcodeach[x])=="C3" or str(taxcodeach[x])=="E1" :
-					a=a+1
-					workings.cell(row=a, column=1).value="A"
-					workings.cell(row=a, column=4).value=denumirea[x]
-					workings.cell(row=a, column=6).value=vata[x]
-					workings.cell(row=a, column=3).value=vata[x][2:]
-					workings.cell(row=a, column=7).value=vata[x][0:2]
-					# workings.cell(row=a, column=8).value=listaBazaA[x]
-					# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
-					workings.cell(row=a, column=8).value=totala[x]
-					workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
-					workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+				if(lunacurenta[x]=="Yes"):
+					if str(taxcodeach[x])=="C3" or str(taxcodeach[x])=="E1" :
+						a=a+1
+						workings.cell(row=a, column=1).value="A"
+						workings.cell(row=a, column=4).value=denumirea[x]
+						workings.cell(row=a, column=6).value=vata[x]
+						workings.cell(row=a, column=3).value=vata[x][2:]
+						workings.cell(row=a, column=7).value=vata[x][0:2]
+						# workings.cell(row=a, column=8).value=listaBazaA[x]
+						# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+						workings.cell(row=a, column=8).value=totala[x]
+						workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+						workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
 
 
 			for x in range(0, len(taxcodeach)):
-				if str(taxcodeach[x])=="X1":
-					a=a+1
-					workings.cell(row=a, column=1).value="S"
-					workings.cell(row=a, column=4).value=denumirea[x]
-					workings.cell(row=a, column=6).value=vata[x]
-					workings.cell(row=a, column=3).value=vata[x][2:]
-					workings.cell(row=a, column=7).value=vata[x][0:2]
-					# workings.cell(row=a, column=8).value=listaBazaA[x]
-					# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
-					workings.cell(row=a, column=8).value=totala[x]
-					workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
-					workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+				if(lunacurenta[x]=="Yes"):				
+					if str(taxcodeach[x])=="X1":
+						a=a+1
+						workings.cell(row=a, column=1).value="S"
+						workings.cell(row=a, column=4).value=denumirea[x]
+						workings.cell(row=a, column=6).value=vata[x]
+						workings.cell(row=a, column=3).value=vata[x][2:]
+						workings.cell(row=a, column=7).value=vata[x][0:2]
+						# workings.cell(row=a, column=8).value=listaBazaA[x]
+						# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+						workings.cell(row=a, column=8).value=totala[x]
+						workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+						workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
 
 			for x in range(0, len(taxcodes)):
-				if str(taxcodes[x])=="Y3" or str(taxcodes[x])=="Y1":
-					a=a+1
-					workings.cell(row=a, column=1).value="L"
-					workings.cell(row=a, column=4).value=denumires[x]
-					workings.cell(row=a, column=6).value=vats[x]
-					workings.cell(row=a, column=3).value=vats[x][2:]
-					workings.cell(row=a, column=7).value=vats[x][0:2]
-					# workings.cell(row=a, column=8).value=listaBazaA[x]
-					# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
-					workings.cell(row=a, column=8).value=totals[x]
-					workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
-					workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+				if(listacurentas[x]=="Yes"):				
+					if str(taxcodes[x])=="Y3" or str(taxcodes[x])=="Y1":
+						a=a+1
+						workings.cell(row=a, column=1).value="L"
+						workings.cell(row=a, column=4).value=denumires[x]
+						workings.cell(row=a, column=6).value=vats[x]
+						workings.cell(row=a, column=3).value=vats[x][2:]
+						workings.cell(row=a, column=7).value=vats[x][0:2]
+						# workings.cell(row=a, column=8).value=listaBazaA[x]
+						# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+						workings.cell(row=a, column=8).value=totals[x]
+						workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+						workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
 			for x in range(0, len(taxcodes)):
-				if str(taxcodes[x])=="Y4":
-					a=a+1
-					workings.cell(row=a, column=1).value="P"
-					workings.cell(row=a, column=4).value=denumires[x]
-					workings.cell(row=a, column=6).value=vats[x]
-					workings.cell(row=a, column=3).value=vats[x][2:]
-					workings.cell(row=a, column=7).value=vats[x][0:2]
-					# workings.cell(row=a, column=8).value=listaBazaA[x]
-					# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
-					workings.cell(row=a, column=8).value=totals[x]
-					workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
-					workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+				if(listacurentas[x]=="Yes"):				
+					if str(taxcodes[x])=="Y4":
+						a=a+1
+						workings.cell(row=a, column=1).value="P"
+						workings.cell(row=a, column=4).value=denumires[x]
+						workings.cell(row=a, column=6).value=vats[x]
+						workings.cell(row=a, column=3).value=vats[x][2:]
+						workings.cell(row=a, column=7).value=vats[x][0:2]
+						# workings.cell(row=a, column=8).value=listaBazaA[x]
+						# workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+						workings.cell(row=a, column=8).value=totals[x]
+						workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+						workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
 			
 			for row in workings.iter_rows():
 				for cell in row:
@@ -4742,14 +4350,13 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			
 			# for i in range(0 ,len(tip)):
 		# folderpath="D:/D300 to XML/docs"
-		folderpath="/home/mirus_app/storage_spreadsheet"
+		folderpath="D:/apps/VAT App mirus/Final project/storage"
 		# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
 		temp.save(file_pathFS)
 		# return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
-		return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
-		return render_template('D3APPS2')
-@app.route('/D3APPS2')
+		return send_from_directory("D:/apps/VAT App mirus/Final project/storage","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
+		return render_template('D3APPS2')@app.route('/D3APPS2')
 def my_form2():
     return render_template('D3APPS second step.html')
 
