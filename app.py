@@ -5,7 +5,7 @@ import shutil
 import re
 import PyPDF2
 from werkzeug.utils import secure_filename
-# from tkinter import * 
+# from tkinter import *
 from flask import flash
 from openpyxl.worksheet.datavalidation import DataValidation 
 from openpyxl.styles.borders import Border, Side
@@ -28,7 +28,7 @@ from openpyxl import Workbook
 from openpyxl.styles import  Font
 from openpyxl.styles import  Color
 from openpyxl.styles import Alignment
-import requests 
+import requests
 import time
 
 # from tkinter import filedialog
@@ -111,9 +111,9 @@ def get_fxrate(year):
 
 
     # if ccy != "RON":  #pentru valute diferite de ron
-    r=requests.get('http://www.bnr.ro/files/xml/years/nbrfxrates'+str(year)+'.xml') #accesare xml bnr 
+    r=requests.get('http://www.bnr.ro/files/xml/years/nbrfxrates'+str(year)+'.xml') #accesare xml bnr
     str_xml = r.text    #stocare text xml
-    #     with open("D:/text.txt", "w", encoding="utf-8") as f: 
+    #     with open("D:/text.txt", "w", encoding="utf-8") as f:
 
 
 
@@ -1768,7 +1768,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=52, column=7).value='=C52'
 		amount.cell(row=53, column=7).value='=SUM(B53:C53)'
 		amount.cell(row=54, column=7).value='=SUM(B54:C54)'
-		amount.cell(row=2,column=1).value="D300 draft figures"
+		amount.cell(row=2,column=1).value="D300 draft figures "
 		amount.cell(row=2,column=1).font=cap_tabeltitlu
 		amount.row_dimensions[5].hidden = True
 		for e1 in range(55, 67):
