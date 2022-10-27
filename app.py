@@ -1581,7 +1581,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 
 		amount.cell(row=31, column=2).value=0
-		amount.cell(row=32, column=2).value='=round(SUM(B8:B31)-B11-B14-B17-B23-B24-B25,0)'
+		amount.cell(row=32, column=2).value='=B8+B10+B13+B16+B27+B15+B18+B31+B30+B29+B28+B26+B22+B21+B20+B19'
 		amount.cell(row=33, column=2).value='=B13'
 		amount.cell(row=34, column=2).value='=B14'
 		amount.cell(row=35, column=2).value='=B15'
@@ -1652,7 +1652,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		for k in range(26, 31):
 			amount.cell(row=k, column=3).value=0
 		amount.cell(row=31, column=3).value=0
-		amount.cell(row=32, column=3).value='=SUM(C8:C31)-C11-C14-C17-C23-C24-C25'
+		amount.cell(row=32, column=3).value='=C8+C10+C13+C16+C27+C15+C18+C31+C30+C29+C28+C26+C22+C21+C20+C19'
 		amount.cell(row=33, column=3).value='=C13'
 		amount.cell(row=34, column=3).value='=C14'
 		amount.cell(row=35, column=3).value='=C15'
@@ -1661,7 +1661,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=38, column=3).value='=C18'
 
 
-		amount.cell(row=39, column=3).value='=round(sum(Purchases!'+str(tax19vat)+':'+str(tax19vat)+'),0)'
+		amount.cell(row=39, column=3).value='=SUM(Purchases!'+str(tax19vat)+':'+str(tax19vat)+')-SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+')+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+str(taxcodea)+',"ZI",Purchases!BR:BR,"No")''
 		amount.cell(row=40, column=3).value='=round(B40/100*9,0)'
 		amount.cell(row=41, column=3).value='=round(B41/100*5,0)'			
 		amount.cell(row=42, column=3).value='=round(SUM(C43:C45),0)'
@@ -1674,7 +1674,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=49, column=3).value=0
 		amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
 		amount.cell(row=51, column=3).value='=SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax9vat)+':'+str(tax9vat)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax5vat)+':'+str(tax5vat)+')-SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"ZI",Purchases!BR:BR,"No")'
-		amount.cell(row=52, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
+		amount.cell(row=52, column=3).value='=C51+C50-SUM(Purchases!'+str(tdocnextva)+':'+str(tdocnextva)+')'
 		amount.cell(row=53, column=3).value=0
 		amount.cell(row=54, column=3).value=0
 		amount.cell(row=55, column=3).value=0
