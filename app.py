@@ -1687,7 +1687,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		if soldLunaTrecuta == None or soldLunaTrecuta == "" or soldLunaTrecuta == " ":
 			amount.cell(row=62, column=3).value=0
 		else:
-			amount.cell(row=62, column=3).value=int(soldLunaTrecuta)
+			amount.cell(row=62, column=3).value=int(soldLunaTrecuta) 
 		#print(soldLunaTrecuta, "sold luna trecuta")
 		amount.cell(row=63, column=3).value=0
 		amount.cell(row=64, column=3).value='=C57+C62+C63'
