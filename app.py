@@ -111,7 +111,7 @@ def get_fxrate(year):
 
 
     # if ccy != "RON":  #pentru valute diferite de ron
-    r=requests.get('http://www.bnr.ro/files/xml/years/nbrfxrates'+str(year)+'.xml') #accesare xml bnr
+    r=requests.get('http://www.bnr.ro/files/xml/years/nbrfxrates'+str(year)+'.xml') #accesare xml bnr 
     str_xml = r.text    #stocare text xml
     #     with open("D:/text.txt", "w", encoding="utf-8") as f: 
 
