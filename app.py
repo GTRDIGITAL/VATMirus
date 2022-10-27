@@ -1632,7 +1632,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=14, column=3).value='=(ROUND(SUMIFS(Purchases!'+str(intracomtaxe1)+":"+str(intracomtaxe1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes"),0))'
 		amount.cell(row=15, column=3).value='=round(B15/100*19,0)'
 		amount.cell(row=16, column=3).value='=round(B16/100*19,0)'
-		amount.cell(row=17, column=3).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocvatsapte)+":"+str(tdocvatsapte)+'),0))-sumif(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!'+str(tdocvatsapte)+":"+str(tdocvatsapte)+')''
+		amount.cell(row=17, column=3).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocvatsapte)+":"+str(tdocvatsapte)+'),0))-sumif(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!'+str(tdocvatsapte)+":"+str(tdocvatsapte)+')'
 		amount.cell(row=18, column=3).value='=round(B18/100*19,0)'
 			
 		# amount.cell(row=16,column=3).value='=ROUND(SUMIF(Purchases!$7:$7,$A16&"."&C$6,Purchases!$5:$5)-SUMIF(Purchases!$7:$7,$A18&"."&C$6,Purchases!$5:$5),0)'
@@ -1661,7 +1661,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=38, column=3).value='=C18'
 
 
-		amount.cell(row=39, column=3).value='=SUM(Purchases!'+str(tax19vat)+':'+str(tax19vat)+')-SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+')+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+str(taxcodea)+',"ZI",Purchases!BR:BR,"No")''
+		amount.cell(row=39, column=3).value='=SUM(Purchases!'+str(tax19vat)+':'+str(tax19vat)+')-SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+')+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+str(taxcodea)+',"ZI",Purchases!BR:BR,"No")'
 		amount.cell(row=40, column=3).value='=round(B40/100*9,0)'
 		amount.cell(row=41, column=3).value='=round(B41/100*5,0)'			
 		amount.cell(row=42, column=3).value='=round(SUM(C43:C45),0)'
