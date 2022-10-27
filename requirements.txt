@@ -92,7 +92,6 @@ SQLAlchemy==1.4.37
 sqlparse==0.4.2
 stack-data==0.2.0
 starlette==0.17.1
-tk==0.1.0
 tomli==2.0.1
 tornado==6.1
 traitlets==5.1.1

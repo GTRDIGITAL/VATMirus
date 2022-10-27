@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>XML Generator</title>
+    <title>D300 to XML</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -200,7 +200,7 @@ img {
 }
     </style>
  <div id="logo">
-    <img src="/static/mirus.png" Style="position:left">
+    <img src="/static/logo.png" Style="position:left">
 </div>
  </head>
 <body>
@@ -243,21 +243,21 @@ img {
     <!-- <div class="container"> -->
     <div class="col-lg-3">
         <div style="font-size:14px;font-family: serif; color: rgba(72,25,122,0.8578781854538691); width:400px; position: left">
-            <!-- <p>Please choose below what application you would like to use</p> -->
+            <p>Please choose below what application you would like to use</p>
             </div>
                        
-            <ul class="location">
-                <li class="curve">
-                    <a href="/D3APPS">VAT App - PMG</a>
-                 </li>
-                <!-- <li class="curve">
-                <a href="/VAT_Tax">VAT Tax</a>
-                </li>
-                <li class="curve">
-                    <a href="/CUI_Extractor">Registre ANAF</a>
-                 </li> -->
-              </ul>
-               </div>
+                       <ul class="location">
+                          
+                            <li class="curve">
+                                <a href="/D300">D300 XML</a>
+                            <li class="curve">
+                                <a href="/D390">D390 XML</a>
+                            <li class="curve">
+                                <a href="/VAT_Tax">VAT Tax</a>
+                         
+                       </ul>
+                       </div>
+                    <!-- </div> -->
                        
 
     <form method="POST" enctype = "multipart/form-data" style="padding-left:60px;">
@@ -265,12 +265,9 @@ img {
     
             <div class="row">
                 <div class="col">
-                    <div style="font-size:20px;font-family: serif; color: rgba(189, 12, 12, 0.858); width:600px; position: left">
-                        <p><b>Please open and review the generated xlsx file from previous step.</p></b>
-                        </div>
                     <!-- <button type="button" class="btn btn-primary btn-lg" value="1" Style="width: 300px;margin-bottom:10px; background-color: #742D9B;" input type="file"> Import monthly trial balances</button> -->
                      <div class="fileUpload btn btn-primary btn-lg"  Style="width: 300px; margin-bottom:10px; background-color: #742D9B;">
-                        <span>Import Generated file</span>
+                        <span>Import D300 file</span>
                         <input id="uploadBtn" name="d300file2" type="file" class="upload" multiple/>
                      </div>
                     
@@ -281,7 +278,7 @@ img {
 
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary btn-lg" value="4" Style="width: 300px;margin-bottom:10px; background-color: #820892;">Generate XML file</button>
+                    <button type="submit" class="btn btn-primary btn-lg" value="4" Style="width: 300px;margin-bottom:10px; background-color: #820892;"> Run and save</button>
                 </div>
                     
                     
