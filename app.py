@@ -1345,6 +1345,53 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		except:
 			flash("Please insert the correct header for 'Tax code purchases'")
 			return render_template("index.html")
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "9%taxbase":
+					rand_tb = cell.row
+					tax9b = cell.column
+					lun = len(sales[cell.column])
+		try:
+			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Tax code purchases'")
+			return render_template("index.html")
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "9%taxamount":
+					rand_tb = cell.row
+					tax9vat = cell.column
+					lun = len(sales[cell.column])
+
+		try:
+			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Tax code purchases'")
+			return render_template("index.html")			
+
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "5%taxbase":
+					rand_tb = cell.row
+					tax5b = cell.column
+					lun = len(sales[cell.column])
+		try:
+			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Tax code purchases'")
+			return render_template("index.html")
+		for row in purchases.iter_rows():
+			for cell in row:
+				if cell.value == "5%taxamount":
+					rand_tb = cell.row
+					tax5vat = cell.column
+					lun = len(sales[cell.column])
+
+		try:
+			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for 'Tax code purchases'")
+			return render_template("index.html")
 
 		for row in purchases.iter_rows():
 			for cell in row:
@@ -1510,7 +1557,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=24, column=2).value=0
 		amount.cell(row=25, column=2).value=0
 		amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1V",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'	
-		amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+		amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
 		amount.cell(row=28, column=2).value=0
 		amount.cell(row=30, column=2).value=0
 		amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ZJ",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
@@ -1541,7 +1588,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"AS",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"AS",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
 		amount.cell(row=49, column=2).value=0
 		amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
-		amount.cell(row=51, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5Z",Purchases!'+str(tdocneded)+":"+str(tdocneded)+'),0)'
+		amount.cell(row=51, column=2).value='=SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19b)+':'+str(tax19b)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax9b)+':'+str(tax9b)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax5b)+':'+str(tax5b)+')-SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"ZI",Purchases!BR:BR,"No")'
 		amount.cell(row=52, column=2).value='=B50-B51'
 		amount.cell(row=53, column=2).value=0
 		amount.cell(row=54, column=2).value=0
@@ -1615,7 +1662,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=48, column=3).value=0
 		amount.cell(row=49, column=3).value=0
 		amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
-		amount.cell(row=51, column=3).value=0
+		amount.cell(row=51, column=3).value='=SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax9vat)+':'+str(tax9vat)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax5vat)+':'+str(tax5vat)+')-SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"ZI",Purchases!BR:BR,"No")'
 		amount.cell(row=52, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
 		amount.cell(row=53, column=3).value=0
 		amount.cell(row=54, column=3).value=0
