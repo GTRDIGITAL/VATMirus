@@ -1324,55 +1324,6 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			return render_template("index.html")
 		for row in purchases.iter_rows():
 			for cell in row:
-				if cell.value == "19%taxbase":
-					rand_tb = cell.row
-					tax19b = cell.column
-					lun = len(sales[cell.column])
-		try:
-			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Tax code purchases'")
-			return render_template("index.html")
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "19%taxamount":
-					rand_tb = cell.row
-					tax19vat = cell.column
-					lun = len(sales[cell.column])
-
-		try:
-			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Tax code purchases'")
-			return render_template("index.html")
-
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Intra-commtaxbase":
-					rand_tb = cell.row
-					intracome1 = cell.column
-					lun = len(sales[cell.column])
-
-		try:
-			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Tax code purchases'")
-			return render_template("index.html")
-		for row in purchases.iter_rows():
-			for cell in row:
-				if cell.value == "Intra-comtaxamount":
-					rand_tb = cell.row
-					intracomtaxe1 = cell.column
-					lun = len(sales[cell.column])
-
-		try:
-			listBazaL = [b.value for b in purchases[taxcodea][rand_tb:lun]]
-		except:
-			flash("Please insert the correct header for 'Tax code purchases'")
-			return render_template("index.html")			
-
-		for row in purchases.iter_rows():
-			for cell in row:
 				if cell.value == "TotaldocinclVAT":
 					rand_tb = cell.row
 					tdoca = cell.column
@@ -1496,11 +1447,11 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'		
 		amount.cell(row=11, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
 		amount.cell(row=12, column=2).value=0
-		amount.cell(row=13, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracome1)+":"+str(intracome1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes")/(119/100),0))'
-		amount.cell(row=14, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracome1)+":"+str(intracome1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes")/(119/100),0))'
+		amount.cell(row=13, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes")/(119/100),0))'
+		amount.cell(row=14, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes")/(119/100),0))'
 		amount.cell(row=15, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"No")/(119/100),0))'
-		amount.cell(row=16, column=2).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+'),0))'
-		amount.cell(row=17, column=2).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+'),0))'	
+		amount.cell(row=16, column=2).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+')/(119/100),0))'
+		amount.cell(row=17, column=2).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+')/(119/100),0))'	
 		amount.cell(row=18, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!BR:BR,"No")/(119/100),0))'
 		amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
 		amount.cell(row=20, column=2).value=0
@@ -1514,7 +1465,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=28, column=2).value=0
 		amount.cell(row=30, column=2).value=0
 		amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ZJ",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-		amount.cell(row=39, column=2).value='=round(sum(Purchases!'+str(tax19b)+':'+str(tax19b)+'),0)'						
+		amount.cell(row=39, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1L",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"3S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"ZI",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(119/100),0)'						
 		amount.cell(row=40, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"9S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(109/100),0)'								
 		amount.cell(row=41, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"6I",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(105/100),0)'								
 
@@ -1570,8 +1521,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		
 
 		# for h in range(13, 19):
-		amount.cell(row=13, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracomtaxe1)+":"+str(intracomtaxe1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes")/(119/100),0))'
-		amount.cell(row=14, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracomtaxe1)+":"+str(intracomtaxe1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes")/(119/100),0))'
+		amount.cell(row=13, column=3).value='=round(B13/100*19,0)'
+		amount.cell(row=14, column=3).value='=round(B14/100*19,0)'
 		amount.cell(row=15, column=3).value='=round(B15/100*19,0)'
 		amount.cell(row=16, column=3).value='=round(B16/100*19,0)'
 		amount.cell(row=17, column=3).value='=round(B17/100*19,0)'
@@ -1603,7 +1554,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=38, column=3).value='=C18'
 
 
-		amount.cell(row=39, column=3).value='=round(sum(Purchases!'+str(tax19vat)+':'+str(tax19vat)+'),0)'
+		amount.cell(row=39, column=3).value='=round(B39/100*19,0)'
 		amount.cell(row=40, column=3).value='=round(B40/100*9,0)'
 		amount.cell(row=41, column=3).value='=round(B41/100*5,0)'			
 		amount.cell(row=42, column=3).value='=round(SUM(C43:C45),0)'
@@ -4399,12 +4350,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			
 			# for i in range(0 ,len(tip)):
 		# folderpath="D:/D300 to XML/docs"
-		folderpath="/home/mirus_app/storage_spreadsheet"
+		folderpath="D:\apps\VAT App mirus\Final project\storage"
 		# folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
 		file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
 		temp.save(file_pathFS)
 		# return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
-		return send_from_directory("/home/mirus_app/storage_spreadsheet","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
+		return send_from_directory("D:\apps\VAT App mirus\Final project\storage","One VAT app spreadsheets " +str(clientname)+".xlsx",as_attachment=True)
 		return render_template('D3APPS2')@app.route('/D3APPS2')
 def my_form2():
     return render_template('D3APPS second step.html')
