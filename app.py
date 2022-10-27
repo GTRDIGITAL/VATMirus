@@ -1683,7 +1683,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=58, column=3).value='=IF((C32-C56)<0,0,C32-C56)'
 		amount.cell(row=59, column=3).value=0
 		amount.cell(row=60, column=3).value=0
-		amount.cell(row=61, column=3).value='=SUM(C58:C60)'		
+		amount.cell(row=61, column=3).value='=SUM(C58:C60)'
+		print("Yes")	
 		if soldLunaTrecuta == None or soldLunaTrecuta == "" or soldLunaTrecuta == " ":
 			amount.cell(row=62, column=3).value=0
 		else:
