@@ -13665,7 +13665,7 @@ def D300_thales():
 			flash("Please insert the correct header for 'Cod si denumire NC produs(TIP V)' in Tranzactii sheet")
 			return render_template("index.html")
 
-		# #print(cuip,nume,tiptranza,bazatv,cotatva,nrfacturi)
+		# #print(asdasdasdadcuip,nume,tiptranza,bazatv,cotatva,nrfacturi)
 
 		text=""
 
