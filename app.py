@@ -1607,7 +1607,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=49, column=2).value=0
 		amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
 		amount.cell(row=51, column=2).value='=round(SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19b)+':'+str(tax19b)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax9b)+':'+str(tax9b)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax5b)+':'+str(tax5b)+')-SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"ZI",Purchases!BR:BR,"No"),0)'
-		amount.cell(row=52, column=2).value='=B50+51'
+		amount.cell(row=52, column=2).value='=B50+B51'
 		amount.cell(row=53, column=2).value=0
 		amount.cell(row=54, column=2).value=0
 		amount.cell(row=55, column=2).value=0
@@ -10877,8 +10877,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			# print(taxcodeach)
 			a=3
 			for jj in range(0, len(denumirea)):
-				if(lunacurenta[x]=="Yes"):
-					if aic[x]!=None :
+				if(lunacurenta[jj]=="Yes"):
+					if aic[jj]!=None :
 						# print(aic[x])
 						a=a+1
 						workings.cell(row=a, column=1).value="A"
