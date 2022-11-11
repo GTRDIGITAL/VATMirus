@@ -5617,12 +5617,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 					listacurentas.append("No")
 
 			else:
-				if(str(listdocdate[k][3:5])==str(info.cell(row=3,column=3).value)):
+				if(str(listdocdate[k])[3:5]==str(info.cell(row=3,column=3).value)):
 					listacurentas.append("Yes")
 				else:
 					listacurentas.append("No")
 		for kk in range(0,len(listacurentas)):
-			sales.cell(row=2+kk,column=70).value=listacurentas[kk]
+			sales.cell(row=18+kk,column=70).value=listacurentas[kk]
 		for row in purchases.iter_rows():
 			for cell in row:
 				if cell.value == "                   1":
