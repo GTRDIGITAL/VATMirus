@@ -13977,6 +13977,7 @@ def D300_thales():
 			text124='''<rezumat1 tip_partener="1" cota="24" facturiL="'''+str(nrL24)+'''" bazaL="'''+str(sumaL24)+'''" tvaL="'''+str(tvaL24)+'''" facturiA="'''+str(nrA24)+'''" bazaA="'''+str(sumaA24)+'''" tvaA="'''+str(tvaA24)+'''" facturiAI="'''+str(nrAI24)+'''" bazaAI="'''+str(sumaAI24)+'''" tvaAI="'''+str(tvaAI24)+'''" facturiC="'''+str(nrC24)+'''" bazaC="'''+str(sumaC24)+'''" tvaC="'''+str(tvaC24)+'''"/>'''
 		else:
 			text124=""
+		text10=''
 		if(nrV0>0 or nrAS0>0 or nrLS0>0):
 			text10='''<rezumat1 tip_partener="1" cota="0" facturiLS="'''+str(nrLS0)+'''" bazaLS="'''+str(valLS0)+'''" facturiAS="'''+str(nrAS0)+'''" bazaAS="'''+str(valAS0)+'''" facturiV="'''+str(nrV0)+'''" bazaV="'''+str(valV0)+'''">
 	<detaliu  bun="22" nrLivV="'''+str(nrV0)+'''" bazaLivV="'''+str(valV0)+'''"/>
