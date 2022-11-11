@@ -6849,19 +6849,19 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			try:
 				vata = [b.value for b in purchases[supplierCell][rand_tb:lun]]
 			except:
-				flash("Please insert the correct header for 'Business PartnerName' in Purchases sheet")
+				flash("Please insert the correct header for 'VAT Registration No.' in Purchases sheet")
 				return render_template("index.html")
 
 			for row in purchases.iter_rows():
 				for cell in row:
 					if cell.value == "  Total doc.incl.VAT":
 						rand_tb = cell.row
-						supplierCell = cell.column
+						totaldoc = cell.column
 						lun = len(purchases[cell.column])
 			try:
-				totala = [b.value for b in purchases[supplierCell][rand_tb:lun]]
+				totala = [b.value for b in purchases[totaldoc][rand_tb:lun]]
 			except:
-				flash("Please insert the correct header for 'Business PartnerName' in Purchases sheet")
+				flash("Please insert the correct header for '  Total doc.incl.VAT' in Purchases sheet")
 				return render_template("index.html")				
 
 			print(len(taxcodeach))
@@ -7437,7 +7437,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 				for cell in row:
 					if cell.value == "Document No.    ":
 						rand_tb = cell.row
-						supplierCell = cell.column
+						doc no = cell.column
 						lun = len(purchases[cell.column])
 			try:
 				docNoPurch = [b.value for b in purchases[supplierCell][rand_tb:lun]]
@@ -7830,12 +7830,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 			for row in purchases.iter_rows():
 				for cell in row:
-					if cell.value == "Business PartnerName":
+					if cell.value == "Business PartnerName":
 						rand_tb = cell.row
-						supplierCell = cell.column
+						codPartener = cell.column
 						lun = len(purchases[cell.column])
 			try:
-				supplierName = [b.value for b in purchases[supplierCell][rand_tb:lun]]
+				supplierName = [b.value for b in purchases[codPartener][rand_tb:lun]]
 			except:
 				flash("Please insert the correct header for 'Furnizor Supplier' in Purchases sheet")
 				return render_template("index.html")
@@ -7844,10 +7844,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 				for cell in row:
 					if cell.value == "  Total doc.incl.VAT":
 						rand_tb = cell.row
-						supplierCell = cell.column
+						totaldocp = cell.column
 						lun = len(purchases[cell.column])
 			try:
-				totdocumentp = [b.value for b in purchases[supplierCell][rand_tb:lun]]
+				totdocumentp = [b.value for b in purchases[totaldocp][rand_tb:lun]]
 			except:
 				flash("Please insert the correct header for '  Total doc.incl.VAT' in Purchases sheet")
 				return render_template("index.html")
@@ -7944,7 +7944,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						if (taxcodeach[i]=="V1" or taxcodeach[i]=="W8" or taxcodeach[i]=="V3" or taxcodeach[i]=="5H" or taxcodeach[i]=="5B"):
 							tipTranzPurch.append('A')
 						else:
-							if taxcodeach[i]=="ZI" or taxcodeach[i]=="5D" or taxcodeach[i]=="ZD" or taxcodeach[i]=="I7" or taxcodeach[i]=="W8" or taxcodeach[i]=="I9" or taxcodeach[i]=="1I" or taxcodeach[i]=="W6" or taxcodeach[i]=="6I":
+							if taxcodeach[i]=="ZI" or taxcodeach[i]=="5D" or taxcodeach[i]=="1J" or taxcodeach[i]=="ZD" or taxcodeach[i]=="I7" or taxcodeach[i]=="W8" or taxcodeach[i]=="I9" or taxcodeach[i]=="1I" or taxcodeach[i]=="W6" or taxcodeach[i]=="6I":
 								tipTranzPurch.append("AI")
 								#print(docNoPurch1[i],";;;;;es 3")
 							else:
@@ -8017,7 +8017,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 				salesExcel.cell(row=ma+ i, column=7).value = coteTVApurchases[i]
 				salesExcel.cell(row=ma+ i, column=8).value = totdocumentp[i]
 				salesExcel.cell(row=ma+ i, column=9).value = "Jurnal cumparari"
-				salesExcel.cell(row=ma+ i, column=10).value = supplierName[i]
+				salesExcel.cell(row=ma+ i, column=10).value = denumirea[i]
 
 			codTaraCUItotal=codTaraCuiPurch+codTaraCuiSales
 			for i in range(0, len(codTaraCUItotal)):
