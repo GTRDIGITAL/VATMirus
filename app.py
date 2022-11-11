@@ -5559,7 +5559,30 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		except:
 			flash("Please insert the correct header for '                 S25'")
 			return render_template("index.html")			
-									
+
+		for row in sales.iter_rows():
+			for cell in row:
+				if cell.value == "                 S21":
+					rand_tb = cell.row
+					E2col = cell.column
+					lun = len(sales[cell.column])
+		try:
+			valE2 = [b.value for b in sales[E2col][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for '                 S25'")
+			return render_template("index.html")
+		for row in sales.iter_rows():
+			for cell in row:
+				if cell.value == "                 S22":
+					rand_tb = cell.row
+					E2colvat = cell.column
+					lun = len(sales[cell.column])
+		try:
+			valE2 = [b.value for b in sales[E2colvat][rand_tb:lun]]
+		except:
+			flash("Please insert the correct header for '                 S25'")
+			return render_template("index.html")
+
 		for row in sales.iter_rows():
 			for cell in row:
 				if cell.value == "  Total doc.incl.VAT":
@@ -5587,14 +5610,14 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		for k in range(0,len(listdocdate)):
 			# print(datadocument[k][3:4])
 			# print(datadocument[k][3:5])
-			if(str(listdocdate[k][3:4])=="0"):
-				if(str(listdocdate[k][4:5])==str(info.cell(row=3,column=3).value)):
+			if(str(listdocdate[k])[3:4]=="0"):
+				if(str(listdocdate[k])[4:5]==str(info.cell(row=3,column=3).value)):
 					listacurentas.append("Yes")
 				else:
 					listacurentas.append("No")
 
 			else:
-				if(listdocdate[k][3:5]==info.cell(row=3,column=3).value):
+				if(str(listdocdate[k])[3:5]==info.cell(row=3,column=3).value):
 					listacurentas.append("Yes")
 				else:
 					listacurentas.append("No")
@@ -7281,6 +7304,17 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 				return render_template("index.html")
 			for row in purchases.iter_rows():
 				for cell in row:
+					if cell.value == "                  16":
+						rand_tb = cell.row
+						baza1I = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				baza1I = [b.value for b in purchases[baza1I][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for '                  10' in Purchases sheet")
+				return render_template("index.html")				
+			for row in purchases.iter_rows():
+				for cell in row:
 					if cell.value == "                  11":
 						rand_tb = cell.row
 						supplierCell = cell.column
@@ -7399,7 +7433,17 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 				flash("Please insert the correct header for ' Doc..Date  ' in Purchases sheet")
 				return render_template("index.html")
 
-			
+			for row in purchases.iter_rows():
+				for cell in row:
+					if cell.value == "Document No.    ":
+						rand_tb = cell.row
+						supplierCell = cell.column
+						lun = len(purchases[cell.column])
+			try:
+				docNoPurch = [b.value for b in purchases[supplierCell][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Document No.    ' in Purchases sheet")
+				return render_template("index.html")			
 
 
 
@@ -7473,7 +7517,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 			for row in sales.iter_rows():
 				for cell in row:
-					if cell.value == "Tax Number 1    ":
+					if cell.value == "VAT Registration No.":
 						rand_tb = cell.row
 						coloanaClientID = cell.column
 						lun = len(sales[cell.column])
@@ -7494,7 +7538,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 			for row in sales.iter_rows():
 				for cell in row:
-					if cell.value == "DocumentNo":
+					if cell.value == "Document No.    ":
 						rand_tb = cell.row
 						docNumber = cell.column
 						lun = len(sales[cell.column])
@@ -7577,6 +7621,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 													else:
 														if(int(bazaN1[i])>0 or int(bazaN1[i]<0)):
 															taxcodeach.append("N1")
+														else:
+															if(int(baza1I[i])>0 or int(baza1I[i]<0)):
+																taxcodeach.append("1I")
+															else:
+																print(docNoPurch[i])
+														
 			taxcodes=[]
 			# print(len(bazaA12),len(docNoSales))
 			for j in range(0,len(docNoSales)):
@@ -7589,7 +7639,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						if(int(valY8[j])>0 or int(valY8[i])<0):
 							taxcodes.append("Y8")
 						else:
-							taxcodes.append("E1")
+							if(int(valE2[j])>0):
+								taxcodes.append("E1")
+							else:
+								taxcodes.append("E2")
 			for i in range(0, len(docNoSales)):
 				if (taxcodes[i]=="A1"):
 					coteTVAsales.append(19)
@@ -7650,6 +7703,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 									# print("Yes")
 									tipTranzSale.append("V")
 									storno.append("")
+								else:
+									tipTranzSale.append("Not applicable for D394")
 					else:
 						if int(codTranzactieSales[i]) == 2:
 							if (taxcodes[i]=='A1'):
@@ -7808,17 +7863,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			except:
 				flash("Please insert the correct header for 'VAT Registration No.' in Purchases sheet")
 				return render_template("index.html")
-			for row in purchases.iter_rows():
-				for cell in row:
-					if cell.value == "Document No.    ":
-						rand_tb = cell.row
-						supplierCell = cell.column
-						lun = len(purchases[cell.column])
-			try:
-				docNoPurch = [b.value for b in purchases[supplierCell][rand_tb:lun]]
-			except:
-				flash("Please insert the correct header for 'Document No.    ' in Purchases sheet")
-				return render_template("index.html")				
+				
 
 
 			serieCuiPurch = []
@@ -7868,8 +7913,9 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 			#Cote TVA
 			coteTVApurchases=[]
+			print(len(taxcodeach),len(docNoPurch))
 			for i in range(0, len(docNoPurch)):
-				if (taxcodeach[i]=="ZI" or taxcodeach[i]=="C3" or taxcodeach[i]=="ZD" or taxcodeach[i]=="E1" or taxcodeach[i]=='V1' or taxcodeach[i]=="5H" or taxcodeach[i]=="X1" or taxcodeach[i]=="1L" or taxcodeach[i]=="1M" or taxcodeach[i]=="3S" or taxcodeach[i]=="5B" or taxcodeach[i]=="5H"):
+				if (taxcodeach[i]=="ZI" or taxcodeach[i]=="C3" or taxcodeach[i]=="ZD" or taxcodeach[i]=="E1" or taxcodeach[i]=='V1' or taxcodeach[i]=="5H" or taxcodeach[i]=="X1" or taxcodeach[i]=="1L" or taxcodeach[i]=="1M" or taxcodeach[i]=="3S" or taxcodeach[i]=="5B" or taxcodeach[i]=="5H" or taxcodeach[i]=="1I"):
 					coteTVApurchases.append('19')
 				else:
 					if (taxcodeach[i]=="I9" or taxcodeach[i]=="W8" or taxcodeach[i]=="W6" or taxcodeach[i]=="J2" or taxcodeach[i]=="V3" or taxcodeach[i]=="9S"):
@@ -7887,7 +7933,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 			# for i in range(0,len(suppIDPurch)):
 				# #print(suppIDPurch[i],tipTranzactiePurchases[i])
-			# #print(len(docNoPurch),len(tipTranzactiePurchases))
+			print(len(docNoPurch),len(tipTranzactiePurchases))
 			#print(len(docNoPurch1),len(listadeclantp_1),"--------------len de lista")
 			for i in range(0, len(docNoPurch)):
 				if(listadeclantp_1[i]=="Yes"):
@@ -7898,7 +7944,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						if (taxcodeach[i]=="V1" or taxcodeach[i]=="W8" or taxcodeach[i]=="V3" or taxcodeach[i]=="5H" or taxcodeach[i]=="5B"):
 							tipTranzPurch.append('A')
 						else:
-							if taxcodeach[i]=="ZI" or taxcodeach[i]=="5D" or taxcodeach[i]=="ZD" or taxcodeach[i]=="I7" or taxcodeach[i]=="W8" or taxcodeach[i]=="I9" or taxcodeach[i]=="W6" or taxcodeach[i]=="6I":
+							if taxcodeach[i]=="ZI" or taxcodeach[i]=="5D" or taxcodeach[i]=="ZD" or taxcodeach[i]=="I7" or taxcodeach[i]=="W8" or taxcodeach[i]=="I9" or taxcodeach[i]=="1I" or taxcodeach[i]=="W6" or taxcodeach[i]=="6I":
 								tipTranzPurch.append("AI")
 								#print(docNoPurch1[i],";;;;;es 3")
 							else:
@@ -8194,7 +8240,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 					result = ''.join([i for i in str(docNoSales[i]) if not i.isdigit()])
 					docNoSales2.append(numere)
 					seriefacturi.append(result)
-			#print(seriefacturi)
+			# print(seriefacturi)
 			# print(docNoSales2)
 			initial=0
 			final=0
@@ -8210,10 +8256,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			for i in range(0,len(listaunica)):
 				listafacturi=[]
 				print(listaunica[i])
-				for j in range(0,len(docNoSales2)):
-					if(listaunica[i]==docNoSales2[j]):
+				for j in range(0,len(docNoSales)):
+					if(listaunica[i]==docNoSales[j]):
 
-						listafacturi.append(int(docNoSales2[j]))
+						listafacturi.append(int(docNoSales[j]))
 			listafacturi=list(set(listafacturi))
 			print(listafacturi)
 			listafacturi.sort()
