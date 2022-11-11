@@ -7437,10 +7437,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 				for cell in row:
 					if cell.value == "Document No.    ":
 						rand_tb = cell.row
-						doc no = cell.column
+						docnoc = cell.column
 						lun = len(purchases[cell.column])
 			try:
-				docNoPurch = [b.value for b in purchases[supplierCell][rand_tb:lun]]
+				docNoPurch = [b.value for b in purchases[docnoc][rand_tb:lun]]
 			except:
 				flash("Please insert the correct header for 'Document No.    ' in Purchases sheet")
 				return render_template("index.html")			
