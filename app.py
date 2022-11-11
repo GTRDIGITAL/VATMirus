@@ -5617,7 +5617,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 					listacurentas.append("No")
 
 			else:
-				if(str(listdocdate[k])[3:5]==info.cell(row=3,column=3).value):
+				if(str(listdocdate[k][3:5])==str(info.cell(row=3,column=3).value)):
 					listacurentas.append("Yes")
 				else:
 					listacurentas.append("No")
@@ -5907,7 +5907,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						lunacurenta.append("No")
 
 				else:
-					if(datadocument[k][4:6]==info.cell(row=3,column=3).value):
+					if(str(datadocument[k][4:6])==str(info.cell(row=3,column=3).value)):
 						lunacurenta.append("Yes")
 					else:
 						lunacurenta.append("No")
