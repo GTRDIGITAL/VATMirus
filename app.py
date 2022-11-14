@@ -212,17 +212,17 @@ def my_form():
 @app.route('/D3APPS/PMG/Instructions', methods=['GET'])
 def downloadPMG():
 	# filepath = "D:\Projects\8. Python web apps\Test web flask\Instructions"
-	return send_from_directory("/home/mirus_app/instuctions","Instructions - PMG.docx", as_attachment=True)
+	return send_from_directory("/home/mirus_app/instuctions#","Instructions - PMG.docx", as_attachment=True)
 
 @app.route('/D3APPS/Straumann/Instructions', methods=['GET'])
 def downloadStraumann():
 	# filepath = "D:\Projects\8. Python web apps\Test web flask\Instructions"
-	return send_from_directory("/home/mirus_app/instuctions","Instructions - Straumann.docx", as_attachment=True)
+	return send_from_directory("/home/mirus_app/instuctions#","Instructions - Straumann.docx", as_attachment=True)
 
 @app.route('/D3APPS/THALES/Instructions', methods=['GET'])
 def downloadThales():
 	# filepath = "D:\Projects\8. Python web apps\Test web flask\Instructions"
-	return send_from_directory("/home/mirus_app/instuctions","Instructions - Thales.docx", as_attachment=True)
+	return send_from_directory("/home/mirus_app/instuctions#","Instructions - Thales.docx", as_attachment=True)
 
 
 global LL_g
