@@ -209,6 +209,22 @@ app.secret_key = "GT ROMANIA Delivery Center"
 def my_form():
     return render_template('D3APPS dashboard.html')
 
+@app.route('/D3APPS/PMG/Instructions', methods=['GET'])
+def downloadPMG():
+	# filepath = "D:\Projects\8. Python web apps\Test web flask\Instructions"
+	return send_from_directory("/home/mirus_app/instuctions","Instructions - PMG.docx", as_attachment=True)
+
+@app.route('/D3APPS/Straumann/Instructions', methods=['GET'])
+def downloadStraumann():
+	# filepath = "D:\Projects\8. Python web apps\Test web flask\Instructions"
+	return send_from_directory("/home/mirus_app/instuctions","Instructions - Straumann.docx", as_attachment=True)
+
+@app.route('/D3APPS/THALES/Instructions', methods=['GET'])
+def downloadThales():
+	# filepath = "D:\Projects\8. Python web apps\Test web flask\Instructions"
+	return send_from_directory("/home/mirus_app/instuctions","Instructions - Thales.docx", as_attachment=True)
+
+
 global LL_g
 @app.route('/D3APPS/PMG')
 def my_form_D300():
@@ -1864,6 +1880,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 				LL2=str(int(info.cell(row=3,column=3).value)+1)
 			else:
 				LL2="0"+str(int(info.cell(row=3, column=3).value)+1)
+		else:
+			LL2=str(int(info.cell(row=3,column=3).value))				
 		# #print(LL2, 'LL2')
 		
 		if int(info.cell(row=3, column=3).value)==12:
@@ -11996,19 +12014,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 								#print(docNoPurch1[i],";;;;es 9")
 						else:
 							if int(tipTranzactiePurchases[i]) == 3:
-								if (taxBaseAch19[i]!=None or taxBaseneexAch19[i]!=None):
-									tipTranzPurch.append('A')
-								else:
-									tipTranzPurch.append("Not applicable for D394")
-											#print(docNoPurch1[i],";;;;;es 12")
+								tipTranzPurch.append("Not applicable for D394")
+										#print(docNoPurch1[i],";;;;;es 12")
 							
 							else:
 									if int(tipTranzactiePurchases[i]) == 4:
-										if (taxBaseAch19[i]!=None or taxBaseneexAch19[i]!=None):
-											tipTranzPurch.append('A')
-											#print(docNoPurch1[i],";;;;;es 12")
-										else:
-											tipTranzPurch.append("Not applicable for D394")
+										tipTranzPurch.append("Not applicable for D394")
 										#print("Yes 16")
 				# #print(docNoPurch1[i],tipTranzPurch[i],docNoPurch[i+1])
 			ma=salesExcel.max_row+1
@@ -13801,6 +13812,11 @@ def D300_thales():
 		count=0
 		#print(bazatv)
 		tippartener1=[]
+		totalfacturi=0
+		cuitip1=[]
+		cuitip2=[]
+		cuitip3=[]
+		cuitip4=[]
 		for i in range(0,len(tip_partener)):
 			if(str(tip_partener[i])=="1" and tiptranza[i]!="Not applicable for D394" and str(bazatv[i])!="0"):
 				tippartener1.append(cuip[i])
@@ -13809,64 +13825,83 @@ def D300_thales():
 				if(bazatv[i]>0):
 					if(str(cotatva[i])=="0"):
 						if(str(tiptranza[i])=="V"):
+							cuitip1.append(cuip[i])
 							nrV0=nrV0+1
+							totalfacturi=totalfacturi+1
 							valV0=valV0+bazatv[i]
 						if(str(tiptranza[i])=="AS"):
+							cuitip1.append(cuip[i])							
 							nrLS0=nrLS0+1
 							valLS0=valLS0+bazatv[i]						
 						if(str(tiptranza[i])=="LS"):
+							cuitip1.append(cuip[i])	
 							nrAS0=nrAS0+1
+							totalfacturi=totalfacturi+1
 							valAS0=valAS0+bazatv[i]							
 					if(str(cotatva[i])=="5"):
 						if(str(tiptranza[i])=="L"):
+							cuitip1.append(cuip[i])	
 
 							nrL5=nrL5+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL5=sumaL5+int(bazatv[i])
 							tvaL5=tvaL5+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
 						
 							nrAI5=nrAI5+int(nrfacturi[i])
+							cuitip1.append(cuip[i])	
 							sumaAI5=sumaAI5+int(bazatv[i])
 							tvaAI5=tvaAI5+int(stva[i])
 						if(str(tiptranza[i])=="A"):
 						
 							nrA5=nrA5+int(nrfacturi[i])
+							cuitip1.append(cuip[i])	
 							sumaA5=sumaA5+int(bazatv[i])
 							tvaA5=tvaA5+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
 						
 							nrLS5=nrLS5+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
+							totalfacturi=totalfacturi+1
 							sumaLS5=sumaLS5+int(bazatv[i])
 							tvaLS5=tvaLS5+int(stva[i])
 						if(str(tiptranza[i])=="C"):
 						
 							nrC5=nrC5+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaC5=sumaC5+int(bazatv[i])
 							tvaC5=tvaC5+int(stva[i])
 					if(str(cotatva[i])=="9"):
 						if(str(tiptranza[i])=="L"):
 						
 							nrL9=nrL9+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
+							totalfacturi=totalfacturi+1
 							sumaL9=sumaL9+int(bazatv[i])
 							tvaL9=tvaL9+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
 						
 							nrLS9=nrLS9+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
+							totalfacturi=totalfacturi+1
 							sumaLS9=sumaLS9+int(bazatv[i])
 							tvaLS9=tvaLS9+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
 						
 							nrAI9=nrAI9+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaAI9=sumaAI9+int(bazatv[i])
 							tvaAI9=tvaAI9+int(stva[i])
 						if(str(tiptranza[i])=="A"):
 						
 							nrA9=nrA9+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaA9=sumaA9+int(bazatv[i])
 							tvaA9=tvaA9+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
 						
 							nrC9=nrC9+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaC9=sumaC9+int(bazatv[i])
 							tvaC9=tvaC9+int(stva[i])
 					if(str(cotatva[i])=="19"):
@@ -13874,17 +13909,22 @@ def D300_thales():
 						if(str(tiptranza[i])=="L"):
 						
 							nrL19=nrL19+int(int(nrfacturi[i]))
+							cuitip1.append(cuip[i])
+							totalfacturi=totalfacturi+1
 							sumaL19=sumaL19+int(bazatv[i])
 							tvaL19=tvaL19+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
 						
 							nrLS19=nrLS19+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
+							totalfacturi=totalfacturi+1
 							sumaLS19=sumaLS19+int(bazatv[i])
 							tvaLS19=tvaLS19+int(stva[i])
 
 						if(str(tiptranza[i])=="AI"):
 						
 							nrAI19=nrAI19+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaAI19=sumaAI19+int(bazatv[i])
 							tvaAI19=tvaAI19+int(stva[i])
 							#print(nrAI19)
@@ -13892,65 +13932,80 @@ def D300_thales():
 						
 							#print(tiptranza[i],bazatv[i],stva[i])
 							nrA19=nrA19+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaA19=sumaA19+int(bazatv[i])
 							tvaA19=tvaA19+int(stva[i])
 						if(str(tiptranza[i])=="C"):
 						
 							nrC19=nrC19+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaC19=sumaC19+int(bazatv[i])
 							tvaC19=tvaC19+int(stva[i])
 					if(str(cotatva[i])=="20"):
 						if(str(tiptranza[i])=="L"):
 						
 							nrL20=nrL20+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
+							totalfacturi=totalfacturi+1
 							sumaL20=sumaL20+int(bazatv[i])
 							tvaL20=tvaL20+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
 						
 							nrLS20=nrLS20+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaLS20=sumaLS20+int(bazatv[i])
 							tvaLS20=tvaLS20+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
 						
 							nrAI20=nrAI20+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaAI20=sumaAI20+int(bazatv[i])
 							tvaAI20=tvaAI20+int(stva[i])
 						if(str(tiptranza[i])=="A"):
 						
 							nrA20=nrA20+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaA20=sumaA20+int(bazatv[i])
 							tvaA20=tvaA20+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
 						
 							nrC20=nrC20+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaC20=sumaC20+int(bazatv[i])
 							tvaC20=tvaC20+int(stva[i])
 					if(str(cotatva[i])=="24"):
 						if(str(tiptranza[i])=="L"):
 						
 							nrL24=nrL24+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
+							cuitip1.append(cuip[i])
 							sumaL24=sumaL24+int(bazatv[i])
 							tvaL24=tvaL24+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
 						
 							nrLS24=nrLS24+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaLS24=sumaLS24+int(bazatv[i])
 							tvaLS24=tvaLS24+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
 						
 							nrC24=nrC24+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])
 						if(str(tiptranza[i])=="AI"):
 						
 							nrAI24=nrAI24+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaAI24=sumaAI24+int(bazatv[i])
 							tvaAI24=tvaAI24+int(stva[i])
 						if(str(tiptranza[i])=="A"):
 						
 							nrA24=nrA24+int(nrfacturi[i])
+							cuitip1.append(cuip[i])
 							sumaA24=sumaA24+int(bazatv[i])
 							tvaA24=tvaA24+int(stva[i])
+		numarcuicorect1=len(list(set(cuitip1)))
 		numart=(list(set(tippartener1)))
 		print(numart)
 		numartotal=len(numart)
@@ -14020,77 +14075,126 @@ def D300_thales():
 		nrLS19=0
 		nrLS20=0
 		nrLS24=0
+		nrN0=0
+		sumaN0=0
+		# tvaN0=0
 
 		numarcui2=0
 		for i in range(0,len(tip_partener)):
 			if(str(tip_partener[i])=="2"):
 				if(bazatv[i]>0):
-					if(str(cotatva[i])=="5"):
-						if(str(tiptranza[i])=="L"):
-							nrL5=nrL5+int(nrfacturi[i])
-							sumaL5=sumaL5+int(bazatv[i])
-							tvaL5=tvaL5+int(stva[i])
+					if(str(cotatva[i])=="0"):
+						if(str(tiptranza[i])=="N"):
+							cuitip2.append(cuip[i])
+							nrN0=nrL5+int(nrfacturi[i])
+							# totalfacturi=totalfacturi+1
+							sumaN0=sumaL5+int(bazatv[i])
+							# tvaN0=tvaL5+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip2.append(cuip[i])
 							nrLS5=nrLS5+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS5=sumaLS5+int(bazatv[i])
 							tvaLS5=tvaLS5+int(stva[i])
 						if(str(tiptranza[i])=="C"):
+							cuitip2.append(cuip[i])
+							nrC5=nrC5+int(nrfacturi[i])
+							sumaC5=sumaC5+int(bazatv[i])
+							tvaC5=tvaC5+int(stva[i])
+
+					if(str(cotatva[i])=="5"):
+						if(str(tiptranza[i])=="L"):
+							cuitip2.append(cuip[i])
+							nrL5=nrL5+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
+							sumaL5=sumaL5+int(bazatv[i])
+							tvaL5=tvaL5+int(stva[i])
+						if(str(tiptranza[i])=="LS"):
+							cuitip2.append(cuip[i])
+							nrLS5=nrLS5+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
+							sumaLS5=sumaLS5+int(bazatv[i])
+							tvaLS5=tvaLS5+int(stva[i])
+						if(str(tiptranza[i])=="C"):
+							cuitip2.append(cuip[i])
 							nrC5=nrC5+int(nrfacturi[i])
 							sumaC5=sumaC5+int(bazatv[i])
 							tvaC5=tvaC5+int(stva[i])
 					if(str(cotatva[i])=="9"):
+						
 						if(str(tiptranza[i])=="L"):
+							cuitip2.append(cuip[i])
 							nrL9=nrL9+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL9=sumaL9+int(bazatv[i])
 							tvaL9=tvaL9+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip2.append(cuip[i])
 							nrLS9=nrLS9+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS9=sumaLS9+int(bazatv[i])
 							tvaLS9=tvaLS9+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
+							cuitip2.append(cuip[i])
 							nrC9=nrC9+int(nrfacturi[i])
 							sumaC9=sumaC9+int(bazatv[i])
 							tvaC9=tvaC9+int(stva[i])
 					if(str(cotatva[i])=="19"):
 						if(str(tiptranza[i])=="L"):
+							cuitip2.append(cuip[i])
 							nrL19=nrL19+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL19=sumaL19+int(bazatv[i])
 							tvaL19=tvaL19+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip2.append(cuip[i])
 							nrLS19=nrLS19+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS19=sumaLS19+int(bazatv[i])
 							tvaLS19=tvaLS19+int(stva[i])
 						if(str(tiptranza[i])=="C"):
+							cuitip2.append(cuip[i])
 							nrC19=nrC19+int(nrfacturi[i])
 							sumaC19=sumaC19+int(bazatv[i])
 							tvaC19=tvaC19+int(stva[i])
 					if(str(cotatva[i])=="20"):
 						if(str(tiptranza[i])=="L"):
+							cuitip2.append(cuip[i])
 							nrL20=nrL20+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL20=sumaL20+int(bazatv[i])
 							tvaL20=tvaL20+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip2.append(cuip[i])
 							nrLS20=nrLS20+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS20=sumaLS20+int(bazatv[i])
 							tvaLS20=tvaLS20+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
+							cuitip2.append(cuip[i])
 							nrC20=nrC20+int(nrfacturi[i])
 							sumaC20=sumaC20+int(bazatv[i])
 							tvaC20=tvaC20+int(stva[i])
 					if(str(cotatva[i])=="24"):
 						if(str(tiptranza[i])=="L"):
+							cuitip2.append(cuip[i])
 							nrL24=nrL24+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL24=sumaL24+int(bazatv[i])
 							tvaL24=tvaL24+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip2.append(cuip[i])
 							nrLS24=nrLS24+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS24=sumaLS24+int(bazatv[i])
 							tvaLS24=tvaLS24+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
+							cuitip2.append(cuip[i])
 							nrC24=nrC24+int(nrfacturi[i])
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])	
 		numarcui2=nrLS24+nrL24+nrLS20+nrL20+nrLS19+nrL19+nrLS9+nrL9+nrLS5+nrL5
+		numarcuicorect2=len(list(set(cuitip2)))
 		if(nrL5>0):
 			text25='''<rezumat1 tip_partener="2" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''"/>'''
 		else:
@@ -14112,7 +14216,7 @@ def D300_thales():
 		else:
 			text224=""
 		if(bazaN0>0):
-			text20='''<rezumat1 tip_partener="2" cota="0" facturiN="'''+str(nrLS24)+'''" documentN="1" bazaN="'''+str(bazaN0)+'''"/>'''
+			text20='''<rezumat1 tip_partener="2" cota="0" facturiN="'''+str(nrN0)+'''" documentN="1" bazaN="'''+str(sumaN0)+'''"/>'''
 		else:
 			text20=""
 		sumaL5=0
@@ -14174,70 +14278,96 @@ def D300_thales():
 				if(bazatv[i]>0):
 					if(str(cotatva[i])=="5"):
 						if(str(tiptranza[i])=="L"):
+							cuitip3.append(cuip[i])
 							nrL5=nrL5+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL5=sumaL5+int(bazatv[i])
 							tvaL5=tvaL5+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
 							nrLS5=nrLS5+int(nrfacturi[i])
+							cuitip3.append(cuip[i])
+							totalfacturi=totalfacturi+1
 							sumaLS5=sumaLS5+int(bazatv[i])
 							tvaLS5=tvaLS5+int(stva[i])
 						if(str(tiptranza[i])=="C"):
+							cuitip3.append(cuip[i])
 							nrC5=nrC5+int(nrfacturi[i])
 							sumaC5=sumaC5+int(bazatv[i])
 							tvaC5=tvaC5+int(stva[i])
 					if(str(cotatva[i])=="9"):
 						if(str(tiptranza[i])=="L"):
+							cuitip3.append(cuip[i])
 							nrL9=nrL9+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL9=sumaL9+int(bazatv[i])
 							tvaL9=tvaL9+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip3.append(cuip[i])
 							nrLS9=nrLS9+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS9=sumaLS9+int(bazatv[i])
 							tvaLS9=tvaLS9+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
+							cuitip3.append(cuip[i])
 							nrC9=nrC9+int(nrfacturi[i])
 							sumaC9=sumaC9+int(bazatv[i])
 							tvaC9=tvaC9+int(stva[i])
 					if(str(cotatva[i])=="19"):
 						if(str(tiptranza[i])=="L"):
+							cuitip3.append(cuip[i])
 							nrL19=nrL19+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL19=sumaL19+int(bazatv[i])
 							tvaL19=tvaL19+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip3.append(cuip[i])
 							nrLS19=nrLS19+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS19=sumaLS19+int(bazatv[i])
 							tvaLS19=tvaLS19+int(stva[i])
 						if(str(tiptranza[i])=="C"):
+							cuitip3.append(cuip[i])
 							nrC19=nrC19+int(nrfacturi[i])
 							sumaC19=sumaC19+int(bazatv[i])
 							tvaC19=tvaC19+int(stva[i])
 					if(str(cotatva[i])=="20"):
 						if(str(tiptranza[i])=="L"):
+							cuitip3.append(cuip[i])
 							nrL20=nrL20+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL20=sumaL20+int(bazatv[i])
 							tvaL20=tvaL20+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip3.append(cuip[i])
 							nrLS20=nrLS20+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS20=sumaLS20+int(bazatv[i])
 							tvaLS20=tvaLS20+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
+							cuitip3.append(cuip[i])
 							nrC20=nrC20+int(nrfacturi[i])
 							sumaC20=sumaC20+int(bazatv[i])
 							tvaC20=tvaC20+int(stva[i])
 					if(str(cotatva[i])=="24"):
 						if(str(tiptranza[i])=="L"):
+							cuitip3.append(cuip[i])
 							nrL24=nrL24+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL24=sumaL24+int(bazatv[i])
 							tvaL24=tvaL24+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip3.append(cuip[i])
 							nrLS24=nrLS24+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS24=sumaLS24+int(bazatv[i])
 							tvaLS24=tvaLS24+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
+							cuitip3.append(cuip[i])
 							nrC24=nrC24+int(nrfacturi[i])
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])
 		numarcui3=nrLS24+nrC24+nrL24+nrC20+nrLS20+nrL20+nrC19+nrLS19+nrL19+nrC19+nrLS9+nrL9+nrC9+nrLS5+nrL5+nrC5
+		numarcuicorect3=len(list(set(cuitip3)))
 		if(nrL5>0 or nrC5>0):
 			text35='''<rezumat1 tip_partener="3" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''" facturiC="'''+str(nrC5)+'''" bazaC="'''+str(sumaC5)+'''" tvaC="'''+str(tvaC5)+'''"/>'''
 		else:
@@ -14317,66 +14447,91 @@ def D300_thales():
 				if(str(tip_partener[i])=="4"):
 					if(str(cotatva[i])=="5"):
 						if(str(tiptranza[i])=="L"):
+							cuitip4.append(cuip[i])
 							nrL5=nrL5+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL5=sumaL5+int(bazatv[i])
 							tvaL5=tvaL5+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip4.append(cuip[i])
 							nrLS5=nrLS5+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS5=sumaLS5+int(bazatv[i])
 							tvaLS5=tvaLS5+int(stva[i])
 						if(str(tiptranza[i])=="C"):
+							cuitip4.append(cuip[i])
 							nrC5=nrC5+int(nrfacturi[i])
 							sumaC5=sumaC5+int(bazatv[i])
 							tvaC5=tvaC5+int(stva[i])
 					if(str(cotatva[i])=="9"):
 						if(str(tiptranza[i])=="L"):
+							cuitip4.append(cuip[i])
 							nrL9=nrL9+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL9=sumaL9+int(bazatv[i])
 							tvaL9=tvaL9+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip4.append(cuip[i])
 							nrLS9=nrLS9+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS9=sumaLS9+int(bazatv[i])
 							tvaLS9=tvaLS9+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
+							cuitip4.append(cuip[i])
 							nrC9=nrC9+int(nrfacturi[i])
 							sumaC9=sumaC9+int(bazatv[i])
 							tvaC9=tvaC9+int(stva[i])
 					if(str(cotatva[i])=="19"):
 						if(str(tiptranza[i])=="L"):
+							cuitip4.append(cuip[i])
 							nrL19=nrL19+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL19=sumaL19+int(bazatv[i])
 							tvaL19=tvaL19+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip4.append(cuip[i])
 							nrLS19=nrLS19+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS19=sumaLS19+int(bazatv[i])
 							tvaLS19=tvaLS19+int(stva[i])
 						if(str(tiptranza[i])=="C"):
+							cuitip4.append(cuip[i])
 							nrC19=nrC19+int(nrfacturi[i])
 							sumaC19=sumaC19+int(bazatv[i])
 							tvaC19=tvaC19+int(stva[i])
 					if(str(cotatva[i])=="20"):
 						if(str(tiptranza[i])=="L"):
+							cuitip4.append(cuip[i])
 							nrL20=nrL20+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL20=sumaL20+int(bazatv[i])
 							tvaL20=tvaL20+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip4.append(cuip[i])
 							nrLS20=nrLS20+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS20=sumaLS20+int(bazatv[i])
 							tvaLS20=tvaLS20+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
+							cuitip4.append(cuip[i])
 							nrC20=nrC20+int(nrfacturi[i])
 							sumaC20=sumaC20+int(bazatv[i])
 							tvaC20=tvaC20+int(stva[i])
 					if(str(cotatva[i])=="24"):
 						if(str(tiptranza[i])=="L"):
+							cuitip4.append(cuip[i])
 							nrL24=nrL24+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaL24=sumaL24+int(bazatv[i])
 							tvaL24=tvaL24+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
+							cuitip4.append(cuip[i])
 							nrLS24=nrLS24+int(nrfacturi[i])
+							totalfacturi=totalfacturi+1
 							sumaLS24=sumaLS24+int(bazatv[i])
 							tvaLS24=tvaLS24+int(stva[i])		
 						if(str(tiptranza[i])=="C"):
+							cuitip4.append(cuip[i])
 							nrC24=nrC24+int(nrfacturi[i])
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])
@@ -14537,7 +14692,7 @@ def D300_thales():
 		totalplata394=numarcui1+numarcui2+numarcui3+numarcui4+L24b+L20b+L19b+L9b+L5b+A5b+A9b+A19b+A20b+A24b+AI5b+AI9b+AI19b+AI20b+AI24b
 		#print(totalplata394)
 		textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Grant Thornton " cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
-		<informatii nrCui1="'''+str(numarcui1)+'''" nrCui2="'''+str(numarcui2)+'''" nrCui3="'''+str(numarcui3)+'''" nrCui4="'''+str(numarcui4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="175" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
+		<informatii nrCui1="'''+str(numarcui1)+'''" nrCui2="'''+str(numarcui2)+'''" nrCui3="'''+str(numarcui3)+'''" nrCui4="'''+str(numarcui4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="'''+str(totalfacturi)+'''" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
 		text=text+textinfo+text15+text10+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
 
 
