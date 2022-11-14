@@ -14544,6 +14544,7 @@ def D300_thales():
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])
 		numarcui4=nrLS24+nrC24+nrL24+nrC20+nrLS20+nrL20+nrC19+nrLS19+nrL19+nrC19+nrLS9+nrL9+nrC9+nrLS5+nrL5+nrC5
+		numarcuicorect4=len(list(set(cuitip4)))
 		if(nrL5>0 or nrC5>0):
 			text45='''<rezumat1 tip_partener="4" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''" facturiC="'''+str(nrC5)+'''" bazaC="'''+str(sumaC5)+'''" tvaC="'''+str(tvaC5)+'''"/>'''
 		else:
