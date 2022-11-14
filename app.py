@@ -3386,7 +3386,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						else:
 							if int(tipTranzactiePurchases[i]) == 3:
 								if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3"):
-											tipTranzPurch.append('A')
+											tipTranzPurch.append('Not applicable for D394')
 											#print(docNoPurch1[i],";;;;;es 12")
 								else:
 										#print(docNoPurch1[i],";;;;;es 13")
@@ -3398,7 +3398,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 							else:
 									if int(tipTranzactiePurchases[i]) == 4:
 										if (taxcodep[i]=="V1" or taxcodep[i]=="W8" or taxcodep[i]=="V3"):
-											tipTranzPurch.append('A')
+											tipTranzPurch.append('Not applicable for D394')
 											#print(docNoPurch1[i],";;;;;es 12")
 										else:
 											if (taxcodep[i]=="ZR"):
@@ -7988,7 +7988,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						else:
 							if int(tipTranzactiePurchases[i]) == 3:
 								if (taxcodeach[i]=="V1" or taxcodeach[i]=="W8" or taxcodeach[i]=="V3"):
-											tipTranzPurch.append('A')
+											tipTranzPurch.append('Not applicable for D394')
 											#print(docNoPurch1[i],";;;;;es 12")
 								else:
 										#print(docNoPurch1[i],";;;;;es 13")
@@ -8000,7 +8000,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 							else:
 									if int(tipTranzactiePurchases[i]) == 4:
 										if (taxcodeach[i]=="V1" or taxcodeach[i]=="W8" or taxcodeach[i]=="V3"):
-											tipTranzPurch.append('A')
+											tipTranzPurch.append('Not applicable for D394')
 											#print(docNoPurch1[i],";;;;;es 12")
 										else:
 											if (taxcodeach[i]=="1M"):
