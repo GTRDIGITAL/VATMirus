@@ -13494,6 +13494,7 @@ def D300_thales():
 	tippok=tipp[:1]
 	an=sheet1.cell(row=2,column=3).value
 	luna=sheet1.cell(row=3,column=3).value
+
 	sisnormaldetva=sheet1.cell(row=61,column=3).value
 	if(sisnormaldetva=="DA"):
 		sistem=0
@@ -13730,7 +13731,7 @@ def D300_thales():
 			flash("Please insert the correct header for 'Cod si denumire NC produs(TIP V)' in Tranzactii sheet")
 			return render_template("index.html")
 
-		# #print(asdasdasdadcuip,nume,tiptranza,bazatv,cotatva,nrfacturi)
+		# #print(    asdasdasdadcuip,nume,tiptranza,bazatv,cotatva,nrfacturi)
 
 		text=""
 
