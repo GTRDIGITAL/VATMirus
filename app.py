@@ -228,7 +228,7 @@ def downloadThales():
 global LL_g
 @app.route('/D3APPS/PMG')
 def my_form_D300():
-	return render_template('D3APPS.html')
+	return render_template('D3APPS PMG.html')
 
 @app.route('/D3APPS/PMG', methods=['POST', 'GET'])
 def D300xml():
@@ -4506,7 +4506,7 @@ def my_form_straumann():
 global LL_g
 @app.route('/D3APPS/STRAUMANN')
 def my_form_D300_straumann():
-	return render_template('D3APPS.html')
+	return render_template('D3APPS Straumann.html')
 
 @app.route('/D3APPS/STRAUMANN', methods=['POST', 'GET'])
 def D300xml_straumann():
@@ -9107,7 +9107,7 @@ def my_form_thales():
 global LL_g
 @app.route('/D3APPS/CIEL-THALES')
 def my_form_D300_thales():
-	return render_template('D3APPS.html')
+	return render_template('D3APPS Thales.html')
 
 @app.route('/D3APPS/CIEL-THALES', methods=['POST', 'GET'])
 def D300xml_thales():
