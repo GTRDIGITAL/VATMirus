@@ -104,6 +104,7 @@ listadenluni=['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','A
 listadenluni2=['January','February','March','April','May','June','July','August','September','October','November','December']
 listatrez=['Trezoreria operativă Agnita','Trezorerie operativa Alesd','Trezoreria operativă Avrig','Trezoreria operativă Babadag','Trezorerie operativa Babeni','Trezoreria operativă Baia','Trezoreria operativă Baia de Aramă','Trezorerie operativa Balcesti','Trezorerie operativa Beclean','Trezorerie operativa Beius','Trezoreria operativă Boldeşti - Scăeni','Trezorerie operativa Bozovici','Trezorerie operativa Budesti','Trezoreria operativă Buftea','Trezorerie operativa Buhusi','Trezoreria operativă Buşteni','Trezorerie operativa Buzias','Trezorerie operativa Campeni','Trezoreria operativă Cehu Silvaniei','Trezorerie operativa Chisinau Cris','Trezorerie operativa Codlea','Trezorerie operativa Comunala Podu Turcului','Trezorerie operativa Costesti','Trezorerie operativa Cugir','Trezorerie operativa Darabani','Trezorerie operativa Deta','Trezorerie operativa Eforie','Trezorerie operativa Faget','Trezorerie operativa Faurei','Trezoreria operativă Feteşti','Trezorerie operativa Gaiesti','Trezorerie operativa Gura Lotrului','Trezorerie operativa Harlau','Trezorerie operativa Harsova','Trezorerie operativa Hateg','Trezorerie operativa Horezu','Trezorerie operativa Huedin','Trezorerie operativa Ianca','Trezoreria operativă Ilfov','Trezorerie operativa Ineu','Trezorerie operativa Insuratei','Trezoreria operativă Jibou','Trezorerie operativa Jimbolia','Trezorerie operativa Lehliu Gara','Trezorerie operativa Lipova','Trezoreria operativă Luduş','Trezoreria operativă Măcin','Trezorerie operativa Marghita','Trezorerie operativa Mioveni','Trezoreria operativă Mizil','Trezorerie operativa Moinesti','Trezorerie operativa Moldova Noua','Trezorerie operativa Moreni','Trezorerie operativa Motru','Trezoreria operativă Municipiu Slatina','Trezorerie operativa Municipiul  Alba Iulia','Trezorerie operativa Municipiul Adjud','Trezorerie operativa Municipiul Aiud','Trezoreria operativă Municipiul Alexandria','Trezorerie operativa Municipiul Arad','Trezorerie operativa Municipiul Bacau','Trezoreria operativă Municipiul Baia Mare','Trezoreria operativă Municipiul Bârlad','Trezorerie operativa Municipiul Bistrita','Trezorerie operativa Municipiul Blaj','Trezorerie operativa Municipiul Botosani','Trezorerie operativa Municipiul Brad','Trezorerie operativa Municipiul Braila','Trezorerie operativa Municipiul Brasov','Trezorerie operativa Municipiul Bucuresti','Trezorerie operativa Municipiul Buzau','Trezorerie operativa Municipiul Calarasi','Trezoreria operativă Municipiul Câmpina','Trezorerie operativa Municipiul Campulung','Trezorerie operativa Municipiul Campulung Moldovenesc','Trezoreria operativă Municipiul Caracal','Trezorerie operativa Municipiul Caransebes','Trezorerie operativa Municipiul Carei','Trezorerie operativa Municipiul Cluj Napoca','Trezorerie operativa Municipiul Constanta','Trezorerie operativa Municipiul Curtea de Arges','Trezorerie operativa Municipiul Dej','Trezorerie operativa Municipiul Deva','Trezorerie operativa Municipiul Dorohoi','Trezorerie operativa Municipiul Dragasani','Trezoreria operativă Municipiul Drobeta-Turnu Severin','Trezorerie operativa Municipiul Fagaras','Trezorerie operativa Municipiul Falticeni','Trezorerie operativa Municipiul Focsani','Trezorerie operativa Municipiul Galati','Trezorerie operativa Municipiul Gherla','Trezorerie operativa Municipiul Gura Humorului','Trezorerie operativa Municipiul Hunedoara','Trezoreria operativă Municipiul Huşi','Trezorerie operativa Municipiul Iasi','Trezorerie operativa Municipiul Lugoj','Trezorerie operativa Municipiul Mangalia','Trezorerie operativa Municipiul Medgidia','Trezoreria operativă Municipiul Mediaş','Trezorerie operativa Municipiul Oltenita','Trezorerie operativa Municipiul Onesti','Trezorerie operativa Municipiul Oradea','Trezorerie operativa Municipiul Orastie','Trezorerie operativa Municipiul Pascani','Trezorerie operativa Municipiul Petrosani','Trezoreria operativă Municipiul Piatra Neamţ ','Trezorerie operativa Municipiul Pitesti','Trezorerie operativa Municipiul Ploiesti','Trezorerie operativa Municipiul Radauti','Trezorerie operativa Municipiul Ramnicu Sarat','Trezorerie operativa Municipiul Ramnicu Valcea','Trezoreria operativă Municipiul Reghin','Trezorerie operativa Municipiul Resita','Trezoreria operativă Municipiul Roman','Trezoreria operativă Municipiul Roşiori de Vede','Trezorerie operativa Municipiul Satu Mare','Trezoreria operativă Municipiul Sibiu','Trezoreria operativă Municipiul Sighetul Marmaţiei','Trezoreria operativă Municipiul Sighişoara','Trezorerie operativa Municipiul Siret','Trezoreria operativă Municipiul Slobozia','Trezorerie operativa Municipiul Suceava','Trezorerie operativa Municipiul Targoviste','Trezoreria operativă Municipiul Târgu Mureş','Trezoreria operativă Municipiul Târnăveni','Trezorerie operativa Municipiul Tecuci','Trezorerie operativa Municipiul Tg.Jiu','Trezorerie operativa Municipiul Timisoara','Trezoreria operativă Municipiul Tulcea','Trezorerie operativa Municipiul Turda','Trezoreria operativă Municipiul Turnu Măgurele','Trezoreria operativă Municipiul Urziceni','Trezoreria operativă Municipiul Vaslui','Trezoreria operativă Municipiul Zalău','Trezorerie operativa Nasaud','Trezoreria operativă Negreşti','Trezorerie operativa Negresti Oas','Trezorerie operativa Novaci','Trezoreria operativă Oraş Bicaz','Trezoreria operativă Oraş Târgu Neamţ','Trezoreria operativă Oraşul Balş','Trezoreria operativă Oraşul Corabia','Trezorerie operativa Oravita','Trezoreria operativă Orşova','Trezorerie operativa Otelul Rosu','Trezorerie operativa Panciu','Trezorerie operativa Patarlagele','Trezorerie operativa Pogoanele','Trezorerie operativa Pucioasa','Trezorerie operativa Raducaneni','Trezorerie operativa Rasnov','Trezorerie operativa Rovinari','Trezorerie operativa Rupea','Trezorerie operativa Sacele','Trezoreria operativă Sălişte','Trezorerie operativa Salonta','Trezorerie operativa Sangeorz Bai','Trezorerie operativa Sannicolau Mare','Trezorerie operativa Savarsin','Trezorerie operativa Saveni','Trezorerie operativa Sebes','Trezorerie operativa Sebis','Trezorerie operativa Sector 1','Trezorerie operativa Sector 2','Trezorerie operativa Sector 3','Trezorerie operativa Sector 4','Trezorerie operativa Sector 5','Trezorerie operativa Sector 6','Trezoreria operativă Şimleul Silvaniei','Trezoreria operativă Slănic','Trezoreria operativă Sovata','Trezoreria operativă Strehaia','Trezoreria operativă Sulina','Trezoreria operativă Târgu Lăpuş','Trezorerie operativa Tasnad','Trezorerie operativa Tg.Bujor','Trezorerie operativa Tg.Carbunesti','Trezorerie operativa Tg.Frumos','Trezorerie operativa Titu','Trezorerie operativa Topoloveni','Trezoreria operativă Vălenii de Munte','Trezoreria operativă Vânju Mare','Trezorerie operativa Vatra Dornei','Trezoreria operativă Videle','Trezoreria operativă Vişeul de Sus','Trezoreria operativă Zimnicea']
 listaiban=['RO42TREZ57820A100101XTVA','RO69TREZ08120A100101XTVA','RO11TREZ58120A100101XTVA','RO61TREZ64520A100101XTVA','RO02TREZ68220A100101XTVA','RO83TREZ64620A100101XTVA','RO12TREZ46220A100101XTVA','RO33TREZ67920A100101XTVA','RO46TREZ10220A100101XTVA','RO03TREZ07820A100101XTVA','RO57TREZ53920A100101XTVA','RO42TREZ19020A100101XTVA','RO59TREZ20420A100101XTVA','RO05TREZ42220A100101XTVA','RO30TREZ06620A100101XTVA','RO31TREZ52920A100101XTVA','RO31TREZ62620A100101XTVA','RO68TREZ00620A100101XTVA','RO78TREZ56220A100101XTVA','RO32TREZ02220A100101XTVA','RO40TREZ13720A100101XTVA','RO43TREZ07120A100101XTVA','RO66TREZ05020A100101XTVA','RO37TREZ00920A100101XTVA','RO10TREZ11820A100101XTVA','RO84TREZ62420A100101XTVA','RO84TREZ23620A100101XTVA','RO75TREZ62820A100101XTVA','RO04TREZ15320A100101XTVA','RO24TREZ39220A100101XTVA','RO25TREZ27320A100101XTVA','RO64TREZ67620A100101XTVA','RO10TREZ40920A100101XTVA','RO31TREZ23820A100101XTVA','RO47TREZ37120A100101XTVA','RO20TREZ67420A100101XTVA','RO45TREZ22120A100101XTVA','RO26TREZ15420A100101XTVA','RO80TREZ42120A100101XTVA','RO76TREZ02420A100101XTVA','RO79TREZ15220A100101XTVA','RO25TREZ56420A100101XTVA','RO09TREZ62520A100101XTVA','RO37TREZ20320A100101XTVA','RO98TREZ02520A100101XTVA','RO20TREZ48020A100101XTVA','RO92TREZ64220A100101XTVA','RO91TREZ08220A100101XTVA','RO44TREZ04920A100101XTVA','RO18TREZ52420A100101XTVA','RO61TREZ06320A100101XTVA','RO29TREZ18520A100101XTVA','RO47TREZ27420A100101XTVA','RO97TREZ33820A100101XTVA','RO10TREZ50620A100101XTVA','RO77TREZ00220A100101XTVA','RO28TREZ69220A100101XTVA','RO24TREZ00420A100101XTVA','RO76TREZ60620A100101XTVA','RO10TREZ02120A100101XTVA','RO17TREZ06120A100101XTVA','RO22TREZ43620A100101XTVA','RO34TREZ65720A100101XTVA','RO24TREZ10120A100101XTVA','RO02TREZ00320A100101XTVA','RO63TREZ11620A100101XTVA','RO03TREZ36920A100101XTVA','RO57TREZ15120A100101XTVA','RO05TREZ13120A100101XTVA','RO10TREZ70020A100101XTVA','RO96TREZ16620A100101XTVA','RO90TREZ20120A100101XTVA','RO71TREZ52220A100101XTVA','RO97TREZ04720A100101XTVA','RO59TREZ59220A100101XTVA','RO32TREZ50720A100101XTVA','RO60TREZ18220A100101XTVA','RO39TREZ54720A100101XTVA','RO32TREZ21620A100101XTVA','RO71TREZ23120A100101XTVA','RO22TREZ04820A100101XTVA','RO54TREZ21720A100101XTVA','RO34TREZ36620A100101XTVA','RO85TREZ11720A100101XTVA','RO73TREZ67220A100101XTVA','RO87TREZ46120A100101XTVA','RO27TREZ13220A100101XTVA','RO81TREZ59320A100101XTVA','RO06TREZ69120A100101XTVA','RO72TREZ30620A100101XTVA','RO76TREZ21820A100101XTVA','RO06TREZ59420A100101XTVA','RO56TREZ36720A100101XTVA','RO56TREZ65820A100101XTVA','RO41TREZ40620A100101XTVA','RO62TREZ62320A100101XTVA','RO18TREZ23320A100101XTVA','RO93TREZ23220A100101XTVA','RO20TREZ57720A100101XTVA','RO15TREZ20220A100101XTVA','RO39TREZ06220A100101XTVA','RO56TREZ07620A100101XTVA','RO25TREZ37020A100101XTVA','RO63TREZ40720A100101XTVA','RO78TREZ36820A100101XTVA','RO68TREZ49120A100101XTVA','RO75TREZ04620A100101XTVA','RO49TREZ52120A100101XTVA','RO28TREZ59520A100101XTVA','RO21TREZ16720A100101XTVA','RO51TREZ67120A100101XTVA','RO51TREZ47720A100101XTVA','RO38TREZ18120A100101XTVA','RO90TREZ49220A100101XTVA','RO23TREZ60820A100101XTVA','RO17TREZ54620A100101XTVA','RO95TREZ57620A100101XTVA','RO44TREZ43720A100101XTVA','RO73TREZ47820A100101XTVA','RO50TREZ59620A100101XTVA','RO02TREZ39120A100101XTVA','RO37TREZ59120A100101XTVA','RO78TREZ27120A100101XTVA','RO29TREZ47620A100101XTVA','RO95TREZ47920A100101XTVA','RO94TREZ30720A100101XTVA','RO53TREZ33620A100101XTVA','RO18TREZ62120A100101XTVA','RO70TREZ64120A100101XTVA','RO98TREZ21920A100101XTVA','RO98TREZ60720A100101XTVA','RO46TREZ39320A100101XTVA','RO12TREZ65620A100101XTVA','RO56TREZ56120A100101XTVA','RO68TREZ10320A100101XTVA','RO78TREZ65920A100101XTVA','RO61TREZ54820A100101XTVA','RO22TREZ33920A100101XTVA','RO37TREZ49420A100101XTVA','RO15TREZ49320A100101XTVA','RO54TREZ50820A100101XTVA','RO76TREZ50920A100101XTVA','RO73TREZ18720A100101XTVA','RO34TREZ46320A100101XTVA','RO95TREZ18820A100101XTVA','RO72TREZ69420A100101XTVA','RO65TREZ16920A100101XTVA','RO87TREZ17020A100101XTVA','RO69TREZ27520A100101XTVA','RO32TREZ41020A100101XTVA','RO62TREZ13820A100101XTVA','RO44TREZ34020A100101XTVA','RO49TREZ13320A100101XTVA','RO18TREZ13620A100101XTVA','RO02TREZ58520A100101XTVA','RO16TREZ08320A100101XTVA','RO90TREZ10420A100101XTVA','RO53TREZ62720A100101XTVA','RO58TREZ03220A100101XTVA','RO32TREZ11920A100101XTVA','RO46TREZ00520A100101XTVA','RO67TREZ02820A100101XTVA','RO32TREZ70120A100101XTVA','RO54TREZ70220A100101XTVA','RO76TREZ70320A100101XTVA','RO98TREZ70420A100101XTVA','RO23TREZ70520A100101XTVA','RO45TREZ70620A100101XTVA','RO03TREZ56320A100101XTVA','RO62TREZ52620A100101XTVA','RO64TREZ48220A100101XTVA','RO56TREZ46420A100101XTVA','RO39TREZ64420A100101XTVA','RO13TREZ44020A100101XTVA','RO83TREZ54920A100101XTVA','RO19TREZ30820A100101XTVA','RO75TREZ33720A100101XTVA','RO85TREZ40820A100101XTVA','RO91TREZ27620A100101XTVA','RO88TREZ05120A100101XTVA','RO09TREZ52820A100101XTVA','RO78TREZ46520A100101XTVA','RO72TREZ59720A100101XTVA','RO45TREZ60920A100101XTVA','RO35TREZ44120A100101XTVA','RO67TREZ61020A100101XTVA']
+litere=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 listadend300eng=['LIC','Adjustments LIC','LIS','Intra-community services rendered','Adjustments of Intra-community services rendered','AIC','AIC (supplier registered for VAT purposes in the source state)','Adjustments AIC','AIS','Acquisitions of intra-Community services','Ajustments AIS','Supplies of goods and services (19%) ','Supplies of goods and services (9%) ','Supplies of goods and services (5%) ','Acquisition of goods and services subject to simplified measures (local reverse charge)','Acquisition of goods and services (19%) ','Acquisition of goods and services (9%) ','Acquisition of goods and services (5%) ','Supplies of goods and services subject to simplified measures (local reverse charge)','Supplies of goods and services exempted w/deduction right','Supplies of goods and services exempted w/o dduction right','Adjustments supplies of goods and services ','Intra-community supplies of services according to art 278 par(8) of the Fiscal code taxable in Romania','Adjustents of intra-community supplies of services according to art 278 par(8) of the Fiscal code taxable in Romania','Collected VAT','AIC','AIC (supplier registered for VAT purposes in the source state)','Adjustments AIC','AIS','Acquisitions of intra-Community services','Adjustment AIS','Acquisitions of goods and services (19%)','Acquisitions of goods and services (9%)','Acquisitions of goods and services (5%)','Acquisition of goods and services subject to simplified measures (local reverse charge)','Acquisition of goods and services (19%) ','Acquisition of goods and services (9%) ','Acquisition of goods and services (5%) ','Compensation in the flat fee for purchases of agricultural products and services from suppliers applying the special regime','Adjusments of compensation in the flat fee for purchases of agricultural products and services from suppliers applying the special regime','Acquisitions of goods and services VAT exempt or non-taxable, out of which:','Acquisitions of VAT exempt intra-community services (do not fill in fro the simplified method)','Deductible VAT','','Sub-total deductible VAT','VAT effectively refunded to foreign buyers, including the commission of the authorised bodies','Adjustments acquisitions','Adjustments according to pro rata / adjustments for capital goods','Total VAT deducted','Negative VAT amount during the reporting period','VAT payable during the reporting period','VAT payable from previous period not paid until the current submission deadline','VAT differences determined by the tax authorities by decision and unpaid until the submission of the current VAT return','Cumulated VAT payable','Negative VAT amount from previous periods ','Negative VAT differences determined by the tax authorities by decision until the submission of the current VAT return','Cumulated negative VAT amount','Balance of payable VAT at the end of the reporting period','Negative VAT to be reported for future periods','','A','A1','B','B1']
 listadend300ro=['Livrari intracomunitare de bunuri, scutite conform art. 294 alin.(2)lit.a) si d) din Codul fiscal','Regularizari livrari intracomunitare scutite conform art. 294 alin.(2)lit.a) si d) din Codul fiscal','Livrari de bunuri sau prestari de servicii pentru care locul livrarii/ locul prestarii este in afara Romaniei (in UE sau in afara UE), precum si livrari intracomunitare de bunuri, scutite conformart. 294 alin.(2) lit.b) si c) din Codul fiscal, din care:','Prestari de servicii intracomunitare care nu beneficiaza de scutire in statul membru in care taxa este datorata','Regularizari privind prestarile de servicii intracomunitare care nu beneficiaza de scutire in statul membru in care taxa este datorata','Achizitii intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa), din care:','Achizitii intracomunitare pentru care cumparatorul este obligat la plata TVA (taxare inversa), iar furnizorul este inregistrat in scopuri de TVA in statul membru din care a avut loc livrarea intracomunitara','Regularizari privind achizitiile intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa)','Achizitii de bunuri, altele decat cele de la rd. 5 si 6 si achizitii de servicii pentru care beneficiarul din Romania este obligat la plata TVA (taxare inversa), din care:','Achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Regularizari privind achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Livrari de bunuri si prestari de servicii taxabile cu cota 19%','Livrari de bunuri si prestari de servicii taxabile cu cota 9%','Livrari de bunuri si prestari de servicii taxabile cu cota 5%','Achizitii de bunuri si servicii supuse masurilor de simplificare pentru care beneficiarul este obligat la plata TVA (taxare inversa), din care','Achizitii de bunuri si servicii, taxabile cu cota 19%','Achizitii de bunuri, taxabile cu cota 9%','Achizitii de bunuri, taxabile cu cota 5%','Livrari de bunuri si prestari de servicii supuse masurilor de simplificare (taxare inversa)','Livrari de bunuri si prestari de servicii scutite cu drept de deducere, altele decat cele de la rd. 1-3','Livrari de bunuri si prestari de servicii scutite fara drept de deducere','Regularizari taxa colectata','Prestari de servicii intracomunitare conform art.278 alin.(8)din Codul fiscal pentru care locul prestarii este în Romania','Regularizari privind prestari de servicii intracomunitare conform art.278 alin.(8) din Codul fiscal pentru care locul prestarii este in Romania','TOTAL TAXA COLECTATA (suma de la rd. 1 pana la rd. 18, cu exceptia celor de la rd. 3.1, 5.1 , 7.1, 12.1, 12.2 , 12.3)','Achizitii intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa), din care:','Achizitii intracomunitare pentru care cumparatorul este obligat la plata TVA (taxare inversa), iar furnizorul este inregistrat in scopuri de TVA in statul membru din care a avut loc livrarea','Regularizari privind achizitiile intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa)','Achizitii de bunuri, altele decat cele de la rd.20 şi 21 si achizitii de servicii pentru care beneficiarul din Romania este obligatla plata TVA (taxare inversa), din care:','Achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Regularizari privind achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Achizitii de bunuri si servicii taxabile cu cota de 19%, altele decat cele de la rd. 27','Achizitii de bunuri si servicii taxabile cu cota de 9%','Achizitii de bunuri si servicii taxabile cu cota de 5%','Achizitii de bunuri si servicii supuse masurilor de simplificare pentru care beneficiarul este obligat la plata TVA (taxare inversa), din care:','Achizitii de bunuri si servicii, taxabile cu cota 19%','Achizitii de bunuri, taxabile cu cota 9%','Achizitii de bunuri, taxabile cu cota 5%','Compensatia in cota forfetara pentru achizitii de produse si servicii agricole de la furnizori care aplica regimul special pentru agricultori','Regularizari privind compensatia in cota forfetara','Achizitii de bunuri si servicii scutite de taxa sau neimpozabile, din care:','Achizitii de servicii intracomunitare scutite de taxa','TOTAL TAXA DEDUCTIBILA (suma de la rd. 20 pana la rd. 29, cu exceptia celor de la rd. 20.1, 22.1, 27.1, 27.2, 27.3)','','SUB-TOTAL TAXA DEDUSA CONFORM ART. 297 SI ART. 298SAU ART. 300 SI ART. 298DIN CODUL FISCAL SI COMPENSATIE IN COTA FORFETARA','TVA efectiv restituita cumparatorilor straini, inclusiv comisionul unitatilor autorizate','Regularizari taxa dedusa','Ajustari conform pro-rata / ajustari de taxa','TOTAL TAXA DEDUSA (rd. 32 + rd. 33 + rd. 34 + rd. 35)','Suma negativa a TVA in perioada de raportare (rd. 36 - rd. 19)','Taxa de plata in perioada de raportare (rd. 19 - rd. 36)','Soldul TVA de plata din decontul perioadei fiscale precedente (rd. 45 din decontul perioadei fiscale precedente) neachitate pana la data depunerii decontului de TVA','Diferente de TVA de plata stabilite de organele de inspectie fiscala prin decizie comunicata si neachitate pana la data depunerii decontului de TVA','TVA de plata cumulat (rd. 38 + rd. 39 + rd. 40)','Soldul sumei negative a TVA reportate din perioada precedenta pentru care nu s-a solicitat rambursare (rd. 46 din decontul perioadei fiscale precedente)','Diferente negative de TVA stabilite de organele de inspectie fiscala prin decizie comunicata pana la data depunerii decontului de TVA','Suma negativa a TVA cumulate (rd. 37 + rd. 42 + rd. 43)','Sold TVA de plata la sfarsitul perioadei de raportare (rd. 41 - rd. 44)','Soldul sumei negative de TVA la sfarsitul perioadei de raportare (rd. 44 - rd. 41)','','Livrari de bunuri si prestari de servicii realizate a caror TVA aferenta a ramas neexigibila, existenta in sold la sfarsitul perioadei de raportare, ca urmare a aplicarii sistemului TVA la incasare, din care','Livrari de bunuri si prestari de servicii realizate in ultimele 6 luni/2 trimestre calendaristice','Achizitii de bunuri si servicii realizate pentru care nu s-a exercitat dreptul de deducere a TVA aferenta, existenta in sold la sfarsitul perioadei de raportare, ca urmare a aplicarii art. 297 alin (2) si (3) din Codul fiscal, din care:','Achizitii de bunuri si servicii realizate in ultimele 6 luni/2 trimestre calendaristice']
@@ -2644,7 +2645,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 			codTranzactieSales=[]
 			for i in range(0, len(codTaraCuiSales)):
-				if str(serieCuiSales[i])[1:2].isalpha():
+				if str(serieCuiSales[i])[1:2] not in litere:
 					codTranzactieSales.append(2)
 				else:
 					if codTaraCuiSales[i] == "RO":
@@ -3323,8 +3324,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 					# #print("RO")
 					tipTranzactiePurchases.append(1)
 				else:
-					if serieCuiPurch[i] in suppIDPurch and int(nonCharTaxBase_1[i])>0:
-						tipTranzactiePurchases.append(2)
+					
+					if str(suppIDPurch[i])[1:2] not in litere:
+							tipTranzactiePurchases.append(2)
+					
 					else:
 						if codTaraCuiPurch[i] in nomenclatorTari:
 							# #print("UE")
@@ -5904,7 +5907,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		nomenclatorTari={'AT':'Austria', 'BE':'Belgia', 'BG':'Bulgaria','CY':'Cipru','DK':'Danemarca','EE':'Estonia', 'FI':'Finlanda','FR':'Franta', 'DE':'Germania','HR':'Croatia',
 				'GR':'Grecia','IE':'Irlanda','IT':'Italia','LV':'Letonia','LT':'Lituania','LU':'Luxemburg','MT':'Malta','XI':'Irlanda de Nord - Regatul Unit','NL':'Olanda',
 				'PL':'Polonia','PT':'Portugalia','CZ':'Republica Ceha','RO':'Romania','SK':'Slovacia','SI':'Slovavia','ES':'Spania','SE':'Suedia','HU':'Ungaria'}
-		
+		for kk in range(0,len(cuipurch)):
+			str(cuipurch[kk]).replace(" ","")
 		codintracomunitar=[]
 		for k in range(0,len(cuipurch)):
 			if(cuipurch[k]!=None):
@@ -7549,19 +7553,39 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			except:
 				flash("Please insert the correct header for 'Tax Number 1    ' in Sales sheet")
 				return render_template("index.html")
+			for row in sales.iter_rows():
+				for cell in row:
+					if cell.value == "Tax Number 1    ":
+						rand_tb = cell.row
+						coloanaClientID2 = cell.column
+						lun = len(sales[cell.column])
+			try:
+				taxnumber = [b.value for b in sales[coloanaClientID2][rand_tb:lun]]
+			except:
+				flash("Please insert the correct header for 'Tax Number 1    ' in Sales sheet")
+				return render_template("index.html")
+			# print()
+			taxnumber1=[]
+			for jj in range(0,len(taxnumber)):
+				taxnumber1.append(str(taxnumber[jj]).replace(" ",""))
 
 			listaCUISales1=[]
-			# listadeclant_1=[]
-			for val in listaCUISales:
-				if val != None:
-					# listadeclant_1.append("")
-					listaCUISales1.append(val)
+			for jj in range(0,len(listaCUISales)):
+				if(listaCUISales[jj]!=None):
+					listaCUISales1.append(str(listaCUISales[jj]).replace(" ",""))
 				else:
-					listaCUISales1.append("US111")
+					listaCUISales1.append(taxnumber1[jj])
+			for kkk in range(0,len(listaCUISales1)):
+				if(listaCUISales1[kkk]==None or listaCUISales1[kkk]==''):
+					listaCUISales1[kkk]=taxnumber1[kkk]
+			# listaCUISales1=[]
+			print(listaCUISales1)
+			# print(alfabeta)
+			# listadeclant_1=[]
 
 			for row in sales.iter_rows():
 				for cell in row:
-					if cell.value == "Document No.    ":
+					if cell.value == "DocumentNo":
 						rand_tb = cell.row
 						docNumber = cell.column
 						lun = len(sales[cell.column])
@@ -7588,7 +7612,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			codTaraCuiSales=[]
 			# print(listaCUISales1)
 			for i in range(0,len(listaCUISales1)):
-				if(str(listaCUISales1[i])[:1].isalpha()):
+				if(str(listaCUISales1[i])[:1] in litere):
 					r = re.compile("([a-zA-Z]+)([0-9]+)")
 					m = r.match(str(listaCUISales1[i]))
 					try:
@@ -7653,16 +7677,16 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			taxcodes=[]
 			# print(len(bazaA12),len(docNoSales))
 			for j in range(0,len(docNoSales)):
-				if(int(bazaA12[j])>0 or int(bazaA12[i])<0):
+				if(int(bazaA12[j])!=0):
 					taxcodes.append("A1")
 				else:
-					if(int(bazaA8[j])>0 or int(bazaA8[i])<0):
+					if(int(bazaA8[j])!=0):
 						taxcodes.append("A8")
 					else:
-						if(int(valY8[j])>0 or int(valY8[i])<0):
+						if(int(valY8[j])!=0):
 							taxcodes.append("Y8")
 						else:
-							if(int(valE2[j])>0):
+							if(int(valE2[j])!=0):
 								taxcodes.append("E1")
 							else:
 								taxcodes.append("E2")
@@ -7676,10 +7700,11 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						coteTVAsales.append(0)
 
 			codTranzactieSales=[]
+			print(len(codTaraCuiSales),len(listaCUISales1))
 			for i in range(0, len(codTaraCuiSales)):
 				# print(str(serieCuiSales[i])[1:2])
-				if str(serieCuiSales[i])[1:2].isalpha():
-					codTranzactieSales.append(1)
+				if str(listaCUISales1[i])[1:2] not in litere:
+					codTranzactieSales.append(2)
 				else:
 					if codTaraCuiSales[i] == "RO":
 						# #print("RO")
@@ -7730,7 +7755,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 									tipTranzSale.append("Not applicable for D394")
 					else:
 						if int(codTranzactieSales[i]) == 2:
-							if (taxcodes[i]=='A1'):
+							if (taxcodes[i]=='A1' or taxcodes[i]=='A8'):
 								tipTranzSale.append('L')
 								storno.append("")
 							else:
@@ -7887,31 +7912,28 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 				flash("Please insert the correct header for 'VAT Registration No.' in Purchases sheet")
 				return render_template("index.html")
 				
-
+			for jj in range(0,len(suppIDPurch)):
+				str(suppIDPurch[jj]).replace(" ","")
+			print(suppIDPurch)
 
 			serieCuiPurch = []
 			codTaraCuiPurch = []
 			# #print(suppIDPurch)
 			for i in suppIDPurch:
-				if(i==None):
-					serieCuiPurch.append(None)
-					codTaraCuiPurch.append(None)
+				if(str(i)[:1].isalpha()):	
+					r = re.compile("([a-zA-Z]+)([0-9]+)")
+					m = r.match(str(i))
+					try:
+						serieCuiPurch.append(m.group(2))
+					except:
+						serieCuiPurch.append(" ")
+					try:
+						codTaraCuiPurch.append(m.group(1))
+					except:
+						codTaraCuiPurch.append(" ")
 				else:
-				# #print(i)
-					if(str(i)[:1].isalpha()):	
-						r = re.compile("([a-zA-Z]+)([0-9]+)")
-						m = r.match(str(i))
-						try:
-							serieCuiPurch.append(m.group(2))
-						except:
-							serieCuiPurch.append(" ")
-						try:
-							codTaraCuiPurch.append(m.group(1))
-						except:
-							codTaraCuiPurch.append(" ")
-					else:
-						codTaraCuiPurch.append(None)
-						serieCuiPurch.append(i)
+					codTaraCuiPurch.append(None)
+					serieCuiPurch.append(i)
 			# #print(codTaraCuiPurch,serieCuiPurch)
 			tipTranzactiePurchases=[]
 			#print("Aici vat -------",vatAch19_1,"-----Achizitii")
@@ -7924,12 +7946,16 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						# #print("RO")
 						tipTranzactiePurchases.append(1)
 					else:
-						if serieCuiPurch[i] in suppIDPurch and int(nonCharTaxBase_1[i])>0:
-							tipTranzactiePurchases.append(2)
+						
+						if codTaraCuiPurch[i] in nomenclatorTari:
+							
+							tipTranzactiePurchases.append(3)
 						else:
-							if codTaraCuiPurch[i] in nomenclatorTari:
-								# #print("UE")
-								tipTranzactiePurchases.append(3)
+						
+							if str(suppIDPurch[i])[1:2] not in litere:
+								tipTranzactiePurchases.append(2)
+
+									# #print("UE")
 							else:
 								# #print("nonUE")
 								tipTranzactiePurchases.append(4)
@@ -7938,7 +7964,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			coteTVApurchases=[]
 			print(len(taxcodeach),len(docNoPurch))
 			for i in range(0, len(docNoPurch)):
-				if (taxcodeach[i]=="ZI" or taxcodeach[i]=="C3" or taxcodeach[i]=="ZD" or taxcodeach[i]=="E1" or taxcodeach[i]=='V1' or taxcodeach[i]=="5H" or taxcodeach[i]=="X1" or taxcodeach[i]=="1L" or taxcodeach[i]=="1M" or taxcodeach[i]=="3S" or taxcodeach[i]=="5B" or taxcodeach[i]=="5H" or taxcodeach[i]=="1I"):
+				if (taxcodeach[i]=="ZI" or taxcodeach[i]=="C3" or taxcodeach[i]=="ZD" or taxcodeach[i]=="E1" or taxcodeach[i]=='V1' or taxcodeach[i]=="5H" or taxcodeach[i]=="X1" or taxcodeach[i]=="1L" or taxcodeach[i]=="1M" or taxcodeach[i]=="3S" or taxcodeach[i]=="5B" or taxcodeach[i]=="5H" or taxcodeach[i]=="1I" or taxcodeach[i]=="1J" ):
 					coteTVApurchases.append('19')
 				else:
 					if (taxcodeach[i]=="I9" or taxcodeach[i]=="W8" or taxcodeach[i]=="W6" or taxcodeach[i]=="J2" or taxcodeach[i]=="V3" or taxcodeach[i]=="9S"):
@@ -7984,6 +8010,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						if int(tipTranzactiePurchases[i]) == 2:
 							if taxcodeach[i]=="7N" or taxcodeach[i]=="8N" or taxcodeach[i]=="A3" :
 								tipTranzPurch.append("N")
+							else:
+								tipTranzPurch.append("Not applicable for D394")
 								#print(docNoPurch1[i],";;;;es 9")
 						else:
 							if int(tipTranzactiePurchases[i]) == 3:
@@ -8252,17 +8280,19 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			print(codTranzactieSales)
 			# print(docNoSales)
 			for i in range(0,len(docNoSales)):
+				if(docNoSales[i]!=None):
+
 				# print(docNoSales[i])
 
 				# docNoSales[i].replaceAll("[^a-zA-Z0-9]", ")
-				if(int(codTranzactieSales[i])<3):
-					# try:
-					numere=re.sub("[^0-9]", "",str(docNoSales[i]))
-					# except:
-						# print(docNoSales[i])
-					result = ''.join([i for i in str(docNoSales[i]) if not i.isdigit()])
-					docNoSales2.append(numere)
-					seriefacturi.append(result)
+					if(int(codTranzactieSales[i])<3):
+						# try:
+						numere=re.sub("[^0-9]", "",str(docNoSales[i]))
+						# except:
+							# print(docNoSales[i])
+						result = ''.join([i for i in str(docNoSales[i]) if not i.isdigit()])
+						docNoSales2.append(numere)
+						seriefacturi.append(result)
 			# print(seriefacturi)
 			# print(docNoSales2)
 			initial=0
@@ -11424,7 +11454,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 			codTranzactieSales=[]
 			for i in range(0, len(codTaraCuiSales)):
-				if str(serieCuiSales[i])[1:2].isalpha():
+				if str(serieCuiSales[i])[0:1] not in litere:
 					codTranzactieSales.append(2)
 				else:
 					if codTaraCuiSales[i] == "RO":
@@ -11967,7 +11997,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 					# #print("RO")
 					tipTranzactiePurchases.append(1)
 				else:
-					if codTaraCuiPurch[i]==None:
+					if str(codTaraCuiPurch[i])[1:2] not in litere:
 						tipTranzactiePurchases.append(2)
 					else:
 						if codTaraCuiPurch[i] in nomenclatorTari:
@@ -14047,6 +14077,14 @@ def D300_thales():
 			text10='''<rezumat1 tip_partener="1" cota="0" facturiLS="'''+str(nrLS0)+'''" bazaLS="'''+str(valLS0)+'''" facturiAS="'''+str(nrAS0)+'''" bazaAS="'''+str(valAS0)+'''" facturiV="'''+str(nrV0)+'''" bazaV="'''+str(valV0)+'''">
 	<detaliu  bun="22" nrLivV="'''+str(nrV0)+'''" bazaLivV="'''+str(valV0)+'''"/>
 	</rezumat1>'''
+		L19nrrez2=nrL19
+		L19brez2=sumaL19
+		L19trez2=tvaL19
+		L9nrrez2=nrL9
+		L9brez2=sumaL9
+		L9trez2=tvaL9
+
+		
 		sumaLS0=0
 		sumaL5=0
 		sumaL9=0
@@ -14204,7 +14242,7 @@ def D300_thales():
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])	
 		numarcui2=nrLS24+nrL24+nrLS20+nrL20+nrLS19+nrL19+nrLS9+nrL9+nrLS5+nrL5
-		numarcuicorect2=len(list(set(cuitip2)))
+		numarcuicorect2=len(cuitip2)
 		if(nrL5>0):
 			text25='''<rezumat1 tip_partener="2" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''"/>'''
 		else:
@@ -14229,6 +14267,13 @@ def D300_thales():
 			text20='''<rezumat1 tip_partener="2" cota="0" facturiN="'''+str(nrN0)+'''" documentN="1" bazaN="'''+str(sumaN0)+'''"/>'''
 		else:
 			text20=""
+		L19nrrez2=L19nrrez2+nrL19
+		L19brez2=L19brez2+sumaL19
+		L19trez2=L19trez2+tvaL19
+		L9nrrez2=L9nrrez2+nrL9
+		L9brez2=L9brez2+sumaL9
+		L9trez2=L9trez2+tvaL9
+		
 		sumaL5=0
 		sumaL9=0
 		sumaL19=0
@@ -14377,7 +14422,7 @@ def D300_thales():
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])
 		numarcui3=nrLS24+nrC24+nrL24+nrC20+nrLS20+nrL20+nrC19+nrLS19+nrL19+nrC19+nrLS9+nrL9+nrC9+nrLS5+nrL5+nrC5
-		numarcuicorect3=len(list(set(cuitip3)))
+		numarcuicorect3=len(cuitip3)
 		if(nrL5>0 or nrC5>0):
 			text35='''<rezumat1 tip_partener="3" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''" facturiC="'''+str(nrC5)+'''" bazaC="'''+str(sumaC5)+'''" tvaC="'''+str(tvaC5)+'''"/>'''
 		else:
@@ -14546,7 +14591,7 @@ def D300_thales():
 							sumaC24=sumaC24+int(bazatv[i])
 							tvaC24=tvaC24+int(stva[i])
 		numarcui4=nrLS24+nrC24+nrL24+nrC20+nrLS20+nrL20+nrC19+nrLS19+nrL19+nrC19+nrLS9+nrL9+nrC9+nrLS5+nrL5+nrC5
-		numarcuicorect4=len(list(set(cuitip4)))
+		numarcuicorect4=len(cuitip4)
 		if(nrL5>0 or nrC5>0):
 			text45='''<rezumat1 tip_partener="4" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''" facturiC="'''+str(nrC5)+'''" bazaC="'''+str(sumaC5)+'''" tvaC="'''+str(tvaC5)+'''"/>'''
 		else:
@@ -14628,7 +14673,7 @@ def D300_thales():
 
 
 		for i in range(0,len(cotatva)):
-			if(bazatv[i]):
+			if(bazatv[i]!=0):
 				if(str(cotatva[i])=="24"):
 					if(str(tiptranza[i])=="L"):
 						L24nr=L24nr+int(nrfacturi[i])
@@ -14694,13 +14739,12 @@ def D300_thales():
 						AI5nr=AI5nr+int(nrfacturi[i])
 						AI5b=AI5b+int(int(bazatv[i]))
 						AI5t=AI5t+int(int(stva[i]))
-
 		rez224='''<rezumat2 cota="24"  bazaFSLcod="'''+str(sheetI.cell(row=8,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=8,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=18,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=18,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=28,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=28,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=38,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=38,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=48,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=48,column=3).value)+'''" nrFacturiL="'''+str(L24nr)+'''" bazaL="'''+str(L24b)+'''" tvaL="'''+str(L24t)+'''" nrFacturiA="'''+str(A24nr)+'''" bazaA="'''+str(A24b)+'''" tvaA="'''+str(A24t)+'''" nrFacturiAI="'''+str(AI24nr)+'''" bazaAI="'''+str(AI24b)+'''" tvaAI="'''+str(AI24t)+'''" bazaL_PF="0" tvaL_PF="0" />'''
 		rez220='''<rezumat2 cota="20"  bazaFSLcod="'''+str(sheetI.cell(row=9,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=9,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=19,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=19,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=29,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=29,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=39,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=39,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=49,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=49,column=3).value)+'''" nrFacturiL="'''+str(L20nr)+'''" bazaL="'''+str(L20b)+'''" tvaL="'''+str(L20t)+'''" nrFacturiA="'''+str(A20nr)+'''" bazaA="'''+str(A20b)+'''" tvaA="'''+str(A20t)+'''" nrFacturiAI="'''+str(AI20nr)+'''" bazaAI="'''+str(AI20b)+'''" tvaAI="'''+str(AI20t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=14,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=14,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=24,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=24,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
-		rez219='''<rezumat2 cota="19"  bazaFSLcod="'''+str(sheetI.cell(row=10,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=10,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=20,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=20,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=30,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=30,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=40,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=40,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=50,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=50,column=3).value)+'''" nrFacturiL="'''+str(L19nr)+'''" bazaL="'''+str(L19b)+'''" tvaL="'''+str(L19t)+'''" nrFacturiA="'''+str(A19nr)+'''" bazaA="'''+str(A19b)+'''" tvaA="'''+str(A19t)+'''" nrFacturiAI="'''+str(AI19nr)+'''" bazaAI="'''+str(AI19b)+'''" tvaAI="'''+str(AI19t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=15,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=15,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=25,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=25,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
-		rez29='''<rezumat2 cota="9"  bazaFSLcod="'''+str(sheetI.cell(row=11,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=11,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=21,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=21,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=31,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=31,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=41,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=41,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=51,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=51,column=3).value)+'''" nrFacturiL="'''+str(L9nr)+'''" bazaL="'''+str(L9b)+'''" tvaL="'''+str(L9t)+'''" nrFacturiA="'''+str(A9nr)+'''" bazaA="'''+str(A9b)+'''" tvaA="'''+str(A9t)+'''" nrFacturiAI="'''+str(AI9nr)+'''" bazaAI="'''+str(AI9b)+'''" tvaAI="'''+str(AI9t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=16,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=16,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=26,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=26,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
+		rez219='''<rezumat2 cota="19"  bazaFSLcod="'''+str(sheetI.cell(row=10,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=10,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=20,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=20,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=30,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=30,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=40,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=40,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=50,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=50,column=3).value)+'''" nrFacturiL="'''+str(L19nrrez2)+'''" bazaL="'''+str(L19brez2)+'''" tvaL="'''+str(L19trez2)+'''" nrFacturiA="'''+str(A19nr)+'''" bazaA="'''+str(A19b)+'''" tvaA="'''+str(A19t)+'''" nrFacturiAI="'''+str(AI19nr)+'''" bazaAI="'''+str(AI19b)+'''" tvaAI="'''+str(AI19t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=15,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=15,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=25,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=25,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
+		rez29='''<rezumat2 cota="9"  bazaFSLcod="'''+str(sheetI.cell(row=11,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=11,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=21,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=21,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=31,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=31,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=41,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=41,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=51,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=51,column=3).value)+'''" nrFacturiL="'''+str(L9nrrez2)+'''" bazaL="'''+str(L9brez2)+'''" tvaL="'''+str(L9trez2)+'''" nrFacturiA="'''+str(A9nr)+'''" bazaA="'''+str(A9b)+'''" tvaA="'''+str(A9t)+'''" nrFacturiAI="'''+str(AI9nr)+'''" bazaAI="'''+str(AI9b)+'''" tvaAI="'''+str(AI9t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=16,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=16,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=26,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=26,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
 		rez25='''<rezumat2 cota="5"  bazaFSLcod="'''+str(sheetI.cell(row=12,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=12,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=22,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=22,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=32,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=32,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=42,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=42,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=52,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=52,column=3).value)+'''" nrFacturiL="'''+str(L5nr)+'''" bazaL="'''+str(L5b)+'''" tvaL="'''+str(L5t)+'''" nrFacturiA="'''+str(A5nr)+'''" bazaA="'''+str(A5b)+'''" tvaA="'''+str(A5t)+'''" nrFacturiAI="'''+str(AI5nr)+'''" bazaAI="'''+str(AI5b)+'''" tvaAI="'''+str(AI5t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=17,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=17,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=27,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=27,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
-		totalplata394=numarcui1+numarcui2+numarcui3+numarcui4+L24b+L20b+L19b+L9b+L5b+A5b+A9b+A19b+A20b+A24b+AI5b+AI9b+AI19b+AI20b+AI24b
+		totalplata394=numarcuicorect1+numarcuicorect2+numarcuicorect3+numarcuicorect4+L24b+L20b+L19brez2+L9brez2+L5b+A5b+A9b+A19b+A20b+A24b+AI5b+AI9b+AI19b+AI20b+AI24b
 		#print(totalplata394)
 		textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Grant Thornton " cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
 		<informatii nrCui1="'''+str(numarcuicorect1)+'''" nrCui2="'''+str(numarcuicorect2)+'''" nrCui3="'''+str(numarcuicorect3)+'''" nrCui4="'''+str(numarcuicorect4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="'''+str(totalfacturi)+'''" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
@@ -14735,17 +14779,17 @@ def D300_thales():
 		for i in range(0,len(tiptranza)):
 			if(tiptranza[i]!="Not applicable for D394"):
 				if(tiptranza[i]=="V"):
-					text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
+					text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
 				else:
 
 					if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
-						text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+						text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
 					else:
 						if("-" in str(cuip[i])):
-							text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i])+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+							text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
 						else:
 							if(bazatv[i]>0):
-								text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i])+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
+								text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
 
 		text=text+"</declaratie394>"
 		# text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="'+str(op_efectuate)+'" prsAfiliat="'+str(prsAfiliat)+'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
