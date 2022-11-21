@@ -13149,11 +13149,11 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		return render_template('D3APPS2')
 
 @app.route('/D3APPS/PARTNERHERO')
-def my_form_D300_thales():
+def my_form_D300_partner():
 	return render_template('D3APPS D3APPS PartnerHero.html')
 
 @app.route('/D3APPS/PARTNERHERO', methods=['POST', 'GET'])
-def D300xml_thales():
+def D300xml_partner():
 	if request.method == 'POST':
 		clientname=request.form.get('client')
 		D300 = request.files["far"]
