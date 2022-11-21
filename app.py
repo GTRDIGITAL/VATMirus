@@ -5975,7 +5975,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 					rand_tb = cell.row
 					tdocnextva = cell.column
 					lun = len(sales[cell.column])		
-
+		if(option==1):	
+			for po in range(0,len(listadend300ro)):
+				amount.cell(row=po+8,column=8).value=listadend300ro[po]	
+		else:
+			for po in range(0,len(listadend300eng)):
+				amount.cell(row=po+8,column=8).value=listadend300eng[po]
 		amount.cell(row=6, column=2).value="1"
 		amount.cell(row=6, column=3).value="2"
 		amount.cell(row=7, column=1).value="Row"
@@ -10487,6 +10492,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=70, column=1).value="B"
 		amount.cell(row=71, column=1).value="B.1"
 
+		if(option==1):	
+			for po in range(0,len(listadend300ro)):
+				amount.cell(row=po+8,column=8).value=listadend300ro[po]	
+		else:
+			for po in range(0,len(listadend300eng)):
+				amount.cell(row=po+8,column=8).value=listadend300eng[po]
 
 		amount.cell(row=8, column=2).value=0
 		amount.cell(row=9, column=2).value=0
@@ -14238,6 +14249,18 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		except:
 			flash("Please insert the correct header for ' Doc. Date' in Purchases sheet")
 			return render_template("index.html")						
+		for row in sales.iter_rows():
+			for cell in row:
+				if cell.value == "35":
+					rand_tb = cell.row
+					scutiteded = cell.column
+					lun = len(purchases[cell.column])
+		# try:
+		# 	salescol = [b.value for b in purchases[supplierCell][rand_tb:lun]]
+		# except:
+		# 	flash("Please insert the correct header for ' Doc. Date' in Purchases sheet")
+		# 	return render_template("index.html")
+
 		lunacurenta=[]
 		for k in range(0,len(datadocument)):
 			print(str(datadocument[k]))
@@ -14496,7 +14519,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=70, column=1).value="B"
 		amount.cell(row=71, column=1).value="B.1"
 
-
+		if(option==1):	
+			for po in range(0,len(listadend300ro)):
+				amount.cell(row=po+8,column=8).value=listadend300ro[po]	
+		else:
+			for po in range(0,len(listadend300eng)):
+				amount.cell(row=po+8,column=8).value=listadend300eng[po]
 		amount.cell(row=8, column=2).value=0
 		amount.cell(row=9, column=2).value=0
 		amount.cell(row=10, column=2).value=0		
@@ -14516,7 +14544,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=24, column=2).value=0
 		amount.cell(row=25, column=2).value=0
 		amount.cell(row=26, column=2).value=0	
-		amount.cell(row=27, column=2).value=0
+		amount.cell(row=27, column=2).value='=round(sum(Sales!'+str(scutiteded)+':'+str(scutiteded)+'),0)'
 		amount.cell(row=28, column=2).value=0
 		amount.cell(row=30, column=2).value=0
 		amount.cell(row=29, column=2).value=0
