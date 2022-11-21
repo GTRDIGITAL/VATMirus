@@ -13150,7 +13150,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 @app.route('/D3APPS/PARTNERHERO')
 def my_form_D300_partner():
-	return render_template('D3APPS D3APPS PartnerHero.html')
+	return render_template('D3APPS PartnerHero.html')
 
 @app.route('/D3APPS/PARTNERHERO', methods=['POST', 'GET'])
 def D300xml_partner():
