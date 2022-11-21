@@ -18940,16 +18940,17 @@ def D300_thales():
 					text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
 				else:
 					if(tiptranza[i]=="N"):
-						text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="2" cota="0" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i].replace('"',""))+'" tip_document="1" nrFact="'+str(int(nrfacturi[i])+'" baza="'+str(int(bazatv[i]))+'"/>'
-
-					if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
-						text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+						text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="2" cota="0" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i].replace('"',""))+'" tip_document="1" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'"/>'
 					else:
-						if("-" in str(cuip[i])):
-							text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+
+						if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
+							text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
 						else:
-							if(bazatv[i]>0):
-								text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
+							if("-" in str(cuip[i])):
+								text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+							else:
+								if(bazatv[i]>0):
+									text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
 
 		text=text+"</declaratie394>"
 		# text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="'+str(op_efectuate)+'" prsAfiliat="'+str(prsAfiliat)+'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
