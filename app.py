@@ -14652,7 +14652,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 		amount.cell(row=51, column=3).value='=SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19nexvatb)+':'+str(tax19nexvatb)+')'
 		amount.cell(row=52, column=3).value='=C51+C50-SUM(Purchases!'+str(tdocneded)+':'+str(tdocneded)+')'
 		amount.cell(row=53, column=3).value=0
-		amount.cell(row=54, column=3).value='=round(SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+'),0'
+		amount.cell(row=54, column=3).value='=round(SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+'),0)'
 		amount.cell(row=55, column=3).value=0
 		amount.cell(row=56, column=3).value='=SUM(C52:C55)'
 		amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
@@ -16479,17 +16479,17 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 					docNo.append(str(docNoSales2[k]))
 			docNo.sort()
-			listaunica=list(set(docNoSales2))
+			listaunica=list(set(docNo))
 			listaunica.sort()
 	# print(listaunica)
 
 			for i in range(0,len(listaunica)):
 				listafacturi=[]
 				print(listaunica[i])
-				for j in range(0,len(docNoSales2)):
-					if(listaunica[i]==docNoSales2[j]):
+				for j in range(0,len(docNo)):
+					if(listaunica[i]==docNo[j]):
 
-						listafacturi.append(int(docNoSales2[j]))
+						listafacturi.append(int(docNo[j]))
 			listafacturi=list(set(listafacturi))
 			print(listafacturi)
 			listafacturi.sort()
@@ -18430,7 +18430,7 @@ def D300_thales():
 		else:
 			text224=""
 		if(nrN0>0):
-			text20='''<rezumat1 tip_partener="2" cota="0" facturiLS="0" bazaLS="0" facturiN="'''+str(nrN0)+'''" documentN="1" bazaN="'''+str(sumaN0)+'''"/>'''
+			text20='''<rezumat1 tip_partener="2" cota="0" facturiLS="0" bazaLS="0" facturiN="'''+str(nrN0)+'''" document_N="1" bazaN="'''+str(sumaN0)+'''"/>'''
 		else:
 			text20=""
 		L19nrrez2=L19nrrez2+nrL19
