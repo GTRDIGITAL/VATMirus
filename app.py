@@ -16475,7 +16475,9 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			docNoSales2.sort()
 			docNo=[]
 			for k in range(0,len(docNoSales2)):
-				docNo.append(str(docNoSales2[k]))
+				if(tipTranzPurch[k]!="Not applicable for D394"):
+
+					docNo.append(str(docNoSales2[k]))
 			docNo.sort()
 			listaunica=list(set(docNoSales2))
 			listaunica.sort()
@@ -18292,9 +18294,9 @@ def D300_thales():
 					if(str(cotatva[i])=="0"):
 						if(str(tiptranza[i])=="N"):
 							cuitip2.append(cuip[i])
-							nrN0=nrL5+int(nrfacturi[i])
+							nrN0=nrN0+int(nrfacturi[i])
 							# totalfacturi=totalfacturi+1
-							sumaN0=sumaL5+int(bazatv[i])
+							sumaN0=sumaN0+int(bazatv[i])
 							# tvaN0=tvaL5+int(stva[i])
 						if(str(tiptranza[i])=="LS"):
 							cuitip2.append(cuip[i])
@@ -18346,6 +18348,12 @@ def D300_thales():
 							sumaC9=sumaC9+int(bazatv[i])
 							tvaC9=tvaC9+int(stva[i])
 					if(str(cotatva[i])=="19"):
+						if(str(tiptranza[i])=="N"):
+							cuitip2.append(cuip[i])
+							nrN0=nrN0+int(nrfacturi[i])
+							# totalfacturi=totalfacturi+1
+							sumaN0=sumaN0+int(bazatv[i])
+							# tvaN0=tvaL5+int(stva[i])
 						if(str(tiptranza[i])=="L"):
 							cuitip2.append(cuip[i])
 							nrL19=nrL19+int(nrfacturi[i])
@@ -18421,8 +18429,8 @@ def D300_thales():
 			text224='''<rezumat1 tip_partener="2" cota="24" facturiL="'''+str(nrL24)+'''" bazaL="'''+str(sumaL24)+'''" tvaL="'''+str(tvaL24)+'''"/>'''
 		else:
 			text224=""
-		if(bazaN0>0):
-			text20='''<rezumat1 tip_partener="2" cota="0" facturiN="'''+str(nrN0)+'''" documentN="1" bazaN="'''+str(sumaN0)+'''"/>'''
+		if(nrN0>0):
+			text20='''<rezumat1 tip_partener="2" cota="0" facturiLS="0" bazaLS="0" facturiN="'''+str(nrN0)+'''" documentN="1" bazaN="'''+str(sumaN0)+'''"/>'''
 		else:
 			text20=""
 		L19nrrez2=L19nrrez2+nrL19
