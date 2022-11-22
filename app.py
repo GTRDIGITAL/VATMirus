@@ -16124,8 +16124,11 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 			serieCuiPurch = []
 			codTaraCuiPurch = []
+			suppIDPurch2=[]
+			for k in range(0,len(suppIDPurch)):
+				suppIDPurch2.append(suppIDPurch[k].replace(" ",""))
 			# #print(suppIDPurch)
-			for i in suppIDPurch:
+			for i in suppIDPurch2:
 				# #print(i)
 				if(str(i)[:1].isalpha()):	
 					r = re.compile("([a-zA-Z]+)([0-9]+)")
