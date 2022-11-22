@@ -16485,9 +16485,9 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			listaunica=list(set(docNo))
 			listaunica.sort()
 	# print(listaunica)
-
+			listafacturi=[]
 			for i in range(0,len(listaunica)):
-				listafacturi=[]
+				
 				print(listaunica[i])
 				for j in range(0,len(docNo)):
 					if(listaunica[i]==docNo[j]):
@@ -16497,7 +16497,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			print(listafacturi)
 			listafacturi.sort()
 			start=[]
-			start.append(listaunica[0])
+			try:
+				start.append(listaunica[0])
+			except:
+				pass
 			stop=[]
 			try:
 				if(int(listaunica[1])-int(listaunica[0])>1):
@@ -16510,11 +16513,17 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 						stop.append(listaunica[k-1])
 						start.append(listaunica[k])
 			except:
-				stop.append(listaunica[0])
-			if(len(stop)==len(start)):
-				print("ok")
-			else:
-				stop.append(listaunica[len(listaunica)-1])
+				try:
+					stop.append(listaunica[0])
+				except:
+					pass
+			try:
+				if(len(stop)==len(start)):
+					print("ok")
+				else:
+					stop.append(listaunica[len(listaunica)-1])
+			except:
+				pass
 			print(start,stop)
 
 			# #print(docNoSales)
