@@ -18891,6 +18891,10 @@ def D300_thales():
 						AI19nr=AI19nr+int(nrfacturi[i])
 						AI19b=AI19b+int(int(bazatv[i]))
 						AI19t=AI19t+int(int(stva[i]))
+					if(str(tiptranza[i]=="C")):
+						A19nr=A19nr+int(nrfacturi[i])
+						A19b=A19b+int(bazatv[i])
+						A19t=A19t+int(stva[i])
 				if(str(cotatva[i])=="9"):
 					if(str(tiptranza[i])=="L"):
 						L9nr=L9nr+int(nrfacturi[i])
@@ -18900,6 +18904,10 @@ def D300_thales():
 						A9nr=A9nr+int(nrfacturi[i])
 						A9b=A9b+int(int(bazatv[i]))
 						A9t=A9t+int(int(stva[i]))
+					if(str(tiptranza[i])=="C"):
+						A9nr=A9nr+int(nrfacturi[i])
+						A9b=A9b+int(int(bazatv[i]))
+						A9t=A9t+int(int(stva[i]))						
 					if(str(tiptranza[i])=="AI"):
 						AI9nr=AI9nr+int(nrfacturi[i])
 						AI9b=AI9b+int(int(bazatv[i]))
