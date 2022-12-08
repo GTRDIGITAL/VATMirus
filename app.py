@@ -18894,7 +18894,7 @@ def D300_thales():
 						AI19nr=AI19nr+int(nrfacturi[i])
 						AI19b=AI19b+int(int(bazatv[i]))
 						AI19t=AI19t+int(int(stva[i]))
-					if(str(tiptranza[i]=="C")):
+					if(str(tiptranza[i])=="C"):
 						A19nr=A19nr+int(nrfacturi[i])
 						A19b=A19b+int(bazatv[i])
 						A19t=A19t+int(stva[i])
