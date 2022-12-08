@@ -18217,7 +18217,10 @@ def D300_thales():
 								cuitip1.append(cuip[i])
 								sumaA24=sumaA24+int(bazatv[i])
 								tvaA24=tvaA24+int(stva[i])
-		numarcuicorect1=len(list(set(cuitip1)))
+		strcuitip1=[]
+		for k in range(0,len(cuitip1)):
+			strcuitip1.append(str(cuitip1[k]))
+		numarcuicorect1=len(list(set(strcuitip1)))
 		numart=(list(set(tippartener1)))
 		print(numart)
 		numartotal=len(numart)
