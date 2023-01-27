@@ -1279,6 +1279,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 			return render_template("index.html")
 		listacurentas=[]						
 		for k in range(0,len(listdocdate)):
+			print(listdocdate[k])
 			# print(datadocument[k][3:4])
 			# print(datadocument[k][3:5])
 			if(str(listdocdate[k][4:5])=="0"):
