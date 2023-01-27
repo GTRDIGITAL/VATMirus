@@ -18987,7 +18987,7 @@ def D300_thales():
 		text=text+"</declaratie394>"
 		# text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="'+str(op_efectuate)+'" prsAfiliat="'+str(prsAfiliat)+'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
 
-		# f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
+		# f=open("C:/Users/Bogdan.Constantinesc/Docuasdasdments/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
 		# make_archive("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage","C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/arhiva VAT apps.zip")
 		# return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True) 
 		f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
