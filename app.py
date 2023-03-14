@@ -19001,7 +19001,7 @@ def D300_thales():
 
 @app.route('/VAT/Instructions', methods=['GET'])
 def downloadVAT():
-        filepath = "/home/auditappnexia/output/vat"
+        filepath = "/home/mirus_app/storage/vat"
  
         return send_from_directory(filepath,"Instructions - VAT.docx", as_attachment=True)
 @app.route('/VAT/GTbJY47MKf1oajfEqntaRFSt8fw')
@@ -20575,7 +20575,7 @@ def my_form_post():
 
         std = wb["Sheet"]
         wb.remove(std)
-        folderpath = "/home/auditappnexia/output/vat"
+        folderpath = "/home/mirus_app/storage/vat"
         file_pathFS = os.path.join(folderpath, "VAT test"+" "+clientname1+" "+str(denis)+".xlsx")
         wb.save(file_pathFS)
         # out.save(folderpath + "/" + "T10 - VAT Test" + ".xlsx")
