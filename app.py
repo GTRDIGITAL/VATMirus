@@ -3697,7 +3697,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     if(int(listaunica[k])-int(listaunica[k-1])==1):
                         print("ok")
                     else:
-                        stop.append(listaunica[k-1])
+                        stop.append(listaunica[k])
                         start.append(listaunica[k])
             except:
                 stop.append(listaunica[0])
