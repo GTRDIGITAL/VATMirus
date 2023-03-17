@@ -2109,7 +2109,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                         workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
                         workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
             for x in range(0, len(taxcodes)):
-                if(listacurentas[x]=="Yes" and and vats[x]!=None):                
+                if(listacurentas[x]=="Yes" and vats[x]!=None):
                     if str(taxcodes[x])=="Y4":
                         a=a+1
                         workings.cell(row=a, column=1).value="P"
