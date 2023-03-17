@@ -93,9 +93,9 @@ import webbrowser
 
 today=datetime.datetime.now().date()
 yesterday=today-datetime.timedelta(days=1)
-print(yesterday.year)
-print(yesterday.month)
-print(yesterday.day)
+# print(yesterday.year)
+# print(yesterday.month)
+# print(yesterday.day)
 curs="EUR"
 curs2="USD"
 
@@ -434,7 +434,7 @@ def D300xml():
                     valluna=listadenluni[i]
                     vallunaurmatoare=listadenluni[i+1]
         var=Sheet1.cell(row=12,column=4).value
-        print(var)
+        # print(var)
         Sheet1.cell(row = 10, column = 4).value = str(dropdown)
         for j in range(0,len(listatrez)):
             if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
@@ -469,7 +469,7 @@ def D300xml():
         for row in Sheet1['N1:Z100']:
                     for cell in row:
                         cell.fill = fontg
-        print(get_fxrate(today.year))
+        # print(get_fxrate(today.year))
 
         Sheet1.cell(row = 6, column = 3).value = "Denumire"
         Sheet1.cell(row = 6, column = 4).value = "='Other info'!C4"
@@ -952,7 +952,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     valluna=listadenluni2[i]
                     vallunaurmatoare=listadenluni2[i+1]
         var=Sheet1.cell(row=12,column=4).value
-        print(var)
+        # print(var)
         Sheet1.cell(row = 10, column = 4).value = str(dropdown)
         for j in range(0,len(listatrez)):
             if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
@@ -1279,7 +1279,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             return render_template("index.html")
         listacurentas=[]                        
         for k in range(0,len(listdocdate)):
-            print(listdocdate[k])
+            # print(listdocdate[k])
             # print(datadocument[k][3:4])
             # print(datadocument[k][3:5])
             if(str(listdocdate[k][4:5])=="0"):
@@ -1310,8 +1310,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         lunacurenta=[]
         for k in range(0,len(datadocument)):
             try:
-                print(datadocument[k][3:4])
-                print(datadocument[k][3:5])
+                # print(datadocument[k][3:4])
+                # print(datadocument[k][3:5])
                 if(str(datadocument[k][3:4])=="0"):
                     if(str(datadocument[k][4:5])==str(info.cell(row=3,column=3).value)):
                         lunacurenta.append("Yes")
@@ -1885,7 +1885,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     LL2="0"+str(int(info.cell(row=3, column=3).value)+1)
             else:
                 LL2=str(int(info.cell(row=3,column=3).value)+1)             
-        print(LL2, 'LL2')
+        # print(LL2, 'LL2')
         
         if int(info.cell(row=3, column=3).value)==12:
             AA2=year 
@@ -1914,7 +1914,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         
 
         nrEvidenta=Poz+elementMapare+Fix01+LLAA+ZZLLAA+Fix0000+str(control)
-        print(nrEvidenta)
+        # print(nrEvidenta)
         #print(nrEvidenta, 'nrEvidenta')
             
         
@@ -2061,7 +2061,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             # #print(bazaA_Furnizor, "litera pentru furnizor/ client")
             # #print(bazaA_index, "ASTA E NUMARUL LUI A")
             # #print(bazaA_literaA, "LITERA PENTRU TIP")
-            print(taxcodeach)
+            # print(taxcodeach)
             a=3
             for x in range(0, len(taxcodeach)):
                 if(lunacurenta[x]=="Yes" and vata[x]!=None):
@@ -2111,7 +2111,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             for x in range(0, len(taxcodes)):
                 if(listacurentas[x]=="Yes" and vats[x]!=None):
                     if str(taxcodes[x])=="Y4":
-                        a=a+1
+                        a=a+39
                         workings.cell(row=a, column=1).value="P"
                         workings.cell(row=a, column=4).value=denumires[x]
                         workings.cell(row=a, column=6).value=vats[x]
@@ -2633,7 +2633,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             # #print(codTaraCuiSales)
             # TIP Furnizor!!!!!
             # #print(len(codTaraCuiSales))
-            print(serieCuiSales,codTaraCuiSales)
+            # print(serieCuiSales,codTaraCuiSales)
             coteTVAsales=[]
             for i in range(0, len(docNoSales)):
                 if (ltaxcode[i]=="A1"):
@@ -2672,7 +2672,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             # print(len(docNoSales),len(codTranzactieSales))
             # print(codTranzactieSales)
             for i in range(0, len(docNoSales)):
-                print(ltaxcode[i])
+                # print(ltaxcode[i])
                 # print(docNoSales[i],print(codTranzactieSales[i]))
                 if(listadeclant_1[i]=="Yes"):
                     tipTranzSale.append("Declarat anterior")
@@ -2681,17 +2681,17 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                         # #print(docNoSales[i]," ",listaCUISales1[i], "", taxBaseL19_1[i], " ", taxBaseL9_1[i], " ", taxBaseL5_1[i])
                         # if (int(taxBaseL19_1[i])>0 and int(vatL19_1[i])>0) or (int(taxBaseL9_1[i])>0 and int(vatL9_1[i])> 0) or (int(taxBaseL5_1[i])>0 and int(vatL5_1[i])>0):
                         if (ltaxcode[i]=='A1'):
-                            print("Yes")
+                            # print("Yes")
                             tipTranzSale.append('L')
                             storno.append("")
                         else:
                             # None
                             if (ltaxcode[i]=='A8'):
-                                print("Yes")
+                                # print("Yes")
                                 tipTranzSale.append('L')
                             else:
                                 if ltaxcode[i]=='A5' or ltaxcode[i]=='A2' or ltaxcode[i]=='A4':
-                                    print("Yes")
+                                    # print("Yes")
                                     tipTranzSale.append("V")
                                     storno.append("")
                     else:
@@ -2757,9 +2757,9 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 
 
-            print(len(tipTranzSale),len(codTranzactieSales))
+            # print(len(tipTranzSale),len(codTranzactieSales))
             for i in range(0, len(codTaraCuiSales)):
-                print(serieCuiSales[i],docNoSales[i],listaCUISales1[i],codTranzactieSales[i],tipTranzSale[i])
+                # print(serieCuiSales[i],docNoSales[i],listaCUISales1[i],codTranzactieSales[i],tipTranzSale[i])
                 salesExcel.cell(row=10 + i, column=1).value = codTaraCuiSales[i]
                 salesExcel.cell(row=10 + i, column=2).value = serieCuiSales[i]
                 salesExcel.cell(row=10 + i, column=3).value = docNoSales[i]
@@ -3478,10 +3478,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             # print(len(supplierName),len(tipTranzPurch))
             listanouaappendpurch=[]
             # for i in range(0,len(supplierName)):
-            for p in range(0,len(serieCuiPurch)):
-                print(serieCuiPurch[p],tipTranzPurch[p],coteTVApurchases[p],tipTranzactiePurchases[p])
-            # print()
-            print(len(serieCuiPurch),len(tipTranzPurch),len(coteTVApurchases),len(tipTranzactiePurchases))
+            # for p in range(0,len(serieCuiPurch)):
+            #     print(serieCuiPurch[p],tipTranzPurch[p],coteTVApurchases[p],tipTranzactiePurchases[p])
+            # # print()
+            # print(len(serieCuiPurch),len(tipTranzPurch),len(coteTVApurchases),len(tipTranzactiePurchases))
             for k in range(0,len(serieCuiPurch)):
                 try:
                     print(serieCuiPurch[k],tipTranzPurch[k])
@@ -3653,7 +3653,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             seriefacturi=[]
             for i in range(0,len(docNoSales)):
                 # docNoSales[i].replaceAll("[^a-zA-Z0-9]", ")
-                if(int(codTranzactieSales[i])<3):
+                if(str(tipTranzSale[i])=="L"):
                     # try:
                     numere=re.sub("[^0-9]", "",str(docNoSales[i]))
                     # except:
@@ -3661,8 +3661,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     result = ''.join([i for i in str(docNoSales[i]) if not i.isdigit()])
                     docNoSales2.append(numere)
                     seriefacturi.append(result)
-            #print(seriefacturi)
-            # print(docNoSales2)
+            print(seriefacturi)
+            print(docNoSales2," ----- aici sunt facturi-----")
             initial=0
             final=0
             docNoSales2.sort()
@@ -3672,7 +3672,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             docNo.sort()
             listaunica=list(set(docNoSales2))
             listaunica.sort()
-    # print(listaunica)
+            print(listaunica)
 
             for i in range(0,len(listaunica)):
                 listafacturi=[]
