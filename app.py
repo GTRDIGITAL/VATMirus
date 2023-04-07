@@ -17324,6 +17324,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 def my_form2():
     return render_template('D3APPS second step.html')
 
+
+
 @app.route('/D3APPS2', methods=['POST', 'GET'])
 def D300_thales():
     if request.method == 'POST':
@@ -25054,11 +25056,1693 @@ def D300xml_nutre():
 
     make_archive(filename,filename+".zip")
     return send_from_directory(folderpath+"/",str(clientname)+".zip",as_attachment=True)
-    return render_template('D3APPS2')@app.route('/D3APPS2')
-def my_form2():
-    return render_template('D3APPS second step.html')
+    return render_template('D3APPS3')
+
+@app.route('/D3APPS3')
+def my_form3():
+    return render_template('D3APPSNUTRE.html')
+
+@app.route('/D3APPS3', methods=['POST', 'GET'])
+def D300_Nutre():
+    if request.method == 'POST':
+        D300_2= request.files.getlist('d300file2')
+        clientname=request.form.get('client')
+    filename="D:/VATMirus 6Aprilie/output/"+str(clientname)
+    codclient=[]
+    for i in D300_2:
+        i.save(secure_filename(i.filename))
+        print(str(i))
+        codclient.append(str(i).replace(".xlsx' ('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')>","").replace("<FileStorage: '",""))
+
+    for jj in range(0,len(codclient)):
+        temp = openpyxl.load_workbook(D300_2[jj],data_only=True)
+        try:
+            amount=temp['D300 draft figures']
+            info=temp['Other info']
+            an=info.cell(row=20,column=3).value
+            #print(an)
+            luna=info.cell(row=3,column=3).value
+            # temei=info.cell(row=8,column=2).value
+            cif=info.cell(row=27,column=3).value
+            den=info.cell(row=26,column=3).value
+
+            # #print(an, 'an')
+
+            # cif=info.cell(row=11,column=2).value
+            # adresa="strada: "str(info.cell(row=12,column=2).value)+str(info.cell(row=13,column=2).value)+ ",localitate: "+str(info.cell(row=14,column=2).value)+" "+str(info.cell(row=16,column=2).value)+",judet: "+str(info.cell(row=15,column=2).value)+",cod postal: "+str(info.cell(row=21,column=2).value)
+            strada=info.cell(row=28,column=3).value
+            numar=info.cell(row=29,column=3).value
+            localitate=info.cell(row=30,column=3).value
+            judet=info.cell(row=31,column=3).value
+
+            sector=info.cell(row=32,column=3).value
+            if(sector==None):
+                sector=""
+            bloc=info.cell(row=33,column=3).value
+            if(bloc==None):
+                bloc=""
+            scara=info.cell(row=34,column=3).value
+            if(scara==None):
+                scara=""
+            etaj=info.cell(row=35,column=3).value
+            if(etaj==None):
+                etaj=""
+            apt=info.cell(row=36,column=3).value
+            if(apt==None):
+                apt=""
+            strada=strada
+            # codpostal=info.cell(row=37,column=3).value
+            telefon=info.cell(row=29,column=3).value
+            email=info.cell(row=31,column=3).value
+            banca=info.cell(row=32,column=3).value
+            contban=info.cell(row=33,column=3).value
+            Caen=info.cell(row=34,column=3).value
+            prorata=info.cell(row=35,column=3).value
+            cereale=info.cell(row=36,column=3).value
+            telmob=info.cell(row=37,column=3).value
+            disp=info.cell(row=38,column=3).value
+            nr_evid=int(info.cell(row=18,column=3).value)
+            cons=info.cell(row=39,column=3).value
+            ramburs=info.cell(row=40,column=3).value
+            if(ramburs=="N"):
+                ramburs2=0
+            else:
+                ramburs2=1
+            # total_plata=R1_1+R2_1+R3_1+R3_1_1+R4_1+R5_1+R5_1_1+R6_1+R7_1+R7_1_1+R8_1+R9_1+R10_1+R11_1+R12_1+R12_1_1+R12_2_1+R12_3_1+R13_1+R14_1+R15_1+R16_1+R64_1+R65_1+R17_1+R18_1+R18_1_1+R19_1+R20_1+R20_1_1+R21_1+R22_1+R23_1+R24_1+R25_1+R25_1_1+R25_2_1+R25_3_1+R43_1+R44_1+R26_1+R26_1_1+R27_1+R28_1+R29_1+R30_1+R31_1+R32_1+R33_1+R34_1+R35_1+R36_1+R37_1+R38_1+R39_1+R40_1+R41_1+R42_1+R1_2+R2_2+R3_2+R3_1_2+R4_2+R5_2+R5_1_2+R6_2+R7_2+R7_1_2+R8_2+R9_2+R10_2+R11_2+R12_2+R12_1_2+R12_2_2+R12_3_2+R13_2+R14_2+R15_2+R16_2+R64_2+R65_2+R17_2+R18_2+R18_1_2+R19_2+R20_2+R20_1_2+R21_2+R22_2+R23_2+R24_2+R25_2+R25_1_2+R25_2_2+R25_3_2+R43_2+R44_2+R26_2+R26_1_2+R27_2+R28_2+R29_2+R30_2+R31_2+R32_2+R33_2+R34_2+R35_2+R36_2+R37_2+R38_2+R39_2+R40_2+R41_2+R42_2+valoare_a+valoare_a1+valoare_b+valoare_b1+tva_a+tva_a1+tva_b+tva_b1
+
+            ramburs=info.cell(row=40,column=3).value
+            nrfact=info.cell(row=41,column=3).value
+            baza=info.cell(row=42,column=3).value
+            tva=info.cell(row=43,column=3).value
+            factprimite=info.cell(row=44,column=3).value
+            bazaprimite=info.cell(row=45,column=3).value
+            tvaprimite=info.cell(row=46,column=3).value
+            valoare_a=amount.cell(row=68,column=2).value
+            valoare_a1=amount.cell(row=69,column=2).value
+            tva_a=amount.cell(row=68,column=3).value
+            tva_a1=amount.cell(row=69,column=3).value
+            valoare_b=amount.cell(row=70,column=2).value
+            valoare_b1=amount.cell(row=71,column=2).value
+            tva_b=amount.cell(row=70,column=3).value
+            tva_b1=amount.cell(row=71,column=3).value
+            nrfactemise=info.cell(row=47,column=3).value
+            total_baza=info.cell(row=48,column=3).value
+            total_tva=info.cell(row=49,column=3).value
+            total_precedent=info.cell(row=50,column=3).value
+            total_curent=info.cell(row=51,column=3).value
+            tip=info.cell(row=53,column=3).value
+            pren=info.cell(row=54,column=3).value
+            nume=info.cell(row=55,column=3).value
+            funct=info.cell(row=56,column=3).value
+            total_precedent=amount.cell(row=74,column=2).value
+            total_curent=amount.cell(row=74,column=3).value
+            totalp=info.cell(row=52,column=3).value
+
+            for row in amount.iter_rows():
+                for cell in row:
+                    if cell.value == "Taxable basis":
+                        rand_tb = cell.row
+                        suma1 = cell.column
+                        lun = len(amount[cell.column])
+            coloana = [b.value for b in amount[suma1][rand_tb:lun]]
 
 
+            R1_1=amount.cell(row=8,column=2).value
+            R2_1=amount.cell(row=9,column=2).value
+            R3_1=amount.cell(row=10,column=2).value
+            R3_1_1=amount.cell(row=11,column=2).value
+            R4_1=amount.cell(row=12,column=2).value
+            R5_1=amount.cell(row=13,column=2).value
+            R5_1_1=amount.cell(row=14,column=2).value
+            R6_1=amount.cell(row=15,column=2).value
+            R7_1=amount.cell(row=16,column=2).value
+            R7_1_1=amount.cell(row=17,column=2).value
+            R8_1=amount.cell(row=18,column=2).value
+            R9_1=amount.cell(row=19,column=2).value
+            R10_1=amount.cell(row=20,column=2).value
+            R11_1=amount.cell(row=21,column=2).value
+            R12_1=amount.cell(row=22,column=2).value
+            R12_1_1=amount.cell(row=23,column=2).value
+            R12_2_1=amount.cell(row=24,column=2).value
+            R12_3_1=amount.cell(row=25,column=2).value
+            R13_1=amount.cell(row=26,column=2).value
+            R14_1=amount.cell(row=27,column=2).value
+            R15_1=amount.cell(row=28,column=2).value
+            R16_1=amount.cell(row=29,column=2).value
+            R64_1=amount.cell(row=30,column=2).value
+            R65_1=amount.cell(row=31,column=2).value
+            R17_1=amount.cell(row=32,column=2).value
+            R18_1=amount.cell(row=33,column=2).value
+            R18_1_1=amount.cell(row=34,column=2).value
+            R19_1=amount.cell(row=35,column=2).value
+            R20_1=amount.cell(row=36,column=2).value
+            R20_1_1=amount.cell(row=37,column=2).value
+            R21_1=amount.cell(row=38,column=2).value
+            R22_1=amount.cell(row=39,column=2).value
+            R23_1=amount.cell(row=40,column=2).value
+            R24_1=amount.cell(row=41,column=2).value
+            R25_1=amount.cell(row=42,column=2).value
+            R25_1_1=amount.cell(row=43,column=2).value
+            R25_2_1=amount.cell(row=44,column=2).value
+            R25_3_1=amount.cell(row=45,column=2).value
+            R43_1=amount.cell(row=46,column=2).value
+            R44_1=amount.cell(row=47,column=2).value
+            R26_1=amount.cell(row=48,column=2).value
+            R26_1_1=amount.cell(row=49,column=2).value
+            R27_1=amount.cell(row=50,column=2).value
+            R28_1=amount.cell(row=52,column=2).value
+            R29_1=amount.cell(row=53,column=2).value
+            R30_1=amount.cell(row=54,column=2).value
+            R31_1=amount.cell(row=55,column=2).value
+            R32_1=amount.cell(row=56,column=2).value
+            R33_1=amount.cell(row=57,column=2).value
+            R34_1=amount.cell(row=58,column=2).value
+            R35_1=amount.cell(row=59,column=2).value
+            R36_1=amount.cell(row=60,column=2).value
+            R37_1=amount.cell(row=61,column=2).value
+            R38_1=amount.cell(row=62,column=2).value
+            R39_1=amount.cell(row=63,column=2).value
+            R40_1=amount.cell(row=64,column=2).value
+            R41_1=amount.cell(row=65,column=2).value
+            R42_1=amount.cell(row=66,column=2).value
+            R1_2=amount.cell(row=8,column=3).value
+            R2_2=amount.cell(row=9,column=3).value
+            R3_2=amount.cell(row=10,column=3).value
+            R3_1_2=amount.cell(row=11,column=3).value
+            R4_2=amount.cell(row=12,column=3).value
+            R5_2=amount.cell(row=13,column=3).value
+            R5_1_2=amount.cell(row=14,column=3).value
+            R6_2=amount.cell(row=15,column=3).value
+            R7_2=amount.cell(row=16,column=3).value
+            R7_1_2=amount.cell(row=17,column=3).value
+            R8_2=amount.cell(row=18,column=3).value
+            R9_2=amount.cell(row=19,column=3).value
+            R10_2=amount.cell(row=20,column=3).value
+            R11_2=amount.cell(row=21,column=3).value
+            R12_2=amount.cell(row=22,column=3).value
+
+
+            R12_1_2=amount.cell(row=23,column=3).value
+            R12_2_2=amount.cell(row=24,column=3).value
+            R12_3_2=amount.cell(row=25,column=3).value
+            R13_2=amount.cell(row=26,column=3).value
+            R14_2=amount.cell(row=27,column=3).value
+            R15_2=amount.cell(row=28,column=3).value
+            R16_2=amount.cell(row=29,column=3).value
+            R64_2=amount.cell(row=30,column=3).value
+            R65_2=amount.cell(row=31,column=3).value
+            R17_2=amount.cell(row=32,column=3).value
+            R18_2=amount.cell(row=33,column=3).value
+            R18_1_2=amount.cell(row=34,column=3).value
+            R19_2=amount.cell(row=35,column=3).value
+            R20_2=amount.cell(row=36,column=3).value
+            R20_1_2=amount.cell(row=37,column=3).value
+            R21_2=amount.cell(row=38,column=3).value
+            R22_2=amount.cell(row=39,column=3).value
+            R23_2=amount.cell(row=40,column=3).value
+            R24_2=amount.cell(row=41,column=3).value
+            R25_2=amount.cell(row=42,column=3).value
+            R25_1_2=amount.cell(row=43,column=3).value
+            R25_2_2=amount.cell(row=44,column=3).value
+            R25_3_2=amount.cell(row=45,column=3).value
+
+
+            R43_2=amount.cell(row=46,column=3).value
+            R44_2=amount.cell(row=47,column=3).value
+            R26_2=amount.cell(row=48,column=3).value
+            R26_1_2=amount.cell(row=49,column=3).value
+            R27_2=amount.cell(row=50,column=3).value
+
+
+            R28_2=amount.cell(row=52,column=3).value
+            R29_2=amount.cell(row=53,column=3).value
+            R30_2=amount.cell(row=54,column=3).value
+            R31_2=amount.cell(row=55,column=3).value
+            R32_2=amount.cell(row=56,column=3).value
+
+
+            R33_2=amount.cell(row=57,column=3).value
+            R34_2=amount.cell(row=58,column=3).value
+            R35_2=amount.cell(row=59,column=3).value
+            R36_2=amount.cell(row=60,column=3).value
+            R37_2=amount.cell(row=61,column=3).value
+            R38_2=amount.cell(row=62,column=3).value
+            R39_2=amount.cell(row=63,column=3).value
+            R40_2=amount.cell(row=64,column=3).value
+            R41_2=amount.cell(row=65,column=3).value
+            R42_2=amount.cell(row=66,column=3).value
+            
+
+
+            # for i in range(0 ,len(tip)):
+            # folderpath="D:/apps/TEST D3APPS/Test 21.03.2022/output"
+            folderpath="/home/mirus_app/storage"
+            # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
+            # temp.save(folderpath+".xlsx")
+            text='<?xml version="1.0"?> <declaratie300  luna="'+str(luna)+'" an="'+str(an)+'" depusReprezentant="'+str(ramburs2)+'" bifa_interne="0" temei="0" prenume_declar="'+str(pren)+'" nume_declar="'+str(nume)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(den)+'" adresa="'+str(strada)+'" telefon="'+str(telefon)+'" banca="'+str(banca)+'" cont="'+str(contban)+'" caen="'+str(Caen)+'" tip_decont="'+str(tip)+'" pro_rata="'+str(prorata)+'" bifa_cereale="'+str(cereale)+'" bifa_mob="'+str(telmob)+'" bifa_disp="'+str(disp)+'" bifa_cons="'+str(cons)+'" solicit_ramb="'+str(ramburs)+'" nr_evid="'+str(nr_evid)+'" totalPlata_A="'+str(totalp)+'" R1_1="'+str(R1_1)+'" R2_1="'+str(R2_1)+'" R3_1="'+str(R3_1)+'" R3_1_1="'+str(R3_1_1)+'" R4_1="'+str(R4_1)+'" R5_1="'+str(R5_1)+'" R5_2="'+str(R5_2)+'" R5_1_1="'+str(R5_1_1)+'" R5_1_2="'+str(R5_1_2)+'" R6_1="0" R6_2="'+str(R6_2)+'" R7_1="'+str(R7_1)+'" R7_2="'+str(R7_2)+'" R7_1_1="'+str(R7_1_1)+'" R7_1_2="'+str(R7_1_2)+'" R8_1="'+str(R8_1)+'" R8_2="'+str(R8_2)+'" R9_1="'+str(R9_1)+'" R9_2="'+str(R9_2)+'" R10_1="'+str(R10_1)+'" R10_2="'+str(R10_2)+'" R11_1="'+str(R11_1)+'" R11_2="'+str(R11_2)+'" R12_1="'+str(R12_1)+'" R12_2="'+str(R12_2)+'" R12_1_1="'+str(R12_1_1)+'" R12_1_2="'+str(R12_1_2)+'" R12_2_1="'+str(R12_2_1)+'" R12_2_2="'+str(R12_2_2)+'" R12_3_1="'+str(R12_3_1)+'" R12_3_2="'+str(R12_3_2)+'" R13_1="'+str(R13_1)+'" R14_1="'+str(R14_1)+'" R15_1="'+str(R15_1)+'" R16_1="'+str(R16_1)+'" R16_2="'+str(R16_2)+'" R64_1="'+str(R64_1)+'" R64_2="'+str(R64_2)+'" R65_1="'+str(R65_1)+'" R65_2="'+str(R65_2)+'" R17_1="'+str(R17_1)+'" R17_2="'+str(R17_2)+'" R18_1="'+str(R18_1)+'" R18_2="'+str(R18_2)+'" R18_1_1="'+str(R18_1_1)+'" R18_1_2="'+str(R18_1_2)+'" R19_1="'+str(R19_1)+'" R19_2="'+str(R19_2)+'" R20_1="'+str(R20_1)+'" R20_2="'+str(R20_2)+'" R20_1_1="'+str(R20_1_1)+'" R20_1_2="'+str(R20_1_2)+'" R21_1="'+str(R21_1)+'" R21_2="'+str(R21_2)+'" R22_1="'+str(R22_1)+'" R22_2="'+str(R22_2)+'" R23_1="'+str(R23_1)+'" R23_2="'+str(R23_2)+'" R24_1="'+str(R24_1)+'" R24_2="'+str(R24_2)+'" R25_1="'+str(R25_1)+'" R25_2="'+str(R25_2)+'" R25_1_1="'+str(R25_1_1)+'" R25_1_2="'+str(R25_1_2)+'" R25_2_1="'+str(R25_2_1)+'" R25_2_2="'+str(R25_2_2)+'" R25_3_1="'+str(R25_3_1)+'" R25_3_2="'+str(R25_3_2)+'" R43_2="'+str(R43_2)+'" R44_2="'+str(R44_2)+'" R26_1="'+str(R26_1)+'" R26_1_1="'+str(R26_1_1)+'" R27_1="'+str(R27_1)+'" R27_2="'+str(R27_2)+'" R28_2="'+str(R28_2)+'" R29_2="'+str(R29_2)+'" R30_1="'+str(R30_1)+'" R30_2="'+str(R30_2)+'" R31_2="'+str(R31_2)+'" R32_2="'+str(R32_2)+'" R33_2="'+str(R33_2)+'" R34_2="'+str(R34_2)+'" R35_2="'+str(R35_2)+'" R36_2="'+str(R36_2)+'" R37_2="'+str(R37_2)+'" R38_2="'+str(R38_2)+'" R39_2="'+str(R39_2)+'" R40_2="'+str(R40_2)+'" R41_2="'+str(R41_2)+'" R42_2="'+str(R42_2)+'" nr_facturi="'+str(nrfact)+'" baza="'+str(baza)+'" tva="'+str(tva)+'" nr_facturi_primite="'+str(factprimite)+'" baza_primite="'+str(bazaprimite)+'" tva_primite="'+str(tvaprimite)+'" nr_fact_emise="'+str(nrfactemise)+'" total_baza="'+str(total_baza)+'" total_precedent ="'+str(total_precedent)+'" total_curent ="'+str(total_curent)+'" total_tva="'+str(total_tva)+'" valoare_a="'+str(valoare_a)+'" tva_a="'+str(tva_a)+'" valoare_a1="'+str(valoare_a1)+'" tva_a1="'+str(tva_a1)+'" valoare_b="'+str(valoare_b)+'" tva_b="'+str(tva_b)+'" valoare_b1="'+str(valoare_b1)+'" tva_b1="'+str(tva_b1)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d300:declaratie:v7 d300.xsd" xmlns="mfp:anaf:dgti:d300:declaratie:v7"></declaratie300>'
+            #print(text)
+            # with open("/home/mirus_app/storage/D300.xml", "w", encoding="utf-8") as f:
+            with open(filename, "w", encoding="utf-8") as f:
+                f.write(text)
+        # f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text).encode('utf-8')
+        #   # f=open("C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text)
+        except:
+            pass
+        try:
+            amount=temp['D390 for XML']
+            info=temp['Other info']
+
+            an=info.cell(row=2,column=3).value
+            luna=info.cell(row=3,column=3).value
+            cif=info.cell(row=5,column=3).value
+            denu=info.cell(row=4,column=3).value
+            telefon=info.cell(row=7,column=3).value
+            email=info.cell(row=9,column=3).value
+            pren=info.cell(row=54,column=3).value
+            nume=info.cell(row=55,column=3).value
+            funct=info.cell(row=56,column=3).value
+            adresa=info.cell(row=6,column=3).value
+            numar=info.cell(row=102,column=3).value
+            localitate=info.cell(row=103,column=3).value
+            judet=info.cell(row=104,column=3).value
+
+            sector=info.cell(row=105,column=3).value
+            if(sector==None):
+                sector=""
+            bloc=info.cell(row=106,column=3).value
+            if(bloc==None):
+                bloc=""
+            scara=info.cell(row=107,column=3).value
+            if(scara==None):
+                scara=""
+            etaj=info.cell(row=108,column=3).value
+            if(etaj==None):
+                etaj=""
+            apt=info.cell(row=109,column=3).value
+            if(apt==None):
+                apt=""
+            adresa=adresa
+
+            totalplata=amount.cell(row=11,column=3).value
+            nrpag=amount.cell(row=12,column=3).value
+            nropi=amount.cell(row=13,column=3).value
+            bazal=amount.cell(row=14,column=3).value
+            bazat=amount.cell(row=15,column=3).value
+            bazaa=amount.cell(row=16,column=3).value
+            bazaP=amount.cell(row=17,column=3).value
+            bazas=amount.cell(row=18,column=3).value
+            bazar=amount.cell(row=19,column=3).value
+            totalb=amount.cell(row=23,column=3).value
+
+            for row in amount.iter_rows():
+                    for cell in row:
+                        if cell.value=="TIP":
+                            tipc=cell.column
+                            tipr=cell.row
+
+
+            for row in amount.iter_rows():
+                    for cell in row:
+                        if cell.value=="ŢARA":
+                            tarc=cell.column
+                            tarr=cell.row
+            for row in amount.iter_rows():
+                    for cell in row:
+                        if cell.value=="COD OPERATOR INTRACOMUNITAR":
+                            coic=cell.column
+                            coir=cell.row
+
+            for row in amount.iter_rows():
+                    for cell in row:
+                        if cell.value=="Denumire":
+                            denc=cell.column
+                            denr=cell.row
+
+            for row in amount.iter_rows():
+                    for cell in row:
+                        if cell.value=="BAZA IMPOZABILĂ":
+                            bazc=cell.column
+                            bazr=cell.row
+
+            luntb=len(amount[tipc])
+
+            try:
+                tip=[b.value for b in amount[tipc][tipr:luntb+1]]
+            except:
+                flash("Please insert the correct header for 'TIP'")
+                return render_template("index.html")
+
+
+            try:
+                tara=[b.value for b in amount[tarc][tipr:luntb+1]]
+            except:
+                flash("Please insert the correct header for 'ŢARA'")
+                return render_template("index.html")
+
+            try:
+                cod=[b.value for b in amount[coic][tipr:luntb+1]]
+            except:
+                flash("Please insert the correct header for 'COD OPERATOR INTRACOMUNITAR'")
+                return render_template("index.html")
+
+            try:
+                den=[b.value for b in amount[denc][tipr:luntb+1]]
+            except:
+                flash("Please insert the correct header for 'Denumire'")
+                return render_template("index.html")
+
+            try:
+                baza=[b.value for b in amount[bazc][tipr:luntb+1]]
+            except:
+                flash("Please insert the correct header for 'BAZA IMPOZABILA'")
+                return render_template("index.html")
+
+            txt="390,"+str(luna)+","+str(an)+","+str(cif)+",#"+str(denu)+"#,#"+str(adresa)+"#,#"+str(telefon)+"#,#"+str(email)+"#"+"\n"
+
+            string=""
+
+            text=""
+            for i in range(0,len(tip)):
+                if(tip[i]!= None):
+                    text1="#"+str(tip[i])+"#,#"+str(tara[i])+"#,#"+str(cod[i])+"#,#"+str(den[i])+"#,"+str(baza[i])+"\n"
+                    text=text+text1
+                    string=string+'<operatie tip="'+str(tip[i])+'" tara="'+str(tara[i])+'" codO="'+str(cod[i])+'" denO="'+str(den[i])+'" baza="'+str(baza[i])+'" />'
+            # for i in range(0 ,len(tip))
+
+            texttxt=txt+text
+
+            #print(texttxt)
+            textxml='<?xml version="1.0"?> <declaratie390  luna="'+str(luna)+'" an="'+str(an)+'" d_rec="0" nume_declar="'+str(nume)+'" prenume_declar="'+str(pren)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(denu)+'" adresa="'+str(adresa)+'" telefon="'+str(telefon)+'" mail="'+str(email)+'" totalPlata_A="'+str(totalplata)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d390:declaratie:v3 D390.xsd" xmlns="mfp:anaf:dgti:d390:declaratie:v3">'+'<rezumat nr_pag="'+str(nrpag)+'" nrOPI="'+str(nropi)+'" bazaL="'+str(bazal)+'" bazaT="'+str(bazat)+'" bazaA="'+str(bazaa)+'" bazaP="'+str(bazaP)+'" bazaS="'+str(bazas)+'" bazaR="'+str(bazar)+'" total_baza="'+str(totalb)+'" /> '+string+'</declaratie390>'
+            # folderpath="D:/apps/TEST D3APPS/Test 21.03.2022/output"
+            folderpath="/home/mirus_app/storage"
+            # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
+            # f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D390.txt", "w",encoding="utf-8").write(texttxt)
+            # f=open("/home/mirus_app/storage/D390.txt", "w",encoding="utf-8").write(texttxt)
+            f=open(filename, "w",encoding="utf-8").write(texttxt)
+        except:
+            pass
+        sheet1=temp['Other info']
+        tipp=str(sheet1.cell(row=58,column=3).value)
+        tippok=tipp[:1]
+        an=sheet1.cell(row=2,column=3).value
+        luna=sheet1.cell(row=3,column=3).value
+
+        sisnormaldetva=sheet1.cell(row=61,column=3).value
+        if(sisnormaldetva=="DA"):
+            sistem=0
+        else:
+            sistem=1
+        sistvalainc=sheet1.cell(row=62,column=3).value
+        operinper=sheet1.cell(row=63,column=3).value
+        opcuperafi=sheet1.cell(row=64,column=3).value
+        if(opcuperafi=="Da"):   
+            persafi=1
+        else:
+            persafi=0
+        coddeinregistrare=sheet1.cell(row=65,column=3).value
+        caen=sheet1.cell(row=66,column=3).value
+        denumirefirma=sheet1.cell(row=67,column=3).value
+        domiciliulfiscalfirma=sheet1.cell(row=6,column=3).value
+        telefonfirma=sheet1.cell(row=69,column=3).value
+        faxfirma=sheet1.cell(row=70,column=3).value
+        emailfirma=sheet1.cell(row=71,column=3).value
+        ciffirma=sheet1.cell(row=5,column=3).value
+        denumireadmin=sheet1.cell(row=73,column=3).value
+        domiciliulfiscaladmin=sheet1.cell(row=74,column=3).value
+        telefonadmin=sheet1.cell(row=75,column=3).value
+        faxadmin=sheet1.cell(row=76,column=3).value
+        emailadmin=sheet1.cell(row=77,column=3).value
+        cifadmin=sheet1.cell(row=78,column=3).value
+        functiedecl=sheet1.cell(row=56,column=3).value
+        try:
+            facturi=temp['Sectiunea 2.1&2.2']
+            val3=0
+        except:
+            val3=1
+
+            # for row in facturi.iter_rows():
+            #   for cell in row:
+            #       if cell.value == "Serie":
+            #           row_det = cell.row
+            #           column_serie = cell.column
+            #           lun = len(facturi[cell.column])
+            # serief = [b.value for b in facturi[column_serie][row_det:lun]]
+        if(val3==0):
+            for row in facturi.iter_rows():
+                for cell in row:
+                    if cell.value == "Inceput Emise":
+                        row_det = cell.row
+                        column_inceput = cell.column
+                        lun = len(facturi[cell.column])
+            try:
+                inceput = [b.value for b in facturi[column_inceput][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Inceput Alocate' in Facturi sheet")
+                return render_template("index.html")
+
+            for row in facturi.iter_rows():
+                for cell in row:
+                    if cell.value == "Final Emise":
+                        row_det = cell.row
+                        column_final = cell.column
+                        lun = len(facturi[cell.column])
+            try:
+                final = [b.value for b in facturi[column_final][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Final Alocate' in Facturi sheet")
+                return render_template("index.html")
+            
+            for row in facturi.iter_rows():
+                for cell in row:
+                    if cell.value == "Tip Emise":
+                        row_det = cell.row
+                        column_final = cell.column
+                        lun = len(facturi[cell.column])
+            try:
+                tipfacturi = [b.value for b in facturi[column_final][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Final Alocate' in Facturi sheet")
+                return render_template("index.html")            
+
+
+            for row in facturi.iter_rows():
+                for cell in row:
+                    if cell.value == "Inceput Alocate":
+                        row_det = cell.row
+                        column_inceput = cell.column
+                        lun = len(facturi[cell.column])
+            try:
+                incepute = [b.value for b in facturi[column_inceput][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Inceput Alocate' in Facturi sheet")
+                return render_template("index.html")
+
+            for row in facturi.iter_rows():
+                for cell in row:
+                    if cell.value == "Final Alocate":
+                        row_det = cell.row
+                        column_final = cell.column
+                        lun = len(facturi[cell.column])
+            try:
+                finale = [b.value for b in facturi[column_final][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Final Alocate' in Facturi sheet")
+                return render_template("index.html")
+            
+            for row in facturi.iter_rows():
+                for cell in row:
+                    if cell.value == "Tip Alocate":
+                        row_det = cell.row
+                        column_final = cell.column
+                        lun = len(facturi[cell.column])
+            try:
+                tipfacturie = [b.value for b in facturi[column_final][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Final Alocate' in Facturi sheet")
+                return render_template("index.html")
+            tranz=temp['Tranzactii']
+
+
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "Cui partener":
+                        row_det = cell.row
+                        column_cui = cell.column
+                        lun = len(tranz[cell.column])
+            try:
+                cuip= [b.value for b in tranz[column_cui][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Cui partener' in Tranzactii sheet")
+                return render_template("index.html")
+
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "Nume partener":
+                        row_det = cell.row
+                        column_nume = cell.column
+                        lun = len(tranz[cell.column])
+            try:
+                nume= [b.value for b in tranz[column_nume][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Nume partener' in Tranzactii sheet")
+                return render_template("index.html")
+
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "Tip tranzactie":
+                        row_det = cell.row
+                        column_tipt = cell.column
+                        lun = len(tranz[cell.column])
+            try:
+                tiptranza= [b.value for b in tranz[column_tipt][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Tip tranzactie' in Tranzactii sheet")
+                return render_template("index.html")
+
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "Tip partener":
+                        row_det = cell.row
+                        column_tipt = cell.column
+                        lun = len(tranz[cell.column])
+            try:
+                tip_partener= [b.value for b in tranz[column_tipt][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Tip partener' in Tranzactii sheet")
+                return render_template("index.html")
+
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "Baza TVA":
+                        row_det = cell.row
+                        column_btv = cell.column
+                        lun = len(tranz[cell.column])
+            try:
+                bazatv= [b.value for b in tranz[column_btv][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Baza TVA' in Tranzactii sheet")
+                return render_template("index.html")
+
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "Cota TVA":
+                        row_det = cell.row
+                        column_ctva = cell.column
+                        lun = len(tranz[cell.column]) 
+            try:
+                cotatva= [b.value for b in tranz[column_ctva][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Cota TVA' in Tranzactii sheet")
+                return render_template("index.html")
+
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "TVA":
+                        row_det = cell.row
+                        column_ctva = cell.column
+                        lun = len(tranz[cell.column]) 
+            try:
+                stva= [b.value for b in tranz[column_ctva][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'TVA' in Tranzactii sheet")
+                return render_template("index.html")
+
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "Nr Facturi":
+                        row_det = cell.row
+                        column_nrf = cell.column
+                        lun = len(tranz[cell.column])
+            try:
+                nrfacturi= [b.value for b in tranz[column_nrf][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Nr Facturi' in Tranzactii sheet")
+                return render_template("index.html")
+
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "Neexigibile - nu se vor raporta":
+                        row_det = cell.row
+                        column_nrf = cell.column
+                        lun = len(tranz[cell.column])
+            try:
+                neex= [b.value for b in tranz[column_nrf][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Neexigibile - nu se vor raporta' in Tranzactii sheet")
+                return render_template("index.html")
+            
+            for row in tranz.iter_rows():
+                for cell in row:
+                    if cell.value == "Cod si denumire NC produs(TIP V)":
+                        row_det = cell.row
+                        column_nrf = cell.column
+                        lun = len(tranz[cell.column])
+            try:
+                codv= [b.value for b in tranz[column_nrf][row_det:lun]]
+            except:
+                flash("Please insert the correct header for 'Cod si denumire NC produs(TIP V)' in Tranzactii sheet")
+                return render_template("index.html")
+
+            # #print(    asdasdasdadcuip,nume,tiptranza,bazatv,cotatva,nrfacturi)
+
+            text=""
+
+            sumaL5=0
+            sumaL9=0
+            sumaL19=0
+            sumaL20=0
+            sumaL24=0
+            sumaA5=0
+            sumaA9=0
+            sumaA19=0
+            sumaA20=0
+            sumaA24=0
+
+            sumaAI5=0
+            sumaAI9=0
+            sumaAI19=0
+            sumaAI20=0
+            sumaAI24=0
+
+            sumaC5=0
+            sumaC9=0
+            sumaC19=0
+            sumaC20=0
+            sumaC24=0
+
+            tvaC5=0
+            tvaC9=0
+            tvaC19=0
+            tvaC20=0
+            tvaC24=0
+
+            tvaL5=0
+            tvaL9=0
+            tvaL19=0
+            tvaL20=0
+            tvaL24=0
+
+            tvaA5=0
+            tvaA9=0
+            tvaA19=0
+            tvaA20=0
+            tvaA24=0
+
+            tvaAI5=0
+            tvaAI9=0
+            tvaAI19=0
+            tvaAI20=0
+            tvaAI24=0
+
+            nrL5=0
+            nrL9=0
+            nrL19=0
+            nrL19=0
+            nrL20=0
+            nrL24=0
+            nrA5=0
+            nrA9=0
+            nrA19=0
+            nrA20=0
+            nrA24=0
+
+            nrAI5=0
+            nrAI9=0
+            nrAI19=0
+            nrAI20=0
+            nrAI24=0
+
+            nrC5=0
+            nrC9=0
+            nrC19=0
+            nrC20=0
+            nrC24=0
+            numar1=0
+
+            nrV0=0
+            nrLS0=0
+            nrAS0=0
+            valV0=0
+            valLS0=0
+            valAS0=0
+
+
+            numarcui1=0
+            # #print(tip_partener)
+            # #print(cotatva)
+            count=0
+            #print(bazatv)
+            tippartener1=[]
+            totalfacturi=0
+            cuitip1=[]
+            cuitip2=[]
+            cuitip3=[]
+            cuitip4=[]
+            for i in range(0,len(tip_partener)):
+                if(str(tip_partener[i])=="1" and tiptranza[i]!="Not applicable for D394" and str(bazatv[i])!="0"):
+                    tippartener1.append(cuip[i])
+                if(str(tip_partener[i])=="1" and neex[i]!="Yes"):
+                    if(bazatv[i]!=None):
+
+                        if(bazatv[i]>0):
+                            if(str(cotatva[i])=="0"):
+                                if(str(tiptranza[i])=="V"):
+                                    cuitip1.append(cuip[i])
+                                    nrV0=nrV0+1
+                                    totalfacturi=totalfacturi+1
+                                    valV0=valV0+bazatv[i]
+                                if(str(tiptranza[i])=="AS"):
+                                    cuitip1.append(cuip[i])                         
+                                    nrLS0=nrLS0+1
+                                    valLS0=valLS0+bazatv[i]                     
+                                if(str(tiptranza[i])=="LS"):
+                                    cuitip1.append(cuip[i]) 
+                                    nrAS0=nrAS0+1
+                                    totalfacturi=totalfacturi+1
+                                    valAS0=valAS0+bazatv[i]                         
+                            if(str(cotatva[i])=="5"):
+                                if(str(tiptranza[i])=="L"):
+                                    cuitip1.append(cuip[i]) 
+
+                                    nrL5=nrL5+int(nrfacturi[i])
+                                    totalfacturi=totalfacturi+1
+                                    sumaL5=sumaL5+int(bazatv[i])
+                                    tvaL5=tvaL5+int(stva[i])
+                                if(str(tiptranza[i])=="AI"):
+                                
+                                    nrAI5=nrAI5+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i]) 
+                                    sumaAI5=sumaAI5+int(bazatv[i])
+                                    tvaAI5=tvaAI5+int(stva[i])
+                                if(str(tiptranza[i])=="A"):
+                                
+                                    nrA5=nrA5+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i]) 
+                                    sumaA5=sumaA5+int(bazatv[i])
+                                    tvaA5=tvaA5+int(stva[i])
+                                if(str(tiptranza[i])=="LS"):
+                                
+                                    nrLS5=nrLS5+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    totalfacturi=totalfacturi+1
+                                    sumaLS5=sumaLS5+int(bazatv[i])
+                                    tvaLS5=tvaLS5+int(stva[i])
+                                if(str(tiptranza[i])=="C"):
+                                
+                                    nrC5=nrC5+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaC5=sumaC5+int(bazatv[i])
+                                    tvaC5=tvaC5+int(stva[i])
+                            if(str(cotatva[i])=="9"):
+                                if(str(tiptranza[i])=="L"):
+                                
+                                    nrL9=nrL9+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    totalfacturi=totalfacturi+1
+                                    sumaL9=sumaL9+int(bazatv[i])
+                                    tvaL9=tvaL9+int(stva[i])
+                                if(str(tiptranza[i])=="LS"):
+                                
+                                    nrLS9=nrLS9+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    totalfacturi=totalfacturi+1
+                                    sumaLS9=sumaLS9+int(bazatv[i])
+                                    tvaLS9=tvaLS9+int(stva[i])
+                                if(str(tiptranza[i])=="AI"):
+                                
+                                    nrAI9=nrAI9+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaAI9=sumaAI9+int(bazatv[i])
+                                    tvaAI9=tvaAI9+int(stva[i])
+                                if(str(tiptranza[i])=="A"):
+                                
+                                    nrA9=nrA9+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaA9=sumaA9+int(bazatv[i])
+                                    tvaA9=tvaA9+int(stva[i])        
+                                if(str(tiptranza[i])=="C"):
+                                
+                                    nrC9=nrC9+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaC9=sumaC9+int(bazatv[i])
+                                    tvaC9=tvaC9+int(stva[i])
+                            if(str(cotatva[i])=="19"):
+                                # #print("YES")
+                                if(str(tiptranza[i])=="L"):
+                                
+                                    nrL19=nrL19+int(int(nrfacturi[i]))
+                                    cuitip1.append(cuip[i])
+                                    totalfacturi=totalfacturi+1
+                                    sumaL19=sumaL19+int(bazatv[i])
+                                    tvaL19=tvaL19+int(stva[i])
+                                if(str(tiptranza[i])=="LS"):
+                                
+                                    nrLS19=nrLS19+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    totalfacturi=totalfacturi+1
+                                    sumaLS19=sumaLS19+int(bazatv[i])
+                                    tvaLS19=tvaLS19+int(stva[i])
+
+                                if(str(tiptranza[i])=="AI"):
+                                
+                                    nrAI19=nrAI19+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaAI19=sumaAI19+int(bazatv[i])
+                                    tvaAI19=tvaAI19+int(stva[i])
+                                    #print(nrAI19)
+                                if(str(tiptranza[i])=="A"):
+                                
+                                    #print(tiptranza[i],bazatv[i],stva[i])
+                                    nrA19=nrA19+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaA19=sumaA19+int(bazatv[i])
+                                    tvaA19=tvaA19+int(stva[i])
+                                if(str(tiptranza[i])=="C"):
+                                
+                                    nrC19=nrC19+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaC19=sumaC19+int(bazatv[i])
+                                    tvaC19=tvaC19+int(stva[i])
+                            if(str(cotatva[i])=="20"):
+                                if(str(tiptranza[i])=="L"):
+                                
+                                    nrL20=nrL20+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    totalfacturi=totalfacturi+1
+                                    sumaL20=sumaL20+int(bazatv[i])
+                                    tvaL20=tvaL20+int(stva[i])
+                                if(str(tiptranza[i])=="LS"):
+                                
+                                    nrLS20=nrLS20+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaLS20=sumaLS20+int(bazatv[i])
+                                    tvaLS20=tvaLS20+int(stva[i])
+                                if(str(tiptranza[i])=="AI"):
+                                
+                                    nrAI20=nrAI20+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaAI20=sumaAI20+int(bazatv[i])
+                                    tvaAI20=tvaAI20+int(stva[i])
+                                if(str(tiptranza[i])=="A"):
+                                
+                                    nrA20=nrA20+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaA20=sumaA20+int(bazatv[i])
+                                    tvaA20=tvaA20+int(stva[i])      
+                                if(str(tiptranza[i])=="C"):
+                                
+                                    nrC20=nrC20+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaC20=sumaC20+int(bazatv[i])
+                                    tvaC20=tvaC20+int(stva[i])
+                            if(str(cotatva[i])=="24"):
+                                if(str(tiptranza[i])=="L"):
+                                
+                                    nrL24=nrL24+int(nrfacturi[i])
+                                    totalfacturi=totalfacturi+1
+                                    cuitip1.append(cuip[i])
+                                    sumaL24=sumaL24+int(bazatv[i])
+                                    tvaL24=tvaL24+int(stva[i])
+                                if(str(tiptranza[i])=="LS"):
+                                
+                                    nrLS24=nrLS24+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaLS24=sumaLS24+int(bazatv[i])
+                                    tvaLS24=tvaLS24+int(stva[i])        
+                                if(str(tiptranza[i])=="C"):
+                                
+                                    nrC24=nrC24+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaC24=sumaC24+int(bazatv[i])
+                                    tvaC24=tvaC24+int(stva[i])
+                                if(str(tiptranza[i])=="AI"):
+                                
+                                    nrAI24=nrAI24+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaAI24=sumaAI24+int(bazatv[i])
+                                    tvaAI24=tvaAI24+int(stva[i])
+                                if(str(tiptranza[i])=="A"):
+                                
+                                    nrA24=nrA24+int(nrfacturi[i])
+                                    cuitip1.append(cuip[i])
+                                    sumaA24=sumaA24+int(bazatv[i])
+                                    tvaA24=tvaA24+int(stva[i])
+            strcuitip1=[]
+            for k in range(0,len(cuitip1)):
+                strcuitip1.append(str(cuitip1[k]))
+            numarcuicorect1=len(list(set(strcuitip1)))
+            numart=(list(set(tippartener1)))
+            print(numart)
+            numartotal=len(numart)
+            #print(nrAI19)
+            numarcui1=numartotal
+            print(nrV0)
+            if(nrL5>0 or nrA5>0 or nrAI5>0 or nrC5>0):
+                text15='''<rezumat1 tip_partener="1" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''" facturiA="'''+str(nrA5)+'''" bazaA="'''+str(sumaA5)+'''" tvaA="'''+str(tvaA5)+'''" facturiAI="'''+str(nrAI5)+'''" bazaAI="'''+str(sumaAI5)+'''" tvaAI="'''+str(tvaAI5)+'''" facturiC="'''+str(nrC5)+'''" bazaC="'''+str(sumaC5)+'''" tvaC="'''+str(tvaC5)+'''"/>'''
+            else:
+                text15=""
+            if(nrL9>0 or nrA9>0 or nrAI5>0 or nrC9>0):
+                text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"/>'''
+            else:
+                text19=""
+            if(nrL19>0 or nrA19>0 or nrAI9>0 or nrC19>0):
+                text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"/>'''
+            else:
+                text119=""
+            if(nrL20>0 or nrA20>0 or nrAI20>0 or nrC20>0):
+                text120='''<rezumat1 tip_partener="1" cota="20" facturiL="'''+str(nrL20)+'''" bazaL="'''+str(sumaL20)+'''" tvaL="'''+str(tvaL20)+'''" facturiA="'''+str(nrA20)+'''" bazaA="'''+str(sumaA20)+'''" tvaA="'''+str(tvaA20)+'''" facturiAI="'''+str(nrAI20)+'''" bazaAI="'''+str(sumaAI20)+'''" tvaAI="'''+str(tvaAI20)+'''" facturiC="'''+str(nrC20)+'''" bazaC="'''+str(sumaC20)+'''" tvaC="'''+str(tvaC20)+'''"/>'''
+            else:
+                text120=""
+            if(nrL24>0 or nrA24>0 or nrAI24>0 or nrC24>0):
+                text124='''<rezumat1 tip_partener="1" cota="24" facturiL="'''+str(nrL24)+'''" bazaL="'''+str(sumaL24)+'''" tvaL="'''+str(tvaL24)+'''" facturiA="'''+str(nrA24)+'''" bazaA="'''+str(sumaA24)+'''" tvaA="'''+str(tvaA24)+'''" facturiAI="'''+str(nrAI24)+'''" bazaAI="'''+str(sumaAI24)+'''" tvaAI="'''+str(tvaAI24)+'''" facturiC="'''+str(nrC24)+'''" bazaC="'''+str(sumaC24)+'''" tvaC="'''+str(tvaC24)+'''"/>'''
+            else:
+                text124=""
+            text10=''
+            if(nrV0>0 or nrAS0>0 or nrLS0>0):
+                text10='''<rezumat1 tip_partener="1" cota="0" facturiLS="'''+str(nrLS0)+'''" bazaLS="'''+str(valLS0)+'''" facturiAS="'''+str(nrAS0)+'''" bazaAS="'''+str(valAS0)+'''" facturiV="'''+str(nrV0)+'''" bazaV="'''+str(valV0)+'''">
+        <detaliu  bun="22" nrLivV="'''+str(nrV0)+'''" bazaLivV="'''+str(valV0)+'''"/>
+        </rezumat1>'''
+            L19nrrez2=nrL19
+            L19brez2=sumaL19
+            L19trez2=tvaL19
+            L9nrrez2=nrL9
+            L9brez2=sumaL9
+            L9trez2=tvaL9
+
+            
+            sumaLS0=0
+            sumaL5=0
+            sumaL9=0
+            sumaL19=0
+            sumaL20=0
+            sumaL24=0
+            sumaLS5=0
+            sumaLS9=0
+            sumaLS19=0
+            sumaLS20=0
+            sumaLS24=0
+
+            tvaL5=0
+            tvaL9=0
+            tvaL19=0
+            tvaL20=0
+            tvaL24=0
+
+            tvaLS5=0
+            tvaLS9=0
+            tvaLS19=0
+            tvaLS20=0
+            tvaLS24=0
+
+            nrN0=0
+            bazaN0=0
+
+            nrLS0=0
+            nrL5=0
+            nrL9=0
+            nrL19=0
+            nrL20=0
+            nrL24=0
+            nrLS5=0
+            nrLS9=0
+            nrLS19=0
+            nrLS20=0
+            nrLS24=0
+            nrN0=0
+            sumaN0=0
+            # tvaN0=0
+
+            numarcui2=0
+            for i in range(0,len(tip_partener)):
+                if(str(tip_partener[i])=="2"):
+                    if(bazatv[i]>0):
+                        if(str(cotatva[i])=="0"):
+                            if(str(tiptranza[i])=="N"):
+                                cuitip2.append(cuip[i])
+                                nrN0=nrN0+int(nrfacturi[i])
+                                # totalfacturi=totalfacturi+1
+                                sumaN0=sumaN0+int(bazatv[i])
+                                # tvaN0=tvaL5+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip2.append(cuip[i])
+                                nrLS5=nrLS5+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS5=sumaLS5+int(bazatv[i])
+                                tvaLS5=tvaLS5+int(stva[i])
+                            if(str(tiptranza[i])=="C"):
+                                cuitip2.append(cuip[i])
+                                nrC5=nrC5+int(nrfacturi[i])
+                                sumaC5=sumaC5+int(bazatv[i])
+                                tvaC5=tvaC5+int(stva[i])
+
+                        if(str(cotatva[i])=="5"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip2.append(cuip[i])
+                                nrL5=nrL5+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL5=sumaL5+int(bazatv[i])
+                                tvaL5=tvaL5+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip2.append(cuip[i])
+                                nrLS5=nrLS5+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS5=sumaLS5+int(bazatv[i])
+                                tvaLS5=tvaLS5+int(stva[i])
+                            if(str(tiptranza[i])=="C"):
+                                cuitip2.append(cuip[i])
+                                nrC5=nrC5+int(nrfacturi[i])
+                                sumaC5=sumaC5+int(bazatv[i])
+                                tvaC5=tvaC5+int(stva[i])
+                        if(str(cotatva[i])=="9"):
+                            
+                            if(str(tiptranza[i])=="L"):
+                                cuitip2.append(cuip[i])
+                                nrL9=nrL9+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL9=sumaL9+int(bazatv[i])
+                                tvaL9=tvaL9+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip2.append(cuip[i])
+                                nrLS9=nrLS9+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS9=sumaLS9+int(bazatv[i])
+                                tvaLS9=tvaLS9+int(stva[i])      
+                            if(str(tiptranza[i])=="C"):
+                                cuitip2.append(cuip[i])
+                                nrC9=nrC9+int(nrfacturi[i])
+                                sumaC9=sumaC9+int(bazatv[i])
+                                tvaC9=tvaC9+int(stva[i])
+                        if(str(cotatva[i])=="19"):
+                            if(str(tiptranza[i])=="N"):
+                                cuitip2.append(cuip[i])
+                                nrN0=nrN0+int(nrfacturi[i])
+                                # totalfacturi=totalfacturi+1
+                                sumaN0=sumaN0+int(bazatv[i])
+                                # tvaN0=tvaL5+int(stva[i])
+                            if(str(tiptranza[i])=="L"):
+                                cuitip2.append(cuip[i])
+                                nrL19=nrL19+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL19=sumaL19+int(bazatv[i])
+                                tvaL19=tvaL19+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip2.append(cuip[i])
+                                nrLS19=nrLS19+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS19=sumaLS19+int(bazatv[i])
+                                tvaLS19=tvaLS19+int(stva[i])
+                            if(str(tiptranza[i])=="C"):
+                                cuitip2.append(cuip[i])
+                                nrC19=nrC19+int(nrfacturi[i])
+                                sumaC19=sumaC19+int(bazatv[i])
+                                tvaC19=tvaC19+int(stva[i])
+                        if(str(cotatva[i])=="20"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip2.append(cuip[i])
+                                nrL20=nrL20+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL20=sumaL20+int(bazatv[i])
+                                tvaL20=tvaL20+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip2.append(cuip[i])
+                                nrLS20=nrLS20+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS20=sumaLS20+int(bazatv[i])
+                                tvaLS20=tvaLS20+int(stva[i])        
+                            if(str(tiptranza[i])=="C"):
+                                cuitip2.append(cuip[i])
+                                nrC20=nrC20+int(nrfacturi[i])
+                                sumaC20=sumaC20+int(bazatv[i])
+                                tvaC20=tvaC20+int(stva[i])
+                        if(str(cotatva[i])=="24"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip2.append(cuip[i])
+                                nrL24=nrL24+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL24=sumaL24+int(bazatv[i])
+                                tvaL24=tvaL24+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip2.append(cuip[i])
+                                nrLS24=nrLS24+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS24=sumaLS24+int(bazatv[i])
+                                tvaLS24=tvaLS24+int(stva[i])        
+                            if(str(tiptranza[i])=="C"):
+                                cuitip2.append(cuip[i])
+                                nrC24=nrC24+int(nrfacturi[i])
+                                sumaC24=sumaC24+int(bazatv[i])
+                                tvaC24=tvaC24+int(stva[i])  
+            numarcui2=nrLS24+nrL24+nrLS20+nrL20+nrLS19+nrL19+nrLS9+nrL9+nrLS5+nrL5
+            numarcuicorect2=len(cuitip2)
+            if(nrL5>0):
+                text25='''<rezumat1 tip_partener="2" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''"/>'''
+            else:
+                text25=""
+            if(nrL9>0):
+                text29='''<rezumat1 tip_partener="2" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''"/>'''
+            else:
+                text29=""
+            if(nrL19>0):
+                text219='''<rezumat1 tip_partener="2" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''"/>'''
+            else:
+                text219=""
+            if(nrL20>0):
+                text220='''<rezumat1 tip_partener="2" cota="20" facturiL="'''+str(nrL20)+'''" bazaL="'''+str(sumaL20)+'''" tvaL="'''+str(tvaL20)+'''"/>'''
+            else:
+                text220=""
+            if(nrL24>0):
+                text224='''<rezumat1 tip_partener="2" cota="24" facturiL="'''+str(nrL24)+'''" bazaL="'''+str(sumaL24)+'''" tvaL="'''+str(tvaL24)+'''"/>'''
+            else:
+                text224=""
+            if(nrN0>0):
+                text20='''<rezumat1 tip_partener="2" cota="0" facturiLS="0" bazaLS="0" facturiN="'''+str(nrN0)+'''" document_N="1" bazaN="'''+str(sumaN0)+'''"/>'''
+            else:
+                text20=""
+            L19nrrez2=L19nrrez2+nrL19
+            L19brez2=L19brez2+sumaL19
+            L19trez2=L19trez2+tvaL19
+            L9nrrez2=L9nrrez2+nrL9
+            L9brez2=L9brez2+sumaL9
+            L9trez2=L9trez2+tvaL9
+            
+            sumaL5=0
+            sumaL9=0
+            sumaL19=0
+            sumaL20=0
+            sumaL24=0
+            sumaLS5=0
+            sumaLS9=0
+            sumaLS19=0
+            sumaLS20=0
+            sumaLS24=0
+
+            sumaC5=0
+            sumaC9=0
+            sumaC19=0
+            sumaC20=0
+            sumaC24=0
+
+            tvaC5=0
+            tvaC9=0
+            tvaC19=0
+            tvaC20=0
+            tvaC24=0
+
+            tvaL5=0
+            tvaL9=0
+            tvaL19=0
+            tvaL20=0
+            tvaL24=0
+
+            tvaLS5=0
+            tvaLS9=0
+            tvaLS19=0
+            tvaLS20=0
+            tvaLS24=0
+
+
+            nrL5=0
+            nrL9=0
+            nrL19=0
+            nrL20=0
+            nrL24=0
+
+            nrLS5=0
+            nrLS9=0
+            nrLS19=0
+            nrLS20=0
+            nrLS24=0
+
+            nrC5=0
+            nrC9=0
+            nrC19=0
+            nrC20=0
+            nrC24=0
+            numarcui3=0
+            for i in range(0,len(tip_partener)):
+                if(str(tip_partener[i])=="3"):
+                    if(bazatv[i]>0):
+                        if(str(cotatva[i])=="5"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip3.append(cuip[i])
+                                nrL5=nrL5+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL5=sumaL5+int(bazatv[i])
+                                tvaL5=tvaL5+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                nrLS5=nrLS5+int(nrfacturi[i])
+                                cuitip3.append(cuip[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS5=sumaLS5+int(bazatv[i])
+                                tvaLS5=tvaLS5+int(stva[i])
+                            if(str(tiptranza[i])=="C"):
+                                cuitip3.append(cuip[i])
+                                nrC5=nrC5+int(nrfacturi[i])
+                                sumaC5=sumaC5+int(bazatv[i])
+                                tvaC5=tvaC5+int(stva[i])
+                        if(str(cotatva[i])=="9"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip3.append(cuip[i])
+                                nrL9=nrL9+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL9=sumaL9+int(bazatv[i])
+                                tvaL9=tvaL9+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip3.append(cuip[i])
+                                nrLS9=nrLS9+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS9=sumaLS9+int(bazatv[i])
+                                tvaLS9=tvaLS9+int(stva[i])      
+                            if(str(tiptranza[i])=="C"):
+                                cuitip3.append(cuip[i])
+                                nrC9=nrC9+int(nrfacturi[i])
+                                sumaC9=sumaC9+int(bazatv[i])
+                                tvaC9=tvaC9+int(stva[i])
+                        if(str(cotatva[i])=="19"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip3.append(cuip[i])
+                                nrL19=nrL19+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL19=sumaL19+int(bazatv[i])
+                                tvaL19=tvaL19+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip3.append(cuip[i])
+                                nrLS19=nrLS19+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS19=sumaLS19+int(bazatv[i])
+                                tvaLS19=tvaLS19+int(stva[i])
+                            if(str(tiptranza[i])=="C"):
+                                cuitip3.append(cuip[i])
+                                nrC19=nrC19+int(nrfacturi[i])
+                                sumaC19=sumaC19+int(bazatv[i])
+                                tvaC19=tvaC19+int(stva[i])
+                        if(str(cotatva[i])=="20"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip3.append(cuip[i])
+                                nrL20=nrL20+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL20=sumaL20+int(bazatv[i])
+                                tvaL20=tvaL20+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip3.append(cuip[i])
+                                nrLS20=nrLS20+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS20=sumaLS20+int(bazatv[i])
+                                tvaLS20=tvaLS20+int(stva[i])        
+                            if(str(tiptranza[i])=="C"):
+                                cuitip3.append(cuip[i])
+                                nrC20=nrC20+int(nrfacturi[i])
+                                sumaC20=sumaC20+int(bazatv[i])
+                                tvaC20=tvaC20+int(stva[i])
+                        if(str(cotatva[i])=="24"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip3.append(cuip[i])
+                                nrL24=nrL24+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL24=sumaL24+int(bazatv[i])
+                                tvaL24=tvaL24+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip3.append(cuip[i])
+                                nrLS24=nrLS24+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS24=sumaLS24+int(bazatv[i])
+                                tvaLS24=tvaLS24+int(stva[i])        
+                            if(str(tiptranza[i])=="C"):
+                                cuitip3.append(cuip[i])
+                                nrC24=nrC24+int(nrfacturi[i])
+                                sumaC24=sumaC24+int(bazatv[i])
+                                tvaC24=tvaC24+int(stva[i])
+            numarcui3=nrLS24+nrC24+nrL24+nrC20+nrLS20+nrL20+nrC19+nrLS19+nrL19+nrC19+nrLS9+nrL9+nrC9+nrLS5+nrL5+nrC5
+            numarcuicorect3=len(cuitip3)
+            if(nrL5>0 or nrC5>0):
+                text35='''<rezumat1 tip_partener="3" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''" facturiC="'''+str(nrC5)+'''" bazaC="'''+str(sumaC5)+'''" tvaC="'''+str(tvaC5)+'''"/>'''
+            else:
+                text35=""
+            if(nrL9>0 or nrC9>0):
+                text39='''<rezumat1 tip_partener="3" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"/>'''
+            else:
+                text39=""
+            if(nrL19>0 or nrC19>0): 
+                text319='''<rezumat1 tip_partener="3" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"/>'''
+            else:
+                text319=""
+            if(nrL20>0 or nrC20>0): 
+                text320='''<rezumat1 tip_partener="3" cota="20" facturiL="'''+str(nrL20)+'''" bazaL="'''+str(sumaL20)+'''" tvaL="'''+str(tvaL20)+'''" facturiC="'''+str(nrC20)+'''" bazaC="'''+str(sumaC20)+'''" tvaC="'''+str(tvaC20)+'''"/>'''
+            else:
+                text320=""
+            if(nrL24>0  or nrC24>0):    
+                text324='''<rezumat1 tip_partener="3" cota="24" facturiL="'''+str(nrL24)+'''" bazaL="'''+str(sumaL24)+'''" tvaL="'''+str(tvaL24)+'''" facturiC="'''+str(nrC24)+'''" bazaC="'''+str(sumaC24)+'''" tvaC="'''+str(tvaC24)+'''"/>'''
+            else:
+                text324=""
+            sumaL5=0
+            sumaL9=0
+            sumaL19=0
+            sumaL20=0
+            sumaL24=0
+            sumaLS5=0
+            sumaLS9=0
+            sumaLS19=0
+            sumaLS20=0
+            sumaLS24=0
+
+            sumaC5=0
+            sumaC9=0
+            sumaC19=0
+            sumaC20=0
+            sumaC24=0
+
+            tvaC5=0
+            tvaC9=0
+            tvaC19=0
+            tvaC20=0
+            tvaC24=0
+
+            tvaL5=0
+            tvaL9=0
+            tvaL19=0
+            tvaL20=0
+            tvaL24=0
+
+            tvaLS5=0
+            tvaLS9=0
+            tvaLS19=0
+            tvaLS20=0
+            tvaLS24=0
+
+
+            nrL5=0
+            nrL9=0
+            nrL19=0
+            nrL20=0
+            nrL24=0
+
+            nrLS5=0
+            nrLS9=0
+            nrLS19=0
+            nrLS20=0
+            nrLS24=0
+
+            nrC5=0
+            nrC9=0
+            nrC19=0
+            nrC20=0
+            nrC24=0
+            numarcui4=0
+            for i in range(0,len(tip_partener)):
+                if(bazatv[i]>0):
+                    if(str(tip_partener[i])=="4"):
+                        if(str(cotatva[i])=="5"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip4.append(cuip[i])
+                                nrL5=nrL5+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL5=sumaL5+int(bazatv[i])
+                                tvaL5=tvaL5+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip4.append(cuip[i])
+                                nrLS5=nrLS5+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS5=sumaLS5+int(bazatv[i])
+                                tvaLS5=tvaLS5+int(stva[i])
+                            if(str(tiptranza[i])=="C"):
+                                cuitip4.append(cuip[i])
+                                nrC5=nrC5+int(nrfacturi[i])
+                                sumaC5=sumaC5+int(bazatv[i])
+                                tvaC5=tvaC5+int(stva[i])
+                        if(str(cotatva[i])=="9"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip4.append(cuip[i])
+                                nrL9=nrL9+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL9=sumaL9+int(bazatv[i])
+                                tvaL9=tvaL9+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip4.append(cuip[i])
+                                nrLS9=nrLS9+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS9=sumaLS9+int(bazatv[i])
+                                tvaLS9=tvaLS9+int(stva[i])      
+                            if(str(tiptranza[i])=="C"):
+                                cuitip4.append(cuip[i])
+                                nrC9=nrC9+int(nrfacturi[i])
+                                sumaC9=sumaC9+int(bazatv[i])
+                                tvaC9=tvaC9+int(stva[i])
+                        if(str(cotatva[i])=="19"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip4.append(cuip[i])
+                                nrL19=nrL19+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL19=sumaL19+int(bazatv[i])
+                                tvaL19=tvaL19+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip4.append(cuip[i])
+                                nrLS19=nrLS19+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS19=sumaLS19+int(bazatv[i])
+                                tvaLS19=tvaLS19+int(stva[i])
+                            if(str(tiptranza[i])=="C"):
+                                cuitip4.append(cuip[i])
+                                nrC19=nrC19+int(nrfacturi[i])
+                                sumaC19=sumaC19+int(bazatv[i])
+                                tvaC19=tvaC19+int(stva[i])
+                        if(str(cotatva[i])=="20"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip4.append(cuip[i])
+                                nrL20=nrL20+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL20=sumaL20+int(bazatv[i])
+                                tvaL20=tvaL20+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip4.append(cuip[i])
+                                nrLS20=nrLS20+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS20=sumaLS20+int(bazatv[i])
+                                tvaLS20=tvaLS20+int(stva[i])        
+                            if(str(tiptranza[i])=="C"):
+                                cuitip4.append(cuip[i])
+                                nrC20=nrC20+int(nrfacturi[i])
+                                sumaC20=sumaC20+int(bazatv[i])
+                                tvaC20=tvaC20+int(stva[i])
+                        if(str(cotatva[i])=="24"):
+                            if(str(tiptranza[i])=="L"):
+                                cuitip4.append(cuip[i])
+                                nrL24=nrL24+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaL24=sumaL24+int(bazatv[i])
+                                tvaL24=tvaL24+int(stva[i])
+                            if(str(tiptranza[i])=="LS"):
+                                cuitip4.append(cuip[i])
+                                nrLS24=nrLS24+int(nrfacturi[i])
+                                totalfacturi=totalfacturi+1
+                                sumaLS24=sumaLS24+int(bazatv[i])
+                                tvaLS24=tvaLS24+int(stva[i])        
+                            if(str(tiptranza[i])=="C"):
+                                cuitip4.append(cuip[i])
+                                nrC24=nrC24+int(nrfacturi[i])
+                                sumaC24=sumaC24+int(bazatv[i])
+                                tvaC24=tvaC24+int(stva[i])
+            numarcui4=nrLS24+nrC24+nrL24+nrC20+nrLS20+nrL20+nrC19+nrLS19+nrL19+nrC19+nrLS9+nrL9+nrC9+nrLS5+nrL5+nrC5
+            numarcuicorect4=len(cuitip4)
+            if(nrL5>0 or nrC5>0):
+                text45='''<rezumat1 tip_partener="4" cota="5" facturiL="'''+str(nrL5)+'''" bazaL="'''+str(sumaL5)+'''" tvaL="'''+str(tvaL5)+'''" facturiC="'''+str(nrC5)+'''" bazaC="'''+str(sumaC5)+'''" tvaC="'''+str(tvaC5)+'''"/>'''
+            else:
+                text45=""
+            if(nrL9>0 or nrC9>0):
+                text49='''<rezumat1 tip_partener="4" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"/>'''
+            else:
+                text49=""
+            if(nrL19>0 or nrC19>0): 
+                text419='''<rezumat1 tip_partener="4" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"/>'''
+            else:
+                text419=""
+            if(nrL20>0 or nrC20>0):
+                text420='''<rezumat1 tip_partener="4" cota="20" facturiL="'''+str(nrL20)+'''" bazaL="'''+str(sumaL20)+'''" tvaL="'''+str(tvaL20)+'''" facturiC="'''+str(nrC20)+'''" bazaC="'''+str(sumaC20)+'''" tvaC="'''+str(tvaC20)+'''"/>'''
+            else:
+                text420=""
+            if(nrL24>0  or nrC24>0):    
+                text424='''<rezumat1 tip_partener="4" cota="24" facturiL="'''+str(nrL24)+'''" bazaL="'''+str(sumaL24)+'''" tvaL="'''+str(tvaL24)+'''" facturiC="'''+str(nrC24)+'''" bazaC="'''+str(sumaC24)+'''" tvaC="'''+str(tvaC24)+'''"/>'''
+            else:
+                text424=""
+            sheetG=temp['Sectiunea G. Manual input']
+            sheetI=temp['Sectiunea I 1. Manual input']
+
+            L24nr=0
+            L20nr=0
+            L19nr=0
+            L9nr=0
+            L5nr=0
+
+            L24b=0
+            L20b=0
+            L19b=0
+            L9b=0
+            L5b=0
+
+            L24t=0
+            L20t=0
+            L19t=0
+            L9t=0
+            L5t=0
+
+            A24nr=0
+            A20nr=0
+            A19nr=0
+            A9nr=0
+            A5nr=0
+
+            A24b=0
+            A20b=0
+            A19b=0
+            A9b=0
+            A5b=0
+
+            A24t=0
+            A20t=0
+            A19t=0
+            A9t=0
+            A5t=0
+
+            AI24nr=0
+            AI20nr=0
+            AI19nr=0
+            AI9nr=0
+            AI5nr=0
+
+            AI24b=0
+            AI20b=0
+            AI19b=0
+            AI9b=0
+            AI5b=0
+
+            AI24t=0
+            AI20t=0
+            AI19t=0
+            AI9t=0
+            AI5t=0
+
+
+
+
+            for i in range(0,len(cotatva)):
+                if(bazatv[i]!=0):
+                    if(str(cotatva[i])=="24"):
+                        if(str(tiptranza[i])=="L"):
+                            L24nr=L24nr+int(nrfacturi[i])
+                            L24b=L24b+int(bazatv[i])
+                            L24t=L24t+int(stva[i])
+                        if(str(tiptranza[i])=="A"):
+                            A24nr=A24nr+int(nrfacturi[i])
+                            A24b=A24b+int(bazatv[i])
+                            A24t=A24t+int(stva[i])
+                        if(str(tiptranza[i])=="AI"):
+                            AI24nr=AI24nr+int(nrfacturi[i])
+                            AI24b=AI24b+int(bazatv[i])
+                            AI24t=AI24t+int(stva[i])
+                    if(str(cotatva[i])=="20"):
+                        if(str(tiptranza[i])=="L"):
+                            L20nr=L20nr+int(nrfacturi[i])
+                            L20b=L20b+int(bazatv[i])
+                            L20t=L20t+int(stva[i])
+                        if(str(tiptranza[i])=="A"):
+                            A20nr=A20nr+int(nrfacturi[i])
+                            A20b=A20b+int(bazatv[i])
+                            A20t=A20t+int(stva[i])
+                        if(str(tiptranza[i])=="AI"):
+                            AI20nr=AI20nr+int(nrfacturi[i])
+                            AI20b=AI20b+int(bazatv[i])
+                            AI20t=AI20t+int(stva[i])
+                    if(str(cotatva[i])=="19"):
+                        if(str(tiptranza[i])=="L"):
+                            L19nr=L19nr+int(nrfacturi[i])
+                            L19b=L19b+int(bazatv[i])
+                            L19t=L19t+int(stva[i])
+                        if(str(tiptranza[i])=="A"):
+                            A19nr=A19nr+int(nrfacturi[i])
+                            A19b=A19b+int(bazatv[i])
+                            A19t=A19t+int(stva[i])
+                        if(str(tiptranza[i])=="AI"):
+                            AI19nr=AI19nr+int(nrfacturi[i])
+                            AI19b=AI19b+int(int(bazatv[i]))
+                            AI19t=AI19t+int(int(stva[i]))
+                        if(str(tiptranza[i])=="C"):
+                            A19nr=A19nr+int(nrfacturi[i])
+                            A19b=A19b+int(bazatv[i])
+                            A19t=A19t+int(stva[i])
+                    if(str(cotatva[i])=="9"):
+                        if(str(tiptranza[i])=="L"):
+                            L9nr=L9nr+int(nrfacturi[i])
+                            L9b=L9b+int(int(bazatv[i]))
+                            L9t=L9t+int(int(stva[i]))
+                        if(str(tiptranza[i])=="A"):
+                            A9nr=A9nr+int(nrfacturi[i])
+                            A9b=A9b+int(int(bazatv[i]))
+                            A9t=A9t+int(int(stva[i]))
+                        if(str(tiptranza[i])=="C"):
+                            A9nr=A9nr+int(nrfacturi[i])
+                            A9b=A9b+int(int(bazatv[i]))
+                            A9t=A9t+int(int(stva[i]))                       
+                        if(str(tiptranza[i])=="AI"):
+                            AI9nr=AI9nr+int(nrfacturi[i])
+                            AI9b=AI9b+int(int(bazatv[i]))
+                            AI9t=AI9t+int(int(stva[i]))
+                    if(str(cotatva[i])=="5"):
+                        if(str(tiptranza[i])=="L"):
+                            L5nr=L5nr+int(nrfacturi[i])
+                            L5b=L5b+int(int(bazatv[i]))
+                            L5t=L5t+int(int(stva[i]))
+                        if(str(tiptranza[i])=="A"):
+                            A5nr=A5nr+int(nrfacturi[i])
+                            A5b=A5b+int(int(bazatv[i]))
+                            A5t=A5t+int(int(stva[i]))
+                        if(str(tiptranza[i])=="AI"):
+                            AI5nr=AI5nr+int(nrfacturi[i])
+                            AI5b=AI5b+int(int(bazatv[i]))
+                            AI5t=AI5t+int(int(stva[i]))
+            rez224='''<rezumat2 cota="24"  bazaFSLcod="'''+str(sheetI.cell(row=8,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=8,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=18,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=18,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=28,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=28,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=38,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=38,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=48,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=48,column=3).value)+'''" nrFacturiL="'''+str(L24nr)+'''" bazaL="'''+str(L24b)+'''" tvaL="'''+str(L24t)+'''" nrFacturiA="'''+str(A24nr)+'''" bazaA="'''+str(A24b)+'''" tvaA="'''+str(A24t)+'''" nrFacturiAI="'''+str(AI24nr)+'''" bazaAI="'''+str(AI24b)+'''" tvaAI="'''+str(AI24t)+'''" bazaL_PF="0" tvaL_PF="0" />'''
+            rez220='''<rezumat2 cota="20"  bazaFSLcod="'''+str(sheetI.cell(row=9,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=9,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=19,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=19,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=29,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=29,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=39,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=39,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=49,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=49,column=3).value)+'''" nrFacturiL="'''+str(L20nr)+'''" bazaL="'''+str(L20b)+'''" tvaL="'''+str(L20t)+'''" nrFacturiA="'''+str(A20nr)+'''" bazaA="'''+str(A20b)+'''" tvaA="'''+str(A20t)+'''" nrFacturiAI="'''+str(AI20nr)+'''" bazaAI="'''+str(AI20b)+'''" tvaAI="'''+str(AI20t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=14,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=14,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=24,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=24,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
+            rez219='''<rezumat2 cota="19"  bazaFSLcod="'''+str(sheetI.cell(row=10,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=10,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=20,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=20,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=30,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=30,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=40,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=40,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=50,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=50,column=3).value)+'''" nrFacturiL="'''+str(L19nrrez2)+'''" bazaL="'''+str(L19brez2)+'''" tvaL="'''+str(L19trez2)+'''" nrFacturiA="'''+str(A19nr)+'''" bazaA="'''+str(A19b)+'''" tvaA="'''+str(A19t)+'''" nrFacturiAI="'''+str(AI19nr)+'''" bazaAI="'''+str(AI19b)+'''" tvaAI="'''+str(AI19t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=15,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=15,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=25,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=25,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
+            rez29='''<rezumat2 cota="9"  bazaFSLcod="'''+str(sheetI.cell(row=11,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=11,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=21,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=21,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=31,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=31,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=41,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=41,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=51,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=51,column=3).value)+'''" nrFacturiL="'''+str(L9nrrez2)+'''" bazaL="'''+str(L9brez2)+'''" tvaL="'''+str(L9trez2)+'''" nrFacturiA="'''+str(A9nr)+'''" bazaA="'''+str(A9b)+'''" tvaA="'''+str(A9t)+'''" nrFacturiAI="'''+str(AI9nr)+'''" bazaAI="'''+str(AI9b)+'''" tvaAI="'''+str(AI9t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=16,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=16,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=26,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=26,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
+            rez25='''<rezumat2 cota="5"  bazaFSLcod="'''+str(sheetI.cell(row=12,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=12,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=22,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=22,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=32,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=32,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=42,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=42,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=52,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=52,column=3).value)+'''" nrFacturiL="'''+str(L5nr)+'''" bazaL="'''+str(L5b)+'''" tvaL="'''+str(L5t)+'''" nrFacturiA="'''+str(A5nr)+'''" bazaA="'''+str(A5b)+'''" tvaA="'''+str(A5t)+'''" nrFacturiAI="'''+str(AI5nr)+'''" bazaAI="'''+str(AI5b)+'''" tvaAI="'''+str(AI5t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=17,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=17,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=27,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=27,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
+            totalplata394=numarcuicorect1+numarcuicorect2+numarcuicorect3+numarcuicorect4+L24b+L20b+L19brez2+L9brez2+L5b+A5b+A9b+A19b+A20b+A24b+AI5b+AI9b+AI19b+AI20b+AI24b
+            #print(totalplata394)
+            textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Grant Thornton " cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
+            <informatii nrCui1="'''+str(numarcuicorect1)+'''" nrCui2="'''+str(numarcuicorect2)+'''" nrCui3="'''+str(numarcuicorect3)+'''" nrCui4="'''+str(numarcuicorect4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="'''+str(totalfacturi)+'''" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
+            text=text+textinfo+text15+text10+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
+
+
+            #print(tipfacturi)
+            for k in range(0,len(inceput)):
+                #print(tipfacturi[k],"aici")
+                if(inceput[k]!=None and tipfacturi[k]==1):
+                    text=text+'''<serieFacturi tip="1" nrI="'''+str(inceput[k])+''' " nrF="'''+str(final[k])+''' "/>'''+"\n"
+            for kk in range(0,len(inceput)):
+                #print(inceput[kk],"aici emise")
+                if(inceput[kk]!=None and tipfacturi[kk]==2):
+                        text=text+'''<serieFacturi tip="2" nrI="'''+str(inceput[kk])+''' " nrF="'''+str(final[kk])+''' "/>'''+"\n"
+            sheet7=temp[' Sectiunea 7 ']
+            for j in range(13,18):
+                if(sheet7.cell(row=j,column=2).value!=None):
+                    text=text+'<lista  caen="'+str(sheet7.cell(row=4,column=1).value)+'" cota="'+str(sheet7.cell(row=6,column=1).value)+'" operat="'+str(sheet7.cell(row=4,column=2).value)+'" valoare="'+str(sheet7.cell(row=4,column=3).value)+'" tva="'+str(sheet7.cell(row=j,column=2).value)+'" />'+"\n"
+
+            sheet2=temp['Facturi storno si anulate']
+            # de modificat seria sa o bagam in functie de faptul ca e sau nu blnak
+            for k in range(4,sheet2.max_row):
+                if(sheet2.cell(row=k,column=1).value=="Stornata"):
+                    text=text+'<facturi  tip_factura="1" nr="'''+str(sheet2.cell(row=k,column=3).value)+'''"/>'''+"\n"
+            numep=[]
+            for j in range(0,len(nume)):
+
+                numep.append(nume[j].replace("&",""))
+                # nume[j].replace("<","")
+                # nume[j].replace(">","")
+            for i in range(0,len(tiptranza)):
+                if(tiptranza[i]!="Not applicable for D394"):
+                    if(tiptranza[i]=="V"):
+                        text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
+                    else:
+                        if(tiptranza[i]=="N"):
+                            text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="2" cota="0" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i].replace('"',""))+'" tip_document="1" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'"/>'
+                        else:
+
+                            if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
+                                text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+                            else:
+                                if("-" in str(cuip[i])):
+                                    text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+                                else:
+                                    if(bazatv[i]>0):
+                                        text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
+
+            text=text+"</declaratie394>"
+            # text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="'+str(op_efectuate)+'" prsAfiliat="'+str(prsAfiliat)+'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
+
+            # f=open("C:/Users/Bogdan.Constantinesc/Docuasdasdments/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
+            # make_archive("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage","C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/arhiva VAT apps.zip")
+            # return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True) 
+            # f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
+            f=open(filename, "w",encoding='utf-8').write(text)
+    make_archive(filename,filename+str("arhiva"))
+    return send_from_directory("D:/VATMirus 6Aprilie/output",str(clientname)+"arhiva.zip",as_attachment=True)
 
 # ==========================================Initial===================================================================
 #         file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
