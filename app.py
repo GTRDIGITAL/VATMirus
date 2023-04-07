@@ -20592,7 +20592,7 @@ def my_form_D300_nutre():
 @app.route('/D3APPS/NUTRE', methods=['POST', 'GET'])
 def D300xml_nutre():
     clientname=request.form.get('client')
-    filename="C:/Users/denis.david/"+str(clientname)
+    filename="/home/mirus_app/nutre/excel/"+str(clientname)
     os.mkdir(filename)
     def make_archive(source, destination):
         base = os.path.basename(destination)
@@ -25066,7 +25066,7 @@ def D300xml_nutre():
                     # for i in range(0 ,len(tip)):
                 # folderpath="D:/D300 to XML/docs"
                 # folderpath="/home/mirus_app/storage_spreadsheet"
-                    folderpath="C:/Users/denis.david/"
+                    folderpath="/home/mirus_app/nutre/excel"
                     # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
                     # for d in range(0,7):
                     #     listadenumire=['C140','C200','C210','C230','C240','C290','C400']
@@ -25094,7 +25094,7 @@ def D300_Nutre():
     if request.method == 'POST':
         D300_2= request.files.getlist('d300file2')
         clientname=request.form.get('client')
-    filename="D:/VATMirus 6Aprilie/output/"+str(clientname)
+    filename="/home/mirus_app/nutre/output/"+str(clientname)
     os.mkdir(filename)
     codclient=[]
     for i in D300_2:
@@ -26770,7 +26770,7 @@ def D300_Nutre():
             # f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
             f=open(filename+"/"+str(sheet1.cell(row=4, column=3).value) +" D394.xml", "w",encoding='utf-8').write(text)
     make_archive(filename,filename+str(" arhiva.zip"))
-    return send_from_directory("D:/VATMirus 6Aprilie/output",str(clientname)+" arhiva.zip",as_attachment=True)
+    return send_from_directory("/home/mirus_app/nutre/output",str(clientname)+" arhiva.zip",as_attachment=True)
 
 # ==========================================Initial===================================================================
 #         file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
