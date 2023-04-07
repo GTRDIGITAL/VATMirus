@@ -226,7 +226,7 @@ def downloadThales():
     return send_from_directory("/home/mirus_app/instructions","Instructions - Thales.docx", as_attachment=True)
 
 @app.route('/D3APPS/NUTRE/Instructions', methods=['GET'])
-def downloadThales():
+def downloadNutre():
     # filepath = "D:\Projects\8. Python web apps\Test web flask\Instructions"
     return send_from_directory("/home/mirus_app/instructions","Instructions - Nutre.docx", as_attachment=True)
 
