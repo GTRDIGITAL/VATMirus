@@ -22006,6 +22006,20 @@ def D300xml_nutre():
                     # flash("Please insert the correct header for 'Codul de inregistrare in scopuri de TVA al clientului Client VAT ID' in Sales sheet")
                     # return render_template("index.html")
 
+                for row in sales.iter_rows():
+                    for cell in row:
+                        if cell.value == "Outside RO deductabl":
+                            rand_tb = cell.row
+                            taxBi = cell.column
+                            lun = len(sales[cell.column])
+                try:
+                    taxBaseIntracom = [b.value for b in sales[taxBi][rand_tb:lun]]
+                except:
+                    print("aaa")
+
+
+
+
                 amount.cell(row=6, column=2).value="1"
                 amount.cell(row=6, column=3).value="2"
                 amount.cell(row=7, column=1).value="Row"
@@ -22081,7 +22095,7 @@ def D300xml_nutre():
                 amount.cell(row=71, column=1).value="B.1"
 
 
-                amount.cell(row=8, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+                amount.cell(row=8, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y3",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
                 amount.cell(row=9, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"C2",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
                 amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'       
                 amount.cell(row=11, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
@@ -23113,6 +23127,16 @@ def D300xml_nutre():
                         # return render_template("index.html")
 
 
+                    for row in sales.iter_rows():
+                        for cell in row:
+                            if cell.value == "Outside RO deductabl":
+                                rand_tb = cell.row
+                                taxBi = cell.column
+                                lun = len(sales[cell.column])
+                    try:
+                        taxBaseIntracom = [b.value for b in sales[taxBi][rand_tb:lun]]
+                    except:
+                        print("aaa")
 
                     for row in sales.iter_rows():
                         # rand_tb=None
@@ -24228,99 +24252,102 @@ def D300xml_nutre():
                                     listafacturi.append(int(docNoSales2[j]))
                                 except:
                                     print("nu este factura de vanzare")
-                    listafacturi=list(set(listafacturi))
-                    print(listafacturi)
-                    listafacturi.sort()
-                    start=[]
-                    start.append(listaunica[0])
-                    stop=[]
                     try:
-                        if(int(listaunica[1])-int(listaunica[0])>1):
+                        listafacturi=list(set(listafacturi))
+                        print(listafacturi)
+                        listafacturi.sort()
+                        start=[]
+                        start.append(listaunica[0])
+                        stop=[]
+                        try:
+                            if(int(listaunica[1])-int(listaunica[0])>1):
+                                stop.append(listaunica[0])
+                            for k in range(1,len(listaunica)):
+
+                                if(int(listaunica[k])-int(listaunica[k-1])==1):
+                                    print("ok")
+                                else:
+                                    stop.append(listaunica[k])
+                                    start.append(listaunica[k])
+                        except:
                             stop.append(listaunica[0])
-                        for k in range(1,len(listaunica)):
+                        if(len(stop)==len(start)):
+                            print("ok")
+                        else:
+                            stop.append(listaunica[len(listaunica)-1])
+                        print(start,stop)
 
-                            if(int(listaunica[k])-int(listaunica[k-1])==1):
-                                print("ok")
-                            else:
-                                stop.append(listaunica[k])
-                                start.append(listaunica[k])
-                    except:
-                        stop.append(listaunica[0])
-                    if(len(stop)==len(start)):
-                        print("ok")
-                    else:
-                        stop.append(listaunica[len(listaunica)-1])
-                    print(start,stop)
+                        #print(docNoSales)
+                        for k in range(0,len(start)):
+                            facturi.cell(row=2+k,column=2).value=start[k]
+                            facturi.cell(row=2+k,column=3).value=stop[k]
+                            facturi.cell(row=2+k,column=4).value=2
 
-                    #print(docNoSales)
-                    for k in range(0,len(start)):
-                        facturi.cell(row=2+k,column=2).value=start[k]
-                        facturi.cell(row=2+k,column=3).value=stop[k]
-                        facturi.cell(row=2+k,column=4).value=2
-
-                    for p in range(0,len(docNoSales2)-1):
-                      #print(docNo[p])
-                      if(p==0):
-                          initial=initial+1
-                          # facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
-                          facturi.cell(row=1+initial,column=2).value=docNo[p]
-                          # if(int(docNo[p])-int(docNo[p+1])< -1):
-                          final=final+1
-                          facturi.cell(row=1+final,column=3).value=docNo[p]
-                      else:
-                          try:
-                              if(int(docNo[p])-int(docNo[p-1])==1 and int(docNo[p])-int(docNo[p+1])==-1):
-                                  print("bailando")
-                                
-                          except:
+                        for p in range(0,len(docNoSales2)-1):
+                          #print(docNo[p])
+                          if(p==0):
+                              initial=initial+1
+                              # facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
+                              facturi.cell(row=1+initial,column=2).value=docNo[p]
+                              # if(int(docNo[p])-int(docNo[p+1])< -1):
+                              final=final+1
+                              facturi.cell(row=1+final,column=3).value=docNo[p]
+                          else:
                               try:
-                                  if(int(docNo[p][3:])-int(docNo[p-1][3:])==1 and int(docNo[p][3:])-int(docNo[p+1][3:])==-1):
+                                  if(int(docNo[p])-int(docNo[p-1])==1 and int(docNo[p])-int(docNo[p+1])==-1):
                                       print("bailando")
-                                      None
+                                    
                               except:
-                                  print(None)
-                          try:
-                              if(int(docNo[p])-int(docNo[p-1])>1 and int(docNo[p])-int(docNo[p+1])==-1):
-                                  initial=initial+1
-                                  # facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
-                                  facturi.cell(row=1+initial,column=2).value=docNo[p]
-                          except:
+                                  try:
+                                      if(int(docNo[p][3:])-int(docNo[p-1][3:])==1 and int(docNo[p][3:])-int(docNo[p+1][3:])==-1):
+                                          print("bailando")
+                                          None
+                                  except:
+                                      print(None)
                               try:
-                                  if(int(docNo[p][3:])-int(docNo[p-1][3:])>1 and int(docNo[p][3:])-int(docNo[p+1][3:])==-1):
+                                  if(int(docNo[p])-int(docNo[p-1])>1 and int(docNo[p])-int(docNo[p+1])==-1):
                                       initial=initial+1
                                       # facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
                                       facturi.cell(row=1+initial,column=2).value=docNo[p]
                               except:
-                                  print(docNo[p])
-                          try:
-                              if(int(docNo[p])-int(docNo[p-1])==1 and int(docNo[p])-int(docNo[p+1])<-1):
-                                  final=final+1
-                                  facturi.cell(row=1+final,column=3).value=docNo[p]
-                          except:
+                                  try:
+                                      if(int(docNo[p][3:])-int(docNo[p-1][3:])>1 and int(docNo[p][3:])-int(docNo[p+1][3:])==-1):
+                                          initial=initial+1
+                                          # facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
+                                          facturi.cell(row=1+initial,column=2).value=docNo[p]
+                                  except:
+                                      print(docNo[p])
                               try:
-                                  if(int(docNo[p][3:])-int(docNo[p-1][3:])==1 and int(docNo[p][3:])-int(docNo[p+1][3:])<-1):
+                                  if(int(docNo[p])-int(docNo[p-1])==1 and int(docNo[p])-int(docNo[p+1])<-1):
                                       final=final+1
                                       facturi.cell(row=1+final,column=3).value=docNo[p]
                               except:
-                                  print("none")
-                          try:
-                              if(int(docNo[p])-int(docNo[p-1])>1 and int(docNo[p])-int(docNo[p+1])<-1):
-                                  initial=initial+1
-                                  # facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
-                                  facturi.cell(row=1+initial,column=2).value=docNo[p]
-                                  final=final+1
-                                  facturi.cell(row=1+final,column=3).value=docNo[p]
-                          except:
+                                  try:
+                                      if(int(docNo[p][3:])-int(docNo[p-1][3:])==1 and int(docNo[p][3:])-int(docNo[p+1][3:])<-1):
+                                          final=final+1
+                                          facturi.cell(row=1+final,column=3).value=docNo[p]
+                                  except:
+                                      print("none")
                               try:
-                                  if(int(docNo[p][3:])-int(docNo[p-1][3:])>1 and int(docNo[p][3:])-int(docNo[p+1][3:])<-1):
+                                  if(int(docNo[p])-int(docNo[p-1])>1 and int(docNo[p])-int(docNo[p+1])<-1):
                                       initial=initial+1
                                       # facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
                                       facturi.cell(row=1+initial,column=2).value=docNo[p]
                                       final=final+1
                                       facturi.cell(row=1+final,column=3).value=docNo[p]
                               except:
-                                  print("none")
+                                  try:
+                                      if(int(docNo[p][3:])-int(docNo[p-1][3:])>1 and int(docNo[p][3:])-int(docNo[p+1][3:])<-1):
+                                          initial=initial+1
+                                          # facturi.cell(row=1+initial,column=1).value=seriefacturi[0]
+                                          facturi.cell(row=1+initial,column=2).value=docNo[p]
+                                          final=final+1
+                                          facturi.cell(row=1+final,column=3).value=docNo[p]
+                                  except:
+                                      print("none")
 
+                    except:
+                        print("ok")
                     x=facturi.max_row
                     facturi.auto_filter.ref = "A1:C1"
                     # if(int(docNoSales2[len(docNoSales2)-1])-int(docNoSales2[len(docNoSales2)-2])>1):
@@ -25068,6 +25095,7 @@ def D300_Nutre():
         D300_2= request.files.getlist('d300file2')
         clientname=request.form.get('client')
     filename="D:/VATMirus 6Aprilie/output/"+str(clientname)
+    os.mkdir(filename)
     codclient=[]
     for i in D300_2:
         i.save(secure_filename(i.filename))
@@ -25302,7 +25330,7 @@ def D300_Nutre():
             text='<?xml version="1.0"?> <declaratie300  luna="'+str(luna)+'" an="'+str(an)+'" depusReprezentant="'+str(ramburs2)+'" bifa_interne="0" temei="0" prenume_declar="'+str(pren)+'" nume_declar="'+str(nume)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(den)+'" adresa="'+str(strada)+'" telefon="'+str(telefon)+'" banca="'+str(banca)+'" cont="'+str(contban)+'" caen="'+str(Caen)+'" tip_decont="'+str(tip)+'" pro_rata="'+str(prorata)+'" bifa_cereale="'+str(cereale)+'" bifa_mob="'+str(telmob)+'" bifa_disp="'+str(disp)+'" bifa_cons="'+str(cons)+'" solicit_ramb="'+str(ramburs)+'" nr_evid="'+str(nr_evid)+'" totalPlata_A="'+str(totalp)+'" R1_1="'+str(R1_1)+'" R2_1="'+str(R2_1)+'" R3_1="'+str(R3_1)+'" R3_1_1="'+str(R3_1_1)+'" R4_1="'+str(R4_1)+'" R5_1="'+str(R5_1)+'" R5_2="'+str(R5_2)+'" R5_1_1="'+str(R5_1_1)+'" R5_1_2="'+str(R5_1_2)+'" R6_1="0" R6_2="'+str(R6_2)+'" R7_1="'+str(R7_1)+'" R7_2="'+str(R7_2)+'" R7_1_1="'+str(R7_1_1)+'" R7_1_2="'+str(R7_1_2)+'" R8_1="'+str(R8_1)+'" R8_2="'+str(R8_2)+'" R9_1="'+str(R9_1)+'" R9_2="'+str(R9_2)+'" R10_1="'+str(R10_1)+'" R10_2="'+str(R10_2)+'" R11_1="'+str(R11_1)+'" R11_2="'+str(R11_2)+'" R12_1="'+str(R12_1)+'" R12_2="'+str(R12_2)+'" R12_1_1="'+str(R12_1_1)+'" R12_1_2="'+str(R12_1_2)+'" R12_2_1="'+str(R12_2_1)+'" R12_2_2="'+str(R12_2_2)+'" R12_3_1="'+str(R12_3_1)+'" R12_3_2="'+str(R12_3_2)+'" R13_1="'+str(R13_1)+'" R14_1="'+str(R14_1)+'" R15_1="'+str(R15_1)+'" R16_1="'+str(R16_1)+'" R16_2="'+str(R16_2)+'" R64_1="'+str(R64_1)+'" R64_2="'+str(R64_2)+'" R65_1="'+str(R65_1)+'" R65_2="'+str(R65_2)+'" R17_1="'+str(R17_1)+'" R17_2="'+str(R17_2)+'" R18_1="'+str(R18_1)+'" R18_2="'+str(R18_2)+'" R18_1_1="'+str(R18_1_1)+'" R18_1_2="'+str(R18_1_2)+'" R19_1="'+str(R19_1)+'" R19_2="'+str(R19_2)+'" R20_1="'+str(R20_1)+'" R20_2="'+str(R20_2)+'" R20_1_1="'+str(R20_1_1)+'" R20_1_2="'+str(R20_1_2)+'" R21_1="'+str(R21_1)+'" R21_2="'+str(R21_2)+'" R22_1="'+str(R22_1)+'" R22_2="'+str(R22_2)+'" R23_1="'+str(R23_1)+'" R23_2="'+str(R23_2)+'" R24_1="'+str(R24_1)+'" R24_2="'+str(R24_2)+'" R25_1="'+str(R25_1)+'" R25_2="'+str(R25_2)+'" R25_1_1="'+str(R25_1_1)+'" R25_1_2="'+str(R25_1_2)+'" R25_2_1="'+str(R25_2_1)+'" R25_2_2="'+str(R25_2_2)+'" R25_3_1="'+str(R25_3_1)+'" R25_3_2="'+str(R25_3_2)+'" R43_2="'+str(R43_2)+'" R44_2="'+str(R44_2)+'" R26_1="'+str(R26_1)+'" R26_1_1="'+str(R26_1_1)+'" R27_1="'+str(R27_1)+'" R27_2="'+str(R27_2)+'" R28_2="'+str(R28_2)+'" R29_2="'+str(R29_2)+'" R30_1="'+str(R30_1)+'" R30_2="'+str(R30_2)+'" R31_2="'+str(R31_2)+'" R32_2="'+str(R32_2)+'" R33_2="'+str(R33_2)+'" R34_2="'+str(R34_2)+'" R35_2="'+str(R35_2)+'" R36_2="'+str(R36_2)+'" R37_2="'+str(R37_2)+'" R38_2="'+str(R38_2)+'" R39_2="'+str(R39_2)+'" R40_2="'+str(R40_2)+'" R41_2="'+str(R41_2)+'" R42_2="'+str(R42_2)+'" nr_facturi="'+str(nrfact)+'" baza="'+str(baza)+'" tva="'+str(tva)+'" nr_facturi_primite="'+str(factprimite)+'" baza_primite="'+str(bazaprimite)+'" tva_primite="'+str(tvaprimite)+'" nr_fact_emise="'+str(nrfactemise)+'" total_baza="'+str(total_baza)+'" total_precedent ="'+str(total_precedent)+'" total_curent ="'+str(total_curent)+'" total_tva="'+str(total_tva)+'" valoare_a="'+str(valoare_a)+'" tva_a="'+str(tva_a)+'" valoare_a1="'+str(valoare_a1)+'" tva_a1="'+str(tva_a1)+'" valoare_b="'+str(valoare_b)+'" tva_b="'+str(tva_b)+'" valoare_b1="'+str(valoare_b1)+'" tva_b1="'+str(tva_b1)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d300:declaratie:v7 d300.xsd" xmlns="mfp:anaf:dgti:d300:declaratie:v7"></declaratie300>'
             #print(text)
             # with open("/home/mirus_app/storage/D300.xml", "w", encoding="utf-8") as f:
-            with open(filename, "w", encoding="utf-8") as f:
+            with open(filename+"/"+str(info.cell(row=4,column=3).value)+" D300.xml", "w", encoding="utf-8") as f:
                 f.write(text)
         # f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text).encode('utf-8')
         #   # f=open("C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text)
@@ -25438,7 +25466,7 @@ def D300_Nutre():
             # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
             # f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D390.txt", "w",encoding="utf-8").write(texttxt)
             # f=open("/home/mirus_app/storage/D390.txt", "w",encoding="utf-8").write(texttxt)
-            f=open(filename, "w",encoding="utf-8").write(texttxt)
+            f=open(filename+"/"+str(denu)+" D390.txt", "w",encoding="utf-8").write(texttxt)
         except:
             pass
         sheet1=temp['Other info']
@@ -26734,15 +26762,15 @@ def D300_Nutre():
                                         text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
 
             text=text+"</declaratie394>"
-            # text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="'+str(op_efectuate)+'" prsAfiliat="'+str(prsAfiliat)+'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
+            # text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="1" prsAfiliat="0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
 
             # f=open("C:/Users/Bogdan.Constantinesc/Docuasdasdments/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
             # make_archive("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage","C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/arhiva VAT apps.zip")
             # return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True) 
             # f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
-            f=open(filename, "w",encoding='utf-8').write(text)
-    make_archive(filename,filename+str("arhiva"))
-    return send_from_directory("D:/VATMirus 6Aprilie/output",str(clientname)+"arhiva.zip",as_attachment=True)
+            f=open(filename+"/"+str(sheet1.cell(row=4, column=3).value) +" D394.xml", "w",encoding='utf-8').write(text)
+    make_archive(filename,filename+str(" arhiva.zip"))
+    return send_from_directory("D:/VATMirus 6Aprilie/output",str(clientname)+" arhiva.zip",as_attachment=True)
 
 # ==========================================Initial===================================================================
 #         file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
