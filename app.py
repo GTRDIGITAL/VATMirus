@@ -22186,7 +22186,7 @@ def D300xml_nutre():
 
                 amount.cell(row=68, column=2).value=0
                 amount.cell(row=69, column=2).value=0
-                # amount.cell(row=70, column=2).value='=ROUND(SUM(Purchases!'+str(tdocnexb)+":"+str(tdocnexb)+',),0)'
+                amount.cell(row=70, column=2).value=0
                 amount.cell(row=71, column=2).value='=B70'
                 
                 #coloana TVA----------------------------------------------------
@@ -22258,7 +22258,7 @@ def D300xml_nutre():
                 amount.cell(row=55, column=3).value=0
                 amount.cell(row=56, column=3).value='=SUM(C52:C55)'
                 amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
-                amount.cell(row=58, column=3).value=0
+                amount.cell(row=58, column=3).value='=IF((C32-C56)>0,C32-C56,0)'
                 amount.cell(row=59, column=3).value=0
                 amount.cell(row=60, column=3).value=0
                 amount.cell(row=61, column=3).value=0
@@ -22274,7 +22274,7 @@ def D300xml_nutre():
                 amount.cell(row=68, column=3).value=0
                 amount.cell(row=69, column=3).value=0
 
-                # amount.cell(row=70, column=3).value='=ROUND(SUM(Purchases!'+str(tdocnextva)+":"+str(tdocnextva)+',),0)'
+                amount.cell(row=70, column=3).value=0
                 amount.cell(row=71, column=3).value='=C70'
 
                 amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
@@ -25190,7 +25190,7 @@ def D300_Nutre():
             funct=info.cell(row=56,column=3).value
             total_precedent=amount.cell(row=74,column=2).value
             total_curent=amount.cell(row=74,column=3).value
-            totalp=info.cell(row=52,column=3).value
+            totalp=round(info.cell(row=52,column=3).value)
 
             for row in amount.iter_rows():
                 for cell in row:
