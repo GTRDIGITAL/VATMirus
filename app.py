@@ -26090,7 +26090,7 @@ def D300_Nutre():
             nrLS24=0
             nrN0=0
             sumaN0=0
-            # tvaN0=0
+            # tvasdasdaN0=0
 
             numarcui2=0
             for i in range(0,len(tip_partener)):
