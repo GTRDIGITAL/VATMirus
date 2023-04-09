@@ -25200,130 +25200,130 @@ def D300_Nutre():
             coloana = [b.value for b in amount[suma1][rand_tb:lun]]
 
 
-            R1_1=amount.cell(row=8,column=2).value
-            R2_1=amount.cell(row=9,column=2).value
-            R3_1=amount.cell(row=10,column=2).value
-            R3_1_1=amount.cell(row=11,column=2).value
-            R4_1=amount.cell(row=12,column=2).value
-            R5_1=amount.cell(row=13,column=2).value
-            R5_1_1=amount.cell(row=14,column=2).value
-            R6_1=amount.cell(row=15,column=2).value
-            R7_1=amount.cell(row=16,column=2).value
-            R7_1_1=amount.cell(row=17,column=2).value
-            R8_1=amount.cell(row=18,column=2).value
-            R9_1=amount.cell(row=19,column=2).value
-            R10_1=amount.cell(row=20,column=2).value
-            R11_1=amount.cell(row=21,column=2).value
-            R12_1=amount.cell(row=22,column=2).value
-            R12_1_1=amount.cell(row=23,column=2).value
-            R12_2_1=amount.cell(row=24,column=2).value
-            R12_3_1=amount.cell(row=25,column=2).value
-            R13_1=amount.cell(row=26,column=2).value
-            R14_1=amount.cell(row=27,column=2).value
-            R15_1=amount.cell(row=28,column=2).value
-            R16_1=amount.cell(row=29,column=2).value
-            R64_1=amount.cell(row=30,column=2).value
-            R65_1=amount.cell(row=31,column=2).value
-            R17_1=amount.cell(row=32,column=2).value
-            R18_1=amount.cell(row=33,column=2).value
-            R18_1_1=amount.cell(row=34,column=2).value
-            R19_1=amount.cell(row=35,column=2).value
-            R20_1=amount.cell(row=36,column=2).value
-            R20_1_1=amount.cell(row=37,column=2).value
-            R21_1=amount.cell(row=38,column=2).value
-            R22_1=amount.cell(row=39,column=2).value
-            R23_1=amount.cell(row=40,column=2).value
-            R24_1=amount.cell(row=41,column=2).value
-            R25_1=amount.cell(row=42,column=2).value
-            R25_1_1=amount.cell(row=43,column=2).value
-            R25_2_1=amount.cell(row=44,column=2).value
-            R25_3_1=amount.cell(row=45,column=2).value
-            R43_1=amount.cell(row=46,column=2).value
-            R44_1=amount.cell(row=47,column=2).value
-            R26_1=amount.cell(row=48,column=2).value
-            R26_1_1=amount.cell(row=49,column=2).value
-            R27_1=amount.cell(row=50,column=2).value
-            R28_1=amount.cell(row=52,column=2).value
-            R29_1=amount.cell(row=53,column=2).value
-            R30_1=amount.cell(row=54,column=2).value
-            R31_1=amount.cell(row=55,column=2).value
-            R32_1=amount.cell(row=56,column=2).value
-            R33_1=amount.cell(row=57,column=2).value
-            R34_1=amount.cell(row=58,column=2).value
-            R35_1=amount.cell(row=59,column=2).value
-            R36_1=amount.cell(row=60,column=2).value
-            R37_1=amount.cell(row=61,column=2).value
-            R38_1=amount.cell(row=62,column=2).value
-            R39_1=amount.cell(row=63,column=2).value
-            R40_1=amount.cell(row=64,column=2).value
-            R41_1=amount.cell(row=65,column=2).value
-            R42_1=amount.cell(row=66,column=2).value
-            R1_2=amount.cell(row=8,column=3).value
-            R2_2=amount.cell(row=9,column=3).value
-            R3_2=amount.cell(row=10,column=3).value
-            R3_1_2=amount.cell(row=11,column=3).value
-            R4_2=amount.cell(row=12,column=3).value
-            R5_2=amount.cell(row=13,column=3).value
-            R5_1_2=amount.cell(row=14,column=3).value
-            R6_2=amount.cell(row=15,column=3).value
-            R7_2=amount.cell(row=16,column=3).value
-            R7_1_2=amount.cell(row=17,column=3).value
-            R8_2=amount.cell(row=18,column=3).value
-            R9_2=amount.cell(row=19,column=3).value
-            R10_2=amount.cell(row=20,column=3).value
-            R11_2=amount.cell(row=21,column=3).value
-            R12_2=amount.cell(row=22,column=3).value
+            R1_1=round(amount.cell(row=8,column=2).value,0)
+            R2_1=round(amount.cell(row=9,column=2).value,0)
+            R3_1=round(amount.cell(row=10,column=2).value,0)
+            R3_1_1=round(amount.cell(row=11,column=2).value,0)
+            R4_1=round(amount.cell(row=12,column=2).value,0)
+            R5_1=round(amount.cell(row=13,column=2).value,0)
+            R5_1_1=round(amount.cell(row=14,column=2).value,0)
+            R6_1=round(amount.cell(row=15,column=2).value,0)
+            R7_1=round(amount.cell(row=16,column=2).value,0)
+            R7_1_1=round(amount.cell(row=17,column=2).value,0)
+            R8_1=round(amount.cell(row=18,column=2).value,0)
+            R9_1=round(amount.cell(row=19,column=2).value,0)
+            R10_1=round(amount.cell(row=20,column=2).value,0)
+            R11_1=round(amount.cell(row=21,column=2).value,0)
+            R12_1=round(amount.cell(row=22,column=2).value,0)
+            R12_1_1=round(amount.cell(row=23,column=2).value,0)
+            R12_2_1=round(amount.cell(row=24,column=2).value,0)
+            R12_3_1=round(amount.cell(row=25,column=2).value,0)
+            R13_1=round(amount.cell(row=26,column=2).value,0)
+            R14_1=round(amount.cell(row=27,column=2).value,0)
+            R15_1=round(amount.cell(row=28,column=2).value,0)
+            R16_1=round(amount.cell(row=29,column=2).value,0)
+            R64_1=round(amount.cell(row=30,column=2).value,0)
+            R65_1=round(amount.cell(row=31,column=2).value,0)
+            R17_1=round(amount.cell(row=32,column=2).value,0)
+            R18_1=round(amount.cell(row=33,column=2).value,0)
+            R18_1_1=round(amount.cell(row=34,column=2).value,0)
+            R19_1=round(amount.cell(row=35,column=2).value,0)
+            R20_1=round(amount.cell(row=36,column=2).value,0)
+            R20_1_1=round(amount.cell(row=37,column=2).value,0)
+            R21_1=round(amount.cell(row=38,column=2).value,0)
+            R22_1=round(amount.cell(row=39,column=2).value,0)
+            R23_1=round(amount.cell(row=40,column=2).value,0)
+            R24_1=round(amount.cell(row=41,column=2).value,0)
+            R25_1=round(amount.cell(row=42,column=2).value,0)
+            R25_1_1=round(amount.cell(row=43,column=2).value,0)
+            R25_2_1=round(amount.cell(row=44,column=2).value,0)
+            R25_3_1=round(amount.cell(row=45,column=2).value,0)
+            R43_1=round(amount.cell(row=46,column=2).value,0)
+            R44_1=round(amount.cell(row=47,column=2).value,0)
+            R26_1=round(amount.cell(row=48,column=2).value,0)
+            R26_1_1=round(amount.cell(row=49,column=2).value,0)
+            R27_1=round(amount.cell(row=50,column=2).value,0)
+            R28_1=round(amount.cell(row=52,column=2).value,0)
+            R29_1=round(amount.cell(row=53,column=2).value,0)
+            R30_1=round(amount.cell(row=54,column=2).value,0)
+            R31_1=round(amount.cell(row=55,column=2).value,0)
+            R32_1=round(amount.cell(row=56,column=2).value,0)
+            R33_1=round(amount.cell(row=57,column=2).value,0)
+            R34_1=round(amount.cell(row=58,column=2).value,0)
+            R35_1=round(amount.cell(row=59,column=2).value,0)
+            R36_1=round(amount.cell(row=60,column=2).value,0)
+            R37_1=round(amount.cell(row=61,column=2).value,0)
+            R38_1=round(amount.cell(row=62,column=2).value,0)
+            R39_1=round(amount.cell(row=63,column=2).value,0)
+            R40_1=round(amount.cell(row=64,column=2).value,0)
+            R41_1=round(amount.cell(row=65,column=2).value,0)
+            R42_1=round(amount.cell(row=66,column=2).value,0)
+            R1_2=round(amount.cell(row=8,column=3).value,0)
+            R2_2=round(amount.cell(row=9,column=3).value,0)
+            R3_2=round(amount.cell(row=10,column=3).value,0)
+            R3_1_2=round(amount.cell(row=11,column=3).value,0)
+            R4_2=round(amount.cell(row=12,column=3).value,0)
+            R5_2=round(amount.cell(row=13,column=3).value,0)
+            R5_1_2=round(amount.cell(row=14,column=3).value,0)
+            R6_2=round(amount.cell(row=15,column=3).value,0)
+            R7_2=round(amount.cell(row=16,column=3).value,0)
+            R7_1_2=round(amount.cell(row=17,column=3).value,0)
+            R8_2=round(amount.cell(row=18,column=3).value,0)
+            R9_2=round(amount.cell(row=19,column=3).value,0)
+            R10_2=round(amount.cell(row=20,column=3).value,0)
+            R11_2=round(amount.cell(row=21,column=3).value,0)
+            R12_2=round(amount.cell(row=22,column=3).value,0)
 
 
-            R12_1_2=amount.cell(row=23,column=3).value
-            R12_2_2=amount.cell(row=24,column=3).value
-            R12_3_2=amount.cell(row=25,column=3).value
-            R13_2=amount.cell(row=26,column=3).value
-            R14_2=amount.cell(row=27,column=3).value
-            R15_2=amount.cell(row=28,column=3).value
-            R16_2=amount.cell(row=29,column=3).value
-            R64_2=amount.cell(row=30,column=3).value
-            R65_2=amount.cell(row=31,column=3).value
-            R17_2=amount.cell(row=32,column=3).value
-            R18_2=amount.cell(row=33,column=3).value
-            R18_1_2=amount.cell(row=34,column=3).value
-            R19_2=amount.cell(row=35,column=3).value
-            R20_2=amount.cell(row=36,column=3).value
-            R20_1_2=amount.cell(row=37,column=3).value
-            R21_2=amount.cell(row=38,column=3).value
-            R22_2=amount.cell(row=39,column=3).value
-            R23_2=amount.cell(row=40,column=3).value
-            R24_2=amount.cell(row=41,column=3).value
-            R25_2=amount.cell(row=42,column=3).value
-            R25_1_2=amount.cell(row=43,column=3).value
-            R25_2_2=amount.cell(row=44,column=3).value
-            R25_3_2=amount.cell(row=45,column=3).value
+            R12_1_2=round(amount.cell(row=23,column=3).value,0)
+            R12_2_2=round(amount.cell(row=24,column=3).value,0)
+            R12_3_2=round(amount.cell(row=25,column=3).value,0)
+            R13_2=round(amount.cell(row=26,column=3).value,0)
+            R14_2=round(amount.cell(row=27,column=3).value,0)
+            R15_2=round(amount.cell(row=28,column=3).value,0)
+            R16_2=round(amount.cell(row=29,column=3).value,0)
+            R64_2=round(amount.cell(row=30,column=3).value,0)
+            R65_2=round(amount.cell(row=31,column=3).value,0)
+            R17_2=round(amount.cell(row=32,column=3).value,0)
+            R18_2=round(amount.cell(row=33,column=3).value,0)
+            R18_1_2=round(amount.cell(row=34,column=3).value,0)
+            R19_2=round(amount.cell(row=35,column=3).value,0)
+            R20_2=round(amount.cell(row=36,column=3).value,0)
+            R20_1_2=round(amount.cell(row=37,column=3).value,0)
+            R21_2=round(amount.cell(row=38,column=3).value,0)
+            R22_2=round(amount.cell(row=39,column=3).value,0)
+            R23_2=round(amount.cell(row=40,column=3).value,0)
+            R24_2=round(amount.cell(row=41,column=3).value,0)
+            R25_2=round(amount.cell(row=42,column=3).value,0)
+            R25_1_2=round(amount.cell(row=43,column=3).value,0)
+            R25_2_2=round(amount.cell(row=44,column=3).value,0)
+            R25_3_2=round(amount.cell(row=45,column=3).value,0)
 
 
-            R43_2=amount.cell(row=46,column=3).value
-            R44_2=amount.cell(row=47,column=3).value
-            R26_2=amount.cell(row=48,column=3).value
-            R26_1_2=amount.cell(row=49,column=3).value
-            R27_2=amount.cell(row=50,column=3).value
+            R43_2=round(amount.cell(row=46,column=3).value,0)
+            R44_2=round(amount.cell(row=47,column=3).value,0)
+            R26_2=round(amount.cell(row=48,column=3).value,0)
+            R26_1_2=round(amount.cell(row=49,column=3).value,0)
+            R27_2=round(amount.cell(row=50,column=3).value,0)
 
 
-            R28_2=amount.cell(row=52,column=3).value
-            R29_2=amount.cell(row=53,column=3).value
-            R30_2=amount.cell(row=54,column=3).value
-            R31_2=amount.cell(row=55,column=3).value
-            R32_2=amount.cell(row=56,column=3).value
+            R28_2=round(amount.cell(row=52,column=3).value,0)
+            R29_2=round(amount.cell(row=53,column=3).value,0)
+            R30_2=round(amount.cell(row=54,column=3).value,0)
+            R31_2=round(amount.cell(row=55,column=3).value,0)
+            R32_2=round(amount.cell(row=56,column=3).value,0)
 
 
-            R33_2=amount.cell(row=57,column=3).value
-            R34_2=amount.cell(row=58,column=3).value
-            R35_2=amount.cell(row=59,column=3).value
-            R36_2=amount.cell(row=60,column=3).value
-            R37_2=amount.cell(row=61,column=3).value
-            R38_2=amount.cell(row=62,column=3).value
-            R39_2=amount.cell(row=63,column=3).value
-            R40_2=amount.cell(row=64,column=3).value
-            R41_2=amount.cell(row=65,column=3).value
-            R42_2=amount.cell(row=66,column=3).value
+            R33_2=round(amount.cell(row=57,column=3).value,0)
+            R34_2=round(amount.cell(row=58,column=3).value,0)
+            R35_2=round(amount.cell(row=59,column=3).value,0)
+            R36_2=round(amount.cell(row=60,column=3).value,0)
+            R37_2=round(amount.cell(row=61,column=3).value,0)
+            R38_2=round(amount.cell(row=62,column=3).value,0)
+            R39_2=round(amount.cell(row=63,column=3).value,0)
+            R40_2=round(amount.cell(row=64,column=3).value,0)
+            R41_2=round(amount.cell(row=65,column=3).value,0)
+            R42_2=round(amount.cell(row=66,column=3).value,0)
             
 
 
@@ -26015,11 +26015,18 @@ def D300_Nutre():
             else:
                 text15=""
             if(nrL9>0 or nrA9>0 or nrAI5>0 or nrC9>0):
-                text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"/>'''
+                if(nrC9>0):
+                    text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"/>'''
+                else:
+                    text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"><detaliu bun="21" nrAchizC="'''+str(nrC9)+'''" bazaAchizC="'''+str(sumaC9)+'''" tvaAchizC="'''+str(tvaC9)+'''"'''"/></rezumat1>'''
             else:
                 text19=""
             if(nrL19>0 or nrA19>0 or nrAI9>0 or nrC19>0):
-                text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"/>'''
+                if(nrC19==0):
+                    text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''">'''
+                else:
+                    text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"><detaliu bun="21" nrAchizC="'''+str(nrC19)+'''" bazaAchizC="'''+str(sumaC19)+'''" tvaAchizC="'''+str(tvaC19)+'''"'''"/></rezumat1>'''
+
             else:
                 text119=""
             if(nrL20>0 or nrA20>0 or nrAI20>0 or nrC20>0):
@@ -26750,7 +26757,7 @@ def D300_Nutre():
                 # nume[j].replace(">","")
             for i in range(0,len(tiptranza)):
                 if(tiptranza[i]!="Not applicable for D394"):
-                    if(tiptranza[i]=="V"):
+                    if(tiptranza[i]=="V" or tiptranza[i]=="C"):
                         text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
                     else:
                         if(tiptranza[i]=="N"):
