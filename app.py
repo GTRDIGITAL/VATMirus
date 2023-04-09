@@ -26018,14 +26018,14 @@ def D300_Nutre():
                 if(nrC9>0):
                     text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"/>'''
                 else:
-                    text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"><detaliu bun="21" nrAchizC="'''+str(nrC9)+'''" bazaAchizC="'''+str(sumaC9)+'''" tvaAchizC="'''+str(tvaC9)+'''"'''"/></rezumat1>'''
+                    text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"><detaliu bun="21" nrAchizC="'''+str(nrC9)+'''" bazaAchizC="'''+str(sumaC9)+'''" tvaAchizC="'''+str(tvaC9)+'''/></rezumat1>'''
             else:
                 text19=""
             if(nrL19>0 or nrA19>0 or nrAI9>0 or nrC19>0):
                 if(nrC19==0):
                     text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''">'''
                 else:
-                    text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"><detaliu bun="21" nrAchizC="'''+str(nrC19)+'''" bazaAchizC="'''+str(sumaC19)+'''" tvaAchizC="'''+str(tvaC19)+'''"'''"/></rezumat1>'''
+                    text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"><detaliu bun="21" nrAchizC="'''+str(nrC19)+'''" bazaAchizC="'''+str(sumaC19)+'''" tvaAchizC="'''+str(tvaC19)+'''/></rezumat1>'''
 
             else:
                 text119=""
