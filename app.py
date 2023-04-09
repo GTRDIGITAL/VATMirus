@@ -25100,6 +25100,7 @@ def D300_Nutre():
         D300_2= request.files.getlist('d300file2')
         clientname=request.form.get('client')
     filename="/home/mirus_app/nutre/output/"+str(clientname)
+    # filename="D:/"+str(clientname)
     os.mkdir(filename)
     codclient=[]
     for i in D300_2:
@@ -25307,7 +25308,10 @@ def D300_Nutre():
             R27_2=round(amount.cell(row=50,column=3).value,0)
 
 
-            R28_2=round(amount.cell(row=52,column=3).value,0)
+            try:
+                R28_2=round(amount.cell(row=52,column=3).value,0)
+            except:
+                R28_2=0
             R29_2=round(amount.cell(row=53,column=3).value,0)
             R30_2=round(amount.cell(row=54,column=3).value,0)
             R31_2=round(amount.cell(row=55,column=3).value,0)
@@ -26762,7 +26766,7 @@ def D300_Nutre():
                         text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
                     else:
                         if(tiptranza[i]=="C"):
-                            text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+"tvaPR="+str(stva[i])+'" /> </op1>'+"\n"
+                            text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" tvaPR="'+str(round(stva[i],0))+'" /> </op1>'+"\n"
                         else:
                             if(tiptranza[i]=="N"):
                                 text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="2" cota="0" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i].replace('"',""))+'" tip_document="1" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'"/>'
