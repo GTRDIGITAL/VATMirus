@@ -1721,7 +1721,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         #print(soldLunaTrecuta, "sold luna trecuta")
         amount.cell(row=63, column=3).value=0
         amount.cell(row=64, column=3).value='=C57+C62+C63'
-        amount.cell(row=65, column=3).value='=IF((C61-C64)<0,0,C61-C64)'
+        amount.cell(row=65, column=3).value='=IF((C61-C64)>0,C61-C64,0)'
         amount.cell(row=66, column=3).value='=IF((C64-C61)<0,0,C64-C61)'
         amount.cell(row=68, column=3).value=0
         amount.cell(row=69, column=3).value=0
