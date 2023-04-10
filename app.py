@@ -2651,19 +2651,22 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
             codTranzactieSales=[]
             for i in range(0, len(codTaraCuiSales)):
-                if str(serieCuiSales[i])[1:2] not in litere:
-                    codTranzactieSales.append(2)
-                else:
-                    if codTaraCuiSales[i] == "RO":
-                        # #print("RO")
-                        codTranzactieSales.append(1)
-                    else:   
-                        if codTaraCuiSales[i] in nomenclatorTari:
-                            # #print("UE")
-                            codTranzactieSales.append(3)
-                        else:
-                            # #print("nonUE")
-                            codTranzactieSales.append(4)
+                if "RO" in listaCUISales1[i]:
+                    codTranzactieSales.append(1)
+                else:    
+                    if str(serieCuiSales[i])[1:2] not in litere:
+                        codTranzactieSales.append(2)
+                    else:
+                        if codTaraCuiSales[i] == "RO":
+                            # #print("RO")
+                            codTranzactieSales.append(1)
+                        else:   
+                            if codTaraCuiSales[i] in nomenclatorTari:
+                                # #print("UE")
+                                codTranzactieSales.append(3)
+                            else:
+                                # #print("nonUE")
+                                codTranzactieSales.append(4)
             #Cote TVAA
 
 
@@ -2699,6 +2702,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                                     # print("Yes")
                                     tipTranzSale.append("V")
                                     storno.append("")
+                                else:
+                                    tipTranzSale.append("Not applicable for D394")
                     else:
                         if int(codTranzactieSales[i]) == 2:
                             if (ltaxcode[i]=='A1'):
@@ -3391,6 +3396,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                         if int(tipTranzactiePurchases[i]) == 2:
                             if taxcodep[i]=="7N" or taxcodep[i]=="8N" or taxcodep[i]=="A3" :
                                 tipTranzPurch.append("N")
+                            else:
+                                tipTranzPurch.append('Not applicable for D394')
                                 #print(docNoPurch1[i],";;;;es 9")
                         else:
                             if int(tipTranzactiePurchases[i]) == 3:
@@ -3658,7 +3665,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             seriefacturi=[]
             for i in range(0,len(docNoSales)):
                 # docNoSales[i].replaceAll("[^a-zA-Z0-9]", ")
-                if(str(tipTranzSale[i])=="L"):
+                if(str(tipTranzSale[i])=="L" or str(tipTranzSale[i])=="V"):
                     # try:
                     numere=re.sub("[^0-9]", "",str(docNoSales[i]))
                     # except:
