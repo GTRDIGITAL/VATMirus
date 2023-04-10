@@ -3669,7 +3669,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     # try:
                     numere=re.sub("[^0-9]", "",str(docNoSales[i]))
                     # except:
-                        # print(docNoSales[i])
+                        # print(asdaddocNoSales[i])
                     result = ''.join([i for i in str(docNoSales[i]) if not i.isdigit()])
                     docNoSales2.append(numere)
                     seriefacturi.append(result)
