@@ -22175,11 +22175,11 @@ def D300xml_nutre():
                 amount.cell(row=49, column=2).value=0
                 amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
                 amount.cell(row=51, column=2).value=0
-                amount.cell(row=52, column=2).value=0
+                amount.cell(row=52, column=2).value='=B50+B51'
                 amount.cell(row=53, column=2).value=0
                 amount.cell(row=54, column=2).value=0
                 amount.cell(row=55, column=2).value=0
-                amount.cell(row=56, column=2).value=0
+                amount.cell(row=56, column=2).value='=SUM(B52:B55)'
                 amount.cell(row=57, column=2).value=0
                 amount.cell(row=58, column=2).value=0
                 amount.cell(row=59, column=2).value=0
@@ -22190,6 +22190,7 @@ def D300xml_nutre():
                 amount.cell(row=64, column=2).value='=B57+B62+B63'
                 amount.cell(row=65, column=2).value='=IF((B61-B664)<0,0,B61-B64)'
                 amount.cell(row=66, column=2).value='=IF((B64-B61)<0,0,B64)'
+
 
                 amount.cell(row=68, column=2).value=0
                 amount.cell(row=69, column=2).value=0
@@ -22259,16 +22260,16 @@ def D300xml_nutre():
                 amount.cell(row=49, column=3).value=0
                 amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
                 amount.cell(row=51, column=3).value=0
-                # amount.cell(row=52, column=3).value='=C50+C51-SUM(Purchases!'+str(tdocneded)+':'+str(tdocneded)+')'
+                amount.cell(row=52, column=3).value=0
                 amount.cell(row=53, column=3).value=0
                 amount.cell(row=54, column=3).value=0
                 amount.cell(row=55, column=3).value=0
                 amount.cell(row=56, column=3).value='=SUM(C52:C55)'
                 amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
-                amount.cell(row=58, column=3).value='=IF((C32-C56)>0,C32-C56,0)'
+                amount.cell(row=58, column=3).value='=IF((C32-C56)<0,0,C32-C56)'
                 amount.cell(row=59, column=3).value=0
                 amount.cell(row=60, column=3).value=0
-                amount.cell(row=61, column=3).value="=sum(C58:C60)"
+                amount.cell(row=61, column=3).value='=SUM(C58:C60)' 
                 if soldLunaTrecuta == None or soldLunaTrecuta == "" or soldLunaTrecuta == " ":
                     amount.cell(row=62, column=3).value=0
                 else:
@@ -22276,7 +22277,7 @@ def D300xml_nutre():
                 #print(soldLunaTrecuta, "sold luna trecuta")
                 amount.cell(row=63, column=3).value=0
                 amount.cell(row=64, column=3).value='=C57+C62+C63'
-                amount.cell(row=65, column=3).value=0
+                amount.cell(row=65, column=3).value='=IF((C61-C64)>0,C61-C64,0)'
                 amount.cell(row=66, column=3).value='=IF((C64-C61)<0,0,C64-C61)'
                 amount.cell(row=68, column=3).value=0
                 amount.cell(row=69, column=3).value=0
