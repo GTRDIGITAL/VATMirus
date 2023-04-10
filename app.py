@@ -3724,7 +3724,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                 facturi.cell(row=2+k,column=2).value=start[k]
                 facturi.cell(row=2+k,column=3).value=stop[k]
                 facturi.cell(row=2+k,column=4).value=2
-
+                facturi.cell(row=2+k,column=1).value="PMG"
             # for p in range(0,len(docNoSales2)-1):
             #   #print(docNo[p])
             #   if(p==0):
@@ -3808,6 +3808,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                 facturi.cell(row=yy,column=kk).font=cap_tabel
                 facturi.cell(row=yy,column=kk).fill=cap_tabel_color_black   
             for pp in range(2,yy):
+                facturi.cell(row=yy+pp-1,column=1).value="PMG"
                 facturi.cell(row=yy+pp-1,column=2).value=facturi.cell(row=pp,column=2).value
                 facturi.cell(row=yy+pp-1,column=3).value=facturi.cell(row=pp,column=3).value
                 facturi.cell(row=yy+pp-1,column=4).value=1                      
@@ -22181,7 +22182,7 @@ def D300xml_nutre():
                 amount.cell(row=55, column=2).value=0
                 amount.cell(row=56, column=2).value='=SUM(B52:B55)'
                 amount.cell(row=57, column=2).value=0
-                amount.cell(row=58, column=2).value=0
+                amount.cell(row=58, column=2).value='=if((B32-B56)<0,0,B32-B56)'
                 amount.cell(row=59, column=2).value=0
                 amount.cell(row=60, column=2).value=0
                 amount.cell(row=61, column=2).value='=SUM(B58:B60)'
@@ -22260,7 +22261,7 @@ def D300xml_nutre():
                 amount.cell(row=49, column=3).value=0
                 amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
                 amount.cell(row=51, column=3).value=0
-                amount.cell(row=52, column=3).value=0
+                amount.cell(row=52, column=3).value='=C50+C51'
                 amount.cell(row=53, column=3).value=0
                 amount.cell(row=54, column=3).value=0
                 amount.cell(row=55, column=3).value=0
