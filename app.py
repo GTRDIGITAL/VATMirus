@@ -1721,7 +1721,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         #print(soldLunaTrecuta, "sold luna trecuta")
         amount.cell(row=63, column=3).value=0
         amount.cell(row=64, column=3).value='=C57+C62+C63'
-        amount.cell(row=65, column=3).value='=IF((C61-C64)<0,0,C61-C64)'
+        amount.cell(row=65, column=3).value='=IF((C61-C64)>0,C61-C64,0)'
         amount.cell(row=66, column=3).value='=IF((C64-C61)<0,0,C64-C61)'
         amount.cell(row=68, column=3).value=0
         amount.cell(row=69, column=3).value=0
@@ -2651,19 +2651,22 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
             codTranzactieSales=[]
             for i in range(0, len(codTaraCuiSales)):
-                if str(serieCuiSales[i])[1:2] not in litere:
-                    codTranzactieSales.append(2)
-                else:
-                    if codTaraCuiSales[i] == "RO":
-                        # #print("RO")
-                        codTranzactieSales.append(1)
-                    else:   
-                        if codTaraCuiSales[i] in nomenclatorTari:
-                            # #print("UE")
-                            codTranzactieSales.append(3)
-                        else:
-                            # #print("nonUE")
-                            codTranzactieSales.append(4)
+                if "RO" in listaCUISales1[i]:
+                    codTranzactieSales.append(1)
+                else:    
+                    if str(serieCuiSales[i])[1:2] not in litere:
+                        codTranzactieSales.append(2)
+                    else:
+                        if codTaraCuiSales[i] == "RO":
+                            # #print("RO")
+                            codTranzactieSales.append(1)
+                        else:   
+                            if codTaraCuiSales[i] in nomenclatorTari:
+                                # #print("UE")
+                                codTranzactieSales.append(3)
+                            else:
+                                # #print("nonUE")
+                                codTranzactieSales.append(4)
             #Cote TVAA
 
 
@@ -2699,6 +2702,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                                     # print("Yes")
                                     tipTranzSale.append("V")
                                     storno.append("")
+                                else:
+                                    tipTranzSale.append("Not applicable for D394")
                     else:
                         if int(codTranzactieSales[i]) == 2:
                             if (ltaxcode[i]=='A1'):
@@ -3391,6 +3396,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                         if int(tipTranzactiePurchases[i]) == 2:
                             if taxcodep[i]=="7N" or taxcodep[i]=="8N" or taxcodep[i]=="A3" :
                                 tipTranzPurch.append("N")
+                            else:
+                                tipTranzPurch.append('Not applicable for D394')
                                 #print(docNoPurch1[i],";;;;es 9")
                         else:
                             if int(tipTranzactiePurchases[i]) == 3:
@@ -3658,11 +3665,11 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             seriefacturi=[]
             for i in range(0,len(docNoSales)):
                 # docNoSales[i].replaceAll("[^a-zA-Z0-9]", ")
-                if(str(tipTranzSale[i])=="L"):
+                if(str(tipTranzSale[i])=="L" or str(tipTranzSale[i])=="V"):
                     # try:
                     numere=re.sub("[^0-9]", "",str(docNoSales[i]))
                     # except:
-                        # print(docNoSales[i])
+                        # print(asdaddocNoSales[i])
                     result = ''.join([i for i in str(docNoSales[i]) if not i.isdigit()])
                     docNoSales2.append(numere)
                     seriefacturi.append(result)
@@ -18943,7 +18950,7 @@ def D300_thales():
         rez25='''<rezumat2 cota="5"  bazaFSLcod="'''+str(sheetI.cell(row=12,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=12,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=22,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=22,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=32,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=32,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=42,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=42,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=52,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=52,column=3).value)+'''" nrFacturiL="'''+str(L5nr)+'''" bazaL="'''+str(L5b)+'''" tvaL="'''+str(L5t)+'''" nrFacturiA="'''+str(A5nr)+'''" bazaA="'''+str(A5b)+'''" tvaA="'''+str(A5t)+'''" nrFacturiAI="'''+str(AI5nr)+'''" bazaAI="'''+str(AI5b)+'''" tvaAI="'''+str(AI5t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=17,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=17,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=27,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=27,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
         totalplata394=numarcuicorect1+numarcuicorect2+numarcuicorect3+numarcuicorect4+L24b+L20b+L19brez2+L9brez2+L5b+A5b+A9b+A19b+A20b+A24b+AI5b+AI9b+AI19b+AI20b+AI24b
         #print(totalplata394)
-        textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Grant Thornton " cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
+        textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Mirus Consultanta Fiscala SRL" cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
         <informatii nrCui1="'''+str(numarcuicorect1)+'''" nrCui2="'''+str(numarcuicorect2)+'''" nrCui3="'''+str(numarcuicorect3)+'''" nrCui4="'''+str(numarcuicorect4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="'''+str(totalfacturi)+'''" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
         text=text+textinfo+text15+text10+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
 
@@ -22186,7 +22193,7 @@ def D300xml_nutre():
 
                 amount.cell(row=68, column=2).value=0
                 amount.cell(row=69, column=2).value=0
-                # amount.cell(row=70, column=2).value='=ROUND(SUM(Purchases!'+str(tdocnexb)+":"+str(tdocnexb)+',),0)'
+                amount.cell(row=70, column=2).value=0
                 amount.cell(row=71, column=2).value='=B70'
                 
                 #coloana TVA----------------------------------------------------
@@ -22258,10 +22265,10 @@ def D300xml_nutre():
                 amount.cell(row=55, column=3).value=0
                 amount.cell(row=56, column=3).value='=SUM(C52:C55)'
                 amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
-                amount.cell(row=58, column=3).value=0
+                amount.cell(row=58, column=3).value='=IF((C32-C56)>0,C32-C56,0)'
                 amount.cell(row=59, column=3).value=0
                 amount.cell(row=60, column=3).value=0
-                amount.cell(row=61, column=3).value=0
+                amount.cell(row=61, column=3).value="=sum(C58:C60)"
                 if soldLunaTrecuta == None or soldLunaTrecuta == "" or soldLunaTrecuta == " ":
                     amount.cell(row=62, column=3).value=0
                 else:
@@ -22274,7 +22281,7 @@ def D300xml_nutre():
                 amount.cell(row=68, column=3).value=0
                 amount.cell(row=69, column=3).value=0
 
-                # amount.cell(row=70, column=3).value='=ROUND(SUM(Purchases!'+str(tdocnextva)+":"+str(tdocnextva)+',),0)'
+                amount.cell(row=70, column=3).value=0
                 amount.cell(row=71, column=3).value='=C70'
 
                 amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
@@ -25100,6 +25107,7 @@ def D300_Nutre():
         D300_2= request.files.getlist('d300file2')
         clientname=request.form.get('client')
     filename="/home/mirus_app/nutre/output/"+str(clientname)
+    # filename="D:/"+str(clientname)
     os.mkdir(filename)
     codclient=[]
     for i in D300_2:
@@ -25189,7 +25197,7 @@ def D300_Nutre():
             funct=info.cell(row=56,column=3).value
             total_precedent=amount.cell(row=74,column=2).value
             total_curent=amount.cell(row=74,column=3).value
-            totalp=info.cell(row=52,column=3).value
+            totalp=round(info.cell(row=52,column=3).value)
 
             for row in amount.iter_rows():
                 for cell in row:
@@ -25200,130 +25208,133 @@ def D300_Nutre():
             coloana = [b.value for b in amount[suma1][rand_tb:lun]]
 
 
-            R1_1=amount.cell(row=8,column=2).value
-            R2_1=amount.cell(row=9,column=2).value
-            R3_1=amount.cell(row=10,column=2).value
-            R3_1_1=amount.cell(row=11,column=2).value
-            R4_1=amount.cell(row=12,column=2).value
-            R5_1=amount.cell(row=13,column=2).value
-            R5_1_1=amount.cell(row=14,column=2).value
-            R6_1=amount.cell(row=15,column=2).value
-            R7_1=amount.cell(row=16,column=2).value
-            R7_1_1=amount.cell(row=17,column=2).value
-            R8_1=amount.cell(row=18,column=2).value
-            R9_1=amount.cell(row=19,column=2).value
-            R10_1=amount.cell(row=20,column=2).value
-            R11_1=amount.cell(row=21,column=2).value
-            R12_1=amount.cell(row=22,column=2).value
-            R12_1_1=amount.cell(row=23,column=2).value
-            R12_2_1=amount.cell(row=24,column=2).value
-            R12_3_1=amount.cell(row=25,column=2).value
-            R13_1=amount.cell(row=26,column=2).value
-            R14_1=amount.cell(row=27,column=2).value
-            R15_1=amount.cell(row=28,column=2).value
-            R16_1=amount.cell(row=29,column=2).value
-            R64_1=amount.cell(row=30,column=2).value
-            R65_1=amount.cell(row=31,column=2).value
-            R17_1=amount.cell(row=32,column=2).value
-            R18_1=amount.cell(row=33,column=2).value
-            R18_1_1=amount.cell(row=34,column=2).value
-            R19_1=amount.cell(row=35,column=2).value
-            R20_1=amount.cell(row=36,column=2).value
-            R20_1_1=amount.cell(row=37,column=2).value
-            R21_1=amount.cell(row=38,column=2).value
-            R22_1=amount.cell(row=39,column=2).value
-            R23_1=amount.cell(row=40,column=2).value
-            R24_1=amount.cell(row=41,column=2).value
-            R25_1=amount.cell(row=42,column=2).value
-            R25_1_1=amount.cell(row=43,column=2).value
-            R25_2_1=amount.cell(row=44,column=2).value
-            R25_3_1=amount.cell(row=45,column=2).value
-            R43_1=amount.cell(row=46,column=2).value
-            R44_1=amount.cell(row=47,column=2).value
-            R26_1=amount.cell(row=48,column=2).value
-            R26_1_1=amount.cell(row=49,column=2).value
-            R27_1=amount.cell(row=50,column=2).value
-            R28_1=amount.cell(row=52,column=2).value
-            R29_1=amount.cell(row=53,column=2).value
-            R30_1=amount.cell(row=54,column=2).value
-            R31_1=amount.cell(row=55,column=2).value
-            R32_1=amount.cell(row=56,column=2).value
-            R33_1=amount.cell(row=57,column=2).value
-            R34_1=amount.cell(row=58,column=2).value
-            R35_1=amount.cell(row=59,column=2).value
-            R36_1=amount.cell(row=60,column=2).value
-            R37_1=amount.cell(row=61,column=2).value
-            R38_1=amount.cell(row=62,column=2).value
-            R39_1=amount.cell(row=63,column=2).value
-            R40_1=amount.cell(row=64,column=2).value
-            R41_1=amount.cell(row=65,column=2).value
-            R42_1=amount.cell(row=66,column=2).value
-            R1_2=amount.cell(row=8,column=3).value
-            R2_2=amount.cell(row=9,column=3).value
-            R3_2=amount.cell(row=10,column=3).value
-            R3_1_2=amount.cell(row=11,column=3).value
-            R4_2=amount.cell(row=12,column=3).value
-            R5_2=amount.cell(row=13,column=3).value
-            R5_1_2=amount.cell(row=14,column=3).value
-            R6_2=amount.cell(row=15,column=3).value
-            R7_2=amount.cell(row=16,column=3).value
-            R7_1_2=amount.cell(row=17,column=3).value
-            R8_2=amount.cell(row=18,column=3).value
-            R9_2=amount.cell(row=19,column=3).value
-            R10_2=amount.cell(row=20,column=3).value
-            R11_2=amount.cell(row=21,column=3).value
-            R12_2=amount.cell(row=22,column=3).value
+            R1_1=round(amount.cell(row=8,column=2).value)
+            R2_1=round(amount.cell(row=9,column=2).value)
+            R3_1=round(amount.cell(row=10,column=2).value)
+            R3_1_1=round(amount.cell(row=11,column=2).value)
+            R4_1=round(amount.cell(row=12,column=2).value)
+            R5_1=round(amount.cell(row=13,column=2).value)
+            R5_1_1=round(amount.cell(row=14,column=2).value)
+            R6_1=round(amount.cell(row=15,column=2).value)
+            R7_1=round(amount.cell(row=16,column=2).value)
+            R7_1_1=round(amount.cell(row=17,column=2).value)
+            R8_1=round(amount.cell(row=18,column=2).value)
+            R9_1=round(amount.cell(row=19,column=2).value)
+            R10_1=round(amount.cell(row=20,column=2).value)
+            R11_1=round(amount.cell(row=21,column=2).value)
+            R12_1=round(amount.cell(row=22,column=2).value)
+            R12_1_1=round(amount.cell(row=23,column=2).value)
+            R12_2_1=round(amount.cell(row=24,column=2).value)
+            R12_3_1=round(amount.cell(row=25,column=2).value)
+            R13_1=round(amount.cell(row=26,column=2).value)
+            R14_1=round(amount.cell(row=27,column=2).value)
+            R15_1=round(amount.cell(row=28,column=2).value)
+            R16_1=round(amount.cell(row=29,column=2).value)
+            R64_1=round(amount.cell(row=30,column=2).value)
+            R65_1=round(amount.cell(row=31,column=2).value)
+            R17_1=round(amount.cell(row=32,column=2).value)
+            R18_1=round(amount.cell(row=33,column=2).value)
+            R18_1_1=round(amount.cell(row=34,column=2).value)
+            R19_1=round(amount.cell(row=35,column=2).value)
+            R20_1=round(amount.cell(row=36,column=2).value)
+            R20_1_1=round(amount.cell(row=37,column=2).value)
+            R21_1=round(amount.cell(row=38,column=2).value)
+            R22_1=round(amount.cell(row=39,column=2).value)
+            R23_1=round(amount.cell(row=40,column=2).value)
+            R24_1=round(amount.cell(row=41,column=2).value)
+            R25_1=round(amount.cell(row=42,column=2).value)
+            R25_1_1=round(amount.cell(row=43,column=2).value)
+            R25_2_1=round(amount.cell(row=44,column=2).value)
+            R25_3_1=round(amount.cell(row=45,column=2).value)
+            R43_1=round(amount.cell(row=46,column=2).value)
+            R44_1=round(amount.cell(row=47,column=2).value)
+            R26_1=round(amount.cell(row=48,column=2).value)
+            R26_1_1=round(amount.cell(row=49,column=2).value)
+            R27_1=round(amount.cell(row=50,column=2).value)
+            R28_1=round(amount.cell(row=52,column=2).value)
+            R29_1=round(amount.cell(row=53,column=2).value)
+            R30_1=round(amount.cell(row=54,column=2).value)
+            R31_1=round(amount.cell(row=55,column=2).value)
+            R32_1=round(amount.cell(row=56,column=2).value)
+            R33_1=round(amount.cell(row=57,column=2).value)
+            R34_1=round(amount.cell(row=58,column=2).value)
+            R35_1=round(amount.cell(row=59,column=2).value)
+            R36_1=round(amount.cell(row=60,column=2).value)
+            R37_1=round(amount.cell(row=61,column=2).value)
+            R38_1=round(amount.cell(row=62,column=2).value)
+            R39_1=round(amount.cell(row=63,column=2).value)
+            R40_1=round(amount.cell(row=64,column=2).value)
+            R41_1=round(amount.cell(row=65,column=2).value)
+            R42_1=round(amount.cell(row=66,column=2).value)
+            R1_2=round(amount.cell(row=8,column=3).value)
+            R2_2=round(amount.cell(row=9,column=3).value)
+            R3_2=round(amount.cell(row=10,column=3).value)
+            R3_1_2=round(amount.cell(row=11,column=3).value)
+            R4_2=round(amount.cell(row=12,column=3).value)
+            R5_2=round(amount.cell(row=13,column=3).value)
+            R5_1_2=round(amount.cell(row=14,column=3).value)
+            R6_2=round(amount.cell(row=15,column=3).value)
+            R7_2=round(amount.cell(row=16,column=3).value)
+            R7_1_2=round(amount.cell(row=17,column=3).value)
+            R8_2=round(amount.cell(row=18,column=3).value)
+            R9_2=round(amount.cell(row=19,column=3).value)
+            R10_2=round(amount.cell(row=20,column=3).value)
+            R11_2=round(amount.cell(row=21,column=3).value)
+            R12_2=round(amount.cell(row=22,column=3).value)
 
 
-            R12_1_2=amount.cell(row=23,column=3).value
-            R12_2_2=amount.cell(row=24,column=3).value
-            R12_3_2=amount.cell(row=25,column=3).value
-            R13_2=amount.cell(row=26,column=3).value
-            R14_2=amount.cell(row=27,column=3).value
-            R15_2=amount.cell(row=28,column=3).value
-            R16_2=amount.cell(row=29,column=3).value
-            R64_2=amount.cell(row=30,column=3).value
-            R65_2=amount.cell(row=31,column=3).value
-            R17_2=amount.cell(row=32,column=3).value
-            R18_2=amount.cell(row=33,column=3).value
-            R18_1_2=amount.cell(row=34,column=3).value
-            R19_2=amount.cell(row=35,column=3).value
-            R20_2=amount.cell(row=36,column=3).value
-            R20_1_2=amount.cell(row=37,column=3).value
-            R21_2=amount.cell(row=38,column=3).value
-            R22_2=amount.cell(row=39,column=3).value
-            R23_2=amount.cell(row=40,column=3).value
-            R24_2=amount.cell(row=41,column=3).value
-            R25_2=amount.cell(row=42,column=3).value
-            R25_1_2=amount.cell(row=43,column=3).value
-            R25_2_2=amount.cell(row=44,column=3).value
-            R25_3_2=amount.cell(row=45,column=3).value
+            R12_1_2=round(amount.cell(row=23,column=3).value)
+            R12_2_2=round(amount.cell(row=24,column=3).value)
+            R12_3_2=round(amount.cell(row=25,column=3).value)
+            R13_2=round(amount.cell(row=26,column=3).value)
+            R14_2=round(amount.cell(row=27,column=3).value)
+            R15_2=round(amount.cell(row=28,column=3).value)
+            R16_2=round(amount.cell(row=29,column=3).value)
+            R64_2=round(amount.cell(row=30,column=3).value)
+            R65_2=round(amount.cell(row=31,column=3).value)
+            R17_2=round(amount.cell(row=32,column=3).value)
+            R18_2=round(amount.cell(row=33,column=3).value)
+            R18_1_2=round(amount.cell(row=34,column=3).value)
+            R19_2=round(amount.cell(row=35,column=3).value)
+            R20_2=round(amount.cell(row=36,column=3).value)
+            R20_1_2=round(amount.cell(row=37,column=3).value)
+            R21_2=round(amount.cell(row=38,column=3).value)
+            R22_2=round(amount.cell(row=39,column=3).value)
+            R23_2=round(amount.cell(row=40,column=3).value)
+            R24_2=round(amount.cell(row=41,column=3).value)
+            R25_2=round(amount.cell(row=42,column=3).value)
+            R25_1_2=round(amount.cell(row=43,column=3).value)
+            R25_2_2=round(amount.cell(row=44,column=3).value)
+            R25_3_2=round(amount.cell(row=45,column=3).value)
 
 
-            R43_2=amount.cell(row=46,column=3).value
-            R44_2=amount.cell(row=47,column=3).value
-            R26_2=amount.cell(row=48,column=3).value
-            R26_1_2=amount.cell(row=49,column=3).value
-            R27_2=amount.cell(row=50,column=3).value
+            R43_2=round(amount.cell(row=46,column=3).value)
+            R44_2=round(amount.cell(row=47,column=3).value)
+            R26_2=round(amount.cell(row=48,column=3).value)
+            R26_1_2=round(amount.cell(row=49,column=3).value)
+            R27_2=round(amount.cell(row=50,column=3).value)
 
 
-            R28_2=amount.cell(row=52,column=3).value
-            R29_2=amount.cell(row=53,column=3).value
-            R30_2=amount.cell(row=54,column=3).value
-            R31_2=amount.cell(row=55,column=3).value
-            R32_2=amount.cell(row=56,column=3).value
+            try:
+                R28_2=round(amount.cell(row=52,column=3).value)
+            except:
+                R28_2=0
+            R29_2=round(amount.cell(row=53,column=3).value)
+            R30_2=round(amount.cell(row=54,column=3).value)
+            R31_2=round(amount.cell(row=55,column=3).value)
+            R32_2=round(amount.cell(row=56,column=3).value)
 
 
-            R33_2=amount.cell(row=57,column=3).value
-            R34_2=amount.cell(row=58,column=3).value
-            R35_2=amount.cell(row=59,column=3).value
-            R36_2=amount.cell(row=60,column=3).value
-            R37_2=amount.cell(row=61,column=3).value
-            R38_2=amount.cell(row=62,column=3).value
-            R39_2=amount.cell(row=63,column=3).value
-            R40_2=amount.cell(row=64,column=3).value
-            R41_2=amount.cell(row=65,column=3).value
-            R42_2=amount.cell(row=66,column=3).value
+            R33_2=round(amount.cell(row=57,column=3).value)
+            R34_2=round(amount.cell(row=58,column=3).value)
+            R35_2=round(amount.cell(row=59,column=3).value)
+            R36_2=round(amount.cell(row=60,column=3).value)
+            R37_2=round(amount.cell(row=61,column=3).value)
+            R38_2=round(amount.cell(row=62,column=3).value)
+            R39_2=round(amount.cell(row=63,column=3).value)
+            R40_2=round(amount.cell(row=64,column=3).value)
+            R41_2=round(amount.cell(row=65,column=3).value)
+            R42_2=round(amount.cell(row=66,column=3).value)
             
 
 
@@ -25332,7 +25343,8 @@ def D300_Nutre():
             folderpath="/home/mirus_app/storage"
             # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
             # temp.save(folderpath+".xlsx")
-            text='<?xml version="1.0"?> <declaratie300  luna="'+str(luna)+'" an="'+str(an)+'" depusReprezentant="'+str(ramburs2)+'" bifa_interne="0" temei="0" prenume_declar="'+str(pren)+'" nume_declar="'+str(nume)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(den)+'" adresa="'+str(strada)+'" telefon="'+str(telefon)+'" banca="'+str(banca)+'" cont="'+str(contban)+'" caen="'+str(Caen)+'" tip_decont="'+str(tip)+'" pro_rata="'+str(prorata)+'" bifa_cereale="'+str(cereale)+'" bifa_mob="'+str(telmob)+'" bifa_disp="'+str(disp)+'" bifa_cons="'+str(cons)+'" solicit_ramb="'+str(ramburs)+'" nr_evid="'+str(nr_evid)+'" totalPlata_A="'+str(totalp)+'" R1_1="'+str(R1_1)+'" R2_1="'+str(R2_1)+'" R3_1="'+str(R3_1)+'" R3_1_1="'+str(R3_1_1)+'" R4_1="'+str(R4_1)+'" R5_1="'+str(R5_1)+'" R5_2="'+str(R5_2)+'" R5_1_1="'+str(R5_1_1)+'" R5_1_2="'+str(R5_1_2)+'" R6_1="0" R6_2="'+str(R6_2)+'" R7_1="'+str(R7_1)+'" R7_2="'+str(R7_2)+'" R7_1_1="'+str(R7_1_1)+'" R7_1_2="'+str(R7_1_2)+'" R8_1="'+str(R8_1)+'" R8_2="'+str(R8_2)+'" R9_1="'+str(R9_1)+'" R9_2="'+str(R9_2)+'" R10_1="'+str(R10_1)+'" R10_2="'+str(R10_2)+'" R11_1="'+str(R11_1)+'" R11_2="'+str(R11_2)+'" R12_1="'+str(R12_1)+'" R12_2="'+str(R12_2)+'" R12_1_1="'+str(R12_1_1)+'" R12_1_2="'+str(R12_1_2)+'" R12_2_1="'+str(R12_2_1)+'" R12_2_2="'+str(R12_2_2)+'" R12_3_1="'+str(R12_3_1)+'" R12_3_2="'+str(R12_3_2)+'" R13_1="'+str(R13_1)+'" R14_1="'+str(R14_1)+'" R15_1="'+str(R15_1)+'" R16_1="'+str(R16_1)+'" R16_2="'+str(R16_2)+'" R64_1="'+str(R64_1)+'" R64_2="'+str(R64_2)+'" R65_1="'+str(R65_1)+'" R65_2="'+str(R65_2)+'" R17_1="'+str(R17_1)+'" R17_2="'+str(R17_2)+'" R18_1="'+str(R18_1)+'" R18_2="'+str(R18_2)+'" R18_1_1="'+str(R18_1_1)+'" R18_1_2="'+str(R18_1_2)+'" R19_1="'+str(R19_1)+'" R19_2="'+str(R19_2)+'" R20_1="'+str(R20_1)+'" R20_2="'+str(R20_2)+'" R20_1_1="'+str(R20_1_1)+'" R20_1_2="'+str(R20_1_2)+'" R21_1="'+str(R21_1)+'" R21_2="'+str(R21_2)+'" R22_1="'+str(R22_1)+'" R22_2="'+str(R22_2)+'" R23_1="'+str(R23_1)+'" R23_2="'+str(R23_2)+'" R24_1="'+str(R24_1)+'" R24_2="'+str(R24_2)+'" R25_1="'+str(R25_1)+'" R25_2="'+str(R25_2)+'" R25_1_1="'+str(R25_1_1)+'" R25_1_2="'+str(R25_1_2)+'" R25_2_1="'+str(R25_2_1)+'" R25_2_2="'+str(R25_2_2)+'" R25_3_1="'+str(R25_3_1)+'" R25_3_2="'+str(R25_3_2)+'" R43_2="'+str(R43_2)+'" R44_2="'+str(R44_2)+'" R26_1="'+str(R26_1)+'" R26_1_1="'+str(R26_1_1)+'" R27_1="'+str(R27_1)+'" R27_2="'+str(R27_2)+'" R28_2="'+str(R28_2)+'" R29_2="'+str(R29_2)+'" R30_1="'+str(R30_1)+'" R30_2="'+str(R30_2)+'" R31_2="'+str(R31_2)+'" R32_2="'+str(R32_2)+'" R33_2="'+str(R33_2)+'" R34_2="'+str(R34_2)+'" R35_2="'+str(R35_2)+'" R36_2="'+str(R36_2)+'" R37_2="'+str(R37_2)+'" R38_2="'+str(R38_2)+'" R39_2="'+str(R39_2)+'" R40_2="'+str(R40_2)+'" R41_2="'+str(R41_2)+'" R42_2="'+str(R42_2)+'" nr_facturi="'+str(nrfact)+'" baza="'+str(baza)+'" tva="'+str(tva)+'" nr_facturi_primite="'+str(factprimite)+'" baza_primite="'+str(bazaprimite)+'" tva_primite="'+str(tvaprimite)+'" nr_fact_emise="'+str(nrfactemise)+'" total_baza="'+str(total_baza)+'" total_precedent ="'+str(total_precedent)+'" total_curent ="'+str(total_curent)+'" total_tva="'+str(total_tva)+'" valoare_a="'+str(valoare_a)+'" tva_a="'+str(tva_a)+'" valoare_a1="'+str(valoare_a1)+'" tva_a1="'+str(tva_a1)+'" valoare_b="'+str(valoare_b)+'" tva_b="'+str(tva_b)+'" valoare_b1="'+str(valoare_b1)+'" tva_b1="'+str(tva_b1)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d300:declaratie:v7 d300.xsd" xmlns="mfp:anaf:dgti:d300:declaratie:v7"></declaratie300>'
+            text='<?xml version="1.0"?> <declaratie300  luna="'+str(luna)+'" an="'+str(an)+'" depusReprezentant="'+str(ramburs2)+'" bifa_interne="0" temei="0" prenume_declar="'+str(pren)+'" nume_declar="'+str(nume)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(den)+'" adresa="'+str(strada)+'" telefon="'+str(telefon)+'" banca="'+str(banca)+'" cont="'+str(contban)+'" caen="'+str(Caen)+'" tip_decont="'+str(tip)+'" pro_rata="'+str(prorata)
+            text=text+'" bifa_cereale="'+str(cereale)+'" bifa_mob="'+str(telmob)+'" bifa_disp="'+str(disp)+'" bifa_cons="'+str(cons)+'" solicit_ramb="'+str(ramburs)+'" nr_evid="'+str(nr_evid)+'" totalPlata_A="'+str(totalp)+'" R1_1="'+str(R1_1)+'" R2_1="'+str(R2_1)+'" R3_1="'+str(R3_1)+'" R3_1_1="'+str(R3_1_1)+'" R4_1="'+str(R4_1)+'" R5_1="'+str(R5_1)+'" R5_2="'+str(R5_2)+'" R5_1_1="'+str(R5_1_1)+'" R5_1_2="'+str(R5_1_2)+'" R6_1="0" R6_2="'+str(R6_2)+'" R7_1="'+str(R7_1)+'" R7_2="'+str(R7_2)+'" R7_1_1="'+str(R7_1_1)+'" R7_1_2="'+str(R7_1_2)+'" R8_1="'+str(R8_1)+'" R8_2="'+str(R8_2)+'" R9_1="'+str(R9_1)+'" R9_2="'+str(R9_2)+'" R10_1="'+str(R10_1)+'" R10_2="'+str(R10_2)+'" R11_1="'+str(R11_1)+'" R11_2="'+str(R11_2)+'" R12_1="'+str(R12_1)+'" R12_2="'+str(R12_2)+'" R12_1_1="'+str(R12_1_1)+'" R12_1_2="'+str(R12_1_2)+'" R12_2_1="'+str(R12_2_1)+'" R12_2_2="'+str(R12_2_2)+'" R12_3_1="'+str(R12_3_1)+'" R12_3_2="'+str(R12_3_2)+'" R13_1="'+str(R13_1)+'" R14_1="'+str(R14_1)+'" R15_1="'+str(R15_1)+'" R16_1="'+str(R16_1)+'" R16_2="'+str(R16_2)+'" R64_1="'+str(R64_1)+'" R64_2="'+str(R64_2)+'" R65_1="'+str(R65_1)+'" R65_2="'+str(R65_2)+'" R17_1="'+str(R17_1)+'" R17_2="'+str(R17_2)+'" R18_1="'+str(R18_1)+'" R18_2="'+str(R18_2)+'" R18_1_1="'+str(R18_1_1)+'" R18_1_2="'+str(R18_1_2)+'" R19_1="'+str(R19_1)+'" R19_2="'+str(R19_2)+'" R20_1="'+str(R20_1)+'" R20_2="'+str(R20_2)+'" R20_1_1="'+str(R20_1_1)+'" R20_1_2="'+str(R20_1_2)+'" R21_1="'+str(R21_1)+'" R21_2="'+str(R21_2)+'" R22_1="'+str(R22_1)+'" R22_2="'+str(R22_2)+'" R23_1="'+str(R23_1)+'" R23_2="'+str(R23_2)+'" R24_1="'+str(R24_1)+'" R24_2="'+str(R24_2)+'" R25_1="'+str(R25_1)+'" R25_2="'+str(R25_2)+'" R25_1_1="'+str(R25_1_1)+'" R25_1_2="'+str(R25_1_2)+'" R25_2_1="'+str(R25_2_1)+'" R25_2_2="'+str(R25_2_2)+'" R25_3_1="'+str(R25_3_1)+'" R25_3_2="'+str(R25_3_2)+'" R43_2="'+str(R43_2)+'" R44_2="'+str(R44_2)+'" R26_1="'+str(R26_1)+'" R26_1_1="'+str(R26_1_1)+'" R27_1="'+str(R27_1)+'" R27_2="'+str(R27_2)+'" R28_2="'+str(R28_2)+'" R29_2="'+str(R29_2)+'" R30_1="'+str(R30_1)+'" R30_2="'+str(R30_2)+'" R31_2="'+str(R31_2)+'" R32_2="'+str(R32_2)+'" R33_2="'+str(R33_2)+'" R34_2="'+str(R34_2)+'" R35_2="'+str(R35_2)+'" R36_2="'+str(R36_2)+'" R37_2="'+str(R37_2)+'" R38_2="'+str(R38_2)+'" R39_2="'+str(R39_2)+'" R40_2="'+str(R40_2)+'" R41_2="'+str(R41_2)+'" R42_2="'+str(R42_2)+'" nr_facturi="'+str(nrfact)+'" baza="'+str(baza)+'" tva="'+str(tva)+'" nr_facturi_primite="'+str(factprimite)+'" baza_primite="'+str(bazaprimite)+'" tva_primite="'+str(tvaprimite)+'" nr_fact_emise="'+str(nrfactemise)+'" total_baza="'+str(total_baza)+'" total_precedent ="'+str(total_precedent)+'" total_curent ="'+str(total_curent)+'" total_tva="'+str(total_tva)+'" valoare_a="'+str(valoare_a)+'" tva_a="'+str(tva_a)+'" valoare_a1="'+str(valoare_a1)+'" tva_a1="'+str(tva_a1)+'" valoare_b="'+str(valoare_b)+'" tva_b="'+str(tva_b)+'" valoare_b1="'+str(valoare_b1)+'" tva_b1="'+str(tva_b1)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d300:declaratie:v7 d300.xsd" xmlns="mfp:anaf:dgti:d300:declaratie:v7"></declaratie300>'
             #print(text)
             # with open("/home/mirus_app/storage/D300.xml", "w", encoding="utf-8") as f:
             with open(filename+"/"+str(info.cell(row=4,column=3).value)+" D300.xml", "w", encoding="utf-8") as f:
@@ -26015,11 +26027,18 @@ def D300_Nutre():
             else:
                 text15=""
             if(nrL9>0 or nrA9>0 or nrAI5>0 or nrC9>0):
-                text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"/>'''
+                if(nrC9==0):
+                    text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"/>'''
+                else:
+                    text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"><detaliu bun="21" nrAchizC="'''+str(nrC9)+'''" bazaAchizC="'''+str(sumaC9)+'''" tvaAchizC="'''+str(tvaC9)+'''"/></rezumat1>'''
             else:
                 text19=""
             if(nrL19>0 or nrA19>0 or nrAI9>0 or nrC19>0):
-                text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"/>'''
+                if(nrC19==0):
+                    text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"/>'''
+                else:
+                    text119='''<rezumat1 tip_partener="1" cota="19" facturiL="'''+str(nrL19)+'''" bazaL="'''+str(sumaL19)+'''" tvaL="'''+str(tvaL19)+'''" facturiA="'''+str(nrA19)+'''" bazaA="'''+str(sumaA19)+'''" tvaA="'''+str(tvaA19)+'''" facturiAI="'''+str(nrAI19)+'''" bazaAI="'''+str(sumaAI19)+'''" tvaAI="'''+str(tvaAI19)+'''" facturiC="'''+str(nrC19)+'''" bazaC="'''+str(sumaC19)+'''" tvaC="'''+str(tvaC19)+'''"/><detaliu bun="21" nrAchizC="'''+str(nrC19)+'''" bazaAchizC="'''+str(sumaC19)+'''" tvaAchizC="'''+str(tvaC19)+'''/></rezumat1>'''
+
             else:
                 text119=""
             if(nrL20>0 or nrA20>0 or nrAI20>0 or nrC20>0):
@@ -26083,7 +26102,7 @@ def D300_Nutre():
             nrLS24=0
             nrN0=0
             sumaN0=0
-            # tvaN0=0
+            # tvasdasdaN0=0
 
             numarcui2=0
             for i in range(0,len(tip_partener)):
@@ -26718,7 +26737,7 @@ def D300_Nutre():
             rez25='''<rezumat2 cota="5"  bazaFSLcod="'''+str(sheetI.cell(row=12,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=12,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=22,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=22,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=32,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=32,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=42,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=42,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=52,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=52,column=3).value)+'''" nrFacturiL="'''+str(L5nr)+'''" bazaL="'''+str(L5b)+'''" tvaL="'''+str(L5t)+'''" nrFacturiA="'''+str(A5nr)+'''" bazaA="'''+str(A5b)+'''" tvaA="'''+str(A5t)+'''" nrFacturiAI="'''+str(AI5nr)+'''" bazaAI="'''+str(AI5b)+'''" tvaAI="'''+str(AI5t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=17,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=17,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=27,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=27,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
             totalplata394=numarcuicorect1+numarcuicorect2+numarcuicorect3+numarcuicorect4+L24b+L20b+L19brez2+L9brez2+L5b+A5b+A9b+A19b+A20b+A24b+AI5b+AI9b+AI19b+AI20b+AI24b
             #print(totalplata394)
-            textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Grant Thornton " cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
+            textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Mirus Consultanță Fiscală SRL" cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
             <informatii nrCui1="'''+str(numarcuicorect1)+'''" nrCui2="'''+str(numarcuicorect2)+'''" nrCui3="'''+str(numarcuicorect3)+'''" nrCui4="'''+str(numarcuicorect4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="'''+str(totalfacturi)+'''" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
             text=text+textinfo+text15+text10+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
 
@@ -26753,18 +26772,21 @@ def D300_Nutre():
                     if(tiptranza[i]=="V"):
                         text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
                     else:
-                        if(tiptranza[i]=="N"):
-                            text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="2" cota="0" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i].replace('"',""))+'" tip_document="1" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'"/>'
+                        if(tiptranza[i]=="C"):
+                            text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="1005" bazaPR="'+str(int(bazatv[i]))+'" tvaPR="'+str(round(stva[i],0))+'" /> </op1>'+"\n"
                         else:
-
-                            if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
-                                text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+                            if(tiptranza[i]=="N"):
+                                text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="2" cota="0" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i].replace('"',""))+'" tip_document="1" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'"/>'
                             else:
-                                if("-" in str(cuip[i])):
-                                    text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+
+                                if("-" in str(cuip[i]) and "RO" in str(cuip[i])):
+                                    text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" judP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
                                 else:
-                                    if(bazatv[i]>0):
-                                        text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
+                                    if("-" in str(cuip[i])):
+                                        text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
+                                    else:
+                                        if(bazatv[i]>0):
+                                            text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
 
             text=text+"</declaratie394>"
             # text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="1" prsAfiliat="0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
