@@ -22261,7 +22261,7 @@ def D300xml_nutre():
                 amount.cell(row=58, column=3).value='=IF((C32-C56)>0,C32-C56,0)'
                 amount.cell(row=59, column=3).value=0
                 amount.cell(row=60, column=3).value=0
-                amount.cell(row=61, column=3).value=0
+                amount.cell(row=61, column=3).value="=sum(C58:C60)"
                 if soldLunaTrecuta == None or soldLunaTrecuta == "" or soldLunaTrecuta == " ":
                     amount.cell(row=62, column=3).value=0
                 else:
@@ -26023,7 +26023,7 @@ def D300_Nutre():
                 if(nrC9==0):
                     text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"/>'''
                 else:
-                    text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"><detaliu bun="21" nrAchizC="'''+str(nrC9)+'''" bazaAchizC="'''+str(sumaC9)+'''" tvaAchizC="'''+str(tvaC9)+'''/></rezumat1>'''
+                    text19='''<rezumat1 tip_partener="1" cota="9" facturiL="'''+str(nrL9)+'''" bazaL="'''+str(sumaL9)+'''" tvaL="'''+str(tvaL9)+'''" facturiA="'''+str(nrA9)+'''" bazaA="'''+str(sumaA9)+'''" tvaA="'''+str(tvaA9)+'''" facturiAI="'''+str(nrAI9)+'''" bazaAI="'''+str(sumaAI9)+'''" tvaAI="'''+str(tvaAI9)+'''" facturiC="'''+str(nrC9)+'''" bazaC="'''+str(sumaC9)+'''" tvaC="'''+str(tvaC9)+'''"><detaliu bun="21" nrAchizC="'''+str(nrC9)+'''" bazaAchizC="'''+str(sumaC9)+'''" tvaAchizC="'''+str(tvaC9)+'''"/></rezumat1>'''
             else:
                 text19=""
             if(nrL19>0 or nrA19>0 or nrAI9>0 or nrC19>0):
@@ -26766,7 +26766,7 @@ def D300_Nutre():
                         text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
                     else:
                         if(tiptranza[i]=="C"):
-                            text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" tvaPR="'+str(round(stva[i],0))+'" /> </op1>'+"\n"
+                            text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="1005" bazaPR="'+str(int(bazatv[i]))+'" tvaPR="'+str(round(stva[i],0))+'" /> </op1>'+"\n"
                         else:
                             if(tiptranza[i]=="N"):
                                 text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="2" cota="0" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i].replace('"',""))+'" tip_document="1" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'"/>'
