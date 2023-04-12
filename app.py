@@ -6864,6 +6864,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                                                     else:
                                                         if(int(bazaN1[i])>0 or int(bazaN1[i]<0)):
                                                             taxcodeach.append("N1")
+                                                        else:
+                                                            taxcodeach.append("n/a")
             taxcodes=[]
             for j in range(0,len(listBazaS)):
                 if(int(bazaA12[j])>0 or int(bazaA12[i])<0):
@@ -6943,6 +6945,9 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                         workings.cell(row=a, column=1).value="S"
                         workings.cell(row=a, column=4).value=denumirea[x]
                         workings.cell(row=a, column=6).value=vata[x]
+                        print(denumirea[x])
+                        print(taxcodeach[x])
+                        print(vata[x])
                         workings.cell(row=a, column=3).value=vata[x][2:]
                         workings.cell(row=a, column=7).value=vata[x][0:2]
                         # workings.cell(row=a, column=8).value=listaBazaA[x]
@@ -7691,6 +7696,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                                                             if(int(baza1I[i])>0 or int(baza1I[i]<0)):
                                                                 taxcodeach.append("1I")
                                                             else:
+                                                                taxcodeach.append("n/a")
                                                                 print(docNoPurch[i])
                                                         
             taxcodes=[]
@@ -25108,7 +25114,7 @@ def D300_Nutre():
     if request.method == 'POST':
         D300_2= request.files.getlist('d300file2')
         clientname=request.form.get('client')
-    filename="/home/mirus_app/nutre/output/"+str(clientname)
+    filename="D:/VAT 11 Aprilie/VATMirus"+str(clientname)
     # filename="D:/"+str(clientname)
     os.mkdir(filename)
     codclient=[]
@@ -25342,7 +25348,7 @@ def D300_Nutre():
 
             # for i in range(0 ,len(tip)):
             # folderpath="D:/apps/TEST D3APPS/Test 21.03.2022/output"
-            folderpath="/home/mirus_app/storage"
+            folderpath="D:/VAT 11 Aprilie/VATMirus"
             # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
             # temp.save(folderpath+".xlsx")
             text='<?xml version="1.0"?> <declaratie300  luna="'+str(luna)+'" an="'+str(an)+'" depusReprezentant="'+str(ramburs2)+'" bifa_interne="0" temei="0" prenume_declar="'+str(pren)+'" nume_declar="'+str(nume)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(den)+'" adresa="'+str(strada)+'" telefon="'+str(telefon)+'" banca="'+str(banca)+'" cont="'+str(contban)+'" caen="'+str(Caen)+'" tip_decont="'+str(tip)+'" pro_rata="'+str(prorata)
@@ -26799,7 +26805,7 @@ def D300_Nutre():
             # f=open("/home/mirus_app/storage/D394.xml", "w",encoding='utf-8').write(text)
             f=open(filename+"/"+str(sheet1.cell(row=4, column=3).value) +" D394.xml", "w",encoding='utf-8').write(text)
     make_archive(filename,filename+str(" arhiva.zip"))
-    return send_from_directory("/home/mirus_app/nutre/output",str(clientname)+" arhiva.zip",as_attachment=True)
+    return send_from_directory("D:/VAT 11 Aprilie/VATMirus",str(clientname)+" arhiva.zip",as_attachment=True)
 
 # ==========================================Initial===================================================================
 #         file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
