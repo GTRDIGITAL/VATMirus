@@ -25134,7 +25134,7 @@ def D300_Nutre():
             # temei=info.cell(row=8,column=2).value
             cif=info.cell(row=27,column=3).value
             den=info.cell(row=26,column=3).value
-
+            # print()
             # #print(an, 'an')
 
             # cif=info.cell(row=11,column=2).value
