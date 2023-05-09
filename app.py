@@ -21710,7 +21710,7 @@ def D300xml_nutre():
             for a in range(0, len(x)):
                 summary.cell(row=1, column=1+a).value=x[a]
             for i in range(0, len(listaUnicaCui)):
-                myobject=[{"cui": listaUnicaCui[i], "data": str(datetime.datetime.strptime(str(str(datec[i]).replace(' ','').replace('-','.')),'%d-%M-%Y'))}]
+                myobject=[{"cui": listaUnicaCui[i], "data": str(datetime.datetime.strptime(str(str(datec[i]).replace(' ','').replace('-','.')),'%d.%M.%Y'))}]
 
                 print(myobject)
                 pozitie=summary.max_row
