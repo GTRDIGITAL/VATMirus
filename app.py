@@ -6259,7 +6259,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
 
         amount.cell(row=22, column=5).value='Total'
-
+ 
         for m in it.chain(range(8, 13), range(19, 22), range(26, 32)):
             amount.cell(row=m, column=5).value='SALES'
 
@@ -20608,6 +20608,20 @@ def my_form_post():
 def my_form_D300_nutre():
     return render_template('D3APPS NUTRE.html')
 
+@app.route('/D3APPS3')
+def my_form3():
+    return render_template('D3APPSNUTRE.html')
+
+
+# ==================================================================================================
+@app.route('/D3APPS4')
+def my_form4():
+    return render_template('Group.html')
+
+@app.route('/D3APPS5')
+def my_form5():
+    return render_template('D3APPSNUTRE2.html')
+
 @app.route('/D3APPS/NUTRE', methods=['POST', 'GET'])
 def D300xml_nutre():
     clientname=request.form.get('client')
@@ -21694,7 +21708,7 @@ def D300xml_nutre():
             for a in range(0, len(x)):
                 summary.cell(row=1, column=1+a).value=x[a]
             for i in range(0, len(listaUnicaCui)):
-                myobject=[{"cui": listaUnicaCui[i], "data": str(datetime.datetime.strptime(str(str(datec[i]).replace(' ','')),'%d-%M-%Y'))}]
+                myobject=[{"cui": listaUnicaCui[i], "data": str(datetime.datetime.strptime(str(str(datec[i]).replace(' ','').replace('-','.')),'%d-%M-%Y'))}]
 
                 print(myobject)
                 pozitie=summary.max_row
@@ -25105,9 +25119,7 @@ def D300xml_nutre():
     return send_from_directory(folderpath+"/",str(clientname)+".zip",as_attachment=True)
     return render_template('D3APPS3')
 
-@app.route('/D3APPS3')
-def my_form3():
-    return render_template('D3APPSNUTRE.html')
+
 
 @app.route('/D3APPS3', methods=['POST', 'GET'])
 def D300_Nutre():
@@ -26818,7 +26830,451 @@ def D300_Nutre():
 #     return render_template('D3APPS second step.html')
 
 
+@app.route('/D3APPS4', methods=['POST', 'GET'])
+def D300_Nutre2():
+    # clientname1 = request.form['client']
+    
+    # if request.method == 'POST':
+    #     file_Details = request.files.getlist("d300file2")
+ 
+        
+        
+    #     for i in file_Details:
+    #         i.save(secure_filename(i.filename))
+
+    #     wb = openpyxl.Workbook()
+    #     details = openpyxl.load_workbook(file_Details[0], data_only = 'True')
+    #     details1 = details.active
+ 
+    #     denNo = 0
+    #     #aducem tb monthly
+    #     for a in file_Details:
+    #         details = openpyxl.load_workbook(a, data_only = 'True')
+    #         details1 = details.active
+
+    #         list1=[]
+    #         denNo = denNo+1
+    #         Sheet1 = wb.create_sheet(str(denNo))
+
+
+    #     std = wb["Sheet"]
+    #     wb.remove(std)
+    #     folderpath="/D:/VAT 24 Aprilie/"
+    #     file_pathFS = os.path.join(folderpath, "Monthly P&L" + " " + clientname1 + ".xlsx")
+    #     # wb.save(file_pathFS)
+        
+    #     for i in file_Details:
+    #         os.remove(secure_filename(i.filename))
+        
+                
+        
+    #     return send_from_directory(folderpath, "Monthly P&L" + " " + clientname1 + ".xlsx",as_attachment=True)
 
     
+    folderpath="D:/VAT 24 Aprilie"
+    fontRedDiff=Font(name="Calibri", color='FF0000', size=11)
+    fontNegru=Font(name="Calibri", color='000000', size=16,bold=True,italic=True)
+    if request.method == 'POST':
+        D300_2= request.files.getlist('d300file2')
+        clientname=request.form.get('client')
+        # for i in D300_2:
+        #     i.save(secure_filename(i.filename))
+    
+        
+        # details = openpyxl.load_workbook(D300_2[1], data_only = 'True')
+        # details1 = details.active
+
+    
+
+        denNo=0
+        for a in range(0, len(D300_2)):
+            wb = openpyxl.Workbook()
+            ws=wb.active
+
+            ws.title='D300 draft figures'
+            ws.sheet_view.showGridLines=False
+            try:
+                details = openpyxl.load_workbook(D300_2[a], data_only = 'True')
+                details1 = details['D300 draft figures']
+            
+                # list1=[]
+                # denNo = denNo+1
+                for row in details1.iter_rows():
+                    for cell in row:
+                        if cell.value == "Row":
+                            row_det = cell.row
+                            column_rand = cell.column
+                            lungime = len(details1[cell.column])
+                try:
+                    rand = [b.value for b in details1[column_rand][row_det:lungime]]
+                    print(rand)
+                except:
+                    flash("Error for row")
+                    return render_template("index.html")
+
+                for row in details1.iter_rows():
+                    for cell in row:
+                        if cell.value == "Taxable basis":
+                            row_det = cell.row
+                            column_sumatot = cell.column
+                            lungime = len(details1[cell.column])
+                try:
+                    sumatot = [b.value for b in details1[column_sumatot][row_det:lungime]]
+                except:
+                    flash("Error for suma totala")
+                    return render_template("index.html")
+
+
+                for row in details1.iter_rows():
+                    for cell in row:
+                        if cell.value == "VAT amount":
+                            row_det = cell.row
+                            column_TVA = cell.column
+                            lungime = len(details1[cell.column])
+                try:
+                    TVA = [b.value for b in details1[column_TVA][row_det:lungime]]
+                except:
+                    flash("Error for TVA")
+                    return render_template("index.html")
+
+
+                for row in details1.iter_rows():
+                    for cell in row:
+                        if cell.value == "Livrari intracomunitare de bunuri, scutite conform art. 294 alin.(2)lit.a) si d) din Codul fiscal":
+                            row_det = cell.row
+                            column_des = cell.column
+                            lungime = len(details1[cell.column])
+                try:
+                    des = [b.value for b in details1[column_des][row_det:lungime]]
+                except:
+                    flash("Error for description")
+                    return render_template("index.html")
+
+
+
+
+
+                font1 = Font(name = 'Georgia', size = 10, color = "FFFFFF", bold = True,italic=True)
+                ws.cell(row=7, column=1).value="Row"
+                ws.cell(row=7, column=2).value="Taxable basis group"
+                ws.cell(row=7, column=3).value="VAT amount group"
+                ws.cell(row=2, column=1).value="D300 draft figures group"
+                ws.cell(row=2, column=1).font=fontNegru
+                # ws.cell(row=16, column=3).font=font1
+                # ws.cell(row=6, column=4).value="Description"
+
+                ws.cell(row=6, column=5).value="C140"
+                ws.cell(row=6, column=5).font=fontRedDiff
+                ws.cell(row=7, column=1).value="Row"
+                ws.cell(row=7, column=5).value="Taxable basis"
+                ws.cell(row=7, column=6).value="VAT amount"
+                ws.cell(row=2, column=1).value="D300 draft figures"
+                ws.cell(row=8, column=4).value="Livrari intracomunitare de bunuri, scutite conform art. 294 alin.(2)lit.a) si d) din Codul fiscal"
+
+
+
+                ws.cell(row=6, column=8).value="C200"
+                ws.cell(row=7, column=4).value="Description"
+                ws.cell(row=6, column=8).font=fontRedDiff            
+                ws.cell(row=7, column=1).value="Row"
+                ws.cell(row=7, column=8).value="Taxable basis"
+                ws.cell(row=7, column=9).value="VAT amount"
+                ws.cell(row=2, column=1).value="D300 draft figures"
+
+
+                ws.cell(row=6, column=11).value="C210"
+                ws.cell(row=6, column=11).font=fontRedDiff
+                ws.cell(row=7, column=1).value="Row"
+                ws.cell(row=7, column=11).value="Taxable basis"
+                ws.cell(row=7, column=12).value="VAT amount"
+                ws.cell(row=2, column=1).value="D300 draft figures"
+
+
+                ws.cell(row=6, column=14).value="C230"
+                ws.cell(row=6, column=14).font=fontRedDiff
+                ws.cell(row=7, column=1).value="Row"
+                ws.cell(row=7, column=14).value="Taxable basis"
+                ws.cell(row=7, column=15).value="VAT amount"
+                ws.cell(row=2, column=1).value="D300 draft figures"
+
+
+
+                ws.cell(row=6, column=17).value="C240"
+                ws.cell(row=6, column=17).font=fontRedDiff
+                ws.cell(row=7, column=1).value="Row"
+                ws.cell(row=7, column=17).value="Taxable basis"
+                ws.cell(row=7, column=18).value="VAT amount"
+                ws.cell(row=2, column=1).value="D300 draft figures"
+
+
+                ws.cell(row=6, column=1).value="Group"
+                ws.cell(row=6, column=20).value="C290"
+                ws.cell(row=6, column=1).font=fontRedDiff
+                ws.cell(row=6, column=20).font=fontRedDiff
+
+                ws.cell(row=7, column=1).value="Row"
+                ws.cell(row=7, column=20).value="Taxable basis"
+                ws.cell(row=7, column=21).value="VAT amount"
+                ws.cell(row=2, column=1).value="D300 draft figures"
+
+
+                ws.cell(row=6, column=23).value="C400"
+                ws.cell(row=6, column=23).font=fontRedDiff
+                ws.cell(row=7, column=1).value="Row"
+                ws.cell(row=7, column=23).value="Taxable basis"
+                ws.cell(row=7, column=24).value="VAT amount"
+                ws.cell(row=2, column=1).value="D300 draft figures"
+
+
+                # for i in range(1, len(rand)+1):
+                #     ws.cell(row=i+6, column=1).value="=E7+H7+K7+N7+Q7+T7+W7"
+                
+                ws.cell(row=8, column=2).value="=E8+H8+K8+N8+Q8+T8+W8"
+                ws.cell(row=9, column=2).value="=E9+H9+K9+N9+Q9+T9+W9"
+                ws.cell(row=10, column=2).value="=E10+H10+K10+N10+Q10+T10+W10"
+                ws.cell(row=11, column=2).value="=E11+H11+K11+N11+Q11+T11+W11"
+                ws.cell(row=12, column=2).value="=E12+H12+K12+N12+Q12+T12+W12"
+                ws.cell(row=13, column=2).value="=E13+H13+K13+N13+Q13+T13+W13"
+                ws.cell(row=14, column=2).value="=E14+H14+K14+N14+Q14+T14+W14"
+                ws.cell(row=15, column=2).value="=E15+H15+K15+N15+Q15+T15+W15"
+                ws.cell(row=16, column=2).value="=E16+H16+K16+N16+Q16+T16+W16"
+                ws.cell(row=17, column=2).value="=E17+H17+K17+N17+Q17+T17+W17"
+                ws.cell(row=18, column=2).value="=E18+H18+K18+N18+Q18+T18+W18"
+                ws.cell(row=19, column=2).value="=E19+H19+K19+N19+Q19+T19+W19"
+                ws.cell(row=20, column=2).value="=E20+H20+K20+N20+Q20+T20+W20"
+                ws.cell(row=21, column=2).value="=E21+H21+K21+N21+Q21+T21+W21"
+                ws.cell(row=22, column=2).value="=E22+H22+K22+N22+Q22+T22+W22"
+                ws.cell(row=23, column=2).value="=E23+H23+K23+N23+Q23+T23+W23"
+                ws.cell(row=24, column=2).value="=E24+H24+K24+N24+Q24+T24+W24"
+                ws.cell(row=25, column=2).value="=E25+H25+K25+N25+Q25+T25+W25"
+                ws.cell(row=26, column=2).value="=E26+H26+K26+N26+Q26+T26+W26"
+                ws.cell(row=27, column=2).value="=E27+H27+K27+N27+Q27+T27+W27"
+                ws.cell(row=28, column=2).value="=E28+H28+K28+N28+Q28+T28+W28"
+                ws.cell(row=29, column=2).value="=E29+H29+K29+N29+Q29+T29+W29"
+                ws.cell(row=30, column=2).value="=E30+H30+K30+N30+Q30+T30+W30"
+                ws.cell(row=31, column=2).value="=E31+H31+K31+N31+Q31+T31+W31"
+                ws.cell(row=32, column=2).value="=E32+H32+K32+N32+Q32+T32+W32"
+                ws.cell(row=33, column=2).value="=E33+H33+K33+N33+Q33+T33+W33"
+                ws.cell(row=34, column=2).value="=E34+H34+K34+N34+Q34+T34+W34"
+                ws.cell(row=35, column=2).value="=E35+H35+K35+N35+Q35+T35+W35"
+                ws.cell(row=36, column=2).value="=E36+H36+K36+N36+Q36+T36+W36"
+                ws.cell(row=37, column=2).value="=E37+H37+K37+N37+Q37+T37+W37"
+                ws.cell(row=38, column=2).value="=E38+H38+K38+N38+Q38+T38+W38"
+                ws.cell(row=39, column=2).value="=E39+H39+K39+N39+Q39+T39+W39"
+                ws.cell(row=40, column=2).value="=E40+H40+K40+N40+Q40+T40+W40"
+                ws.cell(row=41, column=2).value="=E41+H41+K41+N41+Q41+T41+W41"
+                ws.cell(row=42, column=2).value="=E42+H42+K42+N42+Q42+T42+W42"
+                ws.cell(row=43, column=2).value="=E43+H43+K43+N43+Q43+T43+W43"
+                ws.cell(row=44, column=2).value="=E44+H44+K44+N44+Q44+T44+W44"
+                ws.cell(row=45, column=2).value="=E45+H45+K45+N45+Q45+T45+W45"
+                ws.cell(row=46, column=2).value="=E46+H46+K46+N46+Q46+T46+W46"
+                ws.cell(row=47, column=2).value="=E47+H47+K47+N47+Q47+T47+W47"
+                ws.cell(row=48, column=2).value="=E48+H48+K48+N48+Q48+T48+W48"
+                ws.cell(row=49, column=2).value="=E49+H49+K49+N49+Q49+T49+W49"
+                ws.cell(row=50, column=2).value="=E50+H50+K50+N50+Q50+T50+W50"
+                ws.cell(row=51, column=2).value="=E51+H51+K51+N51+Q51+T51+W51"  
+                ws.cell(row=52, column=2).value="=E52+H52+K52+N52+Q52+T52+W52"
+                ws.cell(row=53, column=2).value="=E53+H53+K53+N53+Q53+T53+W53"
+                ws.cell(row=54, column=2).value="=E54+H54+K54+N54+Q54+T54+W54"
+                ws.cell(row=55, column=2).value="=E55+H55+K55+N55+Q55+T55+W55"
+                ws.cell(row=56, column=2).value="=E56+H56+K56+N56+Q56+T56+W56"
+                ws.cell(row=57, column=2).value="=E57+H57+K57+N57+Q57+T57+W57"
+                ws.cell(row=58, column=2).value="=E58+H58+K58+N58+Q58+T58+W58"
+                ws.cell(row=59, column=2).value="=E59+H59+K59+N59+Q59+T59+W59"
+                ws.cell(row=60, column=2).value="=E60+H60+K60+N60+Q60+T60+W60"
+                ws.cell(row=61, column=2).value="=E61+H61+K61+N61+Q61+T61+W61"
+                ws.cell(row=62, column=2).value="=E62+H62+K62+N62+Q62+T62+W62"
+                ws.cell(row=63, column=2).value="=E63+H63+K63+N63+Q63+T63+W63"
+                ws.cell(row=64, column=2).value="=E64+H64+K64+N64+Q64+T64+W64"
+                ws.cell(row=65, column=2).value="=E65+H65+K65+N65+Q65+T65+W65"
+                ws.cell(row=66, column=2).value="=E66+H66+K66+N66+Q66+T66+W66"
+                # ws.cell(row=66, column=2).value="=E66+H66+K66+N66+Q66+T66+W66"
+                ws.cell(row=68, column=2).value="=E68+H68+K68+N68+Q68+T68+W68"
+                ws.cell(row=69, column=2).value="=E69+H69+K69+N69+Q69+T69+W69"
+                ws.cell(row=70, column=2).value="=E70+H70+K70+N70+Q70+T70+W70"
+                ws.cell(row=71, column=2).value="=E71+H71+K71+N71+Q71+T71+W71"
+                # ws.cell(row=71, column=2).value="=E71+H71+K71+N71+Q71+T71+W71"
+                ws.cell(row=74, column=2).value="=E74+H74+K74+N74+Q74+T74+W74"
+
+
+
+                ws.cell(row=8, column=3).value="=F8+I8+L8+O8+R8+U8+X8"
+                ws.cell(row=9, column=3).value="=F9+I9+L9+O9+R9+U9+X9"
+                ws.cell(row=10, column=3).value="=F10+I10+L10+O10+R10+U10+X10"
+                ws.cell(row=11, column=3).value="=F11+I11+L11+O11+R11+U11+X11"
+                ws.cell(row=12, column=3).value="=F12+I12+L12+O12+R12+U12+X12"
+                ws.cell(row=13, column=3).value="=F13+I13+L13+O13+R13+U13+X13"
+                ws.cell(row=14, column=3).value="=F14+I14+L14+O14+R14+U14+X14"
+                ws.cell(row=15, column=3).value="=F15+I15+L15+O15+R15+U15+X15"
+                ws.cell(row=16, column=3).value="=F16+I16+L16+O16+R16+U16+X16"
+                ws.cell(row=17, column=3).value="=F17+I17+L17+O17+R17+U17+X17"
+                ws.cell(row=18, column=3).value="=F18+I18+L18+O18+R18+U18+X18"
+                ws.cell(row=19, column=3).value="=F19+I19+L19+O19+R19+U19+X19"
+                ws.cell(row=20, column=3).value="=F20+I20+L20+O20+R20+U20+X20"
+                ws.cell(row=21, column=3).value="=F21+I21+L21+O21+R21+U21+X21"
+                ws.cell(row=22, column=3).value="=F22+I22+L22+O22+R22+U22+X22"
+                ws.cell(row=23, column=3).value="=F23+I23+L23+O23+R23+U23+X23"
+                ws.cell(row=24, column=3).value="=F24+I24+L24+O24+R24+U24+X24"
+                ws.cell(row=25, column=3).value="=F25+I25+L25+O25+R25+U25+X25"
+                ws.cell(row=26, column=3).value="=F26+I26+L26+O26+R26+U26+X26"
+                ws.cell(row=27, column=3).value="=F27+I27+L27+O27+R27+U27+X27"
+                ws.cell(row=28, column=3).value="=F28+I28+L28+O28+R28+U28+X28"
+                ws.cell(row=29, column=3).value="=F29+I29+L29+O29+R29+U29+X29"
+                ws.cell(row=30, column=3).value="=F30+I30+L30+O30+R30+U30+X30"
+                ws.cell(row=31, column=3).value="=F31+I31+L31+O31+R31+U31+X31"
+                ws.cell(row=32, column=3).value="=F32+I32+L32+O32+R32+U32+X32"
+                ws.cell(row=33, column=3).value="=F33+I33+L33+O33+R33+U33+X33"
+                ws.cell(row=34, column=3).value="=F34+I34+L34+O34+R34+U34+X34"
+                ws.cell(row=35, column=3).value="=F35+I35+L35+O35+R35+U35+X35"
+                ws.cell(row=36, column=3).value="=F36+I36+L36+O36+R36+U36+X36"
+                ws.cell(row=37, column=3).value="=F37+I37+L37+O37+R37+U37+X37"
+                ws.cell(row=38, column=3).value="=F38+I38+L38+O38+R38+U38+X38"
+                ws.cell(row=39, column=3).value="=F39+I39+L39+O39+R39+U39+X39"
+                ws.cell(row=40, column=3).value="=F40+I40+L40+O40+R40+U40+X40"
+                ws.cell(row=41, column=3).value="=F41+I41+L41+O41+R41+U41+X41"
+                ws.cell(row=42, column=3).value="=F42+I42+L42+O42+R42+U42+X42"
+                ws.cell(row=43, column=3).value="=F43+I43+L43+O43+R43+U43+X43"
+                ws.cell(row=44, column=3).value="=F44+I44+L44+O44+R44+U44+X44"
+                ws.cell(row=45, column=3).value="=F45+I45+L45+O45+R45+U45+X45"
+                ws.cell(row=46, column=3).value="=F46+I46+L46+O46+R46+U46+X46"
+                ws.cell(row=47, column=3).value="=F47+I47+L47+O47+R47+U47+X47"
+                ws.cell(row=48, column=3).value="=F48+I48+L48+O48+R48+U48+X48"
+                ws.cell(row=49, column=3).value="=F49+I49+L49+O49+R49+U49+X49"
+                ws.cell(row=50, column=3).value="=F50+I50+L50+O50+R50+U50+X50"
+                ws.cell(row=51, column=3).value="=F51+I51+L51+O51+R51+U51+X51"  
+                ws.cell(row=52, column=3).value="=F52+I52+L52+O52+R52+U52+X52"
+                ws.cell(row=53, column=3).value="=F53+I53+L53+O53+R53+U53+X53"
+                ws.cell(row=54, column=3).value="=F54+I54+L54+O54+R54+U54+X54"
+                ws.cell(row=55, column=3).value="=F55+I55+L55+O55+R55+U55+X55"
+                ws.cell(row=56, column=3).value="=F56+I56+L56+O56+R56+U56+X56"
+                ws.cell(row=57, column=3).value="=F57+I57+L57+O57+R57+U57+X57"
+                ws.cell(row=58, column=3).value="=F58+I58+L58+O58+R58+U58+X58"
+                ws.cell(row=59, column=3).value="=F59+I59+L59+O59+R59+U59+X59"
+                ws.cell(row=60, column=3).value="=F60+I60+L60+O60+R60+U60+X60"
+                ws.cell(row=61, column=3).value="=F61+I61+L61+O61+R61+U61+X61"
+                ws.cell(row=62, column=3).value="=F62+I62+L62+O62+R62+U62+X62"
+                ws.cell(row=63, column=3).value="=F63+I63+L63+O63+R63+U63+X63"
+                ws.cell(row=64, column=3).value="=F64+I64+L64+O64+R64+U64+X64"
+                ws.cell(row=65, column=3).value="=F65+I65+L65+O65+R65+U65+X65"
+                ws.cell(row=66, column=3).value="=F66+I66+L66+O66+R66+U66+X66"
+                # ws.cell(row=66, column=3).value="=F66+I66+L66+O66+R66+U66+X66"
+                ws.cell(row=68, column=3).value="=F68+I68+L68+O68+R68+U68+X68"
+                ws.cell(row=69, column=3).value="=F69+I69+L69+O69+R69+U69+X69"
+                ws.cell(row=70, column=3).value="=F70+I70+L70+O70+R70+U70+X70"
+                ws.cell(row=71, column=3).value="=F71+I71+L71+O71+R71+U71+X71"
+                # ws.cell(row=71, column=3).value="=F71+I71+L71+O71+R71+U71+X71"
+                ws.cell(row=74, column=3).value="=F74+I74+L74+O74+R74+U74+X74"
+
+
+
+                for i in range(1, len(rand)+1):
+                    ws.cell(row=i+7, column=1).value=rand[i-1]
+                for i in range(1, len(sumatot)+1):
+                    ws.cell(row=i+7, column=5).value=sumatot[i-1]
+                for i in range(1, len(TVA)+1):
+                    ws.cell(row=i+7, column=6).value=TVA[i-1]
+
+                for i in range(1, len(rand)+1):
+                    ws.cell(row=i+7, column=1).value=rand[i-1]
+                for i in range(1, len(sumatot)+1):
+                    ws.cell(row=i+7, column=8).value=sumatot[i-1]
+                for i in range(1, len(TVA)+1):
+                    ws.cell(row=i+7, column=9).value=TVA[i-1]
+
+
+
+                for i in range(1, len(rand)+1):
+                    ws.cell(row=i+7, column=1).value=rand[i-1]
+                for i in range(1, len(sumatot)+1):
+                    ws.cell(row=i+7, column=11).value=sumatot[i-1]
+                for i in range(1, len(TVA)+1):
+                    ws.cell(row=i+7, column=12).value=TVA[i-1]
+
+
+
+                for i in range(1, len(rand)+1):
+                    ws.cell(row=i+7, column=1).value=rand[i-1]
+                for i in range(1, len(sumatot)+1):
+                    ws.cell(row=i+7, column=14).value=sumatot[i-1]
+                for i in range(1, len(TVA)+1):
+                    ws.cell(row=i+7, column=15).value=TVA[i-1]
+
+
+                for i in range(1, len(rand)+1):
+                    ws.cell(row=i+7, column=1).value=rand[i-1]
+                for i in range(1, len(sumatot)+1):
+                    ws.cell(row=i+7, column=17).value=sumatot[i-1]
+                for i in range(1, len(TVA)+1):
+                    ws.cell(row=i+7, column=18).value=TVA[i-1]
+
+
+                for i in range(1, len(rand)+1):
+                    ws.cell(row=i+7, column=1).value=rand[i-1]
+                for i in range(1, len(sumatot)+1):
+                    ws.cell(row=i+7, column=20).value=sumatot[i-1]
+                for i in range(1, len(TVA)+1):
+                    ws.cell(row=i+7, column=21).value=TVA[i-1]
+
+                for i in range(1, len(rand)+1):
+                    ws.cell(row=i+7, column=1).value=rand[i-1]
+                for i in range(1, len(sumatot)+1):
+                    ws.cell(row=i+7, column=23).value=sumatot[i-1]
+                for i in range(1, len(TVA)+1):
+                    ws.cell(row=i+7, column=24).value=TVA[i-1]
+
+
+                for i in range(1, len(des)+1):
+                    ws.cell(row=i+8, column=4).value=des[i-1]
+
+
+                for i in range(8,72):
+                    ws.cell(row=i,column=2).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=3).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=5).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=6).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=8).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=9).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=11).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=12).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=14).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=15).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=17).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=18).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=20).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=21).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=23).number_format='#,##0_);(#,##0)'
+                    ws.cell(row=i,column=24).number_format='#,##0_);(#,##0)'
+
+
+
+                ws.column_dimensions['B'].width = 18
+                ws.column_dimensions['C'].width = 18
+                ws.column_dimensions['D'].width = 18
+
+
+                # Sheet1 = wb.create_sheet(str(denNo))  
+                print(a)
+                print(D300_2[a])
+                try:
+                    # details.save(str(folderpath)+"/D300 Group "+str(clientname)+".xlsx")
+                    wb.save(str(folderpath)+"/D300 Group "+str(clientname)+".xlsx")
+                    print("fisierr succb"+str(a))
+                except:
+                    print("aaaaaa")
+            except:
+                print("")     
+        # file_pathFS = os.path.join(folderpath, "D300 Group" + " " + clientname+".xlsx")
+        # wb.save(file_pathFS)
+        
+         
+        
+        # return send_from_directory(folderpath, "Monthly P&L" + " " + clientname+".xlsx",as_attachment=True)
+
+        
+        return send_from_directory(folderpath,"D300 Group "+str(clientname)+".xlsx",as_attachment=True)       
+        
+
+
+
 if __name__ == '__main__':
    app.run()
