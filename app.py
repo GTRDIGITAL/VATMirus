@@ -99,6 +99,7 @@ yesterday=today-datetime.timedelta(days=1)
 curs="EUR"
 curs2="USD"
 
+
 listaluni=["1","2","3","4","5","6","7","8","9","10","11","12"]
 listadenluni=['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie']
 listadenluni2=['January','February','March','April','May','June','July','August','September','October','November','December']
