@@ -3509,7 +3509,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             listanouaappendsales=[]
 
             for k in range(0,len(serieCuiSales)):
-                listanouaappendsales.append(str(serieCuiSales[k])+";"+str(tipTranzSale[k])+";"+str(coteTVAsales[k])+";"+str(codTranzactieSales[k])+";"+listadeclant_1[k])
+                listanouaappendsales.append(str(serieCuiSales[k])+";"+str(tipTranzSale[k])+";"+str(coteTVAsales[k])+";"+str(codTranzactieSales[k])+";"+str(listadeclant_1[k]))
 
             listanouasetsales=list(set(listanouaappendsales))
 
@@ -21655,6 +21655,7 @@ def D300xml_nutre():
             sales=temp['Sales']
             purchases=temp['Purchases']
             summary = temp.create_sheet("Summary")
+            summary.sheet_view.showGridLines=False
             dataCautare = datetime.datetime.today()
 
             dataCautare = dataCautare.date()
