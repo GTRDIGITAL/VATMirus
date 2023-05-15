@@ -1590,7 +1590,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=14, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracome1)+":"+str(intracome1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes"),0))'
         amount.cell(row=15, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"No")/(119/100),0))'
         amount.cell(row=16, column=2).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+')+SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1M",Purchases!'+str(tax19b)+":"+str(tax19b)+'),0))'
-        amount.cell(row=17, column=2).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+'),0)-sumif(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+'))'    
+        amount.cell(row=17, column=2).value='=ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+')-sumif(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+'),0)'    
         amount.cell(row=18, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!BR:BR,"No")/(119/100),0))'
         amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
         amount.cell(row=20, column=2).value=0
@@ -1664,7 +1664,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=14, column=3).value='=(ROUND(SUMIFS(Purchases!'+str(intracomtaxe1)+":"+str(intracomtaxe1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes"),0))'
         amount.cell(row=15, column=3).value='=round(B15/100*19,0)'
         amount.cell(row=16, column=3).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocvatsapte)+':'+str(tdocvatsapte)+')+SUMIF(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!'+str(tax19vat)+':'+str(tax19vat)+'),0))'
-        amount.cell(row=17, column=3).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocvatsapte)+":"+str(tdocvatsapte)+'),0)-sumif(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!'+str(tdocvatsapte)+":"+str(tdocvatsapte)+'))'
+        amount.cell(row=17, column=3).value='=ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tdocvatsapte)+":"+str(tdocvatsapte)+')-sumif(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!'+str(tdocvatsapte)+":"+str(tdocvatsapte)+'),0)'
         amount.cell(row=18, column=3).value='=round(B18/100*19,0)'
             
         # amount.cell(row=16,column=3).value='=ROUND(SUMIF(Purchases!$7:$7,$A16&"."&C$6,Purchases!$5:$5)-SUMIF(Purchases!$7:$7,$A18&"."&C$6,Purchases!$5:$5),0)'
