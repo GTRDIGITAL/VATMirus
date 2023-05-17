@@ -24100,7 +24100,7 @@ def D300xml_nutre():
                     listanouaappendsales=[]
 
                     for k in range(0,len(serieCuiSales)):
-                        listanouaappendsales.append(str(serieCuiSales[k])+";"+str(tipTranzSale[k])+";"+str(coteTVAsales[k])+";"+str(codTranzactieSales[k])+";"+listadeclant_1[k])
+                        listanouaappendsales.append(str(serieCuiSales[k])+";"+str(tipTranzSale[k])+";"+str(coteTVAsales[k])+";"+str(codTranzactieSales[k])+";"+str(listadeclant_1[k]))
 
                     listanouasetsales=list(set(listanouaappendsales))
 
