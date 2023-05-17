@@ -1706,7 +1706,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=49, column=3).value=0
         amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
         amount.cell(row=51, column=3).value='=Round(SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax9vat)+':'+str(tax9vat)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax5vat)+':'+str(tax5vat)+')-SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"ZI",Purchases!BR:BR,"No"),0)'
-        amount.cell(row=52, column=3).value='=C50+C51-SUM(Purchases!'+str(tdocneded)+':'+str(tdocneded)+')'
+        amount.cell(row=52, column=3).value='=round(C50+C51-SUM(Purchases!'+str(tdocneded)+':'+str(tdocneded)+'),0)'
         amount.cell(row=53, column=3).value=0
         amount.cell(row=54, column=3).value=0
         amount.cell(row=55, column=3).value=0
