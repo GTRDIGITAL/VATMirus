@@ -25848,7 +25848,7 @@ def D300_Nutre():
             cuitip3=[]
             cuitip4=[]
             for i in range(0,len(tip_partener)):
-                if(str(tip_partener[i])=="1" and tiptranza[i]!="not app for D394" and tiptranza[i]!="Not applicable for D394" and str(bazatv[i])!="0"):
+                if(str(tip_partener[i])=="1" and tiptranza[i]!="not app for 394" and tiptranza[i]!="Not applicable for D394" and str(bazatv[i])!="0"):
                     tippartener1.append(cuip[i])
                 if(str(tip_partener[i])=="1" and neex[i]!="Yes"):
                     if(bazatv[i]!=None):
@@ -26792,7 +26792,7 @@ def D300_Nutre():
                 # nume[j].replace("<","")
                 # nume[j].replace(">","")
             for i in range(0,len(tiptranza)):
-                if(tiptranza[i]!="not app for D394" and tiptranza[i]!="Not applicable for D394"):
+                if(tiptranza[i]!="not app for 394" and tiptranza[i]!="Not applicable for D394"):
                     if(tiptranza[i]=="V"):
                         text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
                     else:
