@@ -22138,8 +22138,8 @@ def D300xml_nutre():
                 amount.cell(row=12, column=2).value=0
                 try:
                     amount.cell(row=14, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracome1)+":"+str(intracome1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes"),0))'
-                    amount.cell(row=16, column=2).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(intracome1)+":"+str(intracome1)+')+SUMIF(Purchases!'+str(intracome1)+":"+str(intracome1)+',"1M",Purchases!'+str(intracome1)+":"+str(intracome1)+')+SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"DH",Purchases!'+str(tax19b)+":"+str(tax19b)+'),0))'
-                    amount.cell(row=13, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracome1)+":"+str(intracome1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes"),0))'
+                    amount.cell(row=16, column=2).value='=(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"DH",Purchases!'+str(tax19b)+":"+str(tax19b)+'),0)'
+                    amount.cell(row=13, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracome1)+":"+str(intracome1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"Z4",Purchases!BR:BR,"Yes"),0))'
                 except:
                     amount.cell(row=13, column=2).value=0
                     amount.cell(row=14, column=2).value=0
@@ -22149,6 +22149,7 @@ def D300xml_nutre():
                 amount.cell(row=18, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!BR:BR,"No")/(119/100),0))'
                 try:
                     amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"MK",Sales!'+str(tdocc)+":"+str(tdocc)+')-SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
+                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!'+str(tdoca)+":"+str(tdoca)+',"KW",Sales!'+str(taxBV)+":"+str(taxBV)+'),0)'
                 except:
                     amount.cell(row=19, column=2).value=0
                 amount.cell(row=20, column=2).value=0
@@ -22163,7 +22164,7 @@ def D300xml_nutre():
                 except:
                     amount.cell(row=24, column=2).value=0
                 amount.cell(row=25, column=2).value=0
-                amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1V",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'   
+                amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1V",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"H7",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'   
                 amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
                 amount.cell(row=28, column=2).value=0
                 amount.cell(row=30, column=2).value=0
@@ -22171,9 +22172,9 @@ def D300xml_nutre():
                     amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tax19b)+":"+str(tax19b)+'),0)'
                 except:
                     amount.cell(row=29, column=2).value=0
-                amount.cell(row=39, column=2).value='=round(SUM(Purchases!'+str(tax19b)+':'+str(tax19b)+')-SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tax19b)+':'+str(tax19b)+')-SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1J",Purchases!'+str(tax19b)+":"+str(tax19b)+')-SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"1L",Purchases!'+str(tax19b)+":"+str(tax19b)+')+SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"ZI",Purchases!BR:BR,"Yes"),0)+SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"3S",Purchases!'+str(tax19b)+":"+str(tax19b)+')+SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tax19b)+":"+str(tax19b)+')+SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"N1",Purchases!'+str(tax19b)+":"+str(tax19b)+')'                      
-                amount.cell(row=40, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"9S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"8C",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W7",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"8C",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(109/100),0)'                                
-                amount.cell(row=41, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"6I",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(105/100),0)'                                
+                amount.cell(row=39, column=2).value='=round(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tax19b)+":"+str(tax19b)+'),0)'                      
+                amount.cell(row=40, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W7",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(109/100),0)'                                
+                amount.cell(row=41, column=2).value='=round((SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(105/100),0)'                                
 
                 
                 amount.cell(row=22, column=2).value='=round(SUM(B23:B25),0)'
@@ -22195,7 +22196,7 @@ def D300xml_nutre():
                 amount.cell(row=45, column=2).value='=B25'
                 amount.cell(row=46, column=2).value=0
                 amount.cell(row=47, column=2).value=0
-                amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"WI",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"Z2",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V9",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"WT",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"N0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
+                amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"N0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
                 amount.cell(row=49, column=2).value=0
                 amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
                 amount.cell(row=51, column=2).value=0
@@ -22502,7 +22503,7 @@ def D300xml_nutre():
                 # print(nrEvidenta)
                 #print(nrEvidenta, 'nrEvidenta')
                     
-                
+                info.cell(row=57,column=3).value="N"
                 info.cell(row=18, column=3).value=nrEvidenta
                 info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
                 try:
