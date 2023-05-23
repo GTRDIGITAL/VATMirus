@@ -22138,7 +22138,8 @@ def D300xml_nutre():
                 amount.cell(row=12, column=2).value=0
                 try:
                     amount.cell(row=14, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracome1)+":"+str(intracome1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes"),0))'
-                    amount.cell(row=16, column=2).value='=(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"DH",Purchases!'+str(tax19b)+":"+str(tax19b)+'),0)'
+                    # amount.cell(row=16, column=2).value='=(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"DH",Purchases!'+str(tax19b)+":"+str(tax19b)+'),0)'
+                    amount.cell(row=16, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"DH",Purchases!'+str(tax19b)+":"+str(tax19b)+'),0)'
                     amount.cell(row=13, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracome1)+":"+str(intracome1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"Z4",Purchases!BR:BR,"Yes"),0))'
                 except:
                     amount.cell(row=13, column=2).value=0
