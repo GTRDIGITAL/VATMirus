@@ -22175,7 +22175,7 @@ def D300xml_nutre():
                     amount.cell(row=29, column=2).value=0
                 amount.cell(row=39, column=2).value='=round(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tax19b)+":"+str(tax19b)+'),0)'                      
                 amount.cell(row=40, column=2).value='=round(ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W7",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(109/100),0)'                                
-                amount.cell(row=41, column=2).value='=round((SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)/(105/100),0)'                                
+                amount.cell(row=41, column=2).value='=round(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+')/(105/100),0)'                                
 
                 
                 amount.cell(row=22, column=2).value='=round(SUM(B23:B25),0)'
