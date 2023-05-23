@@ -22238,7 +22238,7 @@ def D300xml_nutre():
                     amount.cell(row=14, column=3).value=0
                 amount.cell(row=15, column=3).value='=round(B15/100*19,0)'
                 try:
-                    amount.cell(row=16, column=3).value='=(ROUND(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(intracomtaxe1)+':'+str(intracomtaxe1)+')+SUMIF(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!'+str(tax19vat)+':'+str(tax19vat)+')+SUMIF(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"DH",Purchases!'+str(tax19vat)+':'+str(tax19vat)+'),0))'
+                    amount.cell(row=16, column=3).value='=(ROUND(SUMIF(Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"DH",Purchases!'+str(tax19vat)+':'+str(tax19vat)+'),0))'
                 except:
                     amount.cell(row=16, column=3).value=0
                 amount.cell(row=17, column=3).value='=C16'
