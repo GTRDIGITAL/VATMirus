@@ -22465,11 +22465,11 @@ def D300xml_nutre():
                 else:
                     if len(str(info.cell(row=3, column=3).value))==1:
                         if(int(info.cell(row=3,column=3).value)==9):
-                            LL2=str(int(info.cell(row=3,column=3).value)+1)
+                            LL2=str(int(info.cell(row=21,column=3).value)+1)
                         else:
-                            LL2="0"+str(int(info.cell(row=3, column=3).value)+1)
+                            LL2="0"+str(int(info.cell(row=21, column=3).value)+1)
                     else:
-                        LL2=str(int(info.cell(row=3,column=3).value)+1)             
+                        LL2=str(int(info.cell(row=21,column=3).value)+1)             
                 # print(LL2, 'LL2')
                 
                 if int(info.cell(row=3, column=3).value)==12:
