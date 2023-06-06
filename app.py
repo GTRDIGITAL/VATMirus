@@ -22054,6 +22054,19 @@ def D300xml_nutre():
                     print("aaa")
 
                 for row in sales.iter_rows():
+                    for cell in row:
+                        if cell.value == "Tx":
+                            rand_tb = cell.row
+                            taxcodec = cell.column
+                            lun = len(sales[cell.column])
+                try:
+                    taxcodes = [b.value for b in sales[taxcodec][rand_tb:lun]]
+                except:
+                    flash("Please insert the correct header for 'Tax code sales'")
+                    return render_template("index.html")
+
+
+                for row in sales.iter_rows():
                     # rand_tb=None
                     # taxBV=None
                     for cell in row:
@@ -22063,7 +22076,7 @@ def D300xml_nutre():
                             lun = len(sales[cell.column])
                 try:
                     # if taxBV is not None:
-                    taxBaseV = [b.value for b in sales[taxBV][rand_tb:lun]]
+                    taxBaseV = [b.value for b in sales[taxcodec][rand_tb:lun]]
                 except:
                     taxBaseV =[]
                     # flash("Please insert the correct header for 'Bază de impozitare (RON)-Livrari locale taxare inversa-Taxable base (RON)-Local supplies reverse charge' in Sales sheet")
@@ -22075,11 +22088,11 @@ def D300xml_nutre():
                     for cell in row:
                         if cell.value == "  9% tax base amount":
                             rand_tb = cell.row
-                            taxBaseL9 = cell.column
+                            taxBL9 = cell.column
                             lun = len(sales[cell.column])
                 try:
                     # if taxBaseL9 is not None:
-                    taxBaseL9 = [b.value for b in sales[taxBaseL9][rand_tb:lun]]
+                    taxBaseL9 = [b.value for b in sales[taxcodec][rand_tb:lun]]
                 except:
                     taxBaseL9 = []
                     # flash("Please insert the correct header for 'Baza de impozitare (RON)-Livrari locale-Taxable base (RON)-Local supplies (9%)' in Sales sheet")
@@ -22100,11 +22113,11 @@ def D300xml_nutre():
                     for cell in row:
                         if cell.value == "       9% tax amount":
                             rand_tb = cell.row
-                            vatBaseL9 = cell.column
+                            vatBL9 = cell.column
                             lun = len(sales[cell.column])
                 try:
                     # if vatBaseL9 is not None:
-                    vatL9 = [b.value for b in sales[vatBaseL9][rand_tb:lun]]
+                    vatL9 = [b.value for b in sales[taxcodec][rand_tb:lun]]
                 except:
                     vatL9 =[]
                     # flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (9%)' in Sales sheet")
@@ -22123,11 +22136,11 @@ def D300xml_nutre():
                     for cell in row:
                         if cell.value == " 19% tax base amount":
                             rand_tb = cell.row
-                            taxBaseL19 = cell.column
+                            taxBL19 = cell.column
                             lun = len(sales[cell.column])
                 try:
                     # if taxBaseL19 is not None:
-                    taxBaseL19 = [b.value for b in sales[taxBaseL19][rand_tb:lun]]
+                    taxBaseL19 = [b.value for b in sales[taxcodec][rand_tb:lun]]
                 except:
                     taxBaseL19 =[]
                     # flash("Please insert the correct header for 'Baza de impozitare (RON)- Livrari locale-Taxable base (RON)-Local supplies (19%)' in Sales sheet")
@@ -22147,11 +22160,11 @@ def D300xml_nutre():
                     for cell in row:
                         if cell.value == "      19% tax amount":
                             rand_tb = cell.row
-                            vatBaseL19 = cell.column
+                            vatBL19 = cell.column
                             lun = len(sales[cell.column])
                 try:
                     # if vatBaseL19 is not None:
-                    vatL19 = [b.value for b in sales[vatBaseL19][rand_tb:lun]]
+                    vatL19 = [b.value for b in sales[taxcodec][rand_tb:lun]]
                 except:
                     vatL19 = []
                     # flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (19%)' in Sales sheet")
@@ -22257,8 +22270,8 @@ def D300xml_nutre():
                 amount.cell(row=17, column=2).value='=B16'    
                 amount.cell(row=18, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!BR:BR,"No")/(119/100),0))'
                 try:
-                    amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"MK",Sales!'+str(taxBaseL19)+":"+str(taxBaseL19)+')-SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
-                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"KW",Sales!'+str(taxBaseL9)+":"+str(taxBaseL9)+'),0)'
+                    amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"MK",Sales!'+str(taxBL19)+":"+str(taxBL19)+')-SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
+                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"KW",Sales!'+str(taxBL9)+":"+str(taxBL9)+'),0)'
                 except:
                     amount.cell(row=19, column=2).value=0
                 amount.cell(row=20, column=2).value=0
