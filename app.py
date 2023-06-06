@@ -22258,7 +22258,7 @@ def D300xml_nutre():
                 amount.cell(row=18, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!BR:BR,"No")/(119/100),0))'
                 try:
                     amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"MK",Sales!'+str(taxBaseL19)+":"+str(taxBaseL19)+')-SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
-                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!'+str(tdoca)+":"+str(tdoca)+',"KW",Sales!'+str(taxBaseL9)+":"+str(taxBaseL9)+'),0)'
+                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"KW",Sales!'+str(taxBaseL9)+":"+str(taxBaseL9)+'),0)'
                 except:
                     amount.cell(row=19, column=2).value=0
                 amount.cell(row=20, column=2).value=0
@@ -22273,7 +22273,7 @@ def D300xml_nutre():
                 except:
                     amount.cell(row=24, column=2).value=0
                 amount.cell(row=25, column=2).value=0
-                amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ML",Sales!'+str(tdocc)+":"+str(tdocc)+'+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"H7",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'   
+                amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ML",Sales!'+str(tdocc)+":"+str(tdocc)+'+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"H7",Sales!'+str(tdocc)+":"+str(tdocc)+')),0)'   
                 amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
                 amount.cell(row=28, column=2).value=0
                 amount.cell(row=30, column=2).value=0
