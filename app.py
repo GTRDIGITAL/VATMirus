@@ -22134,6 +22134,12 @@ def D300xml_nutre():
                     # return render_template("index.html")
                 #print(taxBaseL19)
 
+                taxBaseL19_1=[]
+                for c in range(0, len(taxBaseL19)):
+                    if taxBaseL19[c] == None:
+                        taxBaseL19_1.append(0)
+                    else:
+                        taxBaseL19_1.append(taxBaseL19[c])
 
                 for row in sales.iter_rows():
                     # rand_tb=None
@@ -22151,7 +22157,12 @@ def D300xml_nutre():
                     # flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (19%)' in Sales sheet")
                     # return render_template("index.html")
 
- 
+                vatL19_1=[]
+                for c in range(0, len(vatL19)):
+                    if vatL19[c] == None:
+                        vatL19_1.append(0)
+                    else:
+                        vatL19_1.append(vatL19[c])
 
                 amount.cell(row=6, column=2).value="1"
                 amount.cell(row=6, column=3).value="2"
@@ -22262,7 +22273,7 @@ def D300xml_nutre():
                 except:
                     amount.cell(row=24, column=2).value=0
                 amount.cell(row=25, column=2).value=0
-                amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ML",Sales!'+str(tdocc)+":"+str(tdocc)+'+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"H7",Sales!'+str(tdocc)+":"+str(tdocc)+')),0)'   
+                amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ML",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"H7",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'   
                 amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
                 amount.cell(row=28, column=2).value=0
                 amount.cell(row=30, column=2).value=0
