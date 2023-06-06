@@ -22275,7 +22275,7 @@ def D300xml_nutre():
                 except:
                     amount.cell(row=19, column=2).value=0
                     # amount.cell(row=20, column=2).value=0
-                    amount.cell(row=21, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"5G",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(105/100),0)'
+                amount.cell(row=21, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"5G",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(105/100),0)'
                 try:
                     amount.cell(row=22, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"FT",Purchases!'+str(tdocsapte)+":"+str(tdocsapte)+'),0)'
                 except:
