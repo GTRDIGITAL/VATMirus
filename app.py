@@ -22069,6 +22069,100 @@ def D300xml_nutre():
                         # flash("Please insert the correct header for 'Bază de impozitare (RON)-Livrari locale taxare inversa-Taxable base (RON)-Local supplies reverse charge' in Sales sheet")
                         # return render_template("index.html")
 
+                    for row in sales.iter_rows():
+                        # rand_tb=None
+                        # taxBaseL9=None
+                        for cell in row:
+                            if cell.value == "  9% tax base amount":
+                                rand_tb = cell.row
+                                taxBaseL9 = cell.column
+                                lun = len(sales[cell.column])
+                    try:
+                        # if taxBaseL9 is not None:
+                        taxBaseL9 = [b.value for b in sales[taxBaseL9][rand_tb:lun]]
+                    except:
+                        taxBaseL9 = []
+                        # flash("Please insert the correct header for 'Baza de impozitare (RON)-Livrari locale-Taxable base (RON)-Local supplies (9%)' in Sales sheet")
+                        # return render_template("index.html")
+
+
+                    taxBaseL9_1=[]
+                    for c in range(0, len(taxBaseL9)):
+                        if taxBaseL9[c] == None:
+                            taxBaseL9_1.append(0)
+                        else:
+                            taxBaseL9_1.append(taxBaseL9[c])
+
+
+                    for row in sales.iter_rows():
+                        # rand_tb=None
+                        # vatBaseL9=None
+                        for cell in row:
+                            if cell.value == "       9% tax amount":
+                                rand_tb = cell.row
+                                vatBaseL9 = cell.column
+                                lun = len(sales[cell.column])
+                    try:
+                        # if vatBaseL9 is not None:
+                        vatL9 = [b.value for b in sales[vatBaseL9][rand_tb:lun]]
+                    except:
+                        vatL9 =[]
+                        # flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (9%)' in Sales sheet")
+                        # return render_template("index.html")
+
+                    vatL9_1=[]
+                    for c in range(0, len(vatL9)):
+                        if vatL9[c] == None:
+                            vatL9_1.append(0)
+                        else:
+                            vatL9_1.append(vatL9[c])
+
+                    for row in sales.iter_rows():
+                        # rand_tb=None
+                        # taxBaseL19=None
+                        for cell in row:
+                            if cell.value == " 19% tax base amount":
+                                rand_tb = cell.row
+                                taxBaseL19 = cell.column
+                                lun = len(sales[cell.column])
+                    try:
+                        # if taxBaseL19 is not None:
+                        taxBaseL19 = [b.value for b in sales[taxBaseL19][rand_tb:lun]]
+                    except:
+                        taxBaseL19 =[]
+                        # flash("Please insert the correct header for 'Baza de impozitare (RON)- Livrari locale-Taxable base (RON)-Local supplies (19%)' in Sales sheet")
+                        # return render_template("index.html")
+                    #print(taxBaseL19)
+
+                    taxBaseL19_1=[]
+                    for c in range(0, len(taxBaseL19)):
+                        if taxBaseL19[c] == None:
+                            taxBaseL19_1.append(0)
+                        else:
+                            taxBaseL19_1.append(taxBaseL19[c])
+
+                    for row in sales.iter_rows():
+                        # rand_tb=None
+                        # vatBaseL19=None
+                        for cell in row:
+                            if cell.value == "      19% tax amount":
+                                rand_tb = cell.row
+                                vatBaseL19 = cell.column
+                                lun = len(sales[cell.column])
+                    try:
+                        # if vatBaseL19 is not None:
+                        vatL19 = [b.value for b in sales[vatBaseL19][rand_tb:lun]]
+                    except:
+                        vatL19 = []
+                        # flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (19%)' in Sales sheet")
+                        # return render_template("index.html")
+
+                    vatL19_1=[]
+                    for c in range(0, len(vatL19)):
+                        if vatL19[c] == None:
+                            vatL19_1.append(0)
+                        else:
+                            vatL19_1.append(vatL19[c])
 
                 amount.cell(row=6, column=2).value="1"
                 amount.cell(row=6, column=3).value="2"
@@ -22160,11 +22254,11 @@ def D300xml_nutre():
                     amount.cell(row=14, column=2).value=0
                     amount.cell(row=36, column=2).value=0
                 amount.cell(row=15, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"No")/(119/100),0))'
-                amount.cell(row=37, column=2).value='=B36'    
+                amount.cell(row=17, column=2).value='=B16'    
                 amount.cell(row=18, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!BR:BR,"No")/(119/100),0))'
                 try:
-                    amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"MK",Sales!'+str(tdocc)+":"+str(tdocc)+')-SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
-                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!'+str(tdoca)+":"+str(tdoca)+',"KW",Sales!'+str(taxBV)+":"+str(taxBV)+'),0)'
+                    amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"MK",Sales!'+str(taxBaseL19)+":"+str(taxBaseL19)+')-SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)/(119/100),0)'
+                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!'+str(tdoca)+":"+str(tdoca)+',"KW",Sales!'+str(taxBaseL9)+":"+str(taxBaseL9)+'),0)'
                 except:
                     amount.cell(row=19, column=2).value=0
                 amount.cell(row=20, column=2).value=0
@@ -22179,7 +22273,7 @@ def D300xml_nutre():
                 except:
                     amount.cell(row=24, column=2).value=0
                 amount.cell(row=25, column=2).value=0
-                amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1V",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"H7",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'   
+                amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ML",Sales!'+str(tdocc)+":"+str(tdocc)+'+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"H7",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'   
                 amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
                 amount.cell(row=28, column=2).value=0
                 amount.cell(row=30, column=2).value=0
@@ -22201,7 +22295,7 @@ def D300xml_nutre():
                 amount.cell(row=34, column=2).value='=B14'
                 amount.cell(row=35, column=2).value='=B15'
                 amount.cell(row=16, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"DH",Sales!'+str(taxBV)+":"+str(taxBV)+'),0)'
-                amount.cell(row=37, column=2).value='=B17'
+                amount.cell(row=37, column=2).value='=B36'
                 amount.cell(row=38, column=2).value='=B18'
 
                 
@@ -22212,7 +22306,7 @@ def D300xml_nutre():
                 amount.cell(row=46, column=2).value=0
                 amount.cell(row=47, column=2).value=0
                 amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"N0",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
-                amount.cell(row=49, column=2).value=0
+                amount.cell(row=49, column=2).value='=ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"Z4",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)'
                 amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
                 amount.cell(row=51, column=2).value=0
                 amount.cell(row=52, column=2).value='=B50+B51'
@@ -22280,7 +22374,7 @@ def D300xml_nutre():
                 amount.cell(row=34, column=3).value='=C14'
                 amount.cell(row=35, column=3).value='=C15'
                 amount.cell(row=16, column=3).value=0
-                amount.cell(row=37, column=3).value='=C17'
+                amount.cell(row=17, column=3).value='=C16'
                 amount.cell(row=38, column=3).value='=C18'
                 try:
                     amount.cell(row=29, column=3).value='=ROUND(SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tax19vat)+":"+str(tax19vat)+'),0)'
