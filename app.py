@@ -22053,116 +22053,116 @@ def D300xml_nutre():
                 except:
                     print("aaa")
 
-                    for row in sales.iter_rows():
-                        # rand_tb=None
-                        # taxBV=None
-                        for cell in row:
-                            if cell.value == "   Inversal tax base":
-                                rand_tb = cell.row
-                                taxBV = cell.column
-                                lun = len(sales[cell.column])
-                    try:
-                        # if taxBV is not None:
-                        taxBaseV = [b.value for b in sales[taxBV][rand_tb:lun]]
-                    except:
-                        taxBaseV =[]
-                        # flash("Please insert the correct header for 'Bază de impozitare (RON)-Livrari locale taxare inversa-Taxable base (RON)-Local supplies reverse charge' in Sales sheet")
-                        # return render_template("index.html")
+                for row in sales.iter_rows():
+                    # rand_tb=None
+                    # taxBV=None
+                    for cell in row:
+                        if cell.value == "   Inversal tax base":
+                            rand_tb = cell.row
+                            taxBV = cell.column
+                            lun = len(sales[cell.column])
+                try:
+                    # if taxBV is not None:
+                    taxBaseV = [b.value for b in sales[taxBV][rand_tb:lun]]
+                except:
+                    taxBaseV =[]
+                    # flash("Please insert the correct header for 'Bază de impozitare (RON)-Livrari locale taxare inversa-Taxable base (RON)-Local supplies reverse charge' in Sales sheet")
+                    # return render_template("index.html")
 
-                    for row in sales.iter_rows():
-                        # rand_tb=None
-                        # taxBaseL9=None
-                        for cell in row:
-                            if cell.value == "  9% tax base amount":
-                                rand_tb = cell.row
-                                taxBaseL9 = cell.column
-                                lun = len(sales[cell.column])
-                    try:
-                        # if taxBaseL9 is not None:
-                        taxBaseL9 = [b.value for b in sales[taxBaseL9][rand_tb:lun]]
-                    except:
-                        taxBaseL9 = []
-                        # flash("Please insert the correct header for 'Baza de impozitare (RON)-Livrari locale-Taxable base (RON)-Local supplies (9%)' in Sales sheet")
-                        # return render_template("index.html")
-
-
-                    taxBaseL9_1=[]
-                    for c in range(0, len(taxBaseL9)):
-                        if taxBaseL9[c] == None:
-                            taxBaseL9_1.append(0)
-                        else:
-                            taxBaseL9_1.append(taxBaseL9[c])
+                for row in sales.iter_rows():
+                    # rand_tb=None
+                    # taxBaseL9=None
+                    for cell in row:
+                        if cell.value == "  9% tax base amount":
+                            rand_tb = cell.row
+                            taxBaseL9 = cell.column
+                            lun = len(sales[cell.column])
+                try:
+                    # if taxBaseL9 is not None:
+                    taxBaseL9 = [b.value for b in sales[taxBaseL9][rand_tb:lun]]
+                except:
+                    taxBaseL9 = []
+                    # flash("Please insert the correct header for 'Baza de impozitare (RON)-Livrari locale-Taxable base (RON)-Local supplies (9%)' in Sales sheet")
+                    # return render_template("index.html")
 
 
-                    for row in sales.iter_rows():
-                        # rand_tb=None
-                        # vatBaseL9=None
-                        for cell in row:
-                            if cell.value == "       9% tax amount":
-                                rand_tb = cell.row
-                                vatBaseL9 = cell.column
-                                lun = len(sales[cell.column])
-                    try:
-                        # if vatBaseL9 is not None:
-                        vatL9 = [b.value for b in sales[vatBaseL9][rand_tb:lun]]
-                    except:
-                        vatL9 =[]
-                        # flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (9%)' in Sales sheet")
-                        # return render_template("index.html")
+                taxBaseL9_1=[]
+                for c in range(0, len(taxBaseL9)):
+                    if taxBaseL9[c] == None:
+                        taxBaseL9_1.append(0)
+                    else:
+                        taxBaseL9_1.append(taxBaseL9[c])
 
-                    vatL9_1=[]
-                    for c in range(0, len(vatL9)):
-                        if vatL9[c] == None:
-                            vatL9_1.append(0)
-                        else:
-                            vatL9_1.append(vatL9[c])
 
-                    for row in sales.iter_rows():
-                        # rand_tb=None
-                        # taxBaseL19=None
-                        for cell in row:
-                            if cell.value == " 19% tax base amount":
-                                rand_tb = cell.row
-                                taxBaseL19 = cell.column
-                                lun = len(sales[cell.column])
-                    try:
-                        # if taxBaseL19 is not None:
-                        taxBaseL19 = [b.value for b in sales[taxBaseL19][rand_tb:lun]]
-                    except:
-                        taxBaseL19 =[]
-                        # flash("Please insert the correct header for 'Baza de impozitare (RON)- Livrari locale-Taxable base (RON)-Local supplies (19%)' in Sales sheet")
-                        # return render_template("index.html")
-                    #print(taxBaseL19)
+                for row in sales.iter_rows():
+                    # rand_tb=None
+                    # vatBaseL9=None
+                    for cell in row:
+                        if cell.value == "       9% tax amount":
+                            rand_tb = cell.row
+                            vatBaseL9 = cell.column
+                            lun = len(sales[cell.column])
+                try:
+                    # if vatBaseL9 is not None:
+                    vatL9 = [b.value for b in sales[vatBaseL9][rand_tb:lun]]
+                except:
+                    vatL9 =[]
+                    # flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (9%)' in Sales sheet")
+                    # return render_template("index.html")
 
-                    taxBaseL19_1=[]
-                    for c in range(0, len(taxBaseL19)):
-                        if taxBaseL19[c] == None:
-                            taxBaseL19_1.append(0)
-                        else:
-                            taxBaseL19_1.append(taxBaseL19[c])
+                vatL9_1=[]
+                for c in range(0, len(vatL9)):
+                    if vatL9[c] == None:
+                        vatL9_1.append(0)
+                    else:
+                        vatL9_1.append(vatL9[c])
 
-                    for row in sales.iter_rows():
-                        # rand_tb=None
-                        # vatBaseL19=None
-                        for cell in row:
-                            if cell.value == "      19% tax amount":
-                                rand_tb = cell.row
-                                vatBaseL19 = cell.column
-                                lun = len(sales[cell.column])
-                    try:
-                        # if vatBaseL19 is not None:
-                        vatL19 = [b.value for b in sales[vatBaseL19][rand_tb:lun]]
-                    except:
-                        vatL19 = []
-                        # flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (19%)' in Sales sheet")
-                        # return render_template("index.html")
+                for row in sales.iter_rows():
+                    # rand_tb=None
+                    # taxBaseL19=None
+                    for cell in row:
+                        if cell.value == " 19% tax base amount":
+                            rand_tb = cell.row
+                            taxBaseL19 = cell.column
+                            lun = len(sales[cell.column])
+                try:
+                    # if taxBaseL19 is not None:
+                    taxBaseL19 = [b.value for b in sales[taxBaseL19][rand_tb:lun]]
+                except:
+                    taxBaseL19 =[]
+                    # flash("Please insert the correct header for 'Baza de impozitare (RON)- Livrari locale-Taxable base (RON)-Local supplies (19%)' in Sales sheet")
+                    # return render_template("index.html")
+                #print(taxBaseL19)
 
-                    vatL19_1=[]
-                    for c in range(0, len(vatL19)):
-                        if vatL19[c] == None:
-                            vatL19_1.append(0)
-                        else:
-                            vatL19_1.append(vatL19[c])
+                taxBaseL19_1=[]
+                for c in range(0, len(taxBaseL19)):
+                    if taxBaseL19[c] == None:
+                        taxBaseL19_1.append(0)
+                    else:
+                        taxBaseL19_1.append(taxBaseL19[c])
+
+                for row in sales.iter_rows():
+                    # rand_tb=None
+                    # vatBaseL19=None
+                    for cell in row:
+                        if cell.value == "      19% tax amount":
+                            rand_tb = cell.row
+                            vatBaseL19 = cell.column
+                            lun = len(sales[cell.column])
+                try:
+                    # if vatBaseL19 is not None:
+                    vatL19 = [b.value for b in sales[vatBaseL19][rand_tb:lun]]
+                except:
+                    vatL19 = []
+                    # flash("Please insert the correct header for 'TVA (RON)-Livrari locale-VAT (RON)-Local supplies (19%)' in Sales sheet")
+                    # return render_template("index.html")
+
+                vatL19_1=[]
+                for c in range(0, len(vatL19)):
+                    if vatL19[c] == None:
+                        vatL19_1.append(0)
+                    else:
+                        vatL19_1.append(vatL19[c])
 
                 amount.cell(row=6, column=2).value="1"
                 amount.cell(row=6, column=3).value="2"
