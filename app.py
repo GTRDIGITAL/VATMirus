@@ -25658,7 +25658,10 @@ def D300_Nutre():
         else:
             persafi=0
         coddeinregistrare=sheet1.cell(row=65,column=3).value
-        caen=sheet1.cell(row=66,column=3).value.replace("'","")
+        try:
+            caen=str(sheet1.cell(row=66,column=3).value).replace("'","")
+        except:
+            caen=sheet1.cell(row=66,column=3).value.replace("'","")
         denumirefirma=sheet1.cell(row=67,column=3).value
         domiciliulfiscalfirma=sheet1.cell(row=6,column=3).value
         telefonfirma=sheet1.cell(row=69,column=3).value
