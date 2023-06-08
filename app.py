@@ -25310,7 +25310,7 @@ def D300_Nutre():
             email=info.cell(row=31,column=3).value
             banca=info.cell(row=32,column=3).value
             contban=info.cell(row=33,column=3).value
-            Caen=info.cell(row=34,column=3).value
+            Caen=info.cell(row=34,column=3).value.replace("'","")
             prorata=info.cell(row=35,column=3).value
             cereale=info.cell(row=36,column=3).value
             telmob=info.cell(row=37,column=3).value
@@ -25658,7 +25658,7 @@ def D300_Nutre():
         else:
             persafi=0
         coddeinregistrare=sheet1.cell(row=65,column=3).value
-        caen=sheet1.cell(row=66,column=3).value
+        caen=sheet1.cell(row=66,column=3).value.replace("'","")
         denumirefirma=sheet1.cell(row=67,column=3).value
         domiciliulfiscalfirma=sheet1.cell(row=6,column=3).value
         telefonfirma=sheet1.cell(row=69,column=3).value
