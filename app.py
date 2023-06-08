@@ -22589,11 +22589,11 @@ def D300xml_nutre():
                 LL2=""
                 AA2=""
 
-                if int(info.cell(row=3, column=3).value)==12:
+                if int(info.cell(row=21, column=3).value)==12:
                     LL2="1"
                 else:
-                    if len(str(info.cell(row=3, column=3).value))==1:
-                        if(int(info.cell(row=3,column=3).value)==9):
+                    if len(str(info.cell(row=21, column=3).value))==1:
+                        if(int(info.cell(row=21,column=3).value)==9):
                             LL2=str(int(info.cell(row=21,column=3).value)+1)
                         else:
                             LL2="0"+str(int(info.cell(row=21, column=3).value)+1)
@@ -22601,7 +22601,7 @@ def D300xml_nutre():
                         LL2=str(int(info.cell(row=21,column=3).value)+1)             
                 # print(LL2, 'LL2')
                 
-                if int(info.cell(row=3, column=3).value)==12:
+                if int(info.cell(row=21, column=3).value)==12:
                     AA2=year 
                 else:
                     AA2=strYear
