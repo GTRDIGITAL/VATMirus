@@ -22270,11 +22270,11 @@ def D300xml_nutre():
                 amount.cell(row=17, column=2).value='=B16'    
                 amount.cell(row=18, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(tdoca)+":"+str(tdoca)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"X1",Purchases!BR:BR,"No")/(119/100),0))'
                 try:
-                    amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"MK",Sales!'+str(taxBL19)+":"+str(taxBL19)+')-SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tdocc)+":"+str(tdocc)+'),0),0)'
+                    amount.cell(row=19, column=2).value='=round(ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A2",Sales!'+str(tdocc)+":"+str(tdocc)+')+SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"MK",Sales!'+str(tdocc)+":"+str(tdocc)+')/(119/100)-SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tdocc)+":"+str(tdocc)+'),0),0)'
                 except:
                     amount.cell(row=19, column=2).value=0
                 try:                    
-                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"KW",Sales!'+str(taxBL9)+":"+str(taxBL9)+'),0)'
+                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"KW",Sales!'+str(tdocc)+":"+str(tdocc)+')/(109/100),0)'
                 except:
                     # amount.cell(row=19, column=2).value=0
                     amount.cell(row=20, column=2).value=0
@@ -22294,7 +22294,8 @@ def D300xml_nutre():
                 amount.cell(row=28, column=2).value=0
                 amount.cell(row=30, column=2).value=0
                 try:
-                    amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tax19b)+":"+str(tax19b)+'),0)'
+                    amount.cell(row=29, column=2).value=0
+                    # amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tax19b)+":"+str(tax19b)+'),0)'
                 except:
                     amount.cell(row=29, column=2).value=0
                 amount.cell(row=39, column=2).value='=round(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V1",Purchases!'+str(tax19b)+":"+str(tax19b)+'),0)'                      
@@ -22396,7 +22397,8 @@ def D300xml_nutre():
                 amount.cell(row=17, column=3).value='=C16'
                 amount.cell(row=38, column=3).value='=C18'
                 try:
-                    amount.cell(row=29, column=3).value='=ROUND(SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tax19vat)+":"+str(tax19vat)+'),0)'
+                    amount.cell(row=29, column=3).value=0
+                    # amount.cell(row=29, column=3).value='=ROUND(SUMIF(Sales!'+str(coloanaClientID)+":"+str(coloanaClientID)+',"",Sales!'+str(tax19vat)+":"+str(tax19vat)+'),0)'
                 except:
                     amount.cell(row=29, column=3).value=0
 
