@@ -22389,7 +22389,7 @@ def D300xml_nutre():
                 amount.cell(row=33, column=3).value='=C13'
                 amount.cell(row=34, column=3).value='=C14'
                 amount.cell(row=35, column=3).value='=C15'
-                amount.cell(row=16, column=3).value=0
+                amount.cell(row=16, column=3).value='=C36'
                 amount.cell(row=17, column=3).value='=C16'
                 amount.cell(row=38, column=3).value='=C18'
                 try:
