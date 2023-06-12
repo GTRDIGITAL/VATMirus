@@ -5532,6 +5532,19 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
     
     sales=temp['Sales']
     purchases=temp['Purchases']
+
+
+    for j in range(9, purchases.max_column):
+        for k in range(19, purchases.max_row):
+            if("-" in purchases.cell(row=k,column=j).value):
+                purchases.cell(row=k,column=j).value=int(str(purchases.cell(row=k,column=j).value).replace("-",""))*-1
+
+    for j in range(7, sales.max_column):
+        for k in range(18, sales.max_row):
+            if("-" in sales.cell(row=k,column=j).value):
+                sales.cell(row=k,column=j).value=int(str(sales.cell(row=k,column=j).value).replace("-",""))*-1
+
+
     if(val1==1):
         listadescrieri=['Intra-community supplies of goods, exempted according to art. 294 par.(2)let.a) and d) of the Fiscal code','Adjustments of VAT exempt intra-community supplies according to art. 294 par. (2) let. a) and d) of the Fiscal code','Supplies of goods or services for which the place of supply is outside Romania (in EU or outside EU), as well as intra-community supplies of goods, exempted according to art. 294 par.(2) let.b) and c) of the Fiscal code, out of which:','Intra-community supplies of services which are not VAT exempt in the Member State where the tax is due','Adjustments of intra-community supplies of services which are not VAT exempt in the Member State where the tax is due','Intra-community acquisitions of goods for which the buyer is liable to pay VAT (reverse charge), out of which:','Intra-community acquisitions for which the buyer is liable to pay VAT (reverse charge), and the supplier is registered for VAT purposes in the Member State where the intra-community supply took place','Adjustments of intra-community acquisitions of goods for which the buyer is liable to pay VAT (reverse charge)','Acquisitions of goods, other than those in rows 5 and 6, and acquisitions of services for which the beneficiary in Romania is liable to pay VAT (reverse charge), out of which:','Acquisitions of intra-community services for which the beneficiary is liable to pay VAT (reverse charge)','Adjustments of intra-community acquisitions of services for which the beneficiary is liable to pay VAT (reverse charge)','Supplies of goods and services, taxable with 19% VAT rate','Supplies of goods and services, taxable with 9% VAT rate','Supplies of goods taxable with 5% VAT rate','Acquisitions of goods and services subject to simplification measures for which the beneficiary is liable to pay VAT (reverse charge)','Acquisitions of goods and services taxable with 20% VAT rate','Acquisitions of goods taxable with 9% VAT rate','Acquisitions of goods taxable with 5% VAT rate','Supplies of goods and services subject to simplification measures (reverse charge)','Supplies of goods and services VAT exempt with deduction right, other than those in rows 1 - 3','Supplies of goods and services exempt without deduction right','Adjustments of output tax','Intra-community supplies of services according to art 278 par(8) of the Fiscal code taxable in Romania','Adjustents of intra-community supplies of services according to art 278 par(8) of the Fiscal code taxable in Romania','Total output tax (sum for rows 1 to 16, except 3.1, 5.1, 7.1, 12.1, 12.2, 12.3)','Intra-community acquisitions of goods for which the buyer is liable to pay VAT (reverse charge)(row 18=row 5), out of which:','Intra-community acquisitions for which the buyer is liable to pay VAT (reverse charge), whereas the supplier is registered for VAT purposes in the Member State where the supply took place (row 18.1=row 5.1)','Adjustments of intra-community acquisitions of goods for which the buyer is liable to pay VAT (reverse charge) (row 19=row 6)','Acquisitions of goods, other than those in rows 18 and 19, and acquisitions of services for which the beneficiary in Romania is liable to pay VAT (reverse charge)(row 20=row 7), out of which:','Intra-community acquisitions of services for which the beneficiary is liable to pay VAT (reverse charge)(row 20.1=row 7.1)','Adjustments of intra-community acquisitions of services for which the beneficiary in Romania is liable to pay VAT (reverse charge)(row 21= row 8)','Acquisitions of goods and services, taxable with 19% VAT rate, other than those in row 25','Acquisitions of goods and services, taxable with 9% VAT rate','Acquisitions of goods taxable with 5% VAT rate','Acquisitions of goods and services subject to simplification measures for which the beneficiary is liable to pay VAT (reverse charge) ,out of which ','Acquisitions of goods and services taxable with 20% VAT rate ','Acquisitions of goods taxable with 9% VAT rate ','Acquisitions of goods taxable with 5% VAT rate','Compensation in the flat fee for purchases of agricultural products and services from suppliers applying the special regime','Adjusments of compensation in the flat fee for purchases of agricultural products and services from suppliers applying the special regime','Acquisitions of goods and services VAT exempt or non-taxable, out of which:','Acquisitions of VAT exempt intra-community services (do not fill in fro the simplified method)','TOTAL DEDUCTIBLE VAT (sum for rows 18 to 25, except 18.1, 20.1, 25.1, 25.2, 25.3):','','SUB-TOTAL DEDUCTED VAT ACCORDING TO ART. 297 AND ART. 298 OR ART. 300 AND ART. 298 OF THE FISCAL CODE','VAT effectively refunded to foreign buyers, including the commission of the authorised bodies','Adjustments of input VAT','Adjustments according to pro rata / adjustments for capital goods','TOTAL DEDUCTED VAT (row 28+row 29+row 30+row 31)','Refundable VAT amount in the reporting period (row 32-row 17)','Payable VAT in the reporting period (row 17-row 32)','Balance of payable VAT from the previous VAT return (row 41 in the previous VAT return) unpaid until the date of the submission of the VAT return','Payable VAT differences assessed by the fiscal inspection bodies through a communicated decision and unpaid until the date of submission of the VAT return ','Cumulated VAT payable (row 34+row 35+row 36)','Balance of the VAT refundable amount reported from the previous period for which the refund was not claimed (row 46 in the previous VAT return)','Differences of VAT refundable amounts assessed by the fiscal inspection bodies decision through a communicated decision until the date of submission of the VAT return','Cumulated refundable VAT amount (row 33+row 38+row 39)','Balance of payable VAT at the end of the reporting period (row 37-row 40)','Balance of refundable VAT at the end of the reporting period (row 40-row 37)','','Supplies of goods and services performed for which the related VAT remained non-chargeable, existing in the balance at the end of the reporting period, as a consequence of the application of the VAT cash accouting system','Supplies of goods and services performed in the last 6 months/2 calendar quarters','Acquisitions of goods and services performed for which has not been applied the deduction right, existing in the balance at the end of the reporting period, as a consequence of the application of art. 145 para (1¹) and (1²) of the Fiscal Code','Acquisitions of goods and services performed in the last 6 months/ 2 calendar quarters ']
         sheetinutil1=temp.create_sheet('D300--->>>')
@@ -5649,17 +5662,31 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         for k in range(0,len(listdocdate)):
             # print(datadocument[k][3:4])
             # print(datadocument[k][3:5])
-            if(str(listdocdate[k])[3:4]=="0"):
-                if(str(listdocdate[k])[4:5]==str(info.cell(row=3,column=3).value)):
-                    listacurentas.append("Yes")
-                else:
-                    listacurentas.append("No")
+            if(str(listdocdate[k])[2:3]=="."):
+                if(str(listdocdate[k])[3:4]=="0"):
+                    if(str(listdocdate[k])[4:5]==str(info.cell(row=3,column=3).value)):
+                        listacurentas.append("Yes")
+                    else:
+                        listacurentas.append("No")
 
-            else:
-                if(str(listdocdate[k])[3:5]==str(info.cell(row=3,column=3).value)):
-                    listacurentas.append("Yes")
                 else:
-                    listacurentas.append("No")
+                    if(str(listdocdate[k])[3:5]==str(info.cell(row=3,column=3).value)):
+                        listacurentas.append("Yes")
+                    else:
+                        listacurentas.append("No")
+            else:
+                if(str(listdocdate[k])[3:4]=="."):
+                    if(str(listdocdate[k])[4:5]=="0"):
+                        if(str(listdocdate[k])[5:6]==str(info.cell(row=3,column=3).value)):
+                            listacurentas.append("Yes")
+                        else:
+                            listacurentas.append("No")
+
+                    else:
+                        if(str(listdocdate[k])[4:6]==str(info.cell(row=3,column=3).value)):
+                            listacurentas.append("Yes")
+                        else:
+                            listacurentas.append("No")
         for kk in range(0,len(listacurentas)):
             sales.cell(row=18+kk,column=70).value=listacurentas[kk]
         for row in purchases.iter_rows():
@@ -5940,17 +5967,31 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             try:
                 print(datadocument[k][3:4])
                 print(datadocument[k][3:5])
-                if(str(datadocument[k][4:5])=="0"):
-                    if(str(datadocument[k][5:6])==str(info.cell(row=3,column=3).value)):
-                        lunacurenta.append("Yes")
-                    else:
-                        lunacurenta.append("No")
+                if(str(datadocument[k][3:4])=="."):
+                    if(str(datadocument[k][4:5])=="0"):
+                        if(str(datadocument[k][5:6])==str(info.cell(row=3,column=3).value)):
+                            lunacurenta.append("Yes")
+                        else:
+                            lunacurenta.append("No")
 
-                else:
-                    if(str(datadocument[k][4:6])==str(info.cell(row=3,column=3).value)):
-                        lunacurenta.append("Yes")
                     else:
-                        lunacurenta.append("No")
+                        if(str(datadocument[k][4:6])==str(info.cell(row=3,column=3).value)):
+                            lunacurenta.append("Yes")
+                        else:
+                            lunacurenta.append("No")
+                else:
+                    if(str(datadocument[k][2:3])=="."):
+                        if(str(datadocument[k][3:4])=="0"):
+                            if(str(datadocument[k][4:5])==str(info.cell(row=3,column=3).value)):
+                                lunacurenta.append("Yes")
+                            else:
+                                lunacurenta.append("No")
+
+                        else:
+                            if(str(datadocument[k][3:5])==str(info.cell(row=3,column=3).value)):
+                                lunacurenta.append("Yes")
+                            else:
+                                lunacurenta.append("No")
             except:
                 lunacurenta.append("Not applicable")
             # if(datadocument[k])
