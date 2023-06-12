@@ -27031,7 +27031,7 @@ def D300_Nutre2():
         ws=other.active
 
         ws=other.create_sheet("D300 draft figures")
-        denis=other["Other info"]
+        denis=ws["Other info"]
         ws.sheet_view.showGridLines=False
 
         denNo=0
@@ -27202,7 +27202,7 @@ def D300_Nutre2():
         
 
 
-        denis.cell(row=52, column=3).value=="SUM(B8:B66)+SUM(C8:C66)"
+        denis.cell(row=52, column=3).value=="SUM(B8:B66)+SUM(C8:C66)-B52-B56"
 
 
 
