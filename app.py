@@ -27202,9 +27202,9 @@ def D300_Nutre2():
         
 
 
-        denis.cell(row=52, column=3).value="=SUM(B8:B66)+SUM(C8:C66)-B52-B56"
+        ws.cell(row=52, column=100).value="=SUM(B8:B66)+SUM(C8:C66)-B52-B56"
 
-
+        denis.cell(row=52, column=3).value=ws.cell(row=52, column=100).value
 
         ws.cell(row=8, column=2).value="=E8+H8+K8+N8+Q8+T8+W8"
         ws.cell(row=9, column=2).value="=E9+H9+K9+N9+Q9+T9+W9"
