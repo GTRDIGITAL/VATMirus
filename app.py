@@ -5536,12 +5536,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
     for j in range(9, purchases.max_column):
         for k in range(19, purchases.max_row):
-            if("-" in purchases.cell(row=k,column=j).value):
+            if("-" in str(purchases.cell(row=k,column=j).value)):
                 purchases.cell(row=k,column=j).value=int(str(purchases.cell(row=k,column=j).value).replace("-",""))*-1
 
     for j in range(7, sales.max_column):
         for k in range(18, sales.max_row):
-            if("-" in sales.cell(row=k,column=j).value):
+            if("-" in str(sales.cell(row=k,column=j).value)):
                 sales.cell(row=k,column=j).value=int(str(sales.cell(row=k,column=j).value).replace("-",""))*-1
 
 
