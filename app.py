@@ -27021,7 +27021,7 @@ def D300_Nutre2():
         # details = openpyxl.load_workbook(D300_2[1], data_only = 'True')
         # details1 = details.active
 
-        other =  openpyxl.load_workbook('D:\\TestNutre\\testnutre8iunie3\\testnutre8iunie3\\Other info.xlsx')
+        other =  openpyxl.load_workbook('/home/mirus_app/nutre/other/Other info.xlsx')
         ws=other.active
 
         ws=other.create_sheet("D300 draft figures")
