@@ -27068,11 +27068,11 @@ def D300_Nutre2():
         # details = openpyxl.load_workbook(D300_2[1], data_only = 'True')
         # details1 = details.active
 
-        other =  openpyxl.load_workbook('/home/mirus_app/nutre/other/Other info.xlsx')
-        ws=other.active
+        info =  openpyxl.load_workbook('/home/mirus_app/nutre/other/Other info.xlsx')
+        ws=info.active
 
-        ws=other.create_sheet("D300 draft figures")
-        denis=other["Other info"]
+        ws=info.create_sheet("D300 draft figures")
+        denis=info["Other info"]
         ws.sheet_view.showGridLines=False
 
         denNo=0
@@ -27503,7 +27503,7 @@ def D300_Nutre2():
     
     try:
         # details.save(str(folderpath)+"/D300 Group "+str(clientname)+".xlsx")
-        other.save(str(folderpath)+"/D300 Group "+str(clientname)+".xlsx")
+        info.save(str(folderpath)+"/D300 Group "+str(clientname)+".xlsx")
         print("fisierr succb"+str(a))
     except:
         print("aaaaaa") 
