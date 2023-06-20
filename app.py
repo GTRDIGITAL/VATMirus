@@ -22812,7 +22812,7 @@ def D300xml_nutre():
                         # rand_tb=None
                         # nonChartb=None
                         for cell in row:
-                            if cell.value == " Intra-comm.tax base":
+                            if cell.value == "  Total doc.incl.VAT":
                                 rand_tb = cell.row
                                 nonChartb = cell.column
                                 lun = len(purchases[cell.column])
@@ -22851,7 +22851,7 @@ def D300xml_nutre():
                                 workings.cell(row=a, column=7).value=vata[x][0:2]
                                 # workings.cell(row=a, column=8).value=listaBazaA[x]
                                 # workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
-                                workings.cell(row=a, column=8).value=nonCharTaxBase[x]
+                                workings.cell(row=a, column=8).value=int(nonCharTaxBase[x])/119*100
                                 workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
                                 workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
 
