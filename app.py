@@ -27055,7 +27055,7 @@ def D300_Nutre2():
     #     return send_from_directory(folderpath, "Monthly P&L" + " " + clientname1 + ".xlsx",as_attachment=True)
 
     
-    folderpath="/home/mirus_app/nutre/excel"
+    folderpath="D:/MirusFinal/VATMirus"
     fontRedDiff=Font(name="Calibri", color='FF0000', size=11)
     fontNegru=Font(name="Calibri", color='000000', size=16,bold=True,italic=True)
     if request.method == 'POST':
@@ -27068,7 +27068,7 @@ def D300_Nutre2():
         # details = openpyxl.load_workbook(D300_2[1], data_only = 'True')
         # details1 = details.active
 
-        info =  openpyxl.load_workbook('/home/mirus_app/nutre/other/Other info.xlsx')
+        info =  openpyxl.load_workbook('D:\\TestNutre\\testnutre8iunie3\\testnutre8iunie3\\Other info.xlsx')
         ws=info.active
 
         ws=info.create_sheet("D300 draft figures")
@@ -27520,6 +27520,8 @@ def D300_Nutre2():
     
     return send_from_directory(folderpath,"D300 Group "+str(clientname)+".xlsx",as_attachment=True)       
     
+
+
 
 
 
