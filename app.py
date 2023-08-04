@@ -20693,7 +20693,7 @@ def my_form5():
 @app.route('/D3APPS/NUTRE', methods=['POST', 'GET'])
 def D300xml_nutre():
     clientname=request.form.get('client')
-    filename="D:/Vat App 1 August/VATMirus/"+str(clientname)
+    filename="/home/mirus_app/nutre/excel/"+str(clientname)
     os.mkdir(filename)
     def make_archive(source, destination):
         base = os.path.basename(destination)
