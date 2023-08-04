@@ -20749,7 +20749,7 @@ def D300xml_nutre():
             ws = temp.active
             
             if(option==1):
-                Sheet1=temp.create_sheet('Cover sheet')
+                # Sheet1=temp.create_sheet('Cover sheet')
                 fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
                 fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
                 font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
@@ -20775,7 +20775,7 @@ def D300xml_nutre():
 
 
             if(option==0):
-                Sheet1=temp.create_sheet('Cover sheet')
+                # Sheet1=temp.create_sheet('Cover sheet')
                 fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
                 fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
                 font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
@@ -20802,15 +20802,15 @@ def D300xml_nutre():
             
             sales=temp['Sales']
             purchases=temp['Purchases']
-            summary = temp.create_sheet("Summary")
-            summary.sheet_view.showGridLines=False
+            # summary = temp.create_sheet("Summary")
+            # summary.sheet_view.showGridLines=False
             dataCautare = datetime.datetime.today()
 
             if(val1==1):
-                sheetinutil1=temp.create_sheet('D300--->>>')
-                sheetinutil1.sheet_view.showGridLines=False
-                sheetinutil1.cell(row=2,column=1).value="Switch to next sheet for D300 Workings draft"
-                sheetinutil1.cell(row=2,column=1).font=scrisincredibildemare
+                # sheetinutil1=temp.create_sheet('D300--->>>')
+                # sheetinutil1.sheet_view.showGridLines=False
+                # sheetinutil1.cell(row=2,column=1).value="Switch to next sheet for D300 Workings draft"
+                # sheetinutil1.cell(row=2,column=1).font=scrisincredibildemare
                 amount=temp.create_sheet('D300 draft figures')
                 amount.freeze_panes = 'A8'
                 amount.auto_filter.ref = "A7:G71"
@@ -20968,7 +20968,7 @@ def D300xml_nutre():
                 amount.cell(row=64, column=3).value='=C57+C62+C63'
                 amount.cell(row=65, column=3).value='=IF((C61-C64)>0,C61-C64,0)'
                 amount.cell(row=66, column=3).value='=IF((C64-C61)<0,0,C64-C61)'
-                amount.cell(row=8, column=3).value='=0'
+                amount.cell(row=8, column=2).value='=0'
                 amount.cell(row=8, column=3).value='=0'
                 amount.cell(row=9, column=2).value='=0'
                 amount.cell(row=9, column=3).value='=0'
