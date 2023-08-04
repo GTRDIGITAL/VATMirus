@@ -30244,6 +30244,7 @@ def D300_Nutre2():
         denis=info["Other info"]
         ws.sheet_view.showGridLines=False
 
+
         denNo=0
         for a in range(0, len(D300_2)):
             
