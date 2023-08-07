@@ -20802,6 +20802,95 @@ def D300xml_nutre():
             
             sales=temp['Sales']
             purchases=temp['Purchases']
+            info=temp['Other info']
+
+            listaMapare=["L", "T", "S", "A"]
+            Poz="10"
+            Fix01="01"
+            Fix0000="0000"
+            dictMapare={'L':'301', 'T':'302', 'S':'303', 'A':'304'}
+
+            elementMapare=""
+            if info.cell(row=53, column=3).value=="L":
+                elementMapare="301"
+            else:
+                if info.cell(row=53, column=3).value == "T":
+                    elementMapare="302"
+                else:
+                    if info.cell(row=53, column=3).value == "S":
+                        elementMapare="303"
+                    else:
+                        if info.cell(row=53, column=3).value == "A":
+                            elementMapare="304"
+                
+            # #print(elementMapare, 'MAPARE')
+
+            LL=""
+            AA=""
+
+            if len(str(info.cell(row=3, column=3).value))==2:
+                LL=str(info.cell(row=3, column=3).value)
+                LL_g=LL
+            else:
+                LL="0"+str(info.cell(row=3, column=3).value)
+
+            AA=str(info.cell(row=2, column=3).value)[2:]
+            strYear=str(info.cell(row=2, column=3).value)[2:]
+            intYear=int(strYear)+1
+            year=str(intYear)
+            
+            # #print(year, 'an')
+
+            LLAA=LL+AA
+            LL2=""
+            AA2=""
+
+            if int(info.cell(row=3, column=3).value)==12:
+                LL2="1"
+            else:
+                if len(str(info.cell(row=3, column=3).value))==1:
+                    if(int(info.cell(row=3,column=3).value)==9):
+                        LL2=str(int(info.cell(row=3,column=3).value)+1)
+                    else:
+                        LL2="0"+str(int(info.cell(row=3, column=3).value)+1)
+                else:
+                    LL2=str(int(info.cell(row=3,column=3).value)+1)             
+            # print(LL2, 'LL2')
+            
+            if int(info.cell(row=3, column=3).value)==12:
+                AA2=year 
+            else:
+                AA2=strYear
+
+            ZZLLAA="25"+str(LL2)+str(AA2)
+            # #print(ZZLLAA, 'ZZLLAA')
+
+            poz1=""
+            LTSA=""
+            fix1=""
+            LLAA1=""
+            ZZLLAA1=""
+            fix01=""
+            control=""
+
+            poz1 = sum(int(digit) for digit in str(Poz))
+            LTSA = sum(int(digit) for digit in str(elementMapare))
+            fix1=sum(int(digit) for digit in str(Fix01))
+            LLAA1=sum(int(digit) for digit in str(LLAA))
+            ZZLLAA1=sum(int(digit) for digit in str(ZZLLAA))
+            fix01=sum(int(digit) for digit in str(Fix0000))
+
+            control=poz1+LTSA+fix1+LLAA1+ZZLLAA1+fix01
+            
+
+            nrEvidenta=Poz+elementMapare+Fix01+LLAA+ZZLLAA+Fix0000+str(control)
+            # print(nrEvidenta)
+            #print(nrEvidenta, 'nrEvidenta')
+                
+            
+            info.cell(row=18, column=3).value=nrEvidenta
+            info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
+
             # summary = temp.create_sheet("Summary")
             # summary.sheet_view.showGridLines=False
             dataCautare = datetime.datetime.today()
@@ -21063,7 +21152,30 @@ def D300xml_nutre():
                 amount.cell(row=71, column=2).value='=0'
                 amount.cell(row=71, column=3).value='=0'
 
+                for a1 in range(8, 13):
+                    amount.cell(row=a1, column=7).value='=B{0}'.format(a1)
 
+                for b1 in range(13, 26):
+                    amount.cell(row=b1, column=7).value='=SUM(B{0}:C{0})'.format(b1)
+
+                for c1 in range(26, 29):
+                    amount.cell(row=c1, column=7).value='=B{0}'.format(c1)
+                
+                for d1 in range(29, 46):
+                    amount.cell(row=d1, column=7).value='=SUM(B{0}:C{0})'.format(d1)
+
+                amount.cell(row=46, column=7).value='=C46'
+                amount.cell(row=47, column=7).value='=C47'
+                amount.cell(row=48, column=7).value='=B48'
+                amount.cell(row=49, column=7).value='=B49'
+                amount.cell(row=50, column=7).value='=SUM(B50:C50)'
+                amount.cell(row=51, column=7).value='=C51'
+                amount.cell(row=52, column=7).value='=C52'
+                amount.cell(row=53, column=7).value='=SUM(B53:C53)'
+                amount.cell(row=54, column=7).value='=SUM(B54:C54)'
+
+                for e1 in range(55, 67):
+                    amount.cell(row=e1, column=7).value='=C{0}'.format(e1)
 
                 if( denumirefisiere[iiii]=="FFR"):
                     print(denumirefisiere[iiii])
