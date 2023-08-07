@@ -20895,418 +20895,418 @@ def D300xml_nutre():
             # summary.sheet_view.showGridLines=False
             dataCautare = datetime.datetime.today()
 
-            if(val1==1):
+            # if(val1==1):
                 # sheetinutil1=temp.create_sheet('D300--->>>')
                 # sheetinutil1.sheet_view.showGridLines=False
                 # sheetinutil1.cell(row=2,column=1).value="Switch to next sheet for D300 Workings draft"
                 # sheetinutil1.cell(row=2,column=1).font=scrisincredibildemare
-                amount=temp.create_sheet('D300 draft figures')
-                amount.freeze_panes = 'A8'
-                amount.auto_filter.ref = "A7:G71"
-                amount.sheet_view.showGridLines = False
+            amount=temp.create_sheet('D300 draft figures')
+            amount.freeze_panes = 'A8'
+            amount.auto_filter.ref = "A7:G71"
+            amount.sheet_view.showGridLines = False
 
-                # for row in purchases.iter_rows():
-                #     for cell in row:
-                #         if cell.value == "Nr. Crt.":
-                #             row_tb = cell.row
-                #             criteriu = cell.column
-                #             lun = len(purchases[cell.column])
-                # # try:
-                # nrCrt = [b.value for b in purchases[criteriu][row_tb:lun]]
-
-
-                # for row in purchases.iter_rows():
-                #     for cell in row:
-                #         if cell.value == "11":
-                #             rand_tb = cell.row
-                #             suma = cell.column
-                #             lun = len(purchases[cell.column])
-                # try:
-                #     listBazaL = [b.value for b in purchases[suma][rand_tb:lun]]
-                # except:
-                #     flash("Please insert the correct header for 'Tax code purchases'")
-                #     return render_template("index.html")
+            # for row in purchases.iter_rows():
+            #     for cell in row:
+            #         if cell.value == "Nr. Crt.":
+            #             row_tb = cell.row
+            #             criteriu = cell.column
+            #             lun = len(purchases[cell.column])
+            # # try:
+            # nrCrt = [b.value for b in purchases[criteriu][row_tb:lun]]
 
 
+            # for row in purchases.iter_rows():
+            #     for cell in row:
+            #         if cell.value == "11":
+            #             rand_tb = cell.row
+            #             suma = cell.column
+            #             lun = len(purchases[cell.column])
+            # try:
+            #     listBazaL = [b.value for b in purchases[suma][rand_tb:lun]]
+            # except:
+            #     flash("Please insert the correct header for 'Tax code purchases'")
+            #     return render_template("index.html")
 
-                amount.cell(row=6, column=2).value="1"
-                amount.cell(row=6, column=3).value="2"
-                amount.cell(row=7, column=1).value="Row"
-                amount.cell(row=7, column=2).value="Taxable basis"
-                amount.cell(row=7, column=3).value="VAT amount"
-                amount.cell(row=7, column=4).value="Comments"
-                amount.cell(row=7, column=5).value="Journal Source"
-                amount.cell(row=7, column=6).value="Flag Suma Control"
-                amount.cell(row=7, column=7).value="Suma Control"
-                amount.cell(row=8, column=1).value="1"
-                amount.cell(row=9, column=1).value="2"
-                amount.cell(row=10, column=1).value="3"
-                amount.cell(row=11, column=1).value="3.1"
-                amount.cell(row=12, column=1).value="4"
-                amount.cell(row=13, column=1).value="5"
-                amount.cell(row=14, column=1).value="5.1"
-                amount.cell(row=15, column=1).value="6"
-                amount.cell(row=16, column=1).value="7"
-                amount.cell(row=17, column=1).value="7.1"
-                amount.cell(row=18, column=1).value="8"
-                amount.cell(row=19, column=1).value="9"
-                amount.cell(row=20, column=1).value="10"
-                amount.cell(row=21, column=1).value="11"
-                amount.cell(row=22, column=1).value="12"
-                amount.cell(row=23, column=1).value="12.1"
-                amount.cell(row=24, column=1).value="12.2"
-                amount.cell(row=25, column=1).value="12.3"
-                amount.cell(row=26, column=1).value="13"
-                amount.cell(row=27, column=1).value="14"
-                amount.cell(row=28, column=1).value="15"
-                amount.cell(row=29, column=1).value="16"
-                amount.cell(row=30, column=1).value="17"
-                amount.cell(row=31, column=1).value="18"
-                amount.cell(row=32, column=1).value="19"
-                amount.cell(row=33, column=1).value="20"
-                amount.cell(row=34, column=1).value="20.1"
-                amount.cell(row=35, column=1).value="21"
-                amount.cell(row=36, column=1).value="22"
-                amount.cell(row=37, column=1).value="22.1"
-                amount.cell(row=38, column=1).value="23"
-                amount.cell(row=39, column=1).value="24"
-                amount.cell(row=40, column=1).value="25"
-                amount.cell(row=41, column=1).value="26"
-                amount.cell(row=42, column=1).value="27"
-                amount.cell(row=43, column=1).value="27.1"
-                amount.cell(row=44, column=1).value="27.2"
-                amount.cell(row=45, column=1).value="27.3"
-                amount.cell(row=46, column=1).value="28"
-                amount.cell(row=47, column=1).value="29"
-                amount.cell(row=48, column=1).value="30"
-                amount.cell(row=49, column=1).value="30.1"
-                amount.cell(row=50, column=1).value="31"
-                amount.cell(row=51, column=1).value="31.1"
-                amount.cell(row=52, column=1).value="32"
-                amount.cell(row=53, column=1).value="33"
-                amount.cell(row=54, column=1).value="34"
-                amount.cell(row=55, column=1).value="35"
-                amount.cell(row=56, column=1).value="36"
-                amount.cell(row=57, column=1).value="37"
-                amount.cell(row=58, column=1).value="38"
-                amount.cell(row=59, column=1).value="39"
-                amount.cell(row=60, column=1).value="40"
-                amount.cell(row=61, column=1).value="41"
-                amount.cell(row=62, column=1).value="42"
-                amount.cell(row=63, column=1).value="43"
-                amount.cell(row=64, column=1).value="44"
-                amount.cell(row=65, column=1).value="45"
-                amount.cell(row=66, column=1).value="46"
 
-                amount.cell(row=68, column=1).value="A"
-                amount.cell(row=69, column=1).value="A1"
-                amount.cell(row=70, column=1).value="B"
-                amount.cell(row=71, column=1).value="B.1"
 
-                amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
-                amount.cell(row=73, column=2).value='Total an precedent'
-                amount.cell(row=73, column=3).value='An curent (inclusiv perioada de raportare)'
+            amount.cell(row=6, column=2).value="1"
+            amount.cell(row=6, column=3).value="2"
+            amount.cell(row=7, column=1).value="Row"
+            amount.cell(row=7, column=2).value="Taxable basis"
+            amount.cell(row=7, column=3).value="VAT amount"
+            amount.cell(row=7, column=4).value="Comments"
+            amount.cell(row=7, column=5).value="Journal Source"
+            amount.cell(row=7, column=6).value="Flag Suma Control"
+            amount.cell(row=7, column=7).value="Suma Control"
+            amount.cell(row=8, column=1).value="1"
+            amount.cell(row=9, column=1).value="2"
+            amount.cell(row=10, column=1).value="3"
+            amount.cell(row=11, column=1).value="3.1"
+            amount.cell(row=12, column=1).value="4"
+            amount.cell(row=13, column=1).value="5"
+            amount.cell(row=14, column=1).value="5.1"
+            amount.cell(row=15, column=1).value="6"
+            amount.cell(row=16, column=1).value="7"
+            amount.cell(row=17, column=1).value="7.1"
+            amount.cell(row=18, column=1).value="8"
+            amount.cell(row=19, column=1).value="9"
+            amount.cell(row=20, column=1).value="10"
+            amount.cell(row=21, column=1).value="11"
+            amount.cell(row=22, column=1).value="12"
+            amount.cell(row=23, column=1).value="12.1"
+            amount.cell(row=24, column=1).value="12.2"
+            amount.cell(row=25, column=1).value="12.3"
+            amount.cell(row=26, column=1).value="13"
+            amount.cell(row=27, column=1).value="14"
+            amount.cell(row=28, column=1).value="15"
+            amount.cell(row=29, column=1).value="16"
+            amount.cell(row=30, column=1).value="17"
+            amount.cell(row=31, column=1).value="18"
+            amount.cell(row=32, column=1).value="19"
+            amount.cell(row=33, column=1).value="20"
+            amount.cell(row=34, column=1).value="20.1"
+            amount.cell(row=35, column=1).value="21"
+            amount.cell(row=36, column=1).value="22"
+            amount.cell(row=37, column=1).value="22.1"
+            amount.cell(row=38, column=1).value="23"
+            amount.cell(row=39, column=1).value="24"
+            amount.cell(row=40, column=1).value="25"
+            amount.cell(row=41, column=1).value="26"
+            amount.cell(row=42, column=1).value="27"
+            amount.cell(row=43, column=1).value="27.1"
+            amount.cell(row=44, column=1).value="27.2"
+            amount.cell(row=45, column=1).value="27.3"
+            amount.cell(row=46, column=1).value="28"
+            amount.cell(row=47, column=1).value="29"
+            amount.cell(row=48, column=1).value="30"
+            amount.cell(row=49, column=1).value="30.1"
+            amount.cell(row=50, column=1).value="31"
+            amount.cell(row=51, column=1).value="31.1"
+            amount.cell(row=52, column=1).value="32"
+            amount.cell(row=53, column=1).value="33"
+            amount.cell(row=54, column=1).value="34"
+            amount.cell(row=55, column=1).value="35"
+            amount.cell(row=56, column=1).value="36"
+            amount.cell(row=57, column=1).value="37"
+            amount.cell(row=58, column=1).value="38"
+            amount.cell(row=59, column=1).value="39"
+            amount.cell(row=60, column=1).value="40"
+            amount.cell(row=61, column=1).value="41"
+            amount.cell(row=62, column=1).value="42"
+            amount.cell(row=63, column=1).value="43"
+            amount.cell(row=64, column=1).value="44"
+            amount.cell(row=65, column=1).value="45"
+            amount.cell(row=66, column=1).value="46"
 
-                amount.cell(row=74, column=2).value="=0"
-                amount.cell(row=74, column=3).value="=0"
+            amount.cell(row=68, column=1).value="A"
+            amount.cell(row=69, column=1).value="A1"
+            amount.cell(row=70, column=1).value="B"
+            amount.cell(row=71, column=1).value="B.1"
+
+            amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
+            amount.cell(row=73, column=2).value='Total an precedent'
+            amount.cell(row=73, column=3).value='An curent (inclusiv perioada de raportare)'
+
+            amount.cell(row=74, column=2).value="=0"
+            amount.cell(row=74, column=3).value="=0"
+        
+            listadend300ro=['Livrari intracomunitare de bunuri, scutite conform art. 294 alin.(2)lit.a) si d) din Codul fiscal','Regularizari livrari intracomunitare scutite conform art. 294 alin.(2)lit.a) si d) din Codul fiscal','Livrari de bunuri sau prestari de servicii pentru care locul livrarii/ locul prestarii este in afara Romaniei (in UE sau in afara UE), precum si livrari intracomunitare de bunuri, scutite conformart. 294 alin.(2) lit.b) si c) din Codul fiscal, din care:','Prestari de servicii intracomunitare care nu beneficiaza de scutire in statul membru in care taxa este datorata','Regularizari privind prestarile de servicii intracomunitare care nu beneficiaza de scutire in statul membru in care taxa este datorata','Achizitii intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa), din care:','Achizitii intracomunitare pentru care cumparatorul este obligat la plata TVA (taxare inversa), iar furnizorul este inregistrat in scopuri de TVA in statul membru din care a avut loc livrarea intracomunitara','Regularizari privind achizitiile intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa)','Achizitii de bunuri, altele decat cele de la rd. 5 si 6 si achizitii de servicii pentru care beneficiarul din Romania este obligat la plata TVA (taxare inversa), din care:','Achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Regularizari privind achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Livrari de bunuri si prestari de servicii taxabile cu cota 19%','Livrari de bunuri si prestari de servicii taxabile cu cota 9%','Livrari de bunuri si prestari de servicii taxabile cu cota 5%','Achizitii de bunuri si servicii supuse masurilor de simplificare pentru care beneficiarul este obligat la plata TVA (taxare inversa), din care','Achizitii de bunuri si servicii, taxabile cu cota 19%','Achizitii de bunuri, taxabile cu cota 9%','Achizitii de bunuri, taxabile cu cota 5%','Livrari de bunuri si prestari de servicii supuse masurilor de simplificare (taxare inversa)','Livrari de bunuri si prestari de servicii scutite cu drept de deducere, altele decat cele de la rd. 1-3','Livrari de bunuri si prestari de servicii scutite fara drept de deducere','Regularizari taxa colectata','Prestari de servicii intracomunitare conform art.278 alin.(8)din Codul fiscal pentru care locul prestarii este în Romania','Regularizari privind prestari de servicii intracomunitare conform art.278 alin.(8) din Codul fiscal pentru care locul prestarii este in Romania','TOTAL TAXA COLECTATA (suma de la rd. 1 pana la rd. 18, cu exceptia celor de la rd. 3.1, 5.1 , 7.1, 12.1, 12.2 , 12.3)','Achizitii intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa), din care:','Achizitii intracomunitare pentru care cumparatorul este obligat la plata TVA (taxare inversa), iar furnizorul este inregistrat in scopuri de TVA in statul membru din care a avut loc livrarea','Regularizari privind achizitiile intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa)','Achizitii de bunuri, altele decat cele de la rd.20 şi 21 si achizitii de servicii pentru care beneficiarul din Romania este obligatla plata TVA (taxare inversa), din care:','Achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Regularizari privind achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Achizitii de bunuri si servicii taxabile cu cota de 19%, altele decat cele de la rd. 27','Achizitii de bunuri si servicii taxabile cu cota de 9%','Achizitii de bunuri si servicii taxabile cu cota de 5%','Achizitii de bunuri si servicii supuse masurilor de simplificare pentru care beneficiarul este obligat la plata TVA (taxare inversa), din care:','Achizitii de bunuri si servicii, taxabile cu cota 19%','Achizitii de bunuri, taxabile cu cota 9%','Achizitii de bunuri, taxabile cu cota 5%','Compensatia in cota forfetara pentru achizitii de produse si servicii agricole de la furnizori care aplica regimul special pentru agricultori','Regularizari privind compensatia in cota forfetara','Achizitii de bunuri si servicii scutite de taxa sau neimpozabile, din care:','Achizitii de servicii intracomunitare scutite de taxa','TOTAL TAXA DEDUCTIBILA (suma de la rd. 20 pana la rd. 29, cu exceptia celor de la rd. 20.1, 22.1, 27.1, 27.2, 27.3)','','SUB-TOTAL TAXA DEDUSA CONFORM ART. 297 SI ART. 298SAU ART. 300 SI ART. 298DIN CODUL FISCAL SI COMPENSATIE IN COTA FORFETARA','TVA efectiv restituita cumparatorilor straini, inclusiv comisionul unitatilor autorizate','Regularizari taxa dedusa','Ajustari conform pro-rata / ajustari de taxa','TOTAL TAXA DEDUSA (rd. 32 + rd. 33 + rd. 34 + rd. 35)','Suma negativa a TVA in perioada de raportare (rd. 36 - rd. 19)','Taxa de plata in perioada de raportare (rd. 19 - rd. 36)','Soldul TVA de plata din decontul perioadei fiscale precedente (rd. 45 din decontul perioadei fiscale precedente) neachitate pana la data depunerii decontului de TVA','Diferente de TVA de plata stabilite de organele de inspectie fiscala prin decizie comunicata si neachitate pana la data depunerii decontului de TVA','TVA de plata cumulat (rd. 38 + rd. 39 + rd. 40)','Soldul sumei negative a TVA reportate din perioada precedenta pentru care nu s-a solicitat rambursare (rd. 46 din decontul perioadei fiscale precedente)','Diferente negative de TVA stabilite de organele de inspectie fiscala prin decizie comunicata pana la data depunerii decontului de TVA','Suma negativa a TVA cumulate (rd. 37 + rd. 42 + rd. 43)','Sold TVA de plata la sfarsitul perioadei de raportare (rd. 41 - rd. 44)','Soldul sumei negative de TVA la sfarsitul perioadei de raportare (rd. 44 - rd. 41)','','Livrari de bunuri si prestari de servicii realizate a caror TVA aferenta a ramas neexigibila, existenta in sold la sfarsitul perioadei de raportare, ca urmare a aplicarii sistemului TVA la incasare, din care','Livrari de bunuri si prestari de servicii realizate in ultimele 6 luni/2 trimestre calendaristice','Achizitii de bunuri si servicii realizate pentru care nu s-a exercitat dreptul de deducere a TVA aferenta, existenta in sold la sfarsitul perioadei de raportare, ca urmare a aplicarii art. 297 alin (2) si (3) din Codul fiscal, din care:','Achizitii de bunuri si servicii realizate in ultimele 6 luni/2 trimestre calendaristice']
+
+
+            for po in range(0,len(listadend300ro)):
+                amount.cell(row=po+8,column=8).value=listadend300ro[po] 
+
+            # amount.cell(row=41, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y3",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+            # amount.cell(row=41, column=2).value='=SUMIF(Purchases!'+str(criteriu)+":"+str(criteriu)+',">0",Purchases!'+str(suma)+":"+str(suma)+')'
+            # amount.cell(row=41, column=2).value='=SUMIF(Purchases!A:A,">0",Purchases!'+str(suma)+":"+str(suma)+')'
+            # if(denumirefisiere=="NAM"):
+            amount.cell(row=16, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF),0)'
+
             
-                listadend300ro=['Livrari intracomunitare de bunuri, scutite conform art. 294 alin.(2)lit.a) si d) din Codul fiscal','Regularizari livrari intracomunitare scutite conform art. 294 alin.(2)lit.a) si d) din Codul fiscal','Livrari de bunuri sau prestari de servicii pentru care locul livrarii/ locul prestarii este in afara Romaniei (in UE sau in afara UE), precum si livrari intracomunitare de bunuri, scutite conformart. 294 alin.(2) lit.b) si c) din Codul fiscal, din care:','Prestari de servicii intracomunitare care nu beneficiaza de scutire in statul membru in care taxa este datorata','Regularizari privind prestarile de servicii intracomunitare care nu beneficiaza de scutire in statul membru in care taxa este datorata','Achizitii intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa), din care:','Achizitii intracomunitare pentru care cumparatorul este obligat la plata TVA (taxare inversa), iar furnizorul este inregistrat in scopuri de TVA in statul membru din care a avut loc livrarea intracomunitara','Regularizari privind achizitiile intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa)','Achizitii de bunuri, altele decat cele de la rd. 5 si 6 si achizitii de servicii pentru care beneficiarul din Romania este obligat la plata TVA (taxare inversa), din care:','Achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Regularizari privind achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Livrari de bunuri si prestari de servicii taxabile cu cota 19%','Livrari de bunuri si prestari de servicii taxabile cu cota 9%','Livrari de bunuri si prestari de servicii taxabile cu cota 5%','Achizitii de bunuri si servicii supuse masurilor de simplificare pentru care beneficiarul este obligat la plata TVA (taxare inversa), din care','Achizitii de bunuri si servicii, taxabile cu cota 19%','Achizitii de bunuri, taxabile cu cota 9%','Achizitii de bunuri, taxabile cu cota 5%','Livrari de bunuri si prestari de servicii supuse masurilor de simplificare (taxare inversa)','Livrari de bunuri si prestari de servicii scutite cu drept de deducere, altele decat cele de la rd. 1-3','Livrari de bunuri si prestari de servicii scutite fara drept de deducere','Regularizari taxa colectata','Prestari de servicii intracomunitare conform art.278 alin.(8)din Codul fiscal pentru care locul prestarii este în Romania','Regularizari privind prestari de servicii intracomunitare conform art.278 alin.(8) din Codul fiscal pentru care locul prestarii este in Romania','TOTAL TAXA COLECTATA (suma de la rd. 1 pana la rd. 18, cu exceptia celor de la rd. 3.1, 5.1 , 7.1, 12.1, 12.2 , 12.3)','Achizitii intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa), din care:','Achizitii intracomunitare pentru care cumparatorul este obligat la plata TVA (taxare inversa), iar furnizorul este inregistrat in scopuri de TVA in statul membru din care a avut loc livrarea','Regularizari privind achizitiile intracomunitare de bunuri pentru care cumparatorul este obligat la plata TVA (taxare inversa)','Achizitii de bunuri, altele decat cele de la rd.20 şi 21 si achizitii de servicii pentru care beneficiarul din Romania este obligatla plata TVA (taxare inversa), din care:','Achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Regularizari privind achizitii de servicii intracomunitare pentru care beneficiarul este obligat la plata TVA (taxare inversa)','Achizitii de bunuri si servicii taxabile cu cota de 19%, altele decat cele de la rd. 27','Achizitii de bunuri si servicii taxabile cu cota de 9%','Achizitii de bunuri si servicii taxabile cu cota de 5%','Achizitii de bunuri si servicii supuse masurilor de simplificare pentru care beneficiarul este obligat la plata TVA (taxare inversa), din care:','Achizitii de bunuri si servicii, taxabile cu cota 19%','Achizitii de bunuri, taxabile cu cota 9%','Achizitii de bunuri, taxabile cu cota 5%','Compensatia in cota forfetara pentru achizitii de produse si servicii agricole de la furnizori care aplica regimul special pentru agricultori','Regularizari privind compensatia in cota forfetara','Achizitii de bunuri si servicii scutite de taxa sau neimpozabile, din care:','Achizitii de servicii intracomunitare scutite de taxa','TOTAL TAXA DEDUCTIBILA (suma de la rd. 20 pana la rd. 29, cu exceptia celor de la rd. 20.1, 22.1, 27.1, 27.2, 27.3)','','SUB-TOTAL TAXA DEDUSA CONFORM ART. 297 SI ART. 298SAU ART. 300 SI ART. 298DIN CODUL FISCAL SI COMPENSATIE IN COTA FORFETARA','TVA efectiv restituita cumparatorilor straini, inclusiv comisionul unitatilor autorizate','Regularizari taxa dedusa','Ajustari conform pro-rata / ajustari de taxa','TOTAL TAXA DEDUSA (rd. 32 + rd. 33 + rd. 34 + rd. 35)','Suma negativa a TVA in perioada de raportare (rd. 36 - rd. 19)','Taxa de plata in perioada de raportare (rd. 19 - rd. 36)','Soldul TVA de plata din decontul perioadei fiscale precedente (rd. 45 din decontul perioadei fiscale precedente) neachitate pana la data depunerii decontului de TVA','Diferente de TVA de plata stabilite de organele de inspectie fiscala prin decizie comunicata si neachitate pana la data depunerii decontului de TVA','TVA de plata cumulat (rd. 38 + rd. 39 + rd. 40)','Soldul sumei negative a TVA reportate din perioada precedenta pentru care nu s-a solicitat rambursare (rd. 46 din decontul perioadei fiscale precedente)','Diferente negative de TVA stabilite de organele de inspectie fiscala prin decizie comunicata pana la data depunerii decontului de TVA','Suma negativa a TVA cumulate (rd. 37 + rd. 42 + rd. 43)','Sold TVA de plata la sfarsitul perioadei de raportare (rd. 41 - rd. 44)','Soldul sumei negative de TVA la sfarsitul perioadei de raportare (rd. 44 - rd. 41)','','Livrari de bunuri si prestari de servicii realizate a caror TVA aferenta a ramas neexigibila, existenta in sold la sfarsitul perioadei de raportare, ca urmare a aplicarii sistemului TVA la incasare, din care','Livrari de bunuri si prestari de servicii realizate in ultimele 6 luni/2 trimestre calendaristice','Achizitii de bunuri si servicii realizate pentru care nu s-a exercitat dreptul de deducere a TVA aferenta, existenta in sold la sfarsitul perioadei de raportare, ca urmare a aplicarii art. 297 alin (2) si (3) din Codul fiscal, din care:','Achizitii de bunuri si servicii realizate in ultimele 6 luni/2 trimestre calendaristice']
+            # for iiii in range(0,len(denumirefisiere)):   
 
+            # amount.cell(row=16, column=3).value="aaaaa"
+            amount.cell(row=17, column=2).value='=B16'
+            amount.cell(row=17, column=3).value='=B17'
+            amount.cell(row=19, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!I:I),0)'
+            amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!K:K),0)'
+            amount.cell(row=21, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!M:M),0)'
+            amount.cell(row=19, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!J:J),0)'
+            amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!AD:AD),0)'
+            amount.cell(row=32, column=2).value='=B8+B10+B13+B16+B27+B15+B18+B31+B30+B29+B28+B26+B22+B21+B20+B19'
+            amount.cell(row=32, column=3).value='=C8+C10+C13+C16+C27+C15+C18+C31+C30+C29+C28+C26+C22+C21+C20+C19'
+            amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF),0)'
+            amount.cell(row=36, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AG:AG),0)'
+            amount.cell(row=37, column=2).value='=B36'
+            amount.cell(row=37, column=3).value='=C36'
+            amount.cell(row=39, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!I:I)+SUMIF(Purchases!A:A,">0",Purchases!S:S),0)'
+            amount.cell(row=39, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!J:J)+SUMIF(Purchases!A:A,">0",Purchases!T:T),0)'
+            amount.cell(row=40, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!K:K),0)'
+            amount.cell(row=40, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!L:L),0)'
+            amount.cell(row=41, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!M:M),0)'
+            amount.cell(row=41, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!N:N),0)'
+            amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AE:AE),0)'
+            amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
+            amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
+            amount.cell(row=52, column=3).value='=ROUND(C50+C51-SUMIF(Purchases!A:A,">0",Purchases!AR:AR),0)'
+            amount.cell(row=56, column=3).value='=SUM(C52:C55)'
+            amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
+            amount.cell(row=58, column=3).value='=C32-C56'
+            amount.cell(row=59, column=3).value='=0'
+            amount.cell(row=61, column=3).value='=SUM(C58:C60)'
+            amount.cell(row=64, column=3).value='=C57+C62+C63'
+            amount.cell(row=65, column=3).value='=IF((C61-C64)>0,C61-C64,0)'
+            amount.cell(row=66, column=3).value='=IF((C64-C61)<0,0,C64-C61)'
+            amount.cell(row=8, column=2).value='=0'
+            amount.cell(row=8, column=3).value='=0'
+            amount.cell(row=9, column=2).value='=0'
+            amount.cell(row=9, column=3).value='=0'
+            amount.cell(row=10, column=2).value='=0'
+            amount.cell(row=10, column=3).value='=0'
+            amount.cell(row=11, column=2).value='=0'
+            amount.cell(row=11, column=3).value='=0'
+            amount.cell(row=12, column=2).value='=0'
+            amount.cell(row=12, column=3).value='=0'
+            amount.cell(row=13, column=2).value='=0'
+            amount.cell(row=13, column=3).value='=0'
+            amount.cell(row=14, column=2).value='=0'
+            amount.cell(row=14, column=3).value='=0'
+            amount.cell(row=15, column=2).value='=0'
+            amount.cell(row=15, column=3).value='=0'
+            amount.cell(row=16, column=3).value='=0'
+            amount.cell(row=18, column=2).value='=0'
+            amount.cell(row=18, column=3).value='=0'
+            amount.cell(row=20, column=3).value='=0'
+            amount.cell(row=21, column=3).value='=0'
+            amount.cell(row=22, column=2).value='=0'
+            amount.cell(row=22, column=3).value='=0'
+            amount.cell(row=23, column=2).value='=0'
+            amount.cell(row=23, column=3).value='=0'
+            amount.cell(row=24, column=2).value='=0'
+            amount.cell(row=24, column=3).value='=0'
+            amount.cell(row=25, column=2).value='=0'
+            amount.cell(row=25, column=3).value='=0'
+            amount.cell(row=26, column=2).value='=0'
+            amount.cell(row=26, column=3).value='=0'
+            amount.cell(row=27, column=3).value='=0'
+            amount.cell(row=28, column=2).value='=0'
+            amount.cell(row=28, column=3).value='=0'
+            amount.cell(row=29, column=2).value='=0'
+            amount.cell(row=29, column=3).value='=0'
+            amount.cell(row=30, column=2).value='=0'
+            amount.cell(row=30, column=3).value='=0'
+            amount.cell(row=31, column=2).value='=0'
+            amount.cell(row=31, column=3).value='=0'
+            amount.cell(row=33, column=2).value='=0'
+            amount.cell(row=33, column=3).value='=0'
+            amount.cell(row=34, column=2).value='=0'
+            amount.cell(row=34, column=3).value='=0'
+            amount.cell(row=35, column=2).value='=0'
+            amount.cell(row=35, column=3).value='=0'
+            amount.cell(row=38, column=2).value='=0'
+            amount.cell(row=38, column=3).value='=0'
+            amount.cell(row=42, column=2).value='=0'
+            amount.cell(row=42, column=3).value='=0'
+            amount.cell(row=43, column=2).value='=0'
+            amount.cell(row=43, column=3).value='=0'
+            amount.cell(row=44, column=2).value='=0'
+            amount.cell(row=44, column=3).value='=0'
+            amount.cell(row=45, column=2).value='=0'
+            amount.cell(row=45, column=3).value='=0'
+            amount.cell(row=46, column=2).value='=0'
+            amount.cell(row=46, column=3).value='=0'
+            amount.cell(row=47, column=2).value='=0'
+            amount.cell(row=47, column=3).value='=0'
+            amount.cell(row=48, column=3).value='=0'
+            amount.cell(row=49, column=2).value='=0'
+            amount.cell(row=49, column=3).value='=0'
+            amount.cell(row=51, column=2).value='=0'
+            amount.cell(row=51, column=3).value='=0'
+            amount.cell(row=52, column=2).value='=0'
+            amount.cell(row=53, column=2).value='=0'
+            amount.cell(row=53, column=3).value='=0'
+            amount.cell(row=54, column=2).value='=0'
+            amount.cell(row=54, column=3).value='=0'
+            amount.cell(row=55, column=2).value='=0'
+            amount.cell(row=55, column=3).value='=0'
+            amount.cell(row=56, column=2).value='=0'
+            amount.cell(row=57, column=2).value='=0'
+            amount.cell(row=58, column=2).value='=0'
+            amount.cell(row=59, column=2).value='=0'
+            amount.cell(row=60, column=2).value='=0'
+            amount.cell(row=60, column=3).value='=0'
+            amount.cell(row=61, column=2).value='=0'
+            amount.cell(row=62, column=2).value='=0'
+            amount.cell(row=62, column=3).value='=0'
+            amount.cell(row=63, column=2).value='=0'
+            amount.cell(row=63, column=3).value='=0'
+            amount.cell(row=64, column=2).value='=0'
+            amount.cell(row=65, column=2).value='=0'
+            amount.cell(row=66, column=2).value='=0'
+            amount.cell(row=68, column=2).value='=0'
+            amount.cell(row=68, column=3).value='=0'
+            amount.cell(row=69, column=2).value='=0'
+            amount.cell(row=69, column=3).value='=0'
+            amount.cell(row=70, column=2).value='=0'
+            amount.cell(row=70, column=3).value='=0'
+            amount.cell(row=71, column=2).value='=0'
+            amount.cell(row=71, column=3).value='=0'
 
-                for po in range(0,len(listadend300ro)):
-                    amount.cell(row=po+8,column=8).value=listadend300ro[po] 
+            for a1 in range(8, 13):
+                amount.cell(row=a1, column=7).value='=B{0}'.format(a1)
 
-                # amount.cell(row=41, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y3",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-                # amount.cell(row=41, column=2).value='=SUMIF(Purchases!'+str(criteriu)+":"+str(criteriu)+',">0",Purchases!'+str(suma)+":"+str(suma)+')'
-                # amount.cell(row=41, column=2).value='=SUMIF(Purchases!A:A,">0",Purchases!'+str(suma)+":"+str(suma)+')'
-                # if(denumirefisiere=="NAM"):
-                amount.cell(row=16, column=2).value='=SUMIF(Purchases!A:A,">0",Purchases!AF:AF)'
+            for b1 in range(13, 26):
+                amount.cell(row=b1, column=7).value='=SUM(B{0}:C{0})'.format(b1)
 
-                
-                # for iiii in range(0,len(denumirefisiere)):   
+            for c1 in range(26, 29):
+                amount.cell(row=c1, column=7).value='=B{0}'.format(c1)
+            
+            for d1 in range(29, 46):
+                amount.cell(row=d1, column=7).value='=SUM(B{0}:C{0})'.format(d1)
 
-                # amount.cell(row=16, column=3).value="aaaaa"
-                amount.cell(row=17, column=2).value='=B16'
-                amount.cell(row=17, column=3).value='=B17'
-                amount.cell(row=19, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!G:G),0)'
-                amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!I:I),0)'
-                amount.cell(row=21, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!K:K),0)'
-                amount.cell(row=19, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!H:H),0)'
-                amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!AB:AB),0)'
+            amount.cell(row=46, column=7).value='=C46'
+            amount.cell(row=47, column=7).value='=C47'
+            amount.cell(row=48, column=7).value='=B48'
+            amount.cell(row=49, column=7).value='=B49'
+            amount.cell(row=50, column=7).value='=SUM(B50:C50)'
+            amount.cell(row=51, column=7).value='=C51'
+            amount.cell(row=52, column=7).value='=C52'
+            amount.cell(row=53, column=7).value='=SUM(B53:C53)'
+            amount.cell(row=54, column=7).value='=SUM(B54:C54)'
+
+            for e1 in range(55, 67):
+                amount.cell(row=e1, column=7).value='=C{0}'.format(e1)
+
+            if( denumirefisiere[iiii]=="FFR"):
+                print(denumirefisiere[iiii])
+                amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!Z:Z),0)'
+                amount.cell(row=16, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AH:AH),0)' 
+                amount.cell(row=16, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AI:AI),0)'                    
+                amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AH:AH),0)' 
+                amount.cell(row=36, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AI:AI),0)'    
+                amount.cell(row=17, column=2).value='=0'
+                amount.cell(row=17, column=3).value='=0'
+                amount.cell(row=20, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!L:L),0)' 
+                amount.cell(row=21, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!N:N),0)' 
+                amount.cell(row=27, column=2).value='=0'
+                amount.cell(row=37, column=2).value='=0'
+                amount.cell(row=37, column=3).value='=0'
+                amount.cell(row=40, column=3).value='=0'
+                amount.cell(row=41, column=3).value='=0'
+                amount.cell(row=52, column=2).value='=B50+B51'
+                amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AA:AA),0)'
+                amount.cell(row=70, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AB:AB),0)'
+                amount.cell(row=71, column=2).value='=B70'
+                amount.cell(row=71, column=3).value='=C70'
+            else:
+                print(denumirefisiere[iiii])
+                # amount.cell(row=16, column=3).value='=SUMIF(Purchases!A:A,">0",Purchases!AG:AG)'
+            if( denumirefisiere[iiii]=="CCR"):
+                print(denumirefisiere[iiii])
+                amount.cell(row=8, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!R:R)-18,0)'
+                amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!P:P)-16,0)'
+                amount.cell(row=11, column=2).value='=B10'
+                amount.cell(row=13, column=2).value='=B33'
+                amount.cell(row=13, column=3).value='=C33'
+                amount.cell(row=14, column=2).value='=B34'
+                amount.cell(row=14, column=3).value='=C34'
+                amount.cell(row=15, column=2).value='=B35'
+                amount.cell(row=15, column=3).value='=C35'
+                amount.cell(row=16, column=2).value='=B36'
+                amount.cell(row=16, column=3).value='=C36'
+                amount.cell(row=17, column=2).value='=B37'
+                amount.cell(row=17, column=3).value='=C37'
+                amount.cell(row=19, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!G:G)-7,0)'
+                amount.cell(row=19, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!H:H)-8,0)'
+                amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!I:I)-9,0)'
+                amount.cell(row=20, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!J:J)-10,0)'
+                amount.cell(row=21, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!K:K)-11,0)'
+                amount.cell(row=21, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!L:L)-12,0)'
+                amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!V:V)-22,0)'
+                amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!W:W)-23,0)'
+                amount.cell(row=29, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!X:X)-24,0)'
                 amount.cell(row=32, column=2).value='=B8+B10+B13+B16+B27+B15+B18+B31+B30+B29+B28+B26+B22+B21+B20+B19'
                 amount.cell(row=32, column=3).value='=C8+C10+C13+C16+C27+C15+C18+C31+C30+C29+C28+C26+C22+C21+C20+C19'
-                amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF),0)'
-                amount.cell(row=36, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AG:AG),0)'
-                amount.cell(row=37, column=2).value='=B36'
-                amount.cell(row=37, column=3).value='=C36'
-                amount.cell(row=39, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!I:I)+SUMIF(Purchases!A:A,">0",Purchases!S:S),0)'
-                amount.cell(row=39, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!J:J)+SUMIF(Purchases!A:A,">0",Purchases!T:T),0)'
-                amount.cell(row=40, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!K:K),0)'
-                amount.cell(row=40, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!L:L),0)'
-                amount.cell(row=41, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!M:M),0)'
-                amount.cell(row=41, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!N:N),0)'
-                amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AE:AE),0)'
-                amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
-                amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
-                amount.cell(row=52, column=3).value='=ROUND(C50+C51-SUMIF(Purchases!A:A,">0",Purchases!AR:AR),0)'
-                amount.cell(row=56, column=3).value='=SUM(C52:C55)'
-                amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
-                amount.cell(row=58, column=3).value='=C32-C56'
-                amount.cell(row=59, column=3).value='=0'
-                amount.cell(row=61, column=3).value='=SUM(C58:C60)'
-                amount.cell(row=64, column=3).value='=C57+C62+C63'
-                amount.cell(row=65, column=3).value='=IF((C61-C64)>0,C61-C64,0)'
-                amount.cell(row=66, column=3).value='=IF((C64-C61)<0,0,C64-C61)'
-                amount.cell(row=8, column=2).value='=0'
-                amount.cell(row=8, column=3).value='=0'
-                amount.cell(row=9, column=2).value='=0'
-                amount.cell(row=9, column=3).value='=0'
-                amount.cell(row=10, column=2).value='=0'
-                amount.cell(row=10, column=3).value='=0'
-                amount.cell(row=11, column=2).value='=0'
-                amount.cell(row=11, column=3).value='=0'
-                amount.cell(row=12, column=2).value='=0'
-                amount.cell(row=12, column=3).value='=0'
-                amount.cell(row=13, column=2).value='=0'
-                amount.cell(row=13, column=3).value='=0'
-                amount.cell(row=14, column=2).value='=0'
-                amount.cell(row=14, column=3).value='=0'
-                amount.cell(row=15, column=2).value='=0'
-                amount.cell(row=15, column=3).value='=0'
-                amount.cell(row=16, column=3).value='=0'
-                amount.cell(row=18, column=2).value='=0'
-                amount.cell(row=18, column=3).value='=0'
-                amount.cell(row=20, column=3).value='=0'
-                amount.cell(row=21, column=3).value='=0'
-                amount.cell(row=22, column=2).value='=0'
-                amount.cell(row=22, column=3).value='=0'
-                amount.cell(row=23, column=2).value='=0'
-                amount.cell(row=23, column=3).value='=0'
-                amount.cell(row=24, column=2).value='=0'
-                amount.cell(row=24, column=3).value='=0'
-                amount.cell(row=25, column=2).value='=0'
-                amount.cell(row=25, column=3).value='=0'
-                amount.cell(row=26, column=2).value='=0'
-                amount.cell(row=26, column=3).value='=0'
-                amount.cell(row=27, column=3).value='=0'
-                amount.cell(row=28, column=2).value='=0'
-                amount.cell(row=28, column=3).value='=0'
-                amount.cell(row=29, column=2).value='=0'
-                amount.cell(row=29, column=3).value='=0'
-                amount.cell(row=30, column=2).value='=0'
-                amount.cell(row=30, column=3).value='=0'
-                amount.cell(row=31, column=2).value='=0'
-                amount.cell(row=31, column=3).value='=0'
-                amount.cell(row=33, column=2).value='=0'
-                amount.cell(row=33, column=3).value='=0'
-                amount.cell(row=34, column=2).value='=0'
-                amount.cell(row=34, column=3).value='=0'
+                amount.cell(row=33, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AM:AM)-B35-38,0)'
+                amount.cell(row=33, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AN:AN)-C35-39,0)'
+                amount.cell(row=34, column=2).value='=B33'
+                amount.cell(row=34, column=3).value='=C33'
                 amount.cell(row=35, column=2).value='=0'
                 amount.cell(row=35, column=3).value='=0'
-                amount.cell(row=38, column=2).value='=0'
-                amount.cell(row=38, column=3).value='=0'
-                amount.cell(row=42, column=2).value='=0'
-                amount.cell(row=42, column=3).value='=0'
-                amount.cell(row=43, column=2).value='=0'
-                amount.cell(row=43, column=3).value='=0'
-                amount.cell(row=44, column=2).value='=0'
-                amount.cell(row=44, column=3).value='=0'
-                amount.cell(row=45, column=2).value='=0'
-                amount.cell(row=45, column=3).value='=0'
-                amount.cell(row=46, column=2).value='=0'
-                amount.cell(row=46, column=3).value='=0'
-                amount.cell(row=47, column=2).value='=0'
-                amount.cell(row=47, column=3).value='=0'
-                amount.cell(row=48, column=3).value='=0'
-                amount.cell(row=49, column=2).value='=0'
-                amount.cell(row=49, column=3).value='=0'
-                amount.cell(row=51, column=2).value='=0'
-                amount.cell(row=51, column=3).value='=0'
-                amount.cell(row=52, column=2).value='=0'
-                amount.cell(row=53, column=2).value='=0'
-                amount.cell(row=53, column=3).value='=0'
-                amount.cell(row=54, column=2).value='=0'
-                amount.cell(row=54, column=3).value='=0'
-                amount.cell(row=55, column=2).value='=0'
-                amount.cell(row=55, column=3).value='=0'
-                amount.cell(row=56, column=2).value='=0'
-                amount.cell(row=57, column=2).value='=0'
-                amount.cell(row=58, column=2).value='=0'
-                amount.cell(row=59, column=2).value='=0'
-                amount.cell(row=60, column=2).value='=0'
-                amount.cell(row=60, column=3).value='=0'
-                amount.cell(row=61, column=2).value='=0'
-                amount.cell(row=62, column=2).value='=0'
-                amount.cell(row=62, column=3).value='=0'
-                amount.cell(row=63, column=2).value='=0'
-                amount.cell(row=63, column=3).value='=0'
-                amount.cell(row=64, column=2).value='=0'
-                amount.cell(row=65, column=2).value='=0'
-                amount.cell(row=66, column=2).value='=0'
-                amount.cell(row=68, column=2).value='=0'
-                amount.cell(row=68, column=3).value='=0'
-                amount.cell(row=69, column=2).value='=0'
-                amount.cell(row=69, column=3).value='=0'
-                amount.cell(row=70, column=2).value='=0'
-                amount.cell(row=70, column=3).value='=0'
-                amount.cell(row=71, column=2).value='=0'
-                amount.cell(row=71, column=3).value='=0'
-
-                for a1 in range(8, 13):
-                    amount.cell(row=a1, column=7).value='=B{0}'.format(a1)
-
-                for b1 in range(13, 26):
-                    amount.cell(row=b1, column=7).value='=SUM(B{0}:C{0})'.format(b1)
-
-                for c1 in range(26, 29):
-                    amount.cell(row=c1, column=7).value='=B{0}'.format(c1)
-                
-                for d1 in range(29, 46):
-                    amount.cell(row=d1, column=7).value='=SUM(B{0}:C{0})'.format(d1)
-
-                amount.cell(row=46, column=7).value='=C46'
-                amount.cell(row=47, column=7).value='=C47'
-                amount.cell(row=48, column=7).value='=B48'
-                amount.cell(row=49, column=7).value='=B49'
-                amount.cell(row=50, column=7).value='=SUM(B50:C50)'
-                amount.cell(row=51, column=7).value='=C51'
-                amount.cell(row=52, column=7).value='=C52'
-                amount.cell(row=53, column=7).value='=SUM(B53:C53)'
-                amount.cell(row=54, column=7).value='=SUM(B54:C54)'
-
-                for e1 in range(55, 67):
-                    amount.cell(row=e1, column=7).value='=C{0}'.format(e1)
-
-                if( denumirefisiere[iiii]=="FFR"):
-                    print(denumirefisiere[iiii])
-                    amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!X:X),0)'
-                    amount.cell(row=16, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AH:AH),0)' 
-                    amount.cell(row=16, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AI:AI),0)'                    
-                    amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AH:AH),0)' 
-                    amount.cell(row=36, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AI:AI),0)'    
-                    amount.cell(row=17, column=2).value='=0'
-                    amount.cell(row=17, column=3).value='=0'
-                    amount.cell(row=20, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!J:J),0)' 
-                    amount.cell(row=21, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!L:L),0)' 
-                    amount.cell(row=27, column=2).value='=0'
-                    amount.cell(row=37, column=2).value='=0'
-                    amount.cell(row=37, column=3).value='=0'
-                    amount.cell(row=40, column=3).value='=0'
-                    amount.cell(row=41, column=3).value='=0'
-                    amount.cell(row=52, column=2).value='=B50+B51'
-                    amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AA:AA),0)'
-                    amount.cell(row=70, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AB:AB),0)'
-                    amount.cell(row=71, column=2).value='=B70'
-                    amount.cell(row=71, column=3).value='=C70'
-                else:
-                    print(denumirefisiere[iiii])
-                    # amount.cell(row=16, column=3).value='=SUMIF(Purchases!A:A,">0",Purchases!AG:AG)'
-                if( denumirefisiere[iiii]=="CCR"):
-                    print(denumirefisiere[iiii])
-                    amount.cell(row=8, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!R:R)-18,0)'
-                    amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!P:P)-16,0)'
-                    amount.cell(row=11, column=2).value='=B10'
-                    amount.cell(row=13, column=2).value='=B33'
-                    amount.cell(row=13, column=3).value='=C33'
-                    amount.cell(row=14, column=2).value='=B34'
-                    amount.cell(row=14, column=3).value='=C34'
-                    amount.cell(row=15, column=2).value='=B35'
-                    amount.cell(row=15, column=3).value='=C35'
-                    amount.cell(row=16, column=2).value='=B36'
-                    amount.cell(row=16, column=3).value='=C36'
-                    amount.cell(row=17, column=2).value='=B37'
-                    amount.cell(row=17, column=3).value='=C37'
-                    amount.cell(row=19, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!G:G)-7,0)'
-                    amount.cell(row=19, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!H:H)-8,0)'
-                    amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!I:I)-9,0)'
-                    amount.cell(row=20, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!J:J)-10,0)'
-                    amount.cell(row=21, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!K:K)-11,0)'
-                    amount.cell(row=21, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!L:L)-12,0)'
-                    amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!V:V)-22,0)'
-                    amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!W:W)-23,0)'
-                    amount.cell(row=29, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!X:X)-24,0)'
-                    amount.cell(row=32, column=2).value='=B8+B10+B13+B16+B27+B15+B18+B31+B30+B29+B28+B26+B22+B21+B20+B19'
-                    amount.cell(row=32, column=3).value='=C8+C10+C13+C16+C27+C15+C18+C31+C30+C29+C28+C26+C22+C21+C20+C19'
-                    amount.cell(row=33, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AM:AM)-B35-38,0)'
-                    amount.cell(row=33, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AN:AN)-C35-39,0)'
-                    amount.cell(row=34, column=2).value='=B33'
-                    amount.cell(row=34, column=3).value='=C33'
-                    amount.cell(row=35, column=2).value='=0'
-                    amount.cell(row=35, column=3).value='=0'
-                    amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AO:AO)+SUMIF(Purchases!A:A,">0",Purchases!BA:BA)-40-52,0)'
-                    amount.cell(row=36, column=3).value='=ROUND(B36*19%,0)'
-                    amount.cell(row=37, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AO:AO)-40,0)'
-                    amount.cell(row=37, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AP:AP)-41,0)'
-                    amount.cell(row=58, column=3).value='=0'
-                    amount.cell(row=39, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!M:M)+SUMIF(Purchases!A:A,">0",Purchases!S:S)+SUMIF(Purchases!A:A,">0",Purchases!X:X)-12-18-23,0)'
-                    amount.cell(row=39, column=3).value='=ROUND(B39*19%,0)'
-                    amount.cell(row=40, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!O:O)+SUMIF(Purchases!A:A,">0",Purchases!Z:Z)-14-25,0)'
-                    amount.cell(row=40, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!P:P)+SUMIF(Purchases!A:A,">0",Purchases!AA:AA)-15-26,0)'
-                    amount.cell(row=41, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!Q:Q)+SUMIF(Purchases!A:A,">0",Purchases!AB:AB)-16-27,0)'
-                    amount.cell(row=41, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!R:R)+SUMIF(Purchases!A:A,">0",Purchases!AC:AC)-17-28,0)'
-                    amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AL:AL)-37,0)'
-                    amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-B43-B44-B45'
-                    amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-C43-C44-C45'
-                    amount.cell(row=52, column=3).value='=C50'
-                    amount.cell(row=56, column=3).value='=C52+C53+C54+C55'
-                    amount.cell(row=57, column=3).value='=C56-C32'
-                    amount.cell(row=64, column=3).value='=C57+C62+C63'
-                    amount.cell(row=66, column=3).value='=C64-C61'
-                    amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF)+SUMIF(Purchases!A:A,">0",Purchases!AH:AH)+SUMIF(Purchases!A:A,">0",Purchases!AJ:AJ)-31-33-35,0)'
-                    amount.cell(row=70, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AG:AG)+SUMIF(Purchases!A:A,">0",Purchases!AI:AI)+SUMIF(Purchases!A:A,">0",Purchases!AK:AK)-32-34-36,0)'
-                    amount.cell(row=71, column=2).value='=B70'
-                    amount.cell(row=71, column=3).value='=C70'
+                amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AO:AO)+SUMIF(Purchases!A:A,">0",Purchases!BA:BA)-40-52,0)'
+                amount.cell(row=36, column=3).value='=ROUND(B36*19%,0)'
+                amount.cell(row=37, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AO:AO)-40,0)'
+                amount.cell(row=37, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AP:AP)-41,0)'
+                amount.cell(row=58, column=3).value='=0'
+                amount.cell(row=39, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!M:M)+SUMIF(Purchases!A:A,">0",Purchases!S:S)+SUMIF(Purchases!A:A,">0",Purchases!X:X)-12-18-23,0)'
+                amount.cell(row=39, column=3).value='=ROUND(B39*19%,0)'
+                amount.cell(row=40, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!O:O)+SUMIF(Purchases!A:A,">0",Purchases!Z:Z)-14-25,0)'
+                amount.cell(row=40, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!P:P)+SUMIF(Purchases!A:A,">0",Purchases!AA:AA)-15-26,0)'
+                amount.cell(row=41, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!Q:Q)+SUMIF(Purchases!A:A,">0",Purchases!AB:AB)-16-27,0)'
+                amount.cell(row=41, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!R:R)+SUMIF(Purchases!A:A,">0",Purchases!AC:AC)-17-28,0)'
+                amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AL:AL)-37,0)'
+                amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-B43-B44-B45'
+                amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-C43-C44-C45'
+                amount.cell(row=52, column=3).value='=C50'
+                amount.cell(row=56, column=3).value='=C52+C53+C54+C55'
+                amount.cell(row=57, column=3).value='=C56-C32'
+                amount.cell(row=64, column=3).value='=C57+C62+C63'
+                amount.cell(row=66, column=3).value='=C64-C61'
+                amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF)+SUMIF(Purchases!A:A,">0",Purchases!AH:AH)+SUMIF(Purchases!A:A,">0",Purchases!AJ:AJ)-31-33-35,0)'
+                amount.cell(row=70, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AG:AG)+SUMIF(Purchases!A:A,">0",Purchases!AI:AI)+SUMIF(Purchases!A:A,">0",Purchases!AK:AK)-32-34-36,0)'
+                amount.cell(row=71, column=2).value='=B70'
+                amount.cell(row=71, column=3).value='=C70'
 
 
 
 
 
-                for e1 in range(55, 67):
-                    amount.cell(row=e1, column=7).value='=C{0}'.format(e1)
-                
-                for row in amount['B8:B74']:
-                    for cell in row:
-                        cell.number_format='#,##0_);(#,##0)'
-                
-                for row in amount['C8:C74']:
-                    for cell in row:
-                        cell.number_format='#,##0_);(#,##0)'
+            for e1 in range(55, 67):
+                amount.cell(row=e1, column=7).value='=C{0}'.format(e1)
+            
+            for row in amount['B8:B74']:
+                for cell in row:
+                    cell.number_format='#,##0_);(#,##0)'
+            
+            for row in amount['C8:C74']:
+                for cell in row:
+                    cell.number_format='#,##0_);(#,##0)'
 
-                #------foratare D300
+            #------foratare D300
 
-                for row in amount['A7:C7']:
-                    for cell in row:
-                        cell.fill=cap_tabel_color_black
-                        cell.alignment=Alignment(horizontal='center',vertical='center')
-                for row in amount['D7:G7']:
-                    for cell in row:
-                        cell.fill=cap_tabel_color_black
-                
-                for row in amount['A7:G7']:
-                    for cell in row:
-                        cell.font=cap_tabel
+            for row in amount['A7:C7']:
+                for cell in row:
+                    cell.fill=cap_tabel_color_black
+                    cell.alignment=Alignment(horizontal='center',vertical='center')
+            for row in amount['D7:G7']:
+                for cell in row:
+                    cell.fill=cap_tabel_color_black
+            
+            for row in amount['A7:G7']:
+                for cell in row:
+                    cell.font=cap_tabel
 
-                listanoua=['A','B','C','D','E','F','G']
+            listanoua=['A','B','C','D','E','F','G']
 
-                for column in listanoua:
-                    for i in listanoua:
-                        if (column==i):
-                            amount.column_dimensions[column].width = 17
-                
-                amount.column_dimensions['D'].hidden = True
-                amount.column_dimensions['E'].hidden = True
-                amount.column_dimensions['F'].hidden = True
-                amount.column_dimensions['G'].hidden = True
+            for column in listanoua:
+                for i in listanoua:
+                    if (column==i):
+                        amount.column_dimensions[column].width = 17
+            
+            amount.column_dimensions['D'].hidden = True
+            amount.column_dimensions['E'].hidden = True
+            amount.column_dimensions['F'].hidden = True
+            amount.column_dimensions['G'].hidden = True
 
 
-                folderpath="/home/mirus_app/nutre/excel"
-                # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
-                # for d in range(0,7):
-                #     listadenumire=['C140','C200','C210','C230','C240','C290','C400']
-                file_pathFS = os.path.join(filename+"/","One VATapp spreadsheet "+str(denumirefisiere[iiii])+".xlsx")
-                excel=excel+1
-                print(file_pathFS)
-                temp.save(file_pathFS)
+            folderpath="/home/mirus_app/nutre/excel"
+            # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
+            # for d in range(0,7):
+            #     listadenumire=['C140','C200','C210','C230','C240','C290','C400']
+            file_pathFS = os.path.join(filename+"/","One VATapp spreadsheet "+str(denumirefisiere[iiii])+".xlsx")
+            excel=excel+1
+            print(file_pathFS)
+            temp.save(file_pathFS)
                 
                 # return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
 
