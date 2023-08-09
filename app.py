@@ -6125,9 +6125,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=16, column=2).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(I0col)+':'+str(I0col)+')+SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(M1col)+':'+str(M1col)+'),0)'
         amount.cell(row=17, column=2).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(I0col)+':'+str(I0col)+'),0)'
         amount.cell(row=18, column=2).value='=round(SUMIF(Purchases!BR:BR,"No",Purchases!'+str(I0col)+':'+str(I0col)+'),0)'     
-        amount.cell(row=19,column=2).value='=round(sum(Sales!'+str(A12col)+":"+str(A12col)+"),0)"
-        amount.cell(row=20,column=2).value='=round(sum(Sales!'+str(A8col)+":"+str(A8col)+"),0)"
-                
+        # amount.cell(row=19,column=2).value='=round(sum(Sales!'+str(A12col)+":"+str(A12col)+"),0)"
+        # amount.cell(row=20,column=2).value='=round(sum(Sales!'+str(A8col)+":"+str(A8col)+"),0)"
+        amount.cell(row=19,column=2).value='=round(SUMIF(Sales!BR:BR,"Yes",Sales!'+str(A12col)+':'+str(A12col)+'),0)'
+        amount.cell(row=20,column=2).value='=round(SUMIF(Sales!BR:BR,"Yes",Sales!'+str(A8col)+':'+str(A8col)+'),0)'
+
+
         amount.cell(row=21, column=2).value=0
         amount.cell(row=22, column=2).value=0
         amount.cell(row=23, column=2).value=0
@@ -6215,8 +6218,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=16, column=3).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tva10col)+':'+str(tva10col)+')+SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tva1Mcol)+':'+str(tva1Mcol)+'),0)'
         amount.cell(row=17, column=3).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tva10col)+':'+str(tva10col)+'),0)'
         amount.cell(row=18, column=3).value='=round(SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tva10col)+':'+str(tva10col)+'),0)'       
-        amount.cell(row=19,column=3).value='=round(sum(Sales!'+str(A12tva)+":"+str(A12tva)+"),0)"
-        amount.cell(row=20,column=3).value='=round(sum(Sales!'+str(A8tva)+":"+str(A8tva)+"),0)"
+        # amount.cell(row=19,column=3).value='=round(sum(Sales!'+str(A12tva)+":"+str(A12tva)+"),0)"
+        # amount.cell(row=20,column=3).value='=round(sum(Sales!'+str(A8tva)+":"+str(A8tva)+"),0)"
+        amount.cell(row=19,column=3).value='=round(SUMIF(Sales!BR:BR,"Yes",Sales!'+str(A12tva)+':'+str(A12tva)+'),0)'
+        amount.cell(row=20,column=3).value='=round(SUMIF(Sales!BR:BR,"Yes",Sales!'+str(A8tva)+':'+str(A8tva)+'),0)'
+
+        
             
         # # amount.cell(row=16,column=3).value='=ROUND(SUMIF(Purchases!$7:$7,$A16&"."&C$6,Purchases!$5:$5)-SUMIF(Purchases!$7:$7,$A18&"."&C$6,Purchases!$5:$5),0)'
 
