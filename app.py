@@ -6179,7 +6179,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=46, column=2).value=0
         amount.cell(row=47, column=2).value=0
         # amount.cell(row=48, column=2).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(bazaV1col)+':'+str(bazaV1col)+')+SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(bazaW7col)+':'+str(bazaW7col)+')+SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(bazaW8col)+':'+str(bazaW8col)+'),0)'
-        amount.cell(row=48, column=2).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(W0col)+':'+str(W0col)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"SHCH IC AP CC/GS InX",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"INSTITUT STRAUMANN X",Purchases!'+str(W0col)+':'+str(W0col)+')
+        amount.cell(row=48, column=2).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(W0col)+':'+str(W0col)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"SHCH IC AP CC/GS InX",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"INSTITUT STRAUMANN X",Purchases!'+str(W0col)+':'+str(W0col)+'),0)
         amount.cell(row=49, column=2).value=0
         amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
         amount.cell(row=51, column=2).value='0'
