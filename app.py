@@ -21035,7 +21035,7 @@ def D300xml_nutre():
 
             # amount.cell(row=16, column=3).value="aaaaa"
             amount.cell(row=17, column=2).value='=B16'
-            amount.cell(row=17, column=3).value='=C17'
+            amount.cell(row=17, column=3).value='=C16'
             amount.cell(row=19, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!I:I),0)'
             amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!K:K),0)'
             amount.cell(row=21, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!M:M),0)'
