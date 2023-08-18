@@ -21205,6 +21205,7 @@ def D300xml_nutre():
                 amount.cell(row=52, column=2).value='=B50+B51'
                 amount.cell(row=70, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AA:AA),0)'
                 amount.cell(row=70, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AB:AB),0)'
+                amount.cell(row=40, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!L:L),0)'
                 amount.cell(row=71, column=2).value='=B70'
                 amount.cell(row=71, column=3).value='=C70'
             else:
@@ -21254,6 +21255,7 @@ def D300xml_nutre():
                 amount.cell(row=41, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!Q:Q)+SUMIF(Purchases!A:A,">0",Purchases!AB:AB)-16-27,0)'
                 amount.cell(row=41, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!R:R)+SUMIF(Purchases!A:A,">0",Purchases!AC:AC)-17-28,0)'
                 amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AL:AL)-37,0)'
+                amount.cell(row=49, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AQ:AQ)-42,0)'
                 amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-B43-B44-B45'
                 amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-C43-C44-C45'
                 amount.cell(row=52, column=3).value='=C50'
