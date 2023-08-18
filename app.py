@@ -21028,7 +21028,7 @@ def D300xml_nutre():
             # amount.cell(row=41, column=2).value='=SUMIF(Purchases!'+str(criteriu)+":"+str(criteriu)+',">0",Purchases!'+str(suma)+":"+str(suma)+')'
             # amount.cell(row=41, column=2).value='=SUMIF(Purchases!A:A,">0",Purchases!'+str(suma)+":"+str(suma)+')'
             # if(denumirefisiere=="NAM"):
-            amount.cell(row=16, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF),0)'
+            amount.cell(row=16, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF)+SUMIF(Purchases!A:A,">0",Purchases!AH:AH),0)'
 
             
             # for iiii in range(0,len(denumirefisiere)):   
@@ -21043,8 +21043,9 @@ def D300xml_nutre():
             amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!AD:AD),0)'
             amount.cell(row=32, column=2).value='=B8+B10+B13+B16+B27+B15+B18+B31+B30+B29+B28+B26+B22+B21+B20+B19'
             amount.cell(row=32, column=3).value='=C8+C10+C13+C16+C27+C15+C18+C31+C30+C29+C28+C26+C22+C21+C20+C19'
-            amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF),0)'
-            amount.cell(row=36, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AG:AG),0)'
+            amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF+)+SUMIF(Purchases!A:A,">0",Purchases!AH:AH),0)'
+            amount.cell(row=36, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AG:AG)+SUMIF(Purchases!A:A,">0",Purchases!AI:AI),0)'
+            amount.cell(row=16, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AG:AG)+SUMIF(Purchases!A:A,">0",Purchases!AI:AI),0)'
             amount.cell(row=37, column=2).value='=B36'
             amount.cell(row=37, column=3).value='=C36'
             amount.cell(row=39, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!I:I)+SUMIF(Purchases!A:A,">0",Purchases!S:S),0)'
@@ -21187,7 +21188,7 @@ def D300xml_nutre():
 
             if( denumirefisiere[iiii]=="FFR"):
                 print(denumirefisiere[iiii])
-                amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!Z:Z),0)'
+                amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!AB:AB)+SUMIF(Sales!A:A,">0",Sales!AE:AE),0)'
                 amount.cell(row=16, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AH:AH),0)' 
                 amount.cell(row=16, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AI:AI),0)'                    
                 amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AH:AH),0)' 
