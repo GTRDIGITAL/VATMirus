@@ -21225,8 +21225,8 @@ def D300xml_nutre():
                 amount.cell(row=16, column=3).value='=C36'
                 amount.cell(row=17, column=2).value='=B37'
                 amount.cell(row=17, column=3).value='=C37'
-                amount.cell(row=18, column=2).value='=ROUND(SUMIF(Sales!C:C,"6",Sales!AO:AO)-40,0)'
-                amount.cell(row=18, column=3).value='==ROUND(SUMIF(Sales!C:C,"6",Sales!AP:AP)-41,0)'
+                amount.cell(row=18, column=2).value='=ROUND(SUMIF(Purchases!C:C,"6",Purchases!AO:AO),0)'
+                amount.cell(row=18, column=3).value='==ROUND(SUMIF(Purchases!C:C,"6",Purchases!AP:AP),0)'
                 amount.cell(row=19, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!G:G)-7,0)'
                 amount.cell(row=19, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!H:H)-8,0)'
                 amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!I:I)-9,0)'
@@ -21276,7 +21276,7 @@ def D300xml_nutre():
 
 
                 amount.cell(row=16, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AF:AF)-32+SUMIF(Purchases!A:A,">0",Purchases!AH:AH)-34,0)'
-                amount.cell(row=16, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AG:AG)-35+SUMIF(Purchases!A:A,">0",Purchases!AI:AI)-35,0)'
+                amount.cell(row=16, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AG:AG)-33+SUMIF(Purchases!A:A,">0",Purchases!AI:AI)-35,0)'
 
                 amount.cell(row=17, column=2).value='=B16'
                 amount.cell(row=17, column=3).value='=C16'
@@ -21301,7 +21301,7 @@ def D300xml_nutre():
                 amount.cell(row=48, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AE:AE)-31,0)'
                 amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
                 amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
-                amount.cell(row=52, column=3).value='=ROUND(C50+C51-(SUMIF(Purchases!A:A,">0",Purchases!AS:AS)+44),0)'
+                amount.cell(row=52, column=3).value='=ROUND(C50+C51-SUMIF(Purchases!A:A,">0",Purchases!AS:AS)+44,0)'
                 amount.cell(row=56, column=3).value='=SUM(C52:C55)'
                 amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
                 amount.cell(row=58, column=3).value='=C32-C56'
