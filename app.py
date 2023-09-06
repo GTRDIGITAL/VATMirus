@@ -5567,6 +5567,18 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         except:
             flash("Please insert the correct header for '                 S01'")
             return render_template("index.html")
+
+        for row in sales.iter_rows():
+            for cell in row:
+                if cell.value == "                 S11":
+                    rand_tb = cell.row
+                    colnoua = cell.column
+                    lun = len(sales[cell.column])
+        try:
+            bazaA12 = [b.value for b in sales[colnoua][rand_tb:lun]]
+        except:
+            flash("Please insert the correct header for '                 S11'")
+            return render_template("index.html")
         for row in sales.iter_rows():
             for cell in row:
                 if cell.value == "                 S02":
@@ -6114,7 +6126,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         for w in range(0,len(listadescrieri)):
             amount.cell(row=8+w,column=8).value=listadescrieri[w]
 
-        amount.cell(row=8, column=2).value='0'
+        amount.cell(row=8, column=2).value='=round(SUM(Purchases!'+str(colnoua)+":"+str(colnoua)+"),0)'
         amount.cell(row=9, column=2).value='0'
         amount.cell(row=10, column=2).value='0'     
         amount.cell(row=11, column=2).value='0'
