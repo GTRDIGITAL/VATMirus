@@ -6271,7 +6271,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=36, column=3).value='=C16'
         amount.cell(row=37, column=3).value='=C17'
         amount.cell(row=38, column=3).value='=C18'
-        amount.cell(row=39, column=3).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(tvaV1col)+':'+str(tvaV1col)+'),0)'                      
+        amount.cell(row=39, column=3).value='=round(SUM(Purchases!'+str(tvaV1col)+':'+str(tvaV1col)+'),0)'                      
         amount.cell(row=40, column=3).value='=round(SUM(Purchases!'+str(tvaW7col)+":"+str(tvaW7col)+"),0)"                              
         amount.cell(row=41, column=3).value='=round(SUM(Purchases!'+str(tvaw8col)+":"+str(tvaw8col)+"),0)"
 
