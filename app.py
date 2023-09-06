@@ -5575,7 +5575,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     colnoua = cell.column
                     lun = len(sales[cell.column])
         try:
-            bazaA12 = [b.value for b in sales[colnoua][rand_tb:lun]]
+            bazacolnoua = [b.value for b in sales[colnoua][rand_tb:lun]]
         except:
             flash("Please insert the correct header for '                 S11'")
             return render_template("index.html")
