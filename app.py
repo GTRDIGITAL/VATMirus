@@ -1693,7 +1693,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=38, column=3).value='=C18'
 
 
-        amount.cell(row=39, column=3).value='=round(SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"E1",Purchases!BR:BR,"No"+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"N1",Purchases!BR:BR,"No"+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!BR:BR,"No"),0)'
+        amount.cell(row=39, column=3).value='=round(SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"E1",Purchases!BR:BR,"No")+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"N1",Purchases!BR:BR,"No")+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!BR:BR,"No"),0)'
         amount.cell(row=40, column=3).value='=round(B40/100*9,0)'
         amount.cell(row=41, column=3).value='=round(B41/100*5,0)'           
         amount.cell(row=42, column=3).value='=round(SUM(C43:C45),0)'
