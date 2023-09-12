@@ -10729,6 +10729,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=68, column=3).value=0
         amount.cell(row=69, column=3).value=0
 
+        # asd
+
         amount.cell(row=70, column=3).value='=ROUND(SUM(Purchases!'+str(tax19nexvatb)+":"+str(tax19nexvatb)+',),0)'
         amount.cell(row=71, column=3).value='=C70'
 
