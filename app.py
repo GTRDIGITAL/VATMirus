@@ -10707,16 +10707,16 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=49, column=3).value=0
         amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
         amount.cell(row=51, column=3).value='=SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19nexvatb)+':'+str(tax19nexvatb)+')'
-        amount.cell(row=52, column=3).value='=C51+C50-SUM(Purchases!'+str(tdocneded)+':'+str(tdocneded)+')'
+        amount.cell(row=52, column=3).value='=round(C51+C50-SUM(Purchases!'+str(tdocneded)+':'+str(tdocneded)+'),0)'
         amount.cell(row=53, column=3).value=0
-        amount.cell(row=54, column=3).value='=SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+')'
+        amount.cell(row=54, column=3).value='=round(SUMIF(Purchases!BR:BR,"No",Purchases!'+str(tax19vat)+':'+str(tax19vat)+'),0)'
         amount.cell(row=55, column=3).value=0
-        amount.cell(row=56, column=3).value='=SUM(C52:C55)'
+        amount.cell(row=56, column=3).value='=round(SUM(C52:C55),0)'
         amount.cell(row=57, column=3).value='=IF((C56-C32)<0,0,C56-C32)'
-        amount.cell(row=58, column=3).value='=IF((C32-C56)<0,0,C32-C56)'
+        amount.cell(row=58, column=3).value='=round(IF((C32-C56)<0,0,C32-C56),0)'
         amount.cell(row=59, column=3).value=0
         amount.cell(row=60, column=3).value=0
-        amount.cell(row=61, column=3).value='=SUM(C58:C60)' 
+        amount.cell(row=61, column=3).value='=round(SUM(C58:C60),0)' 
         if soldLunaTrecuta == None or soldLunaTrecuta == "" or soldLunaTrecuta == " ":
             amount.cell(row=62, column=3).value=0
         else:
@@ -10724,7 +10724,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         #print(soldLunaTrecuta, "sold luna trecuta")
         amount.cell(row=63, column=3).value=0
         amount.cell(row=64, column=3).value='=C57+C62+C63'
-        amount.cell(row=65, column=3).value='=IF((C61-C64)<0,0,C61-C64)'
+        amount.cell(row=65, column=3).value='=round(IF((C61-C64)<0,0,C61-C64),0)'
         amount.cell(row=66, column=3).value='=IF((C64-C61)<0,0,C64-C61)'
         amount.cell(row=68, column=3).value=0
         amount.cell(row=69, column=3).value=0
@@ -10732,12 +10732,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=70, column=3).value='=ROUND(SUM(Purchases!'+str(tax19nexvatb)+":"+str(tax19nexvatb)+',),0)'
         amount.cell(row=71, column=3).value='=C70'
 
-        # amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
-        # amount.cell(row=73, column=2).value='Total an precedent'
-        # amount.cell(row=73, column=3).value='An curent (inclusiv perioada de raportare)'
+        amount.cell(row=73, column=1).value='Informații privind valoarea totală, fără TVA, a operațiunilor prevăzute la art. 2781 alin. (1) lit. b) din Codul fiscal, respectiv a vânzărilor intracomunitare de bunuri la distanță și a prestărilor de servicii de telecomunicaţii, de radiodifuziune şi televiziune, precum și servicii furnizate pe cale electronică, către persoane neimpozabile din alte state membre UE'
+        amount.cell(row=73, column=2).value='Total an precedent'
+        amount.cell(row=73, column=3).value='An curent (inclusiv perioada de raportare)'
 
-        # amount.cell(row=74, column=2).value=0
-        # amount.cell(row=74, column=3).value=0
+        amount.cell(row=74, column=2).value=0
+        amount.cell(row=74, column=3).value=0
 
 
         amount.cell(row=22, column=5).value='Total'
