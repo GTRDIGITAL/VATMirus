@@ -10895,7 +10895,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     LL2="0"+str(int(info.cell(row=3, column=3).value)+1)
             else:
                 LL2=str(int(info.cell(row=3,column=3).value)+1)     
-        # #print(LL2, 'LL2')
+            # #print(LL2, 'LL2')
         
         if int(info.cell(row=3, column=3).value)==12:
             AA2=year 
