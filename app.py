@@ -210,12 +210,7 @@ app.secret_key = "GT ROMANIA Delivery Center"
 
 @app.route('/dashboard')
 def my_form():
-    trusted_ips = ['20.103.23.130',' 20.103.23.148',' 20.23.160.88',' 20.23.161.21',' 20.23.161.145',' 20.23.162.27',' 20.23.162.136',' 20.23.162.191',' 20.23.162.231',' 20.23.162.240',' 20.23.163.55',' 20.23.163.60',' 20.23.163.72',' 20.23.163.156',' 20.23.163.214',' 20.23.163.218','20.23.163.222','20.23.163.224','20.23.163.226','20.23.163.229','20.23.164.17','20.23.164.28','20.23.164.100','20.23.164.125','20.105.216.20']
-    def limit_remote_addr():
-        if request.remote_addr not in trusted_ips:
-            abort(404)  # Not Found
-        else:
-            return render_template('D3APPS dashboard - Copy.html')
+    return render_template('D3APPS dashboard - Copy.html')
 
 @app.route('/D3APPS/PMG/Instructions', methods=['GET'])
 def downloadPMG():
