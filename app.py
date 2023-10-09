@@ -6149,7 +6149,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=24, column=2).value=0
         amount.cell(row=25, column=2).value=0
         amount.cell(row=26, column=2).value=0
-        amount.cell(row=27, column=2).value=0
+        amount.cell(row=27, column=2).value='=round(SUM(Sales!R:R)-11,0)'
         amount.cell(row=28, column=2).value=0
         amount.cell(row=29, column=2).value=0
         amount.cell(row=30, column=2).value=0
