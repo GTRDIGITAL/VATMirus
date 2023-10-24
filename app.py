@@ -6288,7 +6288,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=49, column=3).value=0
         amount.cell(row=50, column=3).value='=SUM(C33:C47)-C34-C37-SUM(C43:C45)'
         amount.cell(row=51, column=3).value='0'
-        amount.cell(row=52, column=3).value='=C51+C50-sum(Purchases!'+str(tvanedcol)+":"+str(tvanedcol)+')'
+        amount.cell(row=52, column=3).value='=round(C51+C50-sum(Purchases!'+str(tvanedcol)+":"+str(tvanedcol)+'),0)'
         amount.cell(row=53, column=3).value=0
         amount.cell(row=54, column=3).value='=round(SUMIFS(Purchases!'+str(tvaV1col)+':'+str(tvaV1col)+',Purchases!BQ:BQ,"No",Purchases!BR:BR,"Not applicable")+SUMIFS(Purchases!'+str(tvaW7col)+':'+str(tvaW7col)+',Purchases!BQ:BQ,"No",Purchases!BR:BR,"Not applicable"),0)'
         amount.cell(row=55, column=3).value=0
@@ -19074,7 +19074,7 @@ def D300_thales():
                             if("-" in str(cuip[i])):
                                 text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
                             else:
-                                if(bazatv[i]>0):
+                                if(bazatv[i]!=0):
                                     text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
 
         text=text+"</declaratie394>"
