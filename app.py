@@ -2116,6 +2116,22 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                         workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
                         workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
             for x in range(0, len(taxcodes)):
+            
+                if(listacurentas[x]=="Yes" and vats[x]!=None):                
+                    if str(taxcodes[x])=="Y5" or str(taxcodes[x])=="Y1":
+                        a=a+1
+                        workings.cell(row=a, column=1).value="T"
+                        workings.cell(row=a, column=4).value=denumires[x]
+                        workings.cell(row=a, column=6).value=vats[x]
+                        workings.cell(row=a, column=3).value=vats[x][2:]
+                        workings.cell(row=a, column=7).value=vats[x][0:2]
+                        # workings.cell(row=a, column=8).value=listaBazaA[x]
+                        # workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+                        workings.cell(row=a, column=8).value=totals[x]
+                        workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+                        workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+
+            for x in range(0, len(taxcodes)):
                 if(listacurentas[x]=="Yes" and vats[x]!=None):
                     if str(taxcodes[x])=="Y4":
                         a=a+39
