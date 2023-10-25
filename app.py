@@ -18128,7 +18128,7 @@ def D300_thales():
             if(str(tip_partener[i])=="1" and neex[i]!="Yes"):
                 if(bazatv[i]!=None):
 
-                    if(bazatv[i]>0):
+                    if(bazatv[i]!=0):
                         if(str(cotatva[i])=="0"):
                             if(str(tiptranza[i])=="V"):
                                 cuitip1.append(cuip[i])
@@ -18399,7 +18399,7 @@ def D300_thales():
         numarcui2=0
         for i in range(0,len(tip_partener)):
             if(str(tip_partener[i])=="2"):
-                if(bazatv[i]>0):
+                if(bazatv[i]!=0):
                     if(str(cotatva[i])=="0"):
                         if(str(tiptranza[i])=="N"):
                             cuitip2.append(cuip[i])
@@ -18605,7 +18605,7 @@ def D300_thales():
         numarcui3=0
         for i in range(0,len(tip_partener)):
             if(str(tip_partener[i])=="3"):
-                if(bazatv[i]>0):
+                if(bazatv[i]!=0):
                     if(str(cotatva[i])=="5"):
                         if(str(tiptranza[i])=="L"):
                             cuitip3.append(cuip[i])
@@ -18773,7 +18773,7 @@ def D300_thales():
         nrC24=0
         numarcui4=0
         for i in range(0,len(tip_partener)):
-            if(bazatv[i]>0):
+            if(bazatv[i]!=0):
                 if(str(tip_partener[i])=="4"):
                     if(str(cotatva[i])=="5"):
                         if(str(tiptranza[i])=="L"):
@@ -19055,10 +19055,12 @@ def D300_thales():
                 text=text+'<facturi  tip_factura="1" nr="'''+str(sheet2.cell(row=k,column=3).value)+'''"/>'''+"\n"
         numep=[]
         for j in range(0,len(nume)):
-
-            numep.append(nume[j].replace("&",""))
+            try:
+                numep.append(nume[j].replace("&",""))
+            except:
+                numep.append(nume[j])
             # nume[j].replace("<","")
-            # nume[j].replace(">","")
+            # nume[j].replace(">","")   
         for i in range(0,len(tiptranza)):
             if(tiptranza[i]!="Not applicable for D394"):
                 if(tiptranza[i]=="V"):
@@ -19074,18 +19076,20 @@ def D300_thales():
                             if("-" in str(cuip[i])):
                                 text=text+'<op1  tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" denP="'+str(numep[i]).replace('"',"")+'" taraP="'+str(cuip[i][:2])+'" locP="'+str(cuip[i][3:])+'" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'" />'+"\n"
                             else:
-                                if(bazatv[i]!=0):
-                                    text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
-
+                                try:
+                                    if(bazatv[i]!=0):
+                                        text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'" tva="'+str(int(stva[i]))+'"/>'+"\n"
+                                except:
+                                    pass
         text=text+"</declaratie394>"
         # text='<?xml version="1.0"?><declaratie394 luna="'+str(luna)+'" an="'+str(an)+'" tip_D394="'+str(tip)+'" sistemTVA="'+str(sisnormaldetva)+'" op_efectuate="'+str(op_efectuate)+'" prsAfiliat="'+str(prsAfiliat)+'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v3 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v3" cui="'+str(cui)+'" den="'+str(den)+""
 
-        # f=open("C:/Users/Bogdan.Constantinesc/Docuasdasdments/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
-        # make_archive("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage","C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/arhiva VAT apps.zip")
-        # return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True) 
-        f=open("/home/mirus_app/storage/xmlFiles/D394.xml", "w",encoding='utf-8').write(text)
-    make_archive("/home/mirus_app/storage/xmlFiles","/home/mirus_app/storage/xmlFiles/arhiva VAT apps.zip")
-    return send_from_directory("/home/mirus_app/storage/xmlFiles","arhiva VAT apps.zip",as_attachment=True)
+        f=open("C:/Users/Bogdan.Constantinesc/Docuasdasdments/D300 to XML Final CI/D300 to XML 2/storage/D394.xml", "w",encoding='utf-8').write(text)
+    make_archive("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage","C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/arhiva VAT apps.zip")
+    return send_from_directory("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2","arhiva VAT apps.zip",as_attachment=True) 
+    #     fisierxml=open("D:/11VAT/test/D394.xml", "w",encoding='utf-8').write(text)
+    # make_archive("D:/11VAT/test","D:/11VAT/test/arhiva VAT apps.zip")
+    # return send_from_directory("D:/11VAT/test","arhiva VAT apps.zip",as_attachment=True)
 
 
 
@@ -23712,4 +23716,4 @@ def D300_Nutre2():
 
 
 if __name__ == '__main__':
-   app.run()
+   app.run(debug="True",host="0.0.0.0", port=5001)
