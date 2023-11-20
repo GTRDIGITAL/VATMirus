@@ -21829,8 +21829,8 @@ def D300xml_nutre():
             # print(nrEvidenta)
             #print(nrEvidenta, 'nrEvidenta')
                 
-            lunacurenta=0    
-            info.cell(row=3, column=3).value=lunacurenta
+            # lunacurenta=0    
+            lunacurenta=info.cell(row=3, column=3).value
             info.cell(row=18, column=3).value=nrEvidenta
             info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
 
