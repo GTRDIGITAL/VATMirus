@@ -20717,7 +20717,9 @@ def my_form5():
 @app.route('/D3APPS/NUTRE', methods=['POST', 'GET'])
 def D300xml_nutre():
     clientname=request.form.get('client')
-    filename="/home/mirus_app/nutre/excel/"+str(clientname)
+    # filename="/home/mirus_app/nutre/excel/"+str(clientname)
+    filename="D:/VATMIRUSCOVER/VATMirus/"+str(clientname)
+    
     os.mkdir(filename)
     def make_archive(source, destination):
         base = os.path.basename(destination)
@@ -21827,6 +21829,7 @@ def D300xml_nutre():
             # print(nrEvidenta)
             #print(nrEvidenta, 'nrEvidenta')
                 
+            lunacurenta=0    
             info.cell(row=3, column=3).value=lunacurenta
             info.cell(row=18, column=3).value=nrEvidenta
             info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
