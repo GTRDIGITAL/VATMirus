@@ -20798,7 +20798,7 @@ def D300xml_nutre():
             ws = temp.active
             
             if(option==1):
-                # Sheet1=temp.create_sheet('Cover sheet')
+                Sheet1=temp.create_sheet('Cover sheet')
                 fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
                 fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
                 font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
@@ -20821,10 +20821,458 @@ def D300xml_nutre():
                 border7 = Border(right=Side(style='dotted'),bottom=Side(style='dotted'))
                 border8 = Border(right=Side(style='dotted'),top=Side(style='dotted'))
                 # border9 = Border(right=Side(style='double'),bottom=Side(style='double'),top=Side(style='double'),left=Side(style='double'))
+                Sheet1.cell(row=31, column=2).border=border2
+                Sheet1.cell(row=31, column=3).border=border2
+                Sheet1.cell(row=31, column=4).border=border2
+                Sheet1.cell(row=31, column=5).border=border2
+                Sheet1.cell(row=31, column=6).border=border2
+                Sheet1.cell(row=31, column=7).border=border2
+                Sheet1.cell(row=31, column=2).border=border5
+                Sheet1.cell(row=31, column=7).border=border8
 
+
+                Sheet1.cell(row=75, column=2).border=border
+                Sheet1.cell(row=75, column=3).border=border
+                Sheet1.cell(row=75, column=4).border=border
+                Sheet1.cell(row=75, column=5).border=border
+                Sheet1.cell(row=75, column=6).border=border
+                Sheet1.cell(row=75, column=7).border=border
+                Sheet1.cell(row=75, column=7).border=border7
+
+                Sheet1.cell(row=32, column=2).border=border3
+                Sheet1.cell(row=33, column=2).border=border3
+                Sheet1.cell(row=34, column=2).border=border3
+                Sheet1.cell(row=35, column=2).border=border3
+                Sheet1.cell(row=36, column=2).border=border3
+                Sheet1.cell(row=37, column=2).border=border3
+                Sheet1.cell(row=38, column=2).border=border3
+                Sheet1.cell(row=39, column=2).border=border3
+                Sheet1.cell(row=40, column=2).border=border3
+                Sheet1.cell(row=41, column=2).border=border3
+                Sheet1.cell(row=42, column=2).border=border3
+                Sheet1.cell(row=43, column=2).border=border3
+                Sheet1.cell(row=44, column=2).border=border3
+                Sheet1.cell(row=45, column=2).border=border3
+                Sheet1.cell(row=46, column=2).border=border3
+                Sheet1.cell(row=47, column=2).border=border3
+                Sheet1.cell(row=48, column=2).border=border3
+                Sheet1.cell(row=49, column=2).border=border3
+                Sheet1.cell(row=50, column=2).border=border3
+                Sheet1.cell(row=51, column=2).border=border3
+                Sheet1.cell(row=52, column=2).border=border3
+                Sheet1.cell(row=53, column=2).border=border3
+                Sheet1.cell(row=54, column=2).border=border3
+                Sheet1.cell(row=55, column=2).border=border3
+                Sheet1.cell(row=75, column=2).border=border6
+                Sheet1.cell(row=56, column=2).border=border3
+                Sheet1.cell(row=57, column=2).border=border3
+                Sheet1.cell(row=58, column=2).border=border3
+                Sheet1.cell(row=59, column=2).border=border3
+                Sheet1.cell(row=60, column=2).border=border3
+                Sheet1.cell(row=61, column=2).border=border3
+                Sheet1.cell(row=62, column=2).border=border3
+                Sheet1.cell(row=63, column=2).border=border3
+                Sheet1.cell(row=64, column=2).border=border3
+                Sheet1.cell(row=65, column=2).border=border3
+                Sheet1.cell(row=66, column=2).border=border3
+                Sheet1.cell(row=67, column=2).border=border3
+                Sheet1.cell(row=68, column=2).border=border3
+                Sheet1.cell(row=69, column=2).border=border3
+                Sheet1.cell(row=70, column=2).border=border3
+                Sheet1.cell(row=71, column=2).border=border3
+                Sheet1.cell(row=72, column=2).border=border3
+                Sheet1.cell(row=73, column=2).border=border3
+                Sheet1.cell(row=74, column=2).border=border3
+
+                Sheet1.cell(row=32, column=7).border=border4
+                Sheet1.cell(row=33, column=7).border=border4
+                Sheet1.cell(row=34, column=7).border=border4
+                Sheet1.cell(row=35, column=7).border=border4
+                Sheet1.cell(row=36, column=7).border=border4
+                Sheet1.cell(row=37, column=7).border=border4
+                Sheet1.cell(row=38, column=7).border=border4
+                Sheet1.cell(row=39, column=7).border=border4
+                Sheet1.cell(row=40, column=7).border=border4
+                Sheet1.cell(row=41, column=7).border=border4
+                Sheet1.cell(row=42, column=7).border=border4
+                Sheet1.cell(row=43, column=7).border=border4
+                Sheet1.cell(row=44, column=7).border=border4
+                Sheet1.cell(row=45, column=7).border=border4
+                Sheet1.cell(row=46, column=7).border=border4
+                Sheet1.cell(row=47, column=7).border=border4
+                Sheet1.cell(row=48, column=7).border=border4
+                Sheet1.cell(row=49, column=7).border=border4
+                Sheet1.cell(row=50, column=7).border=border4
+                Sheet1.cell(row=51, column=7).border=border4
+                Sheet1.cell(row=52, column=7).border=border4
+                Sheet1.cell(row=53, column=7).border=border4
+                Sheet1.cell(row=54, column=7).border=border4
+                Sheet1.cell(row=55, column=7).border=border4
+                Sheet1.cell(row=56, column=7).border=border4
+                Sheet1.cell(row=57, column=7).border=border4
+                Sheet1.cell(row=58, column=7).border=border4
+                Sheet1.cell(row=59, column=7).border=border4
+                Sheet1.cell(row=60, column=7).border=border4
+                Sheet1.cell(row=61, column=7).border=border4
+                Sheet1.cell(row=62, column=7).border=border4
+                Sheet1.cell(row=63, column=7).border=border4
+                Sheet1.cell(row=64, column=7).border=border4
+                Sheet1.cell(row=65, column=7).border=border4
+                Sheet1.cell(row=66, column=7).border=border4
+                Sheet1.cell(row=67, column=7).border=border4
+                Sheet1.cell(row=68, column=7).border=border4
+                Sheet1.cell(row=69, column=7).border=border4
+                Sheet1.cell(row=70, column=7).border=border4
+                Sheet1.cell(row=71, column=7).border=border4
+                Sheet1.cell(row=72, column=7).border=border4
+                Sheet1.cell(row=73, column=7).border=border4
+                Sheet1.cell(row=74, column=7).border=border4
+                info=temp['Other info']
+                valluna=""
+                vallunaurmatoare=""
+                valIban=""
+                okdecembrie=0
+                for i in range(0,len(listaluni)):
+                    if(str(info.cell(row=3,column=3).value)=="12"):
+                        okdecembrie=1
+                        vallunaurmatoare=listadenluni[0]
+                        valluna=listadenluni[11]
+                    else:
+                        if(listaluni[i]==str(info.cell(row=3,column=3).value)):
+                            valluna=listadenluni[i]
+                            vallunaurmatoare=listadenluni[i+1]
+                var=Sheet1.cell(row=12,column=4).value
+                # print(var)
+                Sheet1.cell(row = 10, column = 4).value = str(dropdown)
+                for j in range(0,len(listatrez)):
+                    if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
+                        valIban=listaiban[j]
+                Sheet1.cell(row=60, column=3).value='Perioada de plata: '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
+                Sheet1.cell(row=61, column=3).value='="Suma de plata: " &D55&" RON "'
+                Sheet1.cell(row=62, column=3).value="Moneda: RON"
+                Sheet1.cell(row=63, column=3).value='Detalii plata: Decont TVA - '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
+                if(okdecembrie==1):
+                    Sheet1.cell(row=64, column=3).value='Data scadenta: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value+1)
+                else:
+                    Sheet1.cell(row=64, column=3).value='Data scadenta: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value)
+                Sheet1.cell(row=66, column=3).value='="Cod TVA: " & D8'
+                Sheet1.cell(row=67, column=3).value='="Adresa: " &D7'
+                Sheet1.cell(row=69, column=3).value="Beneficiar: BUGETUL DE STAT"
+                Sheet1.cell(row=70, column=3).value='Cont IBAN: '+ str(valIban)
+                Sheet1.cell(row=71, column=3).value="SWIFT / BIC: TREZROBU"
+                Sheet1.cell(row=72, column=3).value="Deschis la:"+str(dropdown)
+                Sheet1.cell(row=74, column=3).value="Nota: Orice taxe bancare legate de plata trebuie sa fie acoperite de catre platitor"
+                Sheet1.cell(row=74, column=3).font=font2
+                
+
+                Sheet1.cell(row=14, column=3).value="Sumar"
+                Sheet1.cell(row=14, column=3).font=font4
+                Sheet1.cell(row=58, column=3).value="ORDIN DE PLATA"
+                Sheet1.cell(row=58, column=3).font=font5
+
+                for row in Sheet1['A1:N100']:
+                            for cell in row:
+                                cell.fill = fonta
+
+                for row in Sheet1['N1:Z100']:
+                            for cell in row:
+                                cell.fill = fontg
+                # print(get_fxrate(today.year))
+
+                Sheet1.cell(row = 6, column = 3).value = "Denumire"
+                Sheet1.cell(row = 6, column = 4).value = "='Other info'!C4"
+                Sheet1.cell(row = 7, column = 3).value = "Adresa"
+                Sheet1.cell(row = 7, column = 4).value = "='Other info'!C6"
+                Sheet1.cell(row = 8, column = 3).value = "CUI"
+                Sheet1.cell(row = 8, column = 4).value = "='Other info'!C5"
+                Sheet1['D8'].alignment = Alignment(wrapText=True, horizontal='left')
+                Sheet1.cell(row = 9, column = 3).value = "Nr. Reg. Com."
+                Sheet1.cell(row = 9, column = 4).value = "J08/1139/2017"
+                Sheet1.cell(row = 10, column = 3).value = "Administratia de care apartine"
+                Sheet1.cell(row = 10, column = 4).value = str(dropdown)
+                Sheet1.cell(row = 11, column = 3).value = "Frecventa depunere declaratie/plata"
+                Sheet1.cell(row = 11, column = 4).value = "Monthly"
+                Sheet1.cell(row = 12, column = 3).value = "Perioada de raportare"
+                Sheet1.cell(row = 12, column = 4).value = "=date('Other info'!C2,'Other info'!C3,1)"
+                Sheet1.cell(row = 12, column = 4).number_format = 'mmmm yyyy'
+
+                Sheet1.cell(row = 43, column = 4).value="Yes"
+                Sheet1.cell(row = 46, column = 4).value="N/a"
+                Sheet1.cell(row = 47, column = 4).value="N/a"
+                Sheet1.cell(row = 50, column = 4).value="N/a"
+                Sheet1.cell(row = 51, column = 4).value="N/a"
+                Sheet1.cell(row = 43, column = 4).font=font5
+                Sheet1.cell(row = 46, column = 4).font=font5
+                Sheet1.cell(row = 47, column = 4).font=font5
+                Sheet1.cell(row = 50, column = 4).font=font5
+                Sheet1.cell(row = 51, column = 4).font=font5
+
+
+                Sheet1.cell(row = 6, column = 3).font=font1
+                Sheet1.cell(row = 6, column = 4).font=font2
+                Sheet1.cell(row = 7, column = 3).font=font1
+                Sheet1.cell(row = 7, column = 4).font=font2
+                Sheet1.cell(row = 8, column = 3).font=font1
+                Sheet1.cell(row = 8, column = 4).font=font2
+                Sheet1.cell(row = 9, column = 3).font=font1
+                Sheet1.cell(row = 9, column = 4).font=font2
+                Sheet1.cell(row = 10, column = 3).font=font1
+                Sheet1.cell(row = 10, column = 4).font=font3
+                Sheet1.cell(row = 11, column = 3).font=font1
+                Sheet1.cell(row = 11, column = 4).font=font3
+                Sheet1.cell(row = 12, column = 3).font=font1
+                Sheet1.cell(row = 12, column = 4).font=font3
+
+                Sheet1.cell(row = 6, column = 3).fill=culoare
+                Sheet1.cell(row = 7, column = 3).fill=culoare
+                Sheet1.cell(row = 8, column = 3).fill=culoare
+                Sheet1.cell(row = 9, column = 3).fill=culoare
+                Sheet1.cell(row = 10, column = 3).fill=culoare
+                Sheet1.cell(row = 11, column = 3).fill=culoare
+                Sheet1.cell(row = 12, column = 3).fill=culoare
+                Sheet1.cell(row = 6, column = 4).fill=culoare2
+                Sheet1.cell(row = 7, column = 4).fill=culoare2
+                Sheet1.cell(row = 8, column = 4).fill=culoare2
+                Sheet1.cell(row = 9, column = 4).fill=culoare2
+                Sheet1.cell(row = 10, column = 4).fill=culoare2
+                Sheet1.cell(row = 11, column = 4).fill=culoare2
+                Sheet1.cell(row = 12, column = 4).fill=culoare2
+
+                Sheet1.cell(row = 16, column = 3).fill=culoare
+                Sheet1.cell(row=16, column=3).font=font1
+                Sheet1.cell(row=16, column=3).value="  D300"
+                Sheet1.cell(row=16, column=3).hyperlink="#'D300 draft figures'!A1"
+                # Sheet1.cell(row=16, column=3).border=border9
+                Sheet1.row_dimensions[18].height=8
+
+                Sheet1.cell(row = 19, column = 3).fill=culoare
+                Sheet1.cell(row=19, column=3).font=font1
+                Sheet1.cell(row=19, column=3).value="  D390"
+                Sheet1.cell(row=19, column=3).hyperlink="#'D390 workings'!A1"
+                # Sheet1.cell(row=19, column=3).border=border9
+                Sheet1.row_dimensions[21].height=8
+
+                Sheet1.cell(row = 22, column = 3).fill=culoare
+                Sheet1.cell(row=22, column=3).font=font1
+                Sheet1.cell(row=22, column=3).value="  D394"
+                Sheet1.cell(row=22, column=3).hyperlink="#'D394--->>>'!A1"
+                # Sheet1.cell(row=22, column=3).border=border9
+                Sheet1.row_dimensions[24].height=8
+
+                Sheet1.cell(row = 25, column = 3).fill=culoare
+                Sheet1.cell(row=25, column=3).font=font1
+                Sheet1.cell(row=25, column=3).value="  Jurnal vanzari"
+                Sheet1.cell(row=25, column=3).hyperlink="#'Sales'!A1"
+                # Sheet1.cell(row=25, column=3).border=border9
+                Sheet1.row_dimensions[27].height=8
+
+                Sheet1.cell(row = 28, column = 3).fill=culoare
+                Sheet1.cell(row=28, column=3).font=font1
+                Sheet1.cell(row=28, column=3).value="  Jurnal cumparari"
+                Sheet1.cell(row=28, column=3).hyperlink="#'Purchases'!A1"
+                # Sheet1.cell(row=28, column=3).border=border9
+                Sheet1.row_dimensions[30].height=8
+
+
+                Sheet1.cell(row = 58, column = 3).fill=culoare6
+                Sheet1.cell(row = 32, column = 3).fill=culoare3
+                Sheet1.cell(row = 33, column = 3).fill=culoare3
+                Sheet1.cell(row = 34, column = 3).fill=culoare3
+                Sheet1.cell(row = 35, column = 3).fill=culoare3
+                Sheet1.cell(row = 36, column = 3).fill=culoare3
+                Sheet1.cell(row = 37, column = 3).fill=culoare3
+                Sheet1.cell(row = 38, column = 3).fill=culoare3
+                Sheet1.cell(row = 39, column = 3).fill=culoare3
+                Sheet1.cell(row = 32, column = 4).fill=culoare3
+                Sheet1.cell(row = 33, column = 4).fill=culoare3
+                Sheet1.cell(row = 34, column = 4).fill=culoare3
+                Sheet1.cell(row = 35, column = 4).fill=culoare3
+                Sheet1.cell(row = 36, column = 4).fill=culoare3
+                Sheet1.cell(row = 37, column = 4).fill=culoare3
+                Sheet1.cell(row = 38, column = 4).fill=culoare3
+                Sheet1.cell(row = 39, column = 4).fill=culoare3
+                Sheet1.cell(row = 32, column = 6).fill=culoare3
+                Sheet1.cell(row = 33, column = 6).fill=culoare3
+                Sheet1.cell(row = 34, column = 6).fill=culoare3
+                Sheet1.cell(row = 35, column = 6).fill=culoare3
+                Sheet1.cell(row = 36, column = 6).fill=culoare3
+                Sheet1.cell(row = 37, column = 6).fill=culoare3
+                Sheet1.cell(row = 38, column = 6).fill=culoare3
+                Sheet1.cell(row = 39, column = 6).fill=culoare3
+
+                Sheet1.cell(row = 41, column = 6).fill=culoare4
+                Sheet1.cell(row = 42, column = 6).fill=culoare4
+                Sheet1.cell(row = 43, column = 6).fill=culoare4
+                Sheet1.cell(row = 44, column = 6).fill=culoare4
+                Sheet1.cell(row = 45, column = 6).fill=culoare4
+                Sheet1.cell(row = 46, column = 6).fill=culoare4
+                Sheet1.cell(row = 47, column = 6).fill=culoare4
+                Sheet1.cell(row = 48, column = 6).fill=culoare4
+                Sheet1.cell(row = 49, column = 6).fill=culoare4
+                Sheet1.cell(row = 50, column = 6).fill=culoare4
+                Sheet1.cell(row = 51, column = 6).fill=culoare4
+                Sheet1.cell(row = 41, column = 3).fill=culoare4
+                Sheet1.cell(row = 42, column = 3).fill=culoare4
+                Sheet1.cell(row = 43, column = 3).fill=culoare4
+                Sheet1.cell(row = 44, column = 3).fill=culoare4
+                Sheet1.cell(row = 45, column = 3).fill=culoare4
+                Sheet1.cell(row = 46, column = 3).fill=culoare4
+                Sheet1.cell(row = 47, column = 3).fill=culoare4
+                Sheet1.cell(row = 48, column = 3).fill=culoare4
+                Sheet1.cell(row = 49, column = 3).fill=culoare4
+                Sheet1.cell(row = 50, column = 3).fill=culoare4
+                Sheet1.cell(row = 51, column = 3).fill=culoare4
+                Sheet1.cell(row = 41, column = 4).fill=culoare4
+                Sheet1.cell(row = 42, column = 4).fill=culoare4
+                Sheet1.cell(row = 43, column = 4).fill=culoare6
+                Sheet1.cell(row = 44, column = 4).fill=culoare4
+                Sheet1.cell(row = 45, column = 4).fill=culoare4
+                Sheet1.cell(row = 46, column = 4).fill=culoare6
+                Sheet1.cell(row = 47, column = 4).fill=culoare6
+                Sheet1.cell(row = 48, column = 4).fill=culoare4
+                Sheet1.cell(row = 49, column = 4).fill=culoare4
+                Sheet1.cell(row = 50, column = 4).fill=culoare6
+                Sheet1.cell(row = 51, column = 4).fill=culoare6
+
+                Sheet1.cell(row = 53, column = 4).fill=culoare5
+                Sheet1.cell(row = 54, column = 4).fill=culoare5
+                Sheet1.cell(row = 55, column = 4).fill=culoare5
+                Sheet1.cell(row = 53, column = 3).fill=culoare5
+                Sheet1.cell(row = 54, column = 3).fill=culoare5
+                Sheet1.cell(row = 55, column = 3).fill=culoare5
+                Sheet1.cell(row = 53, column = 6).fill=culoare5
+                Sheet1.cell(row = 54, column = 6).fill=culoare5
+                Sheet1.cell(row = 55, column = 6).fill=culoare5
+
+
+                Sheet1.cell(row = 32, column = 3).value="Pozitia curenta din punct de vedere TVA"
+                Sheet1.cell(row = 32, column = 3).font=font4
+                Sheet1.cell(row = 34, column = 3).value="Input TVA perioada curenta"
+                Sheet1.cell(row = 35, column = 3).value="Output TVA perioada curenta"
+                Sheet1.cell(row = 36, column = 3).value="TVA de plata perioada curenta"
+                Sheet1.cell(row = 37, column = 3).value="TVA de recuperat perioada curenta"
+                Sheet1.cell(row = 38, column = 3).value="TVA in curs de decontare pentru achizitii"
+                Sheet1.cell(row = 39, column = 3).value="TVA in curs de decontare pentru livrari"
+                Sheet1.cell(row = 32, column = 4).value="RON"
+
+                Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+                Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
+                Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
+                Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
+                Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
+
+                Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=38, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=39, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=39, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=55, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'             
+
+                Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
+                Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
+                Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 39, column = 4).value=0
+                Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
+        IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
+        IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
+        IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
+                Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+
+                Sheet1.cell(row = 41, column = 3).value="Pozitia reportata"
+                Sheet1.cell(row = 41, column = 3).font=font4
+                Sheet1.row_dimensions[42].height = 0.2
+                Sheet1.cell(row = 43, column = 3).value="Solicitat la rambursare"
+                Sheet1.cell(row = 44, column = 3).value
+                Sheet1.cell(row = 45, column = 3).value="TVA de rambursat nesolicitat"
+                Sheet1.cell(row = 46, column = 3).value="Perioada"
+                Sheet1.cell(row = 47, column = 3).value="Suma"
+                Sheet1.cell(row = 48, column = 3).value
+                Sheet1.cell(row = 49, column = 3).value="TVA de rambursat solicitat si in curs de auditare"
+                Sheet1.cell(row = 50, column = 3).value="Perioada"
+                Sheet1.cell(row = 51, column = 3).value="Suma"
+
+
+                Sheet1.cell(row = 53, column = 3).value="Pozitia balantei de TVA"
+                Sheet1.cell(row = 53, column = 3).font=font4
+                Sheet1.cell(row = 55, column = 3).value="Pozitia TVA in exercitiul curent"
+
+
+                Sheet1['C16'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['C19'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['C22'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['C25'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['C28'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['D10'].alignment = Alignment(wrapText=True, horizontal='right')
+                Sheet1['D11'].alignment = Alignment(wrapText=True, horizontal='right')
+                Sheet1['D12'].alignment = Alignment(wrapText=True, horizontal='right')
+                Sheet1['C58'].alignment = Alignment(wrapText=True, horizontal='center')
+
+                Sheet1.column_dimensions['C'].width = 65
+                Sheet1.column_dimensions['D'].width = 20
+                Sheet1.column_dimensions['A'].width = 2
+                Sheet1.column_dimensions['B'].width = 3
+                Sheet1.column_dimensions['E'].width = 1
+                Sheet1.column_dimensions['F'].width = 20
+                Sheet1.column_dimensions['G'].width = 2
+
+                # img= openpyxl.drawing.image.Image('test.png')
+                # Sheet1.add_image(img,'C16')
+
+                # img= openpyxl.drawing.image.Image('test2.png')
+                # Sheet1.add_image(img,'C19')
+
+                # img= openpyxl.drawing.image.Image('test10.png')
+                # Sheet1.add_image(img,'C22')
+
+                # img= openpyxl.drawing.image.Image('test6.png')
+                # Sheet1.add_image(img,'C25')
+
+                # img= openpyxl.drawing.image.Image('test7.png')
+                # Sheet1.add_image(img,'C28')
+
+                # img= openpyxl.drawing.image.Image('test6.png')
+                # Sheet1.add_image(img,'D16')
+
+                # img= openpyxl.drawing.image.Image('test7.png')
+                # Sheet1.add_image(img,'D19')
+
+                # img= openpyxl.drawing.image.Image('test8.png')
+                # Sheet1.add_image(img,'D22')
+
+                # img= openpyxl.drawing.image.Image('test9.png')
+                # Sheet1.add_image(img,'D25')
+
+                # img= openpyxl.drawing.image.Image('test5.png')
+                # Sheet1.add_image(img,'D28')
+
+                Sheet1.merge_cells(start_row=28, start_column=3, end_row=29, end_column=3)
+                Sheet1.merge_cells(start_row=25, start_column=3, end_row=26, end_column=3)
+                Sheet1.merge_cells(start_row=22, start_column=3, end_row=23, end_column=3)
+                Sheet1.merge_cells(start_row=19, start_column=3, end_row=20, end_column=3)
+                Sheet1.merge_cells(start_row=16, start_column=3, end_row=17, end_column=3)
+                Sheet1.merge_cells(start_row=6, start_column=4, end_row=6, end_column=12)
+                Sheet1.merge_cells(start_row=7, start_column=4, end_row=7, end_column=12)
+                Sheet1.merge_cells(start_row=8, start_column=4, end_row=8, end_column=12)
+                Sheet1.merge_cells(start_row=9, start_column=4, end_row=9, end_column=12)
+                Sheet1.merge_cells(start_row=10, start_column=4, end_row=10, end_column=12)
+                Sheet1.merge_cells(start_row=11, start_column=4, end_row=11, end_column=12)
+                Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
+                Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
 
             if(option==0):
-                # Sheet1=temp.create_sheet('Cover sheet')
+                Sheet1=temp.create_sheet('Cover sheet')
                 fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
                 fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
                 font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
@@ -20848,6 +21296,449 @@ def D300xml_nutre():
                 border8 = Border(right=Side(style='dotted'),top=Side(style='dotted'))
                 # border9 = Border(right=Side(style='double'),bottom=Side(style='double'),top=Side(style='double'),left=Side(style='double'))
 
+                Sheet1.cell(row=31, column=2).border=border2
+                Sheet1.cell(row=31, column=3).border=border2
+                Sheet1.cell(row=31, column=4).border=border2
+                Sheet1.cell(row=31, column=5).border=border2
+                Sheet1.cell(row=31, column=6).border=border2
+                Sheet1.cell(row=31, column=7).border=border2
+                Sheet1.cell(row=31, column=2).border=border5
+                Sheet1.cell(row=31, column=7).border=border8
+
+
+                Sheet1.cell(row=75, column=2).border=border
+                Sheet1.cell(row=75, column=3).border=border
+                Sheet1.cell(row=75, column=4).border=border
+                Sheet1.cell(row=75, column=5).border=border
+                Sheet1.cell(row=75, column=6).border=border
+                Sheet1.cell(row=75, column=7).border=border
+                Sheet1.cell(row=75, column=7).border=border7
+
+                Sheet1.cell(row=32, column=2).border=border3
+                Sheet1.cell(row=33, column=2).border=border3
+                Sheet1.cell(row=34, column=2).border=border3
+                Sheet1.cell(row=35, column=2).border=border3
+                Sheet1.cell(row=36, column=2).border=border3
+                Sheet1.cell(row=37, column=2).border=border3
+                Sheet1.cell(row=38, column=2).border=border3
+                Sheet1.cell(row=39, column=2).border=border3
+                Sheet1.cell(row=40, column=2).border=border3
+                Sheet1.cell(row=41, column=2).border=border3
+                Sheet1.cell(row=42, column=2).border=border3
+                Sheet1.cell(row=43, column=2).border=border3
+                Sheet1.cell(row=44, column=2).border=border3
+                Sheet1.cell(row=45, column=2).border=border3
+                Sheet1.cell(row=46, column=2).border=border3
+                Sheet1.cell(row=47, column=2).border=border3
+                Sheet1.cell(row=48, column=2).border=border3
+                Sheet1.cell(row=49, column=2).border=border3
+                Sheet1.cell(row=50, column=2).border=border3
+                Sheet1.cell(row=51, column=2).border=border3
+                Sheet1.cell(row=52, column=2).border=border3
+                Sheet1.cell(row=53, column=2).border=border3
+                Sheet1.cell(row=54, column=2).border=border3
+                Sheet1.cell(row=55, column=2).border=border3
+                Sheet1.cell(row=75, column=2).border=border6
+                Sheet1.cell(row=56, column=2).border=border3
+                Sheet1.cell(row=57, column=2).border=border3
+                Sheet1.cell(row=58, column=2).border=border3
+                Sheet1.cell(row=59, column=2).border=border3
+                Sheet1.cell(row=60, column=2).border=border3
+                Sheet1.cell(row=61, column=2).border=border3
+                Sheet1.cell(row=62, column=2).border=border3
+                Sheet1.cell(row=63, column=2).border=border3
+                Sheet1.cell(row=64, column=2).border=border3
+                Sheet1.cell(row=65, column=2).border=border3
+                Sheet1.cell(row=66, column=2).border=border3
+                Sheet1.cell(row=67, column=2).border=border3
+                Sheet1.cell(row=68, column=2).border=border3
+                Sheet1.cell(row=69, column=2).border=border3
+                Sheet1.cell(row=70, column=2).border=border3
+                Sheet1.cell(row=71, column=2).border=border3
+                Sheet1.cell(row=72, column=2).border=border3
+                Sheet1.cell(row=73, column=2).border=border3
+                Sheet1.cell(row=74, column=2).border=border3
+
+                Sheet1.cell(row=32, column=7).border=border4
+                Sheet1.cell(row=33, column=7).border=border4
+                Sheet1.cell(row=34, column=7).border=border4
+                Sheet1.cell(row=35, column=7).border=border4
+                Sheet1.cell(row=36, column=7).border=border4
+                Sheet1.cell(row=37, column=7).border=border4
+                Sheet1.cell(row=38, column=7).border=border4
+                Sheet1.cell(row=39, column=7).border=border4
+                Sheet1.cell(row=40, column=7).border=border4
+                Sheet1.cell(row=41, column=7).border=border4
+                Sheet1.cell(row=42, column=7).border=border4
+                Sheet1.cell(row=43, column=7).border=border4
+                Sheet1.cell(row=44, column=7).border=border4
+                Sheet1.cell(row=45, column=7).border=border4
+                Sheet1.cell(row=46, column=7).border=border4
+                Sheet1.cell(row=47, column=7).border=border4
+                Sheet1.cell(row=48, column=7).border=border4
+                Sheet1.cell(row=49, column=7).border=border4
+                Sheet1.cell(row=50, column=7).border=border4
+                Sheet1.cell(row=51, column=7).border=border4
+                Sheet1.cell(row=52, column=7).border=border4
+                Sheet1.cell(row=53, column=7).border=border4
+                Sheet1.cell(row=54, column=7).border=border4
+                Sheet1.cell(row=55, column=7).border=border4
+                Sheet1.cell(row=56, column=7).border=border4
+                Sheet1.cell(row=57, column=7).border=border4
+                Sheet1.cell(row=58, column=7).border=border4
+                Sheet1.cell(row=59, column=7).border=border4
+                Sheet1.cell(row=60, column=7).border=border4
+                Sheet1.cell(row=61, column=7).border=border4
+                Sheet1.cell(row=62, column=7).border=border4
+                Sheet1.cell(row=63, column=7).border=border4
+                Sheet1.cell(row=64, column=7).border=border4
+                Sheet1.cell(row=65, column=7).border=border4
+                Sheet1.cell(row=66, column=7).border=border4
+                Sheet1.cell(row=67, column=7).border=border4
+                Sheet1.cell(row=68, column=7).border=border4
+                Sheet1.cell(row=69, column=7).border=border4
+                Sheet1.cell(row=70, column=7).border=border4
+                Sheet1.cell(row=71, column=7).border=border4
+                Sheet1.cell(row=72, column=7).border=border4
+                Sheet1.cell(row=73, column=7).border=border4
+                Sheet1.cell(row=74, column=7).border=border4
+                
+
+                Sheet1.cell(row=14, column=3).value="Summary"
+                Sheet1.cell(row=14, column=3).font=font4
+                Sheet1.cell(row=58, column=3).value="PAYMENT ORDER"
+                Sheet1.cell(row=58, column=3).font=font5
+
+                for row in Sheet1['A1:N100']:
+                            for cell in row:
+                                cell.fill = fonta
+
+                for row in Sheet1['N1:Z100']:
+                            for cell in row:
+                                cell.fill = fontg
+
+
+                Sheet1.cell(row = 6, column = 3).value = "Company"
+                Sheet1.cell(row = 6, column = 4).value = "='Other info'!C4"
+                Sheet1.cell(row = 7, column = 3).value = "Address"
+                Sheet1.cell(row = 7, column = 4).value = "='Other info'!C6"
+                Sheet1.cell(row = 8, column = 3).value = "VAT tax code"
+                Sheet1.cell(row = 8, column = 4).value = "='Other info'!C5"
+                Sheet1['D8'].alignment = Alignment(wrapText=True, horizontal='left')
+                Sheet1.cell(row = 9, column = 3).value = "Registration no."
+                Sheet1.cell(row = 9, column = 4).value = "J08/1139/2017"
+                Sheet1.cell(row = 10, column = 3).value = "The administration it belongs to"
+                Sheet1.cell(row = 10, column = 4).value = str(dropdown)
+                Sheet1.cell(row = 11, column = 3).value = "Frequency of declaration / payment"
+                Sheet1.cell(row = 11, column = 4).value = "Monthly"
+                Sheet1.cell(row = 12, column = 3).value = "Reporting period"
+                Sheet1.cell(row = 12, column = 4).value = "=date('Other info'!C2,'Other info'!C3,1)"
+                Sheet1.cell(row = 12, column = 4).number_format = 'mmmm yyyy'
+
+                Sheet1.cell(row = 43, column = 4).value="Yes"
+                Sheet1.cell(row = 46, column = 4).value="N/a"
+                Sheet1.cell(row = 47, column = 4).value="N/a"
+                Sheet1.cell(row = 50, column = 4).value="N/a"
+                Sheet1.cell(row = 51, column = 4).value="N/a"
+                Sheet1.cell(row = 43, column = 4).font=font5
+                Sheet1.cell(row = 46, column = 4).font=font5
+                Sheet1.cell(row = 47, column = 4).font=font5
+                Sheet1.cell(row = 50, column = 4).font=font5
+                Sheet1.cell(row = 51, column = 4).font=font5
+                info=temp['Other info']
+                valluna=""
+                vallunaurmatoare=""
+                valIban=""
+                okdecembrie=0
+                for i in range(0,len(listaluni)):
+                    if(str(info.cell(row=3,column=3).value)=="12"):
+                        okdecembrie=1
+                        vallunaurmatoare=listadenluni2[0]
+                        valluna=listadenluni2[11]
+                    else:
+                        if(listaluni[i]==str(info.cell(row=3,column=3).value)):
+                            valluna=listadenluni2[i]
+                            vallunaurmatoare=listadenluni2[i+1]
+                var=Sheet1.cell(row=12,column=4).value
+                # print(var)
+                Sheet1.cell(row = 10, column = 4).value = str(dropdown)
+                for j in range(0,len(listatrez)):
+                    if(listatrez[j]==str(Sheet1.cell(row=10,column=4).value)):
+                        valIban=listaiban[j]
+                Sheet1.cell(row=60, column=3).value='Payment period: '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
+                Sheet1.cell(row=61, column=3).value='="Suma de plata: " &D55&" RON "'
+                Sheet1.cell(row=62, column=3).value="Currency: RON"
+                Sheet1.cell(row=63, column=3).value='Payment details: VAT return - '+ str(valluna)+' '+ str(info.cell(row=2,column=3).value)
+                if(okdecembrie==1):
+                    Sheet1.cell(row=64, column=3).value='Deadline: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value+1)
+                else:
+                    Sheet1.cell(row=64, column=3).value='Deadline: 25-'+ str(vallunaurmatoare)+' '+ str(info.cell(row=2,column=3).value)
+                Sheet1.cell(row=66, column=3).value='="Payer TIN: " & D8'
+                Sheet1.cell(row=67, column=3).value='="Payer address: " &D7'
+                Sheet1.cell(row=69, column=3).value="Beneficiary: BUGETUL DE STAT"
+                Sheet1.cell(row=70, column=3).value='IBAN: '+ str(valIban)
+                Sheet1.cell(row=71, column=3).value="SWIFT / BIC: TREZROBU"
+                Sheet1.cell(row=72, column=3).value="Bank / Treasury:"+str(dropdown)
+                Sheet1.cell(row=74, column=3).value="Note: Any banking fees connected with the payment must be covered by the tax payer."
+                Sheet1.cell(row=74, column=3).font=font2
+
+                Sheet1.cell(row = 6, column = 3).font=font1
+                Sheet1.cell(row = 6, column = 4).font=font2
+                Sheet1.cell(row = 7, column = 3).font=font1
+                Sheet1.cell(row = 7, column = 4).font=font2
+                Sheet1.cell(row = 8, column = 3).font=font1
+                Sheet1.cell(row = 8, column = 4).font=font2
+                Sheet1.cell(row = 9, column = 3).font=font1
+                Sheet1.cell(row = 9, column = 4).font=font2
+                Sheet1.cell(row = 10, column = 3).font=font1
+                Sheet1.cell(row = 10, column = 4).font=font3
+                Sheet1.cell(row = 11, column = 3).font=font1
+                Sheet1.cell(row = 11, column = 4).font=font3
+                Sheet1.cell(row = 12, column = 3).font=font1
+                Sheet1.cell(row = 12, column = 4).font=font3
+
+                Sheet1.cell(row = 6, column = 3).fill=culoare
+                Sheet1.cell(row = 7, column = 3).fill=culoare
+                Sheet1.cell(row = 8, column = 3).fill=culoare
+                Sheet1.cell(row = 9, column = 3).fill=culoare
+                Sheet1.cell(row = 10, column = 3).fill=culoare
+                Sheet1.cell(row = 11, column = 3).fill=culoare
+                Sheet1.cell(row = 12, column = 3).fill=culoare
+                Sheet1.cell(row = 6, column = 4).fill=culoare2
+                Sheet1.cell(row = 7, column = 4).fill=culoare2
+                Sheet1.cell(row = 8, column = 4).fill=culoare2
+                Sheet1.cell(row = 9, column = 4).fill=culoare2
+                Sheet1.cell(row = 10, column = 4).fill=culoare2
+                Sheet1.cell(row = 11, column = 4).fill=culoare2
+                Sheet1.cell(row = 12, column = 4).fill=culoare2
+
+                Sheet1.cell(row = 58, column = 3).fill=culoare6
+                Sheet1.cell(row = 32, column = 3).fill=culoare3
+                Sheet1.cell(row = 33, column = 3).fill=culoare3
+                Sheet1.cell(row = 34, column = 3).fill=culoare3
+                Sheet1.cell(row = 35, column = 3).fill=culoare3
+                Sheet1.cell(row = 36, column = 3).fill=culoare3
+                Sheet1.cell(row = 37, column = 3).fill=culoare3
+                Sheet1.cell(row = 38, column = 3).fill=culoare3
+                Sheet1.cell(row = 39, column = 3).fill=culoare3
+                Sheet1.cell(row = 32, column = 4).fill=culoare3
+                Sheet1.cell(row = 33, column = 4).fill=culoare3
+                Sheet1.cell(row = 34, column = 4).fill=culoare3
+                Sheet1.cell(row = 35, column = 4).fill=culoare3
+                Sheet1.cell(row = 36, column = 4).fill=culoare3
+                Sheet1.cell(row = 37, column = 4).fill=culoare3
+                Sheet1.cell(row = 38, column = 4).fill=culoare3
+                Sheet1.cell(row = 39, column = 4).fill=culoare3
+                Sheet1.cell(row = 32, column = 6).fill=culoare3
+                Sheet1.cell(row = 33, column = 6).fill=culoare3
+                Sheet1.cell(row = 34, column = 6).fill=culoare3
+                Sheet1.cell(row = 35, column = 6).fill=culoare3
+                Sheet1.cell(row = 36, column = 6).fill=culoare3
+                Sheet1.cell(row = 37, column = 6).fill=culoare3
+                Sheet1.cell(row = 38, column = 6).fill=culoare3
+                Sheet1.cell(row = 39, column = 6).fill=culoare3
+
+                Sheet1.cell(row = 41, column = 6).fill=culoare4
+                Sheet1.cell(row = 42, column = 6).fill=culoare4
+                Sheet1.cell(row = 43, column = 6).fill=culoare4
+                Sheet1.cell(row = 44, column = 6).fill=culoare4
+                Sheet1.cell(row = 45, column = 6).fill=culoare4
+                Sheet1.cell(row = 46, column = 6).fill=culoare4
+                Sheet1.cell(row = 47, column = 6).fill=culoare4
+                Sheet1.cell(row = 48, column = 6).fill=culoare4
+                Sheet1.cell(row = 49, column = 6).fill=culoare4
+                Sheet1.cell(row = 50, column = 6).fill=culoare4
+                Sheet1.cell(row = 51, column = 6).fill=culoare4
+                Sheet1.cell(row = 41, column = 3).fill=culoare4
+                Sheet1.cell(row = 42, column = 3).fill=culoare4
+                Sheet1.cell(row = 43, column = 3).fill=culoare4
+                Sheet1.cell(row = 44, column = 3).fill=culoare4
+                Sheet1.cell(row = 45, column = 3).fill=culoare4
+                Sheet1.cell(row = 46, column = 3).fill=culoare4
+                Sheet1.cell(row = 47, column = 3).fill=culoare4
+                Sheet1.cell(row = 48, column = 3).fill=culoare4
+                Sheet1.cell(row = 49, column = 3).fill=culoare4
+                Sheet1.cell(row = 50, column = 3).fill=culoare4
+                Sheet1.cell(row = 51, column = 3).fill=culoare4
+                Sheet1.cell(row = 41, column = 4).fill=culoare4
+                Sheet1.cell(row = 42, column = 4).fill=culoare4
+                Sheet1.cell(row = 43, column = 4).fill=culoare6
+                Sheet1.cell(row = 44, column = 4).fill=culoare4
+                Sheet1.cell(row = 45, column = 4).fill=culoare4
+                Sheet1.cell(row = 46, column = 4).fill=culoare6
+                Sheet1.cell(row = 47, column = 4).fill=culoare6
+                Sheet1.cell(row = 48, column = 4).fill=culoare4
+                Sheet1.cell(row = 49, column = 4).fill=culoare4
+                Sheet1.cell(row = 50, column = 4).fill=culoare6
+                Sheet1.cell(row = 51, column = 4).fill=culoare6
+
+                Sheet1.cell(row = 53, column = 4).fill=culoare5
+                Sheet1.cell(row = 54, column = 4).fill=culoare5
+                Sheet1.cell(row = 55, column = 4).fill=culoare5
+                Sheet1.cell(row = 53, column = 3).fill=culoare5
+                Sheet1.cell(row = 54, column = 3).fill=culoare5
+                Sheet1.cell(row = 55, column = 3).fill=culoare5
+                Sheet1.cell(row = 53, column = 6).fill=culoare5
+                Sheet1.cell(row = 54, column = 6).fill=culoare5
+                Sheet1.cell(row = 55, column = 6).fill=culoare5
+
+
+                Sheet1.cell(row = 32, column = 3).value="Current VAT position"
+                Sheet1.cell(row = 32, column = 3).font=font4
+                Sheet1.cell(row = 34, column = 3).value="Input VAT for the period"
+                Sheet1.cell(row = 35, column = 3).value="Output VAT for the period"
+                Sheet1.cell(row = 36, column = 3).value="VAT Payable for the period"
+                Sheet1.cell(row = 37, column = 3).value="VAT Recoverable for the period"
+                Sheet1.cell(row = 38, column = 3).value="VAT under settlement for purchases"
+                Sheet1.cell(row = 39, column = 3).value="VAT under settlement for deliveries"
+                Sheet1.cell(row = 32, column = 4).value="RON"
+
+                Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+                Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
+                Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
+                Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
+                Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
+                Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
+                Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 39, column = 4).value=0
+                Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
+        IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
+        IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
+        IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
+                Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=38, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=39, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=39, column=6).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=55, column=4).number_format = '#,##0_);(#,##0)'
+                Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'
+
+
+                Sheet1.cell(row = 41, column = 3).value="Carry Over position"
+                Sheet1.cell(row = 41, column = 3).font=font4
+                Sheet1.row_dimensions[42].height = 0.2
+                Sheet1.cell(row = 43, column = 3).value="Requested for reimbursement"
+                Sheet1.cell(row = 44, column = 3).value
+                Sheet1.cell(row = 45, column = 3).value="VAT refundable not yet requested"
+                Sheet1.cell(row = 46, column = 3).value="Period"
+                Sheet1.cell(row = 47, column = 3).value="Amount"
+                Sheet1.cell(row = 48, column = 3).value
+                Sheet1.cell(row = 49, column = 3).value="VAT refundable requested and under audit"
+                Sheet1.cell(row = 50, column = 3).value="Period"
+                Sheet1.cell(row = 51, column = 3).value="Amount"
+
+
+                Sheet1.cell(row = 53, column = 3).value="VAT balance position"
+                Sheet1.cell(row = 53, column = 3).font=font4
+                Sheet1.cell(row = 55, column = 3).value="VAT position in the current return"
+
+
+                Sheet1['C16'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['C19'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['C22'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['C25'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['C28'].alignment = Alignment(wrapText=True, horizontal='left', vertical='center')
+                Sheet1['D10'].alignment = Alignment(wrapText=True, horizontal='right')
+                Sheet1['D11'].alignment = Alignment(wrapText=True, horizontal='right')
+                Sheet1['D12'].alignment = Alignment(wrapText=True, horizontal='right')
+                Sheet1['C58'].alignment = Alignment(wrapText=True, horizontal='center')
+                Sheet1['D37'].alignment = Alignment(wrapText=True, horizontal='right')
+
+                Sheet1.column_dimensions['C'].width = 65
+                Sheet1.column_dimensions['D'].width = 20
+                Sheet1.column_dimensions['A'].width = 2
+                Sheet1.column_dimensions['B'].width = 3
+                Sheet1.column_dimensions['E'].width = 1
+                Sheet1.column_dimensions['F'].width = 20
+                Sheet1.column_dimensions['G'].width = 2
+
+                # img= openpyxl.drawing.image.Image('test.png')
+                # Sheet1.add_image(img,'C16')
+
+                # img= openpyxl.drawing.image.Image('test2.png')
+                # Sheet1.add_image(img,'C19')
+
+                # img= openpyxl.drawing.image.Image('test3.png')
+                # Sheet1.add_image(img,'C22')
+
+                # img= openpyxl.drawing.image.Image('test4.png')
+                # Sheet1.add_image(img,'C25')
+
+                # img= openpyxl.drawing.image.Image('test5.png')
+                # Sheet1.add_image(img,'C28')
+
+                # img= openpyxl.drawing.image.Image('test6.png')
+                # Sheet1.add_image(img,'D16')
+
+                # img= openpyxl.drawing.image.Image('test7.png')
+                # Sheet1.add_image(img,'D19')
+
+                # img= openpyxl.drawing.image.Image('test8.png')
+                # Sheet1.add_image(img,'D22')
+
+                # img= openpyxl.drawing.image.Image('test9.png')
+                # Sheet1.add_image(img,'D25')
+                Sheet1.cell(row = 16, column = 3).fill=culoare
+                Sheet1.cell(row=16, column=3).font=font1
+                Sheet1.cell(row=16, column=3).value="  D300"
+                Sheet1.cell(row=16, column=3).hyperlink="#'D300 draft figures'!A1"
+                # Sheet1.cell(row=16, column=3).border=border9
+                Sheet1.row_dimensions[18].height=8
+
+                Sheet1.cell(row = 19, column = 3).fill=culoare
+                Sheet1.cell(row=19, column=3).font=font1
+                Sheet1.cell(row=19, column=3).value="  D390"
+                Sheet1.cell(row=19, column=3).hyperlink="#'D390 workings'!A1"
+                # Sheet1.cell(row=19, column=3).border=border9
+                Sheet1.row_dimensions[21].height=8
+
+                Sheet1.cell(row = 22, column = 3).fill=culoare
+                Sheet1.cell(row=22, column=3).font=font1
+                Sheet1.cell(row=22, column=3).value="  D394"
+                Sheet1.cell(row=22, column=3).hyperlink="#'D394--->>>'!A1"
+                # Sheet1.cell(row=22, column=3).border=border9
+                Sheet1.row_dimensions[24].height=8
+
+                Sheet1.cell(row = 25, column = 3).fill=culoare
+                Sheet1.cell(row=25, column=3).font=font1
+                Sheet1.cell(row=25, column=3).value="  Sales Ledger"
+                Sheet1.cell(row=25, column=3).hyperlink="#'Sales'!A1"
+                # Sheet1.cell(row=25, column=3).border=border9
+                Sheet1.row_dimensions[27].height=8
+
+                Sheet1.cell(row = 28, column = 3).fill=culoare
+                Sheet1.cell(row=28, column=3).font=font1
+                Sheet1.cell(row=28, column=3).value="  Purchase Ledger"
+                Sheet1.cell(row=28, column=3).hyperlink="#'Purchases'!A1"
+                # Sheet1.cell(row=28, column=3).border=border9
+                Sheet1.row_dimensions[30].height=8
+
+                Sheet1.merge_cells(start_row=28, start_column=3, end_row=29, end_column=3)
+                Sheet1.merge_cells(start_row=25, start_column=3, end_row=26, end_column=3)
+                Sheet1.merge_cells(start_row=22, start_column=3, end_row=23, end_column=3)
+                Sheet1.merge_cells(start_row=19, start_column=3, end_row=20, end_column=3)
+                Sheet1.merge_cells(start_row=16, start_column=3, end_row=17, end_column=3)
+                Sheet1.merge_cells(start_row=6, start_column=4, end_row=6, end_column=12)
+                Sheet1.merge_cells(start_row=7, start_column=4, end_row=7, end_column=12)
+                Sheet1.merge_cells(start_row=8, start_column=4, end_row=8, end_column=12)
+                Sheet1.merge_cells(start_row=9, start_column=4, end_row=9, end_column=12)
+                Sheet1.merge_cells(start_row=10, start_column=4, end_row=10, end_column=12)
+                Sheet1.merge_cells(start_row=11, start_column=4, end_row=11, end_column=12)
+                Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
+                Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
             
             sales=temp['Sales']
             purchases=temp['Purchases']
@@ -20936,7 +21827,7 @@ def D300xml_nutre():
             # print(nrEvidenta)
             #print(nrEvidenta, 'nrEvidenta')
                 
-            
+            info.cell(row=3, column=3).value=lunacurenta
             info.cell(row=18, column=3).value=nrEvidenta
             info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
 
@@ -21266,8 +22157,8 @@ def D300xml_nutre():
                 amount.cell(row=16, column=3).value='=C36'
                 amount.cell(row=17, column=2).value='=B37'
                 amount.cell(row=17, column=3).value='=C37'
-                amount.cell(row=18, column=2).value='=ROUND(SUMIF(Purchases!C:C,"7",Purchases!AO:AO),0)'
-                amount.cell(row=18, column=3).value='==ROUND(SUMIF(Purchases!C:C,"7",Purchases!AP:AP),0)'
+                amount.cell(row=18, column=2).value='=ROUND(SUMIF(Purchases!C:C,"'+'"str(lunacurenta)"'+',Purchases!AO:AO),0)'
+                amount.cell(row=18, column=3).value='==ROUND(SUMIF(Purchases!C:C,"'+'"str(lunacurenta)"'+',Purchases!AP:AP),0)'
                 amount.cell(row=19, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!G:G)-7,0)'
                 amount.cell(row=19, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!H:H)-8,0)'
                 amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!I:I)-9,0)'
@@ -21283,14 +22174,14 @@ def D300xml_nutre():
                 amount.cell(row=33, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AN:AN)-C35-39,0)'
                 amount.cell(row=34, column=2).value='=B33'
                 amount.cell(row=34, column=3).value='=C33'
-                amount.cell(row=35, column=2).value='=ROUND(SUMIF(Purchases!C:C,"7",Purchases!AM:AM),0)'
-                amount.cell(row=35, column=3).value='=ROUND(SUMIF(Purchases!C:C,"7",Purchases!AN:AN),0)'
+                amount.cell(row=35, column=2).value='=ROUND(SUMIF(Purchases!C:C,"'+'"str(lunacurenta)"'+',Purchases!AM:AM),0)'
+                amount.cell(row=35, column=3).value='=ROUND(SUMIF(Purchases!C:C,"'+'"str(lunacurenta)"'+',Purchases!AN:AN),0)'
                 amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AO:AO)+SUMIF(Purchases!A:A,">0",Purchases!BA:BA)-40-52-B38,0)'
                 amount.cell(row=36, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AP:AP)+SUMIF(Purchases!A:A,">0",Purchases!BB:BB)-41-53-C38,0)'
                 amount.cell(row=37, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AO:AO)-40-B38,0)'
                 amount.cell(row=37, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AP:AP)-41-C38,0)'
-                amount.cell(row=38, column=2).value='=ROUND(SUMIF(Purchases!C:C,"7",Purchases!AO:AO),0)'
-                amount.cell(row=38, column=3).value='=ROUND(SUMIF(Purchases!C:C,"7",Purchases!AP:AP),0)'
+                amount.cell(row=38, column=2).value='=ROUND(SUMIF(Purchases!C:C,"'+'"str(lunacurenta)"'+',Purchases!AO:AO),0)'
+                amount.cell(row=38, column=3).value='=ROUND(SUMIF(Purchases!C:C,"'+'"str(lunacurenta)"'+',Purchases!AP:AP),0)'
                 amount.cell(row=58, column=3).value='=0'
                 amount.cell(row=39, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!M:M)+SUMIF(Purchases!A:A,">0",Purchases!S:S)+SUMIF(Purchases!A:A,">0",Purchases!X:X)-12-18-23,0)'
                 amount.cell(row=39, column=3).value='=ROUND(B39*19%,0)'
