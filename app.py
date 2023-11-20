@@ -21831,6 +21831,7 @@ def D300xml_nutre():
                 
             # lunacurenta=0    
             lunacurenta=info.cell(row=3, column=3).value
+            lunaanterioare=lunacurenta-1
             info.cell(row=18, column=3).value=nrEvidenta
             info.cell(row=52, column=3).value="=SUM('D300 draft figures'!G8:G66)"
 
@@ -22160,8 +22161,8 @@ def D300xml_nutre():
                 amount.cell(row=16, column=3).value='=C36'
                 amount.cell(row=17, column=2).value='=B37'
                 amount.cell(row=17, column=3).value='=C37'
-                amount.cell(row=18, column=2).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunacurenta)+'",Purchases!AO:AO),0)'
-                amount.cell(row=18, column=3).value='==ROUND(SUMIF(Purchases!C:C,"'+str(lunacurenta)+'",Purchases!AP:AP),0)'
+                amount.cell(row=18, column=2).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunaanterioare)+'",Purchases!AO:AO),0)'
+                amount.cell(row=18, column=3).value='==ROUND(SUMIF(Purchases!C:C,"'+str(lunaanterioare)+'",Purchases!AP:AP),0)'
                 amount.cell(row=19, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!G:G)-7,0)'
                 amount.cell(row=19, column=3).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!H:H)-8,0)'
                 amount.cell(row=20, column=2).value='=ROUND(SUMIF(Sales!A:A,">0",Sales!I:I)-9,0)'
@@ -22177,14 +22178,14 @@ def D300xml_nutre():
                 amount.cell(row=33, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AN:AN)-C35-39,0)'
                 amount.cell(row=34, column=2).value='=B33'
                 amount.cell(row=34, column=3).value='=C33'
-                amount.cell(row=35, column=2).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunacurenta)+'",Purchases!AM:AM),0)'
-                amount.cell(row=35, column=3).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunacurenta)+'",Purchases!AN:AN),0)'
+                amount.cell(row=35, column=2).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunaanterioare)+'",Purchases!AM:AM),0)'
+                amount.cell(row=35, column=3).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunaanterioare)+'",Purchases!AN:AN),0)'
                 amount.cell(row=36, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AO:AO)+SUMIF(Purchases!A:A,">0",Purchases!BA:BA)-40-52-B38,0)'
                 amount.cell(row=36, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AP:AP)+SUMIF(Purchases!A:A,">0",Purchases!BB:BB)-41-53-C38,0)'
                 amount.cell(row=37, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AO:AO)-40-B38,0)'
                 amount.cell(row=37, column=3).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!AP:AP)-41-C38,0)'
-                amount.cell(row=38, column=2).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunacurenta)+'",Purchases!AO:AO),0)'
-                amount.cell(row=38, column=3).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunacurenta)+'",Purchases!AP:AP),0)'
+                amount.cell(row=38, column=2).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunaanterioare)+'",Purchases!AO:AO),0)'
+                amount.cell(row=38, column=3).value='=ROUND(SUMIF(Purchases!C:C,"'+str(lunaanterioare)+'",Purchases!AP:AP),0)'
                 amount.cell(row=58, column=3).value='=0'
                 amount.cell(row=39, column=2).value='=ROUND(SUMIF(Purchases!A:A,">0",Purchases!M:M)+SUMIF(Purchases!A:A,">0",Purchases!S:S)+SUMIF(Purchases!A:A,">0",Purchases!X:X)-12-18-23,0)'
                 amount.cell(row=39, column=3).value='=ROUND(B39*19%,0)'
