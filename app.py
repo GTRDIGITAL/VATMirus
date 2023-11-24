@@ -19080,7 +19080,7 @@ def D300_thales():
         for i in range(0,len(tiptranza)):
             if(tiptranza[i]!="Not applicable for D394"):
                 if(tiptranza[i]=="V"):
-                    text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="'+str(codv[i])+'" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
+                    text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="'+str(tip_partener[i])+'" cota="'+str(cotatva[i])+'" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i]).replace('"',"")+'"  nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'">'+'<op11  nrFactPR="'+str(int(nrfacturi[i]))+'" codPR="22" bazaPR="'+str(int(bazatv[i]))+'" /> </op1>'+"\n"
                 else:
                     if(tiptranza[i]=="N"):
                         text=text+'<op1 tip="'+str(tiptranza[i])+'" tip_partener="2" cota="0" cuiP="'+str(cuip[i])+'" denP="'+str(numep[i].replace('"',""))+'" tip_document="1" nrFact="'+str(int(nrfacturi[i]))+'" baza="'+str(int(bazatv[i]))+'"/>'
