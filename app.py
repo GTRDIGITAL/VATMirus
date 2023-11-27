@@ -2042,7 +2042,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                 return render_template("index.html")                
             for row in purchases.iter_rows():
                 for cell in row:
-                    if cell.value == "TotaldocinclVAT":
+                    if cell.value == "19%taxbase":
                         rand_tb = cell.row
                         tdoca = cell.column
                         lun = len(purchases[cell.column])
