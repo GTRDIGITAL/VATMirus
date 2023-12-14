@@ -2197,7 +2197,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                         workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
 
 
-            for x in range(0, len(nrfac)):
+            for x in range(0, len(nrfac)-1):
                 a=a+1
                 workings.cell(row=a, column=1).value="T"
                 workings.cell(row=a, column=4).value=client[x]
