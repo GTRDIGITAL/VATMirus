@@ -1241,6 +1241,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
     
     sales=temp['Sales']
     purchases=temp['Purchases']
+    tri=temp['Operatiuni triunghiulare']
     if(val1==1):
         sheetinutil1=temp.create_sheet('D300--->>>')
         sheetinutil1.sheet_view.showGridLines=False
@@ -1960,6 +1961,55 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             workings.auto_filter.ref = "A3:I10000"
             workings.sheet_view.showGridLines = False
             workings.column_dimensions['I'].hidden = True
+            for row in tri.iter_rows():
+                for cell in row:
+                    if cell.value == "Nr factura":
+                        rand_tb = cell.row
+                        taxcodec1 = cell.column
+                        lun = len(tri[cell.column])
+            try:
+                nrfac = [b.value for b in tri[taxcodec1][rand_tb:lun]]
+            except:
+                flash("Please insert the correct header for 'Tax code sales'")
+                return render_template("index.html")
+
+            for row in tri.iter_rows():
+                for cell in row:
+                    if cell.value == "Client":
+                        rand_tb = cell.row
+                        taxcodec2 = cell.column
+                        lun = len(tri[cell.column])
+            try:
+                client = [b.value for b in tri[taxcodec2][rand_tb:lun]]
+            except:
+                flash("Please insert the correct header for 'Tax code sales'")
+                return render_template("index.html")
+
+            for row in tri.iter_rows():
+                for cell in row:
+                    if cell.value == "CUI":
+                        rand_tb = cell.row
+                        taxcodec3 = cell.column
+                        lun = len(tri[cell.column])
+            try:
+                Cui = [b.value for b in tri[taxcodec3][rand_tb:lun]]
+            except:
+                flash("Please insert the correct header for 'Tax code sales'")
+                return render_template("index.html")
+
+
+            for row in tri.iter_rows():
+                for cell in row:
+                    if cell.value == "Valoare RON":
+                        rand_tb = cell.row
+                        taxcodec4 = cell.column
+                        lun = len(tri[cell.column])
+            try:
+                val = [b.value for b in tri[taxcodec4][rand_tb:lun]]
+            except:
+                flash("Please insert the correct header for 'Tax code sales'")
+                return render_template("index.html")
+
             for row in sales.iter_rows():
                 for cell in row:
                     if cell.value == "Tax code":
@@ -2145,7 +2195,23 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                         workings.cell(row=a, column=8).value=totals[x]
                         workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
                         workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
-            
+
+
+            for x in range(0, len(taxcodes1)):
+                a=a+1
+                workings.cell(row=a, column=1).value="T"
+                workings.cell(row=a, column=4).value=client[x]
+                workings.cell(row=a, column=6).value=Cui[x]
+                workings.cell(row=a, column=3).value=Cui[x][2:]
+                workings.cell(row=a, column=7).value=Cui[x][0:2]
+                # workings.cell(row=a, column=8).value=listaBazaA[x]
+                # workings.cell(row=a, column=8).value="=SUMIFS(Purchases!BH:BH,Purchases!CK:CK,'D390 workings'!A{0},Purchases!F:F,'D390 workings'!F{0})".format(a)
+                workings.cell(row=a, column=8).value=val[x]
+                workings.cell(row=a, column=5).value='=ROUND(H{0},0)'.format(a)
+                workings.cell(row=a, column=9).value='=IF(F{0}=" "," ",COUNTIFS(F{0}:F10000,F{0},A{0}:A10000,A{0}))'.format(a)
+
+
+
             for row in workings.iter_rows():
                 for cell in row:
                     if cell.value == "TIP":
