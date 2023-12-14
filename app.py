@@ -1290,14 +1290,14 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             # print(listdocdate[k])
             # print(datadocument[k][3:4])
             # print(datadocument[k][3:5])
-            if(str(listdocdate[k][4:5])=="0"):
-                if(str(listdocdate[k][5:6])==str(info.cell(row=3,column=3).value)):
+            if(str(listdocdate[k][3:4])=="0"):
+                if(str(listdocdate[k][4:5])==str(info.cell(row=3,column=3).value)):
                     listacurentas.append("Yes")
                 else:
                     listacurentas.append("No")
 
             else:
-                if(str(listdocdate[k][4:6])==str(info.cell(row=3,column=3).value)):
+                if(str(listdocdate[k][3:5])==str(info.cell(row=3,column=3).value)):
                     listacurentas.append("Yes")
                 else:
                     listacurentas.append("No")
