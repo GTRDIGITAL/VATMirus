@@ -1889,7 +1889,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         AA2=""
 
         if int(info.cell(row=3, column=3).value)==12:
-            LL2="1"
+            LL2="01"
         else:
             if len(str(info.cell(row=3, column=3).value))==1:
                 if(int(info.cell(row=3,column=3).value)==9):
@@ -6552,7 +6552,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         AA2=""
 
         if int(info.cell(row=3, column=3).value)==12:
-            LL2="1"
+            LL2="01"
         else:
             if len(str(info.cell(row=3, column=3).value))==1:
                 if(int(info.cell(row=3,column=3).value)==9):
@@ -10973,7 +10973,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         AA2=""
 
         if int(info.cell(row=3, column=3).value)==12:
-            LL2="1"
+            LL2="01"
         else:
             if len(str(info.cell(row=3, column=3).value))==1:
                 if(int(info.cell(row=3,column=3).value)==9):
@@ -14999,7 +14999,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         AA2=""
 
         if int(info.cell(row=3, column=3).value)==12:
-            LL2="1"
+            LL2="01"
         else:
             if len(str(info.cell(row=3, column=3).value))==1:
                 if(int(info.cell(row=3,column=3).value)==9):
@@ -19116,9 +19116,180 @@ def D300_thales():
         rez25='''<rezumat2 cota="5"  bazaFSLcod="'''+str(sheetI.cell(row=12,column=2).value)+'''" TVAFSLcod="'''+str(sheetI.cell(row=12,column=3).value)+'''" bazaFSL="'''+str(sheetI.cell(row=22,column=2).value)+'''" TVAFSL="'''+str(sheetI.cell(row=22,column=3).value)+'''" bazaFSA="'''+str(sheetI.cell(row=32,column=2).value)+'''" TVAFSA="'''+str(sheetI.cell(row=32,column=3).value)+'''" bazaFSAI="'''+str(sheetI.cell(row=42,column=2).value)+'''" TVAFSAI="'''+str(sheetI.cell(row=42,column=3).value)+'''" bazaBFAI="'''+str(sheetI.cell(row=52,column=2).value)+'''" TVABFAI="'''+str(sheetI.cell(row=52,column=3).value)+'''" nrFacturiL="'''+str(L5nr)+'''" bazaL="'''+str(L5b)+'''" tvaL="'''+str(L5t)+'''" nrFacturiA="'''+str(A5nr)+'''" bazaA="'''+str(A5b)+'''" tvaA="'''+str(A5t)+'''" nrFacturiAI="'''+str(AI5nr)+'''" bazaAI="'''+str(AI5b)+'''" tvaAI="'''+str(AI5t)+'''" baza_incasari_i1="'''+str(sheetG.cell(row=17,column=2).value)+'''" tva_incasari_i1="'''+str(sheetG.cell(row=17,column=3).value)+'''" baza_incasari_i2="'''+str(sheetG.cell(row=27,column=2).value)+'''" tva_incasari_i2="'''+str(sheetG.cell(row=27,column=3).value)+'''" bazaL_PF="0" tvaL_PF="0"/>'''
         totalplata394=numarcuicorect1+numarcuicorect2+numarcuicorect3+numarcuicorect4+L24b+L20b+L19brez2+L9brez2+L5b+A5b+A9b+A19b+A20b+A24b+AI5b+AI9b+AI19b+AI20b+AI24b
         #print(totalplata394)
-        textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Mirus Consultanta Fiscala SRL" cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
-        <informatii nrCui1="'''+str(numarcuicorect1)+'''" nrCui2="'''+str(numarcuicorect2)+'''" nrCui3="'''+str(numarcuicorect3)+'''" nrCui4="'''+str(numarcuicorect4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="'''+str(totalfacturi)+'''" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
-        text=text+textinfo+text15+text10+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
+        try:
+            sect3=temp['Sectiunea 3']
+
+            if(sect3.cell(row=8,column=2).value)!=None:
+                achizitiiPE=1
+            else:
+                achizitiiPE=0
+            if(sect3.cell(row=9,column=2).value)!=None:
+                achizitiiCR=1
+            else:
+                achizitiiCR=0
+            if(sect3.cell(row=10,column=2).value)!=None:
+                achizitiiCB=1
+            else:
+                achizitiiCB=0                
+            if(sect3.cell(row=11,column=2).value)!=None:
+                achizitiiCI=1
+            else:
+                achizitiiCI=0
+            if(sect3.cell(row=12,column=2).value)!=None:
+                achizitiiA=1
+            else:
+                achizitiiA=0
+            if(sect3.cell(row=15,column=2).value)!=None:
+                achizitiiB24=1
+            else:
+                achizitiiB24=0
+
+            if(sect3.cell(row=16,column=2).value)!=None:
+                achizitiiB20=1
+            else:
+                achizitiiB20=0
+            if(sect3.cell(row=17,column=2).value)!=None:
+                achizitiiB19=1
+            else:
+                achizitiiB19=0                
+
+            if(sect3.cell(row=18,column=2).value)!=None:
+                achizitiiB9=1
+            else:
+                achizitiiB9=0
+
+            if(sect3.cell(row=19,column=2).value)!=None:
+                achizitiiB5=1
+            else:
+                achizitiiB5=0
+
+            if(sect3.cell(row=22,column=2).value)!=None:
+                achizitiiS24=1
+            else:
+                achizitiiS24=0
+
+            if(sect3.cell(row=23,column=2).value)!=None:
+                achizitiiS20=1
+            else:
+                achizitiiS20=0
+            if(sect3.cell(row=24,column=2).value)!=None:
+                achizitiiS19=1
+            else:
+                achizitiiS19=0                
+
+            if(sect3.cell(row=25,column=2).value)!=None:
+                achizitiiS9=1
+            else:
+                achizitiiS9=0
+
+            if(sect3.cell(row=26,column=2).value)!=None:
+                achizitiiS5=1
+            else:
+                achizitiiS5=0
+
+            if(sect3.cell(row=28,column=2).value)!=None:
+                importB=1
+            else:
+                importB=0
+
+            if(sect3.cell(row=30,column=2).value)!=None:
+                acINecorp=1
+            else:
+                acINecorp=0
+
+            if(sect3.cell(row=32,column=2).value)!=None:
+                livrariBI=1
+            else:
+                livrariBI=0
+
+            if(sect3.cell(row=35,column=2).value)!=None:
+                BUN24=1
+            else:
+                BUN24=0
+
+            if(sect3.cell(row=36,column=2).value)!=None:
+                BUN20=1
+            else:
+                BUN20=0
+
+            if(sect3.cell(row=37,column=2).value)!=None:
+                BUN19=1
+            else:
+                BUN19=0  
+            if(sect3.cell(row=38,column=2).value)!=None:
+                BUN9=1
+            else:
+                BUN9=0                               
+            if(sect3.cell(row=39,column=2).value)!=None:
+                BUN5=1
+            else:
+                BUN5=0             
+            
+            if(sect3.cell(row=41,column=2).value)!=None:
+                valoareScutit=1
+            else:
+                valoareScutit=0
+
+            if(sect3.cell(row=43,column=2).value)!=None:
+                BunTI=1
+            else:
+                BunTI=0
+
+            if(sect3.cell(row=46,column=2).value)!=None:
+                Prest24=1
+            else:
+                Prest24=0            
+            if(sect3.cell(row=47,column=2).value)!=None:
+                Prest20=1
+            else:
+                Prest20=0                
+            if(sect3.cell(row=48,column=2).value)!=None:
+                Prest19=1
+            else:
+                Prest19=0
+
+            if(sect3.cell(row=49,column=2).value)!=None:
+                Prest9=1
+            else:
+                Prest9=0
+
+            if(sect3.cell(row=50,column=2).value)!=None:
+                Prest5=1
+            else:
+                Prest5=0                
+
+            if(sect3.cell(row=52,column=2).value)!=None:
+                PrestScutit=1
+            else:
+                PrestScutit=0
+
+            if(sect3.cell(row=54,column=2).value)!=None:
+                LIntra=1
+            else:
+                LIntra=0
+
+            if(sect3.cell(row=56,column=2).value)!=None:
+                PrestIntra=1
+            else:
+                PrestIntra=0
+
+            if(sect3.cell(row=58,column=2).value)!=None:
+                Export=1
+            else:
+                Export=0
+
+            if(sect3.cell(row=60,column=2).value)!=None:
+                livINecorp=1
+            else:
+                livINecorp=0
+
+            textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Mirus Consultanta Fiscala SRL" cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
+            <informatii nrCui1="'''+str(numarcuicorect1)+'''" nrCui2="'''+str(numarcuicorect2)+'''" nrCui3="'''+str(numarcuicorect3)+'''" nrCui4="'''+str(numarcuicorect4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="'''+str(totalfacturi)+'''" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="1" achizitiiPE="'''+str(achizitiiPE)+'''" achizitiiCR="'''+str(achizitiiCR)+'''" achizitiiCB="'''+str(achizitiiCB)+'''" achizitiiCI="'''+str(achizitiiCI)+'''" achizitiiA="'''+str(achizitiiA)+'''" achizitiiB24="'''+str(achizitiiB24)+'''" achizitiiB20="'''+str(achizitiiB20)+'''" achizitiiB19="'''+str(achizitiiB19)+'''" achizitiiB9="'''+str(achizitiiB9)+'''" achizitiiB5="'''+str(achizitiiB5)+'''" achizitiiS24="'''+str(achizitiiS24)+'''" achizitiiS20="'''+str(achizitiiS20)+'''" achizitiiS19="'''+str(achizitiiS19)+'''" achizitiiS9="'''+str(achizitiiS9)+'''" achizitiiS5="'''+str(achizitiiS5)+'''" importB="'''+str(importB)+'''" acINecorp="'''+str(acINecorp)+'''" livrariBI="'''+str(livrariBI)+'''" BUN24="'''+str(BUN24)+'''" BUN20="'''+str(BUN20)+'''" BUN19="'''+str(BUN19)+'''" BUN9="'''+str(BUN9)+'''" BUN5="'''+str(BUN5)+'''" valoareScutit="'''+str(valoareScutit)+'''" BunTI="'''+str(BunTI)+'''" Prest24="'''+str(Prest24)+'''" Prest20="'''+str(Prest20)+'''" Prest19="'''+str(Prest19)+'''" Prest9="'''+str(Prest9)+'''" Prest5="'''+str(Prest5)+'''" PrestScutit="'''+str(PrestScutit)+'''" LIntra="'''+str(LIntra)+'''" PrestIntra="'''+str(PrestIntra)+'''" Export="'''+str(Export)+'''" livINecorp="'''+str(livINecorp)+'''" efectuat="1"/>'''
+            text=text+textinfo+text15+text10+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
+        except:
+            textinfo='''<?xml version="1.0"?><declaratie394 luna="'''+str(luna)+'''" an="'''+str(an)+'''" tip_D394="'''+str(tippok)+'''" sistemTVA="'''+str(sistem)+'''" op_efectuate="1" prsAfiliat="'''+str(persafi)+'''" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d394:declaratie:v4 D394.xsd" xmlns="mfp:anaf:dgti:d394:declaratie:v4" cui="'''+str(coddeinregistrare)+'''" den="'''+str(denumirefirma)+'''" adresa="'''+str(domiciliulfiscalfirma)+'''" telefon="'''+str(telefonfirma)+'''" mail="'''+str(emailfirma)+'''" caen="'''+str(caen)+'''" totalPlata_A="'''+str(int(totalplata394))+'''" denR="'''+str(denumireadmin)+'''" functie_reprez="'''+str(functiedecl)+'''" adresaR="'''+str(domiciliulfiscaladmin)+'''" tip_intocmit="0" den_intocmit="Mirus Consultanta Fiscala SRL" cif_intocmit="27512924" calitate_intocmit="IMPUTERNICIT" optiune="1" schimb_optiune="1">
+            <informatii nrCui1="'''+str(numarcuicorect1)+'''" nrCui2="'''+str(numarcuicorect2)+'''" nrCui3="'''+str(numarcuicorect3)+'''" nrCui4="'''+str(numarcuicorect4)+'''" nr_BF_i1="'''+str(sheetG.cell(row=5,column=2).value)+'''" incasari_i1="'''+str(sheetG.cell(row=6,column=2).value)+'''" incasari_i2="'''+str(sheetG.cell(row=7,column=2).value)+'''" nrFacturi_terti="0" nrFacturi_benef="0" nrFacturi="'''+str(totalfacturi)+'''" nrFacturiL_PF="0" nrFacturiLS_PF="0" val_LS_PF="0" tvaDedAI24="0" tvaDedAI20="0" tvaDedAI19="0" tvaDedAI9="0" tvaDedAI5="0" incasari_ag="0" costuri_ag="0" marja_ag="0" tva_ag="0" pret_vanzare="0" pret_cumparare="0" marja_antic="0" tva_antic="0" solicit="0"/>'''
+            text=text+textinfo+text15+text10+text19+text119+text120+text124+text25+text29+text219+text220+text224+text20+text35+text39+ text319+text320+text324+text45+text49+text419+text420+text424+rez224+rez220+rez219+rez29+rez25+"\n"
 
 
         #print(tipfacturi)
@@ -21866,7 +22037,7 @@ def D300xml_nutre():
             AA2=""
 
             if int(info.cell(row=3, column=3).value)==12:
-                LL2="1"
+                LL2="01"
             else:
                 if len(str(info.cell(row=3, column=3).value))==1:
                     if(int(info.cell(row=3,column=3).value)==9):
