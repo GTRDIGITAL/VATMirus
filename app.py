@@ -23370,14 +23370,14 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         wsdraft.cell(row=64, column=7).value='=SUMIFS(D300!i:i,D300!k:k , "RO", D300!g:g, "R44", D300!e:e, "LAPP INSULATORS SA")'
         wsdraft.cell(row=65, column=7).value='=SUMIFS(D300!i:i,D300!k:k , "RO", D300!g:g, "R45", D300!e:e, "LAPP INSULATORS SA")'
         wsdraft.cell(row=66, column=7).value='=SUMIFS(D300!i:i,D300!k:k , "RO", D300!g:g, "R46", D300!e:e, "LAPP INSULATORS SA")'
-        wsdraft.cell(row=70, column=7).value='=X2'
-        wsdraft.cell(row=70, column=8).value='=Y2'
-        wsdraft.cell(row=70, column=10).value='=X3'
-        wsdraft.cell(row=70, column=11).value='=Y3'
-        wsdraft.cell(row=71, column=7).value='=X2'
-        wsdraft.cell(row=71, column=8).value='=Y2'
-        wsdraft.cell(row=71, column=10).value='=X3'
-        wsdraft.cell(row=71, column=11).value='=Y3'
+        wsdraft.cell(row=70, column=7).value='=X3'
+        wsdraft.cell(row=70, column=8).value='=Y3'
+        wsdraft.cell(row=70, column=10).value='=X2'
+        wsdraft.cell(row=70, column=11).value='=Y2'
+        wsdraft.cell(row=71, column=7).value='=X3'
+        wsdraft.cell(row=71, column=8).value='=Y3'
+        wsdraft.cell(row=71, column=10).value='=X2'
+        wsdraft.cell(row=71, column=11).value='=Y2'
 
 
 
