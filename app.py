@@ -22725,7 +22725,7 @@ def D300_LAPP():
         # denis.cell(row=20, column=3).value=an
         # denis.cell(row=21, column=3).value=luna
 
-        # Sheet1=info2.create_sheet('Cover sheet')
+        Sheet1=info2.create_sheet('Cover sheet')
         fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
         fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
         font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
