@@ -22676,6 +22676,7 @@ def D300_LAPP():
         an=request.form.get('Year')
         luna=request.form.get('Month')
         dropdown = request.form.get('trezorerie')
+        file_TemplateXML = request.files.getlist('vatXML') 
         print(an, luna)
         # for i in D300_2:
         #     i.save(secure_filename(i.filename))
@@ -22724,7 +22725,18 @@ def D300_LAPP():
         # denis.cell(row=3, column=3).value=lun
         # denis.cell(row=20, column=3).value=an
         # denis.cell(row=21, column=3).value=luna
+        files=list(file_TemplateXML)
+    	for v in range(0,len(files)):
+                tree = ET.parse(files[v])
+                root = tree.getroot()
 
+            for j in range(1, 2):
+                try:
+                    wsdraft.cell(row=70, column=6+j).value = int(root.attrib['valoare_b1'])
+                    wsdraft.cell(row=70, column=6+J).value = int(root.attrib['tva_b1'])
+                except:
+                    wsdraft.cell(row=69 + j, column=7).value = 0
+                    wsdraft.cell(row=70 + j, column=7).value = 0
         Sheet1=info2.create_sheet('Cover sheet')
         fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
         fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
@@ -23288,8 +23300,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         denis.cell(row=52, column=3).value="=SUM('D300 draft figures'!B8:B66)+SUM('D300 draft figures'!C8:C66)-'D300 draft figures'!B52-'D300 draft figures'!B56"
 
 
-        bazaneex=ws3.cell(row=20,column=2).value
-        tvaneex=ws3.cell(row=20,column=3).value
+        # bazaneex=ws3.cell(row=20,column=2).value
+        # tvaneex=ws3.cell(row=20,column=3).value
 
 
         wsdraft.cell(row=8, column=7).value='=SUMIFS(D300!i:i,D300!k:k , "RO", D300!g:g, "R1", D300!e:e, "LAPP INSULATORS SA")'
@@ -23604,8 +23616,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         # wsdraft.cell(row=66, column=2).value="=g66+j66+K66+N66+Q66+T66+W66"
         wsdraft.cell(row=68, column=2).value="=g68+j68"
         wsdraft.cell(row=69, column=2).value="=g69+j69"
-        wsdraft.cell(row=70, column=2).value="=round(("+str(bazaneex)+"),0)"
-        wsdraft.cell(row=71, column=2).value="=round(("+str(bazaneex)+"),0)"
+        wsdraft.cell(row=70, column=2).value="=round(g70+j70),0)"
+        wsdraft.cell(row=71, column=2).value="=round(g71+j71),0)"
         # wsdraft.cell(row=71, column=2).value="=g71+j71+K71+N71+Q71+T71+W71"
         wsdraft.cell(row=74, column=2).value="=g74+j74"
 
@@ -23673,8 +23685,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         # wsdraft.cell(row=66, column=3).value="=h66+k66"
         wsdraft.cell(row=68, column=3).value="=h68+k68"
         wsdraft.cell(row=69, column=3).value="=h69+k69"
-        wsdraft.cell(row=70, column=3).value="=round(("+str(tvaneex)+"),0)"
-        wsdraft.cell(row=71, column=3).value="=round(("+str(tvaneex)+"),0)"
+        wsdraft.cell(row=70, column=3).value="=round((h70+k70),0)"
+        wsdraft.cell(row=71, column=3).value="=round((h71+k71),0)"
         # wsdraft.cell(row=71, column=3).value="=h71+k71"
         wsdraft.cell(row=74, column=3).value="=h74+k74"
 
