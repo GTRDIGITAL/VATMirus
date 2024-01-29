@@ -23604,8 +23604,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         # wsdraft.cell(row=66, column=2).value="=g66+j66+K66+N66+Q66+T66+W66"
         wsdraft.cell(row=68, column=2).value="=g68+j68"
         wsdraft.cell(row=69, column=2).value="=g69+j69"
-        wsdraft.cell(row=70, column=2).value="=round(("+int(bazaneex)+"),0)"
-        wsdraft.cell(row=71, column=2).value="=round((int(bazaneex)),0)"
+        wsdraft.cell(row=70, column=2).value="=round(("+str(bazaneex)+"),0)"
+        wsdraft.cell(row=71, column=2).value="=round(("+str(bazaneex)+"),0)"
         # wsdraft.cell(row=71, column=2).value="=g71+j71+K71+N71+Q71+T71+W71"
         wsdraft.cell(row=74, column=2).value="=g74+j74"
 
@@ -23673,8 +23673,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         # wsdraft.cell(row=66, column=3).value="=h66+k66"
         wsdraft.cell(row=68, column=3).value="=h68+k68"
         wsdraft.cell(row=69, column=3).value="=h69+k69"
-        wsdraft.cell(row=70, column=3).value="=round(("+int(tvaneex)+"),0)"
-        wsdraft.cell(row=71, column=3).value="=round(("+int(tvaneex)+"),0)"
+        wsdraft.cell(row=70, column=3).value="=round(("+str(tvaneex)+"),0)"
+        wsdraft.cell(row=71, column=3).value="=round(("+str(tvaneex)+"),0)"
         # wsdraft.cell(row=71, column=3).value="=h71+k71"
         wsdraft.cell(row=74, column=3).value="=h74+k74"
 
