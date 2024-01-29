@@ -23046,30 +23046,30 @@ def D300_LAPP():
         Sheet1.cell(row = 39, column = 3).value="VAT under settlement for deliveries"
         Sheet1.cell(row = 32, column = 4).value="RON"
 
-        Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2023)+")"
+        # Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2023)+")"
         Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2023)+",0)"
+        # Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2023)+",0)"
         Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2023)+",0)"
+        # Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2023)+",0)"
         Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2023)+",0)"
+        # Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2023)+",0)"
         Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2023)+",0)"
+        # Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2023)+",0)"
         Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2023)+",0)"
+        # Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2023)+",0)"
         Sheet1.cell(row = 39, column = 4).value=0
-        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2023)+",0)"
+        # Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2023)+",0)"
         Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
 IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2023)+",0)"
+        # Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2023)+",0)"
         Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
