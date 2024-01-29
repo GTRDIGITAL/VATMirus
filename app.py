@@ -22668,6 +22668,8 @@ def D300_LAPP():
 
     
     folderpath="/home/mirus_app/storage"
+    # folderpath="D:/vatnou/VATMirus"
+
     fontRedDiff=Font(name="Calibri", color='FF0000', size=11)
     fontNegru=Font(name="Calibri", color='000000', size=16,bold=True,italic=True)
     if request.method == 'POST':
@@ -22687,6 +22689,7 @@ def D300_LAPP():
 
         info1 =  openpyxl.load_workbook(D300_2, data_only = 'True')
         info2 = openpyxl.load_workbook("/home/mirus_app/nutre/other/Other info LAPP.xlsx")
+        # info2 = openpyxl.load_workbook("D:/vatnou/VATMirus/Instructiuni/Other info LAPP.xlsx")
         ws=info1["D300"]
         ws3=info1["Cover"]
         ws2=info2.active
@@ -22726,17 +22729,21 @@ def D300_LAPP():
         # denis.cell(row=20, column=3).value=an
         # denis.cell(row=21, column=3).value=luna
         files=list(file_TemplateXML)
-    	for v in range(0,len(files)):
-                tree = ET.parse(files[v])
-                root = tree.getroot()
-
-            for j in range(1, 2):
-                try:
-                    wsdraft.cell(row=70, column=6+j).value = int(root.attrib['valoare_b1'])
-                    wsdraft.cell(row=70, column=6+J).value = int(root.attrib['tva_b1'])
-                except:
-                    wsdraft.cell(row=69 + j, column=7).value = 0
-                    wsdraft.cell(row=70 + j, column=7).value = 0
+        print(files,"------------------------------------------")
+        print("__________________________")
+        for v in range(0,len(files)):
+            tree = ET.parse(files[v])
+            root = tree.getroot()
+            print(root.attrib['valoare_b1'])
+            print(root.attrib['tva_b1'])
+            
+            try:
+                wsdraft.cell(row=1, column=24).value = "TVA Neexigibil XML"
+                wsdraft.cell(row=2+v, column=24).value = int(root.attrib['valoare_b1'])
+                wsdraft.cell(row=2+v, column=25).value = int(root.attrib['tva_b1'])
+            except:
+                wsdraft.cell(row=69 + v, column=7).value = 0
+                wsdraft.cell(row=70 + v, column=7).value = 0
         Sheet1=info2.create_sheet('Cover sheet')
         fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
         fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
@@ -23363,7 +23370,14 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         wsdraft.cell(row=64, column=7).value='=SUMIFS(D300!i:i,D300!k:k , "RO", D300!g:g, "R44", D300!e:e, "LAPP INSULATORS SA")'
         wsdraft.cell(row=65, column=7).value='=SUMIFS(D300!i:i,D300!k:k , "RO", D300!g:g, "R45", D300!e:e, "LAPP INSULATORS SA")'
         wsdraft.cell(row=66, column=7).value='=SUMIFS(D300!i:i,D300!k:k , "RO", D300!g:g, "R46", D300!e:e, "LAPP INSULATORS SA")'
-
+        wsdraft.cell(row=70, column=7).value='=X2'
+        wsdraft.cell(row=70, column=8).value='=Y2'
+        wsdraft.cell(row=70, column=10).value='=X3'
+        wsdraft.cell(row=70, column=11).value='=Y3'
+        wsdraft.cell(row=71, column=7).value='=X2'
+        wsdraft.cell(row=71, column=8).value='=Y2'
+        wsdraft.cell(row=71, column=10).value='=X3'
+        wsdraft.cell(row=71, column=11).value='=Y3'
 
 
 
@@ -23616,8 +23630,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         # wsdraft.cell(row=66, column=2).value="=g66+j66+K66+N66+Q66+T66+W66"
         wsdraft.cell(row=68, column=2).value="=g68+j68"
         wsdraft.cell(row=69, column=2).value="=g69+j69"
-        wsdraft.cell(row=70, column=2).value="=round(g70+j70),0)"
-        wsdraft.cell(row=71, column=2).value="=round(g71+j71),0)"
+        wsdraft.cell(row=70, column=2).value="=round((g70+j70),0)"
+        wsdraft.cell(row=71, column=2).value="=round((g71+j71),0)"
         # wsdraft.cell(row=71, column=2).value="=g71+j71+K71+N71+Q71+T71+W71"
         wsdraft.cell(row=74, column=2).value="=g74+j74"
 
