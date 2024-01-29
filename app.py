@@ -22687,6 +22687,7 @@ def D300_LAPP():
         info1 =  openpyxl.load_workbook(D300_2, data_only = 'True')
         info2 = openpyxl.load_workbook("/home/mirus_app/nutre/other/Other info LAPP.xlsx")
         ws=info1["D300"]
+        ws3=info1["Cover"]
         ws2=info2.active
         # info=Workbook()
 
@@ -22724,7 +22725,7 @@ def D300_LAPP():
         # denis.cell(row=20, column=3).value=an
         # denis.cell(row=21, column=3).value=luna
 
-        Sheet1=info2.create_sheet('Cover sheet')
+        # Sheet1=info2.create_sheet('Cover sheet')
         fonta = PatternFill(start_color = 'ffffff', end_color ='ffffff', fill_type = 'solid')
         fontg = PatternFill(start_color = 'EDEDED', end_color ='EDEDED', fill_type = 'solid')
         font2 = Font(name = 'Georgia', size = 10, bold = True, color="000000")
@@ -23287,7 +23288,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         denis.cell(row=52, column=3).value="=SUM('D300 draft figures'!B8:B66)+SUM('D300 draft figures'!C8:C66)-'D300 draft figures'!B52-'D300 draft figures'!B56"
 
 
-
+        bazaneex=ws3.cell(row=20,column=2).value
+        tvaneex=ws3.cell(row=20,column=3).value
 
 
         wsdraft.cell(row=8, column=7).value='=SUMIFS(D300!i:i,D300!k:k , "RO", D300!g:g, "R1", D300!e:e, "LAPP INSULATORS SA")'
@@ -23602,8 +23604,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         # wsdraft.cell(row=66, column=2).value="=g66+j66+K66+N66+Q66+T66+W66"
         wsdraft.cell(row=68, column=2).value="=g68+j68"
         wsdraft.cell(row=69, column=2).value="=g69+j69"
-        wsdraft.cell(row=70, column=2).value="=g70+j70"
-        wsdraft.cell(row=71, column=2).value="=g71+j71"
+        wsdraft.cell(row=70, column=2).value=bazaneex
+        wsdraft.cell(row=71, column=2).value=tvaneex
         # wsdraft.cell(row=71, column=2).value="=g71+j71+K71+N71+Q71+T71+W71"
         wsdraft.cell(row=74, column=2).value="=g74+j74"
 
