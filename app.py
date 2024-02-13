@@ -659,15 +659,15 @@ def D300xml():
         Sheet1.cell(row = 39, column = 3).value="TVA in curs de decontare pentru livrari"
         Sheet1.cell(row = 32, column = 4).value="RON"
 
-        Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+        Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
         Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
         Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
         Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
         Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
@@ -683,16 +683,16 @@ def D300xml():
         Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'             
 
         Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
         Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
         Sheet1.cell(row = 39, column = 4).value=0
-        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
         Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
 IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
 
         Sheet1.cell(row = 41, column = 3).value="Pozitia reportata"
         Sheet1.cell(row = 41, column = 3).font=font4
@@ -1097,30 +1097,30 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.cell(row = 39, column = 3).value="VAT under settlement for deliveries"
         Sheet1.cell(row = 32, column = 4).value="RON"
 
-        Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+        Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
         Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
         Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
         Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
         Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
         Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
         Sheet1.cell(row = 39, column = 4).value=0
-        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
         Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
 IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
         Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
@@ -4854,7 +4854,7 @@ def D300xml_straumann():
         for row in Sheet1['N1:Z100']:
                     for cell in row:
                         cell.fill = fontg
-        print(get_fxrate(today.year))
+        # print(get_fxrate(today.year))
 
         Sheet1.cell(row = 6, column = 3).value = "Denumire"
         Sheet1.cell(row = 6, column = 4).value = "='Other info'!C4"
@@ -5032,15 +5032,15 @@ def D300xml_straumann():
         Sheet1.cell(row = 39, column = 3).value="TVA in curs de decontare pentru livrari"
         Sheet1.cell(row = 32, column = 4).value="RON"
 
-        Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+        Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
         Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
         Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
         Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
         Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
@@ -5056,16 +5056,16 @@ def D300xml_straumann():
         Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'             
 
         Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
         Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
         Sheet1.cell(row = 39, column = 4).value=0
-        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
         Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
 IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
 
         Sheet1.cell(row = 41, column = 3).value="Pozitia reportata"
         Sheet1.cell(row = 41, column = 3).font=font4
@@ -5470,30 +5470,30 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.cell(row = 39, column = 3).value="VAT under settlement for deliveries"
         Sheet1.cell(row = 32, column = 4).value="RON"
 
-        Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+        Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
         Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
         Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
         Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
         Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
         Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
         Sheet1.cell(row = 39, column = 4).value=0
-        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
         Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
 IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
         Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
@@ -9735,15 +9735,15 @@ def D300xml_thales():
         Sheet1.cell(row = 39, column = 3).value="TVA in curs de decontare pentru livrari"
         Sheet1.cell(row = 32, column = 4).value="RON"
 
-        Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+        Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
         Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
         Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
         Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
         Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
@@ -9759,16 +9759,16 @@ def D300xml_thales():
         Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'             
 
         Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
         Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
         Sheet1.cell(row = 39, column = 4).value=0
-        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
         Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
 IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
 
         Sheet1.cell(row = 41, column = 3).value="Pozitia reportata"
         Sheet1.cell(row = 41, column = 3).font=font4
@@ -10173,30 +10173,30 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.cell(row = 39, column = 3).value="VAT under settlement for deliveries"
         Sheet1.cell(row = 32, column = 4).value="RON"
 
-        Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+        Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
         Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
         Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
         Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
         Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
         Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
         Sheet1.cell(row = 39, column = 4).value=0
-        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
         Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
 IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
         Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
@@ -13751,15 +13751,15 @@ def D300xml_partner():
         Sheet1.cell(row = 39, column = 3).value="TVA in curs de decontare pentru livrari"
         Sheet1.cell(row = 32, column = 4).value="RON"
 
-        Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+        Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
         Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
         Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
         Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
         Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
@@ -13775,16 +13775,16 @@ def D300xml_partner():
         Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'             
 
         Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
         Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
         Sheet1.cell(row = 39, column = 4).value=0
-        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
         Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
 IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
 
         Sheet1.cell(row = 41, column = 3).value="Pozitia reportata"
         Sheet1.cell(row = 41, column = 3).font=font4
@@ -14189,30 +14189,30 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.cell(row = 39, column = 3).value="VAT under settlement for deliveries"
         Sheet1.cell(row = 32, column = 4).value="RON"
 
-        Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+        Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
         Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
         Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
         Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
         Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
         Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
         Sheet1.cell(row = 39, column = 4).value=0
-        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
         Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
 IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
 IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+        Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
         Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
         Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
@@ -21406,15 +21406,15 @@ def D300xml_nutre():
                 Sheet1.cell(row = 39, column = 3).value="TVA in curs de decontare pentru livrari"
                 Sheet1.cell(row = 32, column = 4).value="RON"
 
-                Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+                Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
                 Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-                Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
                 Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-                Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
                 Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-                Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
                 Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
@@ -21430,16 +21430,16 @@ def D300xml_nutre():
                 Sheet1.cell(row=55, column=6).number_format = '#,##0_);(#,##0)'             
 
                 Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-                Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
                 Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-                Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
                 Sheet1.cell(row = 39, column = 4).value=0
-                Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
                 Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
         IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
         IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
         IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-                Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
 
                 Sheet1.cell(row = 41, column = 3).value="Pozitia reportata"
                 Sheet1.cell(row = 41, column = 3).font=font4
@@ -21844,30 +21844,30 @@ def D300xml_nutre():
                 Sheet1.cell(row = 39, column = 3).value="VAT under settlement for deliveries"
                 Sheet1.cell(row = 32, column = 4).value="RON"
 
-                Sheet1.cell(row = 32, column = 6).value="Euro(@"+get_fxrate(2022)+")"
+                Sheet1.cell(row = 32, column = 6).value="Euro(@4.9753)"
                 Sheet1.cell(row = 34, column = 4).value="='D300 draft figures'!C56"
-                Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 34, column = 6).value="=IFERROR(D34/4.9753,0)"
                 Sheet1.cell(row=34, column=4).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row=34, column=6).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row = 35, column = 4).value="='D300 draft figures'!C32"
-                Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 35, column = 6).value="=IFERROR(D35/4.9753,0)"
                 Sheet1.cell(row = 36, column = 4).value="=IF('D300 draft figures'!C58<>0,'D300 draft figures'!C58,0)"
-                Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 36, column = 6).value="=IFERROR(D36/4.9753,0)"
                 Sheet1.cell(row=35, column=4).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row=35, column=6).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row=36, column=4).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row=36, column=6).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row = 37, column = 4).value='''=IF('D300 draft figures'!C57<>0,'D300 draft figures'!C57,"nil")'''
-                Sheet1.cell(row = 37, column = 6).value="=iferror(D37/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 37, column = 6).value="=iferror(D37/4.9753,0)"
                 Sheet1.cell(row = 38, column = 4).value="='D300 draft figures'!C70"
-                Sheet1.cell(row = 38, column = 6).value="=iferror(D38/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 38, column = 6).value="=iferror(D38/4.9753,0)"
                 Sheet1.cell(row = 39, column = 4).value=0
-                Sheet1.cell(row = 39, column = 6).value="=iferror(D39/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 39, column = 6).value="=iferror(D39/4.9753,0)"
                 Sheet1.cell(row = 55, column = 4).value='''=IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)=0),'Cover sheet'!D36,
         IF(AND('Cover sheet'!D36<>"nil",IFERROR(VALUE('Cover sheet'!D47),0)<>0),IF('Cover sheet'!D36>IFERROR(VALUE('Cover sheet'!D47),0),'Cover sheet'!D36-IFERROR(VALUE('Cover sheet'!D47),0),0),
         IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="No"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D47),0),
         IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERROR(VALUE('Cover sheet'!D51),0),"N/A"))))'''
-                Sheet1.cell(row = 55, column = 6).value="=iferror(D55/"+get_fxrate(2022)+",0)"
+                Sheet1.cell(row = 55, column = 6).value="=iferror(D55/4.9753,0)"
                 Sheet1.cell(row=37, column=4).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row=37, column=6).number_format = '#,##0_);(#,##0)'
                 Sheet1.cell(row=38, column=4).number_format = '#,##0_);(#,##0)'
