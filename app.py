@@ -24018,7 +24018,7 @@ def D300_Nutre():
         email=info.cell(row=31,column=3).value
         banca=info.cell(row=32,column=3).value
         contban=info.cell(row=33,column=3).value
-        Caen=info.cell(row=34,column=3).value.replace("'","")
+        Caen=str(info.cell(row=34,column=3).value).replace("'","")
         prorata=info.cell(row=35,column=3).value
         cereale=info.cell(row=36,column=3).value
         telmob=info.cell(row=37,column=3).value
