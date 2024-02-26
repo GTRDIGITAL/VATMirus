@@ -23977,243 +23977,243 @@ def D300_Nutre():
 
     for jj in range(0,len(codclient)):
         temp = openpyxl.load_workbook(D300_2[jj],data_only=True)
+        # try:
+        amount=temp['D300 draft figures']
+        info=temp['Other info']
+        an=info.cell(row=20,column=3).value
+        #print(an)
+        luna=info.cell(row=3,column=3).value
+        # temei=info.cell(row=8,column=2).value
+        cif=info.cell(row=27,column=3).value
+        den=info.cell(row=26,column=3).value
+        # print()
+        # print()
+        # #print(an, 'an')
+
+        # cif=info.cell(row=11,column=2).value
+        # adresa="strada: "str(info.cell(row=12,column=2).value)+str(info.cell(row=13,column=2).value)+ ",localitate: "+str(info.cell(row=14,column=2).value)+" "+str(info.cell(row=16,column=2).value)+",judet: "+str(info.cell(row=15,column=2).value)+",cod postal: "+str(info.cell(row=21,column=2).value)
+        strada=info.cell(row=28,column=3).value
+        numar=info.cell(row=29,column=3).value
+        localitate=info.cell(row=30,column=3).value
+        judet=info.cell(row=31,column=3).value
+
+        sector=info.cell(row=32,column=3).value
+        if(sector==None):
+            sector=""
+        bloc=info.cell(row=33,column=3).value
+        if(bloc==None):
+            bloc=""
+        scara=info.cell(row=34,column=3).value
+        if(scara==None):
+            scara=""
+        etaj=info.cell(row=35,column=3).value
+        if(etaj==None):
+            etaj=""
+        apt=info.cell(row=36,column=3).value
+        if(apt==None):
+            apt=""
+        strada=strada
+        # codpostal=info.cell(row=37,column=3).value
+        telefon=info.cell(row=29,column=3).value
+        email=info.cell(row=31,column=3).value
+        banca=info.cell(row=32,column=3).value
+        contban=info.cell(row=33,column=3).value
+        Caen=str(info.cell(row=34,column=3).value).replace("'","")
+        prorata=info.cell(row=35,column=3).value
+        cereale=info.cell(row=36,column=3).value
+        telmob=info.cell(row=37,column=3).value
+        disp=info.cell(row=38,column=3).value
+        nr_evid=int(info.cell(row=18,column=3).value)
+        cons=info.cell(row=39,column=3).value
+        ramburs=info.cell(row=40,column=3).value
+        if(ramburs=="N"):
+            ramburs2=0
+        else:
+            ramburs2=1
+        # total_plata=R1_1+R2_1+R3_1+R3_1_1+R4_1+R5_1+R5_1_1+R6_1+R7_1+R7_1_1+R8_1+R9_1+R10_1+R11_1+R12_1+R12_1_1+R12_2_1+R12_3_1+R13_1+R14_1+R15_1+R16_1+R64_1+R65_1+R17_1+R18_1+R18_1_1+R19_1+R20_1+R20_1_1+R21_1+R22_1+R23_1+R24_1+R25_1+R25_1_1+R25_2_1+R25_3_1+R43_1+R44_1+R26_1+R26_1_1+R27_1+R28_1+R29_1+R30_1+R31_1+R32_1+R33_1+R34_1+R35_1+R36_1+R37_1+R38_1+R39_1+R40_1+R41_1+R42_1+R1_2+R2_2+R3_2+R3_1_2+R4_2+R5_2+R5_1_2+R6_2+R7_2+R7_1_2+R8_2+R9_2+R10_2+R11_2+R12_2+R12_1_2+R12_2_2+R12_3_2+R13_2+R14_2+R15_2+R16_2+R64_2+R65_2+R17_2+R18_2+R18_1_2+R19_2+R20_2+R20_1_2+R21_2+R22_2+R23_2+R24_2+R25_2+R25_1_2+R25_2_2+R25_3_2+R43_2+R44_2+R26_2+R26_1_2+R27_2+R28_2+R29_2+R30_2+R31_2+R32_2+R33_2+R34_2+R35_2+R36_2+R37_2+R38_2+R39_2+R40_2+R41_2+R42_2+valoare_a+valoare_a1+valoare_b+valoare_b1+tva_a+tva_a1+tva_b+tva_b1
+
+        ramburs=info.cell(row=40,column=3).value
+        nrfact=info.cell(row=41,column=3).value
+        baza=info.cell(row=42,column=3).value
+        tva=info.cell(row=43,column=3).value
+        factprimite=info.cell(row=44,column=3).value
+        bazaprimite=info.cell(row=45,column=3).value
+        tvaprimite=info.cell(row=46,column=3).value
+        valoare_a=amount.cell(row=68,column=2).value
+        valoare_a1=amount.cell(row=69,column=2).value
+        tva_a=amount.cell(row=68,column=3).value
+        tva_a1=amount.cell(row=69,column=3).value
+        valoare_b=amount.cell(row=70,column=2).value
+        valoare_b1=amount.cell(row=71,column=2).value
+        tva_b=amount.cell(row=70,column=3).value
+        tva_b1=amount.cell(row=71,column=3).value
+        nrfactemise=info.cell(row=47,column=3).value
+        total_baza=info.cell(row=48,column=3).value
+        total_tva=info.cell(row=49,column=3).value
+        total_precedent=info.cell(row=50,column=3).value
+        total_curent=info.cell(row=51,column=3).value
+        tip=info.cell(row=53,column=3).value
+        pren=info.cell(row=54,column=3).value
+        nume=info.cell(row=55,column=3).value
+        funct=info.cell(row=56,column=3).value
+        total_precedent=amount.cell(row=74,column=2).value
+        total_curent=amount.cell(row=74,column=3).value
+        totalp=round(info.cell(row=52,column=3).value)
+
+        # for row in amount.iter_rows():
+        #     for cell in row:
+        #         if cell.value == "Taxable basis":
+        #             rand_tb = cell.row
+        #             suma1 = cell.column
+        #             lun = len(amount[cell.column])
+        # coloana = [b.value for b in amount[suma1][rand_tb:lun]]
+
+
+        R1_1=round(amount.cell(row=8,column=2).value)
+        R2_1=round(amount.cell(row=9,column=2).value)
+        R3_1=round(amount.cell(row=10,column=2).value)
+        R3_1_1=round(amount.cell(row=11,column=2).value)
+        R4_1=round(amount.cell(row=12,column=2).value)
+        R5_1=round(amount.cell(row=13,column=2).value)
+        R5_1_1=round(amount.cell(row=14,column=2).value)
+        R6_1=round(amount.cell(row=15,column=2).value)
+        R7_1=round(amount.cell(row=16,column=2).value)
+        R7_1_1=round(amount.cell(row=17,column=2).value)
+        R8_1=round(amount.cell(row=18,column=2).value)
+        R9_1=round(amount.cell(row=19,column=2).value)
+        R10_1=round(amount.cell(row=20,column=2).value)
+        R11_1=round(amount.cell(row=21,column=2).value)
+        R12_1=round(amount.cell(row=22,column=2).value)
+        R12_1_1=round(amount.cell(row=23,column=2).value)
+        R12_2_1=round(amount.cell(row=24,column=2).value)
+        R12_3_1=round(amount.cell(row=25,column=2).value)
+        R13_1=round(amount.cell(row=26,column=2).value)
+        R14_1=round(amount.cell(row=27,column=2).value)
+        R15_1=round(amount.cell(row=28,column=2).value)
+        R16_1=round(amount.cell(row=29,column=2).value)
+        R64_1=round(amount.cell(row=30,column=2).value)
+        R65_1=round(amount.cell(row=31,column=2).value)
+        R17_1=round(amount.cell(row=32,column=2).value)
+        R18_1=round(amount.cell(row=33,column=2).value)
+        R18_1_1=round(amount.cell(row=34,column=2).value)
+        R19_1=round(amount.cell(row=35,column=2).value)
+        R20_1=round(amount.cell(row=36,column=2).value)
+        R20_1_1=round(amount.cell(row=37,column=2).value)
+        R21_1=round(amount.cell(row=38,column=2).value)
+        R22_1=round(amount.cell(row=39,column=2).value)
+        R23_1=round(amount.cell(row=40,column=2).value)
+        R24_1=round(amount.cell(row=41,column=2).value)
+        R25_1=round(amount.cell(row=42,column=2).value)
+        R25_1_1=round(amount.cell(row=43,column=2).value)
+        R25_2_1=round(amount.cell(row=44,column=2).value)
+        R25_3_1=round(amount.cell(row=45,column=2).value)
+        R43_1=round(amount.cell(row=46,column=2).value)
+        R44_1=round(amount.cell(row=47,column=2).value)
+        R26_1=round(amount.cell(row=48,column=2).value)
+        R26_1_1=round(amount.cell(row=49,column=2).value)
+        R27_1=round(amount.cell(row=50,column=2).value)
+        R28_1=round(amount.cell(row=52,column=2).value)
+        R29_1=round(amount.cell(row=53,column=2).value)
+        R30_1=round(amount.cell(row=54,column=2).value)
+        R31_1=round(amount.cell(row=55,column=2).value)
+        R32_1=round(amount.cell(row=56,column=2).value)
+        R33_1=round(amount.cell(row=57,column=2).value)
+        R34_1=round(amount.cell(row=58,column=2).value)
+        R35_1=round(amount.cell(row=59,column=2).value)
+        R36_1=round(amount.cell(row=60,column=2).value)
+        R37_1=round(amount.cell(row=61,column=2).value)
+        R38_1=round(amount.cell(row=62,column=2).value)
+        R39_1=round(amount.cell(row=63,column=2).value)
+        R40_1=round(amount.cell(row=64,column=2).value)
+        R41_1=round(amount.cell(row=65,column=2).value)
+        R42_1=round(amount.cell(row=66,column=2).value)
+        R1_2=round(amount.cell(row=8,column=3).value)
+        R2_2=round(amount.cell(row=9,column=3).value)
+        R3_2=round(amount.cell(row=10,column=3).value)
+        R3_1_2=round(amount.cell(row=11,column=3).value)
+        R4_2=round(amount.cell(row=12,column=3).value)
+        R5_2=round(amount.cell(row=13,column=3).value)
+        R5_1_2=round(amount.cell(row=14,column=3).value)
+        R6_2=round(amount.cell(row=15,column=3).value)
+        R7_2=round(amount.cell(row=16,column=3).value)
+        R7_1_2=round(amount.cell(row=17,column=3).value)
+        R8_2=round(amount.cell(row=18,column=3).value)
+        R9_2=round(amount.cell(row=19,column=3).value)
+        R10_2=round(amount.cell(row=20,column=3).value)
+        R11_2=round(amount.cell(row=21,column=3).value)
+        R12_2=round(amount.cell(row=22,column=3).value)
+
+
+        R12_1_2=round(amount.cell(row=23,column=3).value)
+        R12_2_2=round(amount.cell(row=24,column=3).value)
+        R12_3_2=round(amount.cell(row=25,column=3).value)
+        R13_2=round(amount.cell(row=26,column=3).value)
+        R14_2=round(amount.cell(row=27,column=3).value)
+        R15_2=round(amount.cell(row=28,column=3).value)
+        R16_2=round(amount.cell(row=29,column=3).value)
+        R64_2=round(amount.cell(row=30,column=3).value)
+        R65_2=round(amount.cell(row=31,column=3).value)
+        R17_2=round(amount.cell(row=32,column=3).value)
+        R18_2=round(amount.cell(row=33,column=3).value)
+        R18_1_2=round(amount.cell(row=34,column=3).value)
+        R19_2=round(amount.cell(row=35,column=3).value)
+        R20_2=round(amount.cell(row=36,column=3).value)
+        R20_1_2=round(amount.cell(row=37,column=3).value)
+        R21_2=round(amount.cell(row=38,column=3).value)
+        R22_2=round(amount.cell(row=39,column=3).value)
+        R23_2=round(amount.cell(row=40,column=3).value)
+        R24_2=round(amount.cell(row=41,column=3).value)
+        R25_2=round(amount.cell(row=42,column=3).value)
+        R25_1_2=round(amount.cell(row=43,column=3).value)
+        R25_2_2=round(amount.cell(row=44,column=3).value)
+        R25_3_2=round(amount.cell(row=45,column=3).value)
+
+
+        R43_2=round(amount.cell(row=46,column=3).value)
+        R44_2=round(amount.cell(row=47,column=3).value)
+        R26_2=round(amount.cell(row=48,column=3).value)
+        R26_1_2=round(amount.cell(row=49,column=3).value)
+        R27_2=round(amount.cell(row=50,column=3).value)
+
+
         try:
-            amount=temp['D300 draft figures']
-            info=temp['Other info']
-            an=info.cell(row=20,column=3).value
-            #print(an)
-            luna=info.cell(row=3,column=3).value
-            # temei=info.cell(row=8,column=2).value
-            cif=info.cell(row=27,column=3).value
-            den=info.cell(row=26,column=3).value
-            # print()
-            # print()
-            # #print(an, 'an')
-
-            # cif=info.cell(row=11,column=2).value
-            # adresa="strada: "str(info.cell(row=12,column=2).value)+str(info.cell(row=13,column=2).value)+ ",localitate: "+str(info.cell(row=14,column=2).value)+" "+str(info.cell(row=16,column=2).value)+",judet: "+str(info.cell(row=15,column=2).value)+",cod postal: "+str(info.cell(row=21,column=2).value)
-            strada=info.cell(row=28,column=3).value
-            numar=info.cell(row=29,column=3).value
-            localitate=info.cell(row=30,column=3).value
-            judet=info.cell(row=31,column=3).value
-
-            sector=info.cell(row=32,column=3).value
-            if(sector==None):
-                sector=""
-            bloc=info.cell(row=33,column=3).value
-            if(bloc==None):
-                bloc=""
-            scara=info.cell(row=34,column=3).value
-            if(scara==None):
-                scara=""
-            etaj=info.cell(row=35,column=3).value
-            if(etaj==None):
-                etaj=""
-            apt=info.cell(row=36,column=3).value
-            if(apt==None):
-                apt=""
-            strada=strada
-            # codpostal=info.cell(row=37,column=3).value
-            telefon=info.cell(row=29,column=3).value
-            email=info.cell(row=31,column=3).value
-            banca=info.cell(row=32,column=3).value
-            contban=info.cell(row=33,column=3).value
-            Caen=info.cell(row=34,column=3).value.replace("'","")
-            prorata=info.cell(row=35,column=3).value
-            cereale=info.cell(row=36,column=3).value
-            telmob=info.cell(row=37,column=3).value
-            disp=info.cell(row=38,column=3).value
-            nr_evid=int(info.cell(row=18,column=3).value)
-            cons=info.cell(row=39,column=3).value
-            ramburs=info.cell(row=40,column=3).value
-            if(ramburs=="N"):
-                ramburs2=0
-            else:
-                ramburs2=1
-            # total_plata=R1_1+R2_1+R3_1+R3_1_1+R4_1+R5_1+R5_1_1+R6_1+R7_1+R7_1_1+R8_1+R9_1+R10_1+R11_1+R12_1+R12_1_1+R12_2_1+R12_3_1+R13_1+R14_1+R15_1+R16_1+R64_1+R65_1+R17_1+R18_1+R18_1_1+R19_1+R20_1+R20_1_1+R21_1+R22_1+R23_1+R24_1+R25_1+R25_1_1+R25_2_1+R25_3_1+R43_1+R44_1+R26_1+R26_1_1+R27_1+R28_1+R29_1+R30_1+R31_1+R32_1+R33_1+R34_1+R35_1+R36_1+R37_1+R38_1+R39_1+R40_1+R41_1+R42_1+R1_2+R2_2+R3_2+R3_1_2+R4_2+R5_2+R5_1_2+R6_2+R7_2+R7_1_2+R8_2+R9_2+R10_2+R11_2+R12_2+R12_1_2+R12_2_2+R12_3_2+R13_2+R14_2+R15_2+R16_2+R64_2+R65_2+R17_2+R18_2+R18_1_2+R19_2+R20_2+R20_1_2+R21_2+R22_2+R23_2+R24_2+R25_2+R25_1_2+R25_2_2+R25_3_2+R43_2+R44_2+R26_2+R26_1_2+R27_2+R28_2+R29_2+R30_2+R31_2+R32_2+R33_2+R34_2+R35_2+R36_2+R37_2+R38_2+R39_2+R40_2+R41_2+R42_2+valoare_a+valoare_a1+valoare_b+valoare_b1+tva_a+tva_a1+tva_b+tva_b1
-
-            ramburs=info.cell(row=40,column=3).value
-            nrfact=info.cell(row=41,column=3).value
-            baza=info.cell(row=42,column=3).value
-            tva=info.cell(row=43,column=3).value
-            factprimite=info.cell(row=44,column=3).value
-            bazaprimite=info.cell(row=45,column=3).value
-            tvaprimite=info.cell(row=46,column=3).value
-            valoare_a=amount.cell(row=68,column=2).value
-            valoare_a1=amount.cell(row=69,column=2).value
-            tva_a=amount.cell(row=68,column=3).value
-            tva_a1=amount.cell(row=69,column=3).value
-            valoare_b=amount.cell(row=70,column=2).value
-            valoare_b1=amount.cell(row=71,column=2).value
-            tva_b=amount.cell(row=70,column=3).value
-            tva_b1=amount.cell(row=71,column=3).value
-            nrfactemise=info.cell(row=47,column=3).value
-            total_baza=info.cell(row=48,column=3).value
-            total_tva=info.cell(row=49,column=3).value
-            total_precedent=info.cell(row=50,column=3).value
-            total_curent=info.cell(row=51,column=3).value
-            tip=info.cell(row=53,column=3).value
-            pren=info.cell(row=54,column=3).value
-            nume=info.cell(row=55,column=3).value
-            funct=info.cell(row=56,column=3).value
-            total_precedent=amount.cell(row=74,column=2).value
-            total_curent=amount.cell(row=74,column=3).value
-            totalp=round(info.cell(row=52,column=3).value)
-
-            # for row in amount.iter_rows():
-            #     for cell in row:
-            #         if cell.value == "Taxable basis":
-            #             rand_tb = cell.row
-            #             suma1 = cell.column
-            #             lun = len(amount[cell.column])
-            # coloana = [b.value for b in amount[suma1][rand_tb:lun]]
-
-
-            R1_1=round(amount.cell(row=8,column=2).value)
-            R2_1=round(amount.cell(row=9,column=2).value)
-            R3_1=round(amount.cell(row=10,column=2).value)
-            R3_1_1=round(amount.cell(row=11,column=2).value)
-            R4_1=round(amount.cell(row=12,column=2).value)
-            R5_1=round(amount.cell(row=13,column=2).value)
-            R5_1_1=round(amount.cell(row=14,column=2).value)
-            R6_1=round(amount.cell(row=15,column=2).value)
-            R7_1=round(amount.cell(row=16,column=2).value)
-            R7_1_1=round(amount.cell(row=17,column=2).value)
-            R8_1=round(amount.cell(row=18,column=2).value)
-            R9_1=round(amount.cell(row=19,column=2).value)
-            R10_1=round(amount.cell(row=20,column=2).value)
-            R11_1=round(amount.cell(row=21,column=2).value)
-            R12_1=round(amount.cell(row=22,column=2).value)
-            R12_1_1=round(amount.cell(row=23,column=2).value)
-            R12_2_1=round(amount.cell(row=24,column=2).value)
-            R12_3_1=round(amount.cell(row=25,column=2).value)
-            R13_1=round(amount.cell(row=26,column=2).value)
-            R14_1=round(amount.cell(row=27,column=2).value)
-            R15_1=round(amount.cell(row=28,column=2).value)
-            R16_1=round(amount.cell(row=29,column=2).value)
-            R64_1=round(amount.cell(row=30,column=2).value)
-            R65_1=round(amount.cell(row=31,column=2).value)
-            R17_1=round(amount.cell(row=32,column=2).value)
-            R18_1=round(amount.cell(row=33,column=2).value)
-            R18_1_1=round(amount.cell(row=34,column=2).value)
-            R19_1=round(amount.cell(row=35,column=2).value)
-            R20_1=round(amount.cell(row=36,column=2).value)
-            R20_1_1=round(amount.cell(row=37,column=2).value)
-            R21_1=round(amount.cell(row=38,column=2).value)
-            R22_1=round(amount.cell(row=39,column=2).value)
-            R23_1=round(amount.cell(row=40,column=2).value)
-            R24_1=round(amount.cell(row=41,column=2).value)
-            R25_1=round(amount.cell(row=42,column=2).value)
-            R25_1_1=round(amount.cell(row=43,column=2).value)
-            R25_2_1=round(amount.cell(row=44,column=2).value)
-            R25_3_1=round(amount.cell(row=45,column=2).value)
-            R43_1=round(amount.cell(row=46,column=2).value)
-            R44_1=round(amount.cell(row=47,column=2).value)
-            R26_1=round(amount.cell(row=48,column=2).value)
-            R26_1_1=round(amount.cell(row=49,column=2).value)
-            R27_1=round(amount.cell(row=50,column=2).value)
-            R28_1=round(amount.cell(row=52,column=2).value)
-            R29_1=round(amount.cell(row=53,column=2).value)
-            R30_1=round(amount.cell(row=54,column=2).value)
-            R31_1=round(amount.cell(row=55,column=2).value)
-            R32_1=round(amount.cell(row=56,column=2).value)
-            R33_1=round(amount.cell(row=57,column=2).value)
-            R34_1=round(amount.cell(row=58,column=2).value)
-            R35_1=round(amount.cell(row=59,column=2).value)
-            R36_1=round(amount.cell(row=60,column=2).value)
-            R37_1=round(amount.cell(row=61,column=2).value)
-            R38_1=round(amount.cell(row=62,column=2).value)
-            R39_1=round(amount.cell(row=63,column=2).value)
-            R40_1=round(amount.cell(row=64,column=2).value)
-            R41_1=round(amount.cell(row=65,column=2).value)
-            R42_1=round(amount.cell(row=66,column=2).value)
-            R1_2=round(amount.cell(row=8,column=3).value)
-            R2_2=round(amount.cell(row=9,column=3).value)
-            R3_2=round(amount.cell(row=10,column=3).value)
-            R3_1_2=round(amount.cell(row=11,column=3).value)
-            R4_2=round(amount.cell(row=12,column=3).value)
-            R5_2=round(amount.cell(row=13,column=3).value)
-            R5_1_2=round(amount.cell(row=14,column=3).value)
-            R6_2=round(amount.cell(row=15,column=3).value)
-            R7_2=round(amount.cell(row=16,column=3).value)
-            R7_1_2=round(amount.cell(row=17,column=3).value)
-            R8_2=round(amount.cell(row=18,column=3).value)
-            R9_2=round(amount.cell(row=19,column=3).value)
-            R10_2=round(amount.cell(row=20,column=3).value)
-            R11_2=round(amount.cell(row=21,column=3).value)
-            R12_2=round(amount.cell(row=22,column=3).value)
-
-
-            R12_1_2=round(amount.cell(row=23,column=3).value)
-            R12_2_2=round(amount.cell(row=24,column=3).value)
-            R12_3_2=round(amount.cell(row=25,column=3).value)
-            R13_2=round(amount.cell(row=26,column=3).value)
-            R14_2=round(amount.cell(row=27,column=3).value)
-            R15_2=round(amount.cell(row=28,column=3).value)
-            R16_2=round(amount.cell(row=29,column=3).value)
-            R64_2=round(amount.cell(row=30,column=3).value)
-            R65_2=round(amount.cell(row=31,column=3).value)
-            R17_2=round(amount.cell(row=32,column=3).value)
-            R18_2=round(amount.cell(row=33,column=3).value)
-            R18_1_2=round(amount.cell(row=34,column=3).value)
-            R19_2=round(amount.cell(row=35,column=3).value)
-            R20_2=round(amount.cell(row=36,column=3).value)
-            R20_1_2=round(amount.cell(row=37,column=3).value)
-            R21_2=round(amount.cell(row=38,column=3).value)
-            R22_2=round(amount.cell(row=39,column=3).value)
-            R23_2=round(amount.cell(row=40,column=3).value)
-            R24_2=round(amount.cell(row=41,column=3).value)
-            R25_2=round(amount.cell(row=42,column=3).value)
-            R25_1_2=round(amount.cell(row=43,column=3).value)
-            R25_2_2=round(amount.cell(row=44,column=3).value)
-            R25_3_2=round(amount.cell(row=45,column=3).value)
-
-
-            R43_2=round(amount.cell(row=46,column=3).value)
-            R44_2=round(amount.cell(row=47,column=3).value)
-            R26_2=round(amount.cell(row=48,column=3).value)
-            R26_1_2=round(amount.cell(row=49,column=3).value)
-            R27_2=round(amount.cell(row=50,column=3).value)
-
-
-            try:
-                R28_2=round(amount.cell(row=52,column=3).value)
-            except:
-                R28_2=0
-            R29_2=round(amount.cell(row=53,column=3).value)
-            R30_2=round(amount.cell(row=54,column=3).value)
-            R31_2=round(amount.cell(row=55,column=3).value)
-            R32_2=round(amount.cell(row=56,column=3).value)
-
-
-            R33_2=round(amount.cell(row=57,column=3).value)
-            R34_2=round(amount.cell(row=58,column=3).value)
-            R35_2=round(amount.cell(row=59,column=3).value)
-            R36_2=round(amount.cell(row=60,column=3).value)
-            R37_2=round(amount.cell(row=61,column=3).value)
-            R38_2=round(amount.cell(row=62,column=3).value)
-            R39_2=round(amount.cell(row=63,column=3).value)
-            R40_2=round(amount.cell(row=64,column=3).value)
-            R41_2=round(amount.cell(row=65,column=3).value)
-            R42_2=round(amount.cell(row=66,column=3).value)
-            
-
-
-            # for i in range(0 ,len(tip)):
-            # folderpath="D:/apps/TEST D3APPS/Test 21.03.2022/output"
-            folderpath="/home/mirus_app/storage"
-            # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
-            # temp.save(folderpath+".xlsx")
-            text='<?xml version="1.0"?> <declaratie300  luna="'+str(luna)+'" an="'+str(an)+'" depusReprezentant="'+str(ramburs2)+'" bifa_interne="0" temei="0" prenume_declar="'+str(pren)+'" nume_declar="'+str(nume)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(den)+'" adresa="'+str(strada)+'" telefon="'+str(telefon)+'" banca="'+str(banca)+'" cont="'+str(contban)+'" caen="'+str(Caen)+'" tip_decont="'+str(tip)+'" pro_rata="'+str(prorata)
-            text=text+'" bifa_cereale="'+str(cereale)+'" bifa_mob="'+str(telmob)+'" bifa_disp="'+str(disp)+'" bifa_cons="'+str(cons)+'" solicit_ramb="'+str(ramburs)+'" nr_evid="'+str(nr_evid)+'" totalPlata_A="'+str(totalp)+'" R1_1="'+str(R1_1)+'" R2_1="'+str(R2_1)+'" R3_1="'+str(R3_1)+'" R3_1_1="'+str(R3_1_1)+'" R4_1="'+str(R4_1)+'" R5_1="'+str(R5_1)+'" R5_2="'+str(R5_2)+'" R5_1_1="'+str(R5_1_1)+'" R5_1_2="'+str(R5_1_2)+'" R6_1="'+str(R6_1)+'" R6_2="'+str(R6_2)+'" R7_1="'+str(R7_1)+'" R7_2="'+str(R7_2)+'" R7_1_1="'+str(R7_1_1)+'" R7_1_2="'+str(R7_1_2)+'" R8_1="'+str(R8_1)+'" R8_2="'+str(R8_2)+'" R9_1="'+str(R9_1)+'" R9_2="'+str(R9_2)+'" R10_1="'+str(R10_1)+'" R10_2="'+str(R10_2)+'" R11_1="'+str(R11_1)+'" R11_2="'+str(R11_2)+'" R12_1="'+str(R12_1)+'" R12_2="'+str(R12_2)+'" R12_1_1="'+str(R12_1_1)+'" R12_1_2="'+str(R12_1_2)+'" R12_2_1="'+str(R12_2_1)+'" R12_2_2="'+str(R12_2_2)+'" R12_3_1="'+str(R12_3_1)+'" R12_3_2="'+str(R12_3_2)+'" R13_1="'+str(R13_1)+'" R14_1="'+str(R14_1)+'" R15_1="'+str(R15_1)+'" R16_1="'+str(R16_1)+'" R16_2="'+str(R16_2)+'" R64_1="'+str(R64_1)+'" R64_2="'+str(R64_2)+'" R65_1="'+str(R65_1)+'" R65_2="'+str(R65_2)+'" R17_1="'+str(R17_1)+'" R17_2="'+str(R17_2)+'" R18_1="'+str(R18_1)+'" R18_2="'+str(R18_2)+'" R18_1_1="'+str(R18_1_1)+'" R18_1_2="'+str(R18_1_2)+'" R19_1="'+str(R19_1)+'" R19_2="'+str(R19_2)+'" R20_1="'+str(R20_1)+'" R20_2="'+str(R20_2)+'" R20_1_1="'+str(R20_1_1)+'" R20_1_2="'+str(R20_1_2)+'" R21_1="'+str(R21_1)+'" R21_2="'+str(R21_2)+'" R22_1="'+str(R22_1)+'" R22_2="'+str(R22_2)+'" R23_1="'+str(R23_1)+'" R23_2="'+str(R23_2)+'" R24_1="'+str(R24_1)+'" R24_2="'+str(R24_2)+'" R25_1="'+str(R25_1)+'" R25_2="'+str(R25_2)+'" R25_1_1="'+str(R25_1_1)+'" R25_1_2="'+str(R25_1_2)+'" R25_2_1="'+str(R25_2_1)+'" R25_2_2="'+str(R25_2_2)+'" R25_3_1="'+str(R25_3_1)+'" R25_3_2="'+str(R25_3_2)+'" R43_2="'+str(R43_2)+'" R44_2="'+str(R44_2)+'" R26_1="'+str(R26_1)+'" R26_1_1="'+str(R26_1_1)+'" R27_1="'+str(R27_1)+'" R27_2="'+str(R27_2)+'" R28_2="'+str(R28_2)+'" R29_2="'+str(R29_2)+'" R30_1="'+str(R30_1)+'" R30_2="'+str(R30_2)+'" R31_2="'+str(R31_2)+'" R32_2="'+str(R32_2)+'" R33_2="'+str(R33_2)+'" R34_2="'+str(R34_2)+'" R35_2="'+str(R35_2)+'" R36_2="'+str(R36_2)+'" R37_2="'+str(R37_2)+'" R38_2="'+str(R38_2)+'" R39_2="'+str(R39_2)+'" R40_2="'+str(R40_2)+'" R41_2="'+str(R41_2)+'" R42_2="'+str(R42_2)+'" nr_facturi="'+str(nrfact)+'" baza="'+str(baza)+'" tva="'+str(tva)+'" nr_facturi_primite="'+str(factprimite)+'" baza_primite="'+str(bazaprimite)+'" tva_primite="'+str(tvaprimite)+'" nr_fact_emise="'+str(nrfactemise)+'" total_baza="'+str(total_baza)+'" total_precedent ="'+str(total_precedent)+'" total_curent ="'+str(total_curent)+'" total_tva="'+str(total_tva)+'" valoare_a="'+str(valoare_a)+'" tva_a="'+str(tva_a)+'" valoare_a1="'+str(valoare_a1)+'" tva_a1="'+str(tva_a1)+'" valoare_b="'+str(valoare_b)+'" tva_b="'+str(tva_b)+'" valoare_b1="'+str(valoare_b1)+'" tva_b1="'+str(tva_b1)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d300:declaratie:v9 d300.xsd" xmlns="mfp:anaf:dgti:d300:declaratie:v9"></declaratie300>'
-            #print(text)
-            # with open("/home/mirus_app/storage/D300.xml", "w", encoding="utf-8") as f:
-            with open(filename+"/"+str(info.cell(row=4,column=3).value)+" D300.xml", "w", encoding="utf-8") as f:
-                f.write(text)
-        # f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text).encode('utf-8')
-        #   # f=open("C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text)
+            R28_2=round(amount.cell(row=52,column=3).value)
         except:
-            pass
+            R28_2=0
+        R29_2=round(amount.cell(row=53,column=3).value)
+        R30_2=round(amount.cell(row=54,column=3).value)
+        R31_2=round(amount.cell(row=55,column=3).value)
+        R32_2=round(amount.cell(row=56,column=3).value)
+
+
+        R33_2=round(amount.cell(row=57,column=3).value)
+        R34_2=round(amount.cell(row=58,column=3).value)
+        R35_2=round(amount.cell(row=59,column=3).value)
+        R36_2=round(amount.cell(row=60,column=3).value)
+        R37_2=round(amount.cell(row=61,column=3).value)
+        R38_2=round(amount.cell(row=62,column=3).value)
+        R39_2=round(amount.cell(row=63,column=3).value)
+        R40_2=round(amount.cell(row=64,column=3).value)
+        R41_2=round(amount.cell(row=65,column=3).value)
+        R42_2=round(amount.cell(row=66,column=3).value)
+        
+
+
+        # for i in range(0 ,len(tip)):
+        # folderpath="D:/apps/TEST D3APPS/Test 21.03.2022/output"
+        folderpath="/home/mirus_app/storage"
+        # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
+        # temp.save(folderpath+".xlsx")
+        text='<?xml version="1.0"?> <declaratie300  luna="'+str(luna)+'" an="'+str(an)+'" depusReprezentant="'+str(ramburs2)+'" bifa_interne="0" temei="0" prenume_declar="'+str(pren)+'" nume_declar="'+str(nume)+'" functie_declar="'+str(funct)+'" cui="'+str(cif)+'" den="'+str(den)+'" adresa="'+str(strada)+'" telefon="'+str(telefon)+'" banca="'+str(banca)+'" cont="'+str(contban)+'" caen="'+str(Caen)+'" tip_decont="'+str(tip)+'" pro_rata="'+str(prorata)
+        text=text+'" bifa_cereale="'+str(cereale)+'" bifa_mob="'+str(telmob)+'" bifa_disp="'+str(disp)+'" bifa_cons="'+str(cons)+'" solicit_ramb="'+str(ramburs)+'" nr_evid="'+str(nr_evid)+'" totalPlata_A="'+str(totalp)+'" R1_1="'+str(R1_1)+'" R2_1="'+str(R2_1)+'" R3_1="'+str(R3_1)+'" R3_1_1="'+str(R3_1_1)+'" R4_1="'+str(R4_1)+'" R5_1="'+str(R5_1)+'" R5_2="'+str(R5_2)+'" R5_1_1="'+str(R5_1_1)+'" R5_1_2="'+str(R5_1_2)+'" R6_1="'+str(R6_1)+'" R6_2="'+str(R6_2)+'" R7_1="'+str(R7_1)+'" R7_2="'+str(R7_2)+'" R7_1_1="'+str(R7_1_1)+'" R7_1_2="'+str(R7_1_2)+'" R8_1="'+str(R8_1)+'" R8_2="'+str(R8_2)+'" R9_1="'+str(R9_1)+'" R9_2="'+str(R9_2)+'" R10_1="'+str(R10_1)+'" R10_2="'+str(R10_2)+'" R11_1="'+str(R11_1)+'" R11_2="'+str(R11_2)+'" R12_1="'+str(R12_1)+'" R12_2="'+str(R12_2)+'" R12_1_1="'+str(R12_1_1)+'" R12_1_2="'+str(R12_1_2)+'" R12_2_1="'+str(R12_2_1)+'" R12_2_2="'+str(R12_2_2)+'" R12_3_1="'+str(R12_3_1)+'" R12_3_2="'+str(R12_3_2)+'" R13_1="'+str(R13_1)+'" R14_1="'+str(R14_1)+'" R15_1="'+str(R15_1)+'" R16_1="'+str(R16_1)+'" R16_2="'+str(R16_2)+'" R64_1="'+str(R64_1)+'" R64_2="'+str(R64_2)+'" R65_1="'+str(R65_1)+'" R65_2="'+str(R65_2)+'" R17_1="'+str(R17_1)+'" R17_2="'+str(R17_2)+'" R18_1="'+str(R18_1)+'" R18_2="'+str(R18_2)+'" R18_1_1="'+str(R18_1_1)+'" R18_1_2="'+str(R18_1_2)+'" R19_1="'+str(R19_1)+'" R19_2="'+str(R19_2)+'" R20_1="'+str(R20_1)+'" R20_2="'+str(R20_2)+'" R20_1_1="'+str(R20_1_1)+'" R20_1_2="'+str(R20_1_2)+'" R21_1="'+str(R21_1)+'" R21_2="'+str(R21_2)+'" R22_1="'+str(R22_1)+'" R22_2="'+str(R22_2)+'" R23_1="'+str(R23_1)+'" R23_2="'+str(R23_2)+'" R24_1="'+str(R24_1)+'" R24_2="'+str(R24_2)+'" R25_1="'+str(R25_1)+'" R25_2="'+str(R25_2)+'" R25_1_1="'+str(R25_1_1)+'" R25_1_2="'+str(R25_1_2)+'" R25_2_1="'+str(R25_2_1)+'" R25_2_2="'+str(R25_2_2)+'" R25_3_1="'+str(R25_3_1)+'" R25_3_2="'+str(R25_3_2)+'" R43_2="'+str(R43_2)+'" R44_2="'+str(R44_2)+'" R26_1="'+str(R26_1)+'" R26_1_1="'+str(R26_1_1)+'" R27_1="'+str(R27_1)+'" R27_2="'+str(R27_2)+'" R28_2="'+str(R28_2)+'" R29_2="'+str(R29_2)+'" R30_1="'+str(R30_1)+'" R30_2="'+str(R30_2)+'" R31_2="'+str(R31_2)+'" R32_2="'+str(R32_2)+'" R33_2="'+str(R33_2)+'" R34_2="'+str(R34_2)+'" R35_2="'+str(R35_2)+'" R36_2="'+str(R36_2)+'" R37_2="'+str(R37_2)+'" R38_2="'+str(R38_2)+'" R39_2="'+str(R39_2)+'" R40_2="'+str(R40_2)+'" R41_2="'+str(R41_2)+'" R42_2="'+str(R42_2)+'" nr_facturi="'+str(nrfact)+'" baza="'+str(baza)+'" tva="'+str(tva)+'" nr_facturi_primite="'+str(factprimite)+'" baza_primite="'+str(bazaprimite)+'" tva_primite="'+str(tvaprimite)+'" nr_fact_emise="'+str(nrfactemise)+'" total_baza="'+str(total_baza)+'" total_precedent ="'+str(total_precedent)+'" total_curent ="'+str(total_curent)+'" total_tva="'+str(total_tva)+'" valoare_a="'+str(valoare_a)+'" tva_a="'+str(tva_a)+'" valoare_a1="'+str(valoare_a1)+'" tva_a1="'+str(tva_a1)+'" valoare_b="'+str(valoare_b)+'" tva_b="'+str(tva_b)+'" valoare_b1="'+str(valoare_b1)+'" tva_b1="'+str(tva_b1)+'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="mfp:anaf:dgti:d300:declaratie:v9 d300.xsd" xmlns="mfp:anaf:dgti:d300:declaratie:v9"></declaratie300>'
+        #print(text)
+        # with open("/home/mirus_app/storage/D300.xml", "w", encoding="utf-8") as f:
+        with open(filename+"/"+str(info.cell(row=4,column=3).value)+" D300.xml", "w", encoding="utf-8") as f:
+            f.write(text)
+    # f=open("C:/Users/Bogdan.Constantinesc/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text).encode('utf-8')
+        #   # f=open("C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage/D300.xml", "w").write(text)
+        # except:
+        #     pass
 
     make_archive(filename,filename+str(" arhiva.zip"))
     return send_from_directory("/home/mirus_app/nutre/output",str(clientname)+" arhiva.zip",as_attachment=True)
