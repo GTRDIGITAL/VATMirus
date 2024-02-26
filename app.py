@@ -6213,7 +6213,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         for w in range(0,len(listadescrieri)):
             amount.cell(row=8+w,column=8).value=listadescrieri[w]
 
-        amount.cell(row=8, column=2).value='=round(SUM(Sales!R:R)-11,0)'
+        amount.cell(row=8, column=2).value='=0'
         amount.cell(row=9, column=2).value='0'
         amount.cell(row=10, column=2).value='0'     
         amount.cell(row=11, column=2).value='0'
