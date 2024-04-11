@@ -6252,7 +6252,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         # amount.cell(row=28, column=2).value=0
         # amount.cell(row=30, column=2).value=0
         # amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ZJ",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-        amount.cell(row=39, column=2).value='=round(SUM(Purchases!'+str(bazaV1col)+':'+str(bazaV1col)+')-1,0)'                        
+        amount.cell(row=39, column=2).value='=round(SUM(Purchases!'+str(bazaV1col)+':'+str(bazaV1col)+'),0)+round(SUM(Purchases!'+str(baza1Jcol)+':'+str(baza1Jcol)+'),0)'                        
         amount.cell(row=40, column=2).value='=round(SUM(Purchases!'+str(bazaW7col)+":"+str(bazaW7col)+"),0)"                                
         amount.cell(row=41, column=2).value='=round(SUM(Purchases!'+str(bazaW8col)+":"+str(bazaW8col)+"),0)"
                                         
@@ -6278,7 +6278,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=46, column=2).value=0
         amount.cell(row=47, column=2).value=0
         # amount.cell(row=48, column=2).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(bazaV1col)+':'+str(bazaV1col)+')+SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(bazaW7col)+':'+str(bazaW7col)+')+SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(bazaW8col)+':'+str(bazaW8col)+'),0)'
-        amount.cell(row=48, column=2).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(W0col)+':'+str(W0col)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"SHCH IC AP CC/GS InX",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"INSTITUT STRAUMANN X",Purchases!'+str(W0col)+':'+str(W0col)+'),0)'
+        # amount.cell(row=48, column=2).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(W0col)+':'+str(W0col)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"SHCH IC AP CC/GS InX",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"INSTITUT STRAUMANN X",Purchases!'+str(W0col)+':'+str(W0col)+')+SUMIF(Purchases!'+str(supplierCell)+':'+str(supplierCell)+',"CHE*",Purchases!'+str(W0col)+':'+str(W0col)+')+round(SUM(Purchases!'+str(V9col)+':'+str(V9col)+'),0)'
+        amount.cell(row=48, column=2).value='=round(SUMIF(Purchases!BR:BR,"Yes",Purchases!'+str(W0col)+':'+str(W0col)+')+SUMIF(Purchases!BR:BR,"No",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"SHCH IC AP CC/GS InX",Purchases!'+str(W0col)+':'+str(W0col)+')-SUMIF(Purchases!E:E,"INSTITUT STRAUMANN X",Purchases!'+str(W0col)+':'+str(W0col)+')+SUMIF(Purchases!'+str(supplierCell)+':'+str(supplierCell)+',"CHE*",Purchases!'+str(W0col)+':'+str(W0col)+')+SUM(Purchases!'+str(V9col)+':'+str(V9col)+'),0)'
         amount.cell(row=49, column=2).value=0
         amount.cell(row=50, column=2).value='=SUM(B33:B47)-B34-B37-SUM(B43:B45)'
         amount.cell(row=51, column=2).value='0'
@@ -6310,8 +6311,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         
 
         # for h in range(13, 19):
-        amount.cell(row=13, column=3).value='=round(B13/100*19,0)'
-        amount.cell(row=14, column=3).value='=round(B14/100*19,0)'
+        amount.cell(row=13, column=3).value='=ROUND(SUMIFS(Purchases!'+str(E2tvacol)+":"+str(E2tvacol)+',Purchases!$BR:$BR,"Yes",Purchases!$BS:$BS,"UE"),0)+ROUND(SUMIFS(Purchases!'+str(W0col)+":"+str(W0col)+',Purchases!$BR:$BR,"Yes",Purchases!$BS:$BS,"UE")/100*19,0)+ROUND(SUMIFS(Purchases!'+str(W0col)+":"+str(W0col)+',Purchases!$BR:$BR,"No",Purchases!$BS:$BS,"UE")/100*19,0)'
+        amount.cell(row=14, column=3).value='=ROUND(SUMIFS(Purchases!'+str(E2tvacol)+":"+str(E2tvacol)+',Purchases!$BR:$BR,"Yes",Purchases!$BS:$BS,"UE"),0)+ROUND(SUMIFS(Purchases!'+str(W0col)+":"+str(W0col)+',Purchases!$BR:$BR,"Yes",Purchases!$BS:$BS,"UE")/100*19,0)+ROUND(SUMIFS(Purchases!'+str(W0col)+":"+str(W0col)+',Purchases!$BR:$BR,"No",Purchases!$BS:$BS,"UE")/100*19,0)'
         # amount.cell(row=13, column=3).value='=(ROUND(SUMIFS(Purchases!'+str(intracomtaxe1)+":"+str(intracomtaxe1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes"),0))'
         # amount.cell(row=14, column=3).value='=(ROUND(SUMIFS(Purchases!'+str(intracomtaxe1)+":"+str(intracomtaxe1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes"),0))'
         amount.cell(row=15, column=3).value='=round(B15/100*19,0)'
@@ -6358,7 +6359,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=36, column=3).value='=C16'
         amount.cell(row=37, column=3).value='=C17'
         amount.cell(row=38, column=3).value='=C18'
-        amount.cell(row=39, column=3).value='=round(SUM(Purchases!'+str(tvaV1col)+':'+str(tvaV1col)+')-2,0)'                      
+        amount.cell(row=39, column=3).value='=round(SUM(Purchases!'+str(tvaV1col)+':'+str(tvaV1col)+'),0)+round(SUM(Purchases!'+str(tva1Jcol)+':'+str(tva1Jcol)+'),0)'                      
         amount.cell(row=40, column=3).value='=round(SUM(Purchases!'+str(tvaW7col)+":"+str(tvaW7col)+"),0)"                              
         amount.cell(row=41, column=3).value='=round(SUM(Purchases!'+str(tvaw8col)+":"+str(tvaw8col)+"),0)"
 
@@ -9299,7 +9300,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             # for i in range(0 ,len(tip)):
         # folderpath="D:/D300 to XML/docs"
         folderpath="/home/mirus_app/storage_spreadsheet"
-        # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
+        # folderpath="D://VAT App Straumann"
         file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
         temp.save(file_pathFS)
         # return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)
@@ -17724,6 +17725,12 @@ def D300_thales():
         R40_2=amount.cell(row=64,column=3).value
         R41_2=amount.cell(row=65,column=3).value
         R42_2=amount.cell(row=66,column=3).value
+
+
+        R67_1=0
+        R67_2=0
+        R68_1=amount.cell(row=27,column=2).value
+        R68_2=0
         
 
 
