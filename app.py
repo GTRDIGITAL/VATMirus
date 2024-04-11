@@ -6461,6 +6461,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         for d1 in range(29, 46):
             amount.cell(row=d1, column=7).value='=SUM(B{0}:C{0})'.format(d1)
 
+        amount.cell(row=27, column=7).value='=B27*2'
+
         amount.cell(row=46, column=7).value='=C46'
         amount.cell(row=47, column=7).value='=C47'
         amount.cell(row=48, column=7).value='=B48'
@@ -10882,7 +10884,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         for d1 in range(29, 46):
             amount.cell(row=d1, column=7).value='=SUM(B{0}:C{0})'.format(d1)
 
-        amount.cell(row=27, column=7).value='=B27*2'
+        
 
         amount.cell(row=46, column=7).value='=C46'
         amount.cell(row=47, column=7).value='=C47'
