@@ -7309,6 +7309,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
     #---------------------------NR DE EVIDENTA
         if(val3==1):
+            aisheet=temp['AI']
             sheetinutil3=temp.create_sheet('D394--->>>')
             sheetinutil3.sheet_view.showGridLines=False
             sheetinutil3.cell(row=2,column=1).value="Switch to next sheet for D394 Workings draft"
@@ -7648,6 +7649,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             except:
                 flash("Please insert the correct header for 'Document No.    ' in Purchases sheet")
                 return render_template("index.html")            
+
+
+
+
 
 
 
@@ -8094,6 +8099,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                 str(suppIDPurch[jj]).replace(" ","")
             print(suppIDPurch)
 
+
+
             serieCuiPurch = []
             codTaraCuiPurch = []
             # #print(suppIDPurch)
@@ -8248,7 +8255,144 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                 salesExcel.cell(row=ma+ i, column=9).value = "Jurnal cumparari"
                 salesExcel.cell(row=ma+ i, column=10).value = denumirea[i]
 
-            codTaraCUItotal=codTaraCuiPurch+codTaraCuiSales
+
+
+
+            #--------------------------------------------AI------------------------------------------
+
+
+
+            for row in aisheet.iter_rows():
+                for cell in row:
+                    if cell.value == "Business PartnerName":
+                        rand_tb = cell.row
+                        codPartener = cell.column
+                        lun = len(aisheet[cell.column])
+            try:
+                supplierNameAi = [b.value for b in aisheet[codPartener][rand_tb:lun]]
+            except:
+                flash("Please insert the correct header for 'Furnizor Supplier' in aisheet sheet")
+                return render_template("index.html")
+
+            for row in aisheet.iter_rows():
+                for cell in row:
+                    if cell.value == "  Total doc.incl.VAT":
+                        rand_tb = cell.row
+                        totaldocp = cell.column
+                        lun = len(aisheet[cell.column])
+            try:
+                totdocumentai = [b.value for b in aisheet[totaldocp][rand_tb:lun]]
+            except:
+                flash("Please insert the correct header for '  Total doc.incl.VAT' in aisheet sheet")
+                return render_template("index.html")
+
+            for row in aisheet.iter_rows():
+                for cell in row:
+                    if cell.value == "VAT Registration No.":
+                        rand_tb = cell.row
+                        supplierCell = cell.column
+                        lun = len(aisheet[cell.column])
+            try:
+                suppIDai = [b.value for b in aisheet[supplierCell][rand_tb:lun]]
+            except:
+                flash("Please insert the correct header for 'VAT Registration No.' in aisheet sheet")
+                return render_template("index.html")
+                
+            for jj in range(0,len(suppIDai)):
+                str(suppIDai[jj]).replace(" ","")
+
+
+            for row in aisheet.iter_rows():
+                for cell in row:
+                    if cell.value == "Document No.    ":
+                        rand_tb = cell.row
+                        docnoc = cell.column
+                        lun = len(aisheet[cell.column])
+            try:
+                docNoai = [b.value for b in aisheet[docnoc][rand_tb:lun]]
+            except:
+                flash("Please insert the correct header for 'Document No.    ' in aisheet sheet")
+                return render_template("index.html")  
+
+
+            serieCuiai = []
+            codTaraCuiai = []
+            # #print(suppIDPurch)
+            for i in suppIDai:
+                if(str(i)[:1].isalpha()):   
+                    r = re.compile("([a-zA-Z]+)([0-9]+)")
+                    m = r.match(str(i))
+                    try:
+                        serieCuiai.append(m.group(2))
+                    except:
+                        serieCuiai.append(" ")
+                    try:
+                        codTaraCuiai.append(m.group(1))
+                    except:
+                        codTaraCuiai.append(" ")
+                else:
+                    codTaraCuiai.append(None)
+                    serieCuiai.append(i)
+            tipTranzactieai=[]
+            #print("Aici vat -------",vatAch19_1,"-----Achizitii")
+            #Tip furnizor
+            for i in range(0, len(codTaraCuiai)):
+                if(codTaraCuiai[i]==None):
+                    tipTranzactieai.append(4)
+                else:
+                    tipTranzactieai.append(1)
+
+
+            #Cote TVA
+            coteTVAai=[]
+            for i in range(0, len(docNoai)):
+                coteTVAai.append('19')
+
+            tipTranzai=[]
+
+            for i in range(0, len(docNoai)):
+                tipTranzai.append('AI')
+
+
+
+            mb=salesExcel.max_row+1
+            for i in range(0, len(codTaraCuiai)):
+                salesExcel.cell(row=mb + i, column=1).value = codTaraCuiai[i]
+
+            for i in range(0, len(serieCuiai)):
+                salesExcel.cell(row=mb + i, column=2).value = serieCuiai[i]
+
+            for i in range(0, len(docNoai)):
+                salesExcel.cell(row=mb+ i, column=3).value = docNoai[i]
+
+            for i in range(0, len(suppIDai)):
+                salesExcel.cell(row=mb + i, column=4).value = suppIDai[i]
+
+            for i in range(0, len(tipTranzactieai)):
+                salesExcel.cell(row=mb+ i, column=5).value = tipTranzactieai[i]
+
+            for i in range(0, len(tipTranzai)):
+                # if(listadeclantp_1!=""):
+                salesExcel.cell(row=mb+ i, column=6).value = tipTranzai[i]
+                if(tipTranzai[i]=="V"):
+                    salesExcel.cell(row=mb+i,column=12).value="Add type of tranzactie"
+                else:
+                    salesExcel.cell(row=mb+i,column=12).value="N/A"
+
+
+            for i in range(0, len(coteTVAai)):
+                #print(coteTVApurchases[i])
+                salesExcel.cell(row=mb+ i, column=7).value = coteTVAai[i]
+                salesExcel.cell(row=mb+ i, column=8).value = totdocumentai[i]
+                salesExcel.cell(row=mb+ i, column=9).value = "Jurnal cumparari"
+                salesExcel.cell(row=mb+ i, column=10).value = supplierNameAi[i]
+
+
+
+
+
+
+            codTaraCUItotal=codTaraCuiPurch+codTaraCuiSales+codTaraCuiai
             for i in range(0, len(codTaraCUItotal)):
                 salesExcel.cell(row=10 + i, column=11).value = '=IFERROR(IF(VLOOKUP(B{0}&E{0}&F{0}&G{0},Tranzactii!K:K,1,0)=B{0}&E{0}&F{0}&G{0},"OK","Mapped missing in Tranzactii sheet"),"Mapped missing inTranzactiisheet")'.format(10+i)
             salesExcel.auto_filter.ref = "A9:L9"
@@ -8266,7 +8410,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             setPurchCUI=set(suppIDPurch)
             idPurchUnique=list(setPurchCUI)
 
-            listaCUIUnique=idSalesUnique+idPurchUnique
+            setaiCUI=set(suppIDai)
+            idaiUnique=list(setaiCUI)
+
+            listaCUIUnique=idSalesUnique+idPurchUnique+idaiUnique
 
             setlistaClient=set(listaClient)
             listaClientUnique=list(setlistaClient)
@@ -8274,26 +8421,33 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             setSupplierName=set(supplierName)
             supplierNameUnique=list(setSupplierName)
 
-            # for k in range(0,len(setlistaClient)):
-            #    count
-            #    for j in range(0,len(listaClient)):
+            setSupplierNameai=set(supplierNameAi)
+            supplierNameUniqueai=list(setSupplierNameai)
 
-
-            # print(len(supplierName),len(tipTranzPurch))
             listanouaappendpurch=[]
-            # for i in range(0,len(supplierName)):
-            # for p in range(0,len(serieCuiPurch)):
-            #   # print(serieCuiPurch[p],tipTranzPurch[p],coteTVApurchases[p],tipTranzactiePurchases[p])
-            # print()
-            # print(len(serieCuiPurch),len(tipTranzPurch),len(coteTVApurchases),len(tipTranzactiePurchases))
+            listanouaappendai=[]
+
             for k in range(0,len(serieCuiPurch)):
                 try:
                     print(serieCuiPurch[k],tipTranzPurch[k])
                 except:
                     print(serieCuiPurch[k])
                 listanouaappendpurch.append(str(serieCuiPurch[k])+";"+str(tipTranzPurch[k])+";"+str(coteTVApurchases[k])+";"+str(tipTranzactiePurchases[k])+";"+str(listadeclantp_1[k]))
+            print(listanouaappendpurch,"============================================")
 
             listanouasetpurch=list(set(listanouaappendpurch))
+
+
+            for k in range(0,len(serieCuiai)):
+                # try:
+                #     print(serieCuiai[k],tipTranzai[k])
+                # except:
+                #     print(serieCuiPurch[k])
+                listanouaappendai.append(str(serieCuiai[k])+";"+str(tipTranzai[k])+";"+str(coteTVAai[k])+";"+str(tipTranzactieai[k])+";No")
+
+            listanouasetai=list(set(listanouaappendai))
+
+            listanouasetfinala=list(set(listanouasetai+listanouasetpurch))
 
 
             listanouaappendsales=[]
@@ -8317,6 +8471,16 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     if(listanouaappendpurch[k]==listanouasetpurch[p]):
                         count=count+1
                 countpurch.append(count)
+
+
+
+            countai=[]
+            for p in range(0,len(listanouasetai)):
+                count=0
+                for k in range(0,len(listanouaappendai)):
+                    if(listanouaappendai[k]==listanouasetai[p]):
+                        count=count+1
+                countai.append(count)
 
 
             #print(listanouasetsales)
@@ -8348,8 +8512,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     tranzactii.cell(row=y+1,column=9).value=x[4]
                     # tranzactii.cell(row=y+1,column=10).value="=xlookup(K"+str(y+1)+",'Mapping tranzactii'!R:R,'Mapping tranzactii'!L:L)"
             countp=0
-            for i in range(0, len(listanouasetpurch)):
-                x=listanouasetpurch[i].split(";")
+            for i in range(0, len(listanouasetfinala)):
+                x=listanouasetfinala[i].split(";")
                 if(int(x[3])<3 or int(x[2])>0):
                     countp=countp+1
                     y=tranzactii.max_row
@@ -8364,7 +8528,27 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     tranzactii.cell(row=y+1,column=9).value=x[4]
                     # tranzactii.cell(row=y+1,column=10).value="=xlookup(K"+str(y+1)+",'Mapping tranzactii'!R:R,'Mapping tranzactii'!L:L)"
 
-            countmare=countp+counts
+
+            countai=0
+            # for i in range(0, len(listanouasetai)):
+            #     x = listanouasetai[i].split(";")
+            #     if int(x[3]) < 3 or int(x[2]) > 0:
+            #         if x[0] not in listanouasetpurch:
+            #             countp += 1
+            #             y = tranzactii.max_row
+            #             tranzactii.cell(row=y+1, column=1).value = x[0]
+            #             tranzactii.cell(row=y+1, column=2).value = "=VLOOKUP(A"+str(y+1)+",'Mapping tranzactii'!B:J,9,0)"   
+            #             try:
+            #                 tranzactii.cell(row=y+1, column=3).value = x[3]
+            #             except:
+            #                 tranzactii.cell(row=y+1, column=3).value = ""
+            #             tranzactii.cell(row=y+1, column=4).value = x[1]
+            #             tranzactii.cell(row=y+1, column=5).value = x[2]
+            #             tranzactii.cell(row=y+1, column=9).value = x[4]
+
+
+
+            countmare=countp+counts+countai
             for i in range(0, countmare):
                 tranzactii.cell(row=i+6,column=6).value="=SUMIFS('Mapping tranzactii'!H:H,'Mapping tranzactii'!B:B,A{0},'Mapping tranzactii'!E:E,C{0},'Mapping tranzactii'!F:F,D{0},'Mapping tranzactii'!G:G,E{0})/((100+E{0})/100)".format(6+i)
                 tranzactii.cell(row=i+6,column=7).value="=F{0}/100*E{0}".format(6+i)
