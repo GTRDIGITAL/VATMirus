@@ -256,6 +256,8 @@ def D300xml():
         dropdownlimba = request.form.get('limba')
         soldLunaTrecuta = request.form.get('largeAm')
 
+
+
     
         # #print(soldLunaTrecuta)
     if val1=="":
@@ -4596,7 +4598,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             # for i in range(0 ,len(tip)):
         # folderpath="D:/D300 to XML/docs"
         folderpath="/home/mirus_app/storage_spreadsheet"
-        # folderpath="C:/Users/Cristian.Iordache/Documents/D300 to XML Final CI/D300 to XML 2/storage"
+        print(dropdown,"===========================")
+        # folderpath="D:\\VATtrezorerie\\VATMirus"
         file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
         temp.save(file_pathFS)
         # return send_from_directory("D:/D300 to XML/docs","One VAT app spreadsheets.xlsx",as_attachment=True)

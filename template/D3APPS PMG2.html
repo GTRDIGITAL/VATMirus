@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>VAT Apps</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <!--  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
+
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> -->
+    <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <script>
+        function showDiv(divId1, divId2, element)
+        {
+        document.getElementById(divId1).style.display = element.checked == "1" ? 'block' : 'none';
+        document.getElementById(divId2).style.display = document.getElementById(divId1).style.display ;
+        }
+    </script>
+    <style>
+        .fileUpload {
+    position: relative;
+    overflow: hidden;
+    
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,400';
+
+
+body {
+    font-family: 'Raleway:300', sans-serif;
+    min-height: 100%;
+    background: rgb(72,25,122);
+    background: linear-gradient(0deg, rgba(72,25,122,0.8578781854538691) 0%, rgba(179,145,215,0.7990546560421043) 13%, rgba(198,186,212,0.8046568969384629) 31%, rgba(235,234,237,1) 50%, rgba(243,241,246,1) 60%, rgba(255,255,255,255) 100%);
+}
+html {
+  height: 100%;
+}
+
+
+
+    
+.admin-sidenav {
+    width: auto;
+    height: auto;
+    margin-left: 0px; 
+}
+.admin-sidenav a {
+    text-decoration: none; 
+}
+.admin-sidenav li {
+    text-align: justify;
+    padding: .5rem;
+    padding-left: 1rem;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    background-color: #000;
+    border: 1px solid #333; 
+}
+.admin-sidenav li a {
+    color: #fff; 
+}
+
+.admin-sidenav li a:active {
+    border-color: #02d3f5; 
+}
+
+.admin-sidenav li:hover {
+    border-radius: 0 .5rem .5rem 0;
+    border-color: #02d3f5;
+    -webkit-transform: translate(30px, 0px);
+    transform: translate(30px, 0px);
+    background: -webkit-linear-gradient(left, #006a7b, #002340);
+    background: linear-gradient(to right, #006a7b, #002340); 
+}
+
+.admin-sidenav li:active {
+    border-color: #02d3f5; 
+}
+img{
+    position:relative;
+    top:0;
+    left:220px;
+}
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+ 
+    justify-content: left;
+    background: rgb(72,25,122);
+    background: linear-gradient(0deg, RGB(0,89,97) 0%, RGB(9,180,174) 13%, rgba(198,186,212,0.8046568969384629) 31%, rgba(235,234,237,1) 50%, rgba(243,241,246,1) 60%, rgba(255,255,255,255) 100%);
+}
+ h6 {
+      color: #fff;
+      }
+
+      .pd-top{            
+      padding-top: 60px!important;
+      }
+
+      .location {
+      margin-left: 0px;
+      padding-left: 0px;
+      }
+      .location li {
+      padding: 10px 1px 6px 9px!important;
+      margin-bottom: 2px;
+      list-style: none;
+      background: linear-gradient(to right,RGB(0,89,97), RGB(9,180,174));
+      }
+      .location li img {
+      width: 20px;
+      }
+      /*normal*/
+      .location li a {
+      color: #ffffff;
+      font-size: 15px;
+      padding-left: 5px;
+      }     
+       /*radius-4*/
+      .radius-4px {   
+      border-radius: 5px;
+      }
+      /*radius-40*/
+      .radius-40px{
+      border-radius: 40px;
+      }
+      /*curve*/
+      .curve {
+      border-bottom-right-radius: 15px;
+      border-top-left-radius: 15px;
+      }
+      /*curveLeft*/
+      .curveLeft {
+      border-bottom-left-radius: 20px;
+      border-top-left-radius: 20px;
+      }
+      /*curveRight*/
+      .curveRight {
+      border-bottom-right-radius: 20px;
+      border-top-right-radius: 20px;
+      }
+       /*rotate*/
+      .rotate{
+      transform: skew(-21deg);
+      }
+       .location li:hover a {
+      text-decoration: none;
+      color: #dcd9d9
+      }
+      .gradient-shadow {
+  background: rgba(0, 0, 0, 0.2);
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.2) 0%, #fff 100%);
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.2) 0%,#fff 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%,#fff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(0, 0, 0, 0.2)', endColorstr='#fff',GradientType=1 );
+  filter: blur(2px);
+  width: 755px;
+  height: 500px;
+  /*position: relative;*/
+  /*left: 0px;*/
+  /*top: 10px;*/
+  margin: 0 auto;
+}
+.shadow-box {
+  width: 750px;
+  background: #fff;
+  padding: 20px;
+  /*position: relative;*/
+  /*margin-top: -485px;*/
+  /*height: 500px;*/
+}
+#logo{ 
+    position:fixed; 
+    top:0; 
+    left:80px;
+    /* left:10px;  */
+    /*left:12;*/
+} 
+.container {
+    padding-right: 15px;
+    padding-left: 5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.container{
+left:10px;
+}
+img {
+    top:0;
+    left:10px;
+}
+.options{
+ 
+  font-weight: bold;
+
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.checkbox label, .radio label {
+    min-height: 20px;
+    padding-left: 0px;
+    margin-bottom: 0;
+    margin-top:-10px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.col-lg-3{
+    padding-left: 10px;
+    padding-right: 2px;
+}
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        width: 250px; /* Lățime mai mică pentru pop-up */
+        z-index: 9999;
+    }
+
+    /* Stil pentru butonul de închidere */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /* Stil pentru butonul de închidere la hover */
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    </style>
+ <!-- <div id="logo">
+    <img src="/static/logo.png" Style="position:left"><a href="/"></a>
+</div> -->
+ </head>
+<body>
+    
+    <form method="POST" enctype = "multipart/form-data" style="padding-left:60px;">
+        <div class="container" style="float:center">
+            <div class="row">
+                <div class="col">
+                    <button type="button" onclick="location.href = '/D3APPS/PMG/Instructions';" class="btn btn-primary btn-lg" value="all" Style="width: 330px; margin-bottom:10px; background-color: #005961;"> Instructions</button>
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="col">
+                    <!-- <button type="button" class="btn btn-primary btn-lg" value="1" Style="width: 300px;margin-bottom:10px; background-color: #005961;" input type="file"> Import monthly trial balances</button> -->
+                     <div class="fileUpload btn btn-primary btn-lg"  Style="width: 330px; margin-bottom:10px; background-color: #005961;">
+                        <span>Import Sales and Purchases Journals</span>
+                        <input id="uploadBtn" name="far" type="file" class="upload" multiple/>
+                     </div>
+                    
+                                   
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Please select your preferred language:
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <select name="limba">
+                        <option value="Romana(RO)">Romana(RO)</option>
+                        <option value="English(EN)">English(EN)</option>
+                </select>
+            </div>
+
+
+        <div> 
+            <p>
+                
+            </p>
+        </div>
+
+
+
+        
+        <div class="row">
+            <div class="col">
+                <label>
+                    The administration it belongs to:
+                </label>
+            </div>
+        </div>
+        <div class="row">
+<select name="trezorerie" id="trezorerieDropdown">
+    <option value="Trezoreria operativă Agnita">Trezoreria operativă Agnita</option>
+</select> 
+<!-- <a name="trezorerie" id="trezorerie" class="btn btn-default" value="Trezoreria operativă Agnita">Trezoreria operativă Agnita</a> -->
+<div class="dropdown">
+  <button type="button" class="dropbtn" id="selectedOption">Change tresory</button>
+  <div class="dropdown-content">
+    <a onclick="selectOption('Option 1')">Opțiune 1</a>
+    <a onclick="selectOption('Option 2')">Opțiune 2</a>
+    <a onclick="selectOption('Option 3')">Opțiune 3</a>
+  </div>
+</div>
+  </div>
+        </div>
+
+            
+        <div> 
+            <p>
+                
+            </p>
+        </div>
+
+
+
+
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Please select the statement(s) you would like to prepare:
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <input  type="checkbox" name="D300" value="" id="D300" class="chckbox" onchange="showDiv('largeAm','largeAm1', this)">
+                    <label for="D300" >
+                        D300
+                    </label>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="number">
+                    <input type="number" text="largeAm" name="largeAm" value=""  id="largeAm" style="display: none;" >
+                    <label for="largeAM" text="largeAm" value=""  id="largeAm1" style="display: none; position: left;">
+                    <b>Sold luna precedenta (randul 42, coloana TVA)</b>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <input  type="checkbox" name="D390" value="" id="D390">
+                    <label for="D390" >
+                        D390
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="checkbox" name="D394" value="" id="D394" onchange="showDiv('xyz','xyz1', this)">
+                    <label for="D394" >
+                        D394
+                    </label>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="checkbox">
+                    <input type="checkbox" text="xyz" name="xyz" value="1"  id="xyz" style="display: none;" >
+                    <label for="xyz" text="xyz" value="1"  id="xyz1" style="display: none; position: left;">
+                    <b>Solicit soldul sumei negative </b>
+                    </label>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col">
+                    <input type="text" name="client" placeholder="Client name" aria-label="Client name" Style="margin-bottom:10px; width:330px;" >
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col">
+<button type="submit" class="btn btn-primary btn-lg" value="4" Style="width: 330px;margin-bottom:10px; background-color: #005961;" onclick="displayPopup()">Generate Spreadsheets for review</button>
+
+                            <!-- <a href="/D3APPS2">Press to continue to the second step</a> -->
+                    
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="location.href = '/D3APPS2';" value="4" Style="width: 330px;margin-bottom:10px; background-color: #30d454;">Generate xml files</button>
+                                <!-- <a href="/D3APPS2">Press to continue to the second step</a> -->
+                        
+                    </div>
+                    
+                    
+                
+            </div>
+
+            
+        </div>
+    </form>
+
+</body>
+<div id="popup" class="popup">
+    <!-- Buton pentru închiderea pop-up-ului -->
+    <a class="close" onclick="closePopup()">&times;</a>
+    <!-- Mesajul din pop-up -->
+    <p>Ai selectat opțiunea: <span id="selectedOptionText"></span></p>
+</div>
+
+<script>
+function selectOption(option) {
+  var selectedOption = document.getElementById("selectedOption");
+  selectedOption.innerText = option;
+  var dropdown = document.getElementsByName("trezorerie")[0];
+  var selectedOptionIndex = dropdown.selectedIndex;
+  dropdown.options[selectedOptionIndex].text = option;
+}
+
+
+function displayPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+    // Obține valoarea selectată din dropdown
+    var selectedOption = document.getElementById("trezorerieDropdown").innerText;
+    document.getElementById("selectedOptionText").innerText = selectedOption;
+    setTimeout(function(){
+        closePopup();
+    }, 30000)
+}
+    function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+
+</script>
+
+
+</html>

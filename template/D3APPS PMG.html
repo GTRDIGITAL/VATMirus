@@ -213,6 +213,37 @@ img {
   font-weight: bold;
 
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  top: 150px; /* Schimbăm top-ul la 0 pentru a plasa meniul în partea de sus a paginii */
+  left: 290px; /* Schimbăm left-ul la 290px pentru a plasa meniul la stânga de 290px */
+  background-color: #f9f9f9;
+  max-height: 300px;
+  overflow-y: auto;
+  min-width: 260px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 .checkbox label, .radio label {
     min-height: 20px;
     padding-left: 0px;
@@ -226,6 +257,63 @@ img {
     padding-left: 10px;
     padding-right: 2px;
 }
+.input-custom {
+    width: 100%; /* Lățime maximă */
+    max-width: 230px; /* Specifică lățimea maximă dorită */
+}
+
+    .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    border: 2px solid #ffbf00;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.popup.warning {
+    background-color: white; /* Schimbăm culoarea de fundal la alb */
+    border-color: #f5c6cb;
+    color: #000000; /* Păstrăm culoarea textului negru */
+}
+
+
+.popup p {
+    margin: 0;
+}
+
+.popup .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.popup.show {
+    display: block;
+}
+
+
+    /* Stil pentru butonul de închidere */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /* Stil pentru butonul de închidere la hover */
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
     </style>
  <!-- <div id="logo">
     <img src="/static/logo.png" Style="position:left"><a href="/"></a>
@@ -276,6 +364,7 @@ img {
         </div>
 
 
+
         
         <div class="row">
             <div class="col">
@@ -285,195 +374,203 @@ img {
             </div>
         </div>
         <div class="row">
-            <select name="trezorerie">
-                    <option value="Trezoreria operativă Agnita">Trezoreria operativă Agnita</option>
-                    <option value="Trezorerie operativa Alesd">Trezorerie operativa Alesd</option>
-                    <option value="Trezoreria operativă Avrig">Trezoreria operativă Avrig</option>
-                    <option value="Trezoreria operativă Babadag">Trezoreria operativă Babadag</option>
-                    <option value="Trezorerie operativa Babeni">Trezorerie operativa Babeni</option>
-                    <option value="Trezoreria operativă Baia">Trezoreria operativă Baia</option>
-                    <option value="Trezoreria operativă Baia de Aramă">Trezoreria operativă Baia de Aramă</option>
-                    <option value="Trezorerie operativa Balcesti">Trezorerie operativa Balcesti</option>
-                    <option value="Trezorerie operativa Beclean">Trezorerie operativa Beclean</option>
-                    <option value="Trezorerie operativa Beius">Trezorerie operativa Beius</option>
-                    <option value="Trezoreria operativă Boldeşti - Scăeni">Trezoreria operativă Boldeşti - Scăeni</option>
-                    <option value="Trezorerie operativa Bozovici">Trezorerie operativa Bozovici</option>
-                    <option value="Trezorerie operativa Budesti">Trezorerie operativa Budesti</option>
-                    <option value="Trezoreria operativă Buftea">Trezoreria operativă Buftea</option>
-                    <option value="Trezorerie operativa Buhusi">Trezorerie operativa Buhusi</option>
-                    <option value="Trezoreria operativă Buşteni">Trezoreria operativă Buşteni</option>
-                    <option value="Trezorerie operativa Buzias">Trezorerie operativa Buzias</option>
-                    <option value="Trezorerie operativa Campeni">Trezorerie operativa Campeni</option>
-                    <option value="Trezoreria operativă Cehu Silvaniei">Trezoreria operativă Cehu Silvaniei</option>
-                    <option value="Trezorerie operativa Chisinau Cris">Trezorerie operativa Chisinau Cris</option>
-                    <option value="Trezorerie operativa Codlea">Trezorerie operativa Codlea</option>
-                    <option value="Trezorerie operativa Comunala Podu Turcului">Trezorerie operativa Comunala Podu Turcului</option>
-                    <option value="Trezorerie operativa Costesti">Trezorerie operativa Costesti</option>
-                    <option value="Trezorerie operativa Cugir">Trezorerie operativa Cugir</option>
-                    <option value="Trezorerie operativa Darabani">Trezorerie operativa Darabani</option>
-                    <option value="Trezorerie operativa Deta">Trezorerie operativa Deta</option>
-                    <option value="Trezorerie operativa Eforie">Trezorerie operativa Eforie</option>
-                    <option value="Trezorerie operativa Faget">Trezorerie operativa Faget</option>
-                    <option value="Trezorerie operativa Faurei">Trezorerie operativa Faurei</option>
-                    <option value="Trezorerie operativa Feteşti">Trezorerie operativa Feteşti</option>
-                    <option value="Trezorerie operativa Gaiesti">Trezorerie operativa Gaiesti</option>
-                    <option value="Trezorerie operativa Gura Lotrului">Trezorerie operativa Gura Lotrului</option>
-                    <option value="Trezorerie operativa Harlau">Trezorerie operativa Harlau</option>
-                    <option value="Trezorerie operativa Harsova">Trezorerie operativa Harsova</option>
-                    <option value="Trezorerie operativa Hateg">Trezorerie operativa Hateg</option>
-                    <option value="Trezorerie operativa Horezu">Trezorerie operativa Horezu</option>
-                    <option value="Trezorerie operativa Huedin">Trezorerie operativa Huedin</option>
-                    <option value="Trezorerie operativa Ianca">Trezorerie operativa Ianca</option>
-                    <option value="Trezoreria operativă Ilfov">Trezoreria operativă Ilfov</option>
-                    <option value="Trezorerie operativa Ineu">Trezorerie operativa Ineu</option> 
-                    <option value="Trezorerie operativa Insuratei">Trezorerie operativa Insuratei</option>
-                    <option value="Trezoreria operativă Jibou">Trezoreria operativă Jibou</option>
-                    <option value="Trezorerie operativa Jimbolia">Trezorerie operativa Jimbolia</option>
-                    <option value="Trezorerie operativa Lehliu Gara">Trezorerie operativa Lehliu Gara</option>
-                    <option value="Trezorerie operativa Lipova">Trezorerie operativa Lipova</option>
-                    <option value="Trezoreria operativă Luduş">Trezoreria operativă Luduş</option>
-                    <option value="Trezoreria operativă Măcin">Trezoreria operativă Măcin</option>
-                    <option value="Trezorerie operativa Marghita">Trezorerie operativa Marghita</option>
-                    <option value="Trezorerie operativa Mioveni">Trezorerie operativa Mioveni</option>
-                    <option value="Trezoreria operativă Mizil">Trezoreria operativă Mizil</option>
-                    <option value="Trezorerie operativa Moinesti">Trezorerie operativa Moinesti</option>
-                    <option value="Trezorerie operativa Moldova Noua">Trezorerie operativa Moldova Noua</option>
-                    <option value="Trezorerie operativa Moreni">Trezorerie operativa Moreni</option>
-                    <option value="Trezorerie operativa Motru">Trezorerie operativa Motru</option>
-                    <option value="Trezoreria operativă Municipiu Slatina">Trezoreria operativă Municipiu Slatina</option>
-                    <option value="Trezorerie operativa Municipiul  Alba Iulia">Trezorerie operativa Municipiul  Alba Iulia</option>
-                    <option value="Trezorerie operativa Municipiul Adjud">Trezorerie operativa Municipiul Adjud</option>
-                    <option value="Trezorerie operativa Municipiul Aiud">Trezorerie operativa Municipiul Aiud</option>
-                    <option value="Trezoreria operativă Municipiul Alexandria">Trezoreria operativă Municipiul Alexandria</option>
-                    <option value="Trezorerie operativa Municipiul Arad">Trezorerie operativa Municipiul Arad</option>
-                    <option value="Trezorerie operativa Municipiul Bacau">Trezorerie operativa Municipiul Bacau</option>
-                    <option value="Trezoreria operativă Municipiul Baia Mare">Trezoreria operativă Municipiul Baia Mare</option>
-                    <option value="Trezoreria operativă Municipiul Bârlad">Trezoreria operativă Municipiul Bârlad</option>
-                    <option value="Trezorerie operativa Municipiul Bistrita">Trezorerie operativa Municipiul Bistrita</option>
-                    <option value="Trezorerie operativa Municipiul Blaj">Trezorerie operativa Municipiul Blaj</option>
-                    <option value="Trezorerie operativa Municipiul Botosani">Trezorerie operativa Municipiul Botosani</option>
-                    <option value="Trezorerie operativa Municipiul Brad">Trezorerie operativa Municipiul Brad</option>
-                    <option value="Trezorerie operativa Municipiul Braila">Trezorerie operativa Municipiul Braila</option>
-                    <option value="Trezorerie operativa Municipiul Brasov">Trezorerie operativa Municipiul Brasov</option>
-                    <option value="Trezorerie operativa Municipiul Bucuresti">Trezorerie operativa Municipiul Bucuresti</option>
-                    <option value="Trezorerie operativa Municipiul Buzau">Trezorerie operativa Municipiul Buzau</option>
-                    <option value="Trezorerie operativa Municipiul Calarasi">Trezorerie operativa Municipiul Calarasi</option>
-                    <option value="Trezoreria operativă Municipiul Câmpina">Trezoreria operativă Municipiul Câmpina</option>
-                    <option value="Trezorerie operativa Municipiul Campulung">Trezorerie operativa Municipiul Campulung</option>
-                    <option value="Trezorerie operativa Municipiul Campulung Moldovenesc">Trezorerie operativa Municipiul Campulung Moldovenesc</option>
-                    <option value="Trezoreria operativă Municipiul Caracal">Trezoreria operativă Municipiul Caracal</option>
-                    <option value="Trezorerie operativa Municipiul Caransebes">Trezorerie operativa Municipiul Caransebes</option>
-                    <option value="Trezorerie operativa Municipiul Carei">Trezorerie operativa Municipiul Carei</option>
-                    <option value="Trezorerie operativa Municipiul Cluj Napoca">Trezorerie operativa Municipiul Cluj Napoca</option>
-                    <option value="Trezorerie operativa Municipiul Constanta">Trezorerie operativa Municipiul Constanta</option>
-                    <option value="Trezorerie operativa Municipiul Curtea de Arges">Trezorerie operativa Municipiul Curtea de Arges</option>
-                    <option value="Trezorerie operativa Municipiul Dej">Trezorerie operativa Municipiul Dej</option>
-                    <option value="Trezorerie operativa Municipiul Deva">Trezorerie operativa Municipiul Deva</option>
-                    <option value="Trezorerie operativa Municipiul Dorohoi">Trezorerie operativa Municipiul Dorohoi</option>
-                    <option value="Trezorerie operativa Municipiul Dragasani">Trezorerie operativa Municipiul Dragasani</option>
-                    <option value="Trezoreria operativă Municipiul Drobeta-Turnu Severin">Trezoreria operativă Municipiul Drobeta-Turnu Severin</option>
-                    <option value="Trezorerie operativa Municipiul Fagaras">Trezorerie operativa Municipiul Fagaras</option>
-                    <option value="Trezorerie operativa Municipiul Falticeni">Trezorerie operativa Municipiul Falticeni</option>
-                    <option value="Trezorerie operativa Municipiul Focsani">Trezorerie operativa Municipiul Focsani</option>
-                    <option value="Trezorerie operativa Municipiul Galati">Trezorerie operativa Municipiul Galati</option>
-                    <option value="Trezorerie operativa Municipiul Gherla">Trezorerie operativa Municipiul Gherla</option>
-                    <option value="Trezorerie operativa Municipiul Gura Humorului">Trezorerie operativa Municipiul Gura Humorului</option>
-                    <option value="Trezorerie operativa Municipiul Hunedoara">Trezorerie operativa Municipiul Hunedoara</option>
-                    <option value="Trezoreria operativă Municipiul Huşi">Trezoreria operativă Municipiul Huşi</option>
-                    <option value="Trezorerie operativa Municipiul Iasi">Trezorerie operativa Municipiul Iasi</option>
-                    <option value="Trezorerie operativa Municipiul Lugoj">Trezorerie operativa Municipiul Lugoj</option>
-                    <option value="Trezorerie operativa Municipiul Mangalia">Trezorerie operativa Municipiul Mangalia</option>
-                    <option value="Trezorerie operativa Municipiul Medgidia">Trezorerie operativa Municipiul Medgidia</option>
-                    <option value="Trezoreria operativă Municipiul Mediaş">Trezoreria operativă Municipiul Mediaş</option>
-                    <option value="Trezorerie operativa Municipiul Oltenita">Trezorerie operativa Municipiul Oltenita</option>
-                    <option value="Trezorerie operativa Municipiul Onesti">Trezorerie operativa Municipiul Onesti</option>
-                    <option value="Trezorerie operativa Municipiul Oradea">Trezorerie operativa Municipiul Oradea</option>
-                    <option value="Trezorerie operativa Municipiul Orastie">Trezorerie operativa Municipiul Orastie</option>
-                    <option value="Trezorerie operativa Municipiul Pascani">Trezorerie operativa Municipiul Pascani</option>
-                    <option value="Trezorerie operativa Municipiul Petrosani">Trezorerie operativa Municipiul Petrosani</option>
-                    <option value="Trezoreria operativă Municipiul Piatra Neamţ">Trezoreria operativă Municipiul Piatra Neamţ</option>
-                    <option value="Trezorerie operativa Municipiul Pitesti">Trezorerie operativa Municipiul Pitesti</option>
-                    <option value="Trezorerie operativa Municipiul Ploiesti">Trezorerie operativa Municipiul Ploiesti</option>
-                    <option value="Trezorerie operativa Municipiul Radauti">Trezorerie operativa Municipiul Radauti</option>
-                    <option value="Trezorerie operativa Municipiul Ramnicu Sarat">Trezorerie operativa Municipiul Ramnicu Sarat</option>
-                    <option value="Trezorerie operativa Municipiul Ramnicu Valcea">Trezorerie operativa Municipiul Ramnicu Valcea</option>
-                    <option value="Trezoreria operativă Municipiul Reghin">Trezoreria operativă Municipiul Reghin</option>
-                    <option value="Trezorerie operativa Municipiul Resita">Trezorerie operativa Municipiul Resita</option>
-                    <option value="Trezoreria operativă Municipiul Roman">Trezoreria operativă Municipiul Roman</option>
-                    <option value="Trezoreria operativă Municipiul Roşiori de Vede">Trezoreria operativă Municipiul Roşiori de Vede</option>
-                    <option value="Trezorerie operativa Municipiul Satu Mare">Trezorerie operativa Municipiul Satu Mare</option>
-                    <option value="Trezoreria operativă Municipiul Sibiu">Trezoreria operativă Municipiul Sibiu</option>
-                    <option value="Trezoreria operativă Municipiul Sighetul Marmaţiei">Trezoreria operativă Municipiul Sighetul Marmaţiei</option>
-                    <option value="Trezoreria operativă Municipiul Sighişoara">Trezoreria operativă Municipiul Sighişoara</option>
-                    <option value="Trezorerie operativa Municipiul Siret">Trezorerie operativa Municipiul Siret</option>
-                    <option value="Trezoreria operativă Municipiul Slobozia">Trezoreria operativă Municipiul Slobozia</option>
-                    <option value="Trezorerie operativa Municipiul Suceava">Trezorerie operativa Municipiul Suceava</option>
-                    <option value="Trezorerie operativa Municipiul Targoviste">Trezorerie operativa Municipiul Targoviste</option>
-                    <option value="Trezoreria operativă Municipiul Târgu Mureş">Trezoreria operativă Municipiul Târgu Mureş</option>
-                    <option value="Trezoreria operativă Municipiul Târnăveni">Trezoreria operativă Municipiul Târnăveni</option>
-                    <option value="Trezorerie operativa Municipiul Tecuci">Trezorerie operativa Municipiul Tecuci</option>
-                    <option value="Trezorerie operativa Municipiul Tg.Jiu">Trezorerie operativa Municipiul Tg.Jiu</option>
-                    <option value="Trezorerie operativa Municipiul Timisoara">Trezorerie operativa Municipiul Timisoara</option>
-                    <option value="Trezoreria operativă Municipiul Tulcea">Trezoreria operativă Municipiul Tulcea</option>
-                    <option value="Trezorerie operativa Municipiul Turda">Trezorerie operativa Municipiul Turda</option>
-                    <option value="Trezoreria operativă Municipiul Turnu Măgurele">Trezoreria operativă Municipiul Turnu Măgurele</option>
-                    <option value="Trezoreria operativă Municipiul Urziceni">Trezoreria operativă Municipiul Urziceni</option>
-                    <option value="Trezoreria operativă Municipiul Vaslui">Trezoreria operativă Municipiul Vaslui</option>
-                    <option value="Trezoreria operativă Municipiul Zalău">Trezoreria operativă Municipiul Zalău</option>
-                    <option value="Trezorerie operativa Nasaud">Trezorerie operativa Nasaud</option>
-                    <option value="Trezoreria operativă Negreşti">Trezoreria operativă Negreşti</option>
-                    <option value="Trezorerie operativa Negresti Oas">Trezorerie operativa Negresti Oas</option>
-                    <option value="Trezorerie operativa Novaci">Trezorerie operativa Novaci</option>
-                    <option value="Trezoreria operativă Oraş Bicaz">Trezoreria operativă Oraş Bicaz</option>
-                    <option value="Trezoreria operativă Oraş Târgu Neamţ">Trezoreria operativă Oraş Târgu Neamţ</option>
-                    <option value="Trezoreria operativă Oraşul Balş">Trezoreria operativă Oraşul Balş</option>
-                    <option value="Trezoreria operativă Oraşul Corabia">Trezoreria operativă Oraşul Corabia</option>
-                    <option value="Trezorerie operativa Oravita">Trezorerie operativa Oravita</option>
-                    <option value="Trezoreria operativă Orşova">Trezoreria operativă Orşova</option>
-                    <option value="Trezorerie operativa Otelul Rosu">Trezorerie operativa Otelul Rosu</option>
-                    <option value="Trezorerie operativa Panciu">Trezorerie operativa Panciu</option>
-                    <option value="Trezorerie operativa Patarlagele">Trezorerie operativa Patarlagele</option>
-                    <option value="Trezorerie operativa Pogoanele">Trezorerie operativa Pogoanele</option>
-                    <option value="Trezorerie operativa Pucioasa">Trezorerie operativa Pucioasa</option>
-                    <option value="Trezorerie operativa Raducaneni">Trezorerie operativa Raducaneni</option>
-                    <option value="Trezorerie operativa Rasnov">Trezorerie operativa Rasnov</option>
-                    <option value="Trezorerie operativa Rovinari">Trezorerie operativa Rovinari</option>
-                    <option value="Trezorerie operativa Rupea">Trezorerie operativa Rupea</option>
-                    <option value="Trezorerie operativa Sacele">Trezorerie operativa Sacele</option>
-                    <option value="Trezoreria operativă Sălişte">Trezoreria operativă Sălişte</option>
-                    <option value="Trezorerie operativa Salonta">Trezorerie operativa Salonta</option>
-                    <option value="Trezorerie operativa Sangeorz Bai">Trezorerie operativa Sangeorz Bai</option>
-                    <option value="Trezorerie operativa Sannicolau Mare">Trezorerie operativa Sannicolau Mare</option>
-                    <option value="Trezorerie operativa Savarsin">Trezorerie operativa Savarsin</option>
-                    <option value="Trezorerie operativa Saveni">Trezorerie operativa Saveni</option>
-                    <option value="Trezorerie operativa Sebes">Trezorerie operativa Sebes</option>
-                    <option value="Trezorerie operativa Sebis">Trezorerie operativa Sebis</option>
-                    <option value="Trezorerie operativa Sector 1">Trezorerie operativa Sector 1</option>
-                    <option value="Trezorerie operativa Sector 2">Trezorerie operativa Sector 2</option>
-                    <option value="Trezorerie operativa Sector 3">Trezorerie operativa Sector 3</option>
-                    <option value="Trezorerie operativa Sector 4">Trezorerie operativa Sector 4</option>
-                    <option value="Trezorerie operativa Sector 5">Trezorerie operativa Sector 5</option>
-                    <option value="Trezorerie operativa Sector 6">Trezorerie operativa Sector 6</option>
-                    <option value="Trezoreria operativă Şimleul Silvaniei">Trezoreria operativă Şimleul Silvaniei</option>
-                    <option value="Trezoreria operativă Slănic">Trezoreria operativă Slănic</option>
-                    <option value="Trezoreria operativă Sovata">Trezoreria operativă Sovata</option>
-                    <option value="Trezoreria operativă Strehaia">Trezoreria operativă Strehaia</option>
-                    <option value="Trezoreria operativă Sulina">Trezoreria operativă Sulina</option>
-                    <option value="Trezoreria operativă Târgu Lăpuş">Trezoreria operativă Târgu Lăpuş</option>
-                    <option value="Trezorerie operativa Tasnad">Trezorerie operativa Tasnad</option>
-                    <option value="Trezorerie operativa Tg.Bujor">Trezorerie operativa Tg.Bujor</option>
-                    <option value="Trezorerie operativa Tg.Carbunesti">Trezorerie operativa Tg.Carbunesti</option>
-                    <option value="Trezorerie operativa Tg.Frumos">Trezorerie operativa Tg.Frumos</option>
-                    <option value="Trezorerie operativa Titu">Trezorerie operativa Titu</option>
-                    <option value="Trezorerie operativa Topoloveni">Trezorerie operativa Topoloveni</option>
-                    <option value="Trezoreria operativă Vălenii de Munte">Trezoreria operativă Vălenii de Munte</option>
-                    <option value="Trezoreria operativă Vânju Mare">Trezoreria operativă Vânju Mare</option>
-                    <option value="Trezorerie operativa Vatra Dornei">Trezorerie operativa Vatra Dornei</option>
-                    <option value="Trezoreria operativă Videle">Trezoreria operativă Videle</option>
-                    <option value="Trezoreria operativă Vişeul de Sus">Trezoreria operativă Vişeul de Sus</option>
-                    <option value="Trezoreria operativă Zimnicea">Trezoreria operativă Zimnicea</option>
-            </select>
-        </div>
+<!-- <select name="trezorerie" id="trezorerie">
+    <option value="Trezoreria operativă Agnita">Trezoreria operativă Agnita</option>
+</select>  -->
+<input style="text-size-adjust: auto;" id="trezorerie" readonly type='text' name='trezorerie' class="input-custom" value="Trezorerie operativa Municipiul Brasov"></input>
+<div class="dropdown">
+  <button type="button" class="dropbtn" id="selectedOption">Change tresory</button>
+  <div class="dropdown-content">
+<a onclick="selectOption('Trezoreria operativă Agnita')">Trezoreria operativă Agnita</a>
+<a onclick="selectOption('Trezorerie operativa Alesd')">Trezorerie operativa Alesd</a>
+<a onclick="selectOption('Trezoreria operativă Avrig')">Trezoreria operativă Avrig</a>
+<a onclick="selectOption('Trezoreria operativă Babadag')">Trezoreria operativă Babadag</a>
+<a onclick="selectOption('Trezorerie operativa Babeni')">Trezorerie operativa Babeni</a>
+<a onclick="selectOption('Trezoreria operativă Baia')">Trezoreria operativă Baia</a>
+<a onclick="selectOption('Trezoreria operativă Baia de Aramă')">Trezoreria operativă Baia de Aramă</a>
+<a onclick="selectOption('Trezorerie operativa Balcesti')">Trezorerie operativa Balcesti</a>
+<a onclick="selectOption('Trezorerie operativa Beclean')">Trezorerie operativa Beclean</a>
+<a onclick="selectOption('Trezorerie operativa Beius')">Trezorerie operativa Beius</a>
+<a onclick="selectOption('Trezoreria operativă Boldeşti - Scăeni')">Trezoreria operativă Boldeşti - Scăeni</a>
+<a onclick="selectOption('Trezorerie operativa Bozovici')">Trezorerie operativa Bozovici</a>
+<a onclick="selectOption('Trezorerie operativa Budesti')">Trezorerie operativa Budesti</a>
+<a onclick="selectOption('Trezoreria operativă Buftea')">Trezoreria operativă Buftea</a>
+<a onclick="selectOption('Trezorerie operativa Buhusi')">Trezorerie operativa Buhusi</a>
+<a onclick="selectOption('Trezorerie operativa Buzias')">Trezorerie operativa Buzias</a>
+<a onclick="selectOption('Trezorerie operativa Campeni')">Trezorerie operativa Campeni</a>
+<a onclick="selectOption('Trezoreria operativă Cehu Silvaniei')">Trezoreria operativă Cehu Silvaniei</a>
+<a onclick="selectOption('Trezorerie operativa Chisinau Cris')">Trezorerie operativa Chisinau Cris</a>
+<a onclick="selectOption('Trezorerie operativa Codlea')">Trezorerie operativa Codlea</a>
+<a onclick="selectOption('Trezorerie operativa Comunala Podu Turcului')">Trezorerie operativa Comunala Podu Turcului</a>
+<a onclick="selectOption('Trezorerie operativa Costesti')">Trezorerie operativa Costesti</a>
+<a onclick="selectOption('Trezorerie operativa Cugir')">Trezorerie operativa Cugir</a>
+<a onclick="selectOption('Trezorerie operativa Darabani')">Trezorerie operativa Darabani</a>
+<a onclick="selectOption('Trezorerie operativa Deta')">Trezorerie operativa Deta</a>
+<a onclick="selectOption('Trezorerie operativa Eforie')">Trezorerie operativa Eforie</a>
+<a onclick="selectOption('Trezorerie operativa Faget')">Trezorerie operativa Faget</a>
+<a onclick="selectOption('Trezorerie operativa Faurei')">Trezorerie operativa Faurei</a>
+<a onclick="selectOption('Trezoreria operativă Feteşti')">Trezoreria operativă Feteşti</a>
+<a onclick="selectOption('Trezorerie operativa Gaiesti')">Trezorerie operativa Gaiesti</a>
+<a onclick="selectOption('Trezorerie operativa Gura Lotrului')">Trezorerie operativa Gura Lotrului</a>
+<a onclick="selectOption('Trezorerie operativa Harlau')">Trezorerie operativa Harlau</a>
+<a onclick="selectOption('Trezorerie operativa Harsova')">Trezorerie operativa Harsova</a>
+<a onclick="selectOption('Trezorerie operativa Hateg')">Trezorerie operativa Hateg</a>
+<a onclick="selectOption('Trezorerie operativa Horezu')">Trezorerie operativa Horezu</a>
+<a onclick="selectOption('Trezorerie operativa Huedin')">Trezorerie operativa Huedin</a>
+<a onclick="selectOption('Trezorerie operativa Ianca')">Trezorerie operativa Ianca</a>
+<a onclick="selectOption('Trezoreria operativă Ilfov')">Trezoreria operativă Ilfov</a>
+<a onclick="selectOption('Trezorerie operativa Ineu')">Trezorerie operativa Ineu</a>
+<a onclick="selectOption('Trezorerie operativa Insuratei')">Trezorerie operativa Insuratei</a>
+<a onclick="selectOption('Trezoreria operativă Jibou')">Trezoreria operativă Jibou</a>
+<a onclick="selectOption('Trezorerie operativa Jimbolia')">Trezorerie operativa Jimbolia</a>
+<a onclick="selectOption('Trezorerie operativa Lehliu Gara')">Trezorerie operativa Lehliu Gara</a>
+<a onclick="selectOption('Trezorerie operativa Lipova')">Trezorerie operativa Lipova</a>
+<a onclick="selectOption('Trezoreria operativă Luduş')">Trezoreria operativă Luduş</a>
+<a onclick="selectOption('Trezoreria operativă Măcin')">Trezoreria operativă Măcin</a>
+<a onclick="selectOption('Trezorerie operativa Marghita')">Trezorerie operativa Marghita</a>
+<a onclick="selectOption('Trezorerie operativa Mioveni')">Trezorerie operativa Mioveni</a>
+<a onclick="selectOption('Trezoreria operativă Mizil')">Trezoreria operativă Mizil</a>
+<a onclick="selectOption('Trezorerie operativa Moinesti')">Trezorerie operativa Moinesti</a>
+<a onclick="selectOption('Trezorerie operativa Moldova Noua')">Trezorerie operativa Moldova Noua</a>
+<a onclick="selectOption('Trezorerie operativa Moreni')">Trezorerie operativa Moreni</a>
+<a onclick="selectOption('Trezorerie operativa Motru')">Trezorerie operativa Motru</a>
+<a onclick="selectOption('Trezoreria operativă Municipiu Slatina')">Trezoreria operativă Municipiu Slatina</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul  Alba Iulia')">Trezorerie operativa Municipiul  Alba Iulia</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Adjud')">Trezorerie operativa Municipiul Adjud</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Aiud')">Trezorerie operativa Municipiul Aiud</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Alexandria')">Trezoreria operativă Municipiul Alexandria</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Arad')">Trezorerie operativa Municipiul Arad</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Bacau')">Trezorerie operativa Municipiul Bacau</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Baia Mare')">Trezoreria operativă Municipiul Baia Mare</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Bârlad')">Trezoreria operativă Municipiul Bârlad</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Bistrita')">Trezorerie operativa Municipiul Bistrita</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Blaj')">Trezorerie operativa Municipiul Blaj</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Botosani')">Trezorerie operativa Municipiul Botosani</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Brad')">Trezorerie operativa Municipiul Brad</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Braila')">Trezorerie operativa Municipiul Braila</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Brasov')">Trezorerie operativa Municipiul Brasov</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Bucuresti')">Trezorerie operativa Municipiul Bucuresti</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Buzau')">Trezorerie operativa Municipiul Buzau</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Calarasi')">Trezorerie operativa Municipiul Calarasi</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Câmpina')">Trezoreria operativă Municipiul Câmpina</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Campulung')">Trezorerie operativa Municipiul Campulung</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Campulung Moldovenesc')">Trezorerie operativa Municipiul Campulung Moldovenesc</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Caracal')">Trezoreria operativă Municipiul Caracal</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Caransebes')">Trezorerie operativa Municipiul Caransebes</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Carei')">Trezorerie operativa Municipiul Carei</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Cluj Napoca')">Trezorerie operativa Municipiul Cluj Napoca</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Constanta')">Trezorerie operativa Municipiul Constanta</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Curtea de Arges')">Trezorerie operativa Municipiul Curtea de Arges</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Dej')">Trezorerie operativa Municipiul Dej</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Deva')">Trezorerie operativa Municipiul Deva</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Dorohoi')">Trezorerie operativa Municipiul Dorohoi</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Dragasani')">Trezorerie operativa Municipiul Dragasani</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Drobeta-Turnu Severin')">Trezoreria operativă Municipiul Drobeta-Turnu Severin</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Fagaras')">Trezorerie operativa Municipiul Fagaras</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Falticeni')">Trezorerie operativa Municipiul Falticeni</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Focsani')">Trezorerie operativa Municipiul Focsani</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Galati')">Trezorerie operativa Municipiul Galati</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Gherla')">Trezorerie operativa Municipiul Gherla</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Gura Humorului')">Trezorerie operativa Municipiul Gura Humorului</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Hunedoara')">Trezorerie operativa Municipiul Hunedoara</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Huşi')">Trezoreria operativă Municipiul Huşi</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Iasi')">Trezorerie operativa Municipiul Iasi</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Lugoj')">Trezorerie operativa Municipiul Lugoj</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Mangalia')">Trezorerie operativa Municipiul Mangalia</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Medgidia')">Trezorerie operativa Municipiul Medgidia</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Mediaş')">Trezoreria operativă Municipiul Mediaş</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Oltenita')">Trezorerie operativa Municipiul Oltenita</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Onesti')">Trezorerie operativa Municipiul Onesti</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Oradea')">Trezorerie operativa Municipiul Oradea</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Orastie')">Trezorerie operativa Municipiul Orastie</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Pascani')">Trezorerie operativa Municipiul Pascani</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Petrosani')">Trezorerie operativa Municipiul Petrosani</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Piatra Neamţ')">Trezoreria operativă Municipiul Piatra Neamţ</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Pitesti')">Trezorerie operativa Municipiul Pitesti</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Ploiesti')">Trezorerie operativa Municipiul Ploiesti</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Radauti')">Trezorerie operativa Municipiul Radauti</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Ramnicu Sarat')">Trezorerie operativa Municipiul Ramnicu Sarat</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Ramnicu Valcea')">Trezorerie operativa Municipiul Ramnicu Valcea</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Reghin')">Trezoreria operativă Municipiul Reghin</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Resita')">Trezorerie operativa Municipiul Resita</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Roman')">Trezoreria operativă Municipiul Roman</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Roşiori de Vede')">Trezoreria operativă Municipiul Roşiori de Vede</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Satu Mare')">Trezorerie operativa Municipiul Satu Mare</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Sibiu')">Trezoreria operativă Municipiul Sibiu</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Sighetul Marmaţiei')">Trezoreria operativă Municipiul Sighetul Marmaţiei</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Sighişoara')">Trezoreria operativă Municipiul Sighişoara</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Siret')">Trezorerie operativa Municipiul Siret</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Slobozia')">Trezoreria operativă Municipiul Slobozia</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Suceava')">Trezorerie operativa Municipiul Suceava</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Targoviste')">Trezorerie operativa Municipiul Targoviste</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Târgu Mureş')">Trezoreria operativă Municipiul Târgu Mureş</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Târnăveni')">Trezoreria operativă Municipiul Târnăveni</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Tecuci')">Trezorerie operativa Municipiul Tecuci</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Tg.Jiu')">Trezorerie operativa Municipiul Tg.Jiu</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Timisoara')">Trezorerie operativa Municipiul Timisoara</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Tulcea')">Trezoreria operativă Municipiul Tulcea</a>
+<a onclick="selectOption('Trezorerie operativa Municipiul Turda')">Trezorerie operativa Municipiul Turda</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Turnu Măgurele')">Trezoreria operativă Municipiul Turnu Măgurele</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Urziceni')">Trezoreria operativă Municipiul Urziceni</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Vaslui')">Trezoreria operativă Municipiul Vaslui</a>
+<a onclick="selectOption('Trezoreria operativă Municipiul Zalău')">Trezoreria operativă Municipiul Zalău</a>
+<a onclick="selectOption('Trezorerie operativa Nasaud')">Trezorerie operativa Nasaud</a>
+<a onclick="selectOption('Trezoreria operativă Negreşti')">Trezoreria operativă Negreşti</a>
+<a onclick="selectOption('Trezorerie operativa Negresti Oas')">Trezorerie operativa Negresti Oas</a>
+<a onclick="selectOption('Trezorerie operativa Novaci')">Trezorerie operativa Novaci</a>
+<a onclick="selectOption('Trezoreria operativă Oraş Bicaz')">Trezoreria operativă Oraş Bicaz</a>
+<a onclick="selectOption('Trezoreria operativă Oraş Târgu Neamţ')">Trezoreria operativă Oraş Târgu Neamţ</a>
+<a onclick="selectOption('Trezoreria operativă Oraşul Balş')">Trezoreria operativă Oraşul Balş</a>
+<a onclick="selectOption('Trezoreria operativă Oraşul Corabia')">Trezoreria operativă Oraşul Corabia</a>
+<a onclick="selectOption('Trezorerie operativa Oravita')">Trezorerie operativa Oravita</a>
+<a onclick="selectOption('Trezoreria operativă Orşova')">Trezoreria operativă Orşova</a>
+<a onclick="selectOption('Trezorerie operativa Otelul Rosu')">Trezorerie operativa Otelul Rosu</a>
+<a onclick="selectOption('Trezorerie operativa Panciu')">Trezorerie operativa Panciu</a>
+<a onclick="selectOption('Trezorerie operativa Patarlagele')">Trezorerie operativa Patarlagele</a>
+<a onclick="selectOption('Trezorerie operativa Pogoanele')">Trezorerie operativa Pogoanele</a>
+<a onclick="selectOption('Trezorerie operativa Pucioasa')">Trezorerie operativa Pucioasa</a>
+<a onclick="selectOption('Trezorerie operativa Raducaneni')">Trezorerie operativa Raducaneni</a>
+<a onclick="selectOption('Trezorerie operativa Rasnov')">Trezorerie operativa Rasnov</a>
+<a onclick="selectOption('Trezorerie operativa Rovinari')">Trezorerie operativa Rovinari</a>
+<a onclick="selectOption('Trezorerie operativa Rupea')">Trezorerie operativa Rupea</a>
+<a onclick="selectOption('Trezorerie operativa Sacele')">Trezorerie operativa Sacele</a>
+<a onclick="selectOption('Trezoreria operativă Sălişte')">Trezoreria operativă Sălişte</a>
+<a onclick="selectOption('Trezorerie operativa Salonta')">Trezorerie operativa Salonta</a>
+<a onclick="selectOption('Trezorerie operativa Sangeorz Bai')">Trezorerie operativa Sangeorz Bai</a>
+<a onclick="selectOption('Trezorerie operativa Sannicolau Mare')">Trezorerie operativa Sannicolau Mare</a>
+<a onclick="selectOption('Trezorerie operativa Savarsin')">Trezorerie operativa Savarsin</a>
+<a onclick="selectOption('Trezorerie operativa Saveni')">Trezorerie operativa Saveni</a>
+<a onclick="selectOption('Trezorerie operativa Sebes')">Trezorerie operativa Sebes</a>
+<a onclick="selectOption('Trezorerie operativa Sebis')">Trezorerie operativa Sebis</a>
+<a onclick="selectOption('Trezorerie operativa Sector 1')">Trezorerie operativa Sector 1</a>
+<a onclick="selectOption('Trezorerie operativa Sector 2')">Trezorerie operativa Sector 2</a>
+<a onclick="selectOption('Trezorerie operativa Sector 3')">Trezorerie operativa Sector 3</a>
+<a onclick="selectOption('Trezorerie operativa Sector 4')">Trezorerie operativa Sector 4</a>
+<a onclick="selectOption('Trezorerie operativa Sector 5')">Trezorerie operativa Sector 5</a>
+<a onclick="selectOption('Trezorerie operativa Sector 6')">Trezorerie operativa Sector 6</a>
+<a onclick="selectOption('Trezoreria operativă Şimleul Silvaniei')">Trezoreria operativă Şimleul Silvaniei</a>
+<a onclick="selectOption('Trezoreria operativă Slănic')">Trezoreria operativă Slănic</a>
+<a onclick="selectOption('Trezoreria operativă Sovata')">Trezoreria operativă Sovata</a>
+<a onclick="selectOption('Trezoreria operativă Strehaia')">Trezoreria operativă Strehaia</a>
+<a onclick="selectOption('Trezoreria operativă Sulina')">Trezoreria operativă Sulina</a>
+<a onclick="selectOption('Trezoreria operativă Târgu Lăpuş')">Trezoreria operativă Târgu Lăpuş</a>
+<a onclick="selectOption('Trezorerie operativa Tasnad')">Trezorerie operativa Tasnad</a>
+<a onclick="selectOption('Trezorerie operativa Tg.Bujor')">Trezorerie operativa Tg.Bujor</a>
+<a onclick="selectOption('Trezorerie operativa Tg.Carbunesti')">Trezorerie operativa Tg.Carbunesti</a>
+<a onclick="selectOption('Trezorerie operativa Tg.Frumos')">Trezorerie operativa Tg.Frumos</a>
+<a onclick="selectOption('Trezorerie operativa Titu')">Trezorerie operativa Titu</a>
+<a onclick="selectOption('Trezorerie operativa Topoloveni')">Trezorerie operativa Topoloveni</a>
+<a onclick="selectOption('Trezoreria operativă Vălenii de Munte')">Trezoreria operativă Vălenii de Munte</a>
+<a onclick="selectOption('Trezoreria operativă Vânju Mare')">Trezoreria operativă Vânju Mare</a>
+<a onclick="selectOption('Trezorerie operativa Vatra Dornei')">Trezorerie operativa Vatra Dornei</a>
+<a onclick="selectOption('Trezoreria operativă Videle')">Trezoreria operativă Videle</a>
+<a onclick="selectOption('Trezoreria operativă Vişeul de Sus')">Trezoreria operativă Vişeul de Sus</a>
+<a onclick="selectOption('Trezoreria operativă Zimnicea')">Trezoreria operativă Zimnicea</a>
+
+  </div>
+</div>
+  </div>
+
 
             
         <div> 
@@ -481,6 +578,9 @@ img {
                 
             </p>
         </div>
+
+
+
 
             <div class="row">
                 <div class="col">
@@ -540,15 +640,12 @@ img {
             </div> 
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary btn-lg" value="4" Style="width: 330px;margin-bottom:10px; background-color: #005961;">Generate Spreadsheets for review</button>
-                            <!-- <a href="/D3APPS2">Press to continue to the second step</a> -->
-                    
+<button type="submit" class="btn btn-primary btn-lg" value="4" Style="width: 330px;margin-bottom:10px; background-color: #005961;" onclick="displayPopup()">Generate Spreadsheets for review</button>
                 </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary btn-lg" onclick="location.href = '/D3APPS2';" value="4" Style="width: 330px;margin-bottom:10px; background-color: #30d454;">Generate xml files</button>
-                                <!-- <a href="/D3APPS2">Press to continue to the second step</a> -->
                         
                     </div>
                     
@@ -561,4 +658,39 @@ img {
     </form>
 
 </body>
+<div id="popup" class="popup">
+    <a class="close" onclick="closePopup()">&times;</a>
+    <p>Ai selectat opțiunea: <span id="selectedOptionText"></span></p>
+</div>
+
+
+<script>
+function selectOption(option) {
+    var selectedOption = document.getElementById("trezorerie");
+    selectedOption.innerText = option;
+    document.getElementById('trezorerie').value=option
+    // alert(document.getElementById('trezorerie').value)
+}
+
+function displayPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+    var selectedOption = document.getElementById("trezorerie").value;
+    document.getElementById("selectedOptionText").innerText = selectedOption;
+    document.getElementById("selectedOptionText").value = selectedOption;
+
+
+    setTimeout(function(){
+        closePopup();
+    }, 30000)
+}
+function closePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+}
+
+</script>
+
+
 </html>
