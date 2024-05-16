@@ -1270,7 +1270,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         exit()
     rangurigoale=0
     for k in range(1, sales.max_column):
-        if(sales.cell(row=sales.cell(row=sales.max_row,column=k).value==None)):
+        if(sales.cell(row=sales.max_row,column=k).value==None):
             randurigoale=rangurigoale+1
     if(randurigoale<sales.max_column):
         print("dai tata")
@@ -5696,7 +5696,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             exit()  
         rangurigoale=0
         for k in range(1, sales.max_column):
-            if(sales.cell(row=sales.cell(row=sales.max_row,column=k).value==None)):
+            if(sales.cell(row=sales.max_row,column=k).value==None):
                 randurigoale=rangurigoale+1
         if(randurigoale<sales.max_column):
             print("dai tata")
@@ -10635,7 +10635,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             exit()  
         rangurigoale=0
         for k in range(1, sales.max_column):
-            if(sales.cell(row=sales.cell(row=sales.max_row,column=k).value==None)):
+            if(sales.cell(row=sales.max_row,column=k).value==None):
                 randurigoale=rangurigoale+1
         if(randurigoale<sales.max_column):
             print("dai tata")
@@ -14700,7 +14700,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             exit()
         rangurigoale=0
         for k in range(1, sales.max_column):
-            if(sales.cell(row=sales.cell(row=sales.max_row,column=k).value==None)):
+            if(sales.cell(row=sales.max_row,column=k).value==None):
                 randurigoale=rangurigoale+1
         if(randurigoale<sales.max_column):
             print("dai tata")
