@@ -433,7 +433,12 @@ def D300xml():
         Sheet1.cell(row=72, column=7).border=border4
         Sheet1.cell(row=73, column=7).border=border4
         Sheet1.cell(row=74, column=7).border=border4
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
         valluna=""
         vallunaurmatoare=""
         valIban=""
@@ -951,7 +956,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.cell(row = 47, column = 4).font=font5
         Sheet1.cell(row = 50, column = 4).font=font5
         Sheet1.cell(row = 51, column = 4).font=font5
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
         valluna=""
         vallunaurmatoare=""
         valIban=""
@@ -1245,10 +1255,45 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.merge_cells(start_row=11, start_column=4, end_row=11, end_column=12)
         Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
         Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
-    
-    sales=temp['Sales']
-    purchases=temp['Purchases']
-    tri=temp['Operatiuni triunghiulare']
+    try:
+        sales=temp['Sales']
+    except:
+        flash("Please rename sales journal sheet as per instructions'Sales'.")
+        return render_template("index.html")
+        exit()
+
+    try:
+        purchases=temp['Purchases']
+    except:
+        flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+        return render_template("index.html")
+        exit()
+    rangurigoale=0
+    for k in range(1, sales.max_column):
+        if(sales.cell(row=sales.cell(row=sales.max_row,column=k).value==None)):
+            randurigoale=rangurigoale+1
+    if(randurigoale<sales.max_column):
+        print("dai tata")
+    else:
+        flash("Please delete the empty row(s) in  sales journal sheet'.")
+        return render_template("index.html")
+        exit()
+    rangurigoale=0
+    for k in range(1, purchases.max_column):
+        if(purchases.cell(row=purchases.max_row,column=k).value==None):
+            randurigoale=rangurigoale+1
+    if(randurigoale<purchases.max_column):
+        print("dai tata")
+    else:
+        flash("Please delete the empty row(s) in  purchases journal sheet'.")
+        return render_template("index.html")
+        exit()    
+    try:
+        tri=temp['Operatiuni triunghiulare']
+    except:
+        flash("Please rename triangular operations journal sheet as per instructions'Operatiuni triunghiulare'.")
+        return render_template("index.html")
+        exit()  
     if(val1==1):
         sheetinutil1=temp.create_sheet('D300--->>>')
         sheetinutil1.sheet_view.showGridLines=False
@@ -1847,7 +1892,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.column_dimensions['E'].hidden = True
         amount.column_dimensions['F'].hidden = True
         amount.column_dimensions['G'].hidden = True
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
     
         listaMapare=["L", "T", "S", "A"]
         Poz="10"
@@ -4807,7 +4857,12 @@ def D300xml_straumann():
         Sheet1.cell(row=72, column=7).border=border4
         Sheet1.cell(row=73, column=7).border=border4
         Sheet1.cell(row=74, column=7).border=border4
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
         valluna=""
         vallunaurmatoare=""
         valIban=""
@@ -5325,7 +5380,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.cell(row = 47, column = 4).font=font5
         Sheet1.cell(row = 50, column = 4).font=font5
         Sheet1.cell(row = 51, column = 4).font=font5
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()        
         valluna=""
         vallunaurmatoare=""
         valIban=""
@@ -5620,9 +5680,40 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
         Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
     
-    sales=temp['Sales']
-    purchases=temp['Purchases']
+        try:
+            sales=temp['Sales']
+        except:
+            flash("Please rename sales journal sheet as per instructions-'Sales'.")
+            return render_template("index.html")
 
+            exit()
+
+        try:
+            purchases=temp['Purchases']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()  
+        rangurigoale=0
+        for k in range(1, sales.max_column):
+            if(sales.cell(row=sales.cell(row=sales.max_row,column=k).value==None)):
+                randurigoale=rangurigoale+1
+        if(randurigoale<sales.max_column):
+            print("dai tata")
+        else:
+            flash("Please delete the empty row(s) in  sales journal sheet'.")
+            return render_template("index.html")
+            exit()
+        rangurigoale=0
+        for k in range(1, purchases.max_column):
+            if(purchases.cell(row=purchases.max_row,column=k).value==None):
+                randurigoale=rangurigoale+1
+        if(randurigoale<purchases.max_column):
+            print("dai tata")
+        else:
+            flash("Please delete the empty row(s) in  purchases journal sheet'.")
+            return render_template("index.html")
+            exit()
 
     for j in range(9, purchases.max_column):
         for k in range(19, purchases.max_row):
@@ -6514,7 +6605,13 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.column_dimensions['E'].hidden = True
         amount.column_dimensions['F'].hidden = True
         amount.column_dimensions['G'].hidden = True
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
+
     
         listaMapare=["L", "T", "S", "A"]
         Poz="10"
@@ -9697,7 +9794,13 @@ def D300xml_thales():
         Sheet1.cell(row=72, column=7).border=border4
         Sheet1.cell(row=73, column=7).border=border4
         Sheet1.cell(row=74, column=7).border=border4
-        info=temp['Other info']
+
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
         valluna=""
         vallunaurmatoare=""
         valIban=""
@@ -10215,7 +10318,13 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.cell(row = 47, column = 4).font=font5
         Sheet1.cell(row = 50, column = 4).font=font5
         Sheet1.cell(row = 51, column = 4).font=font5
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
+
         valluna=""
         vallunaurmatoare=""
         valIban=""
@@ -10510,8 +10619,40 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
         Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
     
-    sales=temp['Sales']
-    purchases=temp['Purchases']
+        try:
+            sales=temp['Sales']
+        except:
+            flash("Please rename sales journal sheet as per instructions-'Sales'.")
+
+            return render_template("index.html")
+
+            exit()
+        try:
+            purchases=temp['Purchases']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()  
+        rangurigoale=0
+        for k in range(1, sales.max_column):
+            if(sales.cell(row=sales.cell(row=sales.max_row,column=k).value==None)):
+                randurigoale=rangurigoale+1
+        if(randurigoale<sales.max_column):
+            print("dai tata")
+        else:
+            flash("Please delete the empty row(s) in  sales journal sheet'.")
+            return render_template("index.html")
+            exit()
+        rangurigoale=0
+        for k in range(1, purchases.max_column):
+            if(purchases.cell(row=purchases.max_row,column=k).value==None):
+                randurigoale=rangurigoale+1
+        if(randurigoale<purchases.max_column):
+            print("dai tata")
+        else:
+            flash("Please delete the empty row(s) in  purchases journal sheet'.")
+            return render_template("index.html")
+            exit()            
     if(val1==1):
         sheetinutil1=temp.create_sheet('D300--->>>')
         sheetinutil1.sheet_view.showGridLines=False
@@ -11121,7 +11262,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.column_dimensions['E'].hidden = True
         amount.column_dimensions['F'].hidden = True
         amount.column_dimensions['G'].hidden = True
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
     
         listaMapare=["L", "T", "S", "A"]
         Poz="10"
@@ -13715,7 +13861,12 @@ def D300xml_partner():
         Sheet1.cell(row=72, column=7).border=border4
         Sheet1.cell(row=73, column=7).border=border4
         Sheet1.cell(row=74, column=7).border=border4
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
         valluna=""
         vallunaurmatoare=""
         valIban=""
@@ -14233,7 +14384,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.cell(row = 47, column = 4).font=font5
         Sheet1.cell(row = 50, column = 4).font=font5
         Sheet1.cell(row = 51, column = 4).font=font5
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
         valluna=""
         vallunaurmatoare=""
         valIban=""
@@ -14528,8 +14684,41 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
         Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
     
-    sales=temp['Sales']
-    purchases=temp['Purchases']
+        try:
+            sales=temp['Sales']
+        except:
+            flash("Please rename sales journal sheet as per instructions-'Sales'.")
+            return render_template("index.html")
+
+            exit()
+    
+        try:
+            purchases=temp['Purchases']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
+        rangurigoale=0
+        for k in range(1, sales.max_column):
+            if(sales.cell(row=sales.cell(row=sales.max_row,column=k).value==None)):
+                randurigoale=rangurigoale+1
+        if(randurigoale<sales.max_column):
+            print("dai tata")
+        else:
+            flash("Please delete the empty row(s) in  sales journal sheet'.")
+            return render_template("index.html")
+            exit()
+        rangurigoale=0
+        for k in range(1, purchases.max_column):
+            if(purchases.cell(row=purchases.max_row,column=k).value==None):
+                randurigoale=rangurigoale+1
+        if(randurigoale<purchases.max_column):
+            print("dai tata")
+        else:
+            flash("Please delete the empty row(s) in  purchases journal sheet'.")
+            return render_template("index.html")
+            exit()              
+
     if(val1==1):
         sheetinutil1=temp.create_sheet('D300--->>>')
         sheetinutil1.sheet_view.showGridLines=False
@@ -15147,7 +15336,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.column_dimensions['E'].hidden = True
         amount.column_dimensions['F'].hidden = True
         amount.column_dimensions['G'].hidden = True
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
     
         listaMapare=["L", "T", "S", "A"]
         Poz="10"
@@ -17702,7 +17896,12 @@ def D300_thales():
         os.makedirs(path)
     try:
         amount=temp['D300 draft figures']
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
         an=info.cell(row=20,column=3).value
         #print(an)
         luna=info.cell(row=3,column=3).value
@@ -17940,7 +18139,12 @@ def D300_thales():
         pass
     try:
         amount=temp['D390 for XML']
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()
 
         an=info.cell(row=2,column=3).value
         luna=info.cell(row=3,column=3).value
@@ -18070,7 +18274,12 @@ def D300_thales():
         f=open("/home/mirus_app/storage/xmlFiles/D390.txt", "w",encoding="utf-8").write(texttxt)
     except:
         pass
-    sheet1=temp['Other info']
+    try:
+            Sheet1=temp['Other info']
+    except:
+        flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+        return render_template("index.html")
+        exit()
     tipp=str(sheet1.cell(row=58,column=3).value)
     tippok=tipp[:1]
     an=sheet1.cell(row=2,column=3).value
@@ -21376,7 +21585,12 @@ def D300xml_nutre():
                 Sheet1.cell(row=72, column=7).border=border4
                 Sheet1.cell(row=73, column=7).border=border4
                 Sheet1.cell(row=74, column=7).border=border4
-                info=temp['Other info']
+                try:
+                    info=temp['Other info']
+                except:
+                    flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+                    return render_template("index.html")
+                    exit()
                 valluna=""
                 vallunaurmatoare=""
                 valIban=""
@@ -21894,7 +22108,12 @@ def D300xml_nutre():
                 Sheet1.cell(row = 47, column = 4).font=font5
                 Sheet1.cell(row = 50, column = 4).font=font5
                 Sheet1.cell(row = 51, column = 4).font=font5
-                info=temp['Other info']
+                try:
+                    info=temp['Other info']
+                except:
+                    flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+                    return render_template("index.html")
+                    exit()
                 valluna=""
                 vallunaurmatoare=""
                 valIban=""
@@ -22189,9 +22408,26 @@ def D300xml_nutre():
                 Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
                 Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
             
-            sales=temp['Sales']
-            purchases=temp['Purchases']
-            info=temp['Other info']
+                try:
+                    sales=temp['Sales']
+                except:
+                    flash("Please rename sales journal sheet as per instructions-'Sales'.")
+                    return render_template("index.html")
+
+                    exit()
+            try:
+                purchases=temp['Purchases']
+            except:
+                flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+                return render_template("index.html")
+                exit()  
+
+            try:
+                info=temp['Other info']
+            except:
+                flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+                return render_template("index.html")
+                exit()
 
             listaMapare=["L", "T", "S", "A"]
             Poz="10"
@@ -23922,7 +24158,12 @@ def D300_LAPP2():
 
     temp = openpyxl.load_workbook(D300_2,data_only=True)
     amount=temp['D300 draft figures']
-    info=temp['Other info']
+    try:
+        info=temp['Other info']
+    except:
+        flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+        return render_template("index.html")
+        exit()
     an=info.cell(row=20,column=3).value
     #print(an)
     luna=info.cell(row=3,column=3).value
@@ -24177,7 +24418,12 @@ def D300_Nutre():
         temp = openpyxl.load_workbook(D300_2[jj],data_only=True)
         # try:
         amount=temp['D300 draft figures']
-        info=temp['Other info']
+        try:
+            info=temp['Other info']
+        except:
+            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+            return render_template("index.html")
+            exit()        
         an=info.cell(row=20,column=3).value
         #print(an)
         luna=info.cell(row=3,column=3).value
