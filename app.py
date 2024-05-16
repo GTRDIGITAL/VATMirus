@@ -1342,17 +1342,23 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             # print(listdocdate[k])
             # print(datadocument[k][3:4])
             # print(datadocument[k][3:5])
-            if(str(listdocdate[k][3:4])=="0"):
-                if(str(listdocdate[k][4:5])==str(info.cell(row=3,column=3).value)):
-                    listacurentas.append("Yes")
-                else:
-                    listacurentas.append("No")
+            try:
+                if(str(listdocdate[k][3:4])=="0"):
+                    if(str(listdocdate[k][4:5])==str(info.cell(row=3,column=3).value)):
+                        listacurentas.append("Yes")
+                    else:
+                        listacurentas.append("No")
 
-            else:
-                if(str(listdocdate[k][3:5])==str(info.cell(row=3,column=3).value)):
-                    listacurentas.append("Yes")
                 else:
-                    listacurentas.append("No")
+                    if(str(listdocdate[k][3:5])==str(info.cell(row=3,column=3).value)):
+                        listacurentas.append("Yes")
+                    else:
+                        listacurentas.append("No")
+            except:
+                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet'.")
+                return render_template("index.html")
+                exit()
+
         for kk in range(0,len(listacurentas)):
             sales.cell(row=2+kk,column=70).value=listacurentas[kk]
 
@@ -1384,8 +1390,9 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     else:
                         lunacurenta.append("No")
             except:
-                lunacurenta.append("Not applicable")
-            # if(datadocument[k])
+                flash("Please delete the empty row(s) or insert date transaction for every row in  purchases journal sheet'.")
+                return render_template("index.html")
+                exit()
         for kk in range(0,len(lunacurenta)):
             purchases.cell(row=2+kk,column=70).value=lunacurenta[kk]            
 
@@ -5854,32 +5861,39 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         listacurentas=[]                        
         for k in range(0,len(listdocdate)):
             # print(datadocument[k][3:4])
+            try:
             # print(datadocument[k][3:5])
-            if(str(listdocdate[k])[2:3]=="."):
-                if(str(listdocdate[k])[3:4]=="0"):
-                    if(str(listdocdate[k])[4:5]==str(info.cell(row=3,column=3).value)):
-                        listacurentas.append("Yes")
-                    else:
-                        listacurentas.append("No")
+                if(str(listdocdate[k])[2:3]=="."):
+                    if(str(listdocdate[k])[3:4]=="0"):
+                        if(str(listdocdate[k])[4:5]==str(info.cell(row=3,column=3).value)):
+                            listacurentas.append("Yes")
+                        else:
+                            listacurentas.append("No")
 
+                    else:
+                        if(str(listdocdate[k])[3:5]==str(info.cell(row=3,column=3).value)):
+                            listacurentas.append("Yes")
+                        else:
+                            listacurentas.append("No")
                 else:
-                    if(str(listdocdate[k])[3:5]==str(info.cell(row=3,column=3).value)):
-                        listacurentas.append("Yes")
-                    else:
-                        listacurentas.append("No")
-            else:
-                if(str(listdocdate[k])[3:4]=="."):
-                    if(str(listdocdate[k])[4:5]=="0"):
-                        if(str(listdocdate[k])[5:6]==str(info.cell(row=3,column=3).value)):
-                            listacurentas.append("Yes")
-                        else:
-                            listacurentas.append("No")
+                    if(str(listdocdate[k])[3:4]=="."):
+                        if(str(listdocdate[k])[4:5]=="0"):
+                            if(str(listdocdate[k])[5:6]==str(info.cell(row=3,column=3).value)):
+                                listacurentas.append("Yes")
+                            else:
+                                listacurentas.append("No")
 
-                    else:
-                        if(str(listdocdate[k])[4:6]==str(info.cell(row=3,column=3).value)):
-                            listacurentas.append("Yes")
                         else:
-                            listacurentas.append("No")
+                            if(str(listdocdate[k])[4:6]==str(info.cell(row=3,column=3).value)):
+                                listacurentas.append("Yes")
+                            else:
+                                listacurentas.append("No")
+            except:
+                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet'.")
+                return render_template("index.html")
+                exit()
+                
+
         for kk in range(0,len(listacurentas)):
             sales.cell(row=18+kk,column=70).value=listacurentas[kk]
         for row in purchases.iter_rows():
@@ -6186,7 +6200,10 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                             else:
                                 lunacurenta.append("No")
             except:
-                lunacurenta.append("Not applicable")
+                flash("Please delete the empty row(s) or insert date transaction for every row in  purchases journal sheet'.")
+                return render_template("index.html")
+                exit()
+                
             # if(datadocument[k])
         for kk in range(0,len(lunacurenta)):
             purchases.cell(row=rand_tb+1+kk,column=70).value=lunacurenta[kk]
@@ -10687,19 +10704,24 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             return render_template("index.html")
         listacurentas=[]                        
         for k in range(0,len(listdocdate)):
+            try:
             # print(datadocument[k][3:4])
             # print(datadocument[k][3:5])
-            if(str(listdocdate[k])[5:6]=="0"):
-                if(str(listdocdate[k])[6:7]==str(info.cell(row=3,column=3).value)):
-                    listacurentas.append("Yes")
-                else:
-                    listacurentas.append("No")
+                if(str(listdocdate[k])[5:6]=="0"):
+                    if(str(listdocdate[k])[6:7]==str(info.cell(row=3,column=3).value)):
+                        listacurentas.append("Yes")
+                    else:
+                        listacurentas.append("No")
 
-            else:
-                if(str(listdocdate[k])[5:7]==info.cell(row=3,column=3).value):
-                    listacurentas.append("Yes")
                 else:
-                    listacurentas.append("No")
+                    if(str(listdocdate[k])[5:7]==info.cell(row=3,column=3).value):
+                        listacurentas.append("Yes")
+                    else:
+                        listacurentas.append("No")
+            except:
+                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet'.")
+                return render_template("index.html")
+                exit()
         for kk in range(0,len(listacurentas)):
             sales.cell(row=4+kk,column=70).value=listacurentas[kk]
 
@@ -10754,7 +10776,9 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     else:
                         lunacurenta.append("No")
             except:
-                lunacurenta.append("Not applicable")
+                flash("Please delete the empty row(s) or insert date transaction for every row in  purchase journal sheet'.")
+                return render_template("index.html")
+                exit()
             # if(datadocument[k])
         for kk in range(0,len(lunacurenta)):
             purchases.cell(row=4+kk,column=70).value=lunacurenta[kk]            
@@ -14753,19 +14777,24 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             return render_template("index.html")
         listacurentas=[]                        
         for k in range(0,len(listdocdate)):
+            try:
             # print(datadocument[k][3:4])
             # print(datadocument[k][3:5])
-            if(str(listdocdate[k])[5:6]=="0"):
-                if(str(listdocdate[k])[6:7]==str(info.cell(row=3,column=3).value)):
-                    listacurentas.append("Yes")
-                else:
-                    listacurentas.append("No")
+                if(str(listdocdate[k])[5:6]=="0"):
+                    if(str(listdocdate[k])[6:7]==str(info.cell(row=3,column=3).value)):
+                        listacurentas.append("Yes")
+                    else:
+                        listacurentas.append("No")
 
-            else:
-                if(str(listdocdate[k])[5:7]==info.cell(row=3,column=3).value):
-                    listacurentas.append("Yes")
                 else:
-                    listacurentas.append("No")
+                    if(str(listdocdate[k])[5:7]==info.cell(row=3,column=3).value):
+                        listacurentas.append("Yes")
+                    else:
+                        listacurentas.append("No")
+            except:
+                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet'.")
+                return render_template("index.html")
+                exit()
         for kk in range(0,len(listacurentas)):
             sales.cell(row=8+kk,column=70).value=listacurentas[kk]
 
@@ -14832,7 +14861,9 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     else:
                         lunacurenta.append("No")
             except:
-                lunacurenta.append("Not applicable")
+                flash("Please delete the empty row(s) or insert date transaction for every row in  purchases journal sheet'.")
+                return render_template("index.html")
+                exit()
             
             # if(datadocument[k])
         for kk in range(0,len(lunacurenta)):
