@@ -1272,68 +1272,68 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
     #     return render_template("index.html")
     #     exit()
 
-        status = False
-        for k in range(2, sales.max_row + 1):
-            for i in range(8, sales.max_column + 1):
-                cell_value = sales.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and "," in cell_value:
-                    status = True
-                    break 
-            if status:
-                break
-
+    status = False
+    for k in range(2, sales.max_row + 1):
+        for i in range(8, sales.max_column + 1):
+            cell_value = sales.cell(row=k, column=i).value
+            if isinstance(cell_value, str) and "," in cell_value:
+                status = True
+                break 
         if status:
-            flash("Eroare de formatare la sume")
-            return render_template("index.html")
+            break
 
-        status3 = False
-        for k in range(2, sales.max_row + 1):
-            for i in range(8, sales.max_column + 1):
-                cell_value = sales.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and " " in cell_value:
-                    status3 = True
-                    break 
-            if status3:
-                break
-
-        if status3:
-            flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
-            return render_template("index.html")
-    try:
-        purchases=temp['Purchases']
-    except:
-        flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+    if status:
+        flash("Eroare de formatare la sume")
         return render_template("index.html")
-        exit()
 
-        status1 = False
-        for k in range(2, purchases.max_row + 1):
-            for i in range(8, purchases.max_column + 1):
-                cell_value = purchases.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and "," in cell_value:
-                    status1 = True
-                    break 
-            if status1:
-                break
+    status3 = False
+    for k in range(2, sales.max_row + 1):
+        for i in range(8, sales.max_column + 1):
+            cell_value = sales.cell(row=k, column=i).value
+            if isinstance(cell_value, str) and " " in cell_value:
+                status3 = True
+                break 
+        if status3:
+            break
 
+    if status3:
+        flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
+        return render_template("index.html")
+try:
+    purchases=temp['Purchases']
+except:
+    flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+    return render_template("index.html")
+    exit()
+
+    status1 = False
+    for k in range(2, purchases.max_row + 1):
+        for i in range(8, purchases.max_column + 1):
+            cell_value = purchases.cell(row=k, column=i).value
+            if isinstance(cell_value, str) and "," in cell_value:
+                status1 = True
+                break 
         if status1:
-            flash("Eroare de formatare la sume")
-            return render_template("index.html")
+            break
+
+    if status1:
+        flash("Eroare de formatare la sume")
+        return render_template("index.html")
 
 
-        status2 = False
-        for k in range(2, purchases.max_row + 1):
-            for i in range(8, purchases.max_column + 1):
-                cell_value = purchases.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and " " in cell_value:
-                    status2 = True
-                    break 
-            if status2:
-                break
-
+    status2 = False
+    for k in range(2, purchases.max_row + 1):
+        for i in range(8, purchases.max_column + 1):
+            cell_value = purchases.cell(row=k, column=i).value
+            if isinstance(cell_value, str) and " " in cell_value:
+                status2 = True
+                break 
         if status2:
-            flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
-            return render_template("index.html")
+            break
+
+    if status2:
+        flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
+        return render_template("index.html")
     rangurigoale=0
     for k in range(1, sales.max_column):
         if(sales.cell(row=sales.max_row,column=k).value==None):
