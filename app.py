@@ -25383,8 +25383,8 @@ def D300_Nutre2():
     
     return send_from_directory(folderpath,"D300 Group "+str(clientname)+".xlsx",as_attachment=True)       
     
-# if __name__ == '__main__':
-#    app.run()
+if __name__ == '__main__':
+   app.run()
 
 
-app.run(debug="True", port=3650,host="0.0.0.0")
+# app.run(debug="True", port=3650,host="0.0.0.0")
