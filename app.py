@@ -1308,7 +1308,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
     status1 = False
     for k in range(2, purchases.max_row + 1):
-        for i in range(8, purchases.max_column + 1):
+        for i in range(9, purchases.max_column + 1):
             cell_value = purchases.cell(row=k, column=i).value
             if isinstance(cell_value, str) and "," in cell_value:
                 status1 = True
@@ -1323,7 +1323,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
     status2 = False
     for k in range(2, purchases.max_row + 1):
-        for i in range(8, purchases.max_column + 1):
+        for i in range(9, purchases.max_column + 1):
             cell_value = purchases.cell(row=k, column=i).value
             if isinstance(cell_value, str) and " " in cell_value:
                 status2 = True
@@ -5781,107 +5781,107 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
         Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
     
-        try:
-            sales=temp['Sales']
-        except:
-            flash("Please rename sales journal sheet as per instructions-'Sales'.")
-            return render_template("index.html")
+    try:
+        sales=temp['Sales']
+    except:
+        flash("Please rename sales journal sheet as per instructions-'Sales'.")
+        return render_template("index.html")
 
-            exit()
+        exit()
 
-        status = False
-        for k in range(2, sales.max_row + 1):
-            for i in range(8, sales.max_column + 1):
-                cell_value = sales.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and "," in cell_value:
-                    status = True
-                    break 
-            if status:
-                break
-
+    status = False
+    for k in range(18, sales.max_row + 1):
+        for i in range(7, sales.max_column + 1):
+            cell_value = sales.cell(row=k, column=i).value
+            if isinstance(cell_value, str) and "," in cell_value:
+                status = True
+                break 
         if status:
-            flash("Eroare de formatare la sume")
-            return render_template("index.html")
+            break
 
-        status3 = False
-        for k in range(2, sales.max_row + 1):
-            for i in range(8, sales.max_column + 1):
-                cell_value = sales.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and " " in cell_value:
-                    status3 = True
-                    break 
-            if status3:
-                break
+    if status:
+        flash("Eroare de formatare la sume")
+        return render_template("index.html")
 
+    status3 = False
+    for k in range(18, sales.max_row + 1):
+        for i in range(7, sales.max_column + 1):
+            cell_value = sales.cell(row=k, column=i).value
+            if isinstance(cell_value, str) and " " in cell_value:
+                status3 = True
+                break 
         if status3:
-            flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
-            return render_template("index.html")
+            break
 
-        try:
-            purchases=temp['Purchases']
-        except:
-            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
-            return render_template("index.html")
-            exit()  
+    if status3:
+        flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
+        return render_template("index.html")
 
-        status1 = False
-        for k in range(2, purchases.max_row + 1):
-            for i in range(8, purchases.max_column + 1):
-                cell_value = purchases.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and "," in cell_value:
-                    status1 = True
-                    break 
-            if status1:
-                break
+    try:
+        purchases=temp['Purchases']
+    except:
+        flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+        return render_template("index.html")
+        exit()  
 
+    status1 = False
+    for k in range(19, purchases.max_row + 1):
+        for i in range(9, purchases.max_column + 1):
+            cell_value = purchases.cell(row=k, column=i).value
+            if isinstance(cell_value, str) and "," in cell_value:
+                status1 = True
+                break 
         if status1:
-            flash("Eroare de formatare la sume")
-            return render_template("index.html")
+            break
+
+    if status1:
+        flash("Eroare de formatare la sume")
+        return render_template("index.html")
 
 
-        status2 = False
-        for k in range(2, purchases.max_row + 1):
-            for i in range(8, purchases.max_column + 1):
-                cell_value = purchases.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and " " in cell_value:
-                    status2 = True
-                    break 
-            if status2:
-                break
-
+    status2 = False
+    for k in range(19, purchases.max_row + 1):
+        for i in range(9, purchases.max_column + 1):
+            cell_value = purchases.cell(row=k, column=i).value
+            if isinstance(cell_value, str) and " " in cell_value:
+                status2 = True
+                break 
         if status2:
-            flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
-            return render_template("index.html")
-        rangurigoale=0
-        for k in range(1, sales.max_column):
-            if(sales.cell(row=sales.max_row,column=k).value==None):
-                randurigoale=rangurigoale+1
-        if(randurigoale<sales.max_column):
-            print("rand gol")
-        else:
-            flash("Please delete the empty row(s) in  sales journal sheet'.")
-            return render_template("index.html")
-            exit()
-        rangurigoale=0
-        for k in range(1, purchases.max_column):
-            if(purchases.cell(row=purchases.max_row,column=k).value==None):
-                randurigoale=rangurigoale+1
-        if(randurigoale<purchases.max_column):
-            print("rand gol")
-        else:
-            flash("Please delete the empty row(s) in  purchases journal sheet'.")
-            return render_template("index.html")
-            exit()
+            break
 
-        for j in range(9, purchases.max_column):
-            for k in range(19, purchases.max_row):
-                if("-" in str(purchases.cell(row=k,column=j).value)):
-                    purchases.cell(row=k,column=j).value=float(str(purchases.cell(row=k,column=j).value).replace("-",""))*-1
+    if status2:
+        flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
+        return render_template("index.html")
+    rangurigoale=0
+    for k in range(1, sales.max_column):
+        if(sales.cell(row=sales.max_row,column=k).value==None):
+            rangurigoale=rangurigoale+1
+    if(rangurigoale<sales.max_column):
+        print("rand gol")
+    else:
+        flash("Please delete the empty row(s) in  sales journal sheet'.")
+        return render_template("index.html")
+        exit()
+    rangurigoale=0
+    for k in range(1, purchases.max_column):
+        if(purchases.cell(row=purchases.max_row,column=k).value==None):
+            rangurigoale=rangurigoale+1
+    if(rangurigoale<purchases.max_column):
+        print("rand gol")
+    else:
+        flash("Please delete the empty row(s) in  purchases journal sheet'.")
+        return render_template("index.html")
+        exit()
 
-        for j in range(7, sales.max_column):
-            for k in range(18, sales.max_row):
-                if("-" in str(sales.cell(row=k,column=j).value)):
-                    sales.cell(row=k,column=j).value=float(str(sales.cell(row=k,column=j).value).replace("-",""))*-1
+    for j in range(9, purchases.max_column):
+        for k in range(19, purchases.max_row):
+            if("-" in str(purchases.cell(row=k,column=j).value)):
+                purchases.cell(row=k,column=j).value=float(str(purchases.cell(row=k,column=j).value).replace("-",""))*-1
+
+    for j in range(7, sales.max_column):
+        for k in range(18, sales.max_row):
+            if("-" in str(sales.cell(row=k,column=j).value)):
+                sales.cell(row=k,column=j).value=float(str(sales.cell(row=k,column=j).value).replace("-",""))*-1
 
 
     if(val1==1):
@@ -9752,7 +9752,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
             
             # for i in range(0 ,len(tip)):
-        # folderpath="D:/D300 to XML/docs"
+        # folderpath="D:/16 mai 2024 vat"
         folderpath="/home/mirus_app/storage_spreadsheet"
         # folderpath="D://VAT App Straumann"
         file_pathFS = os.path.join(folderpath, "One VAT app spreadsheets " +str(clientname)+".xlsx")
