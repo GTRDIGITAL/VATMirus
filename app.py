@@ -5873,15 +5873,15 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             return render_template("index.html")
             exit()
 
-    for j in range(9, purchases.max_column):
-        for k in range(19, purchases.max_row):
-            if("-" in str(purchases.cell(row=k,column=j).value)):
-                purchases.cell(row=k,column=j).value=float(str(purchases.cell(row=k,column=j).value).replace("-",""))*-1
+        for j in range(9, purchases.max_column):
+            for k in range(19, purchases.max_row):
+                if("-" in str(purchases.cell(row=k,column=j).value)):
+                    purchases.cell(row=k,column=j).value=float(str(purchases.cell(row=k,column=j).value).replace("-",""))*-1
 
-    for j in range(7, sales.max_column):
-        for k in range(18, sales.max_row):
-            if("-" in str(sales.cell(row=k,column=j).value)):
-                sales.cell(row=k,column=j).value=float(str(sales.cell(row=k,column=j).value).replace("-",""))*-1
+        for j in range(7, sales.max_column):
+            for k in range(18, sales.max_row):
+                if("-" in str(sales.cell(row=k,column=j).value)):
+                    sales.cell(row=k,column=j).value=float(str(sales.cell(row=k,column=j).value).replace("-",""))*-1
 
 
     if(val1==1):
