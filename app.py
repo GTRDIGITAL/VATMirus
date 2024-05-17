@@ -1355,7 +1355,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     else:
                         listacurentas.append("No")
             except:
-                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet'.")
+                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet")
                 return render_template("index.html")
                 exit()
 
@@ -2431,7 +2431,27 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                 forxml.cell(row=4+i, column=6).value="=SUMIFS('D390 workings'!H:H,'D390 workings'!A:A,B{0},'D390 workings'!C:C,D{0},'D390 workings'!G:G,C{0})".format(4+i)
 
 
+            forxml.cell(row=3, column=8).value="Tip"
+            forxml.cell(row=3, column=9).value="Suma"
+            forxml.cell(row=4, column=8).value="A"
+            forxml.cell(row=5, column=8).value="L"
+            forxml.cell(row=6, column=8).value="S"
+            forxml.cell(row=7, column=8).value="T"
+            forxml.cell(row=8, column=8).value="P"
+            forxml.cell(row=4, column=9).value="=SUMIF('D390 for XML'!B:B,H4,'D390 for XML'F:F)"
+            forxml.cell(row=5, column=9).value="=SUMIF('D390 for XML'!B:B,H5,'D390 for XML'F:F)"
+            forxml.cell(row=6, column=9).value="=SUMIF('D390 for XML'!B:B,H6,'D390 for XML'F:F)"
+            forxml.cell(row=7, column=9).value="=SUMIF('D390 for XML'!B:B,H7,'D390 for XML'F:F)"
+            forxml.cell(row=8, column=9).value="=SUMIF('D390 for XML'!B:B,H8,'D390 for XML'F:F)"
+
+
+
             for row in forxml['A3:F3']:
+                for cell in row:
+                    cell.fill=cap_tabel_color_black
+                    cell.font=cap_tabel
+                    cell.alignment=Alignment(horizontal='center',vertical='center')  
+            for row in forxml['H3:I3']:
                 for cell in row:
                     cell.fill=cap_tabel_color_black
                     cell.font=cap_tabel
@@ -2439,10 +2459,18 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             for row in forxml['F4:F10000']:
                 for cell in row:
                     cell.number_format='#,##0_);(#,##0)'
+            for row in forxml['H4:8']:
+                for cell in row:
+                    cell.number_format='#,##0_);(#,##0)'
+            for row in forxml['I4:I8']:
+                for cell in row:
+                    cell.number_format='#,##0_);(#,##0)'
 
             forxml.column_dimensions['D'].width=27
             forxml.column_dimensions['E'].width=35
             forxml.column_dimensions['F'].width=15
+
+
 
 
     #---------------------------NR DE EVIDENTA
@@ -5889,7 +5917,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                             else:
                                 listacurentas.append("No")
             except:
-                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet'.")
+                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet")
                 return render_template("index.html")
                 exit()
                 
@@ -10719,7 +10747,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     else:
                         listacurentas.append("No")
             except:
-                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet'.")
+                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet")
                 return render_template("index.html")
                 exit()
         for kk in range(0,len(listacurentas)):
@@ -14792,7 +14820,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
                     else:
                         listacurentas.append("No")
             except:
-                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet'.")
+                flash("Please delete the empty row(s) or insert date transaction for every row in  sales journal sheet")
                 return render_template("index.html")
                 exit()
         for kk in range(0,len(listacurentas)):
