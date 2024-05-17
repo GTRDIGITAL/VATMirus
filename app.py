@@ -5789,6 +5789,34 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
             exit()
 
+        status = False
+        for k in range(2, sales.max_row + 1):
+            for i in range(8, sales.max_column + 1):
+                cell_value = sales.cell(row=k, column=i).value
+                if isinstance(cell_value, str) and "," in cell_value:
+                    status = True
+                    break 
+            if status:
+                break
+
+        if status:
+            flash("Eroare de formatare la sume")
+            return render_template("index.html")
+
+        status3 = False
+        for k in range(2, sales.max_row + 1):
+            for i in range(8, sales.max_column + 1):
+                cell_value = sales.cell(row=k, column=i).value
+                if isinstance(cell_value, str) and " " in cell_value:
+                    status3 = True
+                    break 
+            if status3:
+                break
+
+        if status3:
+            flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
+            return render_template("index.html")
+
         try:
             purchases=temp['Purchases']
         except:
@@ -14898,33 +14926,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
             exit()
 
-        status = False
-        for k in range(2, sales.max_row + 1):
-            for i in range(8, sales.max_column + 1):
-                cell_value = sales.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and "," in cell_value:
-                    status = True
-                    break 
-            if status:
-                break
 
-        if status:
-            flash("Eroare de formatare la sume")
-            return render_template("index.html")
-
-        status3 = False
-        for k in range(2, sales.max_row + 1):
-            for i in range(8, sales.max_column + 1):
-                cell_value = sales.cell(row=k, column=i).value
-                if isinstance(cell_value, str) and " " in cell_value:
-                    status3 = True
-                    break 
-            if status3:
-                break
-
-        if status3:
-            flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
-            return render_template("index.html")
     
         try:
             purchases=temp['Purchases']
@@ -25385,6 +25387,3 @@ def D300_Nutre2():
     
 if __name__ == '__main__':
    app.run()
-
-
-# app.run(debug="True", port=3650,host="0.0.0.0")
