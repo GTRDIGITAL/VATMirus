@@ -1299,12 +1299,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
     if status3:
         flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
         return render_template("index.html")
-try:
-    purchases=temp['Purchases']
-except:
-    flash("Please rename purchases journal sheet as per instructions'Purchases'.")
-    return render_template("index.html")
-    exit()
+    try:
+        purchases=temp['Purchases']
+    except:
+        flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+        return render_template("index.html")
+        exit()
 
     status1 = False
     for k in range(2, purchases.max_row + 1):
