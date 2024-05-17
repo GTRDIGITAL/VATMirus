@@ -1337,8 +1337,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
     rangurigoale=0
     for k in range(1, sales.max_column):
         if(sales.cell(row=sales.max_row,column=k).value==None):
-            randurigoale=rangurigoale+1
-    if(randurigoale<sales.max_column):
+            rangurigoale=rangurigoale+1
+    if(rangurigoale<sales.max_column):
         print("rand gol")
     else:
         flash("Please delete the empty row(s) in  sales journal sheet'.")
@@ -1347,8 +1347,8 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
     rangurigoale=0
     for k in range(1, purchases.max_column):
         if(purchases.cell(row=purchases.max_row,column=k).value==None):
-            randurigoale=rangurigoale+1
-    if(randurigoale<purchases.max_column):
+            rangurigoale=rangurigoale+1
+    if(rangurigoale<purchases.max_column):
         print("rand gol")
     else:
         flash("Please delete the empty row(s) in  purchases journal sheet'.")
@@ -10787,14 +10787,14 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
         Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
     
-        try:
-            sales=temp['Sales']
-        except:
-            flash("Please rename sales journal sheet as per instructions-'Sales'.")
+    try:
+        sales=temp['Sales']
+    except:
+        flash("Please rename sales journal sheet as per instructions-'Sales'.")
 
-            return render_template("index.html")
+        return render_template("index.html")
 
-            exit()
+        exit()
         
         # status = False
         # for k in range(2, sales.max_row + 1):
@@ -10825,12 +10825,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         #     return render_template("index.html")
 
 
-        try:
-            purchases=temp['Purchases']
-        except:
-            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
-            return render_template("index.html")
-            exit()  
+    try:
+        purchases=temp['Purchases']
+    except:
+        flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+        return render_template("index.html")
+        exit()  
 
         # status1 = False
         # for k in range(2, purchases.max_row + 1):
@@ -10860,26 +10860,26 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         # if status2:
         #     flash("Eroare de formatare. S-a gasit minim un spatiun gol in cadrul coloanelor cu sume.")
         #     return render_template("index.html")
-        rangurigoale=0
-        for k in range(1, sales.max_column):
-            if(sales.cell(row=sales.max_row,column=k).value==None):
-                randurigoale=rangurigoale+1
-        if(randurigoale<sales.max_column):
-            print("rand gol")
-        else:
-            flash("Please delete the empty row(s) in  sales journal sheet'.")
-            return render_template("index.html")
-            exit()
-        rangurigoale=0
-        for k in range(1, purchases.max_column):
-            if(purchases.cell(row=purchases.max_row,column=k).value==None):
-                randurigoale=rangurigoale+1
-        if(randurigoale<purchases.max_column):
-            print("rand gol")
-        else:
-            flash("Please delete the empty row(s) in  purchases journal sheet'.")
-            return render_template("index.html")
-            exit()            
+    rangurigoale=0
+    for k in range(1, sales.max_column):
+        if(sales.cell(row=sales.max_row,column=k).value==None):
+            rangurigoale=rangurigoale+1
+    if(rangurigoale<sales.max_column):
+        print("rand gol")
+    else:
+        flash("Please delete the empty row(s) in  sales journal sheet'.")
+        return render_template("index.html")
+        exit()
+    rangurigoale=0
+    for k in range(1, purchases.max_column):
+        if(purchases.cell(row=purchases.max_row,column=k).value==None):
+            rangurigoale=rangurigoale+1
+    if(rangurigoale<purchases.max_column):
+        print("rand gol")
+    else:
+        flash("Please delete the empty row(s) in  purchases journal sheet'.")
+        return render_template("index.html")
+        exit()            
     if(val1==1):
         sheetinutil1=temp.create_sheet('D300--->>>')
         sheetinutil1.sheet_view.showGridLines=False
@@ -14918,42 +14918,42 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         Sheet1.merge_cells(start_row=12, start_column=4, end_row=12, end_column=12)
         Sheet1.merge_cells(start_row=58, start_column=3, end_row=58, end_column=6)
     
-        try:
-            sales=temp['Sales']
-        except:
-            flash("Please rename sales journal sheet as per instructions-'Sales'.")
-            return render_template("index.html")
+    try:
+        sales=temp['Sales']
+    except:
+        flash("Please rename sales journal sheet as per instructions-'Sales'.")
+        return render_template("index.html")
 
-            exit()
+        exit()
 
 
-    
-        try:
-            purchases=temp['Purchases']
-        except:
-            flash("Please rename purchases journal sheet as per instructions'Purchases'.")
-            return render_template("index.html")
-            exit()
-        rangurigoale=0
-        for k in range(1, sales.max_column):
-            if(sales.cell(row=sales.max_row,column=k).value==None):
-                randurigoale=rangurigoale+1
-        if(randurigoale<sales.max_column):
-            print("rand gol")
-        else:
-            flash("Please delete the empty row(s) in  sales journal sheet'.")
-            return render_template("index.html")
-            exit()
-        rangurigoale=0
-        for k in range(1, purchases.max_column):
-            if(purchases.cell(row=purchases.max_row,column=k).value==None):
-                randurigoale=rangurigoale+1
-        if(randurigoale<purchases.max_column):
-            print("rand gol")
-        else:
-            flash("Please delete the empty row(s) in  purchases journal sheet'.")
-            return render_template("index.html")
-            exit()              
+
+    try:
+        purchases=temp['Purchases']
+    except:
+        flash("Please rename purchases journal sheet as per instructions'Purchases'.")
+        return render_template("index.html")
+        exit()
+    rangurigoale=0
+    for k in range(1, sales.max_column):
+        if(sales.cell(row=sales.max_row,column=k).value==None):
+            rangurigoale=rangurigoale+1
+    if(rangurigoale<sales.max_column):
+        print("rand gol")
+    else:
+        flash("Please delete the empty row(s) in  sales journal sheet'.")
+        return render_template("index.html")
+        exit()
+    rangurigoale=0
+    for k in range(1, purchases.max_column):
+        if(purchases.cell(row=purchases.max_row,column=k).value==None):
+            rangurigoale=rangurigoale+1
+    if(rangurigoale<purchases.max_column):
+        print("rand gol")
+    else:
+        flash("Please delete the empty row(s) in  purchases journal sheet'.")
+        return render_template("index.html")
+        exit()              
 
     if(val1==1):
         sheetinutil1=temp.create_sheet('D300--->>>')
