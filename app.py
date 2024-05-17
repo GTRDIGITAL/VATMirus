@@ -2438,11 +2438,11 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             forxml.cell(row=6, column=8).value="S"
             forxml.cell(row=7, column=8).value="T"
             forxml.cell(row=8, column=8).value="P"
-            forxml.cell(row=4, column=9).value="=SUMIF('D390 for XML'!B:B,H4,'D390 for XML'F:F)"
-            forxml.cell(row=5, column=9).value="=SUMIF('D390 for XML'!B:B,H5,'D390 for XML'F:F)"
-            forxml.cell(row=6, column=9).value="=SUMIF('D390 for XML'!B:B,H6,'D390 for XML'F:F)"
-            forxml.cell(row=7, column=9).value="=SUMIF('D390 for XML'!B:B,H7,'D390 for XML'F:F)"
-            forxml.cell(row=8, column=9).value="=SUMIF('D390 for XML'!B:B,H8,'D390 for XML'F:F)"
+            forxml.cell(row=4, column=9).value="=SUMIF('D390 for XML'!B:B,H4,'D390 for XML'!F:F)"
+            forxml.cell(row=5, column=9).value="=SUMIF('D390 for XML'!B:B,H5,'D390 for XML'!F:F)"
+            forxml.cell(row=6, column=9).value="=SUMIF('D390 for XML'!B:B,H6,'D390 for XML'!F:F)"
+            forxml.cell(row=7, column=9).value="=SUMIF('D390 for XML'!B:B,H7,'D390 for XML'!F:F)"
+            forxml.cell(row=8, column=9).value="=SUMIF('D390 for XML'!B:B,H8,'D390 for XML'!F:F)"
 
 
 
