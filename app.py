@@ -4765,7 +4765,7 @@ def my_form2():
 def my_form_straumann():
     return render_template('D3APPS dashboard.html')
 
-global LL_g
+# global LL_g
 @app.route('/D3APPS/STRAUMANN')
 def my_form_D300_straumann():
     return render_template('D3APPS Straumann.html')
@@ -9769,7 +9769,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 def my_form_thales():
     return render_template('D3APPS dashboard.html')
 
-global LL_g
+# global LL_g
 @app.route('/D3APPS/CIEL-THALES')
 def my_form_D300_thales():
     return render_template('D3APPS Thales.html')
