@@ -18518,7 +18518,7 @@ def D300_thales():
     except:
         pass
     try:
-            Sheet1=temp['Other info']
+            sheet1=temp['Other info']
     except:
         flash("Please rename purchases journal sheet as per instructions'Purchases'.")
         return render_template("index.html")
