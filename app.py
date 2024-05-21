@@ -286,6 +286,7 @@ def D300xml():
         option=0    
 
 
+
     #print(val4)
     #print(val4,"--------------------------------------------")     
     cap_tabel_color_verde = PatternFill(start_color = '00B050', end_color ='00B050', fill_type = 'solid')
