@@ -1711,7 +1711,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
         amount.cell(row=8, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y1",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y3",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
         amount.cell(row=9, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"C2",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-        amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'       
+        amount.cell(row=10, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'       
         amount.cell(row=11, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
         amount.cell(row=12, column=2).value=0
         amount.cell(row=13, column=2).value='=(ROUND(SUMIFS(Purchases!'+str(intracome1)+":"+str(intracome1)+',Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"E1",Purchases!BR:BR,"Yes"),0))'
@@ -1728,12 +1728,12 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=24, column=2).value=0
         amount.cell(row=25, column=2).value=0
         amount.cell(row=26, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"1V",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'   
-        amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y8",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
+        amount.cell(row=27, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A5",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"A4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)+ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"Y4",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
         amount.cell(row=28, column=2).value=0
         amount.cell(row=30, column=2).value=0
         amount.cell(row=29, column=2).value='=ROUND(SUMIF(Sales!'+str(taxcodec)+":"+str(taxcodec)+',"ZJ",Sales!'+str(tdocc)+":"+str(tdocc)+'),0)'
-        amount.cell(row=39, column=2).value='=round(SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"E1",Purchases!BR:BR,"No")+SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"N1",Purchases!BR:BR,"No")+SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!BR:BR,"No"),0)'                      
-        amount.cell(row=40, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"9S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(109/100),0)'                                
+        amount.cell(row=39, column=2).value='=round(SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1L",Purchases!BR:BR,"Yes")+SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"N3",Purchases!BR:BR,"Yes")+SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"V1",Purchases!BR:BR,"Yes")+SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"N1",Purchases!BR:BR,"Yes")+SUMIFS(Purchases!'+str(tax19b)+':'+str(tax19b)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"ZI",Purchases!BR:BR,"Yes"),0)'                      
+        amount.cell(row=40, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"V3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"N3",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"9S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W6",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(109/100),0)'                                
         amount.cell(row=41, column=2).value='=round((ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"W8",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"5S",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0)+ROUND(SUMIF(Purchases!'+str(taxcodea)+":"+str(taxcodea)+',"6I",Purchases!'+str(tdoca)+":"+str(tdoca)+'),0))/(105/100),0)'                                
 
         
@@ -1821,7 +1821,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
         amount.cell(row=38, column=3).value='=C18'
 
 
-        amount.cell(row=39, column=3).value='=round(SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"E1",Purchases!BR:BR,"No")+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"N1",Purchases!BR:BR,"No")+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1M",Purchases!BR:BR,"No"),0)'
+        amount.cell(row=39, column=3).value='=round(SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"N3",Purchases!BR:BR,"Yes")+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"1L",Purchases!BR:BR,"Yes")+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"N1",Purchases!BR:BR,"Yes")+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"ZI",Purchases!BR:BR,"Yes")+SUMIFS(Purchases!'+str(tax19vat)+':'+str(tax19vat)+',Purchases!'+str(taxcodea)+':'+str(taxcodea)+',"V1",Purchases!BR:BR,"Yes"),0)'
         amount.cell(row=40, column=3).value='=round(B40/100*9,0)'
         amount.cell(row=41, column=3).value='=round(B41/100*5,0)'           
         amount.cell(row=42, column=3).value='=round(SUM(C43:C45),0)'
@@ -3594,7 +3594,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             #Cote TVA
             coteTVApurchases=[]
             for i in range(0, len(docNoPurch1)):
-                if (taxcodep[i]=="ZI" or taxcodep[i]=="C3" or taxcodep[i]=="ZD" or taxcodep[i]=="E1" or taxcodep[i]=='V1' or taxcodep[i]=="5H" or taxcodep[i]=="X1" or taxcodep[i]=="1L" or taxcodep[i]=="1M" or taxcodep[i]=="3S" or taxcodep[i]=="5B" or taxcodep[i]=="5H"):
+                if (taxcodep[i]=="ZI" or taxcodep[i]=="C3" or taxcodep[i]=="ZD" or taxcodep[i]=="E1" or taxcodep[i]=='V1' or taxcodep[i]=="5H" or taxcodep[i]=="X1" or taxcodep[i]=="1M" or taxcodep[i]=="3S" or taxcodep[i]=="5B" or taxcodep[i]=="5H"):
                     coteTVApurchases.append('19')
                 else:
                     if (taxcodep[i]=="I9" or taxcodep[i]=="W8" or taxcodep[i]=="W6" or taxcodep[i]=="J2" or taxcodep[i]=="V3" or taxcodep[i]=="9S"):
@@ -4749,7 +4749,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
 
             
             # for i in range(0 ,len(tip)):
-        # folderpath="D:/16 mai 2024 vat"
+        # folderpath="D:/vatmirus9dec/VATMirus"
         folderpath="/home/mirus_app/storage_spreadsheet"
         print(dropdown,"===========================")
         # folderpath="D:\\VATtrezorerie\\VATMirus"
@@ -25391,4 +25391,4 @@ if __name__ == '__main__':
    app.run()
 
 
-# app.run(debug="True", port=3750,host="0.0.0.0")
+# app.run(debug="True", port=4750,host="0.0.0.0")
