@@ -4747,6 +4747,7 @@ IF(AND('Cover sheet'!D47<>"nil",'Cover sheet'!D43="Yes"),'Cover sheet'!D47+IFERR
             #       if (column==i):
     #           sumary.column_dimensions[column].width = 15
 
+
             
             # for i in range(0 ,len(tip)):
         # folderpath="D:/vatmirus9dec/VATMirus"
